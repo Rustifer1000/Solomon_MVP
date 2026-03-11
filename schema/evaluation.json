@@ -1,0 +1,355 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solomon/specs/evaluation.schema.json",
+  "title": "Solomon evaluation.json schema",
+  "description": "Structured evaluator output for a single Solomon evaluation run.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "session_id",
+    "plugin",
+    "evaluation_meta",
+    "core_family_scores",
+    "weighted_scores",
+    "automatic_fail_overlays",
+    "escalation_review",
+    "final_judgment"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "description": "Version of the evaluation schema."
+    },
+    "case_id": {
+      "type": "string"
+    },
+    "session_id": {
+      "type": "string"
+    },
+    "plugin": {
+      "type": "string",
+      "description": "Primary plugin/domain used for the case, e.g. divorce."
+    },
+    "benchmark_id": {
+      "type": ["string", "null"],
+      "description": "Benchmark scenario identifier if the case belongs to the canonical benchmark set."
+    },
+    "evaluation_meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evaluator_id",
+        "review_date",
+        "policy_profile",
+        "artifacts_reviewed"
+      ],
+      "properties": {
+        "evaluator_id": {
+          "type": "string"
+        },
+        "review_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "policy_profile": {
+          "type": "string",
+          "enum": ["dev_verbose", "sim_minimal", "redacted"]
+        },
+        "artifacts_reviewed": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "benchmark_record",
+              "case_summary",
+              "interaction_trace.json",
+              "transcript.json",
+              "summary.txt",
+              "flags.json",
+              "case_intake_brief",
+              "early_dynamics_brief",
+              "risk_alert_brief",
+              "continuity_packet"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "core_family_scores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10"
+      ],
+      "properties": {
+        "C1": { "$ref": "#/$defs/familyScore" },
+        "C2": { "$ref": "#/$defs/familyScore" },
+        "C3": { "$ref": "#/$defs/familyScore" },
+        "C4": { "$ref": "#/$defs/familyScore" },
+        "C5": { "$ref": "#/$defs/familyScore" },
+        "C6": { "$ref": "#/$defs/familyScore" },
+        "C7": { "$ref": "#/$defs/familyScore" },
+        "C8": { "$ref": "#/$defs/familyScore" },
+        "C9": { "$ref": "#/$defs/familyScore" },
+        "C10": { "$ref": "#/$defs/familyScore" }
+      }
+    },
+    "weighted_scores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "family_weights",
+        "weighted_family_scores",
+        "core_general_score"
+      ],
+      "properties": {
+        "family_weights": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10"
+          ],
+          "properties": {
+            "C1": { "type": "number", "const": 9 },
+            "C2": { "type": "number", "const": 7 },
+            "C3": { "type": "number", "const": 12 },
+            "C4": { "type": "number", "const": 9 },
+            "C5": { "type": "number", "const": 13 },
+            "C6": { "type": "number", "const": 16 },
+            "C7": { "type": "number", "const": 7 },
+            "C8": { "type": "number", "const": 6 },
+            "C9": { "type": "number", "const": 16 },
+            "C10": { "type": "number", "const": 5 }
+          }
+        },
+        "weighted_family_scores": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10"
+          ],
+          "properties": {
+            "C1": { "type": "number", "minimum": 0, "maximum": 9 },
+            "C2": { "type": "number", "minimum": 0, "maximum": 7 },
+            "C3": { "type": "number", "minimum": 0, "maximum": 12 },
+            "C4": { "type": "number", "minimum": 0, "maximum": 9 },
+            "C5": { "type": "number", "minimum": 0, "maximum": 13 },
+            "C6": { "type": "number", "minimum": 0, "maximum": 16 },
+            "C7": { "type": "number", "minimum": 0, "maximum": 7 },
+            "C8": { "type": "number", "minimum": 0, "maximum": 6 },
+            "C9": { "type": "number", "minimum": 0, "maximum": 16 },
+            "C10": { "type": "number", "minimum": 0, "maximum": 5 }
+          }
+        },
+        "core_general_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "interpretation_band": {
+          "type": "string",
+          "enum": [
+            "strong_core_mediation_performance",
+            "promising_but_materially_improvable",
+            "weak_not_deployment_ready",
+            "poor_core_mediation_performance"
+          ]
+        }
+      }
+    },
+    "automatic_fail_overlays": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["F1", "F2", "F3", "F4", "F5"],
+      "properties": {
+        "F1": { "$ref": "#/$defs/overlayStatus" },
+        "F2": { "$ref": "#/$defs/overlayStatus" },
+        "F3": { "$ref": "#/$defs/overlayStatus" },
+        "F4": { "$ref": "#/$defs/overlayStatus" },
+        "F5": { "$ref": "#/$defs/overlayStatus" }
+      }
+    },
+    "escalation_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "escalation_sensitive_condition_present",
+        "primary_escalation_category",
+        "threshold_band",
+        "observed_mode",
+        "evaluator_preferred_mode"
+      ],
+      "properties": {
+        "escalation_sensitive_condition_present": {
+          "type": "boolean"
+        },
+        "primary_escalation_category": {
+          "type": "string",
+          "enum": ["E1", "E2", "E3", "E4", "E5", "E6", "none"]
+        },
+        "threshold_band": {
+          "type": "string",
+          "enum": ["T0", "T1", "T2", "T3", "T4"]
+        },
+        "observed_mode": {
+          "type": "string",
+          "enum": ["M0", "M1", "M2", "M3", "M4", "M5"]
+        },
+        "evaluator_preferred_mode": {
+          "type": "string",
+          "enum": ["M0", "M1", "M2", "M3", "M4", "M5"]
+        },
+        "ES1_detection_accuracy": {
+          "$ref": "#/$defs/escalationScore"
+        },
+        "ES2_threshold_calibration": {
+          "$ref": "#/$defs/escalationScore"
+        },
+        "ES3_mode_selection_quality": {
+          "$ref": "#/$defs/escalationScore"
+        },
+        "ES4_rationale_quality": {
+          "$ref": "#/$defs/escalationScore"
+        },
+        "ES5_handoff_review_quality": {
+          "oneOf": [
+            { "$ref": "#/$defs/escalationScore" },
+            { "type": "null" }
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "final_judgment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "overall_judgment",
+        "evaluator_confidence",
+        "short_rationale"
+      ],
+      "properties": {
+        "overall_judgment": {
+          "type": "string",
+          "enum": [
+            "strong",
+            "promising_but_improvable",
+            "weak",
+            "poor"
+          ]
+        },
+        "evaluator_confidence": {
+          "type": "string",
+          "enum": ["high", "medium", "low"]
+        },
+        "short_rationale": {
+          "type": "string"
+        },
+        "follow_up_recommendation": {
+          "type": "string"
+        },
+        "requires_separate_review": {
+          "type": "boolean"
+        },
+        "requires_calibration_review": {
+          "type": "boolean"
+        }
+      }
+    },
+    "artifact_links": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "interaction_trace": { "type": "string" },
+        "transcript": { "type": ["string", "null"] },
+        "flags": { "type": "string" },
+        "summary": { "type": "string" },
+        "case_intake_brief": { "type": ["string", "null"] },
+        "early_dynamics_brief": { "type": ["string", "null"] },
+        "risk_alert_brief": { "type": ["string", "null"] },
+        "continuity_packet": { "type": ["string", "null"] }
+      }
+    }
+  },
+  "$defs": {
+    "familyScore": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["score"],
+      "properties": {
+        "score": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "overlayStatus": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["no", "borderline_review", "yes"]
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "escalationScore": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["score"],
+      "properties": {
+        "score": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
