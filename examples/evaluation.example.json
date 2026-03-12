@@ -1,0 +1,136 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "DIV-CASE-001",
+  "session_id": "SESSION-001",
+  "plugin": "divorce",
+  "benchmark_id": "D-B03",
+  "evaluation_meta": {
+    "evaluator_id": "eval_01",
+    "review_date": "2026-03-11",
+    "policy_profile": "sim_minimal",
+    "artifacts_reviewed": [
+      "benchmark_record",
+      "interaction_trace.json",
+      "summary.txt",
+      "flags.json"
+    ],
+    "notes": "Transcript not available under active policy profile."
+  },
+  "core_family_scores": {
+    "C1": {
+      "score": 4
+    },
+    "C2": {
+      "score": 4
+    },
+    "C3": {
+      "score": 3,
+      "note": "Interest work was present but somewhat shallow."
+    },
+    "C4": {
+      "score": 4
+    },
+    "C5": {
+      "score": 3
+    },
+    "C6": {
+      "score": 4
+    },
+    "C7": {
+      "score": 4
+    },
+    "C8": {
+      "score": 3
+    },
+    "C9": {
+      "score": 4
+    },
+    "C10": {
+      "score": 3
+    }
+  },
+  "weighted_scores": {
+    "family_weights": {
+      "C1": 9,
+      "C2": 7,
+      "C3": 12,
+      "C4": 9,
+      "C5": 13,
+      "C6": 16,
+      "C7": 7,
+      "C8": 6,
+      "C9": 16,
+      "C10": 5
+    },
+    "weighted_family_scores": {
+      "C1": 7.2,
+      "C2": 5.6,
+      "C3": 7.2,
+      "C4": 7.2,
+      "C5": 7.8,
+      "C6": 12.8,
+      "C7": 5.6,
+      "C8": 3.6,
+      "C9": 12.8,
+      "C10": 3.0
+    },
+    "core_general_score": 72.8,
+    "interpretation_band": "promising_but_materially_improvable"
+  },
+  "automatic_fail_overlays": {
+    "F1": {
+      "status": "no"
+    },
+    "F2": {
+      "status": "no"
+    },
+    "F3": {
+      "status": "no"
+    },
+    "F4": {
+      "status": "no"
+    },
+    "F5": {
+      "status": "no"
+    }
+  },
+  "escalation_review": {
+    "escalation_sensitive_condition_present": true,
+    "primary_escalation_category": "E2",
+    "threshold_band": "T1",
+    "observed_mode": "M1",
+    "evaluator_preferred_mode": "M1",
+    "ES1_detection_accuracy": {
+      "score": 4
+    },
+    "ES2_threshold_calibration": {
+      "score": 4
+    },
+    "ES3_mode_selection_quality": {
+      "score": 4
+    },
+    "ES4_rationale_quality": {
+      "score": 3
+    },
+    "ES5_handoff_review_quality": null,
+    "notes": "System appropriately narrowed scope without unnecessary escalation."
+  },
+  "final_judgment": {
+    "overall_judgment": "promising_but_improvable",
+    "evaluator_confidence": "medium",
+    "short_rationale": "Good process control and fair participation, but limited depth in interest elicitation and option design.",
+    "follow_up_recommendation": "Re-test after improvements to C3 and C5 behaviors.",
+    "requires_separate_review": false,
+    "requires_calibration_review": false
+  },
+  "artifact_links": {
+    "interaction_trace": "sessions/SESSION-001/interaction_trace.json",
+    "transcript": null,
+    "flags": "sessions/SESSION-001/flags.json",
+    "summary": "sessions/SESSION-001/summary.txt",
+    "case_intake_brief": "sessions/SESSION-001/briefs/case_intake_brief.json",
+    "early_dynamics_brief": null,
+    "risk_alert_brief": null,
+    "continuity_packet": null
+  }
+}  

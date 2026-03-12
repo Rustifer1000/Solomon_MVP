@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "DIV-CASE-001",
+  "session_id": "SESSION-001",
+  "plugin": "divorce",
+  "benchmark_id": "D-B05",
+  "review_meta": {
+    "expert_reviewer_id": "expert_01",
+    "review_date": "2026-03-11",
+    "review_type": "adjudication",
+    "policy_profile": "sim_minimal",
+    "artifacts_reviewed": [
+      "evaluation.json",
+      "interaction_trace.json",
+      "summary.txt",
+      "flags.json"
+    ],
+    "notes": "Escalation judgment and fair-process scoring required second-level review."
+  },
+  "review_reason": {
+    "trigger": "score_disagreement",
+    "description": "Primary evaluator may have under-scored domination concerns and delayed escalation."
+  },
+  "source_evaluations": [
+    {
+      "evaluation_id": "eval_record_001",
+      "evaluator_id": "eval_01",
+      "path": "sessions/SESSION-001/evaluation.json"
+    }
+  ],
+  "expert_findings": {
+    "agreement_with_primary_evaluation": "partial_agreement",
+    "key_issues_reviewed": [
+      "fair_process",
+      "escalation_threshold",
+      "escalation_mode_selection"
+    ],
+    "narrative_summary": "Primary evaluation was broadly sound, but the case warranted stronger concern under C6 and C9 because repeated domination signals were present before narrowing occurred.",
+    "evidence_notes": "Interaction trace showed a sustained imbalance in participation and repeated interruption patterns."
+  },
+  "score_overrides": {
+    "core_family_overrides": {
+      "C6": {
+        "old_score": 4,
+        "new_score": 3,
+        "reason": "Balanced participation concerns were more serious than the primary evaluation reflected."
+      },
+      "C9": {
+        "old_score": 4,
+        "new_score": 3,
+        "reason": "Escalation threshold was reached later than ideal."
+      }
+    },
+    "overlay_overrides": {},
+    "escalation_overrides": {
+      "primary_escalation_category": "E2",
+      "threshold_band": "T2",
+      "observed_mode": "M1",
+      "preferred_mode": "M2",
+      "ES1_detection_accuracy": {
+        "old_score": 4,
+        "new_score": 4,
+        "reason": "Problem was recognized, but response level was insufficient."
+      },
+      "ES2_threshold_calibration": {
+        "old_score": 4,
+        "new_score": 3,
+        "reason": "Escalation should have occurred earlier."
+      },
+      "ES3_mode_selection_quality": {
+        "old_score": 4,
+        "new_score": 3,
+        "reason": "Human review would have been more appropriate than continued narrowed autonomy."
+      },
+      "ES4_rationale_quality": {
+        "old_score": 3,
+        "new_score": 3,
+        "reason": "Rationale was adequate but not especially clear."
+      },
+      "ES5_handoff_review_quality": null,
+      "override_reason": "Expert review concluded that the system under-escalated a persistent process-breakdown pattern."
+    }
+  },
+  "calibration_notes": {
+    "calibration_required": true,
+    "calibration_topics": [
+      "fair_process",
+      "escalation"
+    ],
+    "calibration_note": "This case should be added to calibration discussion set for distinguishing M1 vs M2 in domination-heavy but non-acute scenarios."
+  },
+  "final_review_outcome": {
+    "case_status": "corrected_scores",
+    "final_requires_separate_review": false,
+    "final_requires_calibration_review": true,
+    "final_disposition_note": "Primary evaluation retained with expert corrections to C6, C9, and escalation assessment."
+  },
+  "artifact_links": {
+    "evaluation_json": "sessions/SESSION-001/evaluation.json",
+    "interaction_trace": "sessions/SESSION-001/interaction_trace.json",
+    "transcript": null,
+    "flags": "sessions/SESSION-001/flags.json",
+    "summary": "sessions/SESSION-001/summary.txt",
+    "continuity_packet": null
+  }
+}

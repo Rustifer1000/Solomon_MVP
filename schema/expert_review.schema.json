@@ -1,0 +1,396 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solomon/specs/expert_review.schema.json",
+  "title": "Solomon expert_review.json schema",
+  "description": "Structured expert or adjudication review layered on top of evaluation.json.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "session_id",
+    "plugin",
+    "review_meta",
+    "review_reason",
+    "source_evaluations",
+    "expert_findings",
+    "final_review_outcome"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "case_id": {
+      "type": "string"
+    },
+    "session_id": {
+      "type": "string"
+    },
+    "plugin": {
+      "type": "string"
+    },
+    "benchmark_id": {
+      "type": ["string", "null"]
+    },
+    "review_meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "expert_reviewer_id",
+        "review_date",
+        "review_type",
+        "policy_profile",
+        "artifacts_reviewed"
+      ],
+      "properties": {
+        "expert_reviewer_id": {
+          "type": "string"
+        },
+        "review_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "review_type": {
+          "type": "string",
+          "enum": [
+            "adjudication",
+            "calibration",
+            "quality_audit",
+            "safety_review",
+            "fairness_review",
+            "spot_check"
+          ]
+        },
+        "policy_profile": {
+          "type": "string",
+          "enum": ["dev_verbose", "sim_minimal", "redacted"]
+        },
+        "artifacts_reviewed": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "evaluation.json",
+              "interaction_trace.json",
+              "transcript.json",
+              "summary.txt",
+              "flags.json",
+              "case_intake_brief",
+              "early_dynamics_brief",
+              "risk_alert_brief",
+              "continuity_packet",
+              "benchmark_record",
+              "expert_review_prior_version"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "review_reason": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["trigger"],
+      "properties": {
+        "trigger": {
+          "type": "string",
+          "enum": [
+            "automatic_fail_yes",
+            "automatic_fail_borderline",
+            "low_evaluator_confidence",
+            "score_disagreement",
+            "escalation_disagreement",
+            "fairness_concern",
+            "safety_concern",
+            "sampling_audit",
+            "benchmark_calibration",
+            "other"
+          ]
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "source_evaluations": {
+      "type": "array",
+      "description": "One or more evaluation records being reviewed or adjudicated.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["evaluation_id"],
+        "properties": {
+          "evaluation_id": {
+            "type": "string"
+          },
+          "evaluator_id": {
+            "type": "string"
+          },
+          "path": {
+            "type": ["string", "null"]
+          }
+        }
+      }
+    },
+    "expert_findings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "agreement_with_primary_evaluation",
+        "key_issues_reviewed",
+        "narrative_summary"
+      ],
+      "properties": {
+        "agreement_with_primary_evaluation": {
+          "type": "string",
+          "enum": [
+            "full_agreement",
+            "partial_agreement",
+            "substantial_disagreement"
+          ]
+        },
+        "key_issues_reviewed": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "core_family_scoring",
+              "automatic_fail_overlay",
+              "escalation_detection",
+              "escalation_threshold",
+              "escalation_mode_selection",
+              "handoff_quality",
+              "fair_process",
+              "self_determination",
+              "one_sidedness",
+              "fabrication",
+              "false_authority",
+              "other"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "narrative_summary": {
+          "type": "string"
+        },
+        "evidence_notes": {
+          "type": "string"
+        }
+      }
+    },
+    "score_overrides": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "core_family_overrides": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "C1": { "$ref": "#/$defs/overrideScore" },
+            "C2": { "$ref": "#/$defs/overrideScore" },
+            "C3": { "$ref": "#/$defs/overrideScore" },
+            "C4": { "$ref": "#/$defs/overrideScore" },
+            "C5": { "$ref": "#/$defs/overrideScore" },
+            "C6": { "$ref": "#/$defs/overrideScore" },
+            "C7": { "$ref": "#/$defs/overrideScore" },
+            "C8": { "$ref": "#/$defs/overrideScore" },
+            "C9": { "$ref": "#/$defs/overrideScore" },
+            "C10": { "$ref": "#/$defs/overrideScore" }
+          }
+        },
+        "overlay_overrides": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "F1": { "$ref": "#/$defs/overrideOverlay" },
+            "F2": { "$ref": "#/$defs/overrideOverlay" },
+            "F3": { "$ref": "#/$defs/overrideOverlay" },
+            "F4": { "$ref": "#/$defs/overrideOverlay" },
+            "F5": { "$ref": "#/$defs/overrideOverlay" }
+          }
+        },
+        "escalation_overrides": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "primary_escalation_category": {
+              "type": "string",
+              "enum": ["E1", "E2", "E3", "E4", "E5", "E6", "none"]
+            },
+            "threshold_band": {
+              "type": "string",
+              "enum": ["T0", "T1", "T2", "T3", "T4"]
+            },
+            "observed_mode": {
+              "type": "string",
+              "enum": ["M0", "M1", "M2", "M3", "M4", "M5"]
+            },
+            "preferred_mode": {
+              "type": "string",
+              "enum": ["M0", "M1", "M2", "M3", "M4", "M5"]
+            },
+            "ES1_detection_accuracy": {
+              "$ref": "#/$defs/overrideEscalationScore"
+            },
+            "ES2_threshold_calibration": {
+              "$ref": "#/$defs/overrideEscalationScore"
+            },
+            "ES3_mode_selection_quality": {
+              "$ref": "#/$defs/overrideEscalationScore"
+            },
+            "ES4_rationale_quality": {
+              "$ref": "#/$defs/overrideEscalationScore"
+            },
+            "ES5_handoff_review_quality": {
+              "oneOf": [
+                { "$ref": "#/$defs/overrideEscalationScore" },
+                { "type": "null" }
+              ]
+            },
+            "override_reason": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "calibration_notes": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "calibration_required": {
+          "type": "boolean"
+        },
+        "calibration_topics": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "option_generation",
+              "fair_process",
+              "self_determination",
+              "escalation",
+              "automatic_fail_overlay",
+              "fairness_bias",
+              "boundary_handling",
+              "other"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "calibration_note": {
+          "type": "string"
+        }
+      }
+    },
+    "final_review_outcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "case_status",
+        "final_requires_separate_review",
+        "final_requires_calibration_review",
+        "final_disposition_note"
+      ],
+      "properties": {
+        "case_status": {
+          "type": "string",
+          "enum": [
+            "confirmed_as_scored",
+            "confirmed_with_notes",
+            "corrected_scores",
+            "corrected_overlay_status",
+            "corrected_escalation_assessment",
+            "escalated_for_additional_review",
+            "returned_for_re_evaluation"
+          ]
+        },
+        "final_requires_separate_review": {
+          "type": "boolean"
+        },
+        "final_requires_calibration_review": {
+          "type": "boolean"
+        },
+        "final_disposition_note": {
+          "type": "string"
+        }
+      }
+    },
+    "artifact_links": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "evaluation_json": { "type": ["string", "null"] },
+        "interaction_trace": { "type": ["string", "null"] },
+        "transcript": { "type": ["string", "null"] },
+        "flags": { "type": ["string", "null"] },
+        "summary": { "type": ["string", "null"] },
+        "continuity_packet": { "type": ["string", "null"] }
+      }
+    }
+  },
+  "$defs": {
+    "overrideScore": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["new_score", "reason"],
+      "properties": {
+        "old_score": {
+          "type": ["integer", "null"],
+          "minimum": 1,
+          "maximum": 5
+        },
+        "new_score": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    },
+    "overrideOverlay": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["new_status", "reason"],
+      "properties": {
+        "old_status": {
+          "type": ["string", "null"],
+          "enum": ["no", "borderline_review", "yes", null]
+        },
+        "new_status": {
+          "type": "string",
+          "enum": ["no", "borderline_review", "yes"]
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    },
+    "overrideEscalationScore": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["new_score", "reason"],
+      "properties": {
+        "old_score": {
+          "type": ["integer", "null"],
+          "minimum": 1,
+          "maximum": 5
+        },
+        "new_score": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
