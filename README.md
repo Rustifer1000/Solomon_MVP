@@ -83,6 +83,7 @@ These help interpret, test, or implement the normative documents, but do not sup
 - scenario libraries used for calibration or illustration
 
 If there is any conflict between an example and a normative spec, the **normative spec wins**.
+annexes/architecture_decisions/ is the bridge from spec to implementation
 
 ---
 
