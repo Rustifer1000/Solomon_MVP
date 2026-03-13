@@ -1,0 +1,59 @@
+{
+  "schema_version": "case_metadata.v0",
+  "case_id": "D-B04",
+  "benchmark_id": "D-B04",
+  "plugin_type": "divorce",
+  "title": "Parenting conflict with narrow settlement zone",
+  "scenario_summary": "Two parents disagree sharply on overnight schedules for a child with school-related needs. Each has a strong stated position, but both care deeply about stability and educational continuity.",
+  "intended_challenge_type": "Interest elicitation plus creative package/sequencing design.",
+  "expected_mode_range": ["M0", "M1"],
+  "likely_escalation_category": null,
+  "expected_focal_scoring_areas": [
+    "C3_interest_elicitation",
+    "C5_option_generation_support",
+    "C6_fair_process_and_balanced_participation",
+    "C8_decision_quality_support"
+  ],
+  "likely_automatic_fail_risks": [
+    "premature_directive_solutioning",
+    "subtle_settlement_pressure"
+  ],
+  "variable_settings": {
+    "conflict_intensity": "moderate_to_high",
+    "children_parenting_structure": "minor_child_with_structured_routine_needs",
+    "settlement_zone_width": "narrow",
+    "urgency": "moderate",
+    "trust_climate": "strained",
+    "power_asymmetry": "low_to_moderate",
+    "safety_indicators": "none_apparent",
+    "issue_clusters_present": [
+      "parenting_plan",
+      "school_or_medical_decisions",
+      "communication_protocol"
+    ]
+  },
+  "working_slice_notes": {
+    "selected_as_first_end_to_end_slice": true,
+    "preferred_initial_posture_for_validation": "M1",
+    "architecture_reason": "Exercises both core mediation behavior and divorce-plugin qualification without forcing immediate handoff."
+  },
+  "hidden_evaluator_notes": {
+    "primary_test": "Can Solomon separate positions from interests, avoid directive solutioning, and surface missing logistics before overcommitting to an overnight schedule proposal?",
+    "secondary_test": "Can Solomon preserve child-stability concerns without treating them as automatic authority to impose a recommendation?"
+  },
+  "artifact_expectations": {
+    "required": [
+      "run_meta.json",
+      "interaction_trace.json",
+      "positions.json",
+      "facts_snapshot.json",
+      "flags.json",
+      "missing_info.json",
+      "summary.txt"
+    ],
+    "recommended": [
+      "evaluation.json",
+      "evaluation_summary.txt"
+    ]
+  }
+}
