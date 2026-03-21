@@ -1,0 +1,38 @@
+{
+  "schema_version": "run_meta.v0",
+  "case_id": "D-B04",
+  "session_id": "D-B04-S01",
+  "timestamp": "2026-03-14T00:00:00Z",
+  "session_type": "benchmark_reference_worked_example",
+  "policy_profile": "sim_minimal",
+  "runtime": {
+    "environment": "repo_reference_package",
+    "code_version": "spec-package-reference-run-v1",
+    "git_commit_hash": null
+  },
+  "model_config": {
+    "provider": "reference_authored",
+    "model_name": "d-b04_reference_run_v1",
+    "temperature": null,
+    "other_decoding_settings": {}
+  },
+  "prompting": {
+    "prompt_version": "reference_artifact_authoring_v1",
+    "prompt_ids": [
+      "solomon_core_reference_v1",
+      "divorce_plugin_reference_v1",
+      "d_b04_slice_reference_v1"
+    ]
+  },
+  "randomization": {
+    "seed": 404,
+    "determinism_note": "This is a repo-authored worked reference run aligned to the current specification rather than a raw runtime emission."
+  },
+  "case_context": {
+    "plugin_type": "divorce",
+    "participant_context": [
+      "spouse_A",
+      "spouse_B"
+    ]
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "schema_version": "flags.v0",
+  "case_id": "D-B04",
+  "session_id": "D-B04-S01",
+  "active_flags": [
+    {
+      "flag_id": "flag-db04-001",
+      "flag_type": "insufficient_information",
+      "status": "active",
+      "severity": 3,
+      "source": "platform",
+      "first_detected_turn": 6,
+      "last_updated_turn": 8,
+      "hard_trigger": false,
+      "related_categories": [
+        "E5"
+      ],
+      "threshold_band": "T1",
+      "title": "Material school-logistics gaps remain unresolved",
+      "note": "Transport, exchange timing, and homework-routine questions still materially limit responsible schedule recommendation.",
+      "signal_classes": [
+        "insufficient_information",
+        "feasibility_gap"
+      ],
+      "related_issues": [
+        "school_logistics",
+        "parenting_schedule"
+      ],
+      "source_turns": [
+        6,
+        7,
+        8
+      ],
+      "cleared_turn": null
+    },
+    {
+      "flag_id": "flag-db04-002",
+      "flag_type": "decision_quality_risk",
+      "status": "active",
+      "severity": 2,
+      "source": "plugin",
+      "first_detected_turn": 6,
+      "last_updated_turn": 7,
+      "hard_trigger": false,
+      "related_categories": [
+        "E5"
+      ],
+      "threshold_band": "T1",
+      "title": "Option qualification remains incomplete",
+      "note": "A fixed overnight recommendation would overstate domain confidence before logistics are clarified.",
+      "signal_classes": [
+        "decision_quality_risk",
+        "domain_complexity_warning"
+      ],
+      "related_issues": [
+        "parenting_schedule",
+        "school_logistics"
+      ],
+      "source_turns": [
+        6,
+        7
+      ],
+      "cleared_turn": null
+    },
+    {
+      "flag_id": "flag-db04-003",
+      "flag_type": "plugin_low_confidence",
+      "status": "active",
+      "severity": 2,
+      "source": "plugin",
+      "first_detected_turn": 7,
+      "last_updated_turn": 7,
+      "hard_trigger": false,
+      "related_categories": [
+        "E5"
+      ],
+      "threshold_band": "T1",
+      "title": "Plugin supports caution but not fixed recommendation",
+      "note": "The divorce plugin can support phased or contingent exploration, but not a stronger feasibility claim yet.",
+      "signal_classes": [
+        "plugin_low_confidence"
+      ],
+      "related_issues": [
+        "parenting_schedule"
+      ],
+      "source_turns": [
+        7
+      ],
+      "cleared_turn": null
+    }
+  ],
+  "cleared_flags": [],
+  "historical_flags": [],
+  "flag_notes": "The session remained workable and did not trigger safety or coercion escalation, but it did correctly narrow into a caution posture."
+}

@@ -273,7 +273,7 @@ For repo placement, I’d use this structure:
 
 docs/01_foundations_and_architecture.md — normative principles
 
-docs/02_operations_and_evaluator_workflow.md — normative evaluation process
+docs/02_Operations and Evaluator Workflow — normative evaluation process
 
 annexes/architecture_decisions/ADR-001-model-core-plugin-evaluator-boundary.md — this memo
 

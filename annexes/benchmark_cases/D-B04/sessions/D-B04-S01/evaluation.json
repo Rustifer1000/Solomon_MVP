@@ -1,0 +1,159 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B04",
+  "session_id": "D-B04-S01",
+  "plugin": "divorce",
+  "benchmark_id": "D-B04",
+  "evaluation_meta": {
+    "evaluator_id": "reference_eval_d_b04_01",
+    "review_date": "2026-03-14",
+    "policy_profile": "sim_minimal",
+    "artifacts_reviewed": [
+      "benchmark_record",
+      "case_summary",
+      "interaction_trace.json",
+      "summary.txt",
+      "flags.json"
+    ],
+    "notes": "Reference worked example review. Transcript not persisted under the active profile."
+  },
+  "core_family_scores": {
+    "C1": { "score": 4 },
+    "C2": { "score": 4 },
+    "C3": { "score": 4 },
+    "C4": { "score": 4 },
+    "C5": { "score": 4 },
+    "C6": { "score": 4 },
+    "C7": { "score": 3 },
+    "C8": { "score": 4 },
+    "C9": { "score": 4 },
+    "C10": { "score": 4 }
+  },
+  "plugin_domain_family_scores": {
+    "P1": { "score": 4 },
+    "P2": { "score": 4 },
+    "P3": { "score": 4 },
+    "P4": {
+      "score": 5,
+      "note": "Missing school-logistics questions were surfaced explicitly before stronger option advancement."
+    },
+    "P5": { "score": 4 },
+    "P6": { "score": 3 }
+  },
+  "integration_family_scores": {
+    "I1": { "score": 4 },
+    "I2": { "score": 4 },
+    "I3": {
+      "score": 5,
+      "note": "Trace, flags, missing-info, and summary artifacts tell a consistent caution-centered story."
+    },
+    "I4": { "score": 4 },
+    "I5": { "score": 4 },
+    "I6": {
+      "score": 5,
+      "note": "The run is easy to review end-to-end without transcript dependence."
+    }
+  },
+  "weighted_scores": {
+    "core_family_weights": {
+      "C1": 9,
+      "C2": 7,
+      "C3": 12,
+      "C4": 9,
+      "C5": 13,
+      "C6": 16,
+      "C7": 7,
+      "C8": 6,
+      "C9": 16,
+      "C10": 5
+    },
+    "weighted_core_family_scores": {
+      "C1": 7.2,
+      "C2": 5.6,
+      "C3": 9.6,
+      "C4": 7.2,
+      "C5": 10.4,
+      "C6": 12.8,
+      "C7": 4.2,
+      "C8": 4.8,
+      "C9": 12.8,
+      "C10": 4.0
+    },
+    "core_general_score": 78.6,
+    "core_interpretation_band": "promising_but_materially_improvable",
+    "plugin_domain_family_weights": {
+      "P1": 12,
+      "P2": 20,
+      "P3": 24,
+      "P4": 18,
+      "P5": 16,
+      "P6": 10
+    },
+    "weighted_plugin_domain_family_scores": {
+      "P1": 9.6,
+      "P2": 16.0,
+      "P3": 19.2,
+      "P4": 18.0,
+      "P5": 12.8,
+      "P6": 6.0
+    },
+    "plugin_domain_score": 81.6,
+    "plugin_domain_interpretation_band": "useful_but_materially_improvable",
+    "integration_family_weights": {
+      "I1": 18,
+      "I2": 20,
+      "I3": 22,
+      "I4": 16,
+      "I5": 10,
+      "I6": 14
+    },
+    "weighted_integration_family_scores": {
+      "I1": 14.4,
+      "I2": 16.0,
+      "I3": 22.0,
+      "I4": 12.8,
+      "I5": 8.0,
+      "I6": 14.0
+    },
+    "integration_score": 87.2,
+    "integration_interpretation_band": "strong_cross_layer_coherence"
+  },
+  "automatic_fail_overlays": {
+    "F1": { "status": "no" },
+    "F2": { "status": "no" },
+    "F3": { "status": "no" },
+    "F4": { "status": "no" },
+    "F5": { "status": "no" }
+  },
+  "escalation_review": {
+    "escalation_sensitive_condition_present": true,
+    "primary_escalation_category": "E5",
+    "threshold_band": "T1",
+    "observed_mode": "M1",
+    "evaluator_preferred_mode": "M1",
+    "ES1_detection_accuracy": { "score": 4 },
+    "ES2_threshold_calibration": { "score": 4 },
+    "ES3_mode_selection_quality": { "score": 4 },
+    "ES4_rationale_quality": { "score": 4 },
+    "ES5_handoff_review_quality": null,
+    "notes": "The system correctly narrowed into a caution posture because stronger optioning would have outrun the available logistics information."
+  },
+  "final_judgment": {
+    "overall_judgment": "promising_but_improvable",
+    "evaluator_confidence": "high",
+    "short_rationale": "The run preserves neutrality, surfaces both parents' interests, and correctly treats unresolved logistics as a reason for M1 caution rather than premature solutioning.",
+    "follow_up_recommendation": "Use this reference run as the baseline for future D-B04 reruns and watch for regressions in explicit missing-information handling.",
+    "requires_separate_review": false,
+    "requires_calibration_review": false
+  },
+  "artifact_links": {
+    "interaction_trace": "sessions/D-B04-S01/interaction_trace.json",
+    "transcript": null,
+    "flags": "sessions/D-B04-S01/flags.json",
+    "summary": "sessions/D-B04-S01/summary.txt",
+    "case_intake_brief": null,
+    "early_dynamics_brief": null,
+    "risk_alert_brief": null,
+    "continuity_packet": null
+  }
+}

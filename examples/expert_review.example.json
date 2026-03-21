@@ -32,6 +32,8 @@
     "agreement_with_primary_evaluation": "partial_agreement",
     "key_issues_reviewed": [
       "fair_process",
+      "plugin_domain_scoring",
+      "integration_scoring",
       "escalation_threshold",
       "escalation_mode_selection"
     ],
@@ -49,6 +51,20 @@
         "old_score": 4,
         "new_score": 3,
         "reason": "Escalation threshold was reached later than ideal."
+      }
+    },
+    "plugin_domain_overrides": {
+      "P5": {
+        "old_score": 4,
+        "new_score": 3,
+        "reason": "Domain-sensitive process protection did not adequately account for dependency-shaped participation concerns."
+      }
+    },
+    "integration_overrides": {
+      "I2": {
+        "old_score": 4,
+        "new_score": 3,
+        "reason": "Escalation coherence was weaker than the primary evaluation reflected because warning signals did not fully translate into review posture."
       }
     },
     "overlay_overrides": {},
@@ -85,6 +101,8 @@
     "calibration_required": true,
     "calibration_topics": [
       "fair_process",
+      "plugin_domain_scoring",
+      "integration_scoring",
       "escalation"
     ],
     "calibration_note": "This case should be added to calibration discussion set for distinguishing M1 vs M2 in domination-heavy but non-acute scenarios."

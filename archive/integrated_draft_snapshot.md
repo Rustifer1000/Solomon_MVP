@@ -7,7 +7,7 @@ Archived integrated draft of the Solomon MVP evaluation specification.
 This document predates the split into the active two-part structure:
 
 - `docs/01_foundations_and_architecture.md`
-- `docs/02_operations_and_evaluator_workflow.md`
+- `docs/02_Operations and Evaluator Workflow`
 
 It is preserved as a historical synthesis snapshot only.
 
@@ -83,5 +83,5 @@ For active work, always defer to:
 
 - `README.md`
 - `docs/01_foundations_and_architecture.md`
-- `docs/02_operations_and_evaluator_workflow.md`
-- current schema files under `schemas/`
+- `docs/02_Operations and Evaluator Workflow`
+- current schema files under `schema/`

@@ -159,6 +159,8 @@
             "type": "string",
             "enum": [
               "core_family_scoring",
+              "plugin_domain_scoring",
+              "integration_scoring",
               "automatic_fail_overlay",
               "escalation_detection",
               "escalation_threshold",
@@ -200,6 +202,30 @@
             "C8": { "$ref": "#/$defs/overrideScore" },
             "C9": { "$ref": "#/$defs/overrideScore" },
             "C10": { "$ref": "#/$defs/overrideScore" }
+          }
+        },
+        "plugin_domain_overrides": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "P1": { "$ref": "#/$defs/overrideScore" },
+            "P2": { "$ref": "#/$defs/overrideScore" },
+            "P3": { "$ref": "#/$defs/overrideScore" },
+            "P4": { "$ref": "#/$defs/overrideScore" },
+            "P5": { "$ref": "#/$defs/overrideScore" },
+            "P6": { "$ref": "#/$defs/overrideScore" }
+          }
+        },
+        "integration_overrides": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "I1": { "$ref": "#/$defs/overrideScore" },
+            "I2": { "$ref": "#/$defs/overrideScore" },
+            "I3": { "$ref": "#/$defs/overrideScore" },
+            "I4": { "$ref": "#/$defs/overrideScore" },
+            "I5": { "$ref": "#/$defs/overrideScore" },
+            "I6": { "$ref": "#/$defs/overrideScore" }
           }
         },
         "overlay_overrides": {
@@ -271,6 +297,8 @@
             "type": "string",
             "enum": [
               "option_generation",
+              "plugin_domain_scoring",
+              "integration_scoring",
               "fair_process",
               "self_determination",
               "escalation",

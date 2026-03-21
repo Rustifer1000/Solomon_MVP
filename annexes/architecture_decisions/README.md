@@ -4,7 +4,7 @@
 
 This folder contains **informative implementation-planning documents** that help translate the Solomon MVP specification package into concrete technical decisions.
 
-These files do **not** replace the normative specification documents in `docs/` or the JSON schemas in `schema/` / `schemas/`.  
+These files do **not** replace the normative specification documents in `docs/` or the JSON schemas in `schema/`.  
 They exist to make architecture work, planning, sequencing, and boundary decisions more explicit and easier to maintain.
 
 ---
@@ -46,7 +46,8 @@ Those materials should remain in their existing locations unless the repository 
 The current normative sources of truth are the core specification and schema files, including:
 
 - `docs/01_foundations_and_architecture.md`
-- `docs/02_operations_and_evaluator_workflow.md`
+- `docs/02_Operations and Evaluator Workflow`
+- `docs/03_MVP Eval Intent Lock.md`
 - evaluation and expert-review schemas
 
 If an ADR or readiness note conflicts with a normative spec, the **normative spec wins**.
@@ -75,6 +76,8 @@ Use these documents when you need to answer questions like:
 - Which design choices are provisional versus settled?
 
 These files should help developers, architects, and evaluators move from “what the system is supposed to do” to “how the system should actually be structured.”
+
+For the current phase, `docs/03_MVP Eval Intent Lock.md` should be treated as the short purpose lock that architecture notes in this folder inherit from.
 
 ---
 
@@ -133,6 +136,40 @@ In particular, this folder should help the team avoid:
 - hiding unresolved system design inside the model
 - collapsing core and plugin responsibilities
 - losing traceability between evaluation evidence and architecture decisions
+- drifting away from the bounded MVP evaluation target while implementation details become more concrete
+
+---
+
+## Current Architecture-Input Pack
+
+The current working architecture-input pack in this folder is:
+
+- `ADR-001-model-core-plugin-evaluator-boundary.md`
+- `READINESS-001-pre-architecture-checklist.md`
+- `SPEC-TO-ARCH-INPUTS.md`
+- `SLICE-001-first-end-to-end-benchmark.md`
+- `competency_to_artifact_matrix.md`
+- `benchmark_to_capability_matrix.md`
+- `escalation_authority_matrix.md`
+- `CONTRACT-001-runtime-artifacts-v0.md`
+- `CONTRACT-002-plugin-interface-v0.md`
+- `CONTRACT-003-flags-positions-facts-missing-summary-v0.md`
+- `CONTRACT-004-continuity-packet-v0.md`
+- `ARCH-001-first-runtime-architecture-outline.md`
+- `ARCH-002-component-diagram.md`
+- `ARCH-003-turn-loop-sequence-diagram.md`
+- `ARCH-004-persistence-profiles-matrix.md`
+- `MEMO-001-architecture-assumptions-and-non-goals.md`
+- `STATUS-001-spec-to-architecture-plan.md`
+
+Use these as the current best available bridge from the normative spec into runtime architecture planning.
+
+The package is still draft-heavy, but it is now substantive enough to support:
+
+- runtime boundary decisions
+- first-pass contract implementation
+- benchmark-slice planning
+- evaluator-tooling planning
 
 ---
 
@@ -141,7 +178,7 @@ In particular, this folder should help the team avoid:
 If repeated evaluation and implementation work stabilizes a decision recorded here, that decision may later be:
 
 - incorporated into `docs/01_foundations_and_architecture.md`
-- incorporated into `docs/02_operations_and_evaluator_workflow.md`
+- incorporated into `docs/02_Operations and Evaluator Workflow`
 - promoted into a future normative runtime architecture document such as `docs/03_runtime_architecture.md`
 
 Until then, the files here should be treated as working implementation guidance.

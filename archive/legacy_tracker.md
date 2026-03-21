@@ -11,7 +11,7 @@ It should **not** be treated as the current source of truth.
 Current source-of-truth documents are:
 
 - `docs/01_foundations_and_architecture.md`
-- `docs/02_operations_and_evaluator_workflow.md`
+- `docs/02_Operations and Evaluator Workflow`
 
 ---
 

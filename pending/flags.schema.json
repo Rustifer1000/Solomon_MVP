@@ -1,0 +1,246 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solomon/specs/flags.schema.json",
+  "title": "Solomon flags.json schema",
+  "description": "Structured runtime record of active, cleared, and historical flags relevant to risk, escalation, process quality, and domain concerns.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "session_id",
+    "active_flags",
+    "cleared_flags"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "flags.v0"
+    },
+    "case_id": {
+      "type": "string"
+    },
+    "session_id": {
+      "type": "string"
+    },
+    "active_flags": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/activeFlag"
+      },
+      "uniqueItems": true
+    },
+    "cleared_flags": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/clearedFlag"
+      },
+      "uniqueItems": true
+    },
+    "historical_flags": {
+      "type": "array",
+      "description": "Optional archive of prior flags retained for evaluator review or debugging.",
+      "items": {
+        "$ref": "#/$defs/historicalFlag"
+      },
+      "uniqueItems": true
+    },
+    "flag_notes": {
+      "type": ["string", "null"]
+    }
+  },
+  "$defs": {
+    "flagType": {
+      "type": "string",
+      "enum": [
+        "safety_concern",
+        "coercion_concern",
+        "power_imbalance",
+        "trust_breakdown",
+        "process_breakdown",
+        "domain_complexity",
+        "decision_quality_risk",
+        "role_boundary_pressure",
+        "plugin_low_confidence",
+        "insufficient_information",
+        "one_sidedness_risk",
+        "fairness_risk",
+        "participation_impairment",
+        "incapacity_concern",
+        "legitimacy_request_for_human",
+        "other"
+      ]
+    },
+    "signalSource": {
+      "type": "string",
+      "enum": [
+        "model",
+        "plugin",
+        "platform",
+        "evaluator_seeded",
+        "manual_review"
+      ]
+    },
+    "escalationCategory": {
+      "type": "string",
+      "enum": ["E1", "E2", "E3", "E4", "E5", "E6"]
+    },
+    "thresholdBand": {
+      "type": "string",
+      "enum": ["T0", "T1", "T2", "T3", "T4"]
+    },
+    "turnRefs": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "uniqueItems": true
+    },
+    "baseFlag": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "flag_id",
+        "flag_type",
+        "status",
+        "severity",
+        "source",
+        "first_detected_turn",
+        "last_updated_turn",
+        "hard_trigger",
+        "title"
+      ],
+      "properties": {
+        "flag_id": {
+          "type": "string"
+        },
+        "flag_type": {
+          "$ref": "#/$defs/flagType"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "cleared", "historical"]
+        },
+        "severity": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "source": {
+          "$ref": "#/$defs/signalSource"
+        },
+        "first_detected_turn": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "last_updated_turn": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "hard_trigger": {
+          "type": "boolean"
+        },
+        "related_categories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/escalationCategory"
+          },
+          "uniqueItems": true
+        },
+        "threshold_band": {
+          "$ref": "#/$defs/thresholdBand"
+        },
+        "title": {
+          "type": "string"
+        },
+        "note": {
+          "type": ["string", "null"]
+        },
+        "signal_classes": {
+          "type": "array",
+          "description": "Optional cue classes or detector labels that contributed to the flag.",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "related_issues": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "source_turns": {
+          "$ref": "#/$defs/turnRefs"
+        },
+        "cleared_turn": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "hard_trigger": {
+                "const": true
+              }
+            },
+            "required": ["hard_trigger"]
+          },
+          "then": {
+            "required": ["related_categories"]
+          }
+        }
+      ]
+    },
+    "activeFlag": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseFlag"
+        },
+        {
+          "properties": {
+            "status": {
+              "const": "active"
+            },
+            "cleared_turn": {
+              "type": "null"
+            }
+          }
+        }
+      ]
+    },
+    "clearedFlag": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseFlag"
+        },
+        {
+          "required": ["cleared_turn"],
+          "properties": {
+            "status": {
+              "const": "cleared"
+            }
+          }
+        }
+      ]
+    },
+    "historicalFlag": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseFlag"
+        },
+        {
+          "properties": {
+            "status": {
+              "const": "historical"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

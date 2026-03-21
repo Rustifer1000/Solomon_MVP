@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "solomon-runtime-scaffold"
+version = "0.1.0"
+description = "Deterministic scaffold for the Solomon MVP offline runtime baseline."
+requires-python = ">=3.11"
+
+[tool.setuptools]
+packages = ["runtime", "runtime.cli", "runtime.plugins"]

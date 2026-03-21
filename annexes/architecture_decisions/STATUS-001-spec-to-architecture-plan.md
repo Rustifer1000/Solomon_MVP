@@ -17,6 +17,8 @@ It is the working coordination document for:
 This file does **not** supersede the normative specification.  
 If there is any conflict between this file and the normative documents in `docs/` or the JSON schemas, the normative documents win.
 
+For the current phase, `docs/03_MVP Eval Intent Lock.md` should be treated as the short purpose lock for interpreting this status file and the active architecture work.
+
 ---
 
 ## 1. Current phase
@@ -38,25 +40,32 @@ This status file should be used together with:
 - `ADR-001-model-core-plugin-evaluator-boundary.md`
 - `READINESS-001-pre-architecture-checklist.md`
 
-Recommended future companion:
+Companion documents also now include:
 - `SPEC-TO-ARCH-INPUTS.md`
+- `benchmark_to_capability_matrix.md`
+- `escalation_authority_matrix.md`
+- `CONTRACT-001-runtime-artifacts-v0.md`
+- `CONTRACT-002-plugin-interface-v0.md`
+- `CONTRACT-003-flags-positions-facts-missing-summary-v0.md`
+- `CONTRACT-004-continuity-packet-v0.md`
+- `competency_to_artifact_matrix.md`
 
 ---
 
 ## 3. Current overall status snapshot
 
 ### Phase status
-- [ ] Core conceptual basis stable enough for architecture translation
-- [ ] Core/plugin boundary stable enough for architecture translation
-- [ ] Evaluation design stable enough for architecture translation
-- [ ] Scoring and escalation framework stable enough for architecture translation
-- [ ] Artifact contracts stable enough for architecture translation
+- [x] Core conceptual basis stable enough for architecture translation
+- [x] Core/plugin boundary stable enough for architecture translation
+- [x] Evaluation design stable enough for architecture translation
+- [x] Scoring and escalation framework stable enough for architecture translation
+- [x] Artifact contracts stable enough for architecture translation
 - [ ] Reproducibility / persistence rules stable enough for architecture translation
-- [ ] One end-to-end benchmark run can be evaluated and explained
+- [x] One end-to-end benchmark run can be evaluated and explained
 
 ### Overall assessment
-**Current assessment:** Not yet ready for full runtime architecture design  
-**Reason:** Foundational direction is strong, but several architecture inputs still need to be made explicit and testable.
+**Current assessment:** Ready to begin a first runtime architecture draft, with reproducibility and persistence still needing final tightening  
+**Reason:** The specification, contracts, and first reference-run slice are now coherent enough to support architecture translation without major guessing.
 
 ---
 
@@ -88,7 +97,7 @@ Without this, divorce-specific logic may leak into the core or remain hidden ins
 **Target output:**  
 Plugin interface draft with required and optional fields.
 
-**Status:** Open
+**Status:** In progress
 
 ---
 
@@ -102,7 +111,7 @@ Escalation is one of the strongest architecture drivers in the spec.
 **Target output:**  
 Escalation authority matrix.
 
-**Status:** Open
+**Status:** In progress
 
 ---
 
@@ -116,7 +125,7 @@ The spec says offline evaluation should use structured artifacts as the source o
 **Target output:**  
 Artifact contract pack.
 
-**Status:** Open
+**Status:** In progress
 
 ---
 
@@ -160,43 +169,43 @@ Observable success and failure signals per competency family.
 
 ---
 
-### G-002. Plugin contract not yet explicit
+### G-002. Plugin contract needs stabilization and canonical placement
 **Needed:**  
 Clear plugin input/output responsibilities, extension points, and non-substitution rule.
 
-**Status:** Not started
+**Status:** Drafted / canonicalizing
 
 ---
 
-### G-003. Benchmark corpus not yet tied directly to architecture questions
+### G-003. Benchmark corpus needs stronger architecture linkage
 **Needed:**  
 A matrix showing which benchmark cases pressure which runtime capabilities.
-
-**Status:** Not started
-
----
-
-### G-004. Scoring model needs operational evaluator workflow
-**Needed:**  
-A repeatable score sheet, review order, and calibration process.
 
 **Status:** Partially drafted
 
 ---
 
-### G-005. Escalation framework needs implementation rules
+### G-004. Scoring model needs final operational alignment
 **Needed:**  
-Explicit definitions for hard triggers, sufficient repair attempts, and minimum handoff packet requirements.
+A repeatable score sheet, review order, and calibration process.
 
-**Status:** In progress
+**Status:** Mostly drafted
 
 ---
 
-### G-006. Runtime artifact contracts not yet stabilized
+### G-005. Escalation framework needs final implementation rules
+**Needed:**  
+Explicit definitions for hard triggers, sufficient repair attempts, and minimum handoff packet requirements.
+
+**Status:** Partially drafted
+
+---
+
+### G-006. Runtime artifact contracts need stabilization and cleanup
 **Needed:**  
 Minimum contracts for `run_meta.json`, `interaction_trace.json`, `flags.json`, `positions.json`, `facts_snapshot.json`, `missing_info.json`, `summary.txt`, and handoff/brief artifacts.
 
-**Status:** Not started
+**Status:** Drafted / canonicalizing
 
 ---
 
@@ -213,12 +222,12 @@ Concrete required metadata fields, seed policy, version traceability, and profil
 These are the current tasks that should move the project materially closer to architecture translation.
 
 ### A-001. Finalize architecture-decision folder structure
-- [ ] Add `README.md` for `annexes/architecture_decisions/`
-- [ ] Add `ADR-001-model-core-plugin-evaluator-boundary.md`
-- [ ] Add `READINESS-001-pre-architecture-checklist.md`
-- [ ] Add `STATUS-001-spec-to-architecture-plan.md`
+- [x] Add `README.md` for `annexes/architecture_decisions/`
+- [x] Add `ADR-001-model-core-plugin-evaluator-boundary.md`
+- [x] Add `READINESS-001-pre-architecture-checklist.md`
+- [x] Add `STATUS-001-spec-to-architecture-plan.md`
 
-**Status:** In progress
+**Status:** Completed
 
 ---
 
@@ -229,65 +238,66 @@ These are the current tasks that should move the project materially closer to ar
 - [ ] Extract the escalation modes, categories, and threshold bands
 - [ ] Extract mandatory artifact expectations
 
-**Status:** Not started
+**Status:** In progress
 
 ---
 
 ### A-003. Draft runtime artifact contracts
-- [ ] Draft `run_meta.json` minimum contract
-- [ ] Draft `interaction_trace.json` minimum contract
-- [ ] Draft `flags.json` minimum contract
-- [ ] Draft `positions.json` minimum contract
-- [ ] Draft `facts_snapshot.json` minimum contract
-- [ ] Draft `missing_info.json` minimum contract
-- [ ] Draft `summary.txt` expectations
-- [ ] Draft continuity packet contract
+- [x] Draft `run_meta.json` minimum contract
+- [x] Draft `interaction_trace.json` minimum contract
+- [x] Draft `flags.json` minimum contract
+- [x] Draft `positions.json` minimum contract
+- [x] Draft `facts_snapshot.json` minimum contract
+- [x] Draft `missing_info.json` minimum contract
+- [x] Draft `summary.txt` expectations
+- [x] Draft continuity packet contract
 
-**Status:** Not started
+**Status:** Drafted / canonicalizing
 
 ---
 
 ### A-004. Draft plugin interface v0
-- [ ] Define required plugin metadata
-- [ ] Define ontology / taxonomy contract
-- [ ] Define domain red-flag contract
-- [ ] Define feasibility-check contract
-- [ ] Define plugin confidence output
-- [ ] Define domain handoff annotation fields
+- [x] Define required plugin metadata
+- [x] Define ontology / taxonomy contract
+- [x] Define domain red-flag contract
+- [x] Define feasibility-check contract
+- [x] Define plugin confidence output
+- [x] Define domain handoff annotation fields
 
-**Status:** Not started
+**Status:** Drafted / canonicalizing
 
 ---
 
 ### A-005. Draft escalation authority matrix
-- [ ] Separate detection cues from final routing authority
-- [ ] Separate core triggers from plugin-local triggers
-- [ ] Define stop / narrow / review / co-handle / handoff decision points
-- [ ] Define minimum rationale fields
+- [x] Separate detection cues from final routing authority
+- [x] Separate core triggers from plugin-local triggers
+- [x] Define stop / narrow / review / co-handle / handoff decision points
+- [x] Define minimum rationale fields
 
-**Status:** Not started
+**Status:** Drafted
 
 ---
 
 ### A-006. Build benchmark-to-capability matrix
-- [ ] Map benchmark scenarios to competencies
-- [ ] Map benchmark scenarios to escalation expectations
-- [ ] Map benchmark scenarios to plugin requirements
-- [ ] Map benchmark scenarios to required artifacts
-- [ ] Map benchmark scenarios to likely failure attribution classes
+- [x] Map benchmark scenarios to competencies
+- [x] Map benchmark scenarios to escalation expectations
+- [x] Map benchmark scenarios to plugin requirements
+- [x] Map benchmark scenarios to required artifacts
+- [x] Map benchmark scenarios to likely failure attribution classes
 
-**Status:** Not started
+**Status:** Drafted
 
 ---
 
 ### A-007. Prepare first end-to-end evaluation slice
 - [x] Select one benchmark case: `D-B04`
-- [ ] Define one synthetic participant pair
-- [ ] Define minimum runtime flow for one session
-- [ ] Define expected artifacts from that run
-- [ ] Define evaluator review order for that run
+- [x] Define one synthetic participant pair
+- [x] Define minimum runtime flow for one session
+- [x] Define expected artifacts from that run
+- [x] Define evaluator review order for that run
+- [x] Add one worked reference session artifact set: `D-B04-S01`
 
-**Status:** In progress
+**Status:** Completed
 
 ---
 
@@ -308,27 +318,34 @@ These are the current tasks that should move the project materially closer to ar
 ### C-005. First end-to-end benchmark selected
 - [x] Selected `D-B04` as the first architecture-validation benchmark slice.
 
+### C-006. Architecture input pack materially expanded
+- [x] Added `SPEC-TO-ARCH-INPUTS.md`, benchmark-to-capability mapping, and an escalation authority matrix.
+
+### C-007. Plugin and artifact contract drafts added
+- [x] Added plugin-interface and runtime-artifact contract drafts and normalized them into clean publishable markdown.
+
+### C-008. Pending scoring and evaluator artifacts drafted
+- [x] Added drafts for flags schema, synthetic user role profiles, plugin-domain scoring, integration scoring, evaluator console requirements, fairness checks, trigger-class testing, and regression protocol.
+
+### C-009. First worked reference session artifact set added
+- [x] Added `D-B04-S01` with run metadata, trace, state artifacts, summary, and evaluation output.
+
+### C-010. Contract pack overlap reviewed
+- [x] Reconciled key overlap across `CONTRACT-001` through `CONTRACT-004`, including naming alignment and cross-contract artifact authority.
+
 ---
 
 ## 8. Blockers
 
 These are current blockers that would make architecture work premature or lower quality.
 
-### B-001. No explicit runtime contract pack yet
+### B-001. Reproducibility and persistence framing is still not fully frozen
 **Impact:**  
-Architecture diagrams would remain too abstract.
+The architecture can now be drafted, but persistence-policy enforcement and replay expectations still need a final pass before implementation hardens.
 
-### B-002. Plugin interface not yet formalized
+### B-002. The current reference run is a worked baseline, not yet a multi-rerun validation set
 **Impact:**  
-Risk of mixing divorce-specific logic into the core.
-
-### B-003. Benchmark evidence not yet translated into architecture requirements
-**Impact:**  
-System design may be driven by intuition rather than evaluation pressure.
-
-### B-004. No single end-to-end reference run defined
-**Impact:**  
-Hard to test whether the architecture is sufficient.
+The repo now has one stable end-to-end example, but it still needs follow-on reruns and comparisons for stronger regression confidence.
 
 ---
 
@@ -339,11 +356,11 @@ Hard to test whether the architecture is sufficient.
 **Definition of done:**
 - [ ] Core competency families mapped to observable outputs
 - [ ] Core/platform/plugin/evaluator responsibilities documented
-- [ ] Artifact contracts drafted
-- [ ] Plugin interface v0 drafted
-- [ ] Escalation authority matrix drafted
-- [ ] Benchmark-to-capability matrix drafted
-- [ ] One end-to-end benchmark slice selected
+- [x] Artifact contracts drafted
+- [x] Plugin interface v0 drafted
+- [x] Escalation authority matrix drafted
+- [x] Benchmark-to-capability matrix drafted
+- [x] One end-to-end benchmark slice selected
 
 **Outcome:**  
 The team is ready to begin drafting a first runtime architecture document.
@@ -353,11 +370,11 @@ The team is ready to begin drafting a first runtime architecture document.
 ## 10. Recommended next actions
 
 ### Immediate next actions
-1. Create `SPEC-TO-ARCH-INPUTS.md`
-2. Draft runtime artifact contracts
-3. Draft plugin interface v0
-4. Draft escalation authority matrix
-5. Select first end-to-end benchmark slice
+1. Cross-check example records and benchmark packages against the current schemas and contracts
+2. Decide which draft architecture-input documents are stable enough to treat as the active pack
+3. Draft the first runtime architecture outline against the now-cleaned contract pack
+4. Tighten reproducibility and persistence rules for implementation
+5. Add the first rerun/comparison package against the `D-B04-S01` baseline
 
 ### After that
 1. Draft initial runtime architecture outline
@@ -370,9 +387,9 @@ The team is ready to begin drafting a first runtime architecture document.
 
 ## 11. Owners and dates
 
-- **Status owner:**  
-- **Last updated:**  
-- **Next review date:**  
+- **Status owner:** Russell Collins / active repo steward
+- **Last updated:** 2026-03-14
+- **Next review date:** After the first runtime architecture draft is written against the `D-B04-S01` baseline
 - **Current milestone:** M-001  
 - **Current decision:** Continue pre-architecture preparation
 

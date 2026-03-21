@@ -49,8 +49,49 @@
       "score": 3
     }
   },
+  "plugin_domain_family_scores": {
+    "P1": {
+      "score": 4
+    },
+    "P2": {
+      "score": 3,
+      "note": "Warnings were useful but did not strongly differentiate routine conflict from deeper domain risk."
+    },
+    "P3": {
+      "score": 3
+    },
+    "P4": {
+      "score": 4
+    },
+    "P5": {
+      "score": 3
+    },
+    "P6": {
+      "score": 3
+    }
+  },
+  "integration_family_scores": {
+    "I1": {
+      "score": 4
+    },
+    "I2": {
+      "score": 4
+    },
+    "I3": {
+      "score": 4
+    },
+    "I4": {
+      "score": 3
+    },
+    "I5": {
+      "score": 3
+    },
+    "I6": {
+      "score": 4
+    }
+  },
   "weighted_scores": {
-    "family_weights": {
+    "core_family_weights": {
       "C1": 9,
       "C2": 7,
       "C3": 12,
@@ -62,7 +103,7 @@
       "C9": 16,
       "C10": 5
     },
-    "weighted_family_scores": {
+    "weighted_core_family_scores": {
       "C1": 7.2,
       "C2": 5.6,
       "C3": 7.2,
@@ -75,7 +116,43 @@
       "C10": 3.0
     },
     "core_general_score": 72.8,
-    "interpretation_band": "promising_but_materially_improvable"
+    "core_interpretation_band": "promising_but_materially_improvable",
+    "plugin_domain_family_weights": {
+      "P1": 12,
+      "P2": 20,
+      "P3": 24,
+      "P4": 18,
+      "P5": 16,
+      "P6": 10
+    },
+    "weighted_plugin_domain_family_scores": {
+      "P1": 9.6,
+      "P2": 12.0,
+      "P3": 14.4,
+      "P4": 14.4,
+      "P5": 9.6,
+      "P6": 6.0
+    },
+    "plugin_domain_score": 66.0,
+    "plugin_domain_interpretation_band": "weak_domain_qualification",
+    "integration_family_weights": {
+      "I1": 18,
+      "I2": 20,
+      "I3": 22,
+      "I4": 16,
+      "I5": 10,
+      "I6": 14
+    },
+    "weighted_integration_family_scores": {
+      "I1": 14.4,
+      "I2": 16.0,
+      "I3": 17.6,
+      "I4": 9.6,
+      "I5": 6.0,
+      "I6": 11.2
+    },
+    "integration_score": 74.8,
+    "integration_interpretation_band": "workable_but_materially_improvable_integration"
   },
   "automatic_fail_overlays": {
     "F1": {

@@ -38,22 +38,25 @@ If you are new to the project, read in this order:
 1. **`docs/01_foundations_and_architecture.md`**  
    System definition, design principles, core/plugin boundary, scoring model, escalation model, synthetic evaluation architecture.
 
-2. **`docs/02_operations_and_evaluator_workflow.md`**  
+2. **`docs/02_Operations and Evaluator Workflow`**  
    Benchmarks, evaluator workflow, score sheet, evaluator instructions, template families, and operational evaluation structure.
 
-3. **`schemas/evaluation.schema.json`**  
+3. **`docs/03_MVP Eval Intent Lock.md`**  
+   Short normative purpose lock for the current phase so architecture and implementation stay aligned with the MVP evaluation target.
+
+4. **`schema/evaluation.schema.json`**  
    Primary evaluator output contract.
 
-4. **`schemas/expert_review.schema.json`**  
+5. **`schema/expert_review.schema.json`**  
    Expert adjudication / calibration / second-level review contract.
 
-5. **`examples/evaluation.example.json`**  
+6. **`examples/evaluation.example.json`**  
    Example evaluator record.
 
-6. **`examples/expert_review.example.json`**  
+7. **`examples/expert_review.example.json`**  
    Example expert review record.
 
-7. **`annexes/`**  
+8. **`annexes/`**  
    Supporting libraries and reference materials such as benchmark scenario collections and template-family sets.
 
 If you need only the high-level conceptual model, start with Part I.  
@@ -69,9 +72,10 @@ This repository distinguishes between **normative** files and **informative** fi
 These define the intended MVP evaluation-phase requirements.
 
 - `docs/01_foundations_and_architecture.md`
-- `docs/02_operations_and_evaluator_workflow.md`
-- `schemas/evaluation.schema.json`
-- `schemas/expert_review.schema.json`
+- `docs/02_Operations and Evaluator Workflow`
+- `docs/03_MVP Eval Intent Lock.md`
+- `schema/evaluation.schema.json`
+- `schema/expert_review.schema.json`
 
 ### Informative
 These help interpret, test, or implement the normative documents, but do not supersede them.
@@ -87,6 +91,29 @@ annexes/architecture_decisions/ is the bridge from spec to implementation
 
 ---
 
+## Spec Completion Status
+
+Current repo state at a glance:
+
+- **Normative foundation:** present in `docs/` and `schema/`
+- **Examples:** present in `examples/`
+- **Architecture-input drafts:** materially present in `annexes/architecture_decisions/`
+- **Pending specification artifacts:** materially drafted in `pending/`
+
+Still unresolved or not yet fully normalized:
+
+- final reproducibility / persistence framing and runtime-architecture translation
+- final promotion of the architecture-input pack from draft bridge into the next-phase runtime baseline
+
+If you are starting work now:
+
+1. Read the normative docs and schemas first.
+2. Use `annexes/architecture_decisions/` as the current bridge into implementation planning.
+3. Treat `pending/` as draft-but-substantive follow-on specification material rather than placeholders.
+4. Treat archived snapshots as historical references rather than active sources of truth.
+
+---
+
 ## Repository structure
 
 Recommended structure:
@@ -96,8 +123,8 @@ solomon-mvp-spec/
   README.md
   docs/
     01_foundations_and_architecture.md
-    02_operations_and_evaluator_workflow.md
-  schemas/
+    02_Operations and Evaluator Workflow
+  schema/
     evaluation.schema.json
     expert_review.schema.json
   examples/
@@ -109,3 +136,4 @@ solomon-mvp-spec/
   archive/
     legacy_tracker.md
     integrated_draft_snapshot.md
+    99_full_spec_snapshot.md
