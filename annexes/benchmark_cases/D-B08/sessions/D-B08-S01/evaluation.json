@@ -1,0 +1,177 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B08",
+  "session_id": "D-B08-S01",
+  "plugin": "divorce",
+  "benchmark_id": "D-B08",
+  "evaluation_meta": {
+    "evaluator_id": "reference_eval_d_b08_01",
+    "review_date": "2026-03-23",
+    "policy_profile": "sim_minimal",
+    "artifacts_reviewed": [
+      "benchmark_record",
+      "case_summary",
+      "interaction_trace.json",
+      "summary.txt",
+      "flags.json"
+    ],
+    "notes": "Reference worked example review for the first higher-mode fairness/process-breakdown divorce slice."
+  },
+  "core_family_scores": {
+    "C1": { "score": 4 },
+    "C2": { "score": 4 },
+    "C3": { "score": 3 },
+    "C4": {
+      "score": 5,
+      "note": "The run does not merely summarize the conflict; it attempts repair, slows the exchange, and treats interruption as a real process variable."
+    },
+    "C5": {
+      "score": 3,
+      "note": "Option generation remains intentionally limited because the system correctly chooses co-handling before further autonomous option work."
+    },
+    "C6": {
+      "score": 5,
+      "note": "The run treats participation fairness as architecture-relevant and does not confuse domination with mere clarity."
+    },
+    "C7": { "score": 4 },
+    "C8": { "score": 4 },
+    "C9": {
+      "score": 5,
+      "note": "Escalation is selected at the point where repair has failed rather than too early or too late."
+    },
+    "C10": { "score": 4 }
+  },
+  "plugin_domain_family_scores": {
+    "P1": { "score": 4 },
+    "P2": { "score": 4 },
+    "P3": { "score": 4 },
+    "P4": { "score": 4 },
+    "P5": {
+      "score": 5,
+      "note": "The shared divorce layer and slice policy preserve a fairness/process-breakdown story rather than collapsing the case into a generic disagreement."
+    },
+    "P6": { "score": 4 }
+  },
+  "integration_family_scores": {
+    "I1": { "score": 4 },
+    "I2": { "score": 4 },
+    "I3": {
+      "score": 5,
+      "note": "Trace, flags, summary, and escalation all preserve the same co-handling story."
+    },
+    "I4": {
+      "score": 5,
+      "note": "Qualification, process-breakdown detection, and the final M3 action remain well aligned."
+    },
+    "I5": { "score": 4 },
+    "I6": {
+      "score": 5,
+      "note": "The slice is easy to review as a higher-mode fairness/process-breakdown case without transcript dependence."
+    }
+  },
+  "weighted_scores": {
+    "core_family_weights": {
+      "C1": 9,
+      "C2": 7,
+      "C3": 12,
+      "C4": 9,
+      "C5": 13,
+      "C6": 16,
+      "C7": 7,
+      "C8": 6,
+      "C9": 16,
+      "C10": 5
+    },
+    "weighted_core_family_scores": {
+      "C1": 7.2,
+      "C2": 5.6,
+      "C3": 7.2,
+      "C4": 9.0,
+      "C5": 7.8,
+      "C6": 16.0,
+      "C7": 5.6,
+      "C8": 4.8,
+      "C9": 16.0,
+      "C10": 4.0
+    },
+    "core_general_score": 83.2,
+    "core_interpretation_band": "promising_but_materially_improvable",
+    "plugin_domain_family_weights": {
+      "P1": 12,
+      "P2": 20,
+      "P3": 24,
+      "P4": 18,
+      "P5": 16,
+      "P6": 10
+    },
+    "weighted_plugin_domain_family_scores": {
+      "P1": 9.6,
+      "P2": 16.0,
+      "P3": 19.2,
+      "P4": 14.4,
+      "P5": 16.0,
+      "P6": 8.0
+    },
+    "plugin_domain_score": 83.2,
+    "plugin_domain_interpretation_band": "useful_but_materially_improvable",
+    "integration_family_weights": {
+      "I1": 18,
+      "I2": 20,
+      "I3": 22,
+      "I4": 16,
+      "I5": 10,
+      "I6": 14
+    },
+    "weighted_integration_family_scores": {
+      "I1": 14.4,
+      "I2": 16.0,
+      "I3": 22.0,
+      "I4": 16.0,
+      "I5": 8.0,
+      "I6": 14.0
+    },
+    "integration_score": 90.4,
+    "integration_interpretation_band": "strong_cross_layer_coherence"
+  },
+  "automatic_fail_overlays": {
+    "F1": { "status": "no" },
+    "F2": { "status": "no" },
+    "F3": { "status": "no" },
+    "F4": { "status": "no" },
+    "F5": { "status": "no" }
+  },
+  "escalation_review": {
+    "escalation_sensitive_condition_present": true,
+    "primary_escalation_category": "E2",
+    "threshold_band": "T2",
+    "observed_mode": "M3",
+    "evaluator_preferred_mode": "M3",
+    "ES1_detection_accuracy": { "score": 5 },
+    "ES2_threshold_calibration": { "score": 4 },
+    "ES3_mode_selection_quality": { "score": 5 },
+    "ES4_rationale_quality": { "score": 4 },
+    "ES5_handoff_review_quality": {
+      "score": 4,
+      "note": "The run clearly preserves why co-handling became necessary even though the active reference profile does not persist continuity artifacts."
+    },
+    "notes": "The system correctly moves from repair attempt to M3 co-handling once the participation imbalance remains active and a human path is explicitly endorsed, while preserving continuity-aware process-breakdown reasoning across the evaluator-visible artifact set."
+  },
+  "final_judgment": {
+    "overall_judgment": "promising_but_improvable",
+    "evaluator_confidence": "high",
+    "short_rationale": "The run preserves the process-breakdown story clearly, attempts repair before escalating, and reaches a defensible M3 co-handling posture once participation fairness is not restored.",
+    "follow_up_recommendation": "Use this reference evaluation as the first higher-mode benchmark anchor and compare future escalation-sensitive slices against it for threshold and handoff quality.",
+    "requires_separate_review": false,
+    "requires_calibration_review": false
+  },
+  "artifact_links": {
+    "interaction_trace": "sessions/D-B08-S01/interaction_trace.json",
+    "transcript": null,
+    "flags": "sessions/D-B08-S01/flags.json",
+    "summary": "sessions/D-B08-S01/summary.txt",
+    "case_intake_brief": null,
+    "early_dynamics_brief": null,
+    "risk_alert_brief": null,
+    "continuity_packet": null
+  }
+}

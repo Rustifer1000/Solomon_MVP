@@ -1,0 +1,20 @@
+{
+  "schema_version": "risk_alert_brief.v0",
+  "case_id": "D-B09",
+  "session_id": "D-B09-S01",
+  "mode": "M2",
+  "category": "E4",
+  "category_family": "domain_complexity_review",
+  "recommended_human_role": "human_review",
+  "handoff_focus": "review issue coupling and determine whether bounded autonomous handling remains legitimate",
+  "support_artifact_policy_descriptor": "d_b09_support_domain_complexity",
+  "rationale": "Human review is required because the domain layer indicates complexity beyond a clean bounded autonomous path.",
+  "active_flags": [
+    {
+      "flag_type": "domain_complexity_overload",
+      "title": "The issue bundle exceeds safe autonomous complexity",
+      "severity": 4
+    }
+  ],
+  "plugin_warnings": []
+}

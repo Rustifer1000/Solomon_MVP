@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solomon/specs/persona_profile.schema.json",
+  "title": "Solomon persona_profile schema",
+  "description": "Structured synthetic user role profile for benchmark personas.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "participant_id",
+    "role_label",
+    "public_goals",
+    "private_concerns",
+    "red_lines",
+    "communication_style",
+    "interest_profile",
+    "starting_positions",
+    "likely_openings"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "persona_profile.v0"
+    },
+    "case_id": {
+      "type": "string"
+    },
+    "participant_id": {
+      "type": "string"
+    },
+    "role_label": {
+      "type": "string"
+    },
+    "public_goals": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "private_concerns": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "red_lines": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "communication_style": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "directness",
+        "emotional_expression",
+        "processing_style",
+        "negotiation_style",
+        "verbosity"
+      ],
+      "properties": {
+        "directness": { "type": "string" },
+        "emotional_expression": { "type": "string" },
+        "processing_style": { "type": "string" },
+        "negotiation_style": { "type": "string" },
+        "verbosity": { "type": "string" }
+      }
+    },
+    "interest_profile": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "starting_positions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "likely_openings": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "emotional_triggers": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "disclosure_tendencies": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        }
+      ]
+    },
+    "compromise_willingness": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": ["low", "guarded", "moderate", "medium", "high", "variable"]
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "enum": ["low", "guarded", "moderate", "medium", "high", "variable"]
+          }
+        }
+      ]
+    },
+    "response_to_perceived_bias_or_pressure": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        }
+      ]
+    }
+  }
+}

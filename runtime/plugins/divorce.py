@@ -1,53 +1,71 @@
 from __future__ import annotations
 
+from runtime.contracts import CandidateTurn
+from runtime.plugins.base import PluginRuntime
+from runtime.plugins.divorce_policy import apply_case_policy, build_case_flag_templates
+from runtime.plugins.divorce_shared import PACKAGE_ELEMENT_LABELS, build_base_assessment, qualify_case_shared
+from runtime.state import merge_flag_templates
 
-ISSUE_TAXONOMY = [
-    "parenting_schedule",
-    "school_logistics",
-    "fairness_and_parent_role",
-    "communication_protocol",
-]
+PLUGIN_TYPE = "divorce"
+DIVORCE_EVALUATOR_HELPER_POLICY = {
+    "descriptor_id": "divorce_evaluator_helpers_v0",
+    "fairness_flag_types": ["fairness_breakdown"],
+    "fairness_terms": [
+        "fairness",
+        "balanced",
+        "bias",
+        "domination",
+        "sidelined",
+        "one-sided",
+        "pressure",
+        "pressured",
+        "emotional",
+        "heated",
+        "retaliation",
+        "coercive",
+        "coercion",
+        "unsafe",
+    ],
+    "fairness_issue_terms": [
+        "fairness and meaningful parenting role",
+        "fairness_and_parent_role",
+    ],
+    "fairness_attention_tags": ["fairness_sensitive"],
+}
 
 
 def qualify_case(case_bundle: dict) -> dict:
-    metadata = case_bundle["case_metadata"]
-    return {
-        "plugin_type": metadata["plugin_type"],
-        "plugin_name": "divorce_v0_runtime",
-        "issue_taxonomy": ISSUE_TAXONOMY,
-        "feasibility_constraints": [
-            "school commute timing",
-            "exchange punctuality",
-            "homework and evening routine reliability",
-        ],
-        "caution_note": "Plugin supports phased or contingent exploration, but not a fixed recommendation until logistics are clarified.",
-    }
+    return qualify_case_shared(case_bundle)
 
 
 def assess_state(state: dict) -> dict:
-    unresolved_questions = {item["question"] for item in state["missing_info"] if item["status"] == "open"}
-    logistics_related = [
-        question
-        for question in unresolved_questions
-        if "transport" in question.lower()
-        or "school-week" in question.lower()
-        or "homework" in question.lower()
-        or "trial" in question.lower()
-    ]
-    option_count = len(state["options"])
-    plugin_confidence = "moderate"
-    warnings: list[str] = []
+    policy_descriptor = state["meta"].get("plugin_policy_descriptor")
+    base_assessment = build_base_assessment(state)
+    return apply_case_policy(policy_descriptor, base_assessment)
 
-    if len(logistics_related) >= 2:
-        plugin_confidence = "low"
-        warnings.append("Plugin confidence remains limited because material logistics questions are still unresolved.")
 
-    if option_count >= 1 and logistics_related:
-        warnings.append("Stronger optioning should remain qualified until logistics questions are clarified.")
+def sync_flags_for_turn(state: dict, turn: CandidateTurn) -> None:
+    policy_descriptor = state["meta"].get("plugin_policy_descriptor")
+    merge_flag_templates(state, build_case_flag_templates(policy_descriptor, state, turn))
 
-    return {
-        "plugin_confidence": plugin_confidence,
-        "logistics_related_missing_info": logistics_related,
-        "warnings": warnings,
-        "supports_fixed_recommendation": not logistics_related and plugin_confidence != "low",
-    }
+
+class DivorcePluginRuntime(PluginRuntime):
+    plugin_type = PLUGIN_TYPE
+
+    def qualify_case(self, case_bundle: dict) -> dict:
+        return qualify_case(case_bundle)
+
+    def assess_state(self, state: dict) -> dict:
+        return assess_state(state)
+
+    def sync_flags_for_turn(self, state: dict, turn: CandidateTurn) -> None:
+        sync_flags_for_turn(state, turn)
+
+    def package_element_labels(self) -> dict[str, str]:
+        return dict(PACKAGE_ELEMENT_LABELS)
+
+    def evaluator_helper_policy(self) -> dict | None:
+        return dict(DIVORCE_EVALUATOR_HELPER_POLICY)
+
+
+DIVORCE_PLUGIN_RUNTIME = DivorcePluginRuntime()

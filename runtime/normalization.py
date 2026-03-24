@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from runtime.contracts import CandidateTurn, RiskCheck, StateDelta, validate_candidate_turn
+from runtime.contracts import CandidateTurn, FactDelta, IssueUpdate, MissingInfoDelta, PackageDelta, PositionDelta, RiskCheck, StateDelta, validate_candidate_turn
 
 
 def _require_mapping(value, field_name: str) -> dict:
@@ -15,6 +15,120 @@ def _require_list_of_strings(value, field_name: str) -> list[str]:
     if not isinstance(value, list) or not all(isinstance(item, str) for item in value):
         raise ValueError(f"{field_name} must be a list of strings")
     return value
+
+
+def _require_list_of_mappings(value, field_name: str) -> list[dict]:
+    if value is None:
+        return []
+    if not isinstance(value, list) or not all(isinstance(item, dict) for item in value):
+        raise ValueError(f"{field_name} must be a list of mappings")
+    return value
+
+
+def _normalize_fact_deltas(value) -> list[FactDelta]:
+    facts = []
+    for item in _require_list_of_mappings(value, "state_delta.facts_structured"):
+        if not isinstance(item.get("statement"), str):
+            raise ValueError("state_delta.facts_structured[].statement must be a string")
+        related_issues = _require_list_of_strings(item.get("related_issues"), "state_delta.facts_structured[].related_issues")
+        facts.append(
+            FactDelta(
+                statement=item["statement"],
+                category=item.get("category"),
+                status=item.get("status"),
+                related_issues=related_issues,
+                note=item.get("note"),
+            )
+        )
+    return facts
+
+
+def _normalize_position_deltas(value) -> list[PositionDelta]:
+    positions = []
+    for item in _require_list_of_mappings(value, "state_delta.positions_structured"):
+        participant_ids = _require_list_of_strings(item.get("participant_ids"), "state_delta.positions_structured[].participant_ids")
+        if not isinstance(item.get("kind"), str):
+            raise ValueError("state_delta.positions_structured[].kind must be a string")
+        if not isinstance(item.get("issue_id"), str):
+            raise ValueError("state_delta.positions_structured[].issue_id must be a string")
+        if not isinstance(item.get("statement"), str):
+            raise ValueError("state_delta.positions_structured[].statement must be a string")
+        if not isinstance(item.get("status"), str):
+            raise ValueError("state_delta.positions_structured[].status must be a string")
+        positions.append(
+            PositionDelta(
+                participant_ids=participant_ids,
+                kind=item["kind"],
+                issue_id=item["issue_id"],
+                statement=item["statement"],
+                status=item["status"],
+                confidence=item.get("confidence"),
+                proposal_id=item.get("proposal_id"),
+                position_id=item.get("position_id"),
+            )
+        )
+    return positions
+
+
+def _normalize_missing_info_deltas(value) -> list[MissingInfoDelta]:
+    missing_items = []
+    for item in _require_list_of_mappings(value, "state_delta.missing_info_structured"):
+        if not isinstance(item.get("action"), str):
+            raise ValueError("state_delta.missing_info_structured[].action must be a string")
+        if not isinstance(item.get("missing_id"), str):
+            raise ValueError("state_delta.missing_info_structured[].missing_id must be a string")
+        if not isinstance(item.get("question"), str):
+            raise ValueError("state_delta.missing_info_structured[].question must be a string")
+        related_issues = _require_list_of_strings(item.get("related_issues"), "state_delta.missing_info_structured[].related_issues")
+        missing_items.append(
+            MissingInfoDelta(
+                action=item["action"],
+                missing_id=item["missing_id"],
+                question=item["question"],
+                importance=item.get("importance"),
+                reason_type=item.get("reason_type"),
+                related_issues=related_issues,
+                note=item.get("note"),
+            )
+        )
+    return missing_items
+
+
+def _normalize_issue_updates(value) -> list[IssueUpdate]:
+    updates = []
+    for item in _require_list_of_mappings(value, "state_delta.issue_updates_structured"):
+        if not isinstance(item.get("issue_id"), str):
+            raise ValueError("state_delta.issue_updates_structured[].issue_id must be a string")
+        if not isinstance(item.get("label"), str):
+            raise ValueError("state_delta.issue_updates_structured[].label must be a string")
+        updates.append(IssueUpdate(issue_id=item["issue_id"], label=item["label"]))
+    return updates
+
+
+def _normalize_package_deltas(value) -> list[PackageDelta]:
+    packages = []
+    for item in _require_list_of_mappings(value, "state_delta.packages_structured"):
+        if not isinstance(item.get("package_id"), str):
+            raise ValueError("state_delta.packages_structured[].package_id must be a string")
+        if not isinstance(item.get("family"), str):
+            raise ValueError("state_delta.packages_structured[].family must be a string")
+        if not isinstance(item.get("status"), str):
+            raise ValueError("state_delta.packages_structured[].status must be a string")
+        if not isinstance(item.get("summary"), str):
+            raise ValueError("state_delta.packages_structured[].summary must be a string")
+        elements = _require_list_of_strings(item.get("elements"), "state_delta.packages_structured[].elements")
+        related_issues = _require_list_of_strings(item.get("related_issues"), "state_delta.packages_structured[].related_issues")
+        packages.append(
+            PackageDelta(
+                package_id=item["package_id"],
+                family=item["family"],
+                status=item["status"],
+                summary=item["summary"],
+                elements=elements,
+                related_issues=related_issues,
+            )
+        )
+    return packages
 
 
 def normalize_core_output(raw_output: CandidateTurn | dict) -> CandidateTurn:
@@ -53,10 +167,12 @@ def normalize_core_output(raw_output: CandidateTurn | dict) -> CandidateTurn:
         state_delta=StateDelta(
             facts_added=_require_list_of_strings(state_delta_payload.get("facts_added"), "state_delta.facts_added"),
             facts_revised=_require_list_of_strings(state_delta_payload.get("facts_revised"), "state_delta.facts_revised"),
+            facts_structured=_normalize_fact_deltas(state_delta_payload.get("facts_structured")),
             positions_added_or_updated=_require_list_of_strings(
                 state_delta_payload.get("positions_added_or_updated"),
                 "state_delta.positions_added_or_updated",
             ),
+            positions_structured=_normalize_position_deltas(state_delta_payload.get("positions_structured")),
             open_questions_added=_require_list_of_strings(
                 state_delta_payload.get("open_questions_added"),
                 "state_delta.open_questions_added",
@@ -65,10 +181,13 @@ def normalize_core_output(raw_output: CandidateTurn | dict) -> CandidateTurn:
                 state_delta_payload.get("open_questions_resolved"),
                 "state_delta.open_questions_resolved",
             ),
+            missing_info_structured=_normalize_missing_info_deltas(state_delta_payload.get("missing_info_structured")),
             issue_map_updates=_require_list_of_strings(
                 state_delta_payload.get("issue_map_updates"),
                 "state_delta.issue_map_updates",
             ),
+            issue_updates_structured=_normalize_issue_updates(state_delta_payload.get("issue_updates_structured")),
+            packages_structured=_normalize_package_deltas(state_delta_payload.get("packages_structured")),
             option_state_updates=_require_list_of_strings(
                 state_delta_payload.get("option_state_updates"),
                 "state_delta.option_state_updates",

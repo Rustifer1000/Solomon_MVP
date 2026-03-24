@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B12",
+  "session_id": "D-B12-S01",
+  "plugin": "divorce",
+  "benchmark_id": "D-B12",
+  "review_meta": {
+    "expert_reviewer_id": "reference_expert_review_d_b12_01",
+    "review_date": "2026-03-24",
+    "review_type": "quality_audit",
+    "policy_profile": "sim_minimal",
+    "artifacts_reviewed": [
+      "evaluation.json",
+      "interaction_trace.json",
+      "summary.txt",
+      "flags.json",
+      "benchmark_record"
+    ],
+    "notes": "Worked expert-review example confirming the D-B12 emotional-flooding co-handling reference evaluation."
+  },
+  "review_reason": {
+    "trigger": "sampling_audit",
+    "description": "This reference review confirms that D-B12 remains the core emotional-flooding co-handling anchor rather than a disguised domination or safety-trigger case."
+  },
+  "source_evaluations": [
+    {
+      "evaluation_id": "reference_eval_d_b12_01",
+      "evaluator_id": "reference_eval_d_b12_01",
+      "path": "sessions/D-B12-S01/evaluation.json"
+    }
+  ],
+  "expert_findings": {
+    "agreement_with_primary_evaluation": "full_agreement",
+    "key_issues_reviewed": [
+      "core_family_scoring",
+      "plugin_domain_scoring",
+      "integration_scoring",
+      "escalation_detection",
+      "escalation_threshold",
+      "escalation_mode_selection",
+      "handoff_quality"
+    ],
+    "narrative_summary": "The primary evaluation remains a sound co-handling reference judgment. The run preserves failed repair, emotional-flooding dynamics, and the need for stabilizing human involvement without sliding into domination or coercion framing.",
+    "evidence_notes": "The strongest confirming evidence is the alignment between interaction_trace.json, flags.json, and summary.txt. Together they preserve repeated failed repair, emotional destabilization, and the distinction between co-handling for flooding and harder E1 handoff triggers."
+  },
+  "final_review_outcome": {
+    "case_status": "confirmed_as_scored",
+    "final_requires_separate_review": false,
+    "final_requires_calibration_review": false,
+    "final_disposition_note": "Retain this case as the expert-reviewed emotional-flooding co-handling anchor alongside D-B08, D-B13, and D-B14."
+  },
+  "artifact_links": {
+    "evaluation_json": "sessions/D-B12-S01/evaluation.json",
+    "interaction_trace": "sessions/D-B12-S01/interaction_trace.json",
+    "transcript": null,
+    "flags": "sessions/D-B12-S01/flags.json",
+    "summary": "sessions/D-B12-S01/summary.txt",
+    "continuity_packet": null
+  }
+}

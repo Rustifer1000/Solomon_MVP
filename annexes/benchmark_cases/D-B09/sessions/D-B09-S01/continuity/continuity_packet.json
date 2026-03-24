@@ -1,0 +1,90 @@
+{
+  "schema_version": "continuity_packet.v0",
+  "case_id": "D-B09",
+  "session_id": "D-B09-S01",
+  "plugin_type": "divorce",
+  "support_artifact_policy_descriptor": "d_b09_support_domain_complexity",
+  "support_artifact_review_focus": "domain_complexity_review",
+  "category_family": "domain_complexity_review",
+  "recommended_human_role": "human_review",
+  "handoff_focus": "review issue coupling and determine whether bounded autonomous handling remains legitimate",
+  "escalation": {
+    "category": "E4",
+    "threshold_band": "T2",
+    "mode": "M2",
+    "rationale": "Human review is required because the domain layer indicates complexity beyond a clean bounded autonomous path."
+  },
+  "summary_state": {
+    "issues": [
+      "Parenting schedule",
+      "School logistics",
+      "Child expense coordination and reimbursement",
+      "Communication protocol around future changes"
+    ],
+    "next_step": "Escalate to a human reviewer with the current issue bundle and open coupling concerns before any package is treated as workable."
+  },
+  "issues": [
+    "Parenting schedule",
+    "School logistics",
+    "Child expense coordination and reimbursement",
+    "Communication protocol around future changes"
+  ],
+  "open_missing_info": [],
+  "active_flags": [
+    {
+      "flag_id": "d-b09-flag-domain-complexity",
+      "flag_type": "domain_complexity_overload",
+      "severity": 4,
+      "source": "platform",
+      "first_detected_turn": 4,
+      "last_updated_turn": 6,
+      "related_categories": [
+        "E4"
+      ],
+      "threshold_band": "T2",
+      "title": "The issue bundle exceeds safe autonomous complexity",
+      "note": "The current turn reflects issue coupling beyond a clean bounded autonomous path, so human review is needed before any partial package is treated as feasible.",
+      "signal_classes": [
+        "domain_complexity_overload"
+      ],
+      "related_issues": [
+        "parenting_schedule",
+        "school_logistics",
+        "child_expense_coordination",
+        "communication_protocol"
+      ],
+      "source_turns": [
+        4,
+        5,
+        6
+      ]
+    }
+  ],
+  "package_snapshot": null,
+  "plugin_assessment": {
+    "plugin_confidence": "moderate",
+    "supports_fixed_recommendation": true,
+    "warnings": []
+  },
+  "recent_turn_summaries": [
+    {
+      "turn_index": 4,
+      "role": "client",
+      "phase": "interest_exploration",
+      "message_summary": "Parent B says they are willing to keep working, but without school calendar details, therapy availability, transport ownership, and reimbursement expectations clarified together, any apparent option would be misleading."
+    },
+    {
+      "turn_index": 5,
+      "role": "assistant",
+      "phase": "option_generation",
+      "message_summary": "Solomon concludes that the issue bundle is too interdependent for safe bounded autonomous handling and recommends a human review before any package is framed as workable."
+    },
+    {
+      "turn_index": 6,
+      "role": "client",
+      "phase": "option_generation",
+      "message_summary": "Parent A and parent b both accept that a human review is the better next step before the session tries to lock in any package around the coupled school, therapy, transport, and reimbursement questions."
+    }
+  ],
+  "case_title": "Interdependent school, therapy, transport, and reimbursement bundle exceeds bounded autonomy"
+}

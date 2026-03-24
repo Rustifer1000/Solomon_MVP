@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B04",
+  "session_id": "D-B04-S01",
+  "plugin": "divorce",
+  "benchmark_id": "D-B04",
+  "review_meta": {
+    "expert_reviewer_id": "reference_expert_review_d_b04_01",
+    "review_date": "2026-03-23",
+    "review_type": "calibration",
+    "policy_profile": "sim_minimal",
+    "artifacts_reviewed": [
+      "evaluation.json",
+      "interaction_trace.json",
+      "summary.txt",
+      "flags.json",
+      "benchmark_record"
+    ],
+    "notes": "Worked expert-review example confirming the reference D-B04 caution-centered evaluation."
+  },
+  "review_reason": {
+    "trigger": "benchmark_calibration",
+    "description": "This reference review confirms that the benchmark anchor slice remains a legitimate M1 caution example for evaluator calibration."
+  },
+  "source_evaluations": [
+    {
+      "evaluation_id": "reference_eval_d_b04_01",
+      "evaluator_id": "reference_eval_d_b04_01",
+      "path": "sessions/D-B04-S01/evaluation.json"
+    }
+  ],
+  "expert_findings": {
+    "agreement_with_primary_evaluation": "full_agreement",
+    "key_issues_reviewed": [
+      "core_family_scoring",
+      "plugin_domain_scoring",
+      "integration_scoring",
+      "escalation_detection",
+      "escalation_threshold",
+      "escalation_mode_selection"
+    ],
+    "narrative_summary": "The primary evaluation remains a sound reference judgment. The run preserves both parents' concerns, surfaces logistics uncertainty explicitly, and supports an M1 caution posture without drifting into directive recommendation.",
+    "evidence_notes": "The strongest confirming evidence remains the alignment between interaction_trace.json, missing_info.json, flags.json, and summary.txt around unresolved logistics and bounded optioning."
+  },
+  "final_review_outcome": {
+    "case_status": "confirmed_as_scored",
+    "final_requires_separate_review": false,
+    "final_requires_calibration_review": false,
+    "final_disposition_note": "Retain this case as the anchor expert-reviewed M1 caution reference for future regression and evaluator calibration."
+  },
+  "artifact_links": {
+    "evaluation_json": "sessions/D-B04-S01/evaluation.json",
+    "interaction_trace": "sessions/D-B04-S01/interaction_trace.json",
+    "transcript": null,
+    "flags": "sessions/D-B04-S01/flags.json",
+    "summary": "sessions/D-B04-S01/summary.txt",
+    "continuity_packet": null
+  }
+}

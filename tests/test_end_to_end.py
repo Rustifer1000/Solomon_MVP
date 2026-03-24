@@ -6,33 +6,373 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 from runtime.benchmarks import get_benchmark_simulation
+from runtime.benchmarks.base import RuntimeTurnPlanEntry
 from runtime.benchmarks.d_b04 import (
     build_mock_model_raw_turns,
     build_mock_model_turns,
     build_reference_raw_turns,
     build_reference_turns,
+    build_runtime_turn_plan,
     build_varied_mock_model_raw_turns,
     build_varied_mock_model_turns,
     generate_runtime_client_turn,
     get_varied_mock_process_variant,
 )
-from runtime.contracts import CandidateTurn, validate_candidate_turn
+from runtime.benchmarks.d_b04_simulation import D_B04_SIMULATION
+from runtime.benchmarks.d_b05_simulation import D_B05_SIMULATION
+from runtime.benchmarks.d_b06_simulation import D_B06_SIMULATION
+from runtime.benchmarks.d_b07_simulation import D_B07_SIMULATION
+from runtime.benchmarks.d_b08_simulation import D_B08_SIMULATION
+from runtime.benchmarks.d_b09_simulation import D_B09_SIMULATION
+from runtime.benchmarks.d_b10_simulation import D_B10_SIMULATION
+from runtime.benchmarks.d_b11_simulation import D_B11_SIMULATION
+from runtime.benchmarks.d_b12_simulation import D_B12_SIMULATION
+from runtime.benchmarks.d_b13_simulation import D_B13_SIMULATION
+from runtime.benchmarks.d_b14_simulation import D_B14_SIMULATION
+from runtime.contracts import CandidateTurn, RiskCheck, StateDelta, validate_candidate_turn
+from runtime.artifacts import write_artifacts
+from runtime.escalation import determine_escalation
+from runtime.evaluator_artifact_validation import (
+    validate_reference_evaluation_example,
+    validate_reference_evaluation_summary_text,
+    validate_reference_expert_review_example,
+)
+from runtime.evaluator_operations import (
+    build_calibration_review_seed,
+    build_fairness_review_seed,
+    compare_benchmark_runs,
+)
+from runtime.fairness_checks import run_first_pass_fairness_checks
 from runtime.loaders import load_case_bundle
 from runtime.normalization import normalize_core_output
+from runtime.orchestrator import _run_runtime_generated_session
+from runtime.persona_validation import validate_persona_profile
+from runtime.plugins.divorce_shared import qualify_case_shared
+from runtime.plugins import get_plugin_runtime
+from runtime.session_validation import validate_session_trace, validate_support_artifact_package
+from runtime.state import initialize_session_state
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 CASE_DIR = REPO_ROOT / "annexes" / "benchmark_cases" / "D-B04"
+D_B05_CASE_DIR = REPO_ROOT / "annexes" / "benchmark_cases" / "D-B05"
+D_B06_CASE_DIR = REPO_ROOT / "annexes" / "benchmark_cases" / "D-B06"
+D_B07_CASE_DIR = REPO_ROOT / "annexes" / "benchmark_cases" / "D-B07"
+D_B08_CASE_DIR = REPO_ROOT / "annexes" / "benchmark_cases" / "D-B08"
+D_B09_CASE_DIR = REPO_ROOT / "annexes" / "benchmark_cases" / "D-B09"
+D_B10_CASE_DIR = REPO_ROOT / "annexes" / "benchmark_cases" / "D-B10"
+D_B11_CASE_DIR = REPO_ROOT / "annexes" / "benchmark_cases" / "D-B11"
+D_B12_CASE_DIR = REPO_ROOT / "annexes" / "benchmark_cases" / "D-B12"
+D_B13_CASE_DIR = REPO_ROOT / "annexes" / "benchmark_cases" / "D-B13"
+D_B14_CASE_DIR = REPO_ROOT / "annexes" / "benchmark_cases" / "D-B14"
 
 
 class EndToEndScaffoldTest(unittest.TestCase):
+    def _run_benchmark(
+        self,
+        source: str = "runtime",
+        case_dir: Path = CASE_DIR,
+        policy_profile: str = "sim_minimal",
+    ) -> dict:
+        temp_dir = tempfile.TemporaryDirectory()
+        self.addCleanup(temp_dir.cleanup)
+        output_dir = Path(temp_dir.name) / f"{case_dir.name}-S01-{source}"
+        command = [
+            sys.executable,
+            "-m",
+            "runtime.cli.run_benchmark",
+            "--case-dir",
+            str(case_dir),
+            "--output-dir",
+            str(output_dir),
+            "--source",
+            source,
+            "--policy-profile",
+            policy_profile,
+            "--generated-at",
+            "2026-03-19T12:00:00Z",
+        ]
+        subprocess.run(command, cwd=REPO_ROOT, check=True)
+        return {
+            "output_dir": output_dir,
+            "run_meta": json.loads((output_dir / "run_meta.json").read_text(encoding="utf-8")),
+            "trace": json.loads((output_dir / "interaction_trace.json").read_text(encoding="utf-8")),
+            "positions": json.loads((output_dir / "positions.json").read_text(encoding="utf-8")),
+            "facts": json.loads((output_dir / "facts_snapshot.json").read_text(encoding="utf-8")),
+            "flags": json.loads((output_dir / "flags.json").read_text(encoding="utf-8")),
+            "missing_info": json.loads((output_dir / "missing_info.json").read_text(encoding="utf-8")),
+            "summary": (output_dir / "summary.txt").read_text(encoding="utf-8"),
+        }
+
     def test_benchmark_registry_returns_d_b04_simulation(self) -> None:
         case_bundle = load_case_bundle(CASE_DIR)
         simulation = get_benchmark_simulation(case_bundle)
 
         self.assertEqual(simulation.case_id, "D-B04")
+
+    def test_benchmark_registry_returns_d_b05_simulation(self) -> None:
+        case_bundle = load_case_bundle(D_B05_CASE_DIR)
+        simulation = get_benchmark_simulation(case_bundle)
+
+        self.assertEqual(simulation.case_id, "D-B05")
+
+    def test_benchmark_registry_returns_d_b06_simulation(self) -> None:
+        case_bundle = load_case_bundle(D_B06_CASE_DIR)
+        simulation = get_benchmark_simulation(case_bundle)
+
+        self.assertEqual(simulation.case_id, "D-B06")
+
+    def test_benchmark_registry_returns_d_b07_simulation(self) -> None:
+        case_bundle = load_case_bundle(D_B07_CASE_DIR)
+        simulation = get_benchmark_simulation(case_bundle)
+
+        self.assertEqual(simulation.case_id, "D-B07")
+
+    def test_benchmark_registry_returns_d_b08_simulation(self) -> None:
+        case_bundle = load_case_bundle(D_B08_CASE_DIR)
+        simulation = get_benchmark_simulation(case_bundle)
+
+        self.assertEqual(simulation.case_id, "D-B08")
+
+    def test_benchmark_registry_returns_d_b09_simulation(self) -> None:
+        case_bundle = load_case_bundle(D_B09_CASE_DIR)
+        simulation = get_benchmark_simulation(case_bundle)
+
+        self.assertEqual(simulation.case_id, "D-B09")
+
+    def test_benchmark_registry_returns_d_b10_simulation(self) -> None:
+        case_bundle = load_case_bundle(D_B10_CASE_DIR)
+        simulation = get_benchmark_simulation(case_bundle)
+
+        self.assertEqual(simulation.case_id, "D-B10")
+
+    def test_benchmark_registry_returns_d_b11_simulation(self) -> None:
+        case_bundle = load_case_bundle(D_B11_CASE_DIR)
+        simulation = get_benchmark_simulation(case_bundle)
+
+        self.assertEqual(simulation.case_id, "D-B11")
+
+    def test_benchmark_registry_returns_d_b12_simulation(self) -> None:
+        case_bundle = load_case_bundle(D_B12_CASE_DIR)
+        simulation = get_benchmark_simulation(case_bundle)
+
+        self.assertEqual(simulation.case_id, "D-B12")
+
+    def test_benchmark_registry_returns_d_b13_simulation(self) -> None:
+        case_bundle = load_case_bundle(D_B13_CASE_DIR)
+        simulation = get_benchmark_simulation(case_bundle)
+
+        self.assertEqual(simulation.case_id, "D-B13")
+
+    def test_benchmark_registry_returns_d_b14_simulation(self) -> None:
+        case_bundle = load_case_bundle(D_B14_CASE_DIR)
+        simulation = get_benchmark_simulation(case_bundle)
+
+        self.assertEqual(simulation.case_id, "D-B14")
+
+    def test_active_divorce_slices_have_evaluator_review_paths(self) -> None:
+        for case_dir in [CASE_DIR, D_B05_CASE_DIR, D_B06_CASE_DIR, D_B07_CASE_DIR, D_B08_CASE_DIR, D_B09_CASE_DIR, D_B10_CASE_DIR, D_B11_CASE_DIR, D_B12_CASE_DIR, D_B13_CASE_DIR, D_B14_CASE_DIR]:
+            self.assertTrue((case_dir / "evaluator_review_path.md").exists(), f"Missing evaluator path for {case_dir.name}")
+
+    def test_active_divorce_slice_metadata_keeps_evaluator_artifact_expectations_consistent(self) -> None:
+        for case_dir in [CASE_DIR, D_B05_CASE_DIR, D_B06_CASE_DIR, D_B07_CASE_DIR, D_B08_CASE_DIR, D_B09_CASE_DIR, D_B10_CASE_DIR, D_B11_CASE_DIR, D_B12_CASE_DIR, D_B13_CASE_DIR, D_B14_CASE_DIR]:
+            metadata = json.loads((case_dir / "case_metadata.json").read_text(encoding="utf-8"))
+            required = metadata["artifact_expectations"]["required"]
+            recommended = metadata["artifact_expectations"]["recommended"]
+
+            self.assertEqual(
+                required,
+                [
+                    "run_meta.json",
+                    "interaction_trace.json",
+                    "positions.json",
+                    "facts_snapshot.json",
+                    "flags.json",
+                    "missing_info.json",
+                    "summary.txt",
+                ],
+            )
+            self.assertEqual(recommended, ["evaluation.json", "evaluation_summary.txt"])
+            self.assertTrue(metadata["expected_focal_scoring_areas"])
+
+    def test_plugin_registry_returns_divorce_plugin_runtime(self) -> None:
+        case_bundle = load_case_bundle(CASE_DIR)
+        plugin_runtime = get_plugin_runtime(case_bundle)
+
+        self.assertEqual(plugin_runtime.plugin_type, "divorce")
+
+    def test_shared_artifact_layers_do_not_import_divorce_package_vocabulary_directly(self) -> None:
+        artifacts_source = (REPO_ROOT / "runtime" / "artifacts.py").read_text(encoding="utf-8")
+        support_source = (REPO_ROOT / "runtime" / "support_artifacts.py").read_text(encoding="utf-8")
+
+        self.assertNotIn("from runtime.plugins.divorce_shared import PACKAGE_ELEMENT_LABELS", artifacts_source)
+        self.assertNotIn("from runtime.plugins.divorce_shared import PACKAGE_ELEMENT_LABELS", support_source)
+
+    def test_shared_divorce_qualification_reflects_broader_divorce_issue_families(self) -> None:
+        qualification = qualify_case_shared(load_case_bundle(D_B07_CASE_DIR))
+
+        self.assertIn("communication_protocol", qualification["issue_taxonomy"])
+        self.assertIn("fairness_and_parent_role", qualification["issue_taxonomy"])
+        self.assertIn("child_expense_coordination", qualification["issue_taxonomy"])
+        self.assertIn("fair co-parent communication process", qualification["feasibility_constraints"])
+        self.assertIn("child-expense documentation and reimbursement workflow", qualification["feasibility_constraints"])
+        self.assertIn("bounded process packages", qualification["caution_note"])
+
+    def test_plugin_registry_rejects_unknown_plugin_type(self) -> None:
+        with self.assertRaises(NotImplementedError):
+            get_plugin_runtime({"case_metadata": {"plugin_type": "workplace"}})
+
+    def test_plugin_registry_rejects_missing_plugin_type_context(self) -> None:
+        with self.assertRaises(KeyError):
+            get_plugin_runtime({})
+
+    def test_d_b04_simulation_owns_custom_next_step_policy(self) -> None:
+        next_step = D_B04_SIMULATION.finalize_next_step({"summary_state": {}, "missing_info": [], "options": []})
+        self.assertIn("transport, exchange timing, and homework-routine expectations", next_step)
+
+    def test_d_b05_simulation_uses_generic_next_step_policy(self) -> None:
+        self.assertIsNone(D_B05_SIMULATION.finalize_next_step({"summary_state": {}, "missing_info": [], "options": []}))
+
+    def test_divorce_slices_expose_benchmark_owned_policy_descriptors(self) -> None:
+        d_b04_policy = D_B04_SIMULATION.plugin_policy_descriptor(load_case_bundle(CASE_DIR))
+        d_b05_policy = D_B05_SIMULATION.plugin_policy_descriptor(load_case_bundle(D_B05_CASE_DIR))
+        d_b06_policy = D_B06_SIMULATION.plugin_policy_descriptor(load_case_bundle(D_B06_CASE_DIR))
+        d_b07_policy = D_B07_SIMULATION.plugin_policy_descriptor(load_case_bundle(D_B07_CASE_DIR))
+        d_b08_policy = D_B08_SIMULATION.plugin_policy_descriptor(load_case_bundle(D_B08_CASE_DIR))
+        d_b09_policy = D_B09_SIMULATION.plugin_policy_descriptor(load_case_bundle(D_B09_CASE_DIR))
+        d_b10_policy = D_B10_SIMULATION.plugin_policy_descriptor(load_case_bundle(D_B10_CASE_DIR))
+        d_b11_policy = D_B11_SIMULATION.plugin_policy_descriptor(load_case_bundle(D_B11_CASE_DIR))
+        d_b12_policy = D_B12_SIMULATION.plugin_policy_descriptor(load_case_bundle(D_B12_CASE_DIR))
+        d_b13_policy = D_B13_SIMULATION.plugin_policy_descriptor(load_case_bundle(D_B13_CASE_DIR))
+        d_b14_policy = D_B14_SIMULATION.plugin_policy_descriptor(load_case_bundle(D_B14_CASE_DIR))
+
+        self.assertEqual(d_b04_policy["descriptor_id"], "d_b04_school_week_caution")
+        self.assertEqual(d_b05_policy["descriptor_id"], "d_b05_break_schedule_packaging")
+        self.assertEqual(d_b06_policy["descriptor_id"], "d_b06_extracurricular_protocol_balance")
+        self.assertEqual(d_b07_policy["descriptor_id"], "d_b07_expense_reimbursement_protocol")
+        self.assertEqual(d_b08_policy["descriptor_id"], "d_b08_process_breakdown_caution")
+        self.assertEqual(d_b09_policy["descriptor_id"], "d_b09_domain_complexity_review")
+        self.assertEqual(d_b10_policy["descriptor_id"], "d_b10_emotional_heat_workable")
+        self.assertEqual(d_b11_policy["descriptor_id"], "d_b11_asymmetry_confidence_caution")
+        self.assertEqual(d_b12_policy["descriptor_id"], "d_b12_emotional_flooding_caution")
+        self.assertEqual(d_b13_policy["descriptor_id"], "d_b13_safety_compromised_participation")
+        self.assertEqual(d_b14_policy["descriptor_id"], "d_b14_participation_capacity_impairment")
+        self.assertNotEqual(d_b04_policy["flag_related_issues"], d_b06_policy["flag_related_issues"])
+
+    def test_divorce_slices_expose_benchmark_owned_artifact_narrative_policy(self) -> None:
+        d_b04_policy = D_B04_SIMULATION.artifact_narrative_policy(load_case_bundle(CASE_DIR))
+        d_b05_policy = D_B05_SIMULATION.artifact_narrative_policy(load_case_bundle(D_B05_CASE_DIR))
+        d_b06_policy = D_B06_SIMULATION.artifact_narrative_policy(load_case_bundle(D_B06_CASE_DIR))
+        d_b07_policy = D_B07_SIMULATION.artifact_narrative_policy(load_case_bundle(D_B07_CASE_DIR))
+        d_b08_policy = D_B08_SIMULATION.artifact_narrative_policy(load_case_bundle(D_B08_CASE_DIR))
+        d_b09_policy = D_B09_SIMULATION.artifact_narrative_policy(load_case_bundle(D_B09_CASE_DIR))
+        d_b10_policy = D_B10_SIMULATION.artifact_narrative_policy(load_case_bundle(D_B10_CASE_DIR))
+        d_b11_policy = D_B11_SIMULATION.artifact_narrative_policy(load_case_bundle(D_B11_CASE_DIR))
+        d_b12_policy = D_B12_SIMULATION.artifact_narrative_policy(load_case_bundle(D_B12_CASE_DIR))
+        d_b13_policy = D_B13_SIMULATION.artifact_narrative_policy(load_case_bundle(D_B13_CASE_DIR))
+        d_b14_policy = D_B14_SIMULATION.artifact_narrative_policy(load_case_bundle(D_B14_CASE_DIR))
+
+        self.assertEqual(d_b04_policy["descriptor_id"], "d_b04_caution_narrative")
+        self.assertEqual(d_b05_policy["descriptor_id"], "d_b05_workable_package_narrative")
+        self.assertEqual(d_b06_policy["descriptor_id"], "d_b06_protocol_balance_narrative")
+        self.assertEqual(d_b07_policy["descriptor_id"], "d_b07_expense_package_narrative")
+        self.assertEqual(d_b08_policy["descriptor_id"], "d_b08_process_breakdown_narrative")
+        self.assertEqual(d_b09_policy["descriptor_id"], "d_b09_complexity_review_narrative")
+        self.assertEqual(d_b10_policy["descriptor_id"], "d_b10_emotional_heat_narrative")
+        self.assertEqual(d_b11_policy["descriptor_id"], "d_b11_asymmetry_caution_narrative")
+        self.assertEqual(d_b12_policy["descriptor_id"], "d_b12_emotional_flooding_narrative")
+        self.assertEqual(d_b13_policy["descriptor_id"], "d_b13_safety_handoff_narrative")
+        self.assertEqual(d_b14_policy["descriptor_id"], "d_b14_capacity_handoff_narrative")
+
+    def test_divorce_slices_expose_support_artifact_policy_descriptors(self) -> None:
+        d_b04_policy = D_B04_SIMULATION.support_artifact_policy(load_case_bundle(CASE_DIR))
+        d_b06_policy = D_B06_SIMULATION.support_artifact_policy(load_case_bundle(D_B06_CASE_DIR))
+        d_b08_policy = D_B08_SIMULATION.support_artifact_policy(load_case_bundle(D_B08_CASE_DIR))
+        d_b09_policy = D_B09_SIMULATION.support_artifact_policy(load_case_bundle(D_B09_CASE_DIR))
+        d_b10_policy = D_B10_SIMULATION.support_artifact_policy(load_case_bundle(D_B10_CASE_DIR))
+        d_b11_policy = D_B11_SIMULATION.support_artifact_policy(load_case_bundle(D_B11_CASE_DIR))
+        d_b12_policy = D_B12_SIMULATION.support_artifact_policy(load_case_bundle(D_B12_CASE_DIR))
+        d_b13_policy = D_B13_SIMULATION.support_artifact_policy(load_case_bundle(D_B13_CASE_DIR))
+        d_b14_policy = D_B14_SIMULATION.support_artifact_policy(load_case_bundle(D_B14_CASE_DIR))
+
+        self.assertEqual(d_b04_policy["descriptor_id"], "d_b04_support_logistics_caution")
+        self.assertEqual(d_b06_policy["descriptor_id"], "d_b06_support_fairness_process")
+        self.assertEqual(d_b08_policy["descriptor_id"], "d_b08_support_process_breakdown")
+        self.assertEqual(d_b09_policy["descriptor_id"], "d_b09_support_domain_complexity")
+        self.assertEqual(d_b10_policy["descriptor_id"], "d_b10_support_emotional_heat")
+        self.assertEqual(d_b11_policy["descriptor_id"], "d_b11_support_asymmetry_caution")
+        self.assertEqual(d_b12_policy["descriptor_id"], "d_b12_support_emotional_flooding")
+        self.assertEqual(d_b13_policy["descriptor_id"], "d_b13_support_protected_handoff")
+        self.assertEqual(d_b14_policy["descriptor_id"], "d_b14_support_capacity_handoff")
+
+    def test_divorce_slices_expose_template_family_coverage_in_benchmark_descriptors(self) -> None:
+        d_b04_descriptor = D_B04_SIMULATION.benchmark_descriptor(load_case_bundle(CASE_DIR))
+        d_b06_descriptor = D_B06_SIMULATION.benchmark_descriptor(load_case_bundle(D_B06_CASE_DIR))
+        d_b07_descriptor = D_B07_SIMULATION.benchmark_descriptor(load_case_bundle(D_B07_CASE_DIR))
+        d_b08_descriptor = D_B08_SIMULATION.benchmark_descriptor(load_case_bundle(D_B08_CASE_DIR))
+        d_b09_descriptor = D_B09_SIMULATION.benchmark_descriptor(load_case_bundle(D_B09_CASE_DIR))
+        d_b10_descriptor = D_B10_SIMULATION.benchmark_descriptor(load_case_bundle(D_B10_CASE_DIR))
+        d_b11_descriptor = D_B11_SIMULATION.benchmark_descriptor(load_case_bundle(D_B11_CASE_DIR))
+        d_b12_descriptor = D_B12_SIMULATION.benchmark_descriptor(load_case_bundle(D_B12_CASE_DIR))
+        d_b13_descriptor = D_B13_SIMULATION.benchmark_descriptor(load_case_bundle(D_B13_CASE_DIR))
+        d_b14_descriptor = D_B14_SIMULATION.benchmark_descriptor(load_case_bundle(D_B14_CASE_DIR))
+
+        self.assertIn("TF-DIV-04", d_b04_descriptor["template_family_ids"])
+        self.assertIn("TF-DIV-02", d_b07_descriptor["template_family_ids"])
+        self.assertIn("TF-DIV-06", d_b08_descriptor["template_family_ids"])
+        self.assertIn("TF-DIV-08", d_b09_descriptor["template_family_ids"])
+        self.assertIn("TF-DIV-03", d_b10_descriptor["template_family_ids"])
+        self.assertIn("TF-DIV-05", d_b11_descriptor["template_family_ids"])
+        self.assertIn("TF-DIV-09", d_b12_descriptor["template_family_ids"])
+        self.assertIn("TF-DIV-10", d_b13_descriptor["template_family_ids"])
+        self.assertIn("TF-DIV-11", d_b14_descriptor["template_family_ids"])
+        self.assertIn("fairness_sensitive", d_b06_descriptor["evaluator_attention_tags"])
+        self.assertIn("fairness_sensitive", d_b08_descriptor["evaluator_attention_tags"])
+        self.assertIn("fairness_sensitive", d_b10_descriptor["evaluator_attention_tags"])
+
+    def test_runtime_run_meta_records_plugin_owned_package_labels_and_evaluator_helper_policy(self) -> None:
+        run = self._run_benchmark("runtime", case_dir=D_B06_CASE_DIR)
+        case_context = run["run_meta"]["case_context"]
+
+        self.assertEqual(case_context["package_element_labels"]["written_summary_option"], "written summaries")
+        self.assertEqual(case_context["evaluator_helper_policy"]["descriptor_id"], "divorce_evaluator_helpers_v0")
+
+    def test_divorce_persona_profiles_validate_against_schema(self) -> None:
+        for case_dir in [CASE_DIR, D_B05_CASE_DIR, D_B06_CASE_DIR, D_B07_CASE_DIR, D_B08_CASE_DIR, D_B09_CASE_DIR, D_B10_CASE_DIR, D_B11_CASE_DIR, D_B12_CASE_DIR, D_B13_CASE_DIR, D_B14_CASE_DIR]:
+            for persona_path in sorted((case_dir / "personas").glob("*.json")):
+                persona = json.loads(persona_path.read_text(encoding="utf-8"))
+                errors, _warnings = validate_persona_profile(persona)
+                self.assertEqual(errors, [], f"{persona_path.name} failed persona schema validation")
+
+    def test_d_b10_persona_profiles_include_all_recommended_role_profile_fields(self) -> None:
+        for persona_path in sorted((D_B10_CASE_DIR / "personas").glob("*.json")):
+            persona = json.loads(persona_path.read_text(encoding="utf-8"))
+            _errors, warnings = validate_persona_profile(persona)
+            self.assertEqual(warnings, [], f"{persona_path.name} is missing recommended persona fields")
+
+    def test_first_pass_fairness_checks_surface_expected_attention_by_slice(self) -> None:
+        d_b06 = run_first_pass_fairness_checks(self._run_benchmark("runtime", case_dir=D_B06_CASE_DIR)["output_dir"])
+        d_b08 = run_first_pass_fairness_checks(self._run_benchmark("runtime", case_dir=D_B08_CASE_DIR)["output_dir"])
+        d_b10 = run_first_pass_fairness_checks(self._run_benchmark("runtime", case_dir=D_B10_CASE_DIR)["output_dir"])
+
+        self.assertTrue(d_b06["expected_fairness_attention"])
+        self.assertEqual(d_b06["status"], "ok")
+        self.assertTrue(d_b08["expected_fairness_attention"])
+        self.assertIn("fairness_breakdown", d_b08["fairness_flag_types"])
+        self.assertEqual(d_b08["status"], "ok")
+        self.assertTrue(d_b10["expected_fairness_attention"])
+        self.assertTrue(d_b10["summary_mentions_fairness"] or d_b10["structured_mentions_fairness"])
+
+    def test_benchmark_descriptors_make_d_b04_anchor_status_explicit(self) -> None:
+        d_b04_descriptor = D_B04_SIMULATION.benchmark_descriptor(load_case_bundle(CASE_DIR))
+        d_b05_descriptor = D_B05_SIMULATION.benchmark_descriptor(load_case_bundle(D_B05_CASE_DIR))
+
+        self.assertEqual(d_b04_descriptor["descriptor_id"], "d_b04_bespoke_anchor")
+        self.assertEqual(d_b04_descriptor["content_model"], "bespoke_anchor")
+        self.assertEqual(d_b05_descriptor["content_model"], "patterned_package_slice")
 
     def test_initialize_session_state_records_source(self) -> None:
         case_bundle = load_case_bundle(CASE_DIR)
@@ -41,6 +381,38 @@ class EndToEndScaffoldTest(unittest.TestCase):
         state = initialize_session_state(case_bundle, "D-B04-S01-generated", "sim_minimal", source="mock_model")
 
         self.assertEqual(state["meta"]["source"], "mock_model")
+
+    def test_loader_and_cli_use_simulation_defaults_not_hardcoded_d_b04_values(self) -> None:
+        case_bundle = load_case_bundle(CASE_DIR)
+        simulation = get_benchmark_simulation(case_bundle)
+
+        self.assertEqual(case_bundle["reference_session_dir"], simulation.reference_session_dir(CASE_DIR))
+
+        from runtime.cli import run_benchmark
+
+        fake_args = type(
+            "Args",
+            (),
+            {
+                "case_dir": CASE_DIR,
+                "output_dir": CASE_DIR / "tmp-output",
+                "session_id": None,
+                "policy_profile": "sim_minimal",
+                "source": "runtime",
+                "generated_at": "2026-03-19T12:00:00Z",
+            },
+        )()
+
+        with mock.patch("runtime.cli.run_benchmark.parse_args", return_value=fake_args), \
+            mock.patch("runtime.cli.run_benchmark.initialize_session_state") as init_state, \
+            mock.patch("runtime.cli.run_benchmark.run_session") as run_session:
+            init_state.return_value = {"meta": {}}
+            run_benchmark.main()
+
+        init_state.assert_called_once()
+        called_session_id = init_state.call_args.args[1]
+        self.assertEqual(called_session_id, simulation.default_session_id())
+        run_session.assert_called_once()
 
     def test_normalize_core_output_builds_candidate_turn(self) -> None:
         case_bundle = load_case_bundle(CASE_DIR)
@@ -51,6 +423,87 @@ class EndToEndScaffoldTest(unittest.TestCase):
         self.assertIsInstance(normalized, CandidateTurn)
         self.assertEqual(normalized.turn_index, 1)
         self.assertEqual(normalized.role, "assistant")
+
+    def test_normalize_core_output_builds_structured_state_delta_fields(self) -> None:
+        normalized = normalize_core_output(
+            {
+                "turn_index": 1,
+                "timestamp": "2026-03-19T00:00:10Z",
+                "role": "assistant",
+                "phase": "info_gathering",
+                "message_summary": "Structured delta example.",
+                "state_delta": {
+                    "facts_structured": [
+                        {
+                            "statement": "A structured fact.",
+                            "category": "timeline",
+                            "status": "accepted",
+                            "related_issues": ["school_logistics"],
+                        }
+                    ],
+                    "positions_structured": [
+                        {
+                            "participant_ids": ["spouse_A"],
+                            "kind": "position",
+                            "issue_id": "parenting_schedule",
+                            "statement": "A structured position.",
+                            "status": "current",
+                        }
+                    ],
+                    "missing_info_structured": [
+                        {
+                            "action": "open",
+                            "missing_id": "missing-900",
+                            "question": "A structured missing-info question?",
+                        }
+                    ],
+                    "issue_updates_structured": [
+                        {
+                            "issue_id": "school_logistics",
+                            "label": "School logistics",
+                        }
+                    ],
+                    "packages_structured": [
+                        {
+                            "package_id": "pkg-900",
+                            "family": "communication_package",
+                            "status": "workable",
+                            "summary": "minimum notice, written summaries, and a pause-before-commitment rule",
+                            "elements": ["minimum_notice_option", "written_summary_option"],
+                            "related_issues": ["communication_protocol"],
+                        }
+                    ],
+                },
+                "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": "x"},
+            }
+        )
+
+        self.assertEqual(normalized.state_delta.facts_structured[0].statement, "A structured fact.")
+        self.assertEqual(normalized.state_delta.positions_structured[0].participant_ids, ["spouse_A"])
+        self.assertEqual(normalized.state_delta.missing_info_structured[0].missing_id, "missing-900")
+        self.assertEqual(normalized.state_delta.issue_updates_structured[0].issue_id, "school_logistics")
+        self.assertEqual(normalized.state_delta.packages_structured[0].family, "communication_package")
+
+    def test_normalize_core_output_rejects_unknown_structured_issue_id(self) -> None:
+        with self.assertRaises(ValueError):
+            normalize_core_output(
+                {
+                    "turn_index": 1,
+                    "timestamp": "2026-03-19T00:00:10Z",
+                    "role": "assistant",
+                    "phase": "info_gathering",
+                    "message_summary": "Unknown issue id.",
+                    "state_delta": {
+                        "issue_updates_structured": [
+                            {
+                                "issue_id": "school_logisitcs",
+                                "label": "School logistics",
+                            }
+                        ]
+                    },
+                    "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": "x"},
+                }
+            )
 
     def test_runtime_client_turn_uses_case_and_persona_context(self) -> None:
         case_bundle = load_case_bundle(CASE_DIR)
@@ -63,6 +516,171 @@ class EndToEndScaffoldTest(unittest.TestCase):
         self.assertIn("Parent A", raw_turn["message_summary"])
         self.assertIn("child", raw_turn["message_summary"].lower())
         self.assertIn("positions_added_or_updated", raw_turn["state_delta"])
+
+    def test_package_slice_runtime_turns_reuse_reference_content_helper(self) -> None:
+        case_bundle = load_case_bundle(D_B07_CASE_DIR)
+        from runtime.state import initialize_session_state
+        from runtime.benchmarks.d_b07_authored import build_reference_raw_turns
+        from runtime.benchmarks.d_b07_runtime import generate_runtime_assistant_turn, generate_runtime_client_turn
+
+        state = initialize_session_state(case_bundle, "D-B07-S01-generated", "sim_minimal", source="runtime")
+        authored_turns = build_reference_raw_turns(case_bundle, "2026-03-19")
+
+        runtime_assistant = generate_runtime_assistant_turn(5, "2026-03-19T00:04:40Z", state, None)
+        runtime_client = generate_runtime_client_turn(6, "2026-03-19T00:05:50Z", state, case_bundle)
+
+        self.assertEqual(runtime_assistant, authored_turns[4])
+        self.assertEqual(runtime_client, authored_turns[5])
+
+    def test_d_b06_runtime_assistant_turns_use_live_generation_not_reference_replay(self) -> None:
+        case_bundle = load_case_bundle(D_B06_CASE_DIR)
+        from runtime.state import initialize_session_state
+        from runtime.benchmarks.d_b06_authored import build_reference_raw_turns
+        from runtime.benchmarks.d_b06_runtime import generate_runtime_assistant_turn
+
+        state = initialize_session_state(case_bundle, "D-B06-S01-generated", "sim_minimal", source="runtime")
+        state["positions"]["spouse_A"] = {
+            "participant_id": "spouse_A",
+            "current_positions": [
+                {
+                    "position_id": "pos-spouse_a-001",
+                    "issue_id": "communication_protocol",
+                    "statement": "New extracurricular commitments should not be made without enough notice to discuss them first.",
+                    "status": "current",
+                    "confidence": "high",
+                    "source_turns": [2],
+                }
+            ],
+            "proposals": [],
+            "red_lines": [],
+            "soft_preferences": [],
+            "open_to_discussion": [],
+            "last_updated_turn": 2,
+        }
+        state["positions"]["spouse_B"] = {
+            "participant_id": "spouse_B",
+            "current_positions": [
+                {
+                    "position_id": "pos-spouse_b-001",
+                    "issue_id": "fairness_and_parent_role",
+                    "statement": "Child-activity decisions should not leave one parent feeling sidelined or treated as an afterthought.",
+                    "status": "current",
+                    "confidence": "high",
+                    "source_turns": [4],
+                }
+            ],
+            "proposals": [],
+            "red_lines": [],
+            "soft_preferences": [],
+            "open_to_discussion": [],
+            "last_updated_turn": 4,
+        }
+        authored_turn = build_reference_raw_turns(case_bundle, "2026-03-19")[4]
+        runtime_turn = generate_runtime_assistant_turn(
+            5,
+            "2026-03-19T00:04:45Z",
+            state,
+            {"package_summary": "minimum notice, written summaries, and a pause-before-commitment rule"},
+        )
+
+        self.assertNotEqual(runtime_turn["message_summary"], authored_turn["message_summary"])
+        self.assertEqual(runtime_turn["state_delta"]["packages_structured"][0]["family"], "communication_package")
+        self.assertIn("mutual rather than one-sided", runtime_turn["message_summary"])
+
+    def test_package_oriented_slices_emit_structured_package_deltas(self) -> None:
+        for case_dir, expected_family in [
+            (D_B05_CASE_DIR, "written_notice_package"),
+            (D_B06_CASE_DIR, "communication_package"),
+            (D_B07_CASE_DIR, "reimbursement_package"),
+        ]:
+            case_bundle = load_case_bundle(case_dir)
+            simulation = get_benchmark_simulation(case_bundle)
+            turns = simulation.build_turns("reference", case_bundle, "2026-03-19")
+            package_turn = next(turn for turn in turns if turn.state_delta.packages_structured)
+
+            self.assertEqual(package_turn.state_delta.packages_structured[0].family, expected_family)
+
+    def test_patterned_authored_slices_share_message_variant_helper_behavior(self) -> None:
+        from runtime.benchmarks.d_b05_authored import build_mock_model_raw_turns as build_d_b05_mock_turns
+        from runtime.benchmarks.d_b06_authored import build_varied_mock_model_raw_turns as build_d_b06_varied_turns
+
+        d_b05_turns = build_d_b05_mock_turns(load_case_bundle(D_B05_CASE_DIR), "2026-03-19")
+        d_b06_turns = build_d_b06_varied_turns(load_case_bundle(D_B06_CASE_DIR), "2026-03-19")
+
+        self.assertIn("written process for changes", d_b05_turns[0]["message_summary"])
+        self.assertIn("narrow package", d_b05_turns[4]["message_summary"])
+        self.assertIn("not sidelining either parent", d_b06_turns[2]["message_summary"])
+
+    def test_d_b04_simulation_provides_runtime_turn_plan(self) -> None:
+        case_bundle = load_case_bundle(CASE_DIR)
+        simulation = get_benchmark_simulation(case_bundle)
+
+        plan = simulation.build_runtime_turn_plan(case_bundle, "2026-03-19")
+
+        self.assertEqual(len(plan), 8)
+        self.assertEqual([entry.turn_index for entry in plan], list(range(1, 9)))
+        self.assertEqual(plan[0].role, "assistant")
+        self.assertEqual(plan[-1].role, "client")
+        self.assertEqual(plan[0].timestamp, "2026-03-19T00:00:10Z")
+        self.assertEqual(plan[-1].timestamp, "2026-03-19T00:08:50Z")
+
+    def test_runtime_session_uses_simulation_owned_turn_plan(self) -> None:
+        case_bundle = load_case_bundle(CASE_DIR)
+        from runtime.state import initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B04-S01-generated", "sim_minimal", source="runtime")
+        custom_plan = [
+            RuntimeTurnPlanEntry(turn_index=1, role="client", timestamp="2026-03-19T00:00:10Z"),
+            RuntimeTurnPlanEntry(turn_index=2, role="assistant", timestamp="2026-03-19T00:01:10Z"),
+        ]
+
+        simulation = get_benchmark_simulation(case_bundle)
+        with mock.patch("runtime.orchestrator.get_benchmark_simulation", return_value=simulation), \
+            mock.patch.object(type(simulation), "build_runtime_turn_plan", return_value=custom_plan), \
+            mock.patch.object(type(simulation), "generate_runtime_client_turn") as generate_client, \
+            mock.patch.object(type(simulation), "generate_runtime_assistant_turn") as generate_assistant:
+            generate_client.return_value = {
+                "turn_index": 1,
+                "timestamp": "2026-03-19T00:00:10Z",
+                "role": "client",
+                "phase": "info_gathering",
+                "message_summary": "Client starts this benchmark plan.",
+                "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": "x"},
+            }
+            generate_assistant.return_value = {
+                "turn_index": 2,
+                "timestamp": "2026-03-19T00:01:10Z",
+                "role": "assistant",
+                "phase": "info_gathering",
+                "message_summary": "Assistant follows the benchmark plan.",
+                "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": "x"},
+            }
+
+            _run_runtime_generated_session(case_bundle, state, "2026-03-19T12:00:00Z")
+
+        generate_client.assert_called_once()
+        generate_assistant.assert_called_once()
+        self.assertEqual(generate_client.call_args.kwargs["turn_index"], 1)
+        self.assertEqual(generate_assistant.call_args.kwargs["turn_index"], 2)
+        self.assertEqual(generate_client.call_args.kwargs["timestamp"], "2026-03-19T00:00:10Z")
+        self.assertEqual(generate_assistant.call_args.kwargs["timestamp"], "2026-03-19T00:01:10Z")
+
+    def test_build_runtime_turn_plan_returns_expected_d_b04_order(self) -> None:
+        plan = build_runtime_turn_plan("2026-03-19")
+
+        self.assertEqual(
+            [(entry.turn_index, entry.role) for entry in plan],
+            [
+                (1, "assistant"),
+                (2, "client"),
+                (3, "assistant"),
+                (4, "client"),
+                (5, "assistant"),
+                (6, "client"),
+                (7, "assistant"),
+                (8, "client"),
+            ],
+        )
 
     def test_normalize_core_output_rejects_invalid_payload(self) -> None:
         with self.assertRaises(ValueError):
@@ -77,6 +695,105 @@ class EndToEndScaffoldTest(unittest.TestCase):
                 }
             )
 
+    def test_normalize_core_output_rejects_invalid_timestamp_format(self) -> None:
+        with self.assertRaises(ValueError):
+            normalize_core_output(
+                {
+                    "turn_index": 1,
+                    "timestamp": "03/19/2026 00:00:10",
+                    "role": "assistant",
+                    "phase": "info_gathering",
+                    "message_summary": "bad timestamp",
+                    "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": "x"},
+                }
+            )
+
+    def test_normalize_core_output_rejects_triggered_risk_without_signals(self) -> None:
+        with self.assertRaises(ValueError):
+            normalize_core_output(
+                {
+                    "turn_index": 1,
+                    "timestamp": "2026-03-19T00:00:10Z",
+                    "role": "assistant",
+                    "phase": "info_gathering",
+                    "message_summary": "bad risk coherence",
+                    "risk_check": {"triggered": True, "signals": [], "severity": 3, "notes": "x"},
+                }
+            )
+
+    def test_normalize_core_output_rejects_invalid_escalation_category(self) -> None:
+        with self.assertRaises(ValueError):
+            normalize_core_output(
+                {
+                    "turn_index": 1,
+                    "timestamp": "2026-03-19T00:00:10Z",
+                    "role": "assistant",
+                    "phase": "option_generation",
+                    "message_summary": "bad escalation category",
+                    "risk_check": {
+                        "triggered": True,
+                        "signals": ["insufficient_information"],
+                        "severity": 3,
+                        "notes": "x",
+                    },
+                    "candidate_escalation_category": "E9",
+                    "candidate_escalation_mode": "M1",
+                }
+            )
+
+    def test_normalize_core_output_rejects_partially_specified_escalation(self) -> None:
+        with self.assertRaises(ValueError):
+            normalize_core_output(
+                {
+                    "turn_index": 1,
+                    "timestamp": "2026-03-19T00:00:10Z",
+                    "role": "assistant",
+                    "phase": "option_generation",
+                    "message_summary": "bad escalation pairing",
+                    "risk_check": {
+                        "triggered": True,
+                        "signals": ["insufficient_information"],
+                        "severity": 3,
+                        "notes": "x",
+                    },
+                    "candidate_escalation_mode": "M1",
+                }
+            )
+
+    def test_normalize_core_output_rejects_add_and_resolve_same_question(self) -> None:
+        with self.assertRaises(ValueError):
+            normalize_core_output(
+                {
+                    "turn_index": 1,
+                    "timestamp": "2026-03-19T00:00:10Z",
+                    "role": "assistant",
+                    "phase": "info_gathering",
+                    "message_summary": "contradictory question delta",
+                    "state_delta": {
+                        "open_questions_added": ["What transport plan would support school-week exchanges?"],
+                        "open_questions_resolved": ["What transport plan would support school-week exchanges?"],
+                    },
+                    "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": "x"},
+                }
+            )
+
+    def test_normalize_core_output_rejects_add_and_revise_same_fact(self) -> None:
+        with self.assertRaises(ValueError):
+            normalize_core_output(
+                {
+                    "turn_index": 1,
+                    "timestamp": "2026-03-19T00:00:10Z",
+                    "role": "assistant",
+                    "phase": "info_gathering",
+                    "message_summary": "contradictory fact delta",
+                    "state_delta": {
+                        "facts_added": ["School commute feasibility is unresolved."],
+                        "facts_revised": ["School commute feasibility is unresolved."],
+                    },
+                    "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": "x"},
+                }
+            )
+
     def test_mock_model_raw_turns_normalize_successfully(self) -> None:
         case_bundle = load_case_bundle(CASE_DIR)
         raw_turns = build_mock_model_raw_turns(case_bundle, "2026-03-19")
@@ -84,6 +801,9 @@ class EndToEndScaffoldTest(unittest.TestCase):
 
         self.assertEqual(len(raw_turns), 8)
         self.assertEqual(len(normalized_turns), 8)
+        self.assertIn("facts_structured", raw_turns[1]["state_delta"])
+        self.assertIn("positions_structured", raw_turns[1]["state_delta"])
+        self.assertGreaterEqual(len(normalized_turns[1].state_delta.facts_structured), 1)
         self.assertEqual(normalized_turns[0].phase, "info_gathering")
         self.assertEqual(normalized_turns[-1].candidate_escalation_mode, "M1")
         for turn in normalized_turns:
@@ -116,136 +836,2023 @@ class EndToEndScaffoldTest(unittest.TestCase):
 
     def test_reference_turns_conform_to_candidate_turn_contract(self) -> None:
         case_bundle = load_case_bundle(CASE_DIR)
+        raw_turns = build_reference_raw_turns(case_bundle, "2026-03-19")
         turns = build_reference_turns(case_bundle, "2026-03-19")
 
         self.assertEqual(len(turns), 8)
+        self.assertIn("issue_updates_structured", raw_turns[0]["state_delta"])
+        self.assertIn("missing_info_structured", raw_turns[5]["state_delta"])
+        self.assertGreaterEqual(len(turns[5].state_delta.missing_info_structured), 1)
         for turn in turns:
             self.assertIsInstance(turn, CandidateTurn)
             validate_candidate_turn(turn)
 
+    def test_resolved_question_closes_missing_info_entry(self) -> None:
+        case_bundle = load_case_bundle(CASE_DIR)
+        from runtime.state import apply_turn, initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B04-S01-generated", "sim_minimal", source="runtime")
+        opening_turn = normalize_core_output(
+            {
+                "turn_index": 1,
+                "timestamp": "2026-03-19T00:00:10Z",
+                "role": "assistant",
+                "phase": "info_gathering",
+                "message_summary": "Open a transport feasibility question.",
+                "state_delta": {
+                    "open_questions_added": [
+                        "What transport plan would support school-week exchanges?"
+                    ]
+                },
+                "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": "Opening question."},
+            }
+        )
+        resolution_turn = normalize_core_output(
+            {
+                "turn_index": 2,
+                "timestamp": "2026-03-19T00:01:10Z",
+                "role": "assistant",
+                "phase": "info_gathering",
+                "message_summary": "Resolve the transport feasibility question.",
+                "state_delta": {
+                    "open_questions_resolved": [
+                        "What transport plan would support school-week exchanges?"
+                    ]
+                },
+                "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": "Question resolved."},
+            }
+        )
+
+        apply_turn(state, opening_turn)
+        self.assertEqual(state["missing_info"][0]["status"], "open")
+
+        apply_turn(state, resolution_turn)
+
+        self.assertNotIn("What transport plan would support school-week exchanges?", state["open_questions"])
+        self.assertEqual(state["missing_info"][0]["status"], "resolved")
+
+    def test_plugin_and_escalation_clear_after_missing_info_resolution(self) -> None:
+        case_bundle = load_case_bundle(CASE_DIR)
+        from runtime.state import apply_turn, initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B04-S01-generated", "sim_minimal", source="runtime")
+        opening_turn = normalize_core_output(
+            {
+                "turn_index": 1,
+                "timestamp": "2026-03-19T00:00:10Z",
+                "role": "assistant",
+                "phase": "option_generation",
+                "message_summary": "Open logistics constraints and bounded option work.",
+                "state_delta": {
+                    "open_questions_added": [
+                        "What transport plan would support school-week exchanges?",
+                        "What reliability markers would both parents treat as sufficient for a phased trial?",
+                    ],
+                    "option_state_updates": [
+                        "Added phased_trial_option"
+                    ],
+                },
+                "risk_check": {
+                    "triggered": True,
+                    "signals": ["insufficient_information", "plugin_low_confidence"],
+                    "severity": 3,
+                    "notes": "Constraints remain unresolved.",
+                },
+                "candidate_escalation_category": "E5",
+                "candidate_escalation_mode": "M1",
+            }
+        )
+        resolution_turn = normalize_core_output(
+            {
+                "turn_index": 2,
+                "timestamp": "2026-03-19T00:01:10Z",
+                "role": "assistant",
+                "phase": "agreement_building",
+                "message_summary": "Resolve the gating logistics questions.",
+                "state_delta": {
+                    "open_questions_resolved": [
+                        "What transport plan would support school-week exchanges?",
+                        "What reliability markers would both parents treat as sufficient for a phased trial?",
+                    ]
+                },
+                "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": "Questions resolved."},
+            }
+        )
+
+        apply_turn(state, opening_turn)
+        plugin_assessment = get_plugin_runtime(state).assess_state(state)
+        escalation = determine_escalation(state, plugin_assessment)
+
+        self.assertEqual(plugin_assessment["plugin_confidence"], "low")
+        self.assertEqual(escalation["mode"], "M1")
+
+        apply_turn(state, resolution_turn)
+        plugin_assessment = get_plugin_runtime(state).assess_state(state)
+        escalation = determine_escalation(state, plugin_assessment)
+
+        self.assertEqual(plugin_assessment["plugin_confidence"], "moderate")
+        self.assertEqual(plugin_assessment["logistics_related_missing_info"], [])
+        self.assertEqual(escalation["mode"], "M0")
+
+    def test_plugin_assessment_uses_state_shape_not_just_open_question_counts(self) -> None:
+        case_bundle = load_case_bundle(CASE_DIR)
+        from runtime.state import initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B04-S01-generated", "sim_minimal", source="runtime")
+        state["meta"]["plugin_policy_descriptor"] = D_B04_SIMULATION.plugin_policy_descriptor(case_bundle)
+        state["summary_state"]["issues"] = ["Parenting schedule", "School logistics"]
+        state["missing_info"].append(
+            {
+                "missing_id": "missing-001",
+                "question": "What specific transport plan would support school-week exchanges without creating school-day instability?",
+                "importance": "high",
+                "reason_type": "feasibility_gap",
+                "related_issues": ["school_logistics", "parenting_schedule"],
+                "first_identified_turn": 1,
+                "status": "open",
+                "note": "x",
+            }
+        )
+        state["facts"].append(
+            {
+                "fact_id": "fact-001",
+                "category": "timeline",
+                "statement": "Transport, exchange timing, and homework-routine reliability remain unresolved for school-week overnights.",
+                "status": "uncertain",
+                "source_turns": [1],
+                "related_issues": ["school_logistics", "parenting_schedule"],
+                "note": "x",
+            }
+        )
+        state["options"].append("Marked fixed_recommendation_out_of_scope_pending_feasibility")
+        state["flags"].append({"flag_id": "flag-db04-003", "flag_type": "plugin_low_confidence"})
+
+        plugin_assessment = get_plugin_runtime(state).assess_state(state)
+
+        self.assertEqual(plugin_assessment["policy_descriptor_id"], "d_b04_school_week_caution")
+        self.assertEqual(plugin_assessment["plugin_confidence"], "low")
+        self.assertEqual(plugin_assessment["option_posture"], "bounded_only")
+        self.assertTrue(plugin_assessment["needs_logistics_clarification"])
+        self.assertIn(
+            "Transport, exchange timing, and homework-routine reliability remain unresolved for school-week overnights.",
+            plugin_assessment["uncertain_logistics_facts"],
+        )
+
+    def test_run_session_records_benchmark_owned_plugin_policy_descriptor(self) -> None:
+        case_bundle = load_case_bundle(D_B06_CASE_DIR)
+        from runtime.state import initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B06-S01-generated", "sim_minimal", source="runtime")
+        simulation = get_benchmark_simulation(case_bundle)
+        state["meta"]["plugin_policy_descriptor"] = simulation.plugin_policy_descriptor(case_bundle)
+
+        self.assertEqual(
+            state["meta"]["plugin_policy_descriptor"]["descriptor_id"],
+            "d_b06_extracurricular_protocol_balance",
+        )
+
+    def test_run_session_records_benchmark_descriptor(self) -> None:
+        case_bundle = load_case_bundle(CASE_DIR)
+        from runtime.state import initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B04-S01-generated", "sim_minimal", source="runtime")
+        simulation = get_benchmark_simulation(case_bundle)
+        state["meta"]["benchmark_descriptor"] = simulation.benchmark_descriptor(case_bundle)
+
+        self.assertEqual(state["meta"]["benchmark_descriptor"]["descriptor_id"], "d_b04_bespoke_anchor")
+
+    def test_escalation_can_enter_m1_from_state_evidence_not_just_counts(self) -> None:
+        case_bundle = load_case_bundle(CASE_DIR)
+        from runtime.state import initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B04-S01-generated", "sim_minimal", source="runtime")
+        state["summary_state"]["issues"] = ["Parenting schedule", "School logistics"]
+        state["missing_info"].append(
+            {
+                "missing_id": "missing-001",
+                "question": "What specific transport plan would support school-week exchanges without creating school-day instability?",
+                "importance": "high",
+                "reason_type": "feasibility_gap",
+                "related_issues": ["school_logistics", "parenting_schedule"],
+                "first_identified_turn": 1,
+                "status": "open",
+                "note": "x",
+            }
+        )
+        state["facts"].append(
+            {
+                "fact_id": "fact-001",
+                "category": "timeline",
+                "statement": "Transport, exchange timing, and homework-routine reliability remain unresolved for school-week overnights.",
+                "status": "uncertain",
+                "source_turns": [1],
+                "related_issues": ["school_logistics", "parenting_schedule"],
+                "note": "x",
+            }
+        )
+        state["options"].append("Marked stronger_recommendation_still_qualified")
+        state["flags"].append({"flag_id": "flag-db04-002", "flag_type": "decision_quality_risk"})
+
+        plugin_assessment = get_plugin_runtime(state).assess_state(state)
+        escalation = determine_escalation(state, plugin_assessment)
+
+        self.assertEqual(escalation["mode"], "M1")
+        self.assertEqual(escalation["category"], "E5")
+        self.assertIn("option work is ahead of full feasibility confirmation", escalation["rationale"])
+
+    def test_shared_divorce_plugin_assesses_communication_package_beyond_logistics(self) -> None:
+        case_bundle = load_case_bundle(D_B06_CASE_DIR)
+        from runtime.state import initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B06-S01-generated", "sim_minimal", source="runtime")
+        state["meta"]["plugin_policy_descriptor"] = D_B06_SIMULATION.plugin_policy_descriptor(case_bundle)
+        state["summary_state"]["issues"] = [
+            "Communication protocol around future changes",
+            "Fairness and meaningful parenting role",
+        ]
+        state["options"].extend(
+            [
+                "Added minimum_notice_option",
+                "Added written_summary_option",
+                "Added pause_before_commitment_option",
+                "Marked communication_package_as_workable",
+            ]
+        )
+
+        plugin_assessment = get_plugin_runtime(state).assess_state(state)
+
+        self.assertEqual(plugin_assessment["package_family"], "communication_package")
+        self.assertEqual(
+            plugin_assessment["package_summary"],
+            "minimum notice, written summaries, and a pause-before-commitment rule",
+        )
+        self.assertEqual(plugin_assessment["plugin_confidence"], "high")
+        self.assertTrue(plugin_assessment["supports_fixed_recommendation"])
+
+    def test_shared_divorce_plugin_prefers_structured_package_meaning_over_option_markers(self) -> None:
+        case_bundle = load_case_bundle(D_B06_CASE_DIR)
+        from runtime.state import initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B06-S01-generated", "sim_minimal", source="runtime")
+        state["meta"]["plugin_policy_descriptor"] = D_B06_SIMULATION.plugin_policy_descriptor(case_bundle)
+        state["summary_state"]["issues"] = [
+            "Communication protocol around future changes",
+            "Fairness and meaningful parenting role",
+        ]
+        state["packages"].append(
+            {
+                "package_id": "pkg-d-b06-001",
+                "family": "communication_package",
+                "status": "workable",
+                "summary": "minimum notice, written summaries, and a pause-before-commitment rule",
+                "elements": [
+                    "minimum_notice_option",
+                    "written_summary_option",
+                    "pause_before_commitment_option",
+                ],
+                "related_issues": ["communication_protocol", "fairness_and_parent_role"],
+                "last_updated_turn": 5,
+            }
+        )
+
+        plugin_assessment = get_plugin_runtime(case_bundle).assess_state(state)
+
+        self.assertEqual(plugin_assessment["package_family"], "communication_package")
+        self.assertEqual(
+            plugin_assessment["package_summary"],
+            "minimum notice, written summaries, and a pause-before-commitment rule",
+        )
+        self.assertEqual(plugin_assessment["plugin_confidence"], "high")
+
+    def test_shared_divorce_plugin_detects_partial_structured_package_elements(self) -> None:
+        case_bundle = load_case_bundle(D_B06_CASE_DIR)
+        from runtime.state import initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B06-S01-generated", "sim_minimal", source="runtime")
+        state["meta"]["plugin_policy_descriptor"] = D_B06_SIMULATION.plugin_policy_descriptor(case_bundle)
+        state["summary_state"]["issues"] = [
+            "Communication protocol around future changes",
+            "Fairness and meaningful parenting role",
+        ]
+        state["packages"].append(
+            {
+                "package_id": "pkg-d-b06-001",
+                "family": "communication_package",
+                "status": "workable",
+                "summary": "minimum notice, written summaries, and a pause-before-commitment rule",
+                "elements": [
+                    "minimum_notice_option",
+                    "written_summary_option",
+                ],
+                "related_issues": ["communication_protocol", "fairness_and_parent_role"],
+                "last_updated_turn": 5,
+            }
+        )
+
+        plugin_assessment = get_plugin_runtime(state).assess_state(state)
+
+        self.assertEqual(plugin_assessment["package_quality"], "partial")
+        self.assertEqual(plugin_assessment["plugin_confidence"], "moderate")
+        self.assertIn("pause_before_commitment_option", plugin_assessment["package_missing_elements"])
+        self.assertTrue(any("pause-before-commitment rule" in warning for warning in plugin_assessment["warnings"]))
+
+    def test_partial_package_summary_does_not_overstate_completeness(self) -> None:
+        case_bundle = load_case_bundle(D_B06_CASE_DIR)
+        from runtime.artifacts import build_summary
+        from runtime.state import initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B06-S01-generated", "sim_minimal", source="runtime")
+        state["meta"]["plugin_policy_descriptor"] = D_B06_SIMULATION.plugin_policy_descriptor(case_bundle)
+        state["summary_state"]["issues"] = [
+            "Communication protocol around future changes",
+            "Fairness and meaningful parenting role",
+        ]
+        state["summary_state"]["next_step"] = "Confirm whether the missing communication safeguard should be added before treating the package as settled."
+        state["positions"]["spouse_A"] = {
+            "participant_id": "spouse_A",
+            "current_positions": [{"statement": "New extracurricular commitments should not be made without enough notice to discuss them first."}],
+            "proposals": [],
+            "red_lines": [],
+            "soft_preferences": [],
+            "open_to_discussion": [],
+            "last_updated_turn": 2,
+        }
+        state["packages"].append(
+            {
+                "package_id": "pkg-d-b06-001",
+                "family": "communication_package",
+                "status": "workable",
+                "summary": "minimum notice, written summaries, and a pause-before-commitment rule",
+                "elements": [
+                    "minimum_notice_option",
+                    "written_summary_option",
+                ],
+                "related_issues": ["communication_protocol", "fairness_and_parent_role"],
+                "last_updated_turn": 5,
+            }
+        )
+        state["plugin_assessment"] = get_plugin_runtime(state).assess_state(state)
+
+        summary = build_summary(state)
+
+        self.assertIn("Package quality: partial", summary)
+        self.assertIn("Still missing: a pause-before-commitment rule", summary)
+        self.assertNotIn("Package quality: complete", summary)
+
+    def test_shared_divorce_plugin_detects_competing_package_families(self) -> None:
+        case_bundle = load_case_bundle(D_B07_CASE_DIR)
+        from runtime.state import initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B07-S01-generated", "sim_minimal", source="runtime")
+        state["meta"]["plugin_policy_descriptor"] = D_B07_SIMULATION.plugin_policy_descriptor(case_bundle)
+        state["summary_state"]["issues"] = [
+            "Communication protocol around future changes",
+            "Child expense coordination and reimbursement",
+        ]
+        state["packages"].extend(
+            [
+                {
+                    "package_id": "pkg-d-b06-001",
+                    "family": "communication_package",
+                    "status": "workable",
+                    "summary": "minimum notice, written summaries, and a pause-before-commitment rule",
+                    "elements": [
+                        "minimum_notice_option",
+                        "written_summary_option",
+                        "pause_before_commitment_option",
+                    ],
+                    "related_issues": ["communication_protocol"],
+                    "last_updated_turn": 5,
+                },
+                {
+                    "package_id": "pkg-d-b07-001",
+                    "family": "reimbursement_package",
+                    "status": "workable",
+                    "summary": "advance notice, shared receipts, and a reimbursement response window",
+                    "elements": [
+                        "expense_notice_window_option",
+                        "shared_receipt_option",
+                        "reimbursement_response_window_option",
+                    ],
+                    "related_issues": ["child_expense_coordination", "communication_protocol"],
+                    "last_updated_turn": 6,
+                },
+            ]
+        )
+
+        plugin_assessment = get_plugin_runtime(state).assess_state(state)
+
+        self.assertTrue(plugin_assessment["mixed_package_state"])
+        self.assertEqual(plugin_assessment["plugin_confidence"], "moderate")
+        self.assertEqual(
+            set(plugin_assessment["competing_package_families"]),
+            {"communication_package", "reimbursement_package"},
+        )
+        self.assertTrue(any("Multiple active package families are present" in warning for warning in plugin_assessment["warnings"]))
+
+    def test_mixed_package_summary_surfaces_competing_package_families(self) -> None:
+        case_bundle = load_case_bundle(D_B07_CASE_DIR)
+        from runtime.artifacts import build_summary
+        from runtime.state import initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B07-S01-generated", "sim_minimal", source="runtime")
+        state["meta"]["plugin_policy_descriptor"] = D_B07_SIMULATION.plugin_policy_descriptor(case_bundle)
+        state["summary_state"]["issues"] = [
+            "Communication protocol around future changes",
+            "Child expense coordination and reimbursement",
+        ]
+        state["summary_state"]["next_step"] = "Narrow the discussion to one coherent package direction before treating the package work as settled."
+        state["positions"]["spouse_A"] = {
+            "participant_id": "spouse_A",
+            "current_positions": [{"statement": "Reimbursement requests should not arrive weeks later without advance notice and supporting receipts."}],
+            "proposals": [],
+            "red_lines": [],
+            "soft_preferences": [],
+            "open_to_discussion": [],
+            "last_updated_turn": 2,
+        }
+        state["packages"].extend(
+            [
+                {
+                    "package_id": "pkg-d-b06-001",
+                    "family": "communication_package",
+                    "status": "workable",
+                    "summary": "minimum notice, written summaries, and a pause-before-commitment rule",
+                    "elements": [
+                        "minimum_notice_option",
+                        "written_summary_option",
+                        "pause_before_commitment_option",
+                    ],
+                    "related_issues": ["communication_protocol"],
+                    "last_updated_turn": 5,
+                },
+                {
+                    "package_id": "pkg-d-b07-001",
+                    "family": "reimbursement_package",
+                    "status": "workable",
+                    "summary": "advance notice, shared receipts, and a reimbursement response window",
+                    "elements": [
+                        "expense_notice_window_option",
+                        "shared_receipt_option",
+                        "reimbursement_response_window_option",
+                    ],
+                    "related_issues": ["child_expense_coordination", "communication_protocol"],
+                    "last_updated_turn": 6,
+                },
+            ]
+        )
+        state["plugin_assessment"] = get_plugin_runtime(state).assess_state(state)
+
+        summary = build_summary(state)
+
+        self.assertIn("Competing package families: communication package, reimbursement package", summary)
+        self.assertIn("Multiple active package families are present", summary)
+
+    def test_shared_divorce_plugin_assesses_reimbursement_package_beyond_logistics(self) -> None:
+        case_bundle = load_case_bundle(D_B07_CASE_DIR)
+        from runtime.state import initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B07-S01-generated", "sim_minimal", source="runtime")
+        state["meta"]["plugin_policy_descriptor"] = D_B07_SIMULATION.plugin_policy_descriptor(case_bundle)
+        state["summary_state"]["issues"] = [
+            "Child expense coordination and reimbursement",
+            "Communication protocol around future changes",
+        ]
+        state["options"].extend(
+            [
+                "Added expense_notice_window_option",
+                "Added shared_receipt_option",
+                "Added reimbursement_response_window_option",
+                "Marked reimbursement_package_as_workable",
+            ]
+        )
+
+        plugin_assessment = get_plugin_runtime(state).assess_state(state)
+
+        self.assertEqual(plugin_assessment["package_family"], "reimbursement_package")
+        self.assertEqual(
+            plugin_assessment["package_summary"],
+            "advance notice, shared receipts, and a reimbursement response window",
+        )
+        self.assertEqual(plugin_assessment["plugin_confidence"], "high")
+        self.assertTrue(plugin_assessment["supports_fixed_recommendation"])
+
+    def test_logistics_fact_canonicalization_preserves_unresolved_meaning(self) -> None:
+        case_bundle = load_case_bundle(CASE_DIR)
+        from runtime.state import apply_turn, initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B04-S01-generated", "sim_minimal", source="runtime")
+        turn = normalize_core_output(
+            {
+                "turn_index": 1,
+                "timestamp": "2026-03-19T00:00:10Z",
+                "role": "client",
+                "phase": "info_gathering",
+                "message_summary": "Report unresolved logistics barriers.",
+                "state_delta": {
+                    "facts_added": [
+                        "School commute feasibility is unresolved.",
+                        "Exchange timing reliability is unresolved.",
+                        "Homework and evening-routine reliability is unresolved.",
+                    ]
+                },
+                "risk_check": {
+                    "triggered": True,
+                    "signals": ["insufficient_information"],
+                    "severity": 2,
+                    "notes": "Logistics remain unresolved.",
+                },
+            }
+        )
+
+        apply_turn(state, turn)
+
+        fact_statements = [fact["statement"] for fact in state["facts"]]
+        self.assertIn(
+            "Transport, exchange timing, and homework-routine reliability remain unresolved for school-week overnights.",
+            fact_statements,
+        )
+        self.assertNotIn(
+            "Transport, exchange timing, and homework-routine reliability are already sufficient to support expanded school-week overnights.",
+            fact_statements,
+        )
+
+    def test_uncertain_logistics_fact_remains_uncertain_not_sufficient(self) -> None:
+        case_bundle = load_case_bundle(CASE_DIR)
+        from runtime.state import apply_turn, initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B04-S01-generated", "sim_minimal", source="runtime")
+        turn = normalize_core_output(
+            {
+                "turn_index": 1,
+                "timestamp": "2026-03-19T00:00:10Z",
+                "role": "client",
+                "phase": "info_gathering",
+                "message_summary": "Report unresolved commute, exchange timing, and homework barriers.",
+                "state_delta": {
+                    "facts_added": [
+                        "School commute feasibility is unresolved and exchange timing reliability is unresolved while homework and evening-routine reliability is unresolved."
+                    ]
+                },
+                "risk_check": {
+                    "triggered": True,
+                    "signals": ["insufficient_information"],
+                    "severity": 2,
+                    "notes": "Feasibility remains uncertain.",
+                },
+            }
+        )
+
+        apply_turn(state, turn)
+
+        logistics_fact = state["facts"][0]
+        self.assertEqual(logistics_fact["status"], "uncertain")
+        self.assertIn("remain unresolved", logistics_fact["statement"])
+
+    def test_position_updates_do_not_inject_unattributed_participant_state(self) -> None:
+        case_bundle = load_case_bundle(CASE_DIR)
+        from runtime.state import apply_turn, initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B04-S01-generated", "sim_minimal", source="runtime")
+        turn = normalize_core_output(
+            {
+                "turn_index": 1,
+                "timestamp": "2026-03-19T00:00:10Z",
+                "role": "client",
+                "phase": "info_gathering",
+                "message_summary": "Parent A states a current position.",
+                "state_delta": {
+                    "positions_added_or_updated": [
+                        "spouse_A seeks a predictable weekday structure and limited school-night overnights until logistics improve."
+                    ]
+                },
+                "risk_check": {
+                    "triggered": False,
+                    "signals": [],
+                    "severity": 1,
+                    "notes": "Current position recorded.",
+                },
+            }
+        )
+
+        apply_turn(state, turn)
+
+        spouse_a = state["positions"]["spouse_A"]
+        self.assertEqual(spouse_a["red_lines"], [])
+        self.assertEqual(spouse_a["soft_preferences"], [])
+        self.assertEqual(spouse_a["open_to_discussion"], [])
+        self.assertFalse(
+            any("dysregulation risk" in fact["statement"].lower() for fact in state["facts"]),
+            "Position updates should not inject extra facts outside the normalized turn content.",
+        )
+
+    def test_unstructured_position_fallback_preserves_stated_proposal_without_synthesizing_new_text(self) -> None:
+        case_bundle = load_case_bundle(CASE_DIR)
+        from runtime.state import apply_turn, initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B04-S01-generated", "sim_minimal", source="runtime")
+        turn = normalize_core_output(
+            {
+                "turn_index": 1,
+                "timestamp": "2026-03-19T00:00:10Z",
+                "role": "client",
+                "phase": "info_gathering",
+                "message_summary": "Proposal fallback should preserve source phrasing.",
+                "state_delta": {
+                    "positions_added_or_updated": [
+                        "Both parents show conditional openness to phased arrangements if logistics are clarified."
+                    ]
+                },
+                "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": "x"},
+            }
+        )
+
+        apply_turn(state, turn)
+
+        spouse_a_proposal = state["positions"]["spouse_A"]["proposals"][0]["statement"]
+        self.assertEqual(spouse_a_proposal, "Conditional openness to phased arrangements if logistics are clarified.")
+
+    def test_unstructured_missing_info_fallback_uses_explicit_template_lookup(self) -> None:
+        case_bundle = load_case_bundle(CASE_DIR)
+        from runtime.state import apply_turn, initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B04-S01-generated", "sim_minimal", source="runtime")
+        turn = normalize_core_output(
+            {
+                "turn_index": 1,
+                "timestamp": "2026-03-19T00:00:10Z",
+                "role": "assistant",
+                "phase": "info_gathering",
+                "message_summary": "Fallback missing info lookup.",
+                "state_delta": {
+                    "open_questions_added": [
+                        "What transport plan would support school-week exchanges?"
+                    ]
+                },
+                "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": "x"},
+            }
+        )
+
+        apply_turn(state, turn)
+
+        self.assertEqual(state["missing_info"][0]["missing_id"], "missing-001")
+
+    def test_unstructured_fact_fallback_uses_explicit_template_lookup(self) -> None:
+        case_bundle = load_case_bundle(CASE_DIR)
+        from runtime.state import apply_turn, initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B04-S01-generated", "sim_minimal", source="runtime")
+        turn = normalize_core_output(
+            {
+                "turn_index": 1,
+                "timestamp": "2026-03-19T00:00:10Z",
+                "role": "client",
+                "phase": "info_gathering",
+                "message_summary": "Fallback fact lookup.",
+                "state_delta": {
+                    "facts_added": [
+                        "There is an active dispute about school-night overnights."
+                    ]
+                },
+                "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": "x"},
+            }
+        )
+
+        apply_turn(state, turn)
+
+        fact = state["facts"][0]
+        self.assertEqual(fact["category"], "parenting_schedule")
+        self.assertEqual(fact["status"], "accepted")
+        self.assertEqual(fact["related_issues"], ["parenting_schedule"])
+
+    def test_unknown_unstructured_fact_fallback_stays_minimal(self) -> None:
+        case_bundle = load_case_bundle(CASE_DIR)
+        from runtime.state import apply_turn, initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B04-S01-generated", "sim_minimal", source="runtime")
+        turn = normalize_core_output(
+            {
+                "turn_index": 1,
+                "timestamp": "2026-03-19T00:00:10Z",
+                "role": "client",
+                "phase": "info_gathering",
+                "message_summary": "Unknown fallback fact.",
+                "state_delta": {
+                    "facts_added": [
+                        "A novel unstructured fact with no template match."
+                    ]
+                },
+                "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": "x"},
+            }
+        )
+
+        apply_turn(state, turn)
+
+        fact = state["facts"][0]
+        self.assertEqual(fact["category"], "communication_history")
+        self.assertEqual(fact["status"], "accepted")
+        self.assertEqual(fact["related_issues"], ["parenting_schedule"])
+
+    def test_structured_position_delta_can_set_participant_without_name_heuristic(self) -> None:
+        case_bundle = load_case_bundle(CASE_DIR)
+        from runtime.state import apply_turn, initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B04-S01-generated", "sim_minimal", source="runtime")
+        turn = normalize_core_output(
+            {
+                "turn_index": 1,
+                "timestamp": "2026-03-19T00:00:10Z",
+                "role": "client",
+                "phase": "info_gathering",
+                "message_summary": "Structured participant routing.",
+                "state_delta": {
+                    "positions_structured": [
+                        {
+                            "participant_ids": ["spouse_B"],
+                            "kind": "position",
+                            "issue_id": "parenting_schedule",
+                            "statement": "Weekday time should expand.",
+                            "status": "current",
+                            "confidence": "high",
+                        }
+                    ]
+                },
+                "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": "x"},
+            }
+        )
+
+        apply_turn(state, turn)
+
+        self.assertEqual(state["positions"]["spouse_B"]["current_positions"][0]["statement"], "Weekday time should expand.")
+
+    def test_structured_missing_info_delta_can_open_and_resolve_without_template_heuristic(self) -> None:
+        case_bundle = load_case_bundle(CASE_DIR)
+        from runtime.state import apply_turn, initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B04-S01-generated", "sim_minimal", source="runtime")
+        opening_turn = normalize_core_output(
+            {
+                "turn_index": 1,
+                "timestamp": "2026-03-19T00:00:10Z",
+                "role": "assistant",
+                "phase": "info_gathering",
+                "message_summary": "Open structured missing info.",
+                "state_delta": {
+                    "missing_info_structured": [
+                        {
+                            "action": "open",
+                            "missing_id": "missing-custom-001",
+                            "question": "What calendar constraints affect summer exchanges?",
+                            "importance": "medium",
+                            "reason_type": "process_gap",
+                            "related_issues": ["communication_protocol"],
+                        }
+                    ]
+                },
+                "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": "x"},
+            }
+        )
+        resolution_turn = normalize_core_output(
+            {
+                "turn_index": 2,
+                "timestamp": "2026-03-19T00:01:10Z",
+                "role": "assistant",
+                "phase": "agreement_building",
+                "message_summary": "Resolve structured missing info.",
+                "state_delta": {
+                    "missing_info_structured": [
+                        {
+                            "action": "resolve",
+                            "missing_id": "missing-custom-001",
+                            "question": "What calendar constraints affect summer exchanges?",
+                            "related_issues": ["communication_protocol"],
+                        }
+                    ]
+                },
+                "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": "x"},
+            }
+        )
+
+        apply_turn(state, opening_turn)
+        self.assertEqual(state["missing_info"][0]["missing_id"], "missing-custom-001")
+        self.assertEqual(state["missing_info"][0]["status"], "open")
+
+        apply_turn(state, resolution_turn)
+        self.assertEqual(state["missing_info"][0]["status"], "resolved")
+
+    def test_structured_missing_info_resolve_requires_prior_open_state(self) -> None:
+        case_bundle = load_case_bundle(CASE_DIR)
+        from runtime.state import apply_turn, initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B04-S01-generated", "sim_minimal", source="runtime")
+        resolution_turn = normalize_core_output(
+            {
+                "turn_index": 1,
+                "timestamp": "2026-03-19T00:01:10Z",
+                "role": "assistant",
+                "phase": "agreement_building",
+                "message_summary": "Resolve structured missing info without opening it first.",
+                "state_delta": {
+                    "missing_info_structured": [
+                        {
+                            "action": "resolve",
+                            "missing_id": "missing-custom-404",
+                            "question": "What calendar constraints affect summer exchanges?",
+                            "related_issues": ["communication_protocol"],
+                        }
+                    ]
+                },
+                "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": "x"},
+            }
+        )
+
+        with self.assertRaises(ValueError):
+            apply_turn(state, resolution_turn)
+
+    def test_structured_fact_delta_overrides_conflicting_string_fallback(self) -> None:
+        case_bundle = load_case_bundle(CASE_DIR)
+        from runtime.state import apply_turn, initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B04-S01-generated", "sim_minimal", source="runtime")
+        turn = normalize_core_output(
+            {
+                "turn_index": 1,
+                "timestamp": "2026-03-19T00:00:10Z",
+                "role": "client",
+                "phase": "info_gathering",
+                "message_summary": "Structured fact should win.",
+                "state_delta": {
+                    "facts_added": ["A vague fallback fact that should not be used."],
+                    "facts_structured": [
+                        {
+                            "statement": "A structured accepted fact.",
+                            "category": "timeline",
+                            "status": "accepted",
+                            "related_issues": ["school_logistics"],
+                        }
+                    ],
+                },
+                "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": "x"},
+            }
+        )
+
+        apply_turn(state, turn)
+
+        self.assertEqual(len(state["facts"]), 1)
+        self.assertEqual(state["facts"][0]["statement"], "A structured accepted fact.")
+
+    def test_structured_position_delta_overrides_conflicting_string_fallback(self) -> None:
+        case_bundle = load_case_bundle(CASE_DIR)
+        from runtime.state import apply_turn, initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B04-S01-generated", "sim_minimal", source="runtime")
+        turn = normalize_core_output(
+            {
+                "turn_index": 1,
+                "timestamp": "2026-03-19T00:00:10Z",
+                "role": "client",
+                "phase": "info_gathering",
+                "message_summary": "Structured position should win.",
+                "state_delta": {
+                    "positions_added_or_updated": [
+                        "spouse_A seeks a predictable weekday structure and limited school-night overnights until logistics improve."
+                    ],
+                    "positions_structured": [
+                        {
+                            "participant_ids": ["spouse_B"],
+                            "kind": "position",
+                            "issue_id": "parenting_schedule",
+                            "statement": "Structured position for Parent B.",
+                            "status": "current",
+                            "confidence": "high",
+                        }
+                    ],
+                },
+                "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": "x"},
+            }
+        )
+
+        apply_turn(state, turn)
+
+        self.assertIn("spouse_B", state["positions"])
+        self.assertNotIn("spouse_A", state["positions"])
+        self.assertEqual(state["positions"]["spouse_B"]["current_positions"][0]["statement"], "Structured position for Parent B.")
+
+    def test_structured_issue_update_overrides_string_issue_fallback(self) -> None:
+        case_bundle = load_case_bundle(CASE_DIR)
+        from runtime.state import apply_turn, initialize_session_state
+
+        state = initialize_session_state(case_bundle, "D-B04-S01-generated", "sim_minimal", source="runtime")
+        turn = normalize_core_output(
+            {
+                "turn_index": 1,
+                "timestamp": "2026-03-19T00:00:10Z",
+                "role": "assistant",
+                "phase": "info_gathering",
+                "message_summary": "Structured issue should win.",
+                "state_delta": {
+                    "issue_map_updates": ["Expanded parenting_schedule with stability and routine concerns."],
+                    "issue_updates_structured": [
+                        {"issue_id": "school_logistics", "label": "School logistics"}
+                    ],
+                },
+                "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": "x"},
+            }
+        )
+
+        apply_turn(state, turn)
+
+        self.assertEqual(state["summary_state"]["issues"], ["School logistics"])
+
     def test_d_b04_runner_writes_required_artifacts(self) -> None:
-        with tempfile.TemporaryDirectory() as temp_dir:
-            output_dir = Path(temp_dir) / "D-B04-S01-generated"
-            command = [
-                sys.executable,
-                "-m",
-                "runtime.cli.run_benchmark",
-                "--case-dir",
-                str(CASE_DIR),
-                "--output-dir",
-                str(output_dir),
-                "--generated-at",
-                "2026-03-19T12:00:00Z",
-            ]
-            subprocess.run(command, cwd=REPO_ROOT, check=True)
+        run = self._run_benchmark("runtime")
+        output_dir = run["output_dir"]
+        required_files = [
+            "run_meta.json",
+            "interaction_trace.json",
+            "positions.json",
+            "facts_snapshot.json",
+            "flags.json",
+            "missing_info.json",
+            "summary.txt",
+        ]
+        for file_name in required_files:
+            self.assertTrue((output_dir / file_name).exists(), f"Missing {file_name}")
 
-            required_files = [
-                "run_meta.json",
-                "interaction_trace.json",
-                "positions.json",
-                "facts_snapshot.json",
-                "flags.json",
-                "missing_info.json",
-                "summary.txt",
-            ]
-            for file_name in required_files:
-                self.assertTrue((output_dir / file_name).exists(), f"Missing {file_name}")
+        run_meta = run["run_meta"]
+        flags = run["flags"]
+        trace = run["trace"]
+        summary = run["summary"]
 
-            run_meta = json.loads((output_dir / "run_meta.json").read_text(encoding="utf-8"))
-            flags = json.loads((output_dir / "flags.json").read_text(encoding="utf-8"))
-            trace = json.loads((output_dir / "interaction_trace.json").read_text(encoding="utf-8"))
-            summary = (output_dir / "summary.txt").read_text(encoding="utf-8")
+        self.assertEqual(run_meta["case_id"], "D-B04")
+        self.assertEqual(run_meta["policy_profile"], "sim_minimal")
+        self.assertEqual(run_meta["case_context"]["source"], "runtime")
+        self.assertEqual(run_meta["model_config"]["provider"], "runtime_generated_scaffold")
+        self.assertEqual(run_meta["model_config"]["model_name"], "d_b04_runtime_generator_v0")
+        self.assertIn("divorce_plugin_runtime_v0", run_meta["prompting"]["prompt_ids"])
+        self.assertIn("runtime turn loop", run_meta["randomization"]["determinism_note"])
+        self.assertEqual(len(flags["active_flags"]), 3)
+        self.assertEqual(len(trace["turns"]), 8)
+        self.assertIn("Run Source: runtime", summary)
+        self.assertIn("Process Variant:", summary)
+        self.assertIn("Current Escalation Posture", summary)
+        self.assertIn("Unresolved:", summary)
+        self.assertIn("Missing Information", summary)
+        self.assertIn("Plugin confidence remains limited", summary)
+        self.assertTrue(all(flag["flag_id"].startswith("d-b04-flag-") for flag in flags["active_flags"]))
+        self.assertTrue(
+            any(flag["flag_type"] == "plugin_low_confidence" for flag in flags["active_flags"]),
+            "Expected plugin_low_confidence to remain visible as an anti-overreach guardrail.",
+        )
 
-            self.assertEqual(run_meta["case_id"], "D-B04")
-            self.assertEqual(run_meta["policy_profile"], "sim_minimal")
-            self.assertEqual(run_meta["case_context"]["source"], "runtime")
-            self.assertEqual(len(flags["active_flags"]), 3)
-            self.assertEqual(len(trace["turns"]), 8)
-            self.assertIn("Run Source: runtime", summary)
-            self.assertIn("Process Variant:", summary)
-            self.assertIn("Current Escalation Posture", summary)
-            self.assertIn("Unresolved:", summary)
-            self.assertIn("Missing Information", summary)
-            self.assertIn("Plugin confidence remains limited", summary)
-            self.assertTrue(
-                any(flag["flag_type"] == "plugin_low_confidence" for flag in flags["active_flags"]),
-                "Expected plugin_low_confidence to remain visible as an anti-overreach guardrail.",
-            )
+    def test_runtime_artifacts_preserve_trace_to_flag_and_escalation_consistency(self) -> None:
+        run = self._run_benchmark("runtime")
+        trace = run["trace"]["turns"]
+        flags = run["flags"]["active_flags"]
+        summary = run["summary"]
+
+        all_signals = {signal for turn in trace for signal in turn["risk_check"]["signals"]}
+        flag_types = {flag["flag_type"] for flag in flags}
+
+        self.assertIn("insufficient_information", all_signals)
+        self.assertIn("plugin_low_confidence", all_signals)
+        self.assertTrue(flag_types.issubset(all_signals | {"decision_quality_risk"}))
+        self.assertIn("`M1`", summary)
+        self.assertIn("category `E5`", summary)
+
+    def test_runtime_trace_turns_are_sequential_and_match_summary_mentions(self) -> None:
+        run = self._run_benchmark("runtime")
+        trace = run["trace"]["turns"]
+        summary = run["summary"]
+        facts = run["facts"]["facts"]
+
+        turn_indexes = [turn["turn_index"] for turn in trace]
+        self.assertEqual(turn_indexes, list(range(1, len(trace) + 1)))
+        unresolved_from_trace = {
+            fact
+            for turn in trace
+            for fact in turn["state_delta"].get("facts_added", [])
+            if "unresolved" in fact.lower()
+        }
+        self.assertTrue(unresolved_from_trace)
+        authoritative_unresolved = [fact["statement"] for fact in facts if fact["status"] == "uncertain"]
+        self.assertTrue(authoritative_unresolved)
+        self.assertTrue(any(statement in summary for statement in authoritative_unresolved))
+
+    def test_session_validation_accepts_runtime_trace(self) -> None:
+        run = self._run_benchmark("runtime")
+        validate_session_trace(
+            run["trace"]["turns"],
+            {
+                "mode": "M1",
+                "category": "E5",
+            },
+        )
+
+    def test_session_validation_rejects_non_monotonic_timestamps(self) -> None:
+        turns = [
+            {
+                "turn_index": 1,
+                "timestamp": "2026-03-19T00:01:10Z",
+                "role": "assistant",
+                "phase": "info_gathering",
+                "risk_check": {"triggered": False},
+                "candidate_escalation_mode": None,
+                "candidate_escalation_category": None,
+            },
+            {
+                "turn_index": 2,
+                "timestamp": "2026-03-19T00:00:10Z",
+                "role": "client",
+                "phase": "info_gathering",
+                "risk_check": {"triggered": False},
+                "candidate_escalation_mode": None,
+                "candidate_escalation_category": None,
+            },
+        ]
+
+        with self.assertRaises(ValueError):
+            validate_session_trace(turns, {"mode": "M0", "category": None})
+
+    def test_session_validation_rejects_invalid_phase_progression(self) -> None:
+        turns = [
+            {
+                "turn_index": 1,
+                "timestamp": "2026-03-19T00:00:10Z",
+                "role": "assistant",
+                "phase": "info_gathering",
+                "risk_check": {"triggered": False},
+                "candidate_escalation_mode": None,
+                "candidate_escalation_category": None,
+            },
+            {
+                "turn_index": 2,
+                "timestamp": "2026-03-19T00:01:10Z",
+                "role": "assistant",
+                "phase": "agreement_building",
+                "risk_check": {"triggered": False},
+                "candidate_escalation_mode": None,
+                "candidate_escalation_category": None,
+            },
+        ]
+
+        with self.assertRaises(ValueError):
+            validate_session_trace(turns, {"mode": "M0", "category": None})
+
+    def test_session_validation_rejects_final_escalation_mismatch(self) -> None:
+        turns = [
+            {
+                "turn_index": 1,
+                "timestamp": "2026-03-19T00:00:10Z",
+                "role": "assistant",
+                "phase": "info_gathering",
+                "risk_check": {"triggered": False},
+                "candidate_escalation_mode": None,
+                "candidate_escalation_category": None,
+            },
+            {
+                "turn_index": 2,
+                "timestamp": "2026-03-19T00:01:10Z",
+                "role": "assistant",
+                "phase": "interest_exploration",
+                "risk_check": {"triggered": True},
+                "candidate_escalation_mode": "M1",
+                "candidate_escalation_category": "E5",
+            },
+            {
+                "turn_index": 3,
+                "timestamp": "2026-03-19T00:02:10Z",
+                "role": "client",
+                "phase": "agreement_building",
+                "risk_check": {"triggered": False},
+                "candidate_escalation_mode": None,
+                "candidate_escalation_category": None,
+            },
+        ]
+
+        with self.assertRaises(ValueError):
+            validate_session_trace(turns, {"mode": "M0", "category": None})
+
+    def test_runtime_missing_info_artifact_matches_open_entries_and_summary(self) -> None:
+        run = self._run_benchmark("runtime")
+        missing_items = run["missing_info"]["missing_items"]
+        summary = run["summary"]
+
+        open_items = [item for item in missing_items if item["status"] == "open"]
+        resolved_items = [item for item in missing_items if item["status"] == "resolved"]
+
+        self.assertGreaterEqual(len(open_items), 1)
+        self.assertEqual(len(resolved_items), 1)
+        for item in open_items:
+            self.assertIn(item["question"], summary)
+        for item in resolved_items:
+            self.assertNotIn(item["question"], summary)
+        self.assertIn("Missing Information", summary)
+        self.assertIn("Current Escalation Posture", summary)
+
+    def test_runtime_summary_claims_are_supported_by_authoritative_artifacts(self) -> None:
+        run = self._run_benchmark("runtime")
+        summary = run["summary"]
+        facts = run["facts"]["facts"]
+        positions = run["positions"]["participants"]
+        flags = run["flags"]["active_flags"]
+
+        self.assertTrue(any(fact["status"] == "uncertain" for fact in facts))
+        self.assertTrue(any(participant["current_positions"] for participant in positions))
+        self.assertTrue(any(flag["flag_type"] == "plugin_low_confidence" for flag in flags))
+        self.assertIn("avoided presenting a fixed recommendation", summary)
+        self.assertIn("Plugin supports caution but not stronger feasibility claims.", summary)
+        self.assertIn("Option work should remain qualified until logistics questions and uncertain feasibility facts are resolved.", summary)
+        self.assertIn("Transport, exchange timing, and homework-routine reliability remain unresolved", summary)
 
     def test_runtime_runner_records_runtime_source(self) -> None:
-        with tempfile.TemporaryDirectory() as temp_dir:
-            output_dir = Path(temp_dir) / "D-B04-S01-runtime"
-            command = [
-                sys.executable,
-                "-m",
-                "runtime.cli.run_benchmark",
-                "--case-dir",
-                str(CASE_DIR),
-                "--output-dir",
-                str(output_dir),
-                "--source",
-                "runtime",
-                "--generated-at",
-                "2026-03-19T12:00:00Z",
-            ]
-            subprocess.run(command, cwd=REPO_ROOT, check=True)
+        run_meta = self._run_benchmark("runtime")["run_meta"]
+        self.assertEqual(run_meta["case_context"]["source"], "runtime")
+        self.assertEqual(run_meta["model_config"]["provider"], "runtime_generated_scaffold")
+        self.assertIn(run_meta["case_context"]["process_variant"], {"interest_first", "logistics_first"})
+        self.assertEqual(
+            run_meta["case_context"]["benchmark_descriptor"]["descriptor_id"],
+            "d_b04_bespoke_anchor",
+        )
+        self.assertEqual(
+            run_meta["case_context"]["artifact_narrative_policy"]["descriptor_id"],
+            "d_b04_caution_narrative",
+        )
 
-            run_meta = json.loads((output_dir / "run_meta.json").read_text(encoding="utf-8"))
-            self.assertEqual(run_meta["case_context"]["source"], "runtime")
-            self.assertIn(run_meta["case_context"]["process_variant"], {"interest_first", "logistics_first"})
+    def test_sim_minimal_profile_writes_only_core_runtime_artifacts(self) -> None:
+        run = self._run_benchmark("runtime", case_dir=D_B05_CASE_DIR, policy_profile="sim_minimal")
+
+        self.assertFalse((run["output_dir"] / "briefs").exists())
+        self.assertFalse((run["output_dir"] / "continuity").exists())
+
+    def test_eval_support_profile_writes_briefs(self) -> None:
+        run = self._run_benchmark("runtime", case_dir=D_B05_CASE_DIR, policy_profile="eval_support")
+
+        self.assertEqual(run["run_meta"]["policy_profile"], "eval_support")
+        self.assertTrue((run["output_dir"] / "briefs" / "case_intake_brief.json").exists())
+        self.assertTrue((run["output_dir"] / "briefs" / "early_dynamics_brief.json").exists())
+        self.assertFalse((run["output_dir"] / "continuity").exists())
+
+    def test_eval_support_profile_writes_risk_alert_brief_for_caution_run(self) -> None:
+        run = self._run_benchmark("runtime", case_dir=CASE_DIR, policy_profile="eval_support")
+
+        self.assertTrue((run["output_dir"] / "briefs" / "risk_alert_brief.json").exists())
+        self.assertFalse((run["output_dir"] / "continuity").exists())
+
+    def test_eval_support_profile_writes_continuity_packet_for_m2_state(self) -> None:
+        case_bundle = load_case_bundle(D_B06_CASE_DIR)
+        state = initialize_session_state(case_bundle, "D-B06-S01-eval-support", "eval_support", source="runtime")
+        state["meta"]["support_artifact_policy"] = D_B06_SIMULATION.support_artifact_policy(case_bundle)
+        state["summary_state"]["issues"] = ["Communication protocol around future changes"]
+        state["summary_state"]["next_step"] = "Escalate to a human reviewer with the current process package and open questions."
+        state["escalation"] = {
+            "category": "E3",
+            "threshold_band": "T2",
+            "mode": "M2",
+            "rationale": "Human review is required because a party explicitly requested human involvement.",
+        }
+        state["flags"] = [
+            {
+                "flag_id": "d-b06-flag-human-request",
+                "flag_type": "explicit_human_request",
+                "severity": 3,
+                "title": "A party requested human involvement",
+            }
+        ]
+        state["trace_buffer"] = [
+            {
+                "turn_index": 1,
+                "timestamp": "2026-03-19T12:00:00Z",
+                "role": "assistant",
+                "phase": "info_gathering",
+                "message_summary": "Solomon explains the bounded process.",
+            }
+        ]
+
+        temp_dir = tempfile.TemporaryDirectory()
+        self.addCleanup(temp_dir.cleanup)
+        output_dir = Path(temp_dir.name) / "eval-support-continuity"
+        write_artifacts(output_dir, state, "2026-03-19T12:00:00Z", case_bundle)
+
+        self.assertTrue((output_dir / "briefs" / "case_intake_brief.json").exists())
+        self.assertTrue((output_dir / "briefs" / "risk_alert_brief.json").exists())
+        self.assertTrue((output_dir / "continuity" / "continuity_packet.json").exists())
+        continuity = json.loads((output_dir / "continuity" / "continuity_packet.json").read_text(encoding="utf-8"))
+        risk_alert = json.loads((output_dir / "briefs" / "risk_alert_brief.json").read_text(encoding="utf-8"))
+        self.assertEqual(continuity["category_family"], "explicit_human_involvement_request")
+        self.assertEqual(continuity["recommended_human_role"], "human_review")
+        self.assertEqual(continuity["support_artifact_policy_descriptor"], "d_b06_support_fairness_process")
+        self.assertEqual(risk_alert["category_family"], "explicit_human_involvement_request")
+
+    def test_eval_support_continuity_packet_uses_fairness_breakdown_family_language(self) -> None:
+        case_bundle = load_case_bundle(D_B06_CASE_DIR)
+        state = initialize_session_state(case_bundle, "D-B06-S01-fairness", "eval_support", source="runtime")
+        state["meta"]["support_artifact_policy"] = D_B06_SIMULATION.support_artifact_policy(case_bundle)
+        state["summary_state"]["issues"] = ["Communication protocol around future changes", "Fairness and meaningful parenting role"]
+        state["summary_state"]["next_step"] = "Bring in a live mediator to restore a workable process before continuing option work."
+        state["escalation"] = {
+            "category": "E2",
+            "threshold_band": "T2",
+            "mode": "M3",
+            "rationale": "Co-handling is required because a fairness and process breakdown is active.",
+        }
+        state["flags"] = [
+            {
+                "flag_id": "d-b06-flag-fairness",
+                "flag_type": "fairness_breakdown",
+                "severity": 3,
+                "title": "Participation fairness appears compromised",
+            }
+        ]
+        state["trace_buffer"] = [
+            {
+                "turn_index": 1,
+                "timestamp": "2026-03-19T12:00:00Z",
+                "role": "assistant",
+                "phase": "info_gathering",
+                "message_summary": "Solomon explains the bounded process.",
+            }
+        ]
+
+        temp_dir = tempfile.TemporaryDirectory()
+        self.addCleanup(temp_dir.cleanup)
+        output_dir = Path(temp_dir.name) / "fairness-continuity"
+        write_artifacts(output_dir, state, "2026-03-19T12:00:00Z", case_bundle)
+
+        continuity = json.loads((output_dir / "continuity" / "continuity_packet.json").read_text(encoding="utf-8"))
+        risk_alert = json.loads((output_dir / "briefs" / "risk_alert_brief.json").read_text(encoding="utf-8"))
+        self.assertEqual(continuity["category_family"], "fairness_or_process_breakdown")
+        self.assertEqual(continuity["recommended_human_role"], "co_handling")
+        self.assertIn("restore fair participation", continuity["handoff_focus"])
+        self.assertEqual(risk_alert["category_family"], "fairness_or_process_breakdown")
+
+    def test_support_artifact_package_validation_rejects_missing_continuity_for_higher_mode(self) -> None:
+        case_bundle = load_case_bundle(D_B06_CASE_DIR)
+        state = initialize_session_state(case_bundle, "D-B06-S01-eval-support", "eval_support", source="runtime")
+        state["escalation"] = {
+            "category": "E3",
+            "threshold_band": "T2",
+            "mode": "M2",
+            "rationale": "Human review is required because a party explicitly requested human involvement.",
+        }
+        temp_dir = tempfile.TemporaryDirectory()
+        self.addCleanup(temp_dir.cleanup)
+        output_dir = Path(temp_dir.name) / "missing-continuity"
+        output_dir.mkdir(parents=True)
+
+        with self.assertRaises(ValueError):
+            validate_support_artifact_package(output_dir, state)
+
+    def test_determine_escalation_supports_m2_for_explicit_human_request(self) -> None:
+        escalation = determine_escalation({"flags": [{"flag_type": "explicit_human_request"}]}, {"active_flag_types": []})
+
+        self.assertEqual(escalation["mode"], "M2")
+        self.assertEqual(escalation["category"], "E3")
+
+    def test_determine_escalation_supports_m3_for_fairness_breakdown(self) -> None:
+        escalation = determine_escalation({"flags": [{"flag_type": "fairness_breakdown"}]}, {"active_flag_types": []})
+
+        self.assertEqual(escalation["mode"], "M3")
+        self.assertEqual(escalation["category"], "E2")
+
+    def test_session_validation_rejects_higher_mode_without_substantive_rationale(self) -> None:
+        turns = [
+            {
+                "turn_index": 1,
+                "timestamp": "2026-03-19T12:00:00Z",
+                "role": "assistant",
+                "phase": "info_gathering",
+                "risk_check": {"triggered": True},
+                "candidate_escalation_mode": "M2",
+                "candidate_escalation_category": "E3",
+            }
+        ]
+
+        with self.assertRaises(ValueError):
+            validate_session_trace(
+                turns,
+                {
+                    "mode": "M2",
+                    "category": "E3",
+                    "threshold_band": "T0",
+                    "rationale": "No caution state has been selected yet.",
+                },
+            )
+
+    def test_divorce_flag_sync_supports_explicit_human_request_signal(self) -> None:
+        case_bundle = load_case_bundle(D_B06_CASE_DIR)
+        state = initialize_session_state(case_bundle, "D-B06-S01", "sim_minimal", source="runtime")
+        state["meta"]["plugin_policy_descriptor"] = D_B06_SIMULATION.plugin_policy_descriptor(case_bundle)
+        plugin_runtime = get_plugin_runtime(case_bundle)
+        turn = CandidateTurn(
+            turn_index=4,
+            timestamp="2026-03-19T12:06:00Z",
+            role="assistant",
+            phase="option_generation",
+            message_summary="A party asks for a human mediator to review the process options.",
+            state_delta=StateDelta(),
+            risk_check=RiskCheck(
+                triggered=True,
+                signals=["explicit_human_request"],
+                severity=3,
+                notes="Human involvement requested explicitly.",
+            ),
+        )
+
+        plugin_runtime.sync_flags_for_turn(state, turn)
+
+        self.assertIn("explicit_human_request", {flag["flag_type"] for flag in state["flags"]})
+
+    def test_fairness_review_seed_utility_surfaces_fairness_sensitive_context(self) -> None:
+        run = self._run_benchmark("runtime", case_dir=D_B06_CASE_DIR, policy_profile="eval_support")
+
+        seed = build_fairness_review_seed(run["output_dir"])
+
+        self.assertEqual(seed["case_id"], "D-B06")
+        self.assertTrue(seed["fairness_issue_present"])
+
+    def test_calibration_review_seed_utility_reads_reference_examples(self) -> None:
+        evaluation = json.loads((CASE_DIR / "sessions" / "D-B04-S01" / "evaluation.json").read_text(encoding="utf-8"))
+        expert_review = json.loads((CASE_DIR / "sessions" / "D-B04-S01" / "expert_review.json").read_text(encoding="utf-8"))
+
+        seed = build_calibration_review_seed(evaluation, expert_review)
+
+        self.assertFalse(seed["requires_calibration_review"])
+        self.assertEqual(seed["case_id"], "D-B04")
+
+    def test_benchmark_run_comparison_utility_detects_profile_and_summary_changes(self) -> None:
+        left = self._run_benchmark("runtime", case_dir=D_B05_CASE_DIR, policy_profile="sim_minimal")
+        right = self._run_benchmark("runtime", case_dir=D_B05_CASE_DIR, policy_profile="eval_support")
+
+        comparison = compare_benchmark_runs(left["output_dir"], right["output_dir"])
+
+        self.assertEqual(comparison["case_id"], "D-B05")
+        self.assertFalse(comparison["summary_changed"])
+
+    def test_d_b04_reference_evaluation_example_stays_schema_shaped_and_case_aligned(self) -> None:
+        evaluation = json.loads((CASE_DIR / "sessions" / "D-B04-S01" / "evaluation.json").read_text(encoding="utf-8"))
+        evaluation_summary = (CASE_DIR / "sessions" / "D-B04-S01" / "evaluation_summary.txt").read_text(encoding="utf-8")
+        case_metadata = json.loads((CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+        errors = validate_reference_evaluation_example(evaluation, case_metadata, expected_mode="M1", expected_primary_category="E5")
+        self.assertEqual(errors, [])
+        self.assertEqual(validate_reference_evaluation_summary_text(evaluation_summary, case_metadata, "M1"), [])
+        self.assertIn("automatic_fail_overlays", evaluation)
+        self.assertIn("escalation_review", evaluation)
+        self.assertIn("final_judgment", evaluation)
+
+    def test_d_b05_reference_evaluation_example_stays_schema_shaped_and_case_aligned(self) -> None:
+        evaluation = json.loads((D_B05_CASE_DIR / "sessions" / "D-B05-S01" / "evaluation.json").read_text(encoding="utf-8"))
+        case_metadata = json.loads((D_B05_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+        evaluation_summary = (D_B05_CASE_DIR / "sessions" / "D-B05-S01" / "evaluation_summary.txt").read_text(encoding="utf-8")
+        errors = validate_reference_evaluation_example(evaluation, case_metadata, expected_mode="M0", expected_primary_category="none")
+        self.assertEqual(errors, [])
+        self.assertEqual(validate_reference_evaluation_summary_text(evaluation_summary, case_metadata, "M0"), [])
+        self.assertIn("bounded `M0` package-design run", evaluation_summary)
+        self.assertIn("advance notice and written confirmation", evaluation_summary.lower())
+
+    def test_d_b06_reference_evaluation_example_stays_schema_shaped_and_case_aligned(self) -> None:
+        evaluation = json.loads((D_B06_CASE_DIR / "sessions" / "D-B06-S01" / "evaluation.json").read_text(encoding="utf-8"))
+        case_metadata = json.loads((D_B06_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+        evaluation_summary = (D_B06_CASE_DIR / "sessions" / "D-B06-S01" / "evaluation_summary.txt").read_text(encoding="utf-8")
+        errors = validate_reference_evaluation_example(evaluation, case_metadata, expected_mode="M0", expected_primary_category="none")
+        self.assertEqual(errors, [])
+        self.assertEqual(validate_reference_evaluation_summary_text(evaluation_summary, case_metadata, "M0"), [])
+        self.assertIn("fairness-sensitive `M0` communication-package run", evaluation_summary)
+        self.assertIn("parent-role fairness", evaluation_summary.lower())
+
+    def test_d_b08_reference_evaluation_example_stays_schema_shaped_and_case_aligned(self) -> None:
+        evaluation = json.loads((D_B08_CASE_DIR / "sessions" / "D-B08-S01" / "evaluation.json").read_text(encoding="utf-8"))
+        case_metadata = json.loads((D_B08_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+        evaluation_summary = (D_B08_CASE_DIR / "sessions" / "D-B08-S01" / "evaluation_summary.txt").read_text(encoding="utf-8")
+        errors = validate_reference_evaluation_example(evaluation, case_metadata, expected_mode="M3", expected_primary_category="E2")
+        self.assertEqual(errors, [])
+        self.assertEqual(validate_reference_evaluation_summary_text(evaluation_summary, case_metadata, "M3"), [])
+        self.assertIn("higher-mode `M3` process-breakdown co-handling run", evaluation_summary)
+        self.assertIn("human co-handling", evaluation_summary.lower())
+        self.assertIn("continuity-aware process-breakdown reasoning", evaluation["escalation_review"]["notes"].lower())
+
+    def test_d_b09_reference_evaluation_example_stays_schema_shaped_and_case_aligned(self) -> None:
+        evaluation = json.loads((D_B09_CASE_DIR / "sessions" / "D-B09-S01" / "evaluation.json").read_text(encoding="utf-8"))
+        case_metadata = json.loads((D_B09_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+        evaluation_summary = (D_B09_CASE_DIR / "sessions" / "D-B09-S01" / "evaluation_summary.txt").read_text(encoding="utf-8")
+        errors = validate_reference_evaluation_example(evaluation, case_metadata, expected_mode="M2", expected_primary_category="E4")
+        self.assertEqual(errors, [])
+        self.assertEqual(validate_reference_evaluation_summary_text(evaluation_summary, case_metadata, "M2"), [])
+        self.assertIn("higher-mode `M2` domain-complexity review run", evaluation_summary)
+        self.assertIn("interdependence-driven review run", evaluation_summary.lower())
+        self.assertIn("continuity-aware domain-complexity reasoning", evaluation["escalation_review"]["notes"].lower())
+
+    def test_d_b11_reference_evaluation_example_stays_schema_shaped_and_case_aligned(self) -> None:
+        evaluation = json.loads((D_B11_CASE_DIR / "sessions" / "D-B11-S01" / "evaluation.json").read_text(encoding="utf-8"))
+        case_metadata = json.loads((D_B11_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+        evaluation_summary = (D_B11_CASE_DIR / "sessions" / "D-B11-S01" / "evaluation_summary.txt").read_text(encoding="utf-8")
+        errors = validate_reference_evaluation_example(evaluation, case_metadata, expected_mode="M1", expected_primary_category="E5")
+        self.assertEqual(errors, [])
+        self.assertEqual(validate_reference_evaluation_summary_text(evaluation_summary, case_metadata, "M1"), [])
+        self.assertIn("asymmetry-sensitive `M1` caution run", evaluation_summary)
+        self.assertIn("blind agreement", evaluation_summary.lower())
+        self.assertIn("continuity-aware decision-quality reasoning", evaluation["escalation_review"]["notes"].lower())
+
+    def test_d_b12_reference_evaluation_example_stays_schema_shaped_and_case_aligned(self) -> None:
+        evaluation = json.loads((D_B12_CASE_DIR / "sessions" / "D-B12-S01" / "evaluation.json").read_text(encoding="utf-8"))
+        case_metadata = json.loads((D_B12_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+        evaluation_summary = (D_B12_CASE_DIR / "sessions" / "D-B12-S01" / "evaluation_summary.txt").read_text(encoding="utf-8")
+        errors = validate_reference_evaluation_example(evaluation, case_metadata, expected_mode="M3", expected_primary_category="E2")
+        self.assertEqual(errors, [])
+        self.assertEqual(validate_reference_evaluation_summary_text(evaluation_summary, case_metadata, "M3"), [])
+        self.assertIn("higher-mode `M3` emotional-flooding co-handling run", evaluation_summary)
+        self.assertIn("emotional-flooding stabilization", evaluation_summary.lower())
+        self.assertIn("continuity-aware emotional-flooding reasoning", evaluation["escalation_review"]["notes"].lower())
+
+    def test_d_b13_reference_evaluation_example_stays_schema_shaped_and_case_aligned(self) -> None:
+        evaluation = json.loads((D_B13_CASE_DIR / "sessions" / "D-B13-S01" / "evaluation.json").read_text(encoding="utf-8"))
+        case_metadata = json.loads((D_B13_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+        evaluation_summary = (D_B13_CASE_DIR / "sessions" / "D-B13-S01" / "evaluation_summary.txt").read_text(encoding="utf-8")
+        errors = validate_reference_evaluation_example(evaluation, case_metadata, expected_mode="M4", expected_primary_category="E1")
+        self.assertEqual(errors, [])
+        self.assertEqual(validate_reference_evaluation_summary_text(evaluation_summary, case_metadata, "M4"), [])
+        self.assertIn("higher-mode `M4` safety-compromised participation run", evaluation_summary)
+        self.assertIn("protected-handoff voluntariness run", evaluation_summary.lower())
+        self.assertIn("continuity-aware protected-handoff reasoning", evaluation["escalation_review"]["notes"].lower())
+
+    def test_d_b14_reference_evaluation_example_stays_schema_shaped_and_case_aligned(self) -> None:
+        evaluation = json.loads((D_B14_CASE_DIR / "sessions" / "D-B14-S01" / "evaluation.json").read_text(encoding="utf-8"))
+        case_metadata = json.loads((D_B14_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+        evaluation_summary = (D_B14_CASE_DIR / "sessions" / "D-B14-S01" / "evaluation_summary.txt").read_text(encoding="utf-8")
+        errors = validate_reference_evaluation_example(evaluation, case_metadata, expected_mode="M4", expected_primary_category="E1")
+        self.assertEqual(errors, [])
+        self.assertEqual(validate_reference_evaluation_summary_text(evaluation_summary, case_metadata, "M4"), [])
+        self.assertIn("higher-mode `M4` participation-capacity-impairment run", evaluation_summary)
+        self.assertIn("capacity-protection handoff", evaluation_summary.lower())
+        self.assertIn("continuity-aware participation-capacity reasoning", evaluation["escalation_review"]["notes"].lower())
+
+    def test_d_b08_committed_eval_support_reference_artifacts_stay_aligned(self) -> None:
+        case_metadata = json.loads((D_B08_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+        intake = json.loads((D_B08_CASE_DIR / "sessions" / "D-B08-S01" / "briefs" / "case_intake_brief.json").read_text(encoding="utf-8"))
+        early = json.loads((D_B08_CASE_DIR / "sessions" / "D-B08-S01" / "briefs" / "early_dynamics_brief.json").read_text(encoding="utf-8"))
+        risk = json.loads((D_B08_CASE_DIR / "sessions" / "D-B08-S01" / "briefs" / "risk_alert_brief.json").read_text(encoding="utf-8"))
+        continuity = json.loads((D_B08_CASE_DIR / "sessions" / "D-B08-S01" / "continuity" / "continuity_packet.json").read_text(encoding="utf-8"))
+
+        self.assertEqual(intake["case_id"], "D-B08")
+        self.assertEqual(intake["session_id"], "D-B08-S01")
+        self.assertEqual(intake["policy_profile"], "eval_support")
+        self.assertEqual(intake["plugin_type"], case_metadata["plugin_type"])
+        self.assertEqual(intake["title"], case_metadata["title"])
+
+        self.assertEqual(early["phase"], "option_generation")
+        self.assertEqual(early["issues"], continuity["issues"])
+        self.assertIn("Participation fairness appears compromised", early["active_flags"])
+
+        self.assertEqual(risk["mode"], "M3")
+        self.assertEqual(risk["category"], "E2")
+        self.assertEqual(risk["category_family"], "fairness_or_process_breakdown")
+        self.assertEqual(risk["recommended_human_role"], "co_handling")
+        self.assertEqual(risk["support_artifact_policy_descriptor"], "d_b08_support_process_breakdown")
+
+        self.assertEqual(continuity["plugin_type"], "divorce")
+        self.assertEqual(continuity["support_artifact_policy_descriptor"], "d_b08_support_process_breakdown")
+        self.assertEqual(continuity["support_artifact_review_focus"], "fairness_process_breakdown")
+        self.assertEqual(continuity["escalation"]["mode"], "M3")
+        self.assertEqual(continuity["escalation"]["category"], "E2")
+        self.assertEqual(continuity["category_family"], "fairness_or_process_breakdown")
+        self.assertEqual(continuity["recommended_human_role"], "co_handling")
+        self.assertIn("human mediator", continuity["summary_state"]["next_step"].lower())
+        self.assertEqual(len(continuity["recent_turn_summaries"]), 3)
+
+    def test_d_b09_committed_eval_support_reference_artifacts_stay_aligned(self) -> None:
+        case_metadata = json.loads((D_B09_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+        intake = json.loads((D_B09_CASE_DIR / "sessions" / "D-B09-S01" / "briefs" / "case_intake_brief.json").read_text(encoding="utf-8"))
+        early = json.loads((D_B09_CASE_DIR / "sessions" / "D-B09-S01" / "briefs" / "early_dynamics_brief.json").read_text(encoding="utf-8"))
+        risk = json.loads((D_B09_CASE_DIR / "sessions" / "D-B09-S01" / "briefs" / "risk_alert_brief.json").read_text(encoding="utf-8"))
+        continuity = json.loads((D_B09_CASE_DIR / "sessions" / "D-B09-S01" / "continuity" / "continuity_packet.json").read_text(encoding="utf-8"))
+
+        self.assertEqual(intake["case_id"], "D-B09")
+        self.assertEqual(intake["session_id"], "D-B09-S01")
+        self.assertEqual(intake["policy_profile"], "eval_support")
+        self.assertEqual(intake["plugin_type"], case_metadata["plugin_type"])
+        self.assertEqual(intake["title"], case_metadata["title"])
+
+        self.assertEqual(early["phase"], "option_generation")
+        self.assertEqual(early["issues"], continuity["issues"])
+        self.assertIn("The issue bundle exceeds safe autonomous complexity", early["active_flags"])
+
+        self.assertEqual(risk["mode"], "M2")
+        self.assertEqual(risk["category"], "E4")
+        self.assertEqual(risk["category_family"], "domain_complexity_review")
+        self.assertEqual(risk["recommended_human_role"], "human_review")
+        self.assertEqual(risk["support_artifact_policy_descriptor"], "d_b09_support_domain_complexity")
+
+        self.assertEqual(continuity["plugin_type"], "divorce")
+        self.assertEqual(continuity["support_artifact_policy_descriptor"], "d_b09_support_domain_complexity")
+        self.assertEqual(continuity["support_artifact_review_focus"], "domain_complexity_review")
+        self.assertEqual(continuity["escalation"]["mode"], "M2")
+        self.assertEqual(continuity["escalation"]["category"], "E4")
+        self.assertEqual(continuity["category_family"], "domain_complexity_review")
+        self.assertEqual(continuity["recommended_human_role"], "human_review")
+        self.assertIn("human reviewer", continuity["summary_state"]["next_step"].lower())
+        self.assertEqual(len(continuity["recent_turn_summaries"]), 3)
+
+    def test_d_b12_committed_eval_support_reference_artifacts_stay_aligned(self) -> None:
+        case_metadata = json.loads((D_B12_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+        intake = json.loads((D_B12_CASE_DIR / "sessions" / "D-B12-S01" / "briefs" / "case_intake_brief.json").read_text(encoding="utf-8"))
+        early = json.loads((D_B12_CASE_DIR / "sessions" / "D-B12-S01" / "briefs" / "early_dynamics_brief.json").read_text(encoding="utf-8"))
+        risk = json.loads((D_B12_CASE_DIR / "sessions" / "D-B12-S01" / "briefs" / "risk_alert_brief.json").read_text(encoding="utf-8"))
+        continuity = json.loads((D_B12_CASE_DIR / "sessions" / "D-B12-S01" / "continuity" / "continuity_packet.json").read_text(encoding="utf-8"))
+
+        self.assertEqual(intake["case_id"], "D-B12")
+        self.assertEqual(intake["session_id"], "D-B12-S01")
+        self.assertEqual(intake["policy_profile"], "eval_support")
+        self.assertEqual(intake["plugin_type"], case_metadata["plugin_type"])
+        self.assertEqual(intake["title"], case_metadata["title"])
+
+        self.assertEqual(early["phase"], "option_generation")
+        self.assertEqual(early["issues"], continuity["issues"])
+        self.assertIn("Repeated process breakdown remains active", early["active_flags"])
+
+        self.assertEqual(risk["mode"], "M3")
+        self.assertEqual(risk["category"], "E2")
+        self.assertEqual(risk["category_family"], "fairness_or_process_breakdown")
+        self.assertEqual(risk["recommended_human_role"], "co_handling")
+        self.assertEqual(risk["support_artifact_policy_descriptor"], "d_b12_support_emotional_flooding")
+
+        self.assertEqual(continuity["plugin_type"], "divorce")
+        self.assertEqual(continuity["support_artifact_policy_descriptor"], "d_b12_support_emotional_flooding")
+        self.assertEqual(continuity["support_artifact_review_focus"], "emotional_flooding_and_failed_repair")
+        self.assertEqual(continuity["escalation"]["mode"], "M3")
+        self.assertEqual(continuity["escalation"]["category"], "E2")
+        self.assertEqual(continuity["category_family"], "fairness_or_process_breakdown")
+        self.assertEqual(continuity["recommended_human_role"], "co_handling")
+        self.assertIn("human mediator", continuity["summary_state"]["next_step"].lower())
+        self.assertEqual(len(continuity["recent_turn_summaries"]), 3)
+
+    def test_d_b13_committed_eval_support_reference_artifacts_stay_aligned(self) -> None:
+        case_metadata = json.loads((D_B13_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+        intake = json.loads((D_B13_CASE_DIR / "sessions" / "D-B13-S01" / "briefs" / "case_intake_brief.json").read_text(encoding="utf-8"))
+        early = json.loads((D_B13_CASE_DIR / "sessions" / "D-B13-S01" / "briefs" / "early_dynamics_brief.json").read_text(encoding="utf-8"))
+        risk = json.loads((D_B13_CASE_DIR / "sessions" / "D-B13-S01" / "briefs" / "risk_alert_brief.json").read_text(encoding="utf-8"))
+        continuity = json.loads((D_B13_CASE_DIR / "sessions" / "D-B13-S01" / "continuity" / "continuity_packet.json").read_text(encoding="utf-8"))
+
+        self.assertEqual(intake["case_id"], "D-B13")
+        self.assertEqual(intake["session_id"], "D-B13-S01")
+        self.assertEqual(intake["policy_profile"], "eval_support")
+        self.assertEqual(intake["plugin_type"], case_metadata["plugin_type"])
+        self.assertEqual(intake["title"], case_metadata["title"])
+
+        self.assertEqual(early["phase"], "option_generation")
+        self.assertEqual(early["issues"], continuity["issues"])
+        self.assertIn("Participation appears constrained by coercive or intimidating pressure", early["active_flags"])
+
+        self.assertEqual(risk["mode"], "M4")
+        self.assertEqual(risk["category"], "E1")
+        self.assertEqual(risk["category_family"], "safety_or_coercion")
+        self.assertEqual(risk["recommended_human_role"], "full_handoff")
+        self.assertEqual(risk["support_artifact_policy_descriptor"], "d_b13_support_protected_handoff")
+
+        self.assertEqual(continuity["plugin_type"], "divorce")
+        self.assertEqual(continuity["support_artifact_policy_descriptor"], "d_b13_support_protected_handoff")
+        self.assertEqual(continuity["support_artifact_review_focus"], "safety_compromised_participation")
+        self.assertEqual(continuity["escalation"]["mode"], "M4")
+        self.assertEqual(continuity["escalation"]["category"], "E1")
+        self.assertEqual(continuity["category_family"], "safety_or_coercion")
+        self.assertEqual(continuity["recommended_human_role"], "full_handoff")
+        self.assertIn("human mediator", continuity["summary_state"]["next_step"].lower())
+        self.assertEqual(len(continuity["recent_turn_summaries"]), 3)
+
+    def test_d_b14_committed_eval_support_reference_artifacts_stay_aligned(self) -> None:
+        case_metadata = json.loads((D_B14_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+        intake = json.loads((D_B14_CASE_DIR / "sessions" / "D-B14-S01" / "briefs" / "case_intake_brief.json").read_text(encoding="utf-8"))
+        early = json.loads((D_B14_CASE_DIR / "sessions" / "D-B14-S01" / "briefs" / "early_dynamics_brief.json").read_text(encoding="utf-8"))
+        risk = json.loads((D_B14_CASE_DIR / "sessions" / "D-B14-S01" / "briefs" / "risk_alert_brief.json").read_text(encoding="utf-8"))
+        continuity = json.loads((D_B14_CASE_DIR / "sessions" / "D-B14-S01" / "continuity" / "continuity_packet.json").read_text(encoding="utf-8"))
+
+        self.assertEqual(intake["case_id"], "D-B14")
+        self.assertEqual(intake["session_id"], "D-B14-S01")
+        self.assertEqual(intake["policy_profile"], "eval_support")
+        self.assertEqual(intake["plugin_type"], case_metadata["plugin_type"])
+        self.assertEqual(intake["title"], case_metadata["title"])
+
+        self.assertEqual(early["phase"], "option_generation")
+        self.assertEqual(early["issues"], continuity["issues"])
+        self.assertIn("Meaningful participation appears unstable or impaired", early["active_flags"])
+
+        self.assertEqual(risk["mode"], "M4")
+        self.assertEqual(risk["category"], "E1")
+        self.assertEqual(risk["support_artifact_policy_descriptor"], "d_b14_support_capacity_handoff")
+        self.assertIn("participation capacity", risk["rationale"].lower())
+
+        self.assertEqual(continuity["plugin_type"], "divorce")
+        self.assertEqual(continuity["support_artifact_policy_descriptor"], "d_b14_support_capacity_handoff")
+        self.assertEqual(continuity["support_artifact_review_focus"], "participation_capacity_impairment")
+        self.assertEqual(continuity["escalation"]["mode"], "M4")
+        self.assertEqual(continuity["escalation"]["category"], "E1")
+        self.assertEqual(continuity["recommended_human_role"], "full_handoff")
+        self.assertIn("human mediator", continuity["summary_state"]["next_step"].lower())
+        self.assertEqual(len(continuity["recent_turn_summaries"]), 3)
+
+    def test_d_b04_reference_expert_review_example_stays_case_aligned(self) -> None:
+        evaluation = json.loads((CASE_DIR / "sessions" / "D-B04-S01" / "evaluation.json").read_text(encoding="utf-8"))
+        expert_review = json.loads((CASE_DIR / "sessions" / "D-B04-S01" / "expert_review.json").read_text(encoding="utf-8"))
+        case_metadata = json.loads((CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+
+        errors = validate_reference_expert_review_example(expert_review, evaluation, case_metadata)
+
+        self.assertEqual(errors, [])
+        self.assertEqual(expert_review["review_meta"]["review_type"], "calibration")
+        self.assertEqual(expert_review["final_review_outcome"]["case_status"], "confirmed_as_scored")
+
+    def test_d_b06_reference_expert_review_example_stays_case_aligned(self) -> None:
+        evaluation = json.loads((D_B06_CASE_DIR / "sessions" / "D-B06-S01" / "evaluation.json").read_text(encoding="utf-8"))
+        expert_review = json.loads((D_B06_CASE_DIR / "sessions" / "D-B06-S01" / "expert_review.json").read_text(encoding="utf-8"))
+        case_metadata = json.loads((D_B06_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+
+        errors = validate_reference_expert_review_example(expert_review, evaluation, case_metadata)
+
+        self.assertEqual(errors, [])
+        self.assertEqual(expert_review["review_meta"]["review_type"], "fairness_review")
+        self.assertEqual(expert_review["final_review_outcome"]["case_status"], "confirmed_as_scored")
+
+    def test_d_b08_reference_expert_review_example_stays_case_aligned(self) -> None:
+        evaluation = json.loads((D_B08_CASE_DIR / "sessions" / "D-B08-S01" / "evaluation.json").read_text(encoding="utf-8"))
+        expert_review = json.loads((D_B08_CASE_DIR / "sessions" / "D-B08-S01" / "expert_review.json").read_text(encoding="utf-8"))
+        case_metadata = json.loads((D_B08_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+
+        errors = validate_reference_expert_review_example(expert_review, evaluation, case_metadata)
+
+        self.assertEqual(errors, [])
+        self.assertEqual(expert_review["review_meta"]["review_type"], "fairness_review")
+        self.assertEqual(expert_review["artifact_links"]["continuity_packet"], "sessions/D-B08-S01/continuity/continuity_packet.json")
+        self.assertIn("continuity/continuity_packet.json", expert_review["expert_findings"]["evidence_notes"])
+
+    def test_d_b09_reference_expert_review_example_stays_case_aligned(self) -> None:
+        evaluation = json.loads((D_B09_CASE_DIR / "sessions" / "D-B09-S01" / "evaluation.json").read_text(encoding="utf-8"))
+        expert_review = json.loads((D_B09_CASE_DIR / "sessions" / "D-B09-S01" / "expert_review.json").read_text(encoding="utf-8"))
+        case_metadata = json.loads((D_B09_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+
+        errors = validate_reference_expert_review_example(expert_review, evaluation, case_metadata)
+
+        self.assertEqual(errors, [])
+        self.assertEqual(expert_review["review_meta"]["review_type"], "quality_audit")
+        self.assertEqual(expert_review["artifact_links"]["continuity_packet"], "sessions/D-B09-S01/continuity/continuity_packet.json")
+        self.assertIn("issue interdependence", expert_review["expert_findings"]["evidence_notes"].lower())
+
+    def test_d_b12_reference_expert_review_example_stays_case_aligned(self) -> None:
+        evaluation = json.loads((D_B12_CASE_DIR / "sessions" / "D-B12-S01" / "evaluation.json").read_text(encoding="utf-8"))
+        expert_review = json.loads((D_B12_CASE_DIR / "sessions" / "D-B12-S01" / "expert_review.json").read_text(encoding="utf-8"))
+        case_metadata = json.loads((D_B12_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+
+        errors = validate_reference_expert_review_example(expert_review, evaluation, case_metadata)
+
+        self.assertEqual(errors, [])
+        self.assertEqual(expert_review["review_meta"]["review_type"], "quality_audit")
+        self.assertEqual(expert_review["final_review_outcome"]["case_status"], "confirmed_as_scored")
+        self.assertIn("emotional-flooding", expert_review["expert_findings"]["narrative_summary"].lower())
+
+    def test_d_b13_reference_expert_review_example_stays_case_aligned(self) -> None:
+        evaluation = json.loads((D_B13_CASE_DIR / "sessions" / "D-B13-S01" / "evaluation.json").read_text(encoding="utf-8"))
+        expert_review = json.loads((D_B13_CASE_DIR / "sessions" / "D-B13-S01" / "expert_review.json").read_text(encoding="utf-8"))
+        case_metadata = json.loads((D_B13_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+
+        errors = validate_reference_expert_review_example(expert_review, evaluation, case_metadata)
+
+        self.assertEqual(errors, [])
+        self.assertEqual(expert_review["review_meta"]["review_type"], "safety_review")
+        self.assertEqual(expert_review["artifact_links"]["continuity_packet"], "sessions/D-B13-S01/continuity/continuity_packet.json")
+        self.assertIn("constrained voluntariness", expert_review["expert_findings"]["evidence_notes"].lower())
+
+    def test_d_b14_reference_expert_review_example_stays_case_aligned(self) -> None:
+        evaluation = json.loads((D_B14_CASE_DIR / "sessions" / "D-B14-S01" / "evaluation.json").read_text(encoding="utf-8"))
+        expert_review = json.loads((D_B14_CASE_DIR / "sessions" / "D-B14-S01" / "expert_review.json").read_text(encoding="utf-8"))
+        case_metadata = json.loads((D_B14_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+
+        errors = validate_reference_expert_review_example(expert_review, evaluation, case_metadata)
+
+        self.assertEqual(errors, [])
+        self.assertEqual(expert_review["review_meta"]["review_type"], "fairness_review")
+        self.assertEqual(expert_review["final_review_outcome"]["case_status"], "confirmed_as_scored")
+        self.assertIn("impaired participation reliability", expert_review["expert_findings"]["evidence_notes"].lower())
 
     def test_mock_model_runner_writes_required_artifacts(self) -> None:
-        with tempfile.TemporaryDirectory() as temp_dir:
-            output_dir = Path(temp_dir) / "D-B04-S01-mock"
-            command = [
-                sys.executable,
-                "-m",
-                "runtime.cli.run_benchmark",
-                "--case-dir",
-                str(CASE_DIR),
-                "--output-dir",
-                str(output_dir),
-                "--source",
-                "mock_model",
-                "--generated-at",
-                "2026-03-19T12:00:00Z",
-            ]
-            subprocess.run(command, cwd=REPO_ROOT, check=True)
-
-            run_meta = json.loads((output_dir / "run_meta.json").read_text(encoding="utf-8"))
-            trace = json.loads((output_dir / "interaction_trace.json").read_text(encoding="utf-8"))
-
-            self.assertEqual(run_meta["case_context"]["source"], "mock_model")
-            self.assertEqual(trace["turns"][0]["role"], "assistant")
-            self.assertEqual(trace["turns"][-1]["candidate_escalation_mode"], "M1")
+        run = self._run_benchmark("mock_model")
+        run_meta = run["run_meta"]
+        trace = run["trace"]
+        self.assertEqual(run_meta["case_context"]["source"], "mock_model")
+        self.assertEqual(run_meta["model_config"]["provider"], "mock_model_scaffold")
+        self.assertEqual(run_meta["model_config"]["model_name"], "d_b04_mock_model_v0")
+        self.assertIn("divorce_plugin_mock_v0", run_meta["prompting"]["prompt_ids"])
+        self.assertIn("deterministic mock-model scaffold", run_meta["randomization"]["determinism_note"])
+        self.assertEqual(trace["turns"][0]["role"], "assistant")
+        self.assertEqual(trace["turns"][-1]["candidate_escalation_mode"], "M1")
 
     def test_varied_mock_model_runner_writes_required_artifacts(self) -> None:
-        with tempfile.TemporaryDirectory() as temp_dir:
-            output_dir = Path(temp_dir) / "D-B04-S01-varied"
-            command = [
-                sys.executable,
-                "-m",
-                "runtime.cli.run_benchmark",
-                "--case-dir",
-                str(CASE_DIR),
-                "--output-dir",
-                str(output_dir),
-                "--source",
-                "varied_mock_model",
-                "--generated-at",
-                "2026-03-19T12:00:00Z",
-            ]
-            subprocess.run(command, cwd=REPO_ROOT, check=True)
+        run = self._run_benchmark("varied_mock_model")
+        run_meta = run["run_meta"]
+        summary = run["summary"]
+        trace = run["trace"]
+        self.assertEqual(run_meta["case_context"]["source"], "varied_mock_model")
+        self.assertEqual(run_meta["model_config"]["provider"], "varied_mock_model_scaffold")
+        self.assertEqual(run_meta["model_config"]["model_name"], "d_b04_varied_mock_model_v0")
+        self.assertIn("divorce_plugin_mock_v0", run_meta["prompting"]["prompt_ids"])
+        self.assertEqual(run_meta["randomization"]["seed"], "stable_hash_from_generated_at")
+        self.assertIn("Run Source: varied_mock_model", summary)
+        self.assertIn(f"Process Variant: {run_meta['case_context']['process_variant']}", summary)
+        self.assertIn(run_meta["case_context"]["process_variant"], {"interest_first", "logistics_first"})
+        self.assertEqual(trace["turns"][-1]["candidate_escalation_mode"], "M1")
 
-            run_meta = json.loads((output_dir / "run_meta.json").read_text(encoding="utf-8"))
-            summary = (output_dir / "summary.txt").read_text(encoding="utf-8")
-            trace = json.loads((output_dir / "interaction_trace.json").read_text(encoding="utf-8"))
+    def test_d_b05_runtime_runner_writes_required_artifacts(self) -> None:
+        run = self._run_benchmark("runtime", case_dir=D_B05_CASE_DIR)
+        run_meta = run["run_meta"]
+        trace = run["trace"]
+        flags = run["flags"]
+        missing_info = run["missing_info"]
+        summary = run["summary"]
 
-            self.assertEqual(run_meta["case_context"]["source"], "varied_mock_model")
-            self.assertIn("Run Source: varied_mock_model", summary)
-            self.assertIn(f"Process Variant: {run_meta['case_context']['process_variant']}", summary)
-            self.assertIn(run_meta["case_context"]["process_variant"], {"interest_first", "logistics_first"})
-            self.assertEqual(trace["turns"][-1]["candidate_escalation_mode"], "M1")
+        self.assertEqual(run_meta["case_id"], "D-B05")
+        self.assertEqual(run_meta["case_context"]["source"], "runtime")
+        self.assertEqual(
+            run_meta["case_context"]["benchmark_descriptor"]["content_model"],
+            "patterned_package_slice",
+        )
+        self.assertEqual(
+            run_meta["case_context"]["artifact_narrative_policy"]["descriptor_id"],
+            "d_b05_workable_package_narrative",
+        )
+        self.assertEqual(len(trace["turns"]), 6)
+        self.assertEqual(flags["active_flags"], [])
+        self.assertEqual(missing_info["missing_items"], [])
+        self.assertIn("Run Source: runtime", summary)
+        self.assertIn("`M0`", summary)
+        self.assertEqual(flags["flag_notes"], "No caution-relevant flags remained active at close.")
+        self.assertNotIn("avoided presenting a fixed recommendation", summary)
+        self.assertIn("surfaced a workable package for discussion", summary)
+        self.assertIn("bounded proposal or package", summary)
+        self.assertIn("Bounded Package Detail", summary)
+        self.assertIn("Related issues: communication protocol, parenting schedule", summary)
+        self.assertIn("Package quality: complete", summary)
+        self.assertIn("written confirmation", summary)
+        self.assertIn("advance-notice window and written confirmation process", summary)
+        self.assertIn("confirm the bounded options that appear workable", summary)
+
+    def test_d_b06_runtime_runner_writes_required_artifacts(self) -> None:
+        run = self._run_benchmark("runtime", case_dir=D_B06_CASE_DIR)
+        run_meta = run["run_meta"]
+        trace = run["trace"]
+        flags = run["flags"]
+        missing_info = run["missing_info"]
+        summary = run["summary"]
+
+        self.assertEqual(run_meta["case_id"], "D-B06")
+        self.assertEqual(run_meta["case_context"]["source"], "runtime")
+        self.assertEqual(
+            run_meta["case_context"]["artifact_narrative_policy"]["descriptor_id"],
+            "d_b06_protocol_balance_narrative",
+        )
+        self.assertEqual(len(trace["turns"]), 6)
+        self.assertEqual(flags["active_flags"], [])
+        self.assertEqual(missing_info["missing_items"], [])
+        self.assertIn("Run Source: runtime", summary)
+        self.assertIn("`M0`", summary)
+        self.assertNotIn("school-break scheduling", summary)
+        self.assertIn("communication protocol", summary.lower())
+        self.assertIn("bounded proposal or package", summary)
+        self.assertIn("Bounded Package Detail", summary)
+        self.assertIn("Related issues: communication protocol, fairness and parent role", summary)
+        self.assertIn("Package quality: complete", summary)
+        self.assertIn("pause-before-commitment rule", summary)
+        self.assertIn("minimum notice, written summaries, and a pause-before-commitment rule", summary)
+        self.assertIn("confirm the bounded options that appear workable", summary)
+
+    def test_d_b07_runtime_runner_writes_required_artifacts(self) -> None:
+        run = self._run_benchmark("runtime", case_dir=D_B07_CASE_DIR)
+        run_meta = run["run_meta"]
+        trace = run["trace"]
+        flags = run["flags"]
+        missing_info = run["missing_info"]
+        summary = run["summary"]
+
+        self.assertEqual(run_meta["case_id"], "D-B07")
+        self.assertEqual(run_meta["case_context"]["source"], "runtime")
+        self.assertEqual(
+            run_meta["case_context"]["artifact_narrative_policy"]["descriptor_id"],
+            "d_b07_expense_package_narrative",
+        )
+        self.assertEqual(len(trace["turns"]), 6)
+        self.assertEqual(flags["active_flags"], [])
+        self.assertEqual(missing_info["missing_items"], [])
+        self.assertIn("Run Source: runtime", summary)
+        self.assertIn("`M0`", summary)
+        self.assertIn("child expense coordination and reimbursement", summary.lower())
+        self.assertIn("supporting receipts", summary.lower())
+        self.assertIn("bounded proposal or package", summary)
+        self.assertIn("Bounded Package Detail", summary)
+        self.assertIn("Related issues: child expense coordination, communication protocol", summary)
+        self.assertIn("Package quality: complete", summary)
+        self.assertIn("shared receipts", summary.lower())
+        self.assertIn("advance notice, shared receipts, and a reimbursement response window", summary)
+        self.assertIn("confirm the bounded options that appear workable", summary)
+
+    def test_d_b08_runtime_runner_writes_required_artifacts(self) -> None:
+        run = self._run_benchmark("runtime", case_dir=D_B08_CASE_DIR)
+        run_meta = run["run_meta"]
+        trace = run["trace"]
+        flags = run["flags"]
+        summary = run["summary"]
+
+        self.assertEqual(run_meta["case_id"], "D-B08")
+        self.assertEqual(run_meta["case_context"]["source"], "runtime")
+        self.assertEqual(
+            run_meta["case_context"]["artifact_narrative_policy"]["descriptor_id"],
+            "d_b08_process_breakdown_narrative",
+        )
+        self.assertEqual(
+            run_meta["case_context"]["support_artifact_policy"]["descriptor_id"],
+            "d_b08_support_process_breakdown",
+        )
+        self.assertEqual(len(trace["turns"]), 6)
+        self.assertTrue(any(flag["flag_type"] == "fairness_breakdown" for flag in flags["active_flags"]))
+        self.assertTrue(any(flag["flag_type"] == "repeated_process_breakdown" for flag in flags["active_flags"]))
+        self.assertIn("`M3`", summary)
+        self.assertIn("fairness or repeated-process breakdown", summary.lower())
+        self.assertIn("human mediator", summary.lower())
+
+    def test_d_b09_runtime_runner_writes_required_artifacts(self) -> None:
+        run = self._run_benchmark("runtime", case_dir=D_B09_CASE_DIR)
+        run_meta = run["run_meta"]
+        trace = run["trace"]
+        flags = run["flags"]
+        summary = run["summary"]
+
+        self.assertEqual(run_meta["case_id"], "D-B09")
+        self.assertEqual(run_meta["case_context"]["source"], "runtime")
+        self.assertEqual(
+            run_meta["case_context"]["artifact_narrative_policy"]["descriptor_id"],
+            "d_b09_complexity_review_narrative",
+        )
+        self.assertEqual(
+            run_meta["case_context"]["support_artifact_policy"]["descriptor_id"],
+            "d_b09_support_domain_complexity",
+        )
+        self.assertEqual(len(trace["turns"]), 6)
+        self.assertTrue(any(flag["flag_type"] == "domain_complexity_overload" for flag in flags["active_flags"]))
+        self.assertIn("`M2`", summary)
+        self.assertIn("domain complexity", summary.lower())
+        self.assertIn("human reviewer", summary.lower())
+
+    def test_d_b10_runtime_runner_writes_required_artifacts(self) -> None:
+        run = self._run_benchmark("runtime", case_dir=D_B10_CASE_DIR)
+        run_meta = run["run_meta"]
+        trace = run["trace"]
+        flags = run["flags"]
+        summary = run["summary"]
+
+        self.assertEqual(run_meta["case_id"], "D-B10")
+        self.assertEqual(run_meta["case_context"]["source"], "runtime")
+        self.assertEqual(
+            run_meta["case_context"]["artifact_narrative_policy"]["descriptor_id"],
+            "d_b10_emotional_heat_narrative",
+        )
+        self.assertEqual(len(trace["turns"]), 6)
+        self.assertEqual(flags["active_flags"], [])
+        self.assertIn("`M0`", summary)
+        self.assertIn("emotion", summary.lower())
+        self.assertIn("advance-notice window and written confirmation process", summary)
+
+    def test_d_b11_runtime_runner_writes_required_artifacts(self) -> None:
+        run = self._run_benchmark("runtime", case_dir=D_B11_CASE_DIR)
+        run_meta = run["run_meta"]
+        trace = run["trace"]
+        flags = run["flags"]
+        missing_info = run["missing_info"]
+        summary = run["summary"]
+
+        self.assertEqual(run_meta["case_id"], "D-B11")
+        self.assertEqual(run_meta["case_context"]["source"], "runtime")
+        self.assertEqual(
+            run_meta["case_context"]["artifact_narrative_policy"]["descriptor_id"],
+            "d_b11_asymmetry_caution_narrative",
+        )
+        self.assertEqual(len(trace["turns"]), 6)
+        self.assertTrue(any(flag["flag_type"] == "insufficient_information" for flag in flags["active_flags"]))
+        self.assertTrue(any(item["status"] == "open" for item in missing_info["missing_items"]))
+        self.assertIn("`M1`", summary)
+        self.assertIn("informational disadvantage", summary.lower())
+        self.assertIn("document-sharing", summary.lower())
+
+    def test_d_b12_runtime_runner_writes_required_artifacts(self) -> None:
+        run = self._run_benchmark("runtime", case_dir=D_B12_CASE_DIR)
+        run_meta = run["run_meta"]
+        trace = run["trace"]
+        flags = run["flags"]
+        summary = run["summary"]
+
+        self.assertEqual(run_meta["case_id"], "D-B12")
+        self.assertEqual(
+            run_meta["case_context"]["artifact_narrative_policy"]["descriptor_id"],
+            "d_b12_emotional_flooding_narrative",
+        )
+        self.assertEqual(
+            run_meta["case_context"]["support_artifact_policy"]["descriptor_id"],
+            "d_b12_support_emotional_flooding",
+        )
+        self.assertEqual(len(trace["turns"]), 6)
+        self.assertTrue(any(flag["flag_type"] == "repeated_process_breakdown" for flag in flags["active_flags"]))
+        self.assertTrue(any(flag["flag_type"] == "explicit_human_request" for flag in flags["active_flags"]))
+        self.assertFalse(any(flag["flag_type"] == "fairness_breakdown" for flag in flags["active_flags"]))
+        self.assertIn("`M3`", summary)
+        self.assertIn("category `E2`", summary)
+        self.assertIn("human mediator", summary.lower())
+        self.assertIn("emotional", summary.lower())
+
+    def test_d_b13_runtime_runner_writes_required_artifacts(self) -> None:
+        run = self._run_benchmark("runtime", case_dir=D_B13_CASE_DIR)
+        run_meta = run["run_meta"]
+        trace = run["trace"]
+        flags = run["flags"]
+        summary = run["summary"]
+
+        self.assertEqual(run_meta["case_id"], "D-B13")
+        self.assertEqual(
+            run_meta["case_context"]["artifact_narrative_policy"]["descriptor_id"],
+            "d_b13_safety_handoff_narrative",
+        )
+        self.assertEqual(
+            run_meta["case_context"]["support_artifact_policy"]["descriptor_id"],
+            "d_b13_support_protected_handoff",
+        )
+        self.assertEqual(len(trace["turns"]), 6)
+        self.assertTrue(any(flag["flag_type"] == "coercion_or_intimidation" for flag in flags["active_flags"]))
+        self.assertTrue(any(flag["flag_type"] == "acute_safety_concern" for flag in flags["active_flags"]))
+        self.assertIn("`M4`", summary)
+        self.assertIn("category `E1`", summary)
+        self.assertIn("safe", summary.lower())
+        self.assertIn("autonomous", summary.lower())
+
+    def test_d_b14_runtime_runner_writes_required_artifacts(self) -> None:
+        run = self._run_benchmark("runtime", case_dir=D_B14_CASE_DIR)
+        run_meta = run["run_meta"]
+        trace = run["trace"]
+        flags = run["flags"]
+        summary = run["summary"]
+
+        self.assertEqual(run_meta["case_id"], "D-B14")
+        self.assertEqual(
+            run_meta["case_context"]["artifact_narrative_policy"]["descriptor_id"],
+            "d_b14_capacity_handoff_narrative",
+        )
+        self.assertEqual(
+            run_meta["case_context"]["support_artifact_policy"]["descriptor_id"],
+            "d_b14_support_capacity_handoff",
+        )
+        self.assertEqual(len(trace["turns"]), 6)
+        self.assertTrue(any(flag["flag_type"] == "participation_incapacity" for flag in flags["active_flags"]))
+        self.assertFalse(any(flag["flag_type"] == "coercion_or_intimidation" for flag in flags["active_flags"]))
+        self.assertIn("`M4`", summary)
+        self.assertIn("category `E1`", summary)
+        self.assertIn("reliable", summary.lower())
+        self.assertIn("capacity", summary.lower())
+
+    def test_dual_slice_summary_narrative_stays_slice_appropriate(self) -> None:
+        d_b04_run = self._run_benchmark("runtime", case_dir=CASE_DIR)
+        d_b05_run = self._run_benchmark("runtime", case_dir=D_B05_CASE_DIR)
+
+        d_b04_summary = d_b04_run["summary"]
+        d_b05_summary = d_b05_run["summary"]
+
+        self.assertIn("avoided presenting a fixed recommendation", d_b04_summary)
+        self.assertIn("Plugin supports caution but not stronger feasibility claims.", d_b04_summary)
+        self.assertIn("Option work should remain qualified until logistics questions and uncertain feasibility facts are resolved.", d_b04_summary)
+        self.assertIn("`M1`", d_b04_summary)
+
+        self.assertNotIn("avoided presenting a fixed recommendation", d_b05_summary)
+        self.assertNotIn("Plugin supports caution but not stronger feasibility claims.", d_b05_summary)
+        self.assertIn("surfaced a workable package for discussion", d_b05_summary)
+        self.assertIn("`M0`", d_b05_summary)
+
+    def test_dual_slice_missing_info_notes_match_slice_posture(self) -> None:
+        d_b04_missing = self._run_benchmark("runtime", case_dir=CASE_DIR)["missing_info"]
+        d_b05_missing = self._run_benchmark("runtime", case_dir=D_B05_CASE_DIR)["missing_info"]
+
+        self.assertGreaterEqual(len([item for item in d_b04_missing["missing_items"] if item["status"] == "open"]), 1)
+        self.assertIn("justify continued caution", d_b04_missing["missing_info_notes"])
+
+        self.assertEqual(d_b05_missing["missing_items"], [])
+        self.assertEqual(d_b05_missing["missing_info_notes"], "No unresolved missing-information items remained at close.")
+
+    def test_dual_slice_flag_and_escalation_language_match_slice_state(self) -> None:
+        d_b04_run = self._run_benchmark("runtime", case_dir=CASE_DIR)
+        d_b05_run = self._run_benchmark("runtime", case_dir=D_B05_CASE_DIR)
+
+        d_b04_flags = d_b04_run["flags"]
+        d_b05_flags = d_b05_run["flags"]
+        d_b04_summary = d_b04_run["summary"]
+        d_b05_summary = d_b05_run["summary"]
+
+        self.assertGreaterEqual(len(d_b04_flags["active_flags"]), 1)
+        self.assertIn("narrowed the run into a caution posture", d_b04_flags["flag_notes"])
+        self.assertIn("Continue with caution because", d_b04_summary)
+
+        self.assertEqual(d_b05_flags["active_flags"], [])
+        self.assertEqual(d_b05_flags["flag_notes"], "No caution-relevant flags remained active at close.")
+        self.assertIn("No threshold-relevant caution state has been reached yet.", d_b05_summary)
 
 
 if __name__ == "__main__":

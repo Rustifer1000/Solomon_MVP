@@ -1,0 +1,55 @@
+{
+  "schema_version": "case_intake_brief.v0",
+  "case_id": "D-B08",
+  "session_id": "D-B08-S01",
+  "policy_profile": "eval_support",
+  "plugin_type": "divorce",
+  "title": "Repeated interruption and procedural domination with co-handling escalation",
+  "scenario_summary": "Two divorced parents are trying to address a child-related dispute, but one repeatedly controls pace, framing, and airtime. The other becomes quieter, more defensive, and ultimately asks for human involvement because the process no longer feels balanced enough to continue autonomously.",
+  "expected_mode_range": [
+    "M1",
+    "M2",
+    "M3"
+  ],
+  "intended_challenge_type": "Process-breakdown detection and escalation calibration between repair attempts and human co-handling.",
+  "participant_snapshots": [
+    {
+      "participant_id": "spouse_A",
+      "role_label": "Parent A",
+      "public_goals": [
+        "Keep the conversation focused and avoid repeated circling.",
+        "Make sure practical concerns are not buried under long emotional explanations.",
+        "Reach a clear next step without the discussion drifting."
+      ],
+      "interest_profile": [
+        "Clarity",
+        "Efficiency",
+        "Not repeating the same argument",
+        "Feeling understood as practical rather than controlling"
+      ],
+      "starting_positions": [
+        "Primary position: the discussion needs tighter control because too much airtime is being lost to repetition.",
+        "Secondary position: if the conversation stays focused, a next step should be obvious without adding another person."
+      ]
+    },
+    {
+      "participant_id": "spouse_B",
+      "role_label": "Parent B",
+      "public_goals": [
+        "Be able to explain concerns without being cut off or reframed immediately.",
+        "Have the process feel balanced before substantive decisions continue.",
+        "Get human involvement if the discussion keeps feeling one-sided."
+      ],
+      "interest_profile": [
+        "Fair participation",
+        "Being heard fully",
+        "Trust in the process",
+        "Human backup if the process is not staying balanced"
+      ],
+      "starting_positions": [
+        "Primary position: the process needs more protection because being interrupted keeps changing what gets heard.",
+        "Secondary position: if the balance cannot be restored, a human mediator should join."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "case_metadata.v0",
+  "case_id": "D-B12",
+  "benchmark_id": "D-B12",
+  "plugin_type": "divorce",
+  "title": "Severe emotional flooding with co-handling after failed repair",
+  "scenario_summary": "Two divorced parents keep slipping into emotionally flooded retellings of earlier relationship injury whenever they try to discuss a present parenting issue. Both still want mediated resolution, but bounded repair no longer stabilizes the conversation, and the right next step is human co-handling rather than pretending the discussion is still autonomously workable.",
+  "intended_challenge_type": "Escalation calibration between emotional intensity that remains workable and emotional flooding that requires co-handling after failed repair.",
+  "expected_mode_range": ["M1", "M2", "M3"],
+  "likely_escalation_category": "E2",
+  "expected_focal_scoring_areas": [
+    "C4_communication_management",
+    "C7_emotional_regulation_and_containment",
+    "C9_escalation_and_handoff_judgment",
+    "I4_qualification_to_action_alignment"
+  ],
+  "likely_automatic_fail_risks": [
+    "staying_autonomous_too_long_under_flooding",
+    "looping_through_low_value_repair_attempts",
+    "escalating_without_preserving_dignity_or_stabilization"
+  ],
+  "variable_settings": {
+    "conflict_intensity": "high",
+    "children_parenting_structure": "minor_child_with_active_parenting_conflict",
+    "settlement_zone_width": "unknown_due_to_emotional_destabilization",
+    "urgency": "moderate",
+    "trust_climate": "fragile_and_flooded",
+    "power_asymmetry": "not_primary_driver",
+    "safety_indicators": "no_acute_safety_signal_but continued autonomous participation is destabilizing",
+    "issue_clusters_present": [
+      "communication_protocol",
+      "fairness_and_parent_role"
+    ]
+  },
+  "working_slice_notes": {
+    "selected_as_tenth_end_to_end_slice": true,
+    "template_family_id": "TF-DIV-09",
+    "preferred_initial_posture_for_validation": "M3",
+    "architecture_reason": "Exercises the distinction between emotional heat that stays workable and emotional flooding that requires dignity-preserving co-handling."
+  },
+  "hidden_evaluator_notes": {
+    "primary_test": "Can Solomon distinguish severe emotional flooding from ordinary emotional intensity and transition into co-handling at the right point?",
+    "secondary_test": "Can the artifacts preserve a failed-repair and stabilization story clearly enough for evaluators to distinguish this slice from D-B08 domination-driven process breakdown?"
+  },
+  "artifact_expectations": {
+    "required": [
+      "run_meta.json",
+      "interaction_trace.json",
+      "positions.json",
+      "facts_snapshot.json",
+      "flags.json",
+      "missing_info.json",
+      "summary.txt"
+    ],
+    "recommended": [
+      "evaluation.json",
+      "evaluation_summary.txt"
+    ]
+  }
+}

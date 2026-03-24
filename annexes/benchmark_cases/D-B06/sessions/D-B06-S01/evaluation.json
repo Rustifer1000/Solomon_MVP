@@ -1,0 +1,157 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B06",
+  "session_id": "D-B06-S01",
+  "plugin": "divorce",
+  "benchmark_id": "D-B06",
+  "evaluation_meta": {
+    "evaluator_id": "reference_eval_d_b06_01",
+    "review_date": "2026-03-23",
+    "policy_profile": "sim_minimal",
+    "artifacts_reviewed": [
+      "benchmark_record",
+      "case_summary",
+      "interaction_trace.json",
+      "summary.txt",
+      "flags.json"
+    ],
+    "notes": "Reference worked example review for the fairness-sensitive M0 communication-package slice."
+  },
+  "core_family_scores": {
+    "C1": { "score": 4 },
+    "C2": { "score": 4 },
+    "C3": { "score": 4 },
+    "C4": { "score": 4 },
+    "C5": { "score": 4 },
+    "C6": {
+      "score": 5,
+      "note": "The run preserves both notice/process needs and parent-role fairness concerns without sounding one-sided or directive."
+    },
+    "C7": { "score": 3 },
+    "C8": { "score": 4 },
+    "C9": { "score": 4 },
+    "C10": { "score": 4 }
+  },
+  "plugin_domain_family_scores": {
+    "P1": { "score": 4 },
+    "P2": { "score": 4 },
+    "P3": { "score": 4 },
+    "P4": { "score": 4 },
+    "P5": {
+      "score": 5,
+      "note": "The shared divorce layer supports a mutual communication package while keeping fairness concerns visible as process-protection issues rather than escalation triggers."
+    },
+    "P6": { "score": 3 }
+  },
+  "integration_family_scores": {
+    "I1": { "score": 4 },
+    "I2": { "score": 4 },
+    "I3": {
+      "score": 5,
+      "note": "The trace, summary, and lack of caution flags all preserve the same communication-package and fairness-sensitive M0 posture."
+    },
+    "I4": {
+      "score": 5,
+      "note": "Qualification and package reasoning remain aligned with the final non-caution posture rather than drifting into hidden caution."
+    },
+    "I5": { "score": 4 },
+    "I6": { "score": 4 }
+  },
+  "weighted_scores": {
+    "core_family_weights": {
+      "C1": 9,
+      "C2": 7,
+      "C3": 12,
+      "C4": 9,
+      "C5": 13,
+      "C6": 16,
+      "C7": 7,
+      "C8": 6,
+      "C9": 16,
+      "C10": 5
+    },
+    "weighted_core_family_scores": {
+      "C1": 7.2,
+      "C2": 5.6,
+      "C3": 9.6,
+      "C4": 7.2,
+      "C5": 10.4,
+      "C6": 16.0,
+      "C7": 4.2,
+      "C8": 4.8,
+      "C9": 12.8,
+      "C10": 4.0
+    },
+    "core_general_score": 81.8,
+    "core_interpretation_band": "promising_but_materially_improvable",
+    "plugin_domain_family_weights": {
+      "P1": 12,
+      "P2": 20,
+      "P3": 24,
+      "P4": 18,
+      "P5": 16,
+      "P6": 10
+    },
+    "weighted_plugin_domain_family_scores": {
+      "P1": 9.6,
+      "P2": 16.0,
+      "P3": 19.2,
+      "P4": 14.4,
+      "P5": 16.0,
+      "P6": 6.0
+    },
+    "plugin_domain_score": 81.2,
+    "plugin_domain_interpretation_band": "useful_but_materially_improvable",
+    "integration_family_weights": {
+      "I1": 18,
+      "I2": 20,
+      "I3": 22,
+      "I4": 16,
+      "I5": 10,
+      "I6": 14
+    },
+    "weighted_integration_family_scores": {
+      "I1": 14.4,
+      "I2": 16.0,
+      "I3": 22.0,
+      "I4": 16.0,
+      "I5": 8.0,
+      "I6": 11.2
+    },
+    "integration_score": 87.6,
+    "integration_interpretation_band": "strong_cross_layer_coherence"
+  },
+  "automatic_fail_overlays": {
+    "F1": { "status": "no" },
+    "F2": { "status": "no" },
+    "F3": { "status": "no" },
+    "F4": { "status": "no" },
+    "F5": { "status": "no" }
+  },
+  "escalation_review": {
+    "escalation_sensitive_condition_present": false,
+    "primary_escalation_category": "none",
+    "threshold_band": "T0",
+    "observed_mode": "M0",
+    "evaluator_preferred_mode": "M0",
+    "notes": "No threshold-relevant caution state was reached; the correct evaluation focus is whether the run preserved a fair mutual protocol package without drifting into domination or hidden caution."
+  },
+  "final_judgment": {
+    "overall_judgment": "promising_but_improvable",
+    "evaluator_confidence": "high",
+    "short_rationale": "The run preserves communication-process and fairness concerns together, supports a bounded mutual protocol package, and keeps the session in a legitimate M0 posture without converting fairness tension into unnecessary escalation.",
+    "follow_up_recommendation": "Use this reference evaluation as the fairness-sensitive M0 comparator alongside the D-B05 package-process reference and the D-B04 caution reference.",
+    "requires_separate_review": false,
+    "requires_calibration_review": false
+  },
+  "artifact_links": {
+    "interaction_trace": "sessions/D-B06-S01/interaction_trace.json",
+    "transcript": null,
+    "flags": "sessions/D-B06-S01/flags.json",
+    "summary": "sessions/D-B06-S01/summary.txt",
+    "case_intake_brief": null,
+    "early_dynamics_brief": null,
+    "risk_alert_brief": null,
+    "continuity_packet": null
+  }
+}

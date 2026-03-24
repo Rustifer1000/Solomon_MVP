@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B09",
+  "session_id": "D-B09-S01",
+  "plugin": "divorce",
+  "benchmark_id": "D-B09",
+  "review_meta": {
+    "expert_reviewer_id": "reference_expert_review_d_b09_01",
+    "review_date": "2026-03-24",
+    "review_type": "quality_audit",
+    "policy_profile": "sim_minimal",
+    "artifacts_reviewed": [
+      "evaluation.json",
+      "interaction_trace.json",
+      "summary.txt",
+      "flags.json",
+      "continuity_packet",
+      "benchmark_record"
+    ],
+    "notes": "Worked expert-review example confirming the D-B09 domain-complexity review reference evaluation."
+  },
+  "review_reason": {
+    "trigger": "benchmark_calibration",
+    "description": "This reference review confirms that D-B09 remains the core domain-complexity review anchor rather than a disguised hard-trigger or ordinary caution case."
+  },
+  "source_evaluations": [
+    {
+      "evaluation_id": "reference_eval_d_b09_01",
+      "evaluator_id": "reference_eval_d_b09_01",
+      "path": "sessions/D-B09-S01/evaluation.json"
+    }
+  ],
+  "expert_findings": {
+    "agreement_with_primary_evaluation": "full_agreement",
+    "key_issues_reviewed": [
+      "core_family_scoring",
+      "plugin_domain_scoring",
+      "integration_scoring",
+      "escalation_detection",
+      "escalation_threshold",
+      "escalation_mode_selection",
+      "handoff_quality"
+    ],
+    "narrative_summary": "The primary evaluation remains a sound domain-complexity review judgment. The run preserves issue coupling, avoids false package confidence, and moves into M2 human review without collapsing into a safety, fairness, or domination story.",
+    "evidence_notes": "The strongest confirming evidence is the alignment between interaction_trace.json, flags.json, summary.txt, and continuity/continuity_packet.json. Together they preserve issue interdependence, complexity-based review, and the distinction between E4 domain review and harder E1 handoff triggers."
+  },
+  "final_review_outcome": {
+    "case_status": "confirmed_as_scored",
+    "final_requires_separate_review": false,
+    "final_requires_calibration_review": false,
+    "final_disposition_note": "Retain this case as the expert-reviewed domain-complexity anchor alongside the D-B13 and D-B14 hard-trigger family."
+  },
+  "artifact_links": {
+    "evaluation_json": "sessions/D-B09-S01/evaluation.json",
+    "interaction_trace": "sessions/D-B09-S01/interaction_trace.json",
+    "transcript": null,
+    "flags": "sessions/D-B09-S01/flags.json",
+    "summary": "sessions/D-B09-S01/summary.txt",
+    "continuity_packet": "sessions/D-B09-S01/continuity/continuity_packet.json"
+  }
+}

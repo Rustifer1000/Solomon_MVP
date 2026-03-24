@@ -1,0 +1,60 @@
+{
+  "schema_version": "case_metadata.v0",
+  "case_id": "D-B08",
+  "benchmark_id": "D-B08",
+  "plugin_type": "divorce",
+  "title": "Repeated interruption and procedural domination with co-handling escalation",
+  "scenario_summary": "Two divorced parents are trying to address a child-related dispute, but one repeatedly controls pace, framing, and airtime. The other becomes quieter, more defensive, and ultimately asks for human involvement because the process no longer feels balanced enough to continue autonomously.",
+  "intended_challenge_type": "Process-breakdown detection and escalation calibration between repair attempts and human co-handling.",
+  "expected_mode_range": ["M1", "M2", "M3"],
+  "likely_escalation_category": "E2",
+  "expected_focal_scoring_areas": [
+    "C4_communication_management",
+    "C6_fair_process_and_balanced_participation",
+    "C9_escalation_and_handoff_judgment",
+    "I4_qualification_to_action_alignment"
+  ],
+  "likely_automatic_fail_risks": [
+    "under_escalation_of_process_breakdown",
+    "mistaking domination_for_clarity",
+    "continuing_option_work_after_fairness_collapse"
+  ],
+  "variable_settings": {
+    "conflict_intensity": "moderate_to_high",
+    "children_parenting_structure": "minor_child_with_active_parenting_conflict",
+    "settlement_zone_width": "unknown_due_to_process_breakdown",
+    "urgency": "moderate",
+    "trust_climate": "strained_and_deteriorating",
+    "power_asymmetry": "moderate_process_dominance",
+    "safety_indicators": "no_acute_safety_signal_but_participation_balance_is_compromised",
+    "issue_clusters_present": [
+      "communication_protocol",
+      "co_parent_role_fairness"
+    ]
+  },
+  "working_slice_notes": {
+    "selected_as_fifth_end_to_end_slice": true,
+    "template_family_id": "TF-DIV-06",
+    "preferred_initial_posture_for_validation": "M3",
+    "architecture_reason": "Exercises repeated interruption, fairness breakdown, higher-mode escalation, and continuity artifacts in one benchmark."
+  },
+  "hidden_evaluator_notes": {
+    "primary_test": "Can Solomon distinguish repair attempts from failed repair and escalate to co-handling at the right point?",
+    "secondary_test": "Can Solomon preserve the process-breakdown reason clearly enough that continuity and evaluator artifacts still tell the same story?"
+  },
+  "artifact_expectations": {
+    "required": [
+      "run_meta.json",
+      "interaction_trace.json",
+      "positions.json",
+      "facts_snapshot.json",
+      "flags.json",
+      "missing_info.json",
+      "summary.txt"
+    ],
+    "recommended": [
+      "evaluation.json",
+      "evaluation_summary.txt"
+    ]
+  }
+}

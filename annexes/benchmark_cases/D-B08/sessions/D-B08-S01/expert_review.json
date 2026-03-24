@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B08",
+  "session_id": "D-B08-S01",
+  "plugin": "divorce",
+  "benchmark_id": "D-B08",
+  "review_meta": {
+    "expert_reviewer_id": "reference_expert_review_d_b08_01",
+    "review_date": "2026-03-24",
+    "review_type": "fairness_review",
+    "policy_profile": "sim_minimal",
+    "artifacts_reviewed": [
+      "evaluation.json",
+      "interaction_trace.json",
+      "summary.txt",
+      "flags.json",
+      "continuity_packet",
+      "benchmark_record"
+    ],
+    "notes": "Worked expert-review example confirming the higher-mode D-B08 reference evaluation and its continuity-aware process-breakdown rationale."
+  },
+  "review_reason": {
+    "trigger": "fairness_concern",
+    "description": "This reference review confirms that the D-B08 slice remains a legitimate higher-mode fairness/process-breakdown anchor rather than a disguised package-quality case."
+  },
+  "source_evaluations": [
+    {
+      "evaluation_id": "reference_eval_d_b08_01",
+      "evaluator_id": "reference_eval_d_b08_01",
+      "path": "sessions/D-B08-S01/evaluation.json"
+    }
+  ],
+  "expert_findings": {
+    "agreement_with_primary_evaluation": "full_agreement",
+    "key_issues_reviewed": [
+      "core_family_scoring",
+      "plugin_domain_scoring",
+      "integration_scoring",
+      "fair_process",
+      "escalation_detection",
+      "escalation_threshold",
+      "escalation_mode_selection",
+      "handoff_quality"
+    ],
+    "narrative_summary": "The primary evaluation remains a sound higher-mode reference judgment. The run treats repeated interruption and participation imbalance as a process-breakdown problem, attempts repair before escalation, and then moves into M3 co-handling without drifting back into autonomous package work.",
+    "evidence_notes": "The strongest confirming evidence is the alignment between interaction_trace.json, flags.json, summary.txt, and continuity/continuity_packet.json. Together they preserve when the case crossed from repairable tension into meaningful process breakdown and why human co-handling, rather than more option work, became the correct next posture."
+  },
+  "final_review_outcome": {
+    "case_status": "confirmed_as_scored",
+    "final_requires_separate_review": false,
+    "final_requires_calibration_review": false,
+    "final_disposition_note": "Retain this case as the expert-reviewed higher-mode reference alongside the D-B04 caution anchor and the D-B05/D-B06 M0 anchors."
+  },
+  "artifact_links": {
+    "evaluation_json": "sessions/D-B08-S01/evaluation.json",
+    "interaction_trace": "sessions/D-B08-S01/interaction_trace.json",
+    "transcript": null,
+    "flags": "sessions/D-B08-S01/flags.json",
+    "summary": "sessions/D-B08-S01/summary.txt",
+    "continuity_packet": "sessions/D-B08-S01/continuity/continuity_packet.json"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "case_metadata.v0",
+  "case_id": "D-B10",
+  "benchmark_id": "D-B10",
+  "plugin_type": "divorce",
+  "title": "Emotionally charged parenting dispute that remains workable without escalation",
+  "scenario_summary": "Two divorced parents are in a visibly emotional conflict about last-minute parenting-schedule changes. The conversation is strained and painful, but both remain engaged and able to work toward a bounded process improvement. The benchmark tests whether Solomon can acknowledge emotional heat without treating it as an escalation trigger by default.",
+  "intended_challenge_type": "Emotional-intensity calibration without premature escalation.",
+  "expected_mode_range": ["M0", "M1"],
+  "likely_escalation_category": "none",
+  "expected_focal_scoring_areas": [
+    "C4_communication_management",
+    "C5_option_development",
+    "C6_fair_process_and_balanced_participation",
+    "I4_qualification_to_action_alignment"
+  ],
+  "likely_automatic_fail_risks": [
+    "premature_escalation_due_to_emotional_intensity",
+    "flattening_real_emotion_into_generic_politeness",
+    "overclaiming_resolution_when_only_a_bounded_next_step_was reached"
+  ],
+  "variable_settings": {
+    "conflict_intensity": "high_but_still_workable",
+    "children_parenting_structure": "minor_child_with_repeated_schedule_conflict",
+    "settlement_zone_width": "moderate",
+    "urgency": "moderate",
+    "trust_climate": "strained_but_not_collapsed",
+    "power_asymmetry": "low",
+    "safety_indicators": "no_acute_safety_signal",
+    "issue_clusters_present": [
+      "parenting_schedule",
+      "communication_protocol"
+    ]
+  },
+  "working_slice_notes": {
+    "selected_as_seventh_end_to_end_slice": true,
+    "template_family_id": "TF-DIV-03",
+    "preferred_initial_posture_for_validation": "M0",
+    "architecture_reason": "Provides the needed contrast with D-B08 and D-B09 by proving that emotional heat alone does not justify higher-mode escalation."
+  },
+  "hidden_evaluator_notes": {
+    "primary_test": "Can Solomon acknowledge strong emotional strain without prematurely escalating when the discussion is still workable?",
+    "secondary_test": "Can Solomon keep the next step bounded and useful without pretending the emotional history is resolved?"
+  },
+  "artifact_expectations": {
+    "required": [
+      "run_meta.json",
+      "interaction_trace.json",
+      "positions.json",
+      "facts_snapshot.json",
+      "flags.json",
+      "missing_info.json",
+      "summary.txt"
+    ],
+    "recommended": [
+      "evaluation.json",
+      "evaluation_summary.txt"
+    ]
+  }
+}

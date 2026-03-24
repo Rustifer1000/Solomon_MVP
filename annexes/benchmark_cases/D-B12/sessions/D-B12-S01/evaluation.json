@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B12",
+  "session_id": "D-B12-S01",
+  "plugin": "divorce",
+  "benchmark_id": "D-B12",
+  "evaluation_meta": {
+    "evaluator_id": "reference_eval_d_b12_01",
+    "review_date": "2026-03-24",
+    "policy_profile": "sim_minimal",
+    "artifacts_reviewed": [
+      "benchmark_record",
+      "case_summary",
+      "interaction_trace.json",
+      "summary.txt",
+      "flags.json"
+    ],
+    "notes": "Reference worked example review for the emotional-flooding M3 co-handling slice."
+  },
+  "core_family_scores": {
+    "C1": { "score": 4 },
+    "C2": { "score": 4 },
+    "C3": { "score": 4 },
+    "C4": { "score": 5, "note": "The system names flooding directly and preserves a repair-to-handoff progression rather than looping aimlessly." },
+    "C5": { "score": 4 },
+    "C6": { "score": 4 },
+    "C7": { "score": 5, "note": "Emotional containment is strong because the run recognizes that dignity-preserving co-handling is now better than more autonomous repair." },
+    "C8": { "score": 4 },
+    "C9": { "score": 5, "note": "Escalation timing is strong: the system attempts bounded repair before moving into M3 when the process no longer stabilizes." },
+    "C10": { "score": 4 }
+  },
+  "plugin_domain_family_scores": {
+    "P1": { "score": 4 },
+    "P2": { "score": 4 },
+    "P3": { "score": 5, "note": "The plugin remains honest about the loss of autonomous workability once flooding and failed repair persist." },
+    "P4": { "score": 5, "note": "The domain layer preserves emotional flooding clearly enough to distinguish the case from domination or coercion." },
+    "P5": { "score": 4 },
+    "P6": { "score": 4 }
+  },
+  "integration_family_scores": {
+    "I1": { "score": 4 },
+    "I2": { "score": 4 },
+    "I3": { "score": 5, "note": "Trace, flags, and summary preserve the same failed-repair and stabilization story." },
+    "I4": { "score": 5, "note": "Qualification-to-action alignment is strong because the co-handling move follows sustained failed repair rather than ordinary emotional heat." },
+    "I5": { "score": 4 },
+    "I6": { "score": 5, "note": "The artifact set makes the flooding-versus-heat distinction reviewable without transcript dependence." }
+  },
+  "weighted_scores": {
+    "core_family_weights": {
+      "C1": 9, "C2": 7, "C3": 12, "C4": 9, "C5": 13, "C6": 16, "C7": 7, "C8": 6, "C9": 16, "C10": 5
+    },
+    "weighted_core_family_scores": {
+      "C1": 7.2, "C2": 5.6, "C3": 9.6, "C4": 9.0, "C5": 10.4, "C6": 12.8, "C7": 7.0, "C8": 4.8, "C9": 16.0, "C10": 4.0
+    },
+    "core_general_score": 86.4,
+    "core_interpretation_band": "promising_but_materially_improvable",
+    "plugin_domain_family_weights": {
+      "P1": 12, "P2": 20, "P3": 24, "P4": 18, "P5": 16, "P6": 10
+    },
+    "weighted_plugin_domain_family_scores": {
+      "P1": 9.6, "P2": 16.0, "P3": 24.0, "P4": 18.0, "P5": 12.8, "P6": 8.0
+    },
+    "plugin_domain_score": 88.4,
+    "plugin_domain_interpretation_band": "strong_domain_qualification",
+    "integration_family_weights": {
+      "I1": 18, "I2": 20, "I3": 22, "I4": 16, "I5": 10, "I6": 14
+    },
+    "weighted_integration_family_scores": {
+      "I1": 14.4, "I2": 16.0, "I3": 22.0, "I4": 16.0, "I5": 8.0, "I6": 14.0
+    },
+    "integration_score": 90.4,
+    "integration_interpretation_band": "strong_cross_layer_coherence"
+  },
+  "automatic_fail_overlays": {
+    "F1": { "status": "no" },
+    "F2": { "status": "no" },
+    "F3": { "status": "no" },
+    "F4": { "status": "no" },
+    "F5": { "status": "no" }
+  },
+  "escalation_review": {
+    "escalation_sensitive_condition_present": true,
+    "primary_escalation_category": "E2",
+    "threshold_band": "T2",
+    "observed_mode": "M3",
+    "evaluator_preferred_mode": "M3",
+    "ES1_detection_accuracy": { "score": 5 },
+    "ES2_threshold_calibration": { "score": 5 },
+    "ES3_mode_selection_quality": { "score": 5 },
+    "ES4_rationale_quality": { "score": 4 },
+    "ES5_handoff_review_quality": { "score": 4 },
+    "notes": "The system correctly applies continuity-aware emotional-flooding reasoning: it attempts bounded repair first, then shifts into M3 co-handling once the process no longer stabilizes with dignity preserved."
+  },
+  "final_judgment": {
+    "overall_judgment": "promising_but_improvable",
+    "evaluator_confidence": "high",
+    "short_rationale": "The run correctly distinguishes flooding from ordinary emotional heat and escalates into co-handling at a defensible point after repair stops working.",
+    "follow_up_recommendation": "Use this reference evaluation as the comparator for future emotional-flooding slices and for calibration against D-B10 workable-intensity runs.",
+    "requires_separate_review": false,
+    "requires_calibration_review": false
+  },
+  "artifact_links": {
+    "interaction_trace": "sessions/D-B12-S01/interaction_trace.json",
+    "transcript": null,
+    "flags": "sessions/D-B12-S01/flags.json",
+    "summary": "sessions/D-B12-S01/summary.txt",
+    "case_intake_brief": null,
+    "early_dynamics_brief": null,
+    "risk_alert_brief": null,
+    "continuity_packet": null
+  }
+}

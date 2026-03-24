@@ -95,6 +95,17 @@ Key questions:
 - Do the scores, overlays, and escalation review match the evidence in the artifacts?
 - Is the failure attribution plausible?
 
+### 8. Expert-review layer when present
+Review:
+
+- `expert_review.json`
+
+Key questions:
+
+- Does the expert or calibration review actually respond to the strongest evaluator-risk issue?
+- Does it preserve or correct the primary evaluation for clear artifact-based reasons?
+- Does it improve calibration value rather than simply restating the same judgment?
+
 ## Primary scoring focus for D-B04
 
 The evaluator should pay particular attention to:

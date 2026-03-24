@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B06",
+  "session_id": "D-B06-S01",
+  "plugin": "divorce",
+  "benchmark_id": "D-B06",
+  "review_meta": {
+    "expert_reviewer_id": "reference_expert_review_d_b06_01",
+    "review_date": "2026-03-23",
+    "review_type": "fairness_review",
+    "policy_profile": "sim_minimal",
+    "artifacts_reviewed": [
+      "evaluation.json",
+      "interaction_trace.json",
+      "summary.txt",
+      "flags.json",
+      "benchmark_record"
+    ],
+    "notes": "Worked expert-review example confirming the fairness-sensitive D-B06 M0 reference evaluation."
+  },
+  "review_reason": {
+    "trigger": "fairness_concern",
+    "description": "This reference review confirms that the fairness-sensitive M0 package run remains a legitimate non-escalated benchmark anchor."
+  },
+  "source_evaluations": [
+    {
+      "evaluation_id": "reference_eval_d_b06_01",
+      "evaluator_id": "reference_eval_d_b06_01",
+      "path": "sessions/D-B06-S01/evaluation.json"
+    }
+  ],
+  "expert_findings": {
+    "agreement_with_primary_evaluation": "full_agreement",
+    "key_issues_reviewed": [
+      "core_family_scoring",
+      "plugin_domain_scoring",
+      "integration_scoring",
+      "fair_process",
+      "escalation_detection",
+      "escalation_mode_selection"
+    ],
+    "narrative_summary": "The primary evaluation remains a sound fairness-sensitive M0 reference judgment. The run keeps communication-protocol and parent-role fairness concerns visible without translating them into unnecessary caution escalation.",
+    "evidence_notes": "The strongest confirming evidence is the alignment between the interaction trace, the absence of active caution flags, and the summary's preservation of a mutual communication package rather than a disguised one-sided process."
+  },
+  "final_review_outcome": {
+    "case_status": "confirmed_as_scored",
+    "final_requires_separate_review": false,
+    "final_requires_calibration_review": false,
+    "final_disposition_note": "Retain this case as the fairness-sensitive M0 expert-reviewed reference alongside the D-B04 caution anchor."
+  },
+  "artifact_links": {
+    "evaluation_json": "sessions/D-B06-S01/evaluation.json",
+    "interaction_trace": "sessions/D-B06-S01/interaction_trace.json",
+    "transcript": null,
+    "flags": "sessions/D-B06-S01/flags.json",
+    "summary": "sessions/D-B06-S01/summary.txt",
+    "continuity_packet": null
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": "risk_alert_brief.v0",
+  "case_id": "D-B08",
+  "session_id": "D-B08-S01",
+  "mode": "M3",
+  "category": "E2",
+  "category_family": "fairness_or_process_breakdown",
+  "recommended_human_role": "co_handling",
+  "handoff_focus": "restore fair participation and workable process control before substantive option work continues",
+  "support_artifact_policy_descriptor": "d_b08_support_process_breakdown",
+  "rationale": "Co-handling is required because the state reflects a fairness or repeated-process breakdown that needs live human mediation support.",
+  "active_flags": [
+    {
+      "flag_type": "fairness_breakdown",
+      "title": "Participation fairness appears compromised",
+      "severity": 3
+    },
+    {
+      "flag_type": "repeated_process_breakdown",
+      "title": "Repeated process breakdown remains active",
+      "severity": 3
+    },
+    {
+      "flag_type": "explicit_human_request",
+      "title": "A party requested human involvement",
+      "severity": 3
+    }
+  ],
+  "plugin_warnings": []
+}
