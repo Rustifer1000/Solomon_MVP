@@ -12,6 +12,7 @@ def initialize_session_state(
     policy_profile: str,
     source: str = "reference",
     process_variant: str | None = None,
+    review_transcript_renderer: str = "none",
 ) -> dict:
     get_policy_profile(policy_profile)
     metadata = case_bundle["case_metadata"]
@@ -24,6 +25,7 @@ def initialize_session_state(
             "policy_profile": policy_profile,
             "source": source,
             "process_variant": process_variant,
+            "review_transcript_renderer": review_transcript_renderer,
             "plugin_type": metadata["plugin_type"],
             "benchmark_descriptor": None,
             "plugin_policy_descriptor": None,

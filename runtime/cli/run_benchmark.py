@@ -27,6 +27,12 @@ def parse_args() -> argparse.Namespace:
         default=datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
         help="UTC timestamp for artifact generation.",
     )
+    parser.add_argument(
+        "--review-transcript-renderer",
+        choices=["none", "prototype_local_v0"],
+        default="none",
+        help="Optional reviewer-facing transcript renderer to run side-by-side with the deterministic transcript.",
+    )
     return parser.parse_args()
 
 
@@ -35,7 +41,14 @@ def main() -> None:
     case_bundle = load_case_bundle(args.case_dir)
     simulation = get_benchmark_simulation(case_bundle)
     session_id = args.session_id or simulation.default_session_id()
-    state = initialize_session_state(case_bundle, session_id, args.policy_profile, source=args.source)
+    review_transcript_renderer = getattr(args, "review_transcript_renderer", "none")
+    state = initialize_session_state(
+        case_bundle,
+        session_id,
+        args.policy_profile,
+        source=args.source,
+        review_transcript_renderer=review_transcript_renderer,
+    )
     run_session(case_bundle, state, args.output_dir, args.generated_at, source=args.source)
 
 

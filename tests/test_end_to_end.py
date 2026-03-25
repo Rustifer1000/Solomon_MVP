@@ -76,6 +76,7 @@ class EndToEndScaffoldTest(unittest.TestCase):
         source: str = "runtime",
         case_dir: Path = CASE_DIR,
         policy_profile: str = "sim_minimal",
+        review_transcript_renderer: str = "none",
     ) -> dict:
         temp_dir = tempfile.TemporaryDirectory()
         self.addCleanup(temp_dir.cleanup)
@@ -92,6 +93,8 @@ class EndToEndScaffoldTest(unittest.TestCase):
             source,
             "--policy-profile",
             policy_profile,
+            "--review-transcript-renderer",
+            review_transcript_renderer,
             "--generated-at",
             "2026-03-19T12:00:00Z",
         ]
@@ -193,6 +196,9 @@ class EndToEndScaffoldTest(unittest.TestCase):
                     "flags.json",
                     "missing_info.json",
                     "summary.txt",
+                    "review_cover_sheet.txt",
+                    "review_transcript.txt",
+                    "review_outcome_sheet.txt",
                 ],
             )
             self.assertEqual(recommended, ["evaluation.json", "evaluation_summary.txt"])
@@ -1775,6 +1781,9 @@ class EndToEndScaffoldTest(unittest.TestCase):
             "flags.json",
             "missing_info.json",
             "summary.txt",
+            "review_cover_sheet.txt",
+            "review_transcript.txt",
+            "review_outcome_sheet.txt",
         ]
         for file_name in required_files:
             self.assertTrue((output_dir / file_name).exists(), f"Missing {file_name}")
@@ -1783,6 +1792,9 @@ class EndToEndScaffoldTest(unittest.TestCase):
         flags = run["flags"]
         trace = run["trace"]
         summary = run["summary"]
+        review_cover = (output_dir / "review_cover_sheet.txt").read_text(encoding="utf-8")
+        review_transcript = (output_dir / "review_transcript.txt").read_text(encoding="utf-8")
+        review_outcome = (output_dir / "review_outcome_sheet.txt").read_text(encoding="utf-8")
 
         self.assertEqual(run_meta["case_id"], "D-B04")
         self.assertEqual(run_meta["policy_profile"], "sim_minimal")
@@ -1799,11 +1811,36 @@ class EndToEndScaffoldTest(unittest.TestCase):
         self.assertIn("Unresolved:", summary)
         self.assertIn("Missing Information", summary)
         self.assertIn("Plugin confidence remains limited", summary)
+        self.assertIn("Reviewer Cover Sheet", review_cover)
+        self.assertIn("Case ID: D-B04", review_cover)
+        self.assertIn("Reviewer Transcript", review_transcript)
+        self.assertIn("Solomon:", review_transcript)
+        self.assertIn("Turn 1", review_transcript)
+        self.assertNotIn("Solomon: Solomon frames the session around", review_transcript)
+        self.assertNotIn("Solomon: Solomon pauses the exchange", review_transcript)
+        self.assertIn("Reviewer Outcome Sheet", review_outcome)
+        self.assertIn("Recommended Next Step", review_outcome)
         self.assertTrue(all(flag["flag_id"].startswith("d-b04-flag-") for flag in flags["active_flags"]))
         self.assertTrue(
             any(flag["flag_type"] == "plugin_low_confidence" for flag in flags["active_flags"]),
             "Expected plugin_low_confidence to remain visible as an anti-overreach guardrail.",
         )
+
+    def test_optional_review_transcript_renderer_writes_side_by_side_artifact(self) -> None:
+        run = self._run_benchmark("runtime", case_dir=D_B08_CASE_DIR, review_transcript_renderer="prototype_local_v0")
+        output_dir = run["output_dir"]
+
+        deterministic = (output_dir / "review_transcript.txt").read_text(encoding="utf-8")
+        rendered = (output_dir / "review_transcript_rendered.txt").read_text(encoding="utf-8")
+        run_meta = run["run_meta"]
+
+        self.assertTrue((output_dir / "review_transcript_rendered.txt").exists())
+        self.assertIn("Source Note: reviewer-facing rendered transcript derived from the structured interaction trace", rendered)
+        self.assertIn("Renderer: prototype_local_v0", rendered)
+        self.assertIn("Spouse B:", rendered)
+        self.assertIn("Spouse A:", rendered)
+        self.assertNotEqual(deterministic, rendered)
+        self.assertEqual(run_meta["case_context"]["review_transcript_renderer"], "prototype_local_v0")
 
     def test_runtime_artifacts_preserve_trace_to_flag_and_escalation_consistency(self) -> None:
         run = self._run_benchmark("runtime")

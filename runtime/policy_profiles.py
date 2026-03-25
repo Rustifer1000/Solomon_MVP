@@ -12,6 +12,9 @@ CORE_RUNTIME_ARTIFACTS = (
     "flags.json",
     "missing_info.json",
     "summary.txt",
+    "review_cover_sheet.txt",
+    "review_transcript.txt",
+    "review_outcome_sheet.txt",
 )
 
 
@@ -60,6 +63,8 @@ def should_emit_continuity_packet(state: dict, profile: PolicyProfile) -> bool:
 def expected_runtime_artifact_paths(state: dict) -> set[str]:
     profile = get_policy_profile(state["meta"]["policy_profile"])
     expected = set(profile.required_core_artifacts)
+    if state["meta"].get("review_transcript_renderer", "none") != "none":
+        expected.add("review_transcript_rendered.txt")
 
     if profile.allow_briefs:
         expected.update(

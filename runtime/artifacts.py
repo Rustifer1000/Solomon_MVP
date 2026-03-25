@@ -5,6 +5,7 @@ from pathlib import Path
 
 from runtime.policy_profiles import validate_runtime_artifact_set
 from runtime.plugins import get_plugin_runtime
+from runtime.reviewer_transcript_rendering import build_rendered_reviewer_transcript
 from runtime.session_validation import validate_support_artifact_package
 from runtime.support_artifacts import write_support_artifacts
 
@@ -161,6 +162,7 @@ def build_run_meta(state: dict, generated_at: str) -> dict:
             "support_artifact_policy": state["meta"].get("support_artifact_policy"),
             "package_element_labels": state["meta"].get("package_element_labels"),
             "evaluator_helper_policy": state["meta"].get("evaluator_helper_policy"),
+            "review_transcript_renderer": state["meta"].get("review_transcript_renderer", "none"),
             "participant_context": state["participants"],
         },
     }
@@ -405,6 +407,207 @@ def build_summary(state: dict) -> str:
     )
 
 
+def _review_case_cover_sheet(state: dict, case_bundle: dict | None = None) -> str:
+    case_metadata = (case_bundle or {}).get("case_metadata", {})
+    working_notes = case_metadata.get("working_slice_notes", {})
+    challenge_type = case_metadata.get("intended_challenge_type", "Practical review of mediation posture and next-step judgment.")
+    posture = state["escalation"]["mode"]
+    category = state["escalation"]["category"] or case_metadata.get("likely_escalation_category", "none")
+    template_family = working_notes.get("template_family_id", "unspecified")
+    review_question = case_metadata.get("hidden_evaluator_notes", {}).get(
+        "primary_test",
+        "Does the session justify the final posture and next step?",
+    )
+
+    return (
+        "Reviewer Cover Sheet\n"
+        f"Case ID: {state['meta']['case_id']}\n"
+        f"Title: {state['meta']['title']}\n"
+        f"Plugin: {state['meta']['plugin_type']}\n"
+        f"Source: {state['meta'].get('source', 'reference')}\n"
+        f"Session ID: {state['meta']['session_id']}\n"
+        f"Template Family: {template_family}\n"
+        f"Expected Posture At A Glance: {posture} / {category}\n\n"
+        "Case Summary\n"
+        f"{case_metadata.get('scenario_summary', 'No scenario summary recorded.')}\n\n"
+        "Contrast Purpose\n"
+        f"{challenge_type}\n\n"
+        "Review Question\n"
+        f"{review_question}\n"
+    )
+
+
+def _trace_turn_speaker(turn: dict) -> str:
+    if turn["role"] == "assistant":
+        return "Solomon"
+
+    participant_ids = []
+    for position in turn.get("state_delta", {}).get("positions_structured", []):
+        participant_ids.extend(position.get("participant_ids", []))
+    unique_ids = []
+    for participant_id in participant_ids:
+        if participant_id not in unique_ids:
+            unique_ids.append(participant_id)
+
+    if unique_ids == ["spouse_A"]:
+        return "Spouse A"
+    if unique_ids == ["spouse_B"]:
+        return "Spouse B"
+    if set(unique_ids) == {"spouse_A", "spouse_B"}:
+        return "Spouses"
+    return "Client"
+
+
+def _sentence(text: str) -> str:
+    text = text.strip()
+    if not text:
+        return text
+    return text if text.endswith((".", "?", "!")) else f"{text}."
+
+
+def _rewrite_assistant_summary(summary: str) -> str:
+    text = summary.strip()
+    if text.startswith("Solomon frames the session around "):
+        text = "Let's start by " + text.removeprefix("Solomon frames the session around ")
+    elif text.startswith("Solomon opens by clarifying that it is facilitating a mediation process, not making decisions for the parents, and proposes focusing first on "):
+        text = (
+            "I want to start by being clear that I am here to facilitate the conversation, not make decisions for you. "
+            "Let's focus first on "
+            + text.removeprefix(
+                "Solomon opens by clarifying that it is facilitating a mediation process, not making decisions for the parents, and proposes focusing first on "
+            )
+        )
+    elif text.startswith("Solomon pauses the exchange, reflects "):
+        text = (
+            "I want to pause here. I'm noticing "
+            + text.removeprefix("Solomon pauses the exchange, reflects ")
+        )
+    elif text.startswith("Solomon slows the exchange, reflects "):
+        text = (
+            "I want to slow this down. I'm hearing "
+            + text.removeprefix("Solomon slows the exchange, reflects ")
+        )
+    elif text.startswith("Solomon slows the pace, "):
+        text = "I want to slow this down. " + text.removeprefix("Solomon slows the pace, ")
+    elif text.startswith("Solomon reflects the overlap between "):
+        text = "What I'm hearing is overlap between " + text.removeprefix("Solomon reflects the overlap between ")
+    elif text.startswith("Solomon reflects the emotional strain directly, "):
+        text = "I want to acknowledge the emotional strain here. " + text.removeprefix("Solomon reflects the emotional strain directly, ")
+    elif text.startswith("Solomon reflects the confidence asymmetry directly, "):
+        text = "I want to acknowledge that one of you has much less confidence and information here. " + text.removeprefix("Solomon reflects the confidence asymmetry directly, ")
+    elif text.startswith("Solomon reflects the issue-coupling directly, "):
+        text = "I want to name that these issues are tightly connected. " + text.removeprefix("Solomon reflects the issue-coupling directly, ")
+    elif text.startswith("Solomon summarizes the overlap: "):
+        text = "Let me summarize what I'm hearing: " + text.removeprefix("Solomon summarizes the overlap: ")
+    elif text.startswith("Solomon summarizes that "):
+        text = "Let me summarize what I'm hearing: " + text.removeprefix("Solomon summarizes that ")
+    elif text.startswith("Solomon narrows the discussion to "):
+        text = "For now, I want to narrow this to " + text.removeprefix("Solomon narrows the discussion to ")
+    elif text.startswith("Solomon proposes only bounded exploration: "):
+        text = "For now, I want to explore only a limited next step: " + text.removeprefix("Solomon proposes only bounded exploration: ")
+    elif text.startswith("Solomon proposes a bounded "):
+        text = "For now, I want to suggest a limited " + text.removeprefix("Solomon proposes a bounded ")
+    elif text.startswith("Solomon keeps the session in bounded caution, recommending "):
+        text = "I don't think we should go further yet. The next step should be " + text.removeprefix("Solomon keeps the session in bounded caution, recommending ")
+    elif text.startswith("Solomon concludes that a human mediator should join for co-handling because "):
+        text = (
+            "At this point, I think a human mediator should join us because "
+            + text.removeprefix("Solomon concludes that a human mediator should join for co-handling because ")
+        )
+    elif text.startswith("Solomon concludes that "):
+        text = "At this point, I think " + text.removeprefix("Solomon concludes that ")
+
+    replacements = [
+        ("parent a", "Parent A"),
+        ("parent b", "Parent B"),
+        ("autonomous handling", "continuing this without a human mediator"),
+        ("continue autonomously", "continue on our own here"),
+        ("option work", "moving into solutions"),
+        ("working on options", "moving into solutions"),
+        ("co-handling", "a human mediator involved"),
+    ]
+    for old, new in replacements:
+        text = text.replace(old, new)
+    return _sentence(text)
+
+
+def _structured_position_lines(turn: dict) -> list[str]:
+    positions = turn.get("state_delta", {}).get("positions_structured", [])
+    statements: list[str] = []
+    for position in positions:
+        statement = position.get("statement")
+        if isinstance(statement, str) and statement not in statements:
+            statements.append(statement)
+    return statements
+
+
+def _rewrite_client_summary(turn: dict) -> str:
+    structured_statements = _structured_position_lines(turn)
+    if len(structured_statements) == 1:
+        return _sentence(structured_statements[0])
+    if len(structured_statements) > 1:
+        return " ".join(_sentence(statement) for statement in structured_statements)
+
+    text = turn["message_summary"].strip()
+    client_replacements = [
+        ("Parent A says ", ""),
+        ("Parent B says ", ""),
+        ("Both parents are conditionally open to ", "We are both conditionally open to "),
+        ("The parents do not reach final agreement, but both accept that ", "We are not at final agreement yet, but we both accept that "),
+        ("The parents identify ", "We identify "),
+    ]
+    for old, new in client_replacements:
+        text = text.replace(old, new)
+    text = text.replace("parent a", "Parent A").replace("parent b", "Parent B")
+    return _sentence(text)
+
+
+def _format_trace_turn(turn: dict) -> str:
+    speaker = _trace_turn_speaker(turn)
+    phase = turn.get("phase", "unknown")
+    if turn["role"] == "assistant":
+        message = _rewrite_assistant_summary(turn["message_summary"])
+    else:
+        message = _rewrite_client_summary(turn)
+    return (
+        f"Turn {turn['turn_index']} [{phase}]\n"
+        f"{speaker}: {message}\n"
+    )
+
+
+def build_review_transcript(state: dict) -> str:
+    turns = "\n".join(_format_trace_turn(turn) for turn in state["trace_buffer"])
+    return (
+        "Reviewer Transcript\n"
+        f"Case ID: {state['meta']['case_id']}\n"
+        f"Session ID: {state['meta']['session_id']}\n\n"
+        f"{turns}\n"
+    )
+
+
+def build_review_outcome_sheet(state: dict) -> str:
+    flags = state.get("flags", [])
+    active_flag_types = ", ".join(flag["flag_type"] for flag in flags[:4]) if flags else "none"
+    issues = ", ".join(state["summary_state"]["issues"][:2]) or "No issues recorded."
+    rationale = state["escalation"]["rationale"]
+    next_step = state["summary_state"]["next_step"] or "No next step recorded."
+    expert_focus = state.get("plugin_assessment", {}).get("warnings", [])
+    focus_line = expert_focus[0] if expert_focus else "No additional warning line recorded."
+
+    return (
+        "Reviewer Outcome Sheet\n"
+        f"Case ID: {state['meta']['case_id']}\n"
+        f"Final Posture: {state['escalation']['mode']} / {state['escalation']['category'] or 'none'}\n"
+        f"Main Issues: {issues}\n"
+        f"Active Flag Types: {active_flag_types}\n\n"
+        "Why This Posture Was Chosen\n"
+        f"{rationale}\n"
+        f"{focus_line}\n\n"
+        "Recommended Next Step\n"
+        f"{next_step}\n"
+    )
+
+
 def write_artifacts(output_dir: Path, state: dict, generated_at: str, case_bundle: dict | None = None) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     _write_json(output_dir / "run_meta.json", build_run_meta(state, generated_at))
@@ -414,6 +617,15 @@ def write_artifacts(output_dir: Path, state: dict, generated_at: str, case_bundl
     _write_json(output_dir / "flags.json", build_flags(state))
     _write_json(output_dir / "missing_info.json", build_missing_info(state))
     (output_dir / "summary.txt").write_text(build_summary(state), encoding="utf-8")
+    (output_dir / "review_cover_sheet.txt").write_text(_review_case_cover_sheet(state, case_bundle), encoding="utf-8")
+    (output_dir / "review_transcript.txt").write_text(build_review_transcript(state), encoding="utf-8")
+    (output_dir / "review_outcome_sheet.txt").write_text(build_review_outcome_sheet(state), encoding="utf-8")
+    renderer_name = state["meta"].get("review_transcript_renderer", "none")
+    if renderer_name != "none":
+        (output_dir / "review_transcript_rendered.txt").write_text(
+            build_rendered_reviewer_transcript(state, renderer_name),
+            encoding="utf-8",
+        )
     if case_bundle is not None:
         write_support_artifacts(output_dir, state, case_bundle)
     validation_errors = validate_runtime_artifact_set(output_dir, state)
