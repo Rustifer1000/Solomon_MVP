@@ -1,10 +1,15 @@
 from __future__ import annotations
 
+import ast
 import json
 import subprocess
 from pathlib import Path
 
-from runtime.policy_profiles import get_policy_profile, validate_runtime_artifact_set
+from runtime.policy_profiles import (
+    get_policy_profile,
+    should_emit_party_state,
+    validate_runtime_artifact_set,
+)
 from runtime.plugins import get_plugin_runtime
 from runtime.redaction import redact_json_values, redact_text
 from runtime.reviewer_transcript_rendering import build_rendered_reviewer_transcript
@@ -671,9 +676,188 @@ def build_review_outcome_sheet(state: dict) -> str:
     )
 
 
+_CONFIDENCE_ORDER = {"low": 0, "moderate": 1, "high": 2}
+
+
+def _init_party_block() -> dict:
+    return {
+        "party_id": "",
+        "current_emotional_state": "",
+        "emotional_arc": [],
+        "accumulated_interests": [],
+        "risk_signal_history": [],
+        "relational_posture_progression": [],
+        "scaffold_divergence_log": [],
+        "perception_notes_log": [],
+        "last_updated_turn": 0,
+    }
+
+
+def _merge_interest(interests: list, text: str, turn_index: int, confidence: str) -> None:
+    norm = text.lower().strip()
+    for entry in interests:
+        if entry["interest"].lower().strip() == norm:
+            entry["last_seen_turn"] = turn_index
+            if _CONFIDENCE_ORDER.get(confidence, 0) > _CONFIDENCE_ORDER.get(entry["confidence"], 0):
+                entry["confidence"] = confidence
+            return
+    interests.append({
+        "interest": text,
+        "first_seen_turn": turn_index,
+        "last_seen_turn": turn_index,
+        "confidence": confidence,
+    })
+
+
+def _merge_risk_signal(signals: list, text: str, turn_index: int) -> None:
+    norm = text.lower().strip()
+    for entry in signals:
+        if entry["signal"].lower().strip() == norm:
+            entry["last_seen_turn"] = turn_index
+            return
+    signals.append({
+        "signal": text,
+        "first_seen_turn": turn_index,
+        "last_seen_turn": turn_index,
+        "resolved": False,
+        "resolution_note": None,
+    })
+
+
+def _parse_scaffold_divergence(div_str: str) -> tuple[str, str]:
+    """Extract (scaffold_value, model_value) from a scaffold_divergence string.
+
+    The string format produced by lm_engine._build_reasoning_trace is:
+        "scaffold assessed relational_dynamic=<repr>; model assessed <repr>"
+    """
+    try:
+        halves = div_str.split("; model assessed ", 1)
+        if len(halves) == 2:
+            scaffold_half, model_half = halves
+            eq_idx = scaffold_half.rfind("=")
+            scaffold_repr = scaffold_half[eq_idx + 1:].strip() if eq_idx >= 0 else scaffold_half
+            scaffold_value = ast.literal_eval(scaffold_repr)
+            model_value = ast.literal_eval(model_half.strip())
+            return str(scaffold_value), str(model_value)
+    except Exception:
+        pass
+    return "", div_str
+
+
+def build_party_state(state: dict, generated_at: str) -> dict:
+    """Accumulate per-party psychological state from reasoning_trace.perception.
+
+    Reads all lm_runtime assistant turns from state["trace_buffer"] and
+    merges their perception fields into a session-level standing model.
+    CONTRACT-015 defines the schema and merge rules.
+    """
+    turns_with_trace = sorted(
+        (
+            t for t in state["trace_buffer"]
+            if t.get("role") == "assistant" and t.get("reasoning_trace") is not None
+        ),
+        key=lambda t: t["turn_index"],
+    )
+
+    turns_contributing = [t["turn_index"] for t in turns_with_trace]
+    last_updated_turn = turns_contributing[-1] if turns_contributing else 0
+
+    party_data: dict[str, dict] = {"party_a": _init_party_block(), "party_b": _init_party_block()}
+    cross: dict = {
+        "current_relational_dynamic": "",
+        "relational_dynamic_arc": [],
+        "perception_confidence_arc": [],
+    }
+
+    for turn in turns_with_trace:
+        rt = turn["reasoning_trace"]
+        perception = rt.get("perception", {})
+        confidence = perception.get("perception_confidence", "low")
+        turn_index = turn["turn_index"]
+
+        # Cross-party fields
+        dynamic = perception.get("relational_dynamic", "")
+        cross["current_relational_dynamic"] = dynamic
+        cross["relational_dynamic_arc"].append({
+            "turn_index": turn_index,
+            "assessment": dynamic,
+            "confidence": confidence,
+        })
+        cross["perception_confidence_arc"].append({
+            "turn_index": turn_index,
+            "confidence": confidence,
+        })
+
+        # Per-party fields
+        for party_key in ("party_a", "party_b"):
+            p_data = perception.get(party_key, {})
+            block = party_data[party_key]
+
+            if not block["party_id"]:
+                block["party_id"] = p_data.get("party_id", party_key)
+
+            emotional_state = p_data.get("emotional_state", "")
+            block["current_emotional_state"] = emotional_state
+            block["last_updated_turn"] = turn_index
+
+            block["emotional_arc"].append({
+                "turn_index": turn_index,
+                "assessment": emotional_state,
+                "confidence": confidence,
+            })
+
+            for interest in p_data.get("inferred_interests", []):
+                if isinstance(interest, str) and interest:
+                    _merge_interest(block["accumulated_interests"], interest, turn_index, confidence)
+
+            for signal in p_data.get("risk_signals", []):
+                if isinstance(signal, str) and signal:
+                    _merge_risk_signal(block["risk_signal_history"], signal, turn_index)
+
+            posture = p_data.get("relational_posture", "")
+            block["relational_posture_progression"].append({
+                "turn_index": turn_index,
+                "posture": posture,
+            })
+
+        # scaffold_divergence is a cross-party relational_dynamic field — add to both blocks
+        scaffold_div = perception.get("scaffold_divergence")
+        if scaffold_div and isinstance(scaffold_div, str):
+            scaffold_value, model_value = _parse_scaffold_divergence(scaffold_div)
+            entry = {
+                "turn_index": turn_index,
+                "field": "relational_dynamic",
+                "scaffold_value": scaffold_value,
+                "model_value": model_value,
+            }
+            party_data["party_a"]["scaffold_divergence_log"].append(entry)
+            party_data["party_b"]["scaffold_divergence_log"].append(dict(entry))
+
+        # perception_notes are session-level — add to both blocks
+        notes = perception.get("perception_notes", [])
+        if notes:
+            notes_entry = {"turn_index": turn_index, "notes": list(notes)}
+            party_data["party_a"]["perception_notes_log"].append(notes_entry)
+            party_data["party_b"]["perception_notes_log"].append(dict(notes_entry))
+
+    return {
+        "schema_version": "party_state.v0",
+        "case_id": state["meta"]["case_id"],
+        "session_id": state["meta"]["session_id"],
+        "source": "lm_runtime",
+        "turns_contributing": turns_contributing,
+        "last_updated_turn": last_updated_turn,
+        "generated_at": generated_at,
+        "party_a": party_data["party_a"],
+        "party_b": party_data["party_b"],
+        "cross_party": cross,
+    }
+
+
 def write_artifacts(output_dir: Path, state: dict, generated_at: str, case_bundle: dict | None = None) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
-    require_redaction = get_policy_profile(state["meta"]["policy_profile"]).require_redaction
+    profile = get_policy_profile(state["meta"]["policy_profile"])
+    require_redaction = profile.require_redaction
 
     def _rj(payload: dict) -> dict:
         return redact_json_values(payload, state) if require_redaction else payload
@@ -698,6 +882,9 @@ def write_artifacts(output_dir: Path, state: dict, generated_at: str, case_bundl
             build_rendered_reviewer_transcript(state, renderer_name),
             encoding="utf-8",
         )
+    if should_emit_party_state(state, profile):
+        _write_json(output_dir / "party_state.json", _rj(build_party_state(state, generated_at)))
+
     if case_bundle is not None:
         write_support_artifacts(output_dir, state, case_bundle)
     validation_errors = validate_runtime_artifact_set(output_dir, state)
