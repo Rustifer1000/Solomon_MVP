@@ -1,7 +1,7 @@
 # ARCH-004: Persistence Profiles Matrix
 
-**Status**  
-Draft / informative
+**Status**
+Stable / v0 approved
 
 **Purpose**  
 This document defines the first implementation-facing persistence/profile matrix for Solomon's offline evaluation-phase runtime.
@@ -37,35 +37,41 @@ It is intentionally scoped to MVP evaluation evidence handling, not enterprise-w
 
 ## 2. Profiles in scope
 
-The first runtime should recognize three named profiles:
+The first runtime recognizes four named profiles:
 
-- `dev_verbose`
-- `sim_minimal`
-- `redacted`
+- `sim_minimal` — lean simulation profile; writes only core required artifacts; no briefs
+- `eval_support` — evaluator-workflow profile; writes core artifacts + briefs + continuity packet
+- `dev_verbose` — developer profile; writes everything `eval_support` writes plus raw transcripts and debug traces
+- `redacted` — same as `eval_support` but applies write-time PII redaction to all text and JSON artifacts
 
 These are policy profiles, not environment names.
+
+> **Note:** The original draft of this document listed three profiles (`dev_verbose`, `sim_minimal`, `redacted`). The `eval_support` profile was introduced during implementation as the primary evaluator-workflow profile and is now the recommended choice for evaluation runs. `sim_minimal` is intentionally lean — it does not write briefs — and `eval_support` fills the role the original spec loosely described as "allowed or required by workflow" for brief writing.
 
 ---
 
 ## 3. Matrix
 
-| Artifact / output | dev_verbose | sim_minimal | redacted | Notes |
-|---|---|---|---|---|
-| `run_meta.json` | Required | Required | Required | Always written for traceability |
-| `interaction_trace.json` | Required | Required | Required | Always authoritative, even without transcript |
-| `positions.json` | Required | Required | Required | Authoritative state artifact |
-| `facts_snapshot.json` | Required | Required | Required | Authoritative state artifact |
-| `flags.json` | Required | Required | Required | Authoritative risk/escalation artifact |
-| `missing_info.json` | Required | Required | Required | Authoritative feasibility/decision-quality artifact |
-| `summary.txt` | Required | Required | Required | Convenience artifact derived from state |
-| `transcript.json` | Allowed | Forbidden | Optional redacted form only | Not required for the baseline architecture |
-| raw prompt/message history | Optional if explicitly enabled | Forbidden | Forbidden | Keep outside default evaluator path |
-| raw tool traces | Optional if explicitly enabled | Forbidden | Forbidden | Not part of baseline evaluator contract |
-| continuity packet | Required when mode is `M2-M5` | Required when mode is `M2-M5` | Required when mode is `M2-M5`, redacted if needed | Conditional on escalation mode |
-| risk alert brief | Required when policy trigger is met | Required when policy trigger is met | Required when policy trigger is met, redacted if needed | Trigger-driven |
-| intake / early dynamics briefs | Allowed or required by workflow | Allowed or required by workflow | Allowed in redacted form | Depends on slice/workflow |
-| `evaluation.json` | Allowed | Allowed | Allowed | Usually written after runtime completion |
-| `expert_review.json` | Allowed | Allowed | Allowed | Evaluator-plane artifact, not live runtime output |
+| Artifact / output | sim_minimal | eval_support | dev_verbose | redacted | Notes |
+|---|---|---|---|---|---|
+| `run_meta.json` | Required | Required | Required | Required (redacted) | Always written for traceability |
+| `interaction_trace.json` | Required | Required | Required | Required (redacted) | Always authoritative |
+| `positions.json` | Required | Required | Required | Required (redacted) | Authoritative state artifact |
+| `facts_snapshot.json` | Required | Required | Required | Required (redacted) | Authoritative state artifact |
+| `flags.json` | Required | Required | Required | Required (redacted) | Authoritative risk/escalation artifact |
+| `missing_info.json` | Required | Required | Required | Required (redacted) | Authoritative feasibility artifact |
+| `summary.txt` | Required | Required | Required | Required (redacted) | Derived from state |
+| `review_cover_sheet.txt` | Required | Required | Required | Required (redacted) | Reviewer packet |
+| `review_transcript.txt` | Required | Required | Required | Required (redacted) | Reviewer packet |
+| `review_outcome_sheet.txt` | Required | Required | Required | Required (redacted) | Reviewer packet |
+| `transcript.json` | Forbidden | Forbidden | Allowed | Optional redacted form only | Not part of baseline contract |
+| raw prompt/message history | Forbidden | Forbidden | Optional if enabled | Forbidden | Keep outside evaluator path |
+| raw tool traces | Forbidden | Forbidden | Optional if enabled | Forbidden | Not part of baseline contract |
+| continuity packet | Not written | Required M2–M5 | Required M2–M5 | Required M2–M5 (redacted) | Conditional on escalation mode |
+| risk alert brief | Not written | Required by trigger | Required by trigger | Required by trigger (redacted) | Trigger-driven |
+| intake / early dynamics briefs | Not written | Written | Written | Written (redacted) | `sim_minimal` omits briefs intentionally |
+| `evaluation.json` | Allowed | Allowed | Allowed | Allowed | Post-runtime evaluator artifact |
+| `expert_review.json` | Allowed | Allowed | Allowed | Allowed | Evaluator-plane artifact |
 
 ---
 

@@ -659,6 +659,34 @@ Intended use:
 
 review settings where some transcript-like evidence is needed but must be policy-compliant
 
+eval_support
+
+Writes:
+
+interaction trace
+
+briefs
+
+structured artifacts
+
+summaries
+
+evaluation outputs
+
+reviewer packet (cover sheet, review transcript, outcome sheet)
+
+Does not write:
+
+raw transcript
+
+raw prompt history
+
+raw tool traces
+
+Intended use:
+
+full evaluator review sessions where the complete reviewer packet must be produced alongside standard evaluation artifacts
+
 Policy enforcement rule
 
 The runtime must enforce policy outputs explicitly. A profile should define what is allowed, forbidden, and optionally redacted.

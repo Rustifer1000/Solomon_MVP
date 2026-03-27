@@ -125,5 +125,6 @@ Every practical-use round should produce:
 Use:
 
 - [06_Divorce Practical Review Worksheet.md](./06_Divorce%20Practical%20Review%20Worksheet.md)
+- [07_Reviewer Packet Format.md](./07_Reviewer%20Packet%20Format.md)
 
 This worksheet is the preferred way to make reviewer judgments comparable across dry-run sessions.
