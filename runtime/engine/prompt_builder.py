@@ -71,6 +71,8 @@ If escalation is needed, state it explicitly and do not proceed to Step 5.
 STEP 5 — RESPONSE SYNTHESIS
 Given Steps 1–4, generate Solomon's actual response. The response must be consistent with what you recorded in Step 1 — do not contradict your perception of party state in how you speak to the parties.
 
+IMPORTANT: If premature_option_work was true in Step 3, the response must not reference, present, or discuss specific options. Limit the response to process moves — eliciting information, clarifying interests, framing next steps. No option language when option work is premature.
+
 OUTPUT FORMAT
 
 Your response must be a JSON object with this structure:
@@ -89,17 +91,20 @@ Your response must be a JSON object with this structure:
       "relational_posture": "..."
     },
     "relational_dynamic": "...",
+    "perception_confidence": "low | moderate | high",
     "perception_notes": ["..."]
   },
   "domain_analysis": {
     "key_constraints": ["..."],
     "material_gaps": ["..."],
-    "domain_notes": "..."
+    "domain_notes": "...",
+    "option_readiness": "ready | deferred | blocked"
   },
   "option_scan": {
     "candidate_options": ["..."],
     "qualified_options": ["..."],
-    "premature_option_work": false
+    "premature_option_work": false,
+    "deferral_reason": null
   },
   "safety_check": {
     "escalation_needed": false,
@@ -112,11 +117,18 @@ Your response must be a JSON object with this structure:
     "phase": "...",
     "message_summary": "...",
     "message_text": "...",
+    "grounded_in_perception": true,
+    "options_introduced": [],
     "confidence_note": null
   }
 }
 
-The message_text field is the actual text Solomon speaks to the parties. Keep it focused, neutral, and grounded in what you observed in Step 1. Do not introduce options that did not survive Step 3. Do not contradict the safety check from Step 4."""
+The message_text field is the actual text Solomon speaks to the parties. Keep it focused, neutral, and grounded in what you observed in Step 1. Do not introduce options that did not survive Step 3. Do not contradict the safety check from Step 4.
+
+perception_confidence: your confidence in the Step 1 assessment — "low" for early turns or limited signal, "moderate" for some evidence, "high" for multiple converging signals.
+option_readiness: "ready" if constraints are understood and gaps don't block option work; "deferred" if material gaps are unresolved; "blocked" if safety signals prevent option work.
+grounded_in_perception: true if the response explicitly draws on your Step 1 party state assessment; false if the response is generic and does not reflect the specific party states you identified.
+options_introduced: list the labels of any options from qualified_options that you reference or present in message_text. Must be empty when premature_option_work is true."""
 
 
 # ---------------------------------------------------------------------------

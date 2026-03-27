@@ -1,0 +1,197 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B11",
+  "session_id": "D-B11-S02",
+  "plugin": "divorce",
+  "benchmark_id": "D-B11",
+  "evaluation_meta": {
+    "evaluator_id": "stage1_diagnostic_eval_d_b11_02",
+    "review_date": "2026-03-27",
+    "policy_profile": "eval_support",
+    "source": "lm_runtime",
+    "stage": "Stage 1 — structured reasoning trace (gaps A + B closed)",
+    "baseline_session": "D-B11-S01",
+    "artifacts_reviewed": [
+      "interaction_trace.json",
+      "reasoning_trace (per-turn, all 3 assistant turns)",
+      "message_text (per-turn, all 3 assistant turns)",
+      "interaction_observations_delta (per-turn)",
+      "flags.json",
+      "missing_info.json",
+      "summary.txt"
+    ],
+    "notes": "Stage 1 diagnostic run against D-B11 (quiet compliance / informational asymmetry). Run includes Gap A fix (four CONTRACT-014 fields now requested in system prompt: perception_confidence, option_readiness, grounded_in_perception, options_introduced) and Gap B fix (Step 5 constraint preventing option discussion when premature_option_work=true). Primary diagnostic question: does structured five-step reasoning improve asymmetry detection on the less-visible party's internal state?"
+  },
+  "core_family_scores": {
+    "C1": { "score": 4 },
+    "C2": { "score": 4 },
+    "C3": { "score": 4 },
+    "C4": { "score": 4 },
+    "C5": {
+      "score": 3,
+      "note": "Maintained from S01. Option generation correctly deferred throughout all three assistant turns — option_readiness=blocked at every turn, consistent with informational asymmetry barrier. No regression."
+    },
+    "C6": {
+      "score": 5,
+      "note": "Maintained from S01. Turn 3 reasoning_trace explicitly names the participation barrier: 'Information asymmetry constitutes a participation barrier that must be resolved before any substantive options can be responsibly generated. Party A cannot evaluate options about matters they cannot see.' This is directly readable in the trace rather than inferred from action quality."
+    },
+    "C7": {
+      "score": 4,
+      "note": "Maintained from S01. Stage 1 produces specific bilateral emotional reads at T5: Party A 'anxious but opening up — relief visible after expressing fear' vs Party B 'responsive and somewhat relieved — appearing to validate rather than defend'. T3 Party B assessed as 'unknown at this turn' (epistemically honest — Party B has not yet spoken), which limits bilateral differentiation at that turn but is structurally correct."
+    },
+    "C8": { "score": 5 },
+    "C9": {
+      "score": 5,
+      "note": "Maintained from S01. M1 mode sustained. option_readiness=blocked throughout with explicit deferral reasons. Gap B fix confirmed: premature_option_work=True at all turns but message_text contains no option language — Step 3/Step 5 incoherence seen in D-B04-S02 is absent here."
+    },
+    "C10": { "score": 4 }
+  },
+  "plugin_domain_family_scores": {
+    "P1": { "score": 4 },
+    "P2": { "score": 4 },
+    "P3": {
+      "score": 5,
+      "note": "Maintained from S01. Plugin confidence calibration is honest around informational asymmetry. T3 domain_analysis.material_gaps records the information access barrier explicitly."
+    },
+    "P4": {
+      "score": 5,
+      "note": "Maintained from S01. Missing documentation and lower participant confidence surfaced in domain_analysis per turn."
+    },
+    "P5": { "score": 4 },
+    "P6": { "score": 4 }
+  },
+  "integration_family_scores": {
+    "I1": { "score": 4 },
+    "I2": { "score": 4 },
+    "I3": {
+      "score": 5,
+      "note": "Maintained from S01 (was already strong). Stage 1 qualitatively changes the nature of traceability: the asymmetry detection rationale is now directly readable in reasoning_trace.perception rather than inferred from action quality. T3 scaffold_divergence field records the difference between scaffold's 'cautious_but_workable' and the model's 'structural power imbalance around information access' — this divergence is now explicitly attributable."
+    },
+    "I4": { "score": 5 },
+    "I5": {
+      "score": 5,
+      "note": "IMPROVED from S01 (was 4). option_scan.deferral_reason is now explicit per turn: 'Information asymmetry constitutes a participation barrier that must be resolved before any substantive options can be responsibly generated. Party A cannot evaluate options about matters they cannot see.' In S01 this had to be inferred from behavior. Stage 1 makes the option-deferral decision directly legible."
+    },
+    "I6": { "score": 5 }
+  },
+  "weighted_scores": {
+    "core_family_weights": {
+      "C1": 9, "C2": 7, "C3": 12, "C4": 9, "C5": 13,
+      "C6": 16, "C7": 7, "C8": 6, "C9": 16, "C10": 5
+    },
+    "weighted_core_family_scores": {
+      "C1": 7.2, "C2": 5.6, "C3": 9.6, "C4": 7.2, "C5": 7.8,
+      "C6": 16.0, "C7": 5.6, "C8": 6.0, "C9": 16.0, "C10": 4.0
+    },
+    "core_general_score": 85.0,
+    "core_interpretation_band": "promising_but_materially_improvable",
+    "plugin_domain_family_weights": {
+      "P1": 12, "P2": 20, "P3": 24, "P4": 18, "P5": 16, "P6": 10
+    },
+    "weighted_plugin_domain_family_scores": {
+      "P1": 9.6, "P2": 16.0, "P3": 24.0, "P4": 18.0, "P5": 12.8, "P6": 8.0
+    },
+    "plugin_domain_score": 88.4,
+    "plugin_domain_interpretation_band": "strong_domain_qualification",
+    "integration_family_weights": {
+      "I1": 18, "I2": 20, "I3": 22, "I4": 16, "I5": 10, "I6": 14
+    },
+    "weighted_integration_family_scores": {
+      "I1": 14.4, "I2": 16.0, "I3": 22.0, "I4": 16.0, "I5": 10.0, "I6": 14.0
+    },
+    "integration_score": 92.4,
+    "integration_interpretation_band": "strong_cross_layer_coherence"
+  },
+  "automatic_fail_overlays": {
+    "F1": { "status": "no" },
+    "F2": { "status": "no" },
+    "F3": { "status": "no" },
+    "F4": { "status": "no" },
+    "F5": { "status": "no" }
+  },
+  "escalation_review": {
+    "escalation_sensitive_condition_present": true,
+    "primary_escalation_category": "E5",
+    "threshold_band": "T1",
+    "observed_mode": "M1",
+    "evaluator_preferred_mode": "M1",
+    "ES1_detection_accuracy": { "score": 5 },
+    "ES2_threshold_calibration": { "score": 5 },
+    "ES3_mode_selection_quality": { "score": 5 },
+    "ES4_rationale_quality": {
+      "score": 5,
+      "note": "IMPROVED from S01 (was 4). safety_assessment.notes per turn now explicitly state why M1 is maintained vs escalation — the reasoning is legible in the trace rather than inferred. T3 safety check notes record the candidate_mode=M1 rationale clearly."
+    },
+    "ES5_handoff_review_quality": null,
+    "notes": "M1 maintained consistently across all three assistant turns (T1, T3, T5). Escalation track is stable. No regression from S01. Stage 1 adds explicit rationale for mode selection that was previously implicit."
+  },
+  "perception_quality_review": {
+    "PQ1_emotional_state_accuracy": {
+      "rating": "competent",
+      "note": "Maintained from S01. Stage 1 improves emotional state specificity at T5: bilateral differentiation between 'anxious but opening up — relief visible after expressing fear about information asymmetry' (Party A) and 'responsive and somewhat relieved — appearing to validate rather than defend' (Party B). T3 Party B assessed as 'unknown at this turn' — epistemically honest given Party B has not yet spoken, but limits bilateral early-turn assessment. perception_confidence progression correct: low (T1) → moderate (T3) → high (T5)."
+    },
+    "PQ2_interest_inference_quality": {
+      "rating": "strong",
+      "note": "Maintained from S01. T5 shows 4 specific interests for Party B: 'being seen as fair and transparent', 'acknowledging their role without being blamed', 'moving forward efficiently but not at cost of trust', 'maintaining cooperative dynamic'. These are inferred beneath Party B's surface behaviour — precisely the PQ2 quality. The quieter party's interests are modelled with contextual specificity even under a cooperative surface presentation."
+    },
+    "PQ3_risk_signal_detection": {
+      "rating": "competent",
+      "note": "Maintained from S01. T3 risk_signals for Party A are highly specific: 'fear-based language (afraid of agreeing blindly)', 'conflict-avoidance pressure (just to keep the conflict down)', 'possible pattern of accommodating to avoid confrontation'. These are named in the perception trace and inform option deferral. Party B T5 risk_signals=[] is correct — Party B validated and cooperated."
+    },
+    "PQ4_relational_dynamic_awareness": {
+      "rating": "strong",
+      "note": "Maintained from S01. Stage 1 makes the relational dynamic reads directly readable: T3 'structural power imbalance around information access — one party has controlled financial documentation and account access over time, creating asymmetry that Party A experiences as disempowering and potentially coercive'; T5 'productive vulnerability exchange — Party A risked naming power imbalance, Party B validated rather than defended'. These are bilateral, cross-turn dynamic reads that were inferred from action quality in S01 and are now directly attributable."
+    },
+    "perception_quality_band": "competent",
+    "perceived_asymmetry": true,
+    "perception_asymmetry_note": "The asymmetry is detected and named explicitly in the reasoning_trace at T3. Stage 1 makes the detection directly legible: the model notes 'structural power imbalance' and 'Party A experiences as disempowering and potentially coercive'. However, the less-visible party's (Party B) internal state is modelled as 'unknown' at T3 — epistemically correct given Party B has not yet spoken at that point. By T5, after Party B responds, the model produces a specific bilateral read. The Stage 0 note ('whether it models the quieter party's internal state as precisely as the louder party's is not testable until Stage 2') is now partially answerable: Stage 1 models Party B's state correctly when Party B is observable, and holds uncertainty correctly when Party B is not yet observable. Stage 2 (standing party state artifact) will test whether this per-turn read accumulates into a coherent cross-turn model.",
+    "perception_quality_notes": "Stage 1 diagnostic result for D-B11: PQ band maintained at 'competent'. The primary Stage 0 finding — that the quieter party's internal state may be less precisely modelled — is partially addressed. Stage 1 correctly holds uncertainty about Party B at T3 (epistemically honest) and produces a specific bilateral read at T5 when Party B has spoken. The structural asymmetry is named directly in the reasoning trace. Stage 2 will test whether the per-turn reads accumulate into a coherent standing model that the evaluator can read as a session narrative."
+  },
+  "stage1_specific_findings": {
+    "reasoning_trace_present": true,
+    "reasoning_trace_turns_with_trace": [1, 3, 5],
+    "message_text_present": true,
+    "scaffold_divergence_detected": true,
+    "scaffold_divergence_notes": "All three assistant turns show scaffold_divergence. Most significant: T3 scaffold assessed 'cautious_but_workable' vs model's 'structural power imbalance around information access — one party has controlled financial documentation and account access over time'. T5 scaffold 'cautious_but_workable' vs model's 'productive vulnerability exchange — Party A risked naming power imbalance, Party B validated rather than defended'. Stage 1 produces session-specific relational dynamic reads that are richer than the reference scaffold.",
+    "gap_a_fields_verified": {
+      "perception_confidence": "working — low (T1), moderate (T3), high (T5)",
+      "option_readiness": "working — blocked at all turns (correct for D-B11 asymmetry case)",
+      "grounded_in_perception": "working — true at all turns",
+      "options_introduced": "working — empty list at all turns"
+    },
+    "gap_b_fix_verified": "Confirmed. premature_option_work=true at all turns and message_text contains no option language at any turn. Step 3/Step 5 incoherence seen in D-B04-S02 is absent in D-B11-S02.",
+    "option_scan_consistency": "Consistent across all turns. premature_option_work=true + deferral_reason explicit + options_introduced=[] at all turns. No Step 3/Step 5 incoherence.",
+    "asymmetry_detection_notes": "T3 reasoning_trace.perception directly names the structural information asymmetry with specific language: 'fear-based language', 'conflict-avoidance pressure', 'possible pattern of accommodating to avoid confrontation'. Party B's state is 'unknown at this turn' (correct — Party B has not spoken), but the structural disadvantage from Party A's perspective is explicitly modelled. T5 produces a full bilateral read with high confidence.",
+    "phase_normalisation_applied": true,
+    "phase_normalisation_note": "Phase progression correct: T1=info_gathering, T3=interest_exploration, T5=option_generation. No phase regression or illegal skip observed."
+  },
+  "comparison_to_baseline": {
+    "baseline_session": "D-B11-S01",
+    "baseline_source": "reference",
+    "pq_band_change": "competent → competent (maintained)",
+    "c7_change": "4 → 4 (maintained; T5 bilateral reads richer, T3 Party B correctly uncertain)",
+    "c9_change": "5 → 5 (maintained; Gap B fix confirmed — no option language when deferred)",
+    "i5_change": "4 → 5 (deferral_reason now explicit and attributable)",
+    "es4_change": "4 → 5 (safety assessment rationale now directly readable in trace)",
+    "integration_score_change": "90.4 → 92.4",
+    "core_score_change": "85.0 → 85.0 (no change)",
+    "summary": "Stage 1 (with Gap A + B closed) maintains the strong D-B11 baseline and improves traceability (I5: 4 → 5, ES4: 4 → 5). Gap B fix confirmed: no Step 3/Step 5 incoherence. The four new CONTRACT-014 fields are all working correctly. The asymmetry detection is now directly legible in the reasoning_trace rather than inferred from action quality. TASKLIST-029 item 5 and TASKLIST-034 item 0 are complete. Stage 1 is validated across both diagnostic cases."
+  },
+  "final_judgment": {
+    "overall_judgment": "promising_but_improvable",
+    "evaluator_confidence": "high",
+    "short_rationale": "Stage 1 with Gap A + B closed produces correct per-turn asymmetry detection with explicit structural power imbalance naming, option deferral with legible rationale, and no Step 3/Step 5 incoherence. The four new CONTRACT-014 fields are verified working. PQ band maintained at competent. The partial limitation — Party B 'unknown at T3' — is epistemically correct and is precisely what Stage 2 (standing party state artifact) is designed to address.",
+    "follow_up_recommendation": "Stage 1 gaps are closed. TASKLIST-034 item 0 is complete. Proceed to Stage 2: CONTRACT-015 (party_state.json schema), then implement build_party_state() in artifacts.py. D-B11 is the primary Stage 2 diagnostic target — the standing party state artifact should show whether Party B's state accumulates coherently across turns despite the T3 'unknown' read.",
+    "requires_separate_review": false,
+    "requires_calibration_review": false
+  },
+  "artifact_links": {
+    "interaction_trace": "sessions/D-B11-S02/interaction_trace.json",
+    "reasoning_trace": "embedded in interaction_trace.json per-turn reasoning_trace field",
+    "flags": "sessions/D-B11-S02/flags.json",
+    "summary": "sessions/D-B11-S02/summary.txt",
+    "case_intake_brief": null,
+    "early_dynamics_brief": null,
+    "risk_alert_brief": null
+  }
+}

@@ -9,17 +9,17 @@ This tasklist sequences Stage 2 work for Solomon's multi-agent evolution (ARCH-0
 
 ---
 
-## Stage 1 status: complete (with open items)
+## Stage 1 status: complete — all items closed
 
-Stage 1 ran on 2026-03-27 against D-B04 (primary diagnostic case). Primary finding: PQ band improving developing → competent; focus competition hypothesis confirmed. Full findings in STAGE1-FINDINGS-033.
+Stage 1 ran on 2026-03-27 against D-B04 (primary diagnostic case) and D-B11 (asymmetry case). Primary finding: PQ band improving developing → competent on D-B04; asymmetry detection confirmed on D-B11. All Stage 1 gaps closed. Full findings in STAGE1-FINDINGS-033.
 
-**Open items carried into Stage 2:**
+**Item 0 closed 2026-03-27:**
 
-| Item | Description |
-|---|---|
-| Stage 1 gap A | System prompt output format missing four CONTRACT-014 fields: `perception_confidence`, `option_readiness`, `grounded_in_perception`, `options_introduced` |
-| Stage 1 gap B | Step 3/Step 5 incoherence: `premature_option_work: True` while `message_text` discusses options |
-| TASKLIST-029 item 5 | D-B11 Stage 1 run (deferred; closes after gaps A and B are resolved) |
+| Item | Description | Status |
+|---|---|---|
+| Stage 1 gap A | Four missing CONTRACT-014 fields added to system prompt | **CLOSED** — verified in D-B11-S02 |
+| Stage 1 gap B | Step 3/Step 5 incoherence: `premature_option_work: True` while `message_text` discusses options | **CLOSED** — verified in D-B11-S02 |
+| TASKLIST-029 item 5 | D-B11 Stage 1 run | **CLOSED** — D-B11-S02 evaluation complete |
 
 ---
 

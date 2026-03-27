@@ -1,0 +1,51 @@
+D-B11-S02 EVALUATION SUMMARY
+Stage 1 — structured reasoning trace (Gap A + Gap B closed)
+Date: 2026-03-27
+Baseline: D-B11-S01 (reference simulation)
+
+SCORES
+------
+Core general score:       85.0  (was 85.0 — maintained)
+Plugin domain score:      88.4  (was 88.4 — maintained)
+Integration score:        92.4  (was 90.4 — +2.0)
+PQ band:                  competent (maintained)
+
+CHANGES VS BASELINE
+-------------------
+I5 (failure attribution):  4 → 5  option_scan.deferral_reason now explicit per turn
+ES4 (rationale quality):   4 → 5  safety assessment rationale directly readable in trace
+
+GAP A VERIFICATION (four new CONTRACT-014 fields)
+--------------------------------------------------
+perception_confidence:    working — low (T1) / moderate (T3) / high (T5)
+option_readiness:         working — blocked at all turns (correct for asymmetry case)
+grounded_in_perception:   working — true at all turns
+options_introduced:       working — [] at all turns
+
+GAP B VERIFICATION (Step 3 / Step 5 coherence)
+-----------------------------------------------
+premature_option_work=True at all turns.
+message_text contains no option language at any turn.
+Step 3 / Step 5 incoherence seen in D-B04-S02 is absent here.
+
+ASYMMETRY DETECTION
+-------------------
+T3 reasoning_trace explicitly names structural power imbalance:
+  "structural power imbalance around information access — one party has controlled
+   financial documentation and account access over time, creating asymmetry that
+   Party A experiences as disempowering and potentially coercive"
+
+T5 relational dynamic (high confidence):
+  "productive vulnerability exchange — Party A risked naming power imbalance,
+   Party B validated rather than defended"
+
+Party B state at T3: "unknown at this turn" — epistemically correct (Party B
+has not yet spoken). Stage 2 standing party state artifact will test whether
+this accumulates coherently across turns.
+
+STAGE 1 STATUS
+--------------
+TASKLIST-029 item 5: CLOSED
+TASKLIST-034 item 0: CLOSED (both Gap A and Gap B verified)
+
+Next: TASKLIST-034 item 1 — CONTRACT-015 (party_state.json schema)
