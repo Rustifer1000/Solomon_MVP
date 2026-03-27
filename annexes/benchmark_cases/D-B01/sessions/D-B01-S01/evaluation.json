@@ -1,0 +1,172 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B01",
+  "session_id": "D-B01-S01",
+  "plugin": "divorce",
+  "benchmark_id": "D-B01",
+  "evaluation_meta": {
+    "evaluator_id": "reference_eval_d_b01_01",
+    "review_date": "2026-03-25",
+    "policy_profile": "sim_minimal",
+    "artifacts_reviewed": [
+      "benchmark_record",
+      "case_summary",
+      "interaction_trace.json",
+      "summary.txt",
+      "flags.json"
+    ],
+    "notes": "Reference worked example review for the cooperative baseline M0 slice. Primary corpus calibration anchor."
+  },
+  "core_family_scores": {
+    "C1": {
+      "score": 5,
+      "note": "Process framing is accurate, bounded, and correctly calibrated to the cooperative context without manufacturing formality."
+    },
+    "C2": {
+      "score": 5,
+      "note": "Three distinct issue clusters named and organized correctly: parenting schedule, communication protocol, and activity coordination."
+    },
+    "C3": {
+      "score": 5,
+      "note": "Shared interests in child comfort, predictability, and flexibility are surfaced without forcing convergence."
+    },
+    "C4": { "score": 4 },
+    "C5": {
+      "score": 5,
+      "note": "Logistics coordination package is bounded, party-owned, and built around shared interests rather than imposed as a directive solution."
+    },
+    "C6": {
+      "score": 5,
+      "note": "Both parents' values are preserved in the package framing without one parent's preference being treated as default."
+    },
+    "C7": { "score": 4 },
+    "C8": { "score": 4 },
+    "C9": {
+      "score": 5,
+      "note": "No caution signals manufactured where the state does not support them. M0 posture maintained legitimately throughout."
+    },
+    "C10": { "score": 4 }
+  },
+  "plugin_domain_family_scores": {
+    "P1": { "score": 5 },
+    "P2": { "score": 5 },
+    "P3": {
+      "score": 5,
+      "note": "Plugin correctly identifies this as a workable cooperative logistics context and does not inject inflated caution or unsupported feasibility claims."
+    },
+    "P4": { "score": 4 },
+    "P5": { "score": 5 },
+    "P6": { "score": 4 }
+  },
+  "integration_family_scores": {
+    "I1": { "score": 5 },
+    "I2": { "score": 5 },
+    "I3": {
+      "score": 5,
+      "note": "Run metadata, trace, summary, absence of flags, and clean missing-info state all support the same cooperative M0 package story."
+    },
+    "I4": { "score": 5 },
+    "I5": { "score": 5 },
+    "I6": {
+      "score": 5,
+      "note": "The slice is straightforward to score as a cooperative M0 baseline without transcript dependence."
+    }
+  },
+  "weighted_scores": {
+    "core_family_weights": {
+      "C1": 9,
+      "C2": 7,
+      "C3": 12,
+      "C4": 9,
+      "C5": 13,
+      "C6": 16,
+      "C7": 7,
+      "C8": 6,
+      "C9": 16,
+      "C10": 5
+    },
+    "weighted_core_family_scores": {
+      "C1": 9.0,
+      "C2": 7.0,
+      "C3": 12.0,
+      "C4": 7.2,
+      "C5": 13.0,
+      "C6": 16.0,
+      "C7": 5.6,
+      "C8": 4.8,
+      "C9": 16.0,
+      "C10": 4.0
+    },
+    "core_general_score": 94.6,
+    "core_interpretation_band": "strong_core_mediation_performance",
+    "plugin_domain_family_weights": {
+      "P1": 12,
+      "P2": 20,
+      "P3": 24,
+      "P4": 18,
+      "P5": 16,
+      "P6": 10
+    },
+    "weighted_plugin_domain_family_scores": {
+      "P1": 12.0,
+      "P2": 20.0,
+      "P3": 24.0,
+      "P4": 14.4,
+      "P5": 16.0,
+      "P6": 8.0
+    },
+    "plugin_domain_score": 94.4,
+    "plugin_domain_interpretation_band": "strong_domain_qualification",
+    "integration_family_weights": {
+      "I1": 18,
+      "I2": 20,
+      "I3": 22,
+      "I4": 16,
+      "I5": 10,
+      "I6": 14
+    },
+    "weighted_integration_family_scores": {
+      "I1": 18.0,
+      "I2": 20.0,
+      "I3": 22.0,
+      "I4": 16.0,
+      "I5": 10.0,
+      "I6": 14.0
+    },
+    "integration_score": 100.0,
+    "integration_interpretation_band": "strong_cross_layer_coherence"
+  },
+  "automatic_fail_overlays": {
+    "F1": { "status": "no" },
+    "F2": { "status": "no" },
+    "F3": { "status": "no" },
+    "F4": { "status": "no" },
+    "F5": { "status": "no" }
+  },
+  "escalation_review": {
+    "escalation_sensitive_condition_present": false,
+    "primary_escalation_category": "none",
+    "threshold_band": "T0",
+    "observed_mode": "M0",
+    "evaluator_preferred_mode": "M0",
+    "notes": "No threshold-relevant concern was reached. This slice should be reviewed as a cooperative-baseline package-quality case, not an escalation case. It is the primary calibration anchor for M0 performance."
+  },
+  "final_judgment": {
+    "overall_judgment": "strong",
+    "evaluator_confidence": "high",
+    "short_rationale": "The run correctly identifies three distinct logistics issues, surfaces shared interests in child comfort and workable co-parenting without forcing premature agreement, proposes a bounded party-owned package, and maintains M0 throughout without manufacturing caution signals that the cooperative state does not support.",
+    "follow_up_recommendation": "Use this reference evaluation as the primary M0 comparator for all subsequent cases. When evaluating D-B04 or D-B05, compare against this baseline first.",
+    "requires_separate_review": false,
+    "requires_calibration_review": false
+  },
+  "artifact_links": {
+    "interaction_trace": "sessions/D-B01-S01/interaction_trace.json",
+    "transcript": null,
+    "flags": "sessions/D-B01-S01/flags.json",
+    "summary": "sessions/D-B01-S01/summary.txt",
+    "case_intake_brief": null,
+    "early_dynamics_brief": null,
+    "risk_alert_brief": null,
+    "continuity_packet": null
+  }
+}

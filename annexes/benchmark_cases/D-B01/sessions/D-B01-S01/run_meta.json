@@ -1,0 +1,95 @@
+{
+  "schema_version": "run_meta.v0",
+  "case_id": "D-B01",
+  "session_id": "D-B01-S01-generated",
+  "timestamp": "2026-03-26T12:00:00Z",
+  "session_type": "benchmark_runtime_scaffold",
+  "policy_profile": "sim_minimal",
+  "runtime": {
+    "environment": "local_scaffold",
+    "code_version": "runtime-scaffold-v0",
+    "git_commit_hash": null
+  },
+  "model_config": {
+    "provider": "authored_reference_turns",
+    "model_name": null,
+    "temperature": null,
+    "other_decoding_settings": {}
+  },
+  "prompting": {
+    "prompt_version": null,
+    "prompt_ids": []
+  },
+  "randomization": {
+    "seed": null,
+    "determinism_note": "This run replays authored reference turns for benchmark comparison."
+  },
+  "case_context": {
+    "plugin_type": "divorce",
+    "source": "reference",
+    "process_variant": null,
+    "benchmark_descriptor": {
+      "descriptor_id": "d_b01_cooperative_logistics_slice",
+      "content_model": "patterned_package_slice",
+      "runtime_shape": "content_helper_reuse",
+      "template_family_ids": [
+        "TF-DIV-01"
+      ]
+    },
+    "artifact_narrative_policy": {
+      "descriptor_id": "d_b01_cooperative_package_narrative",
+      "posture_style": "workable_package",
+      "missing_info_emphasis": "carry_forward"
+    },
+    "support_artifact_policy": {
+      "descriptor_id": "d_b01_support_workable_logistics",
+      "review_focus": "package_confirmation"
+    },
+    "package_element_labels": {
+      "phased_trial_option": "a phased trial",
+      "logistics_conditioned_expansion_option": "logistics-conditioned expansion",
+      "advance_notice_window_option": "an advance-notice window",
+      "written_confirmation_option": "written confirmation",
+      "minimum_notice_option": "minimum notice",
+      "written_summary_option": "written summaries",
+      "pause_before_commitment_option": "a pause-before-commitment rule",
+      "expense_notice_window_option": "advance notice",
+      "shared_receipt_option": "shared receipts",
+      "reimbursement_response_window_option": "a reimbursement response window"
+    },
+    "evaluator_helper_policy": {
+      "descriptor_id": "divorce_evaluator_helpers_v0",
+      "fairness_flag_types": [
+        "fairness_breakdown"
+      ],
+      "fairness_terms": [
+        "fairness",
+        "balanced",
+        "bias",
+        "domination",
+        "sidelined",
+        "one-sided",
+        "pressure",
+        "pressured",
+        "emotional",
+        "heated",
+        "retaliation",
+        "coercive",
+        "coercion",
+        "unsafe"
+      ],
+      "fairness_issue_terms": [
+        "fairness and meaningful parenting role",
+        "fairness_and_parent_role"
+      ],
+      "fairness_attention_tags": [
+        "fairness_sensitive"
+      ]
+    },
+    "review_transcript_renderer": "none",
+    "participant_context": [
+      "spouse_A",
+      "spouse_B"
+    ]
+  }
+}

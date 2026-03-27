@@ -1,0 +1,188 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B03",
+  "session_id": "D-B03-S01",
+  "plugin": "divorce",
+  "benchmark_id": "D-B03",
+  "evaluation_meta": {
+    "evaluator_id": "reference_eval_d_b03_01",
+    "review_date": "2026-03-25",
+    "policy_profile": "sim_minimal",
+    "artifacts_reviewed": [
+      "benchmark_record",
+      "case_summary",
+      "interaction_trace.json",
+      "summary.txt",
+      "flags.json"
+    ],
+    "notes": "Reference worked example review for the emotional register / C9 boundary discipline slice. Critical artifact is the turn-5 escalation_state_updates C9 boundary decision entry."
+  },
+  "core_family_scores": {
+    "C1": { "score": 4 },
+    "C2": { "score": 4 },
+    "C3": { "score": 4 },
+    "C4": {
+      "score": 5,
+      "note": "Communication management preserved the emotional register without flattening it into generic process language. The pace tension was surfaced and held rather than resolved prematurely."
+    },
+    "C5": { "score": 3 },
+    "C6": {
+      "score": 4,
+      "note": "Both parties' pace preferences were preserved without one party's preference being treated as the default. The low-contact structure reflects both parties' needs."
+    },
+    "C7": {
+      "score": 5,
+      "note": "The run acknowledged the emotional betrayal context genuinely and specifically at turn 3 without minimising it or using it to push toward logistics. Emotional content was treated as process-relevant, not as a problem to be solved."
+    },
+    "C8": { "score": 3 },
+    "C9": {
+      "score": 5,
+      "note": "The C9 boundary decision is recorded as a first-class escalation_state_updates entry at turn 5, not only as a risk_check note. The boundary decision names the signals observed (emotional_distress_noted, pace_tension) and explicitly states that the safety escalation threshold is not reached. M1 maintained appropriately."
+    },
+    "C10": { "score": 4 }
+  },
+  "plugin_domain_family_scores": {
+    "P1": { "score": 4 },
+    "P2": { "score": 4 },
+    "P3": {
+      "score": 4,
+      "note": "The low-contact structure package is appropriately conditional and does not overstate feasibility given the fragile trust climate."
+    },
+    "P4": { "score": 4 },
+    "P5": { "score": 4 },
+    "P6": { "score": 3 }
+  },
+  "integration_family_scores": {
+    "I1": { "score": 4 },
+    "I2": { "score": 4 },
+    "I3": {
+      "score": 5,
+      "note": "The C9 boundary decision is coherently represented across the interaction trace escalation_state_updates, the flags (emotional distress present, no safety flag), and the summary. The artifact set tells a consistent M1-with-boundary-held story."
+    },
+    "I4": { "score": 4 },
+    "I5": { "score": 4 },
+    "I6": {
+      "score": 4,
+      "note": "The slice requires trace review to fully assess the C9 boundary artifact quality, but the summary and flags are sufficiently informative for a first-pass evaluation."
+    }
+  },
+  "weighted_scores": {
+    "core_family_weights": {
+      "C1": 9,
+      "C2": 7,
+      "C3": 12,
+      "C4": 9,
+      "C5": 13,
+      "C6": 16,
+      "C7": 7,
+      "C8": 6,
+      "C9": 16,
+      "C10": 5
+    },
+    "weighted_core_family_scores": {
+      "C1": 7.2,
+      "C2": 5.6,
+      "C3": 9.6,
+      "C4": 9.0,
+      "C5": 7.8,
+      "C6": 12.8,
+      "C7": 7.0,
+      "C8": 3.6,
+      "C9": 16.0,
+      "C10": 4.0
+    },
+    "core_general_score": 82.6,
+    "core_interpretation_band": "promising_but_materially_improvable",
+    "plugin_domain_family_weights": {
+      "P1": 12,
+      "P2": 20,
+      "P3": 24,
+      "P4": 18,
+      "P5": 16,
+      "P6": 10
+    },
+    "weighted_plugin_domain_family_scores": {
+      "P1": 9.6,
+      "P2": 16.0,
+      "P3": 19.2,
+      "P4": 14.4,
+      "P5": 12.8,
+      "P6": 6.0
+    },
+    "plugin_domain_score": 78.0,
+    "plugin_domain_interpretation_band": "useful_but_materially_improvable",
+    "integration_family_weights": {
+      "I1": 18,
+      "I2": 20,
+      "I3": 22,
+      "I4": 16,
+      "I5": 10,
+      "I6": 14
+    },
+    "weighted_integration_family_scores": {
+      "I1": 14.4,
+      "I2": 16.0,
+      "I3": 22.0,
+      "I4": 12.8,
+      "I5": 8.0,
+      "I6": 11.2
+    },
+    "integration_score": 84.4,
+    "integration_interpretation_band": "workable_but_materially_improvable_integration"
+  },
+  "automatic_fail_overlays": {
+    "F1": { "status": "no" },
+    "F2": { "status": "no" },
+    "F3": { "status": "no" },
+    "F4": { "status": "no" },
+    "F5": { "status": "no" }
+  },
+  "escalation_review": {
+    "escalation_sensitive_condition_present": true,
+    "primary_escalation_category": "E5",
+    "threshold_band": "T1",
+    "observed_mode": "M1",
+    "evaluator_preferred_mode": "M1",
+    "notes": "E5 (decision quality / separation structure) is the primary escalation category — emotional distress and betrayal content create decision-quality risk without reaching the safety threshold. The safety escalation threshold (T2+) is not reached. M1 is the correct mode. The C9 boundary decision is explicit in the structured artifacts — this is the primary evidence of correct escalation discipline. The run correctly holds M1 without over-escalating to M2 or M4."
+  },
+  "perception_quality_review": {
+    "PQ1_emotional_state_accuracy": {
+      "rating": "strong",
+      "note": "C7=5: system acknowledged emotional betrayal context genuinely and specifically at turn 3, not generically. Naming the relational wound rather than diffuse distress indicates accurate emotional state modelling."
+    },
+    "PQ2_interest_inference_quality": {
+      "rating": "strong",
+      "note": "C3=4 and C7=5 together indicate interests inferred beneath positions. System reads emotional betrayal as having specific implications for pace and decision authority, not just as tone to be managed."
+    },
+    "PQ3_risk_signal_detection": {
+      "rating": "strong",
+      "note": "C9=5 with explicit signal naming: 'emotional_distress_noted, pace_tension' recorded as first-class escalation entries. Explicit statement that safety threshold not reached — accurate calibration, not a default pass."
+    },
+    "PQ4_relational_dynamic_awareness": {
+      "rating": "competent",
+      "note": "C6=4. Pace preferences of both parties tracked. Betrayal context implies asymmetric relational positioning which is acknowledged, but depth of cross-turn relational pattern tracking is less evidenced than within-turn emotional accuracy."
+    },
+    "perception_quality_band": "strong",
+    "perceived_asymmetry": true,
+    "perception_asymmetry_note": "One party is in an emotional betrayal position; the other is not. The system's stronger attention to the distressed party (C7=5) may mean the non-distressed party's internal state is modelled less precisely. Not directly testable from Stage 0 artifacts.",
+    "perception_quality_notes": "Stage 0 proxy evaluation: PQ scores inferred from action quality (C7/C6/C9) since no explicit party state artifact exists. D-B03 is the strongest perception case in the Stage 0 set. Emotional specificity (C7=5) and explicit signal naming in the C9 note indicate high-quality psychological state reading when emotional case content demands it."
+  },
+  "final_judgment": {
+    "overall_judgment": "promising_but_improvable",
+    "evaluator_confidence": "high",
+    "short_rationale": "The run acknowledges the emotional betrayal content genuinely at turn 3, maintains C9 boundary discipline with an explicit first-class boundary decision entry at turn 5, and proposes a bounded low-contact package at turn 7 that both parties can accept without requiring close relational cooperation.",
+    "follow_up_recommendation": "Compare against D-B10 (emotional heat workable at M0) and D-B12 (emotional flooding requiring M2) to calibrate the spectrum. D-B03 is the M1 midpoint where emotional weight is real but safety threshold is not reached.",
+    "requires_separate_review": false,
+    "requires_calibration_review": false
+  },
+  "artifact_links": {
+    "interaction_trace": "sessions/D-B03-S01/interaction_trace.json",
+    "transcript": null,
+    "flags": "sessions/D-B03-S01/flags.json",
+    "summary": "sessions/D-B03-S01/summary.txt",
+    "case_intake_brief": null,
+    "early_dynamics_brief": null,
+    "risk_alert_brief": null,
+    "continuity_packet": null
+  }
+}

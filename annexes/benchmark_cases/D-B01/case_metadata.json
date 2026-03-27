@@ -1,0 +1,67 @@
+{
+  "schema_version": "case_metadata.v0",
+  "case_id": "D-B01",
+  "benchmark_id": "D-B01",
+  "plugin_type": "divorce",
+  "title": "Cooperative separation with parenting logistics coordination dispute",
+  "scenario_summary": "Two recently separated parents are broadly cooperative but disagree about how to handle pickup and dropoff timing, activity hand-off coordination, and holiday sequencing. There is no acute conflict, but the absence of a clear logistics framework is creating friction and confusion for both the parents and the child.",
+  "intended_challenge_type": "Process-design clarity in a cooperative-but-undefined context.",
+  "expected_mode_range": [
+    "M0",
+    "M1"
+  ],
+  "likely_escalation_category": null,
+  "expected_focal_scoring_areas": [
+    "C1_process_framing",
+    "C2_issue_clarification",
+    "C3_interest_elicitation",
+    "C5_option_generation_support",
+    "C6_fair_process_and_balanced_participation"
+  ],
+  "likely_automatic_fail_risks": [
+    "manufacturing_caution_in_a_cooperative_context",
+    "premature_directive_solutioning"
+  ],
+  "variable_settings": {
+    "conflict_intensity": "low_to_moderate",
+    "children_parenting_structure": "minor_child_with_logistics_coordination_needs",
+    "settlement_zone_width": "wide",
+    "urgency": "low",
+    "trust_climate": "cooperative_but_undefined",
+    "power_asymmetry": "low",
+    "safety_indicators": "none_apparent",
+    "issue_clusters_present": [
+      "parenting_schedule",
+      "communication_protocol",
+      "activity_coordination"
+    ]
+  },
+  "working_slice_notes": {
+    "selected_as_cooperative_baseline_slice": true,
+    "preferred_initial_posture_for_validation": "M0",
+    "architecture_reason": "Exercises Solomon in the cooperative baseline condition where the failure risk is over-caution or over-direction rather than under-caution. Primary calibration anchor for the full corpus."
+  },
+  "hidden_evaluator_notes": {
+    "primary_test": "Can Solomon structure a workable logistics package without manufacturing risk signals that the state does not support?",
+    "secondary_test": "Can Solomon keep the process party-owned and avoid sounding like it is solving the problem for them?"
+  },
+  "artifact_expectations": {
+    "required": [
+      "session_meta.json",
+      "run_meta.json",
+      "interaction_trace.json",
+      "positions.json",
+      "facts_snapshot.json",
+      "flags.json",
+      "missing_info.json",
+      "summary.txt",
+      "review_cover_sheet.txt",
+      "review_transcript.txt",
+      "review_outcome_sheet.txt"
+    ],
+    "recommended": [
+      "evaluation.json",
+      "evaluation_summary.txt"
+    ]
+  }
+}

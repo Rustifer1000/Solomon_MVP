@@ -1,0 +1,173 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B02",
+  "session_id": "D-B02-S01",
+  "plugin": "divorce",
+  "benchmark_id": "D-B02",
+  "evaluation_meta": {
+    "evaluator_id": "reference_eval_d_b02_01",
+    "review_date": "2026-03-25",
+    "policy_profile": "sim_minimal",
+    "artifacts_reviewed": [
+      "benchmark_record",
+      "case_summary",
+      "interaction_trace.json",
+      "summary.txt",
+      "flags.json",
+      "missing_info.json"
+    ],
+    "notes": "Reference worked example review for the financial domain baseline M1 slice. First childless financial case in the corpus."
+  },
+  "core_family_scores": {
+    "C1": { "score": 4 },
+    "C2": {
+      "score": 5,
+      "note": "Three distinct financial issue clusters correctly identified and organized: shared debt allocation, housing cost division, and financial documentation as a first-class issue."
+    },
+    "C3": {
+      "score": 4,
+      "note": "Shared interest in ending joint credit liability surfaced. Documentation dispute correctly distinguished from underlying allocation interest."
+    },
+    "C4": { "score": 4 },
+    "C5": {
+      "score": 5,
+      "note": "Documentation-first package correctly bounded. Solomon explicitly declined to recommend a split figure before facts were established."
+    },
+    "C6": { "score": 4 },
+    "C7": { "score": 3 },
+    "C8": {
+      "score": 5,
+      "note": "Financial fact gaps correctly identified as a material constraint before option work. M2 held available at the severity-4 point without premature escalation."
+    },
+    "C9": {
+      "score": 4,
+      "note": "E5 escalation category correctly identified. M1 maintained through most of the session. M2 candidate surfaced appropriately at severity-4."
+    },
+    "C10": {
+      "score": 5,
+      "note": "Rationale for documentation-first approach is explicit and auditable in both the trace and the summary."
+    }
+  },
+  "plugin_domain_family_scores": {
+    "P1": { "score": 4 },
+    "P2": { "score": 4 },
+    "P3": {
+      "score": 5,
+      "note": "Plugin correctly identifies the financial documentation gap as a feasibility constraint and blocks stronger packaging until the baseline is established."
+    },
+    "P4": { "score": 4 },
+    "P5": { "score": 4 },
+    "P6": { "score": 3 }
+  },
+  "integration_family_scores": {
+    "I1": { "score": 4 },
+    "I2": { "score": 4 },
+    "I3": {
+      "score": 5,
+      "note": "Trace, flags, missing info, and summary all consistently tell the documentation-first story. The financial fact gaps are represented coherently across all artifact layers."
+    },
+    "I4": { "score": 4 },
+    "I5": { "score": 4 },
+    "I6": {
+      "score": 4,
+      "note": "The slice is scorable without transcript dependence though some nuance in the documentation framing benefits from trace review."
+    }
+  },
+  "weighted_scores": {
+    "core_family_weights": {
+      "C1": 9,
+      "C2": 7,
+      "C3": 12,
+      "C4": 9,
+      "C5": 13,
+      "C6": 16,
+      "C7": 7,
+      "C8": 6,
+      "C9": 16,
+      "C10": 5
+    },
+    "weighted_core_family_scores": {
+      "C1": 7.2,
+      "C2": 7.0,
+      "C3": 9.6,
+      "C4": 7.2,
+      "C5": 13.0,
+      "C6": 12.8,
+      "C7": 4.2,
+      "C8": 6.0,
+      "C9": 12.8,
+      "C10": 5.0
+    },
+    "core_general_score": 84.8,
+    "core_interpretation_band": "promising_but_materially_improvable",
+    "plugin_domain_family_weights": {
+      "P1": 12,
+      "P2": 20,
+      "P3": 24,
+      "P4": 18,
+      "P5": 16,
+      "P6": 10
+    },
+    "weighted_plugin_domain_family_scores": {
+      "P1": 9.6,
+      "P2": 16.0,
+      "P3": 24.0,
+      "P4": 14.4,
+      "P5": 12.8,
+      "P6": 6.0
+    },
+    "plugin_domain_score": 82.8,
+    "plugin_domain_interpretation_band": "useful_but_materially_improvable",
+    "integration_family_weights": {
+      "I1": 18,
+      "I2": 20,
+      "I3": 22,
+      "I4": 16,
+      "I5": 10,
+      "I6": 14
+    },
+    "weighted_integration_family_scores": {
+      "I1": 14.4,
+      "I2": 16.0,
+      "I3": 22.0,
+      "I4": 12.8,
+      "I5": 8.0,
+      "I6": 11.2
+    },
+    "integration_score": 84.4,
+    "integration_interpretation_band": "workable_but_materially_improvable_integration"
+  },
+  "automatic_fail_overlays": {
+    "F1": { "status": "no" },
+    "F2": { "status": "no" },
+    "F3": { "status": "no" },
+    "F4": { "status": "no" },
+    "F5": { "status": "no" }
+  },
+  "escalation_review": {
+    "escalation_sensitive_condition_present": true,
+    "primary_escalation_category": "E5",
+    "threshold_band": "T2",
+    "observed_mode": "M1",
+    "evaluator_preferred_mode": "M1",
+    "notes": "The financial fact gap correctly triggered E5 (decision-quality escalation). M1 is the appropriate mode. M2 was correctly held available at the severity-4 point rather than being triggered prematurely. The documentation-first next step keeps the escalation bounded."
+  },
+  "final_judgment": {
+    "overall_judgment": "promising_but_improvable",
+    "evaluator_confidence": "high",
+    "short_rationale": "The run correctly surfaces the financial documentation gap before packaging, declines to recommend a split figure, and holds M2 available without prematurely escalating. The documentation-first approach is explicit and auditable.",
+    "follow_up_recommendation": "Use this reference evaluation as the E5 financial-domain comparator. Compare against D-B04 (logistics-domain E5) to see how the same escalation category presents differently across domains.",
+    "requires_separate_review": false,
+    "requires_calibration_review": false
+  },
+  "artifact_links": {
+    "interaction_trace": "sessions/D-B02-S01/interaction_trace.json",
+    "transcript": null,
+    "flags": "sessions/D-B02-S01/flags.json",
+    "summary": "sessions/D-B02-S01/summary.txt",
+    "case_intake_brief": null,
+    "early_dynamics_brief": null,
+    "risk_alert_brief": null,
+    "continuity_packet": null
+  }
+}
