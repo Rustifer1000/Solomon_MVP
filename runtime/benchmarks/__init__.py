@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 from runtime.benchmarks.base import BenchmarkSimulation
+from runtime.benchmarks.d_b01 import D_B01_SIMULATION
+from runtime.benchmarks.d_b02 import D_B02_SIMULATION
+from runtime.benchmarks.d_b03 import D_B03_SIMULATION
 from runtime.benchmarks.d_b04 import D_B04_SIMULATION
 from runtime.benchmarks.d_b05 import D_B05_SIMULATION
 from runtime.benchmarks.d_b06 import D_B06_SIMULATION
@@ -16,6 +19,9 @@ from runtime.benchmarks.scaffold import build_benchmark_registry
 
 
 _REGISTRY = build_benchmark_registry(
+    D_B01_SIMULATION,
+    D_B02_SIMULATION,
+    D_B03_SIMULATION,
     D_B04_SIMULATION,
     D_B05_SIMULATION,
     D_B06_SIMULATION,

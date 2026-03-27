@@ -1,10 +1,33 @@
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass
 from pathlib import Path
 
+import jsonschema
+
+
+_SCHEMA_DIR = Path(__file__).resolve().parents[1] / "schema"
+
+# Maps each core JSON artifact filename to its schema file.  Only JSON
+# artifacts that have a schema are listed here; text artifacts are skipped.
+_ARTIFACT_SCHEMAS: dict[str, str] = {
+    "session_meta.json": "session_meta.schema.json",
+    "run_meta.json": "run_meta.schema.json",
+    "interaction_trace.json": "interaction_trace.schema.json",
+    "positions.json": "positions.schema.json",
+    "facts_snapshot.json": "facts_snapshot.schema.json",
+    "flags.json": "flags.schema.json",
+    "missing_info.json": "missing_info.schema.json",
+    "briefs/case_intake_brief.json": "case_intake_brief.schema.json",
+    "briefs/early_dynamics_brief.json": "early_dynamics_brief.schema.json",
+    "briefs/risk_alert_brief.json": "risk_alert_brief.schema.json",
+    "continuity/continuity_packet.json": "continuity_packet.schema.json",
+}
+
 
 CORE_RUNTIME_ARTIFACTS = (
+    "session_meta.json",
     "run_meta.json",
     "interaction_trace.json",
     "positions.json",
@@ -25,6 +48,11 @@ class PolicyProfile:
     allow_briefs: bool = False
     allow_continuity_packet: bool = False
     continuity_required_modes: tuple[str, ...] = ()
+    # dev_verbose: reserved for future raw-transcript and debug-trace writing
+    allow_raw_transcripts: bool = False
+    allow_debug_traces: bool = False
+    # redacted: reserved for future write-time redaction hook enforcement
+    require_redaction: bool = False
 
 
 POLICY_PROFILES = {
@@ -40,6 +68,23 @@ POLICY_PROFILES = {
         allow_briefs=True,
         allow_continuity_packet=True,
         continuity_required_modes=("M2", "M3", "M4", "M5"),
+    ),
+    "dev_verbose": PolicyProfile(
+        name="dev_verbose",
+        required_core_artifacts=CORE_RUNTIME_ARTIFACTS,
+        allow_briefs=True,
+        allow_continuity_packet=True,
+        continuity_required_modes=("M2", "M3", "M4", "M5"),
+        allow_raw_transcripts=True,
+        allow_debug_traces=True,
+    ),
+    "redacted": PolicyProfile(
+        name="redacted",
+        required_core_artifacts=CORE_RUNTIME_ARTIFACTS,
+        allow_briefs=True,
+        allow_continuity_packet=True,
+        continuity_required_modes=("M2", "M3", "M4", "M5"),
+        require_redaction=True,
     ),
 }
 
@@ -108,4 +153,17 @@ def validate_runtime_artifact_set(output_dir: Path, state: dict) -> list[str]:
         errors.append(f"missing artifact for policy profile {state['meta']['policy_profile']}: {item}")
     for item in unexpected:
         errors.append(f"unexpected artifact for policy profile {state['meta']['policy_profile']}: {item}")
+
+    # Schema conformance check for every core JSON artifact that has a schema.
+    for artifact_name, schema_file in _ARTIFACT_SCHEMAS.items():
+        artifact_path = output_dir / artifact_name
+        if not artifact_path.exists():
+            continue  # presence errors already reported above
+        schema = json.loads((_SCHEMA_DIR / schema_file).read_text(encoding="utf-8"))
+        instance = json.loads(artifact_path.read_text(encoding="utf-8"))
+        validator = jsonschema.Draft202012Validator(schema)
+        for error in validator.iter_errors(instance):
+            path = ".".join(str(p) for p in error.absolute_path) if error.absolute_path else "root"
+            errors.append(f"{artifact_name} schema violation ({path}): {error.message}")
+
     return errors

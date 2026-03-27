@@ -12,6 +12,18 @@ def determine_escalation(state: dict, plugin_assessment: dict | None = None) -> 
     logistics_missing = plugin_assessment.get("logistics_related_missing_info", [])
     uncertain_logistics = plugin_assessment.get("uncertain_logistics_facts", [])
 
+    if "irrecoverable_breakdown" in active_flag_types:
+        return {
+            "category": "E1",
+            "threshold_band": "T4",
+            "mode": "M5",
+            "rationale": (
+                "Mediation must stop immediately and redirect because the process has reached an irrecoverable "
+                "breakdown condition. Continued handling — including preparation for handoff — is not appropriate. "
+                "The session should be stopped and the parties redirected to appropriate resources."
+            ),
+        }
+
     if "acute_safety_concern" in active_flag_types or "coercion_or_intimidation" in active_flag_types:
         return {
             "category": "E1",

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solomon/specs/facts_snapshot.schema.json",
+  "title": "Solomon facts_snapshot.json schema",
+  "description": "Point-in-time snapshot of the session fact set as accumulated through the turn loop. Records accepted, uncertain, disputed, and withdrawn facts.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "case_id", "session_id", "facts"],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "facts_snapshot.v0"
+    },
+    "case_id": { "type": "string" },
+    "session_id": { "type": "string" },
+    "facts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/fact" }
+    },
+    "facts_notes": { "type": ["string", "null"] }
+  },
+  "$defs": {
+    "fact": {
+      "type": "object",
+      "required": ["fact_id", "category", "statement", "status"],
+      "additionalProperties": true,
+      "properties": {
+        "fact_id": { "type": "string" },
+        "category": { "type": "string" },
+        "statement": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["accepted", "uncertain", "disputed", "withdrawn", "escalation_record"]
+        },
+        "source_turns": {
+          "type": "array",
+          "items": { "type": "integer" }
+        },
+        "related_issues": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "note": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

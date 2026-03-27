@@ -3,6 +3,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import jsonschema
+
 CORE_WEIGHTS = {
     "C1": 9,
     "C2": 7,
@@ -41,88 +43,14 @@ def _load_schema(schema_name: str) -> dict:
     return json.loads((SCHEMA_DIR / schema_name).read_text(encoding="utf-8"))
 
 
-def _resolve_ref(ref: str, root_schema: dict) -> dict:
-    if not ref.startswith("#/"):
-        raise ValueError(f"Unsupported schema ref: {ref}")
-    node = root_schema
-    for segment in ref[2:].split("/"):
-        node = node[segment]
-    return node
-
-
-def _matches_type(value, expected_type: str) -> bool:
-    if expected_type == "object":
-        return isinstance(value, dict)
-    if expected_type == "array":
-        return isinstance(value, list)
-    if expected_type == "string":
-        return isinstance(value, str)
-    if expected_type == "integer":
-        return isinstance(value, int) and not isinstance(value, bool)
-    if expected_type == "number":
-        return isinstance(value, (int, float)) and not isinstance(value, bool)
-    if expected_type == "boolean":
-        return isinstance(value, bool)
-    if expected_type == "null":
-        return value is None
-    return True
-
-
-def _validate_schema_subset(instance, schema: dict, root_schema: dict | None = None, path: str = "root") -> list[str]:
-    root_schema = root_schema or schema
-    errors: list[str] = []
-
-    if "$ref" in schema:
-        return _validate_schema_subset(instance, _resolve_ref(schema["$ref"], root_schema), root_schema, path)
-
-    if "oneOf" in schema:
-        candidate_errors = [
-            _validate_schema_subset(instance, option, root_schema, path)
-            for option in schema["oneOf"]
-        ]
-        if not any(not candidate for candidate in candidate_errors):
-            errors.append(f"{path} does not satisfy any oneOf branch")
-        return errors
-
-    if "type" in schema:
-        expected_type = schema["type"]
-        if isinstance(expected_type, list):
-            if not any(_matches_type(instance, candidate) for candidate in expected_type):
-                errors.append(f"{path} does not match allowed types {expected_type}")
-                return errors
-        elif not _matches_type(instance, expected_type):
-            errors.append(f"{path} does not match type {expected_type}")
-            return errors
-
-    if "enum" in schema and instance not in schema["enum"]:
-        errors.append(f"{path} must be one of {schema['enum']}")
-    if "const" in schema and instance != schema["const"]:
-        errors.append(f"{path} must equal {schema['const']}")
-    if isinstance(instance, (int, float)) and not isinstance(instance, bool):
-        if "minimum" in schema and instance < schema["minimum"]:
-            errors.append(f"{path} must be >= {schema['minimum']}")
-        if "maximum" in schema and instance > schema["maximum"]:
-            errors.append(f"{path} must be <= {schema['maximum']}")
-
-    if isinstance(instance, dict):
-        properties = schema.get("properties", {})
-        required = schema.get("required", [])
-        for key in required:
-            if key not in instance:
-                errors.append(f"{path}.{key} is required")
-        if schema.get("additionalProperties") is False:
-            unknown = set(instance.keys()) - set(properties.keys())
-            for key in sorted(unknown):
-                errors.append(f"{path}.{key} is not allowed by schema")
-        for key, value in instance.items():
-            if key in properties:
-                errors.extend(_validate_schema_subset(value, properties[key], root_schema, f"{path}.{key}"))
-
-    if isinstance(instance, list) and "items" in schema:
-        item_schema = schema["items"]
-        for index, item in enumerate(instance):
-            errors.extend(_validate_schema_subset(item, item_schema, root_schema, f"{path}[{index}]"))
-
+def _schema_errors(instance: object, schema_name: str) -> list[str]:
+    """Validate *instance* against the named schema file; return a list of error strings."""
+    schema = _load_schema(schema_name)
+    validator = jsonschema.Draft202012Validator(schema)
+    errors = []
+    for error in validator.iter_errors(instance):
+        path = ".".join(str(p) for p in error.absolute_path) if error.absolute_path else "root"
+        errors.append(f"{path}: {error.message}")
     return errors
 
 
@@ -187,7 +115,7 @@ def validate_reference_evaluation_example(
     expected_primary_category: str,
 ) -> list[str]:
     errors: list[str] = []
-    errors.extend(_validate_schema_subset(evaluation, _load_schema("evaluation.schema.json")))
+    errors.extend(_schema_errors(evaluation, "evaluation.schema.json"))
 
     if evaluation["case_id"] != case_metadata["case_id"]:
         errors.append("evaluation case_id does not match case metadata")
@@ -277,7 +205,7 @@ def validate_reference_expert_review_example(
     case_metadata: dict,
 ) -> list[str]:
     errors: list[str] = []
-    errors.extend(_validate_schema_subset(expert_review, _load_schema("expert_review.schema.json")))
+    errors.extend(_schema_errors(expert_review, "expert_review.schema.json"))
 
     if expert_review["case_id"] != case_metadata["case_id"]:
         errors.append("expert_review case_id does not match case metadata")
@@ -307,5 +235,35 @@ def validate_reference_expert_review_example(
         expert_review["review_reason"]["trigger"] not in {"automatic_fail_yes", "safety_concern", "fairness_concern"}
     ):
         errors.append("separate-review flag should be tied to a review reason that justifies it")
+
+    return errors
+
+
+def validate_flags_artifact(
+    flags: dict,
+    case_metadata: dict,
+) -> list[str]:
+    """Validate a flags.json artifact against flags.schema.json and semantic invariants."""
+    errors: list[str] = []
+    errors.extend(_schema_errors(flags, "flags.schema.json"))
+
+    if flags.get("case_id") != case_metadata["case_id"]:
+        errors.append("flags case_id does not match case metadata")
+
+    for flag in flags.get("active_flags", []):
+        if flag.get("status") != "active":
+            errors.append(f"active flag {flag.get('flag_id')} has non-active status")
+        if not 1 <= flag.get("severity", 0) <= 5:
+            errors.append(f"active flag {flag.get('flag_id')} has out-of-range severity")
+        if flag.get("hard_trigger") and not flag.get("related_categories"):
+            errors.append(
+                f"active flag {flag.get('flag_id')} has hard_trigger=true but no related_categories"
+            )
+
+    for flag in flags.get("cleared_flags", []):
+        if flag.get("status") != "cleared":
+            errors.append(f"cleared flag {flag.get('flag_id')} has non-cleared status")
+        if flag.get("cleared_turn") is None:
+            errors.append(f"cleared flag {flag.get('flag_id')} is missing cleared_turn")
 
     return errors

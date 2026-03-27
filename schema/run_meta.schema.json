@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solomon/specs/run_meta.schema.json",
+  "title": "Solomon run_meta.json schema",
+  "description": "Authoritative run-level metadata written at the start of every benchmark session. Records identity, traceability, and reproducibility context for the run.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "session_id",
+    "timestamp",
+    "session_type",
+    "policy_profile",
+    "runtime",
+    "model_config",
+    "prompting",
+    "randomization",
+    "redaction_applied",
+    "case_context"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "run_meta.v0"
+    },
+    "case_id": { "type": "string" },
+    "session_id": { "type": "string" },
+    "timestamp": {
+      "type": "string",
+      "description": "ISO 8601 UTC timestamp for artifact generation."
+    },
+    "session_type": { "type": "string" },
+    "policy_profile": {
+      "type": "string",
+      "enum": ["sim_minimal", "eval_support", "dev_verbose", "redacted"]
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["environment", "code_version", "git_commit_hash"],
+      "properties": {
+        "environment": { "type": "string" },
+        "code_version": { "type": "string" },
+        "git_commit_hash": { "type": ["string", "null"] }
+      }
+    },
+    "model_config": {
+      "type": "object",
+      "required": ["provider"],
+      "properties": {
+        "provider": { "type": "string" },
+        "model_name": { "type": ["string", "null"] },
+        "temperature": { "type": ["number", "null"] },
+        "other_decoding_settings": { "type": "object" }
+      }
+    },
+    "prompting": {
+      "type": "object",
+      "required": ["prompt_version", "prompt_ids"],
+      "properties": {
+        "prompt_version": { "type": ["string", "null"] },
+        "prompt_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "randomization": {
+      "type": "object",
+      "required": ["seed", "determinism_note"],
+      "properties": {
+        "seed": { "type": ["string", "null"] },
+        "determinism_note": { "type": "string" }
+      }
+    },
+    "redaction_applied": {
+      "type": "boolean",
+      "description": "True when the redacted policy profile applied write-time PII scrubbing to all artifacts in this run."
+    },
+    "case_context": {
+      "type": "object",
+      "required": ["plugin_type", "source"],
+      "properties": {
+        "plugin_type": { "type": "string" },
+        "source": {
+          "type": "string",
+          "enum": ["runtime", "reference", "mock_model", "varied_mock_model", "lm_runtime"]
+        },
+        "process_variant": { "type": ["string", "null"] },
+        "benchmark_descriptor": { "type": ["object", "null"] },
+        "artifact_narrative_policy": { "type": ["object", "null"] },
+        "support_artifact_policy": { "type": ["object", "null"] },
+        "package_element_labels": { "type": ["object", "null"] },
+        "evaluator_helper_policy": { "type": ["object", "null"] },
+        "review_transcript_renderer": { "type": "string" },
+        "participant_context": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

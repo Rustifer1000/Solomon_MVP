@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solomon/specs/positions.schema.json",
+  "title": "Solomon positions.json schema",
+  "description": "Authoritative record of each participant's stated positions and proposals as captured across the session.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "case_id", "session_id", "participants"],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "positions.v0"
+    },
+    "case_id": { "type": "string" },
+    "session_id": { "type": "string" },
+    "participants": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/participantPositions" }
+    },
+    "position_notes": { "type": ["string", "null"] }
+  },
+  "$defs": {
+    "participantPositions": {
+      "type": "object",
+      "required": ["participant_id", "current_positions"],
+      "additionalProperties": true,
+      "properties": {
+        "participant_id": { "type": "string" },
+        "current_positions": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/position" }
+        },
+        "proposals": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/proposal" }
+        }
+      }
+    },
+    "position": {
+      "type": "object",
+      "required": ["position_id", "issue_id", "statement", "status"],
+      "additionalProperties": true,
+      "properties": {
+        "position_id": { "type": "string" },
+        "issue_id": { "type": "string" },
+        "statement": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["current", "revised", "withdrawn", "held"]
+        },
+        "confidence": {
+          "type": "string",
+          "enum": ["high", "moderate", "medium", "low", "uncertain"]
+        },
+        "source_turns": {
+          "type": "array",
+          "items": { "type": "integer" }
+        }
+      }
+    },
+    "proposal": {
+      "type": "object",
+      "required": ["proposal_id", "statement", "status"],
+      "additionalProperties": true,
+      "properties": {
+        "proposal_id": { "type": "string" },
+        "statement": { "type": "string" },
+        "status": { "type": "string" },
+        "source_turns": {
+          "type": "array",
+          "items": { "type": "integer" }
+        }
+      }
+    }
+  }
+}

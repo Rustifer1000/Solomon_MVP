@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 import json
+import subprocess
 from pathlib import Path
 
-from runtime.policy_profiles import validate_runtime_artifact_set
+from runtime.policy_profiles import get_policy_profile, validate_runtime_artifact_set
 from runtime.plugins import get_plugin_runtime
+from runtime.redaction import redact_json_values, redact_text
 from runtime.reviewer_transcript_rendering import build_rendered_reviewer_transcript
 from runtime.session_validation import validate_support_artifact_package
 from runtime.support_artifacts import write_support_artifacts
@@ -12,6 +14,17 @@ from runtime.support_artifacts import write_support_artifacts
 
 def _write_json(path: Path, payload: dict) -> None:
     path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+
+
+def _resolve_git_commit_hash() -> str | None:
+    try:
+        return subprocess.check_output(
+            ["git", "rev-parse", "--short", "HEAD"],
+            stderr=subprocess.DEVNULL,
+            text=True,
+        ).strip() or None
+    except Exception:
+        return None
 
 
 def _source_metadata(source: str, case_id: str, plugin_type: str) -> dict:
@@ -133,11 +146,36 @@ def _package_element_label(state: dict, element_id: str) -> str:
     return _package_element_labels(state).get(element_id, element_id.replace("_", " "))
 
 
+def build_session_meta(state: dict, generated_at: str) -> dict:
+    """Build the stable session identity card written once per session folder.
+
+    Contains only fields that are constant across all runs of a given session.
+    Per-run details (git hash, model config, policy profile, timestamps) live in
+    run_meta.json.
+    """
+    return {
+        "schema_version": "session_meta.v0",
+        "case_id": state["meta"]["case_id"],
+        "session_id": state["meta"]["session_id"],
+        "plugin_type": state["meta"]["plugin_type"],
+        "title": state["meta"].get("title"),
+        "scenario_summary": state["meta"].get("scenario_summary"),
+        "source": state["meta"].get("source", "reference"),
+        "created_at": generated_at,
+    }
+
+
 def build_run_meta(state: dict, generated_at: str) -> dict:
     case_id = state["meta"]["case_id"]
     plugin_type = state["meta"]["plugin_type"]
     source = state["meta"].get("source", "reference")
     source_metadata = _source_metadata(source, case_id, plugin_type)
+    # If an explicit seed was supplied (e.g. via --seed CLI flag), override the
+    # source-metadata default so the run is reproducible from that seed alone.
+    explicit_seed = state["meta"].get("seed")
+    randomization = dict(source_metadata["randomization"])
+    if explicit_seed is not None:
+        randomization["seed"] = explicit_seed
     return {
         "schema_version": "run_meta.v0",
         "case_id": case_id,
@@ -148,11 +186,12 @@ def build_run_meta(state: dict, generated_at: str) -> dict:
         "runtime": {
             "environment": "local_scaffold",
             "code_version": "runtime-scaffold-v0",
-            "git_commit_hash": None,
+            "git_commit_hash": _resolve_git_commit_hash(),
         },
         "model_config": source_metadata["model_config"],
         "prompting": source_metadata["prompting"],
-        "randomization": source_metadata["randomization"],
+        "randomization": randomization,
+        "redaction_applied": get_policy_profile(state["meta"]["policy_profile"]).require_redaction,
         "case_context": {
             "plugin_type": state["meta"]["plugin_type"],
             "source": source,
@@ -168,6 +207,28 @@ def build_run_meta(state: dict, generated_at: str) -> dict:
     }
 
 
+def _final_state_summary(state: dict) -> dict:
+    esc = state.get("escalation", {})
+    open_questions = [
+        item["question"]
+        for item in state.get("missing_info", [])
+        if item.get("status") == "open"
+    ]
+    active_flags = [
+        flag.get("flag_id", "")
+        for flag in state.get("flags", [])
+        if flag.get("status") != "resolved"
+    ]
+    return {
+        "current_phase": state.get("phase", "unknown"),
+        "issues_identified": list(state.get("issues", {}).keys()),
+        "open_questions_remaining": open_questions,
+        "active_flags": active_flags,
+        "current_escalation_state": esc.get("mode"),
+        "continuation_recommendation": state.get("summary_state", {}).get("next_step"),
+    }
+
+
 def build_interaction_trace(state: dict, generated_at: str) -> dict:
     return {
         "schema_version": "interaction_trace.v0",
@@ -176,6 +237,8 @@ def build_interaction_trace(state: dict, generated_at: str) -> dict:
         "policy_profile": state["meta"]["policy_profile"],
         "trace_created_at": generated_at,
         "turns": state["trace_buffer"],
+        "final_state_summary": _final_state_summary(state),
+        "trace_notes": None,
     }
 
 
@@ -610,16 +673,25 @@ def build_review_outcome_sheet(state: dict) -> str:
 
 def write_artifacts(output_dir: Path, state: dict, generated_at: str, case_bundle: dict | None = None) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
-    _write_json(output_dir / "run_meta.json", build_run_meta(state, generated_at))
-    _write_json(output_dir / "interaction_trace.json", build_interaction_trace(state, generated_at))
-    _write_json(output_dir / "positions.json", build_positions(state))
-    _write_json(output_dir / "facts_snapshot.json", build_facts_snapshot(state))
-    _write_json(output_dir / "flags.json", build_flags(state))
-    _write_json(output_dir / "missing_info.json", build_missing_info(state))
-    (output_dir / "summary.txt").write_text(build_summary(state), encoding="utf-8")
-    (output_dir / "review_cover_sheet.txt").write_text(_review_case_cover_sheet(state, case_bundle), encoding="utf-8")
-    (output_dir / "review_transcript.txt").write_text(build_review_transcript(state), encoding="utf-8")
-    (output_dir / "review_outcome_sheet.txt").write_text(build_review_outcome_sheet(state), encoding="utf-8")
+    require_redaction = get_policy_profile(state["meta"]["policy_profile"]).require_redaction
+
+    def _rj(payload: dict) -> dict:
+        return redact_json_values(payload, state) if require_redaction else payload
+
+    def _rt(text: str) -> str:
+        return redact_text(text, state) if require_redaction else text
+
+    _write_json(output_dir / "session_meta.json", _rj(build_session_meta(state, generated_at)))
+    _write_json(output_dir / "run_meta.json", _rj(build_run_meta(state, generated_at)))
+    _write_json(output_dir / "interaction_trace.json", _rj(build_interaction_trace(state, generated_at)))
+    _write_json(output_dir / "positions.json", _rj(build_positions(state)))
+    _write_json(output_dir / "facts_snapshot.json", _rj(build_facts_snapshot(state)))
+    _write_json(output_dir / "flags.json", _rj(build_flags(state)))
+    _write_json(output_dir / "missing_info.json", _rj(build_missing_info(state)))
+    (output_dir / "summary.txt").write_text(_rt(build_summary(state)), encoding="utf-8")
+    (output_dir / "review_cover_sheet.txt").write_text(_rt(_review_case_cover_sheet(state, case_bundle)), encoding="utf-8")
+    (output_dir / "review_transcript.txt").write_text(_rt(build_review_transcript(state)), encoding="utf-8")
+    (output_dir / "review_outcome_sheet.txt").write_text(_rt(build_review_outcome_sheet(state)), encoding="utf-8")
     renderer_name = state["meta"].get("review_transcript_renderer", "none")
     if renderer_name != "none":
         (output_dir / "review_transcript_rendered.txt").write_text(

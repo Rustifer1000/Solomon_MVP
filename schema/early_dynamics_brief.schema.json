@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solomon/specs/early_dynamics_brief.schema.json",
+  "title": "Solomon early_dynamics_brief.json schema",
+  "description": "Mid-session snapshot of opening positions, active issues, and flag state for evaluator review.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "session_id",
+    "phase",
+    "issues",
+    "opening_positions",
+    "open_missing_info",
+    "active_flags",
+    "package_snapshot"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "early_dynamics_brief.v0"
+    },
+    "case_id": { "type": "string" },
+    "session_id": { "type": "string" },
+    "phase": { "type": "string" },
+    "issues": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "opening_positions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/openingPosition" }
+    },
+    "open_missing_info": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "active_flags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "package_snapshot": {
+      "oneOf": [
+        { "$ref": "#/$defs/packageSnapshot" },
+        { "type": "null" }
+      ]
+    }
+  },
+  "$defs": {
+    "openingPosition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["participant_id", "statement"],
+      "properties": {
+        "participant_id": { "type": "string" },
+        "statement": { "type": "string" }
+      }
+    },
+    "packageSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["family", "status", "summary", "elements", "related_issues"],
+      "properties": {
+        "family": { "type": "string" },
+        "status": { "type": "string" },
+        "summary": { "type": "string" },
+        "elements": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "related_issues": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

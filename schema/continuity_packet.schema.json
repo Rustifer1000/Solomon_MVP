@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solomon/specs/continuity_packet.schema.json",
+  "title": "Solomon continuity_packet.json schema",
+  "description": "Full session state handoff packet written when escalation mode requires human involvement.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "session_id",
+    "plugin_type",
+    "support_artifact_policy_descriptor",
+    "support_artifact_review_focus",
+    "category_family",
+    "recommended_human_role",
+    "handoff_focus",
+    "escalation",
+    "summary_state",
+    "issues",
+    "open_missing_info",
+    "active_flags",
+    "package_snapshot",
+    "plugin_assessment",
+    "recent_turn_summaries",
+    "case_title"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "continuity_packet.v0"
+    },
+    "case_id": { "type": "string" },
+    "session_id": { "type": "string" },
+    "plugin_type": { "type": "string" },
+    "support_artifact_policy_descriptor": { "type": "string" },
+    "support_artifact_review_focus": { "type": "string" },
+    "category_family": {
+      "type": "string",
+      "enum": [
+        "safety_or_coercion",
+        "fairness_or_process_breakdown",
+        "explicit_human_involvement_request",
+        "domain_complexity_review",
+        "decision_quality_caution",
+        "role_boundary_pressure",
+        "none"
+      ]
+    },
+    "recommended_human_role": {
+      "type": "string",
+      "enum": [
+        "full_handoff",
+        "co_handling",
+        "human_review",
+        "bounded_review_or_caution",
+        "none"
+      ]
+    },
+    "handoff_focus": { "type": "string" },
+    "escalation": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["category", "threshold_band", "mode", "rationale"],
+      "properties": {
+        "category": {
+          "type": ["string", "null"],
+          "enum": ["E1", "E2", "E3", "E4", "E5", "E6", null]
+        },
+        "threshold_band": {
+          "type": "string",
+          "enum": ["T0", "T1", "T2", "T3", "T4"]
+        },
+        "mode": {
+          "type": "string",
+          "enum": ["M0", "M1", "M2", "M3", "M4", "M5"]
+        },
+        "rationale": { "type": "string" }
+      }
+    },
+    "summary_state": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["issues", "next_step"],
+      "properties": {
+        "issues": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "next_step": { "type": "string" }
+      }
+    },
+    "issues": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "open_missing_info": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/missingInfoItem" }
+    },
+    "active_flags": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/activeFlag" }
+    },
+    "package_snapshot": {
+      "oneOf": [
+        { "$ref": "#/$defs/packageSnapshot" },
+        { "type": "null" }
+      ]
+    },
+    "plugin_assessment": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["plugin_confidence", "supports_fixed_recommendation", "warnings"],
+      "properties": {
+        "plugin_confidence": {
+          "type": ["string", "null"]
+        },
+        "supports_fixed_recommendation": {
+          "type": ["boolean", "null"]
+        },
+        "warnings": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "recent_turn_summaries": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/turnSummary" }
+    },
+    "case_title": { "type": "string" }
+  },
+  "$defs": {
+    "missingInfoItem": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["question"],
+      "properties": {
+        "question": { "type": "string" }
+      }
+    },
+    "activeFlag": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["flag_id", "flag_type", "severity", "title"],
+      "properties": {
+        "flag_id": { "type": "string" },
+        "flag_type": { "type": "string" },
+        "severity": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "title": { "type": "string" }
+      }
+    },
+    "packageSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["family", "status", "summary", "elements", "related_issues"],
+      "properties": {
+        "family": { "type": "string" },
+        "status": { "type": "string" },
+        "summary": { "type": "string" },
+        "elements": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "related_issues": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "turnSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["turn_index", "role", "phase", "message_summary"],
+      "properties": {
+        "turn_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "role": { "type": "string" },
+        "phase": { "type": "string" },
+        "message_summary": { "type": "string" }
+      }
+    }
+  }
+}

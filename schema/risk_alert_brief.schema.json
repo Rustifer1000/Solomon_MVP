@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solomon/specs/risk_alert_brief.schema.json",
+  "title": "Solomon risk_alert_brief.json schema",
+  "description": "Structured escalation alert written when flags are active or escalation mode is not M0.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "session_id",
+    "mode",
+    "category",
+    "category_family",
+    "recommended_human_role",
+    "handoff_focus",
+    "support_artifact_policy_descriptor",
+    "rationale",
+    "active_flags",
+    "plugin_warnings"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "risk_alert_brief.v0"
+    },
+    "case_id": { "type": "string" },
+    "session_id": { "type": "string" },
+    "mode": {
+      "type": "string",
+      "enum": ["M0", "M1", "M2", "M3", "M4", "M5"]
+    },
+    "category": {
+      "type": ["string", "null"],
+      "enum": ["E1", "E2", "E3", "E4", "E5", "E6", null]
+    },
+    "category_family": {
+      "type": "string",
+      "enum": [
+        "safety_or_coercion",
+        "fairness_or_process_breakdown",
+        "explicit_human_involvement_request",
+        "domain_complexity_review",
+        "decision_quality_caution",
+        "role_boundary_pressure",
+        "none"
+      ]
+    },
+    "recommended_human_role": {
+      "type": "string",
+      "enum": [
+        "full_handoff",
+        "co_handling",
+        "human_review",
+        "bounded_review_or_caution",
+        "none"
+      ]
+    },
+    "handoff_focus": { "type": "string" },
+    "support_artifact_policy_descriptor": { "type": "string" },
+    "rationale": { "type": "string" },
+    "active_flags": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/flagSummary" }
+    },
+    "plugin_warnings": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "$defs": {
+    "flagSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["flag_type", "title", "severity"],
+      "properties": {
+        "flag_type": { "type": "string" },
+        "title": { "type": "string" },
+        "severity": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        }
+      }
+    }
+  }
+}

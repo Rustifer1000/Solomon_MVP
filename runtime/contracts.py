@@ -4,6 +4,7 @@ from datetime import datetime
 from dataclasses import asdict, dataclass, field
 
 ALLOWED_ISSUE_IDS = {
+    # Parenting and schedule cluster
     "parenting_schedule",
     "school_logistics",
     "communication_protocol",
@@ -11,6 +12,16 @@ ALLOWED_ISSUE_IDS = {
     "child_expense_coordination",
     "meaningful_parent_role",
     "child_stability",
+    # Activity and coordination cluster (D-B01)
+    "activity_coordination",
+    # Financial and property cluster (D-B02)
+    "shared_debt_allocation",
+    "housing_cost_division",
+    "financial_documentation",
+    # Separation structure and emotional register cluster (D-B03)
+    "process_legitimacy",
+    "emotional_acknowledgment",
+    "separation_structure",
 }
 
 
@@ -99,6 +110,7 @@ class CandidateTurn:
     candidate_escalation_category: str | None = None
     candidate_escalation_mode: str | None = None
     confidence_note: str | None = None
+    interaction_observations_delta: list[str] = field(default_factory=list)
 
 
 def _validate_timestamp(timestamp: str) -> None:

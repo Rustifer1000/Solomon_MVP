@@ -57,7 +57,7 @@
         },
         "policy_profile": {
           "type": "string",
-          "enum": ["dev_verbose", "sim_minimal", "redacted"]
+          "enum": ["dev_verbose", "sim_minimal", "redacted", "eval_support"]
         },
         "artifacts_reviewed": {
           "type": "array",
@@ -70,6 +70,9 @@
               "transcript.json",
               "summary.txt",
               "flags.json",
+              "missing_info.json",
+              "facts_snapshot.json",
+              "positions.json",
               "case_intake_brief",
               "early_dynamics_brief",
               "risk_alert_brief",
@@ -369,6 +372,51 @@
         }
       }
     },
+    "perception_quality_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Diagnostic assessment of how well the system perceived party state. Measures what the system saw, not what it did — intentionally distinct from C7 (emotional regulation), C9 (safety/escalation), and C6 (fair process), which measure action quality. A system can see correctly and act poorly, or act correctly on explicit triggers while missing subtler signals.",
+      "required": [
+        "PQ1_emotional_state_accuracy",
+        "PQ2_interest_inference_quality",
+        "PQ3_risk_signal_detection",
+        "PQ4_relational_dynamic_awareness",
+        "perception_quality_band",
+        "perceived_asymmetry",
+        "perception_quality_notes"
+      ],
+      "properties": {
+        "PQ1_emotional_state_accuracy": {
+          "$ref": "#/$defs/perceptionRating"
+        },
+        "PQ2_interest_inference_quality": {
+          "$ref": "#/$defs/perceptionRating"
+        },
+        "PQ3_risk_signal_detection": {
+          "$ref": "#/$defs/perceptionRating"
+        },
+        "PQ4_relational_dynamic_awareness": {
+          "$ref": "#/$defs/perceptionRating"
+        },
+        "perception_quality_band": {
+          "type": "string",
+          "enum": ["strong", "competent", "developing", "weak"],
+          "description": "Holistic evaluator judgment across all four PQ dimensions for this session."
+        },
+        "perceived_asymmetry": {
+          "type": "boolean",
+          "description": "True if the system demonstrably perceived one party significantly better than the other."
+        },
+        "perception_asymmetry_note": {
+          "type": ["string", "null"],
+          "description": "If perceived_asymmetry is true: which party was better perceived, what signals drove the gap, and why it matters for this case."
+        },
+        "perception_quality_notes": {
+          "type": "string",
+          "description": "Evaluator notes citing specific turns where perception was strong or failed."
+        }
+      }
+    },
     "final_judgment": {
       "type": "object",
       "additionalProperties": false,
@@ -462,6 +510,23 @@
         },
         "note": {
           "type": "string"
+        }
+      }
+    },
+    "perceptionRating": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Named-category rating for a single PQ dimension. Uses qualitative labels for evaluator clarity rather than numeric scores.",
+      "required": ["rating"],
+      "properties": {
+        "rating": {
+          "type": "string",
+          "enum": ["strong", "competent", "developing", "weak"],
+          "description": "strong: reliably accurate, catches subtle signals; competent: mostly accurate, occasional misses; developing: variable, misses important signals in some turns; weak: frequently inaccurate or signals systematically missed."
+        },
+        "note": {
+          "type": "string",
+          "description": "Optional turn-level evidence supporting the rating."
         }
       }
     }

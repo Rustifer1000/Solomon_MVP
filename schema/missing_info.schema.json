@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solomon/specs/missing_info.schema.json",
+  "title": "Solomon missing_info.json schema",
+  "description": "Structured record of information gaps that materially limit responsible progress. Each item has importance, reason type, and resolution status.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "case_id", "session_id", "missing_items"],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "missing_info.v0"
+    },
+    "case_id": { "type": "string" },
+    "session_id": { "type": "string" },
+    "missing_items": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/missingItem" }
+    },
+    "missing_info_notes": { "type": ["string", "null"] }
+  },
+  "$defs": {
+    "missingItem": {
+      "type": "object",
+      "required": ["missing_id", "question", "importance", "reason_type", "status"],
+      "additionalProperties": true,
+      "properties": {
+        "missing_id": { "type": "string" },
+        "question": { "type": "string" },
+        "importance": {
+          "type": "string",
+          "enum": ["high", "medium", "low"]
+        },
+        "reason_type": {
+          "type": "string",
+          "enum": [
+            "feasibility_gap",
+            "decision_quality_gap",
+            "process_gap",
+            "domain_complexity",
+            "other"
+          ]
+        },
+        "related_issues": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "first_identified_turn": { "type": "integer", "minimum": 1 },
+        "status": {
+          "type": "string",
+          "enum": ["open", "resolved", "deferred"]
+        },
+        "note": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

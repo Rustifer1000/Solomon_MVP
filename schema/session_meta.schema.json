@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solomon/specs/session_meta.schema.json",
+  "title": "Solomon session_meta.json schema",
+  "description": "Stable identity document for a session folder. Captures what is constant across all runs of a given session: case identity, plugin, source, and human-readable labels. Per-run details (timestamps, git hash, model config, policy profile) belong in run_meta.json.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "session_id",
+    "plugin_type",
+    "source",
+    "created_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "session_meta.v0"
+    },
+    "case_id": { "type": "string" },
+    "session_id": { "type": "string" },
+    "plugin_type": { "type": "string" },
+    "title": { "type": ["string", "null"] },
+    "scenario_summary": { "type": ["string", "null"] },
+    "source": { "type": "string" },
+    "created_at": { "type": "string" }
+  }
+}

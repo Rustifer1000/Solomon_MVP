@@ -21,6 +21,9 @@ from runtime.benchmarks.d_b04 import (
     generate_runtime_client_turn,
     get_varied_mock_process_variant,
 )
+from runtime.benchmarks.d_b01_simulation import D_B01_SIMULATION
+from runtime.benchmarks.d_b02_simulation import D_B02_SIMULATION
+from runtime.benchmarks.d_b03_simulation import D_B03_SIMULATION
 from runtime.benchmarks.d_b04_simulation import D_B04_SIMULATION
 from runtime.benchmarks.d_b05_simulation import D_B05_SIMULATION
 from runtime.benchmarks.d_b06_simulation import D_B06_SIMULATION
@@ -36,6 +39,7 @@ from runtime.contracts import CandidateTurn, RiskCheck, StateDelta, validate_can
 from runtime.artifacts import write_artifacts
 from runtime.escalation import determine_escalation
 from runtime.evaluator_artifact_validation import (
+    validate_flags_artifact,
     validate_reference_evaluation_example,
     validate_reference_evaluation_summary_text,
     validate_reference_expert_review_example,
@@ -52,11 +56,15 @@ from runtime.orchestrator import _run_runtime_generated_session
 from runtime.persona_validation import validate_persona_profile
 from runtime.plugins.divorce_shared import qualify_case_shared
 from runtime.plugins import get_plugin_runtime
+from runtime.policy_profiles import get_policy_profile
 from runtime.session_validation import validate_session_trace, validate_support_artifact_package
 from runtime.state import initialize_session_state
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+D_B01_CASE_DIR = REPO_ROOT / "annexes" / "benchmark_cases" / "D-B01"
+D_B02_CASE_DIR = REPO_ROOT / "annexes" / "benchmark_cases" / "D-B02"
+D_B03_CASE_DIR = REPO_ROOT / "annexes" / "benchmark_cases" / "D-B03"
 CASE_DIR = REPO_ROOT / "annexes" / "benchmark_cases" / "D-B04"
 D_B05_CASE_DIR = REPO_ROOT / "annexes" / "benchmark_cases" / "D-B05"
 D_B06_CASE_DIR = REPO_ROOT / "annexes" / "benchmark_cases" / "D-B06"
@@ -101,6 +109,7 @@ class EndToEndScaffoldTest(unittest.TestCase):
         subprocess.run(command, cwd=REPO_ROOT, check=True)
         return {
             "output_dir": output_dir,
+            "session_meta": json.loads((output_dir / "session_meta.json").read_text(encoding="utf-8")),
             "run_meta": json.loads((output_dir / "run_meta.json").read_text(encoding="utf-8")),
             "trace": json.loads((output_dir / "interaction_trace.json").read_text(encoding="utf-8")),
             "positions": json.loads((output_dir / "positions.json").read_text(encoding="utf-8")),
@@ -109,6 +118,24 @@ class EndToEndScaffoldTest(unittest.TestCase):
             "missing_info": json.loads((output_dir / "missing_info.json").read_text(encoding="utf-8")),
             "summary": (output_dir / "summary.txt").read_text(encoding="utf-8"),
         }
+
+    def test_benchmark_registry_returns_d_b01_simulation(self) -> None:
+        case_bundle = load_case_bundle(D_B01_CASE_DIR)
+        simulation = get_benchmark_simulation(case_bundle)
+
+        self.assertEqual(simulation.case_id, "D-B01")
+
+    def test_benchmark_registry_returns_d_b02_simulation(self) -> None:
+        case_bundle = load_case_bundle(D_B02_CASE_DIR)
+        simulation = get_benchmark_simulation(case_bundle)
+
+        self.assertEqual(simulation.case_id, "D-B02")
+
+    def test_benchmark_registry_returns_d_b03_simulation(self) -> None:
+        case_bundle = load_case_bundle(D_B03_CASE_DIR)
+        simulation = get_benchmark_simulation(case_bundle)
+
+        self.assertEqual(simulation.case_id, "D-B03")
 
     def test_benchmark_registry_returns_d_b04_simulation(self) -> None:
         case_bundle = load_case_bundle(CASE_DIR)
@@ -177,11 +204,11 @@ class EndToEndScaffoldTest(unittest.TestCase):
         self.assertEqual(simulation.case_id, "D-B14")
 
     def test_active_divorce_slices_have_evaluator_review_paths(self) -> None:
-        for case_dir in [CASE_DIR, D_B05_CASE_DIR, D_B06_CASE_DIR, D_B07_CASE_DIR, D_B08_CASE_DIR, D_B09_CASE_DIR, D_B10_CASE_DIR, D_B11_CASE_DIR, D_B12_CASE_DIR, D_B13_CASE_DIR, D_B14_CASE_DIR]:
+        for case_dir in [D_B01_CASE_DIR, D_B02_CASE_DIR, D_B03_CASE_DIR, CASE_DIR, D_B05_CASE_DIR, D_B06_CASE_DIR, D_B07_CASE_DIR, D_B08_CASE_DIR, D_B09_CASE_DIR, D_B10_CASE_DIR, D_B11_CASE_DIR, D_B12_CASE_DIR, D_B13_CASE_DIR, D_B14_CASE_DIR]:
             self.assertTrue((case_dir / "evaluator_review_path.md").exists(), f"Missing evaluator path for {case_dir.name}")
 
     def test_active_divorce_slice_metadata_keeps_evaluator_artifact_expectations_consistent(self) -> None:
-        for case_dir in [CASE_DIR, D_B05_CASE_DIR, D_B06_CASE_DIR, D_B07_CASE_DIR, D_B08_CASE_DIR, D_B09_CASE_DIR, D_B10_CASE_DIR, D_B11_CASE_DIR, D_B12_CASE_DIR, D_B13_CASE_DIR, D_B14_CASE_DIR]:
+        for case_dir in [D_B01_CASE_DIR, D_B02_CASE_DIR, D_B03_CASE_DIR, CASE_DIR, D_B05_CASE_DIR, D_B06_CASE_DIR, D_B07_CASE_DIR, D_B08_CASE_DIR, D_B09_CASE_DIR, D_B10_CASE_DIR, D_B11_CASE_DIR, D_B12_CASE_DIR, D_B13_CASE_DIR, D_B14_CASE_DIR]:
             metadata = json.loads((case_dir / "case_metadata.json").read_text(encoding="utf-8"))
             required = metadata["artifact_expectations"]["required"]
             recommended = metadata["artifact_expectations"]["recommended"]
@@ -189,6 +216,7 @@ class EndToEndScaffoldTest(unittest.TestCase):
             self.assertEqual(
                 required,
                 [
+                    "session_meta.json",
                     "run_meta.json",
                     "interaction_trace.json",
                     "positions.json",
@@ -243,6 +271,9 @@ class EndToEndScaffoldTest(unittest.TestCase):
         self.assertIsNone(D_B05_SIMULATION.finalize_next_step({"summary_state": {}, "missing_info": [], "options": []}))
 
     def test_divorce_slices_expose_benchmark_owned_policy_descriptors(self) -> None:
+        d_b01_policy = D_B01_SIMULATION.plugin_policy_descriptor(load_case_bundle(D_B01_CASE_DIR))
+        d_b02_policy = D_B02_SIMULATION.plugin_policy_descriptor(load_case_bundle(D_B02_CASE_DIR))
+        d_b03_policy = D_B03_SIMULATION.plugin_policy_descriptor(load_case_bundle(D_B03_CASE_DIR))
         d_b04_policy = D_B04_SIMULATION.plugin_policy_descriptor(load_case_bundle(CASE_DIR))
         d_b05_policy = D_B05_SIMULATION.plugin_policy_descriptor(load_case_bundle(D_B05_CASE_DIR))
         d_b06_policy = D_B06_SIMULATION.plugin_policy_descriptor(load_case_bundle(D_B06_CASE_DIR))
@@ -255,6 +286,9 @@ class EndToEndScaffoldTest(unittest.TestCase):
         d_b13_policy = D_B13_SIMULATION.plugin_policy_descriptor(load_case_bundle(D_B13_CASE_DIR))
         d_b14_policy = D_B14_SIMULATION.plugin_policy_descriptor(load_case_bundle(D_B14_CASE_DIR))
 
+        self.assertEqual(d_b01_policy["descriptor_id"], "d_b01_cooperative_logistics_packaging")
+        self.assertEqual(d_b02_policy["descriptor_id"], "d_b02_financial_documentation_caution")
+        self.assertEqual(d_b03_policy["descriptor_id"], "d_b03_emotional_boundary_caution")
         self.assertEqual(d_b04_policy["descriptor_id"], "d_b04_school_week_caution")
         self.assertEqual(d_b05_policy["descriptor_id"], "d_b05_break_schedule_packaging")
         self.assertEqual(d_b06_policy["descriptor_id"], "d_b06_extracurricular_protocol_balance")
@@ -269,6 +303,9 @@ class EndToEndScaffoldTest(unittest.TestCase):
         self.assertNotEqual(d_b04_policy["flag_related_issues"], d_b06_policy["flag_related_issues"])
 
     def test_divorce_slices_expose_benchmark_owned_artifact_narrative_policy(self) -> None:
+        d_b01_policy = D_B01_SIMULATION.artifact_narrative_policy(load_case_bundle(D_B01_CASE_DIR))
+        d_b02_policy = D_B02_SIMULATION.artifact_narrative_policy(load_case_bundle(D_B02_CASE_DIR))
+        d_b03_policy = D_B03_SIMULATION.artifact_narrative_policy(load_case_bundle(D_B03_CASE_DIR))
         d_b04_policy = D_B04_SIMULATION.artifact_narrative_policy(load_case_bundle(CASE_DIR))
         d_b05_policy = D_B05_SIMULATION.artifact_narrative_policy(load_case_bundle(D_B05_CASE_DIR))
         d_b06_policy = D_B06_SIMULATION.artifact_narrative_policy(load_case_bundle(D_B06_CASE_DIR))
@@ -281,6 +318,9 @@ class EndToEndScaffoldTest(unittest.TestCase):
         d_b13_policy = D_B13_SIMULATION.artifact_narrative_policy(load_case_bundle(D_B13_CASE_DIR))
         d_b14_policy = D_B14_SIMULATION.artifact_narrative_policy(load_case_bundle(D_B14_CASE_DIR))
 
+        self.assertEqual(d_b01_policy["descriptor_id"], "d_b01_cooperative_package_narrative")
+        self.assertEqual(d_b02_policy["descriptor_id"], "d_b02_documentation_first_narrative")
+        self.assertEqual(d_b03_policy["descriptor_id"], "d_b03_emotional_caution_narrative")
         self.assertEqual(d_b04_policy["descriptor_id"], "d_b04_caution_narrative")
         self.assertEqual(d_b05_policy["descriptor_id"], "d_b05_workable_package_narrative")
         self.assertEqual(d_b06_policy["descriptor_id"], "d_b06_protocol_balance_narrative")
@@ -294,6 +334,9 @@ class EndToEndScaffoldTest(unittest.TestCase):
         self.assertEqual(d_b14_policy["descriptor_id"], "d_b14_capacity_handoff_narrative")
 
     def test_divorce_slices_expose_support_artifact_policy_descriptors(self) -> None:
+        d_b01_policy = D_B01_SIMULATION.support_artifact_policy(load_case_bundle(D_B01_CASE_DIR))
+        d_b02_policy = D_B02_SIMULATION.support_artifact_policy(load_case_bundle(D_B02_CASE_DIR))
+        d_b03_policy = D_B03_SIMULATION.support_artifact_policy(load_case_bundle(D_B03_CASE_DIR))
         d_b04_policy = D_B04_SIMULATION.support_artifact_policy(load_case_bundle(CASE_DIR))
         d_b06_policy = D_B06_SIMULATION.support_artifact_policy(load_case_bundle(D_B06_CASE_DIR))
         d_b08_policy = D_B08_SIMULATION.support_artifact_policy(load_case_bundle(D_B08_CASE_DIR))
@@ -304,6 +347,9 @@ class EndToEndScaffoldTest(unittest.TestCase):
         d_b13_policy = D_B13_SIMULATION.support_artifact_policy(load_case_bundle(D_B13_CASE_DIR))
         d_b14_policy = D_B14_SIMULATION.support_artifact_policy(load_case_bundle(D_B14_CASE_DIR))
 
+        self.assertEqual(d_b01_policy["descriptor_id"], "d_b01_support_workable_logistics")
+        self.assertEqual(d_b02_policy["descriptor_id"], "d_b02_support_financial_documentation")
+        self.assertEqual(d_b03_policy["descriptor_id"], "d_b03_support_emotional_boundary")
         self.assertEqual(d_b04_policy["descriptor_id"], "d_b04_support_logistics_caution")
         self.assertEqual(d_b06_policy["descriptor_id"], "d_b06_support_fairness_process")
         self.assertEqual(d_b08_policy["descriptor_id"], "d_b08_support_process_breakdown")
@@ -347,7 +393,7 @@ class EndToEndScaffoldTest(unittest.TestCase):
         self.assertEqual(case_context["evaluator_helper_policy"]["descriptor_id"], "divorce_evaluator_helpers_v0")
 
     def test_divorce_persona_profiles_validate_against_schema(self) -> None:
-        for case_dir in [CASE_DIR, D_B05_CASE_DIR, D_B06_CASE_DIR, D_B07_CASE_DIR, D_B08_CASE_DIR, D_B09_CASE_DIR, D_B10_CASE_DIR, D_B11_CASE_DIR, D_B12_CASE_DIR, D_B13_CASE_DIR, D_B14_CASE_DIR]:
+        for case_dir in [D_B01_CASE_DIR, D_B02_CASE_DIR, D_B03_CASE_DIR, CASE_DIR, D_B05_CASE_DIR, D_B06_CASE_DIR, D_B07_CASE_DIR, D_B08_CASE_DIR, D_B09_CASE_DIR, D_B10_CASE_DIR, D_B11_CASE_DIR, D_B12_CASE_DIR, D_B13_CASE_DIR, D_B14_CASE_DIR]:
             for persona_path in sorted((case_dir / "personas").glob("*.json")):
                 persona = json.loads(persona_path.read_text(encoding="utf-8"))
                 errors, _warnings = validate_persona_profile(persona)
@@ -1774,6 +1820,7 @@ class EndToEndScaffoldTest(unittest.TestCase):
         run = self._run_benchmark("runtime")
         output_dir = run["output_dir"]
         required_files = [
+            "session_meta.json",
             "run_meta.json",
             "interaction_trace.json",
             "positions.json",
@@ -1825,6 +1872,25 @@ class EndToEndScaffoldTest(unittest.TestCase):
             any(flag["flag_type"] == "plugin_low_confidence" for flag in flags["active_flags"]),
             "Expected plugin_low_confidence to remain visible as an anti-overreach guardrail.",
         )
+
+    def test_write_artifacts_produces_valid_session_meta(self) -> None:
+        run = self._run_benchmark("runtime")
+        session_meta = run["session_meta"]
+        run_meta = run["run_meta"]
+
+        # Identity fields match run_meta
+        self.assertEqual(session_meta["schema_version"], "session_meta.v0")
+        self.assertEqual(session_meta["case_id"], "D-B04")
+        self.assertEqual(session_meta["session_id"], run_meta["session_id"])
+        self.assertEqual(session_meta["plugin_type"], "divorce")
+        self.assertEqual(session_meta["source"], "runtime")
+        # created_at is a non-empty ISO timestamp string
+        self.assertIsInstance(session_meta["created_at"], str)
+        self.assertTrue(session_meta["created_at"])
+        # Per-run fields must NOT bleed into session_meta
+        self.assertNotIn("policy_profile", session_meta)
+        self.assertNotIn("git_commit_hash", session_meta)
+        self.assertNotIn("model_config", session_meta)
 
     def test_optional_review_transcript_renderer_writes_side_by_side_artifact(self) -> None:
         run = self._run_benchmark("runtime", case_dir=D_B08_CASE_DIR, review_transcript_renderer="prototype_local_v0")
@@ -2036,6 +2102,176 @@ class EndToEndScaffoldTest(unittest.TestCase):
         self.assertTrue((run["output_dir"] / "briefs" / "risk_alert_brief.json").exists())
         self.assertFalse((run["output_dir"] / "continuity").exists())
 
+    def test_dev_verbose_profile_writes_briefs(self) -> None:
+        run = self._run_benchmark("runtime", case_dir=D_B05_CASE_DIR, policy_profile="dev_verbose")
+
+        self.assertEqual(run["run_meta"]["policy_profile"], "dev_verbose")
+        self.assertTrue((run["output_dir"] / "briefs" / "case_intake_brief.json").exists())
+        self.assertTrue((run["output_dir"] / "briefs" / "early_dynamics_brief.json").exists())
+        self.assertFalse((run["output_dir"] / "continuity").exists())
+
+    def test_dev_verbose_profile_exposes_raw_transcript_and_debug_trace_flags(self) -> None:
+        profile = get_policy_profile("dev_verbose")
+
+        self.assertTrue(profile.allow_raw_transcripts)
+        self.assertTrue(profile.allow_debug_traces)
+        self.assertFalse(profile.require_redaction)
+
+    def test_dev_verbose_profile_writes_continuity_for_m2_state(self) -> None:
+        case_bundle = load_case_bundle(D_B06_CASE_DIR)
+        state = initialize_session_state(case_bundle, "D-B06-S01-dev-verbose", "dev_verbose", source="runtime")
+        state["meta"]["support_artifact_policy"] = D_B06_SIMULATION.support_artifact_policy(case_bundle)
+        state["summary_state"]["issues"] = ["Communication protocol around future changes"]
+        state["summary_state"]["next_step"] = "Escalate to a human reviewer."
+        state["escalation"] = {
+            "category": "E3",
+            "threshold_band": "T2",
+            "mode": "M2",
+            "rationale": "Human review is required because a party explicitly requested human involvement.",
+        }
+        state["flags"] = [
+            {
+                "flag_id": "d-b06-flag-human-request",
+                "flag_type": "explicit_human_request",
+                "status": "active",
+                "severity": 3,
+                "source": "participant",
+                "first_detected_turn": 1,
+                "last_updated_turn": 1,
+                "hard_trigger": False,
+                "title": "A party requested human involvement",
+            }
+        ]
+        state["trace_buffer"] = [
+            {
+                "turn_index": 1,
+                "timestamp": "2026-03-19T12:00:00Z",
+                "role": "assistant",
+                "phase": "info_gathering",
+                "message_summary": "Solomon explains the bounded process.",
+                "state_delta": {},
+                "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": ""},
+            }
+        ]
+
+        temp_dir = tempfile.TemporaryDirectory()
+        self.addCleanup(temp_dir.cleanup)
+        output_dir = Path(temp_dir.name) / "dev-verbose-continuity"
+        write_artifacts(output_dir, state, "2026-03-19T12:00:00Z", case_bundle)
+
+        self.assertTrue((output_dir / "briefs" / "case_intake_brief.json").exists())
+        self.assertTrue((output_dir / "briefs" / "risk_alert_brief.json").exists())
+        self.assertTrue((output_dir / "continuity" / "continuity_packet.json").exists())
+
+    def test_redacted_profile_writes_briefs(self) -> None:
+        run = self._run_benchmark("runtime", case_dir=D_B05_CASE_DIR, policy_profile="redacted")
+
+        self.assertEqual(run["run_meta"]["policy_profile"], "redacted")
+        self.assertTrue((run["output_dir"] / "briefs" / "case_intake_brief.json").exists())
+        self.assertTrue((run["output_dir"] / "briefs" / "early_dynamics_brief.json").exists())
+        self.assertFalse((run["output_dir"] / "continuity").exists())
+
+    def test_redacted_profile_exposes_require_redaction_flag(self) -> None:
+        profile = get_policy_profile("redacted")
+
+        self.assertTrue(profile.require_redaction)
+        self.assertFalse(profile.allow_raw_transcripts)
+        self.assertFalse(profile.allow_debug_traces)
+
+    def test_redacted_profile_sets_redaction_applied_true_in_run_meta(self) -> None:
+        run = self._run_benchmark("runtime", case_dir=D_B05_CASE_DIR, policy_profile="redacted")
+
+        self.assertTrue(run["run_meta"]["redaction_applied"])
+
+    def test_non_redacted_profiles_set_redaction_applied_false_in_run_meta(self) -> None:
+        for profile in ("sim_minimal", "eval_support", "dev_verbose"):
+            with self.subTest(profile=profile):
+                run = self._run_benchmark("runtime", case_dir=D_B05_CASE_DIR, policy_profile=profile)
+                self.assertFalse(run["run_meta"]["redaction_applied"])
+
+    def test_redacted_profile_scrubs_pii_patterns_from_text_artifacts(self) -> None:
+        # Inject a fake email and phone number into the session state, then
+        # verify the redacted profile removes them from written artifacts.
+        case_bundle = load_case_bundle(D_B05_CASE_DIR)
+        state = initialize_session_state(case_bundle, "D-B05-S01-redact-pii", "redacted", source="runtime")
+        state["meta"]["support_artifact_policy"] = D_B05_SIMULATION.support_artifact_policy(case_bundle)
+        # Plant PII in the summary state so it will appear in summary.txt.
+        state["summary_state"]["issues"] = ["Contact alice@example.com or call 555-867-5309 to proceed."]
+        state["summary_state"]["next_step"] = "No further action needed."
+        state["escalation"] = {"category": None, "threshold_band": "T0", "mode": "M0", "rationale": "No threshold."}
+        state["trace_buffer"] = [
+            {
+                "turn_index": 1,
+                "timestamp": "2026-03-26T12:00:00Z",
+                "role": "assistant",
+                "phase": "opening",
+                "message_summary": "Solomon opens the session.",
+                "state_delta": {},
+                "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": ""},
+            }
+        ]
+
+        import tempfile
+        temp_dir = tempfile.TemporaryDirectory()
+        self.addCleanup(temp_dir.cleanup)
+        output_dir = Path(temp_dir.name) / "redact-pii-out"
+
+        from runtime.artifacts import write_artifacts
+        write_artifacts(output_dir, state, "2026-03-26T12:00:00Z", case_bundle)
+
+        summary = (output_dir / "summary.txt").read_text(encoding="utf-8")
+        self.assertNotIn("alice@example.com", summary)
+        self.assertNotIn("555-867-5309", summary)
+        self.assertIn("[REDACTED]", summary)
+
+    def test_redacted_profile_writes_continuity_for_m2_state(self) -> None:
+        case_bundle = load_case_bundle(D_B06_CASE_DIR)
+        state = initialize_session_state(case_bundle, "D-B06-S01-redacted", "redacted", source="runtime")
+        state["meta"]["support_artifact_policy"] = D_B06_SIMULATION.support_artifact_policy(case_bundle)
+        state["summary_state"]["issues"] = ["Communication protocol around future changes"]
+        state["summary_state"]["next_step"] = "Escalate to a human reviewer."
+        state["escalation"] = {
+            "category": "E3",
+            "threshold_band": "T2",
+            "mode": "M2",
+            "rationale": "Human review is required because a party explicitly requested human involvement.",
+        }
+        state["flags"] = [
+            {
+                "flag_id": "d-b06-flag-human-request",
+                "flag_type": "explicit_human_request",
+                "status": "active",
+                "severity": 3,
+                "source": "participant",
+                "first_detected_turn": 1,
+                "last_updated_turn": 1,
+                "hard_trigger": False,
+                "title": "A party requested human involvement",
+            }
+        ]
+        state["trace_buffer"] = [
+            {
+                "turn_index": 1,
+                "timestamp": "2026-03-19T12:00:00Z",
+                "role": "assistant",
+                "phase": "info_gathering",
+                "message_summary": "Solomon explains the bounded process.",
+                "state_delta": {},
+                "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": ""},
+            }
+        ]
+
+        temp_dir = tempfile.TemporaryDirectory()
+        self.addCleanup(temp_dir.cleanup)
+        output_dir = Path(temp_dir.name) / "redacted-continuity"
+        write_artifacts(output_dir, state, "2026-03-19T12:00:00Z", case_bundle)
+
+        self.assertTrue((output_dir / "briefs" / "case_intake_brief.json").exists())
+        self.assertTrue((output_dir / "briefs" / "risk_alert_brief.json").exists())
+        self.assertTrue((output_dir / "continuity" / "continuity_packet.json").exists())
+        continuity = json.loads((output_dir / "continuity" / "continuity_packet.json").read_text(encoding="utf-8"))
+        self.assertEqual(continuity["category_family"], "explicit_human_involvement_request")
+
     def test_eval_support_profile_writes_continuity_packet_for_m2_state(self) -> None:
         case_bundle = load_case_bundle(D_B06_CASE_DIR)
         state = initialize_session_state(case_bundle, "D-B06-S01-eval-support", "eval_support", source="runtime")
@@ -2052,7 +2288,12 @@ class EndToEndScaffoldTest(unittest.TestCase):
             {
                 "flag_id": "d-b06-flag-human-request",
                 "flag_type": "explicit_human_request",
+                "status": "active",
                 "severity": 3,
+                "source": "participant",
+                "first_detected_turn": 1,
+                "last_updated_turn": 1,
+                "hard_trigger": False,
                 "title": "A party requested human involvement",
             }
         ]
@@ -2063,6 +2304,8 @@ class EndToEndScaffoldTest(unittest.TestCase):
                 "role": "assistant",
                 "phase": "info_gathering",
                 "message_summary": "Solomon explains the bounded process.",
+                "state_delta": {},
+                "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": ""},
             }
         ]
 
@@ -2097,7 +2340,12 @@ class EndToEndScaffoldTest(unittest.TestCase):
             {
                 "flag_id": "d-b06-flag-fairness",
                 "flag_type": "fairness_breakdown",
+                "status": "active",
                 "severity": 3,
+                "source": "plugin",
+                "first_detected_turn": 1,
+                "last_updated_turn": 1,
+                "hard_trigger": False,
                 "title": "Participation fairness appears compromised",
             }
         ]
@@ -2108,6 +2356,8 @@ class EndToEndScaffoldTest(unittest.TestCase):
                 "role": "assistant",
                 "phase": "info_gathering",
                 "message_summary": "Solomon explains the bounded process.",
+                "state_delta": {},
+                "risk_check": {"triggered": False, "signals": [], "severity": 1, "notes": ""},
             }
         ]
 
@@ -2151,6 +2401,14 @@ class EndToEndScaffoldTest(unittest.TestCase):
 
         self.assertEqual(escalation["mode"], "M3")
         self.assertEqual(escalation["category"], "E2")
+
+    def test_determine_escalation_supports_m5_for_irrecoverable_breakdown(self) -> None:
+        escalation = determine_escalation({"flags": [{"flag_type": "irrecoverable_breakdown"}]}, {"active_flag_types": []})
+
+        self.assertEqual(escalation["mode"], "M5")
+        self.assertEqual(escalation["category"], "E1")
+        self.assertEqual(escalation["threshold_band"], "T4")
+        self.assertIn("irrecoverable", escalation["rationale"].lower())
 
     def test_session_validation_rejects_higher_mode_without_substantive_rationale(self) -> None:
         turns = [
@@ -2226,6 +2484,39 @@ class EndToEndScaffoldTest(unittest.TestCase):
         self.assertEqual(comparison["case_id"], "D-B05")
         self.assertFalse(comparison["summary_changed"])
 
+    def test_d_b01_reference_evaluation_example_stays_schema_shaped_and_case_aligned(self) -> None:
+        evaluation = json.loads((D_B01_CASE_DIR / "sessions" / "D-B01-S01" / "evaluation.json").read_text(encoding="utf-8"))
+        evaluation_summary = (D_B01_CASE_DIR / "sessions" / "D-B01-S01" / "evaluation_summary.txt").read_text(encoding="utf-8")
+        case_metadata = json.loads((D_B01_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+        errors = validate_reference_evaluation_example(evaluation, case_metadata, expected_mode="M0", expected_primary_category="none")
+        self.assertEqual(errors, [])
+        self.assertEqual(validate_reference_evaluation_summary_text(evaluation_summary, case_metadata, "M0"), [])
+        self.assertIn("automatic_fail_overlays", evaluation)
+        self.assertIn("escalation_review", evaluation)
+        self.assertIn("final_judgment", evaluation)
+
+    def test_d_b02_reference_evaluation_example_stays_schema_shaped_and_case_aligned(self) -> None:
+        evaluation = json.loads((D_B02_CASE_DIR / "sessions" / "D-B02-S01" / "evaluation.json").read_text(encoding="utf-8"))
+        evaluation_summary = (D_B02_CASE_DIR / "sessions" / "D-B02-S01" / "evaluation_summary.txt").read_text(encoding="utf-8")
+        case_metadata = json.loads((D_B02_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+        errors = validate_reference_evaluation_example(evaluation, case_metadata, expected_mode="M1", expected_primary_category="E5")
+        self.assertEqual(errors, [])
+        self.assertEqual(validate_reference_evaluation_summary_text(evaluation_summary, case_metadata, "M1"), [])
+        self.assertIn("automatic_fail_overlays", evaluation)
+        self.assertIn("escalation_review", evaluation)
+        self.assertIn("final_judgment", evaluation)
+
+    def test_d_b03_reference_evaluation_example_stays_schema_shaped_and_case_aligned(self) -> None:
+        evaluation = json.loads((D_B03_CASE_DIR / "sessions" / "D-B03-S01" / "evaluation.json").read_text(encoding="utf-8"))
+        evaluation_summary = (D_B03_CASE_DIR / "sessions" / "D-B03-S01" / "evaluation_summary.txt").read_text(encoding="utf-8")
+        case_metadata = json.loads((D_B03_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+        errors = validate_reference_evaluation_example(evaluation, case_metadata, expected_mode="M1", expected_primary_category="E5")
+        self.assertEqual(errors, [])
+        self.assertEqual(validate_reference_evaluation_summary_text(evaluation_summary, case_metadata, "M1"), [])
+        self.assertIn("automatic_fail_overlays", evaluation)
+        self.assertIn("escalation_review", evaluation)
+        self.assertIn("final_judgment", evaluation)
+
     def test_d_b04_reference_evaluation_example_stays_schema_shaped_and_case_aligned(self) -> None:
         evaluation = json.loads((CASE_DIR / "sessions" / "D-B04-S01" / "evaluation.json").read_text(encoding="utf-8"))
         evaluation_summary = (CASE_DIR / "sessions" / "D-B04-S01" / "evaluation_summary.txt").read_text(encoding="utf-8")
@@ -2257,6 +2548,17 @@ class EndToEndScaffoldTest(unittest.TestCase):
         self.assertIn("fairness-sensitive `M0` communication-package run", evaluation_summary)
         self.assertIn("parent-role fairness", evaluation_summary.lower())
 
+    def test_d_b07_reference_evaluation_example_stays_schema_shaped_and_case_aligned(self) -> None:
+        evaluation = json.loads((D_B07_CASE_DIR / "sessions" / "D-B07-S01" / "evaluation.json").read_text(encoding="utf-8"))
+        case_metadata = json.loads((D_B07_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+        evaluation_summary = (D_B07_CASE_DIR / "sessions" / "D-B07-S01" / "evaluation_summary.txt").read_text(encoding="utf-8")
+        errors = validate_reference_evaluation_example(evaluation, case_metadata, expected_mode="M0", expected_primary_category="none")
+        self.assertEqual(errors, [])
+        self.assertEqual(validate_reference_evaluation_summary_text(evaluation_summary, case_metadata, "M0"), [])
+        self.assertIn("bounded `M0` expense-coordination package run", evaluation_summary)
+        self.assertIn("documentation tension", evaluation_summary.lower())
+        self.assertIn("documentation tension is present but does not rise to a caution threshold", evaluation["escalation_review"]["notes"].lower())
+
     def test_d_b08_reference_evaluation_example_stays_schema_shaped_and_case_aligned(self) -> None:
         evaluation = json.loads((D_B08_CASE_DIR / "sessions" / "D-B08-S01" / "evaluation.json").read_text(encoding="utf-8"))
         case_metadata = json.loads((D_B08_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
@@ -2278,6 +2580,17 @@ class EndToEndScaffoldTest(unittest.TestCase):
         self.assertIn("higher-mode `M2` domain-complexity review run", evaluation_summary)
         self.assertIn("interdependence-driven review run", evaluation_summary.lower())
         self.assertIn("continuity-aware domain-complexity reasoning", evaluation["escalation_review"]["notes"].lower())
+
+    def test_d_b10_reference_evaluation_example_stays_schema_shaped_and_case_aligned(self) -> None:
+        evaluation = json.loads((D_B10_CASE_DIR / "sessions" / "D-B10-S01" / "evaluation.json").read_text(encoding="utf-8"))
+        case_metadata = json.loads((D_B10_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+        evaluation_summary = (D_B10_CASE_DIR / "sessions" / "D-B10-S01" / "evaluation_summary.txt").read_text(encoding="utf-8")
+        errors = validate_reference_evaluation_example(evaluation, case_metadata, expected_mode="M0", expected_primary_category="none")
+        self.assertEqual(errors, [])
+        self.assertEqual(validate_reference_evaluation_summary_text(evaluation_summary, case_metadata, "M0"), [])
+        self.assertIn("anti-escalation calibration reference", evaluation_summary)
+        self.assertIn("without premature escalation", evaluation_summary.lower())
+        self.assertIn("high emotional intensity is present but does not constitute a safety", evaluation["escalation_review"]["notes"].lower())
 
     def test_d_b11_reference_evaluation_example_stays_schema_shaped_and_case_aligned(self) -> None:
         evaluation = json.loads((D_B11_CASE_DIR / "sessions" / "D-B11-S01" / "evaluation.json").read_text(encoding="utf-8"))
@@ -2322,6 +2635,47 @@ class EndToEndScaffoldTest(unittest.TestCase):
         self.assertIn("higher-mode `M4` participation-capacity-impairment run", evaluation_summary)
         self.assertIn("capacity-protection handoff", evaluation_summary.lower())
         self.assertIn("continuity-aware participation-capacity reasoning", evaluation["escalation_review"]["notes"].lower())
+
+    def test_d_b04_reference_flags_artifact_stays_schema_shaped(self) -> None:
+        flags = json.loads((CASE_DIR / "sessions" / "D-B04-S01" / "flags.json").read_text(encoding="utf-8"))
+        case_metadata = json.loads((CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
+
+        errors = validate_flags_artifact(flags, case_metadata)
+        self.assertEqual(errors, [], f"flags.json validation errors: {errors}")
+        self.assertEqual(flags["schema_version"], "flags.v0")
+        self.assertEqual(flags["case_id"], "D-B04")
+        self.assertIsInstance(flags["active_flags"], list)
+        self.assertIsInstance(flags["cleared_flags"], list)
+
+    def test_flags_artifact_validation_rejects_schema_violations(self) -> None:
+        case_metadata = {"case_id": "D-B04", "benchmark_id": "divorce-benchmark", "plugin_type": "divorce"}
+
+        bad_flags = {
+            "schema_version": "flags.v0",
+            "case_id": "D-B99",
+            "session_id": "D-B99-S01",
+            "active_flags": [
+                {
+                    "flag_id": "bad-flag",
+                    "flag_type": "insufficient_information",
+                    "status": "active",
+                    "severity": 9,
+                    "source": "platform",
+                    "first_detected_turn": 1,
+                    "last_updated_turn": 1,
+                    "hard_trigger": True,
+                    "title": "Missing severity",
+                }
+            ],
+            "cleared_flags": [],
+        }
+
+        errors = validate_flags_artifact(bad_flags, case_metadata)
+        self.assertTrue(any("case_id" in e for e in errors), f"Expected case_id mismatch error; got {errors}")
+        self.assertTrue(
+            any("severity" in e or "related_categories" in e for e in errors),
+            f"Expected severity or related_categories error; got {errors}",
+        )
 
     def test_d_b08_committed_eval_support_reference_artifacts_stay_aligned(self) -> None:
         case_metadata = json.loads((D_B08_CASE_DIR / "case_metadata.json").read_text(encoding="utf-8"))
@@ -2847,6 +3201,95 @@ class EndToEndScaffoldTest(unittest.TestCase):
         self.assertIn("reliable", summary.lower())
         self.assertIn("capacity", summary.lower())
 
+    def test_d_b01_runtime_runner_writes_required_artifacts(self) -> None:
+        run = self._run_benchmark("runtime", case_dir=D_B01_CASE_DIR)
+        run_meta = run["run_meta"]
+        trace = run["trace"]
+        flags = run["flags"]
+        missing_info = run["missing_info"]
+        summary = run["summary"]
+
+        self.assertEqual(run_meta["case_id"], "D-B01")
+        self.assertEqual(run_meta["case_context"]["source"], "runtime")
+        self.assertEqual(
+            run_meta["case_context"]["artifact_narrative_policy"]["descriptor_id"],
+            "d_b01_cooperative_package_narrative",
+        )
+        self.assertEqual(
+            run_meta["case_context"]["support_artifact_policy"]["descriptor_id"],
+            "d_b01_support_workable_logistics",
+        )
+        self.assertEqual(len(trace["turns"]), 6)
+        self.assertEqual(flags["active_flags"], [])
+        self.assertEqual(missing_info["missing_items"], [])
+        self.assertIn("Run Source: runtime", summary)
+        self.assertIn("`M0`", summary)
+        self.assertIn("surfaced a workable package for discussion", summary)
+        self.assertIn("bounded proposal or package", summary)
+        self.assertIn("Bounded Package Detail", summary)
+        self.assertIn("logistics coordination package", summary)
+        self.assertIn("Related issues: parenting schedule, communication protocol, activity coordination", summary)
+        self.assertIn("confirm the bounded options that appear workable", summary)
+
+    def test_d_b02_runtime_runner_writes_required_artifacts(self) -> None:
+        run = self._run_benchmark("runtime", case_dir=D_B02_CASE_DIR)
+        run_meta = run["run_meta"]
+        trace = run["trace"]
+        flags = run["flags"]
+        missing_info = run["missing_info"]
+        summary = run["summary"]
+
+        self.assertEqual(run_meta["case_id"], "D-B02")
+        self.assertEqual(run_meta["case_context"]["source"], "runtime")
+        self.assertEqual(
+            run_meta["case_context"]["artifact_narrative_policy"]["descriptor_id"],
+            "d_b02_documentation_first_narrative",
+        )
+        self.assertEqual(
+            run_meta["case_context"]["support_artifact_policy"]["descriptor_id"],
+            "d_b02_support_financial_documentation",
+        )
+        self.assertEqual(len(trace["turns"]), 8)
+        self.assertTrue(any(f["flag_type"] == "insufficient_information" for f in flags["active_flags"]))
+        self.assertTrue(any(f["flag_type"] == "decision_quality_risk" for f in flags["active_flags"]))
+        self.assertGreaterEqual(len(missing_info["missing_items"]), 1)
+        self.assertIn("Run Source: runtime", summary)
+        self.assertIn("`M1`", summary)
+        self.assertIn("category `E5`", summary)
+        self.assertIn("avoided presenting a fixed recommendation", summary)
+        self.assertIn("documentation", summary.lower())
+
+    def test_d_b03_runtime_runner_writes_required_artifacts(self) -> None:
+        run = self._run_benchmark("runtime", case_dir=D_B03_CASE_DIR)
+        run_meta = run["run_meta"]
+        trace = run["trace"]
+        flags = run["flags"]
+        missing_info = run["missing_info"]
+        summary = run["summary"]
+
+        self.assertEqual(run_meta["case_id"], "D-B03")
+        self.assertEqual(run_meta["case_context"]["source"], "runtime")
+        self.assertEqual(
+            run_meta["case_context"]["artifact_narrative_policy"]["descriptor_id"],
+            "d_b03_emotional_caution_narrative",
+        )
+        self.assertEqual(
+            run_meta["case_context"]["support_artifact_policy"]["descriptor_id"],
+            "d_b03_support_emotional_boundary",
+        )
+        self.assertEqual(len(trace["turns"]), 8)
+        self.assertIn("Run Source: runtime", summary)
+        self.assertIn("`M1`", summary)
+        self.assertIn("category `E5`", summary)
+        self.assertIn("avoided presenting a fixed recommendation", summary)
+        self.assertIn("low contact separation structure", summary.lower())
+        # C9 boundary decision must be recorded as a first-class escalation_state_updates entry at turn 5
+        turn_5_esu = trace["turns"][4]["state_delta"]["escalation_state_updates"]
+        self.assertTrue(
+            any("C9_boundary_decision" in entry for entry in turn_5_esu),
+            "Turn 5 must record the C9 boundary decision in escalation_state_updates",
+        )
+
     def test_dual_slice_summary_narrative_stays_slice_appropriate(self) -> None:
         d_b04_run = self._run_benchmark("runtime", case_dir=CASE_DIR)
         d_b05_run = self._run_benchmark("runtime", case_dir=D_B05_CASE_DIR)
@@ -2890,6 +3333,172 @@ class EndToEndScaffoldTest(unittest.TestCase):
         self.assertEqual(d_b05_flags["active_flags"], [])
         self.assertEqual(d_b05_flags["flag_notes"], "No caution-relevant flags remained active at close.")
         self.assertIn("No threshold-relevant caution state has been reached yet.", d_b05_summary)
+
+
+class TestTemplateFamilyLoader(unittest.TestCase):
+    """Tests for the Layer B template family loader (G-10 Phase 1 stub)."""
+
+    def test_load_all_template_families_returns_twelve_records(self) -> None:
+        from runtime.templates.loader import load_all_template_families, EXPECTED_FAMILY_IDS
+
+        families = load_all_template_families()
+        self.assertEqual(len(families), 12)
+        self.assertEqual(len(EXPECTED_FAMILY_IDS), 12)
+
+    def test_all_expected_family_ids_are_present(self) -> None:
+        from runtime.templates.loader import load_all_template_families, EXPECTED_FAMILY_IDS
+
+        families = load_all_template_families()
+        found_ids = {f.family_id for f in families}
+        for expected_id in EXPECTED_FAMILY_IDS:
+            self.assertIn(expected_id, found_ids, f"{expected_id} missing from loaded families")
+
+    def test_families_are_in_canonical_order(self) -> None:
+        from runtime.templates.loader import load_all_template_families, EXPECTED_FAMILY_IDS
+
+        families = load_all_template_families()
+        loaded_ids = tuple(f.family_id for f in families)
+        self.assertEqual(loaded_ids, EXPECTED_FAMILY_IDS)
+
+    def test_every_record_has_required_fields_non_empty(self) -> None:
+        from runtime.templates.loader import load_all_template_families
+
+        for record in load_all_template_families():
+            with self.subTest(family_id=record.family_id):
+                self.assertTrue(record.title.strip(), "title must be non-empty")
+                self.assertTrue(record.base_scenario.strip(), "base_scenario must be non-empty")
+                self.assertGreater(len(record.typical_issue_clusters), 0, "typical_issue_clusters must be non-empty")
+                self.assertGreater(len(record.primary_variables), 0, "primary_variables must be non-empty")
+                self.assertGreater(len(record.party_private_information_slots), 0, "party_private_information_slots must be non-empty")
+                self.assertTrue(record.intended_challenge_type.strip(), "intended_challenge_type must be non-empty")
+                self.assertGreater(len(record.likely_focal_competencies), 0, "likely_focal_competencies must be non-empty")
+                self.assertTrue(record.expected_escalation_posture.strip(), "expected_escalation_posture must be non-empty")
+                self.assertGreater(len(record.main_failure_risks), 0, "main_failure_risks must be non-empty")
+
+    def test_focal_competencies_are_valid_scoring_ids(self) -> None:
+        from runtime.templates.loader import load_all_template_families
+
+        valid_ids = {f"C{i}" for i in range(1, 11)} | {f"P{i}" for i in range(1, 7)} | {f"I{i}" for i in range(1, 7)}
+        for record in load_all_template_families():
+            with self.subTest(family_id=record.family_id):
+                for competency in record.likely_focal_competencies:
+                    self.assertIn(competency, valid_ids, f"{competency} is not a valid scoring ID")
+
+    def test_get_template_family_returns_correct_record(self) -> None:
+        from runtime.templates.loader import get_template_family
+
+        record = get_template_family("TF-DIV-03")
+        self.assertEqual(record.family_id, "TF-DIV-03")
+        self.assertEqual(record.title, "Emotionally charged but still workable divorce")
+        self.assertIn("C9", record.likely_focal_competencies)
+
+    def test_get_template_family_raises_key_error_for_unknown_id(self) -> None:
+        from runtime.templates.loader import get_template_family
+
+        with self.assertRaises(KeyError):
+            get_template_family("TF-DIV-99")
+
+    def test_all_records_are_frozen_dataclasses(self) -> None:
+        from runtime.templates.loader import load_all_template_families, TemplateFamilyRecord
+        import dataclasses
+
+        for record in load_all_template_families():
+            self.assertIsInstance(record, TemplateFamilyRecord)
+            self.assertTrue(dataclasses.is_dataclass(record))
+            # frozen: mutation should raise
+            with self.assertRaises((dataclasses.FrozenInstanceError, AttributeError)):
+                record.title = "mutated"  # type: ignore[misc]
+
+
+class TestPerceptionQualitySchema(unittest.TestCase):
+    """Tests for the perception_quality_review section added to evaluation.schema.json.
+
+    This section is optional (not in the top-level required array) so existing
+    reference evaluations without it remain valid. When present, it is fully
+    schema-validated including enum constraints on all four PQ dimensions.
+    """
+
+    _SCHEMA_PATH = REPO_ROOT / "schema" / "evaluation.schema.json"
+
+    def _load_schema(self) -> dict:
+        return json.loads(self._SCHEMA_PATH.read_text(encoding="utf-8"))
+
+    def _minimal_pq_block(self) -> dict:
+        return {
+            "PQ1_emotional_state_accuracy": {"rating": "competent"},
+            "PQ2_interest_inference_quality": {"rating": "strong"},
+            "PQ3_risk_signal_detection": {"rating": "developing"},
+            "PQ4_relational_dynamic_awareness": {"rating": "competent"},
+            "perception_quality_band": "competent",
+            "perceived_asymmetry": False,
+            "perception_asymmetry_note": None,
+            "perception_quality_notes": "PQ3 miss on turn 4 coercion signal; PQ2 strong throughout.",
+        }
+
+    def test_valid_perception_quality_review_passes_schema(self) -> None:
+        import jsonschema
+        schema = self._load_schema()
+        pq_schema = schema["properties"]["perception_quality_review"]
+        # resolve $ref manually for the sub-schema test
+        full_schema = {**schema, **{"$ref": None}}
+        instance = self._minimal_pq_block()
+        validator = jsonschema.Draft202012Validator(schema)
+        # validate just the PQ block against its sub-schema with defs in scope
+        pq_with_defs = {**pq_schema, "$defs": schema["$defs"]}
+        errors = list(jsonschema.Draft202012Validator(pq_with_defs).iter_errors(instance))
+        self.assertEqual(errors, [], f"Unexpected errors: {errors}")
+
+    def test_invalid_pq_rating_value_rejected(self) -> None:
+        import jsonschema
+        schema = self._load_schema()
+        pq_schema = schema["properties"]["perception_quality_review"]
+        pq_with_defs = {**pq_schema, "$defs": schema["$defs"]}
+        bad = self._minimal_pq_block()
+        bad["PQ1_emotional_state_accuracy"] = {"rating": "excellent"}  # not in enum
+        errors = list(jsonschema.Draft202012Validator(pq_with_defs).iter_errors(bad))
+        self.assertGreater(len(errors), 0, "Expected schema error for invalid PQ rating value")
+
+    def test_invalid_perception_quality_band_rejected(self) -> None:
+        import jsonschema
+        schema = self._load_schema()
+        pq_schema = schema["properties"]["perception_quality_review"]
+        pq_with_defs = {**pq_schema, "$defs": schema["$defs"]}
+        bad = self._minimal_pq_block()
+        bad["perception_quality_band"] = "good"  # not in enum
+        errors = list(jsonschema.Draft202012Validator(pq_with_defs).iter_errors(bad))
+        self.assertGreater(len(errors), 0, "Expected schema error for invalid perception_quality_band")
+
+    def test_missing_required_pq_field_rejected(self) -> None:
+        import jsonschema
+        schema = self._load_schema()
+        pq_schema = schema["properties"]["perception_quality_review"]
+        pq_with_defs = {**pq_schema, "$defs": schema["$defs"]}
+        bad = self._minimal_pq_block()
+        del bad["perception_quality_notes"]  # required field
+        errors = list(jsonschema.Draft202012Validator(pq_with_defs).iter_errors(bad))
+        self.assertGreater(len(errors), 0, "Expected schema error for missing perception_quality_notes")
+
+    def test_perceived_asymmetry_must_be_boolean(self) -> None:
+        import jsonschema
+        schema = self._load_schema()
+        pq_schema = schema["properties"]["perception_quality_review"]
+        pq_with_defs = {**pq_schema, "$defs": schema["$defs"]}
+        bad = self._minimal_pq_block()
+        bad["perceived_asymmetry"] = "yes"  # must be boolean
+        errors = list(jsonschema.Draft202012Validator(pq_with_defs).iter_errors(bad))
+        self.assertGreater(len(errors), 0, "Expected schema error for non-boolean perceived_asymmetry")
+
+    def test_existing_reference_evaluations_still_valid_without_pq_section(self) -> None:
+        """perception_quality_review is optional — reference evals without it must still pass."""
+        import jsonschema
+        schema = self._load_schema()
+        validator = jsonschema.Draft202012Validator(schema)
+        for case in ["D-B01", "D-B06", "D-B13"]:
+            path = REPO_ROOT / "annexes" / "benchmark_cases" / case / "sessions" / f"{case}-S01" / "evaluation.json"
+            instance = json.loads(path.read_text(encoding="utf-8"))
+            self.assertNotIn("perception_quality_review", instance, f"{case} should not have PQ section yet")
+            errors = list(validator.iter_errors(instance))
+            self.assertEqual(errors, [], f"{case} evaluation.json has unexpected schema errors: {errors}")
 
 
 if __name__ == "__main__":

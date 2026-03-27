@@ -45,6 +45,44 @@ def _validate_runtime_turn_plan(plan: list[RuntimeTurnPlanEntry]) -> None:
         raise ValueError("Runtime turn plan timestamps must be monotonic")
 
 
+def _run_lm_generated_session(case_bundle: dict, state: dict, generated_at: str) -> None:
+    """Stage 1 (ARCH-007): LLM turn generation with structured five-step reasoning."""
+    from runtime.engine.lm_engine import generate_lm_assistant_turn
+
+    simulation = get_benchmark_simulation(case_bundle)
+    plugin_runtime = get_plugin_runtime(case_bundle)
+    timestamp_prefix = generated_at[:10]
+    runtime_turn_plan = simulation.build_runtime_turn_plan(case_bundle, timestamp_prefix)
+    _validate_runtime_turn_plan(runtime_turn_plan)
+
+    for plan_entry in runtime_turn_plan:
+        if plan_entry.role == "assistant":
+            plugin_assessment = plugin_runtime.assess_state(state)
+            raw_turn = generate_lm_assistant_turn(
+                turn_index=plan_entry.turn_index,
+                timestamp=plan_entry.timestamp,
+                state=state,
+                plugin_assessment=plugin_assessment,
+            )
+        else:
+            raw_turn = simulation.generate_runtime_client_turn(
+                turn_index=plan_entry.turn_index,
+                timestamp=plan_entry.timestamp,
+                state=state,
+                case_bundle=case_bundle,
+            )
+
+        turn = normalize_core_output(raw_turn)
+        validate_candidate_turn(turn)
+        apply_turn(state, turn)
+        plugin_runtime.sync_flags_for_turn(state, turn)
+
+        plugin_assessment = plugin_runtime.assess_state(state)
+        state["plugin_assessment"] = plugin_assessment
+        escalation = determine_escalation(state, plugin_assessment)
+        state["escalation"].update(escalation)
+
+
 def _run_runtime_generated_session(case_bundle: dict, state: dict, generated_at: str) -> None:
     simulation = get_benchmark_simulation(case_bundle)
     plugin_runtime = get_plugin_runtime(case_bundle)
@@ -94,7 +132,9 @@ def run_session(case_bundle: dict, state: dict, output_dir, generated_at: str, s
     state["meta"]["package_element_labels"] = plugin_runtime.package_element_labels()
     state["meta"]["evaluator_helper_policy"] = plugin_runtime.evaluator_helper_policy()
 
-    if source == "runtime":
+    if source == "lm_runtime":
+        _run_lm_generated_session(case_bundle, state, generated_at)
+    elif source == "runtime":
         _run_runtime_generated_session(case_bundle, state, generated_at)
     else:
         for turn in simulation.build_turns(source, case_bundle, generated_at[:10]):

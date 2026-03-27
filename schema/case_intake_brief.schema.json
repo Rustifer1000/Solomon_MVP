@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solomon/specs/case_intake_brief.schema.json",
+  "title": "Solomon case_intake_brief.json schema",
+  "description": "Evaluator-facing intake summary written at session open for eval_support and dev_verbose runs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "session_id",
+    "policy_profile",
+    "plugin_type",
+    "title",
+    "scenario_summary",
+    "expected_mode_range",
+    "participant_snapshots"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "case_intake_brief.v0"
+    },
+    "case_id": { "type": "string" },
+    "session_id": { "type": "string" },
+    "policy_profile": {
+      "type": "string",
+      "enum": ["dev_verbose", "eval_support", "redacted", "sim_minimal"]
+    },
+    "plugin_type": { "type": "string" },
+    "title": { "type": "string" },
+    "scenario_summary": { "type": "string" },
+    "expected_mode_range": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["M0", "M1", "M2", "M3", "M4", "M5"]
+      },
+      "uniqueItems": true
+    },
+    "intended_challenge_type": {
+      "type": ["string", "null"]
+    },
+    "participant_snapshots": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/participantSnapshot" },
+      "minItems": 1
+    }
+  },
+  "$defs": {
+    "participantSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "participant_id",
+        "role_label",
+        "public_goals",
+        "interest_profile",
+        "starting_positions"
+      ],
+      "properties": {
+        "participant_id": { "type": "string" },
+        "role_label": { "type": "string" },
+        "public_goals": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "interest_profile": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "starting_positions": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}
