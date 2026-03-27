@@ -64,12 +64,30 @@
         "candidate_escalation_mode": { "type": ["string", "null"] },
         "candidate_escalation_category": { "type": ["string", "null"] },
         "confidence_note": { "type": ["string", "null"] },
+        "message_text": {
+          "type": ["string", "null"],
+          "description": "Actual text spoken to participants. Present for lm_runtime turns; null for deterministic simulation turns."
+        },
         "interaction_observations_delta": {
           "type": "array",
           "items": { "type": "string" },
           "description": "Turn-level interaction quality observations recorded by the runtime (e.g. pacing notes, register shifts). Empty list when none are present."
         },
-        "plugin_assessment": { "type": ["object", "null"] }
+        "plugin_assessment": { "type": ["object", "null"] },
+        "reasoning_trace": {
+          "type": ["object", "null"],
+          "description": "Structured five-step reasoning trace for lm_runtime turns. Null for runtime, reference, mock_model, and varied_mock_model turns. CONTRACT-014 defines the full schema.",
+          "additionalProperties": true,
+          "properties": {
+            "source": { "type": "string", "const": "lm_runtime" },
+            "model_id": { "type": "string" },
+            "perception": { "type": "object", "additionalProperties": true },
+            "domain_analysis": { "type": "object", "additionalProperties": true },
+            "option_scan": { "type": "object", "additionalProperties": true },
+            "safety_assessment": { "type": "object", "additionalProperties": true },
+            "response_synthesis": { "type": "object", "additionalProperties": true }
+          }
+        }
       }
     },
     "stateDelta": {

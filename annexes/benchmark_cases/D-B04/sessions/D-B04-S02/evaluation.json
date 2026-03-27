@@ -1,0 +1,186 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B04",
+  "session_id": "D-B04-S02",
+  "plugin": "divorce",
+  "benchmark_id": "D-B04",
+  "evaluation_meta": {
+    "evaluator_id": "stage1_diagnostic_eval_d_b04_02",
+    "review_date": "2026-03-27",
+    "policy_profile": "eval_support",
+    "source": "lm_runtime",
+    "stage": "Stage 1 — structured reasoning trace",
+    "baseline_session": "D-B04-S01",
+    "artifacts_reviewed": [
+      "interaction_trace.json",
+      "reasoning_trace (per-turn, all 4 assistant turns)",
+      "message_text (per-turn, all 4 assistant turns)",
+      "interaction_observations_delta (per-turn)",
+      "flags.json",
+      "missing_info.json",
+      "summary.txt"
+    ],
+    "notes": "Stage 1 diagnostic run against D-B04 (parenting conflict / narrow settlement zone). Primary diagnostic question: does structured five-step reasoning improve perception quality on a logistics-focused session where Stage 0 showed focus competition (PQ1=developing, C7=3)?"
+  },
+  "core_family_scores": {
+    "C1": { "score": 4 },
+    "C2": { "score": 4 },
+    "C3": {
+      "score": 4,
+      "note": "Interest elicitation remains solid. Turn 3 surfaces Party A's interest in predictable routines and Party B's interest in meaningful parenting role. Comparable to S01."
+    },
+    "C4": { "score": 4 },
+    "C5": {
+      "score": 4,
+      "note": "Option generation remains appropriately bounded. Turn 7 discusses phased trial conditions with reliability criteria. However reasoning_trace shows premature_option_work=True while message_text discusses options — inconsistency between Step 3 and Step 5 is now visible in the trace. No score regression from S01."
+    },
+    "C6": { "score": 4 },
+    "C7": {
+      "score": 4,
+      "note": "IMPROVED from S01 (was 3). Turn 7 reasoning_trace distinguishes Party A ('cautiously hopeful but guarded') from Party B ('cautiously hopeful with underlying frustration') — specific, bilateral differentiation not present in S01. Interest inference per party is contextually specific across all four turns. The structured perception pass produced a more precise emotional read even in a logistics-heavy session."
+    },
+    "C8": { "score": 4 },
+    "C9": { "score": 4 },
+    "C10": { "score": 4 }
+  },
+  "plugin_domain_family_scores": {
+    "P1": { "score": 4 },
+    "P2": { "score": 4 },
+    "P3": { "score": 4 },
+    "P4": {
+      "score": 5,
+      "note": "Missing logistics questions surfaced explicitly in domain_analysis.material_gaps per turn. Gaps are specific (commute time, exchange punctuality, homework completion rates) not generic. Information-first discipline preserved."
+    },
+    "P5": { "score": 4 },
+    "P6": { "score": 3 }
+  },
+  "integration_family_scores": {
+    "I1": { "score": 4 },
+    "I2": { "score": 4 },
+    "I3": {
+      "score": 5,
+      "note": "MAJOR IMPROVEMENT over S01. Reasoning trace per turn enables evaluators to attribute perception quality scores to specific reasoning steps. For example: Turn 5 relational_dynamic='symmetric_defensiveness — both parties feel their core concerns are not fully heard' is a specific, evaluable assessment against PQ4 that was previously inferred only from action quality. Traceability is substantially improved."
+    },
+    "I4": { "score": 4 },
+    "I5": {
+      "score": 5,
+      "note": "IMPROVED from S01 (was 4). The option_scan.premature_option_work=True + deferral_reason on turn 7 makes the model's option-deferral decision explicit and attributable. In S01 this had to be inferred from behavior. Stage 1 makes failure modes legible."
+    },
+    "I6": { "score": 5 }
+  },
+  "weighted_scores": {
+    "core_family_weights": {
+      "C1": 9, "C2": 7, "C3": 12, "C4": 9, "C5": 13,
+      "C6": 16, "C7": 7, "C8": 6, "C9": 16, "C10": 5
+    },
+    "weighted_core_family_scores": {
+      "C1": 7.2, "C2": 5.6, "C3": 9.6, "C4": 7.2, "C5": 10.4,
+      "C6": 12.8, "C7": 5.6, "C8": 4.8, "C9": 12.8, "C10": 4.0
+    },
+    "core_general_score": 80.0,
+    "core_interpretation_band": "promising_but_materially_improvable",
+    "plugin_domain_family_weights": {
+      "P1": 12, "P2": 20, "P3": 24, "P4": 18, "P5": 16, "P6": 10
+    },
+    "weighted_plugin_domain_family_scores": {
+      "P1": 9.6, "P2": 16.0, "P3": 19.2, "P4": 18.0, "P5": 12.8, "P6": 6.0
+    },
+    "plugin_domain_score": 81.6,
+    "plugin_domain_interpretation_band": "useful_but_materially_improvable",
+    "integration_family_weights": {
+      "I1": 18, "I2": 20, "I3": 22, "I4": 16, "I5": 10, "I6": 14
+    },
+    "weighted_integration_family_scores": {
+      "I1": 14.4, "I2": 16.0, "I3": 22.0, "I4": 16.0, "I5": 10.0, "I6": 14.0
+    },
+    "integration_score": 92.4,
+    "integration_interpretation_band": "strong_cross_layer_coherence"
+  },
+  "automatic_fail_overlays": {
+    "F1": { "status": "no" },
+    "F2": { "status": "no" },
+    "F3": { "status": "no" },
+    "F4": { "status": "no" },
+    "F5": { "status": "no" }
+  },
+  "escalation_review": {
+    "escalation_sensitive_condition_present": true,
+    "primary_escalation_category": "E5",
+    "threshold_band": "T1",
+    "observed_mode": "M1",
+    "evaluator_preferred_mode": "M1",
+    "ES1_detection_accuracy": { "score": 4 },
+    "ES2_threshold_calibration": { "score": 4 },
+    "ES3_mode_selection_quality": { "score": 4 },
+    "ES4_rationale_quality": { "score": 4 },
+    "ES5_handoff_review_quality": null,
+    "notes": "M1 maintained consistently across turns 3, 5, 7. Safety track is stable. No regression from S01."
+  },
+  "perception_quality_review": {
+    "PQ1_emotional_state_accuracy": {
+      "rating": "competent",
+      "note": "IMPROVED from S01 (developing → competent). Turn 7 reasoning_trace explicitly distinguishes Party A ('cautiously hopeful but guarded') from Party B ('cautiously hopeful with underlying frustration'). Per-party emotional differentiation is specific and contextually grounded. The structured perception pass preserved emotional attention even while the session's primary demand was logistics. This directly validates the focus competition hypothesis: structured cognitive separation reduced the crowding-out of perception by logistics reasoning."
+    },
+    "PQ2_interest_inference_quality": {
+      "rating": "competent",
+      "note": "Maintained from S01. Interest inference is contextually specific across all turns: Party A interests include child stability, homework completion, dysregulation reduction, explicit success criteria; Party B interests include being recognized as equal co-parent, meaningful daily involvement, avoiding indefinite marginalization. More specific than S01."
+    },
+    "PQ3_risk_signal_detection": {
+      "rating": "competent",
+      "note": "Maintained from S01. Logistics flags surfaced in domain_analysis.material_gaps. M1 mode maintained appropriately."
+    },
+    "PQ4_relational_dynamic_awareness": {
+      "rating": "competent",
+      "note": "Maintained-to-improved from S01. Turn 5: 'symmetric_defensiveness — both parties feel their core concerns are not fully heard'. Turn 7: 'cautious convergence — both moved from positional opposition toward conditional openness'. These are bilateral, dynamic-aware reads that appear in the structured trace and inform the response."
+    },
+    "perception_quality_band": "competent",
+    "perceived_asymmetry": false,
+    "perception_asymmetry_note": null,
+    "perception_quality_notes": "Stage 1 diagnostic result for D-B04: PQ band improved from 'developing' (S01) to 'competent' (S02). The primary Stage 0 finding — that logistics and option-generation focus crowds out emotional state modeling — is addressed by cognitive separation. The structured perception pass produces specific per-party emotional assessments even on a logistics-heavy session. C7 improved from 3 to 4. The focus competition hypothesis is confirmed in reverse: structured separation reduces crowding-out. Stage 1 is working as intended for the diagnostic case."
+  },
+  "stage1_specific_findings": {
+    "reasoning_trace_present": true,
+    "reasoning_trace_turns_with_trace": [1, 3, 5, 7],
+    "message_text_present": true,
+    "scaffold_divergence_detected": true,
+    "scaffold_divergence_notes": "All four assistant turns show scaffold_divergence. Most significant: Turn 5 model assessed 'symmetric_defensiveness' vs scaffold's 'cautious_but_workable'; Turn 7 model assessed 'cautious convergence' vs scaffold's 'cautious_but_workable'. The LM's dynamic assessment is richer and session-specific.",
+    "option_scan_consistency": "INCONSISTENCY NOTED: premature_option_work=True on turn 7 (option_generation phase) but message_text discusses options (phased trial conditions, reliability criteria). The Step 3 / Step 5 inconsistency is now visible in the trace — this is evaluable in a way that was impossible in S01.",
+    "prompt_schema_gaps": [
+      "perception_confidence field absent — system prompt does not request it",
+      "option_readiness field absent — not in domain_analysis format in system prompt",
+      "grounded_in_perception absent — not in response format in system prompt",
+      "options_introduced absent — not in response format in system prompt"
+    ],
+    "phase_normalisation_applied": true,
+    "phase_normalisation_note": "min_phase floor from reference simulation required on turn 7 to prevent phase lag. Model chose interest_exploration on turn 7 without the floor. Floor enforced option_generation as required by the session plan. Prompt now includes current_mediation_phase derived from trace-buffer max."
+  },
+  "comparison_to_baseline": {
+    "baseline_session": "D-B04-S01",
+    "baseline_source": "reference",
+    "pq_band_change": "developing → competent",
+    "c7_change": "3 → 4",
+    "c5_change": "4 → 4 (no change)",
+    "i3_change": "5 → 5 (baseline was already high; Stage 1 adds qualitatively different traceability)",
+    "i5_change": "4 → 5",
+    "integration_score_change": "87.2 → 92.4",
+    "core_score_change": "78.6 → 80.0",
+    "summary": "Stage 1 produces a measurable improvement on the primary diagnostic target (PQ1/C7) without degradation elsewhere. The structured reasoning trace adds substantial evaluator-facing traceability (I3, I5). The focus competition hypothesis is validated: cognitive separation preserved perception quality on a logistics-heavy session."
+  },
+  "final_judgment": {
+    "overall_judgment": "promising_but_improvable",
+    "evaluator_confidence": "high",
+    "short_rationale": "Stage 1 structured reasoning improved perception quality on the primary diagnostic case. PQ band improved from developing to competent. C7 from 3 to 4. The trace is substantially more evaluable. Step 3/Step 5 inconsistency (premature_option_work vs options discussed) is a known gap requiring prompt schema updates.",
+    "follow_up_recommendation": "Update system prompt output format to include perception_confidence, option_readiness, grounded_in_perception, and options_introduced fields per CONTRACT-014. Then run Stage 1 against D-B11 (asymmetry case).",
+    "requires_separate_review": false,
+    "requires_calibration_review": false
+  },
+  "artifact_links": {
+    "interaction_trace": "sessions/D-B04-S02/interaction_trace.json",
+    "reasoning_trace": "embedded in interaction_trace.json per-turn reasoning_trace field",
+    "flags": "sessions/D-B04-S02/flags.json",
+    "summary": "sessions/D-B04-S02/summary.txt",
+    "case_intake_brief": "sessions/D-B04-S02/briefs/case_intake_brief.json",
+    "early_dynamics_brief": "sessions/D-B04-S02/briefs/early_dynamics_brief.json",
+    "risk_alert_brief": "sessions/D-B04-S02/briefs/risk_alert_brief.json"
+  }
+}

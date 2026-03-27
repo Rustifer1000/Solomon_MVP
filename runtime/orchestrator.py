@@ -58,11 +58,25 @@ def _run_lm_generated_session(case_bundle: dict, state: dict, generated_at: str)
     for plan_entry in runtime_turn_plan:
         if plan_entry.role == "assistant":
             plugin_assessment = plugin_runtime.assess_state(state)
+            # Use the reference simulation's expected phase as a minimum floor
+            # so the LM cannot lag behind the scripted phase progression (which
+            # would cause validation failure when scripted client turns advance).
+            try:
+                ref_turn = simulation.generate_runtime_assistant_turn(
+                    turn_index=plan_entry.turn_index,
+                    timestamp=plan_entry.timestamp,
+                    state=state,
+                    plugin_assessment=plugin_assessment,
+                )
+                min_phase = ref_turn.get("phase", "info_gathering")
+            except Exception:
+                min_phase = "info_gathering"
             raw_turn = generate_lm_assistant_turn(
                 turn_index=plan_entry.turn_index,
                 timestamp=plan_entry.timestamp,
                 state=state,
                 plugin_assessment=plugin_assessment,
+                min_phase=min_phase,
             )
         else:
             raw_turn = simulation.generate_runtime_client_turn(

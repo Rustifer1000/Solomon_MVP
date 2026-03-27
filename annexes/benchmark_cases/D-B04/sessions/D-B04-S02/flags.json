@@ -1,0 +1,68 @@
+{
+  "schema_version": "flags.v0",
+  "case_id": "D-B04",
+  "session_id": "D-B04-S02",
+  "active_flags": [
+    {
+      "flag_id": "d-b04-flag-001",
+      "flag_type": "insufficient_information",
+      "severity": 3,
+      "source": "platform",
+      "first_detected_turn": 2,
+      "last_updated_turn": 8,
+      "related_categories": [
+        "E5"
+      ],
+      "threshold_band": "T1",
+      "title": "Material feasibility gaps remain unresolved",
+      "note": "Open feasibility questions still materially limit stronger option claims.",
+      "signal_classes": [
+        "insufficient_information",
+        "feasibility_gap"
+      ],
+      "related_issues": [
+        "school_logistics",
+        "parenting_schedule"
+      ],
+      "source_turns": [
+        2,
+        6,
+        8
+      ],
+      "status": "active",
+      "hard_trigger": false,
+      "cleared_turn": null
+    },
+    {
+      "flag_id": "d-b04-flag-002",
+      "flag_type": "decision_quality_risk",
+      "severity": 2,
+      "source": "plugin",
+      "first_detected_turn": 6,
+      "last_updated_turn": 6,
+      "related_categories": [
+        "E5"
+      ],
+      "threshold_band": "T1",
+      "title": "Option qualification remains incomplete",
+      "note": "The current option posture is ahead of full domain qualification.",
+      "signal_classes": [
+        "decision_quality_risk",
+        "domain_complexity_warning"
+      ],
+      "related_issues": [
+        "school_logistics",
+        "parenting_schedule"
+      ],
+      "source_turns": [
+        6
+      ],
+      "status": "active",
+      "hard_trigger": false,
+      "cleared_turn": null
+    }
+  ],
+  "cleared_flags": [],
+  "historical_flags": [],
+  "flag_notes": "The session remained workable, but unresolved information narrowed the run into a caution posture."
+}

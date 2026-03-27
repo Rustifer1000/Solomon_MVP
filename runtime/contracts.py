@@ -110,7 +110,9 @@ class CandidateTurn:
     candidate_escalation_category: str | None = None
     candidate_escalation_mode: str | None = None
     confidence_note: str | None = None
+    message_text: str | None = None
     interaction_observations_delta: list[str] = field(default_factory=list)
+    reasoning_trace: dict | None = None
 
 
 def _validate_timestamp(timestamp: str) -> None:

@@ -206,6 +206,12 @@ def normalize_core_output(raw_output: CandidateTurn | dict) -> CandidateTurn:
         candidate_escalation_category=payload.get("candidate_escalation_category"),
         candidate_escalation_mode=payload.get("candidate_escalation_mode"),
         confidence_note=payload.get("confidence_note"),
+        message_text=payload.get("message_text") if isinstance(payload.get("message_text"), str) else None,
+        interaction_observations_delta=_require_list_of_strings(
+            payload.get("interaction_observations_delta"),
+            "interaction_observations_delta",
+        ),
+        reasoning_trace=payload.get("reasoning_trace") if isinstance(payload.get("reasoning_trace"), dict) else None,
     )
     validate_candidate_turn(turn)
     return turn

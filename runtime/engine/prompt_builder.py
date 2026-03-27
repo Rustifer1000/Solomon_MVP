@@ -24,6 +24,14 @@ from __future__ import annotations
 
 from .perception import PerceptionContext
 
+_PHASE_ORDER = [
+    "info_gathering",
+    "interest_exploration",
+    "option_generation",
+    "agreement_building",
+]
+_CANONICAL_PHASES = set(_PHASE_ORDER)
+
 
 # ---------------------------------------------------------------------------
 # System prompt
@@ -161,9 +169,21 @@ def _build_user_message(
 
     # --- Session context ---
     meta = state.get("meta", {})
+    # Compute current mediation phase from trace buffer max (not state["phase"]
+    # which may regress when scripted client turns set an earlier phase).
+    trace_phases = [
+        t.get("phase") for t in state.get("trace_buffer", [])
+        if t.get("phase") in _CANONICAL_PHASES
+    ]
+    if trace_phases:
+        current_phase = max(trace_phases, key=lambda p: _PHASE_ORDER.index(p))
+    else:
+        current_phase = "info_gathering"
+
     parts.append("=== SESSION CONTEXT ===")
     parts.append(f"Case: {meta.get('case_id', 'unknown')}")
     parts.append(f"Turn: {turn_index}")
+    parts.append(f"Current mediation phase: {current_phase}")
     parts.append(f"Current escalation mode: {state.get('escalation', {}).get('mode', 'M0')}")
     parts.append(f"Current escalation category: {state.get('escalation', {}).get('category', 'E0')}")
     parts.append("")
@@ -213,6 +233,8 @@ def _build_user_message(
     if active_flag_types:
         parts.append(f"Active flag types: {', '.join(active_flag_types)}")
     issue_families = plugin_assessment.get("issue_families", [])
+    if isinstance(issue_families, dict):
+        issue_families = [k for k, v in issue_families.items() if v]
     if issue_families:
         parts.append(f"Active issue families: {', '.join(issue_families)}")
     parts.append("")

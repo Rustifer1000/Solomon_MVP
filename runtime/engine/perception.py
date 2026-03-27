@@ -328,6 +328,8 @@ def _infer_interests(
 
     # Plugin issue families as interest proxies
     issue_families = plugin_assessment.get("issue_families", [])
+    if isinstance(issue_families, dict):
+        issue_families = [k for k, v in issue_families.items() if v]
     if issue_families and not interests:
         interests = [f"Active concern: {f}" for f in issue_families[:3]]
 

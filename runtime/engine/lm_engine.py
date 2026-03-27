@@ -17,9 +17,14 @@ Both can be overridden via the SOLOMON_LM_MODEL environment variable.
 Output contract
 ---------------
 generate_lm_assistant_turn() returns a raw turn dict that normalises into
-a CandidateTurn via the existing normalize_core_output() pipeline.  The
-five-step reasoning is preserved in interaction_observations_delta so it
-is available for PQ evaluation.
+a CandidateTurn via the existing normalize_core_output() pipeline.
+
+The five-step reasoning is preserved in two forms:
+- interaction_observations_delta: string-tag observations (backward compat)
+- reasoning_trace: structured per-turn object per CONTRACT-014 §8
+
+The reasoning_trace field is present only for lm_runtime turns and is
+additive — it does not replace any existing turn field.
 """
 
 from __future__ import annotations
@@ -76,6 +81,7 @@ def generate_lm_assistant_turn(
     timestamp: str,
     state: dict,
     plugin_assessment: dict,
+    min_phase: str = "info_gathering",
 ) -> dict:
     """
     Generate a single assistant turn via the Anthropic API.
@@ -124,6 +130,12 @@ def generate_lm_assistant_turn(
     # Parse the structured JSON response
     parsed = _parse_lm_response(raw_text)
 
+    # Compute the highest phase the session has reached so far.
+    # Use trace-buffer max rather than state["phase"] because scripted client
+    # turns can set state["phase"] backward (e.g. D-B04 client turn 6 = "info_gathering").
+    trace_buffer = state.get("trace_buffer", [])
+    max_seen_phase = _max_trace_phase(trace_buffer)
+
     # Convert to CandidateTurn-compatible dict
     return _build_turn_dict(
         parsed=parsed,
@@ -131,6 +143,9 @@ def generate_lm_assistant_turn(
         turn_index=turn_index,
         timestamp=timestamp,
         raw_text=raw_text,
+        model_id=model,
+        current_phase=max_seen_phase,
+        min_phase=min_phase,
     )
 
 
@@ -198,18 +213,29 @@ def _build_turn_dict(
     turn_index: int,
     timestamp: str,
     raw_text: str,
+    model_id: str = "",
+    current_phase: str = "info_gathering",
+    min_phase: str = "info_gathering",
 ) -> dict:
     """
     Convert the parsed LM response into a raw turn dict.
 
     The output is compatible with normalize_core_output() → CandidateTurn.
-    The five-step reasoning is captured in interaction_observations_delta.
+    The five-step reasoning is captured in two forms:
+    - interaction_observations_delta (string tags, backward compat)
+    - reasoning_trace (structured object, CONTRACT-014)
     """
     response = parsed.get("response", {})
     safety = parsed.get("safety_check", {})
     domain = parsed.get("domain_analysis", {})
     option_scan = parsed.get("option_scan", {})
     lm_perception = parsed.get("perception", {})
+
+    # Normalise phase to canonical value, clamped to valid progression.
+    # min_phase is the reference simulation's expected phase for this turn —
+    # the LM cannot produce a phase lower than the scripted expectation.
+    raw_phase = response.get("phase", "info_gathering")
+    phase = _normalise_phase(raw_phase, current_phase, min_phase)
 
     # Build observations from the five-step reasoning for PQ evaluation
     observations = _build_observations(
@@ -218,6 +244,13 @@ def _build_turn_dict(
         option_scan=option_scan,
         safety=safety,
         scaffold_perception=perception,
+    )
+
+    # Build structured reasoning trace (CONTRACT-014)
+    reasoning_trace = _build_reasoning_trace(
+        parsed=parsed,
+        scaffold_perception=perception,
+        model_id=model_id,
     )
 
     # Escalation from safety check
@@ -245,7 +278,7 @@ def _build_turn_dict(
         "turn_index": turn_index,
         "timestamp": timestamp,
         "role": "assistant",
-        "phase": response.get("phase", "unknown"),
+        "phase": phase,
         "message_summary": response.get("message_summary", ""),
         "message_text": response.get("message_text", ""),
         "state_delta": state_delta,
@@ -254,6 +287,7 @@ def _build_turn_dict(
         "candidate_escalation_mode": candidate_mode,
         "confidence_note": response.get("confidence_note"),
         "interaction_observations_delta": observations,
+        "reasoning_trace": reasoning_trace,
     }
 
 
@@ -323,6 +357,52 @@ def _build_observations(
     return obs
 
 
+def _build_reasoning_trace(
+    parsed: dict,
+    scaffold_perception: PerceptionContext,
+    model_id: str,
+) -> dict:
+    """
+    Build the per-turn reasoning_trace object from the parsed five-step JSON.
+
+    Preserves the structured model output that _build_observations() converts
+    to string tags.  CONTRACT-014 defines the full schema.
+
+    Key mappings from parsed keys to trace keys:
+    - parsed["safety_check"]  → reasoning_trace["safety_assessment"]
+    - parsed["response"]      → reasoning_trace["response_synthesis"]
+    """
+    lm_perception = parsed.get("perception", {})
+    safety = parsed.get("safety_check", {})
+
+    # Add scaffold_divergence to the perception block
+    perception_trace = dict(lm_perception)
+    scaffold_dynamic = scaffold_perception.relational_dynamic
+    lm_dynamic = lm_perception.get("relational_dynamic", "")
+    if scaffold_dynamic and lm_dynamic and scaffold_dynamic != lm_dynamic:
+        perception_trace["scaffold_divergence"] = (
+            f"scaffold assessed relational_dynamic={scaffold_dynamic!r}; "
+            f"model assessed {lm_dynamic!r}"
+        )
+    else:
+        perception_trace.setdefault("scaffold_divergence", None)
+
+    # Add safe_to_proceed_to_synthesis as derived field per CONTRACT-014 §6
+    escalation_needed = safety.get("escalation_needed", False)
+    safety_assessment = dict(safety)
+    safety_assessment["safe_to_proceed_to_synthesis"] = not escalation_needed
+
+    return {
+        "source": "lm_runtime",
+        "model_id": model_id,
+        "perception": perception_trace,
+        "domain_analysis": parsed.get("domain_analysis", {}),
+        "option_scan": parsed.get("option_scan", {}),
+        "safety_assessment": safety_assessment,
+        "response_synthesis": parsed.get("response", {}),
+    }
+
+
 def _build_state_delta(
     lm_perception: dict,
     domain: dict,
@@ -332,32 +412,106 @@ def _build_state_delta(
     """Build a minimal state_delta from the LM's reasoning."""
     delta: dict = {}
 
-    # Facts from domain analysis
+    # Facts from domain analysis (list of strings required by normalization)
     key_constraints = domain.get("key_constraints", [])
     if key_constraints:
-        delta["facts_added"] = [
-            {"statement": c, "category": "domain", "status": "inferred"}
-            for c in key_constraints[:2]
-        ]
+        delta["facts_added"] = [str(c) for c in key_constraints[:2]]
 
-    # Escalation state updates from safety check
+    # Escalation state updates (list of strings required by normalization)
     if safety.get("escalation_needed"):
-        delta["escalation_state_updates"] = [{
-            "mode": safety.get("candidate_mode", "M0"),
-            "category": safety.get("candidate_category", "E0"),
-            "rationale": safety.get("notes", ""),
-            "signals": safety.get("signals", []),
-        }]
+        mode = safety.get("candidate_mode", "M0")
+        cat = safety.get("candidate_category", "E0")
+        delta["escalation_state_updates"] = [f"mode={mode} category={cat}"]
 
-    # Missing info from domain gaps
+    # Missing info from domain gaps (list of strings required by normalization)
     gaps = domain.get("material_gaps", [])
     if gaps:
-        delta["open_questions_added"] = [
-            {"question": g, "party": "both", "importance": "high"}
-            for g in gaps[:2]
-        ]
+        delta["open_questions_added"] = [str(g) for g in gaps[:2]]
 
     return delta
+
+
+_CANONICAL_PHASES = {
+    "info_gathering",
+    "interest_exploration",
+    "option_generation",
+    "agreement_building",
+}
+
+_PHASE_ALIASES: dict[str, str] = {
+    "opening": "info_gathering",
+    "opening_and_orientation": "info_gathering",
+    "opening_orientation": "info_gathering",
+    "framing": "info_gathering",
+    "session_framing": "info_gathering",
+    "information_gathering": "info_gathering",
+    "interest_identification": "interest_exploration",
+    "interests": "interest_exploration",
+    "options": "option_generation",
+    "option_generation_support": "option_generation",
+    "agreement": "agreement_building",
+    "closing": "agreement_building",
+}
+
+
+_PHASE_ORDER = [
+    "info_gathering",
+    "interest_exploration",
+    "option_generation",
+    "agreement_building",
+]
+
+
+def _max_trace_phase(trace_buffer: list[dict]) -> str:
+    """Return the highest phase seen in the trace buffer so far."""
+    max_idx = 0
+    for turn in trace_buffer:
+        phase = turn.get("phase", "")
+        if phase in _CANONICAL_PHASES:
+            idx = _PHASE_ORDER.index(phase)
+            if idx > max_idx:
+                max_idx = idx
+    return _PHASE_ORDER[max_idx]
+
+
+def _normalise_phase(
+    raw: str,
+    current_phase: str = "info_gathering",
+    min_phase: str = "info_gathering",
+) -> str:
+    """
+    Map any phase label the model may produce to a canonical phase value.
+
+    Clamped with both a floor and ceiling:
+    - Floor: max(trace-buffer-max-phase, min_phase). min_phase is the reference
+      simulation's expected phase for this turn, ensuring the LM can't lag
+      behind the scripted client turn progression.
+    - Ceiling: at most one step ahead of the trace-buffer max.
+
+    This prevents LM regression and illegal phase skipping.
+    """
+    if raw not in _CANONICAL_PHASES:
+        raw = _PHASE_ALIASES.get(raw, "info_gathering")
+
+    try:
+        current_idx = _PHASE_ORDER.index(current_phase)
+    except ValueError:
+        current_idx = 0
+    try:
+        requested_idx = _PHASE_ORDER.index(raw)
+    except ValueError:
+        requested_idx = 0
+    try:
+        min_idx = _PHASE_ORDER.index(min_phase)
+    except ValueError:
+        min_idx = 0
+
+    # Ceiling: at most one step ahead of trace max
+    allowed_idx = min(requested_idx, current_idx + 1)
+    # Floor: can't go below trace max or reference expected phase
+    floor_idx = max(current_idx, min_idx)
+    allowed_idx = max(allowed_idx, floor_idx)
+    return _PHASE_ORDER[allowed_idx]
 
 
 def _infer_severity(safety: dict) -> int:
