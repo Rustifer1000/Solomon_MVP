@@ -13,6 +13,34 @@ It is intended for:
 
 ---
 
+## 0. Run a Benchmark Session
+
+Use the `solomon-run` entry point to produce a full artifact set from a benchmark case:
+
+```powershell
+solomon-run --case-dir annexes\benchmark_cases\D-B04 --output-dir tmp\D-B04-S01 --policy-profile eval_support
+```
+
+Key flags:
+
+| Flag | Default | Notes |
+|---|---|---|
+| `--case-dir` | required | Path to benchmark case directory |
+| `--output-dir` | required | Path to write generated artifacts |
+| `--policy-profile` | `sim_minimal` | Use `eval_support` for full evaluator artifact set |
+| `--source` | `runtime` | `runtime`, `reference`, `mock_model`, `varied_mock_model`, `lm_runtime` |
+| `--session-id` | auto | Override default session ID |
+| `--review-transcript-renderer` | `none` | Use `prototype_local_v0` to produce a rendered reviewer transcript alongside the deterministic one |
+| `--seed` | none | Optional reproducibility seed recorded in `run_meta.json` |
+
+To run all benchmarks in sequence:
+
+```powershell
+solomon-run-all --output-dir tmp\all_runs --policy-profile sim_minimal
+```
+
+---
+
 ## 1. Validate Worked Reference Evaluator Artifacts
 
 Use:
@@ -125,8 +153,14 @@ Use this before choosing the next divorce slice.
 
 ## 7. Current Worked Evaluator Anchors
 
-- `D-B04`: caution-centered `M1` reference plus expert review
-- `D-B05`: bounded-package `M0` reference evaluation
-- `D-B06`: fairness-sensitive `M0` reference evaluation plus expert review
+| Case | Anchor role | Notes |
+|---|---|---|
+| `D-B04` | Caution-centered `M1` baseline | Reference evaluation + expert review. Primary architecture anchor. |
+| `D-B05` | Bounded-package `M0` | Reference evaluation. Clean `M0` baseline with no active flags. |
+| `D-B06` | Fairness-sensitive `M0` | Reference evaluation + expert review. Fairness flag present but `M0` still appropriate. |
+| `D-B07` | Constrained voluntariness | Reference evaluation. Hard-trigger boundary test. |
+| `D-B08` | Emotional flooding `M2/M3` | Reference evaluation. Tests E2 detection and mode escalation. |
+| `D-B10` | High-stakes financial | Reference evaluation. Domain complexity with unresolved asset gaps. |
+| `D-B11` | Communication breakdown | Reference evaluation. Tests fair-process failure and `E2` routing. |
 
-These are the current evaluator anchors the tools should be checked against first.
+These are the anchors the evaluator tools should be checked against first. Earlier cases (D-B04 through D-B06) are the most stable and should be used for regression baselines. Later cases (D-B07 onward) test harder challenge families.

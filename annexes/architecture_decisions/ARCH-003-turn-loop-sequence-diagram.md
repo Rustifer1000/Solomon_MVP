@@ -67,20 +67,20 @@ sequenceDiagram
         Orch->>State: Commit authoritative state mutations
         Note over Orch,State: Positions, facts, missing info, flags, options,\nescalation state, phase
 
-        Orch->>Writer: Append trace and refresh derived artifacts
-        Writer->>Writer: Update interaction_trace.json
-        Writer->>Writer: Update positions.json
-        Writer->>Writer: Update facts_snapshot.json
-        Writer->>Writer: Update flags.json
-        Writer->>Writer: Update missing_info.json
-        Writer->>Writer: Update summary.txt
-
-        alt Escalation mode requires packet
-            Orch->>Writer: Generate continuity packet
-            Writer->>Writer: Write continuity packet artifact
-        end
-
         Orch->>Orch: Evaluate close condition
+    end
+
+    Orch->>Writer: Write full artifact set from final state
+    Writer->>Writer: Write interaction_trace.json (with final_state_summary)
+    Writer->>Writer: Write positions.json
+    Writer->>Writer: Write facts_snapshot.json
+    Writer->>Writer: Write flags.json
+    Writer->>Writer: Write missing_info.json
+    Writer->>Writer: Write summary.txt
+
+    alt Escalation mode or profile requires support artifacts
+        Orch->>Writer: Write support artifact package
+        Writer->>Writer: Write continuity packet, briefs, reviewer packet
     end
 
     Writer-->>Eval: Runtime artifact set available for scoring
@@ -210,13 +210,18 @@ This sequence is intentionally step-orchestrated because it:
 - fits evaluator-centered offline review
 - keeps the implementation optimized for the current MVP evaluation objective rather than speculative production flexibility
 
-### 6.2 Why artifact writing is inside the loop
+### 6.2 Why artifact writing happens once at session close
 
-Artifact writing happens during the loop because:
+The original design specified per-turn artifact refreshes inside the loop. The implementation writes all artifacts once after the loop completes.
 
-- the trace is turn-level
-- caution and missing info may emerge gradually
-- evaluator review depends on coherent intermediate state, not just final summary
+This was a deliberate simplification because:
+
+- all artifacts are consumed post-run by evaluators, not mid-session
+- writing once at close guarantees consistency across all artifact files
+- the authoritative structured state is committed inside the loop per-turn; the artifact write is a serialization step, not a state-authority step
+- partial artifacts from a mid-crash run provide limited evaluator value compared to a complete consistent set
+
+The turn-level trace is still fully turn-granular — each turn entry is appended to `state["trace_buffer"]` inside the loop. The final `interaction_trace.json` preserves complete turn-by-turn detail including `final_state_summary` derived from the closed session state.
 
 ### 6.3 Why evaluator tooling is outside the loop
 

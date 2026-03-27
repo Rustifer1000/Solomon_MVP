@@ -131,8 +131,8 @@ Recommended layout:
     "prompt_ids": ["string"]
   },
   "randomization": {
-    "seed": "integer or null",
-    "determinism_note": "string or null"
+    "seed": "string or null",
+    "determinism_note": "string"
   },
   "case_context": {
     "plugin_type": "string",
@@ -189,7 +189,7 @@ Recommended layout:
 : Prompt, template, or instruction identifiers used in the run.
 
 `randomization.seed`
-: Seed used for system-controlled randomization, if any.
+: Seed used for system-controlled randomization, if any. Recorded as a string (or null if no seed was set).
 
 `randomization.determinism_note`
 : Free-text note describing replay expectations or nondeterministic elements.
@@ -242,7 +242,7 @@ Recommended layout:
     ]
   },
   "randomization": {
-    "seed": 42,
+    "seed": null,
     "determinism_note": "Synthetic participant variation seeded; model output not guaranteed fully deterministic."
   },
   "case_context": {

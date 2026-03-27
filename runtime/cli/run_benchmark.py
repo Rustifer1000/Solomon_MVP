@@ -18,7 +18,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--policy-profile", default="sim_minimal", help="Persistence/policy profile to apply.")
     parser.add_argument(
         "--source",
-        choices=["runtime", "reference", "mock_model", "varied_mock_model"],
+        choices=["runtime", "reference", "mock_model", "varied_mock_model", "lm_runtime"],
         default="runtime",
         help="Turn-output source to run through the runtime loop.",
     )
@@ -32,6 +32,11 @@ def parse_args() -> argparse.Namespace:
         choices=["none", "prototype_local_v0"],
         default="none",
         help="Optional reviewer-facing transcript renderer to run side-by-side with the deterministic transcript.",
+    )
+    parser.add_argument(
+        "--seed",
+        default=None,
+        help="Optional reproducibility seed recorded in run_meta.json randomization block.",
     )
     return parser.parse_args()
 
@@ -49,6 +54,8 @@ def main() -> None:
         source=args.source,
         review_transcript_renderer=review_transcript_renderer,
     )
+    if getattr(args, "seed", None) is not None:
+        state["meta"]["seed"] = args.seed
     run_session(case_bundle, state, args.output_dir, args.generated_at, source=args.source)
 
 

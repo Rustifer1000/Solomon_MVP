@@ -8,5 +8,9 @@ version = "0.1.0"
 description = "Deterministic scaffold for the Solomon MVP offline runtime baseline."
 requires-python = ">=3.11"
 
+[project.scripts]
+solomon-run = "runtime.cli.run_benchmark:main"
+solomon-run-all = "runtime.cli.run_all_benchmarks:main"
+
 [tool.setuptools]
-packages = ["runtime", "runtime.cli", "runtime.plugins"]
+packages = ["runtime", "runtime.benchmarks", "runtime.cli", "runtime.engine", "runtime.plugins", "runtime.templates"]
