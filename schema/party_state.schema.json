@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solomon/specs/party_state.schema.json",
+  "title": "Solomon party_state.json schema",
+  "description": "Session-level accumulated model of each party's psychological state. Derived from reasoning_trace.perception fields across all lm_runtime assistant turns. CONTRACT-015 defines the full derivation logic and invariants.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "session_id",
+    "source",
+    "turns_contributing",
+    "last_updated_turn",
+    "generated_at",
+    "party_a",
+    "party_b",
+    "cross_party"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "party_state.v0"
+    },
+    "case_id": { "type": "string" },
+    "session_id": { "type": "string" },
+    "source": {
+      "type": "string",
+      "const": "lm_runtime",
+      "description": "party_state.json is only produced for lm_runtime sessions."
+    },
+    "turns_contributing": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 1 },
+      "minItems": 1,
+      "description": "Turn indices of all assistant turns whose reasoning_trace.perception contributed to this artifact."
+    },
+    "last_updated_turn": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Must equal max(turns_contributing)."
+    },
+    "generated_at": {
+      "type": "string",
+      "description": "ISO-8601 timestamp when this artifact was generated."
+    },
+    "party_a": { "$ref": "#/$defs/partyBlock" },
+    "party_b": { "$ref": "#/$defs/partyBlock" },
+    "cross_party": { "$ref": "#/$defs/crossPartyBlock" }
+  },
+  "$defs": {
+    "confidenceLevel": {
+      "type": "string",
+      "enum": ["low", "moderate", "high"]
+    },
+    "emotionalArcEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["turn_index", "assessment", "confidence"],
+      "properties": {
+        "turn_index": { "type": "integer", "minimum": 1 },
+        "assessment": {
+          "type": "string",
+          "description": "Raw emotional state string from reasoning_trace.perception. May be 'unknown at this turn' when party had not yet spoken."
+        },
+        "confidence": { "$ref": "#/$defs/confidenceLevel" }
+      }
+    },
+    "accumulatedInterest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["interest", "first_seen_turn", "last_seen_turn", "confidence"],
+      "properties": {
+        "interest": { "type": "string" },
+        "first_seen_turn": { "type": "integer", "minimum": 1 },
+        "last_seen_turn": { "type": "integer", "minimum": 1 },
+        "confidence": { "$ref": "#/$defs/confidenceLevel" }
+      }
+    },
+    "riskSignalEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["signal", "first_seen_turn", "last_seen_turn", "resolved"],
+      "properties": {
+        "signal": { "type": "string" },
+        "first_seen_turn": { "type": "integer", "minimum": 1 },
+        "last_seen_turn": { "type": "integer", "minimum": 1 },
+        "resolved": {
+          "type": "boolean",
+          "description": "True only if a later turn's perception explicitly indicates the signal has dissipated."
+        },
+        "resolution_note": { "type": ["string", "null"] }
+      }
+    },
+    "relationalPostureEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["turn_index", "posture"],
+      "properties": {
+        "turn_index": { "type": "integer", "minimum": 1 },
+        "posture": { "type": "string" }
+      }
+    },
+    "scaffoldDivergenceEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["turn_index", "field", "scaffold_value", "model_value"],
+      "properties": {
+        "turn_index": { "type": "integer", "minimum": 1 },
+        "field": {
+          "type": "string",
+          "description": "The perception field where divergence was detected (e.g. 'relational_dynamic')."
+        },
+        "scaffold_value": { "type": "string" },
+        "model_value": { "type": "string" }
+      }
+    },
+    "perceptionNotesEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["turn_index", "notes"],
+      "properties": {
+        "turn_index": { "type": "integer", "minimum": 1 },
+        "notes": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "partyBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "party_id",
+        "current_emotional_state",
+        "emotional_arc",
+        "accumulated_interests",
+        "risk_signal_history",
+        "relational_posture_progression",
+        "scaffold_divergence_log",
+        "perception_notes_log",
+        "last_updated_turn"
+      ],
+      "properties": {
+        "party_id": { "type": "string" },
+        "current_emotional_state": {
+          "type": "string",
+          "description": "Emotional state from the most recent contributing turn."
+        },
+        "emotional_arc": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/emotionalArcEntry" },
+          "description": "Ordered by turn_index ascending."
+        },
+        "accumulated_interests": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/accumulatedInterest" },
+          "description": "Deduplicated across turns. first_seen_turn records when the interest first appeared; last_seen_turn records when it was last observed."
+        },
+        "risk_signal_history": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/riskSignalEntry" },
+          "description": "All risk signals seen across turns with provenance. Signals are not auto-resolved on absence — only on explicit model evidence."
+        },
+        "relational_posture_progression": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/relationalPostureEntry" },
+          "description": "One entry per contributing turn, ordered by turn_index ascending."
+        },
+        "scaffold_divergence_log": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/scaffoldDivergenceEntry" },
+          "description": "All turns where the model's perception of this party diverged from the scaffold-derived prior. Not deduplicated — recurring divergence is informative."
+        },
+        "perception_notes_log": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/perceptionNotesEntry" },
+          "description": "Raw perception_notes per turn for this session. Preserved without filtering."
+        },
+        "last_updated_turn": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Most recent turn index that contributed a material update to this party block."
+        }
+      }
+    },
+    "crossPartyBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "current_relational_dynamic",
+        "relational_dynamic_arc",
+        "perception_confidence_arc"
+      ],
+      "properties": {
+        "current_relational_dynamic": {
+          "type": "string",
+          "description": "Relational dynamic assessment from the most recent contributing turn."
+        },
+        "relational_dynamic_arc": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["turn_index", "assessment", "confidence"],
+            "properties": {
+              "turn_index": { "type": "integer", "minimum": 1 },
+              "assessment": { "type": "string" },
+              "confidence": { "$ref": "#/$defs/confidenceLevel" }
+            }
+          },
+          "description": "Ordered by turn_index ascending. The primary cross-party narrative for PQ4 evaluation."
+        },
+        "perception_confidence_arc": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["turn_index", "confidence"],
+            "properties": {
+              "turn_index": { "type": "integer", "minimum": 1 },
+              "confidence": { "$ref": "#/$defs/confidenceLevel" }
+            }
+          },
+          "description": "Ordered by turn_index ascending. Evaluators use this to judge confidence calibration."
+        }
+      }
+    }
+  }
+}
