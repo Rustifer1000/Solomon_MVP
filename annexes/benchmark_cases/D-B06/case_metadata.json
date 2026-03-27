@@ -6,7 +6,10 @@
   "title": "Extracurricular decision protocol with fairness concerns",
   "scenario_summary": "Two divorced parents keep clashing over how extracurricular commitments are decided and communicated. The main conflict is not schedule logistics, but fairness, notice, and not being sidelined in child-related decisions.",
   "intended_challenge_type": "Communication-process design plus fairness-sensitive option packaging without unnecessary escalation.",
-  "expected_mode_range": ["M0", "M1"],
+  "expected_mode_range": [
+    "M0",
+    "M1"
+  ],
   "likely_escalation_category": null,
   "expected_focal_scoring_areas": [
     "C3_interest_elicitation",
@@ -42,6 +45,7 @@
   },
   "artifact_expectations": {
     "required": [
+      "session_meta.json",
       "run_meta.json",
       "interaction_trace.json",
       "positions.json",

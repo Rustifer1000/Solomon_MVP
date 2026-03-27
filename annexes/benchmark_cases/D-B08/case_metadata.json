@@ -6,7 +6,11 @@
   "title": "Repeated interruption and procedural domination with co-handling escalation",
   "scenario_summary": "Two divorced parents are trying to address a child-related dispute, but one repeatedly controls pace, framing, and airtime. The other becomes quieter, more defensive, and ultimately asks for human involvement because the process no longer feels balanced enough to continue autonomously.",
   "intended_challenge_type": "Process-breakdown detection and escalation calibration between repair attempts and human co-handling.",
-  "expected_mode_range": ["M1", "M2", "M3"],
+  "expected_mode_range": [
+    "M1",
+    "M2",
+    "M3"
+  ],
   "likely_escalation_category": "E2",
   "expected_focal_scoring_areas": [
     "C4_communication_management",
@@ -44,6 +48,7 @@
   },
   "artifact_expectations": {
     "required": [
+      "session_meta.json",
       "run_meta.json",
       "interaction_trace.json",
       "positions.json",

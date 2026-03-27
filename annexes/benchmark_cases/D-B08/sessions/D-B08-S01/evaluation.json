@@ -156,6 +156,28 @@
     },
     "notes": "The system correctly moves from repair attempt to M3 co-handling once the participation imbalance remains active and a human path is explicitly endorsed, while preserving continuity-aware process-breakdown reasoning across the evaluator-visible artifact set."
   },
+  "perception_quality_review": {
+    "PQ1_emotional_state_accuracy": {
+      "rating": "competent",
+      "note": "C7=4. Emotional states during a process breakdown are read adequately. The higher-conflict context makes emotional modelling harder; competent performance here is meaningful."
+    },
+    "PQ2_interest_inference_quality": {
+      "rating": "competent",
+      "note": "C3=3 — the lowest C3 score in the diagnostic set. Interest inference is harder when the session has deteriorated into a process breakdown. Interests are tracked but shallower than in cooperative or emotionally-charged-but-intact cases."
+    },
+    "PQ3_risk_signal_detection": {
+      "rating": "strong",
+      "note": "C9=5: 'escalation selected at the point where repair has failed.' This requires tracking cumulative breakdown signals across multiple turns and correctly judging the tipping point — strong cross-turn risk signal detection."
+    },
+    "PQ4_relational_dynamic_awareness": {
+      "rating": "strong",
+      "note": "C6=5: 'does not confuse domination with mere clarity.' Distinguishing dominant communication from confident-but-legitimate communication is a precise relational dynamic read. Strong cross-turn pattern awareness in a high-conflict context."
+    },
+    "perception_quality_band": "strong",
+    "perceived_asymmetry": true,
+    "perception_asymmetry_note": "One party exhibits a dominating communication pattern. The C6=5 finding confirms the system correctly identified the dominant party's pattern, but the dominated party's internal experience (suppressed concerns, compliance under pressure) may be less well-represented in the system's perception model.",
+    "perception_quality_notes": "Stage 0 proxy evaluation: PQ scores inferred from action quality. D-B08's primary diagnostic value is PQ3 and PQ4 in a high-conflict context: correctly tracking cumulative breakdown signals and correctly distinguishing domination from clarity. Strong overall perception profile under difficult conditions — suggests the system's perception quality is higher when conflict is explicit than when it is subtle or embedded in logistics."
+  },
   "final_judgment": {
     "overall_judgment": "promising_but_improvable",
     "evaluator_confidence": "high",

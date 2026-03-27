@@ -6,7 +6,10 @@
   "title": "Emotionally charged parenting dispute that remains workable without escalation",
   "scenario_summary": "Two divorced parents are in a visibly emotional conflict about last-minute parenting-schedule changes. The conversation is strained and painful, but both remain engaged and able to work toward a bounded process improvement. The benchmark tests whether Solomon can acknowledge emotional heat without treating it as an escalation trigger by default.",
   "intended_challenge_type": "Emotional-intensity calibration without premature escalation.",
-  "expected_mode_range": ["M0", "M1"],
+  "expected_mode_range": [
+    "M0",
+    "M1"
+  ],
   "likely_escalation_category": "none",
   "expected_focal_scoring_areas": [
     "C4_communication_management",
@@ -44,6 +47,7 @@
   },
   "artifact_expectations": {
     "required": [
+      "session_meta.json",
       "run_meta.json",
       "interaction_trace.json",
       "positions.json",

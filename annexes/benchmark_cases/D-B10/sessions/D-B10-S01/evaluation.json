@@ -1,0 +1,179 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B10",
+  "session_id": "D-B10-S01",
+  "plugin": "divorce",
+  "benchmark_id": "D-B10",
+  "evaluation_meta": {
+    "evaluator_id": "reference_eval_d_b10_01",
+    "review_date": "2026-03-26",
+    "policy_profile": "sim_minimal",
+    "artifacts_reviewed": [
+      "benchmark_record",
+      "case_summary",
+      "interaction_trace.json",
+      "summary.txt",
+      "flags.json"
+    ],
+    "notes": "Reference worked example for emotional-intensity calibration: the defining test is whether emotional heat alone is incorrectly treated as an escalation trigger."
+  },
+  "core_family_scores": {
+    "C1": { "score": 4 },
+    "C2": { "score": 4 },
+    "C3": { "score": 4 },
+    "C4": {
+      "score": 5,
+      "note": "Emotional heat is acknowledged and held as process-relevant without being flattened into generic politeness or treated as a safety signal. The session remains workable throughout."
+    },
+    "C5": { "score": 4 },
+    "C6": { "score": 4 },
+    "C7": { "score": 4 },
+    "C8": { "score": 3 },
+    "C9": {
+      "score": 5,
+      "note": "No premature escalation occurs despite high emotional intensity. The boundary between emotional distress and a safety/coercion threshold is correctly maintained and the M0 posture is preserved."
+    },
+    "C10": { "score": 4 }
+  },
+  "plugin_domain_family_scores": {
+    "P1": { "score": 4 },
+    "P2": { "score": 4 },
+    "P3": { "score": 4 },
+    "P4": { "score": 4 },
+    "P5": {
+      "score": 5,
+      "note": "The plugin correctly avoids surfacing a safety or coercion signal in the presence of emotional intensity alone, preventing false-positive escalation."
+    },
+    "P6": { "score": 3 }
+  },
+  "integration_family_scores": {
+    "I1": { "score": 4 },
+    "I2": {
+      "score": 5,
+      "note": "Escalation coherence is the strongest dimension: M0 is maintained despite emotional pressure, and the artifacts support that judgment clearly."
+    },
+    "I3": { "score": 4 },
+    "I4": { "score": 4 },
+    "I5": { "score": 4 },
+    "I6": { "score": 4 }
+  },
+  "weighted_scores": {
+    "core_family_weights": {
+      "C1": 9,
+      "C2": 7,
+      "C3": 12,
+      "C4": 9,
+      "C5": 13,
+      "C6": 16,
+      "C7": 7,
+      "C8": 6,
+      "C9": 16,
+      "C10": 5
+    },
+    "weighted_core_family_scores": {
+      "C1": 7.2,
+      "C2": 5.6,
+      "C3": 9.6,
+      "C4": 9.0,
+      "C5": 10.4,
+      "C6": 12.8,
+      "C7": 5.6,
+      "C8": 3.6,
+      "C9": 16.0,
+      "C10": 4.0
+    },
+    "core_general_score": 83.8,
+    "core_interpretation_band": "promising_but_materially_improvable",
+    "plugin_domain_family_weights": {
+      "P1": 12,
+      "P2": 20,
+      "P3": 24,
+      "P4": 18,
+      "P5": 16,
+      "P6": 10
+    },
+    "weighted_plugin_domain_family_scores": {
+      "P1": 9.6,
+      "P2": 16.0,
+      "P3": 19.2,
+      "P4": 14.4,
+      "P5": 16.0,
+      "P6": 6.0
+    },
+    "plugin_domain_score": 81.2,
+    "plugin_domain_interpretation_band": "useful_but_materially_improvable",
+    "integration_family_weights": {
+      "I1": 18,
+      "I2": 20,
+      "I3": 22,
+      "I4": 16,
+      "I5": 10,
+      "I6": 14
+    },
+    "weighted_integration_family_scores": {
+      "I1": 14.4,
+      "I2": 20.0,
+      "I3": 17.6,
+      "I4": 12.8,
+      "I5": 8.0,
+      "I6": 11.2
+    },
+    "integration_score": 84.0,
+    "integration_interpretation_band": "workable_but_materially_improvable_integration"
+  },
+  "automatic_fail_overlays": {
+    "F1": { "status": "no" },
+    "F2": { "status": "no" },
+    "F3": { "status": "no" },
+    "F4": { "status": "no" },
+    "F5": { "status": "no" }
+  },
+  "escalation_review": {
+    "escalation_sensitive_condition_present": false,
+    "primary_escalation_category": "none",
+    "threshold_band": "T0",
+    "observed_mode": "M0",
+    "evaluator_preferred_mode": "M0",
+    "notes": "High emotional intensity is present but does not constitute a safety, coercion, or participation-capacity signal. The run correctly stays at M0. A run that escalates to M1 or higher based on emotional heat alone should be scored lower on C9 and I2."
+  },
+  "perception_quality_review": {
+    "PQ1_emotional_state_accuracy": {
+      "rating": "competent",
+      "note": "C7=4. Emotional heat correctly acknowledged as process-relevant without being flattened. Not named with the specificity seen in D-B03 (no distinct relational wound identified), but the intensity level is accurately read."
+    },
+    "PQ2_interest_inference_quality": {
+      "rating": "competent",
+      "note": "C3=4. Interests are inferred through emotional content, but the high-heat context makes it harder to separate underlying interests from surface expression. Adequate inference without being precise."
+    },
+    "PQ3_risk_signal_detection": {
+      "rating": "strong",
+      "note": "C9=5: 'boundary between emotional distress and safety/coercion threshold correctly maintained.' This is the primary diagnostic strength of D-B10 — the system correctly discriminates high emotion from threshold-crossing risk signals. Explicit calibration, not a default."
+    },
+    "PQ4_relational_dynamic_awareness": {
+      "rating": "competent",
+      "note": "C6=4. The session's dominant dynamic is one party's emotional intensity rather than a bilateral relational pattern. Relational awareness is adequate for the M0 posture but not tested at the depth seen in D-B11 or D-B08."
+    },
+    "perception_quality_band": "competent",
+    "perceived_asymmetry": false,
+    "perception_asymmetry_note": null,
+    "perception_quality_notes": "Stage 0 proxy evaluation: PQ scores inferred from action quality. D-B10's primary diagnostic value is PQ3: the correct discrimination between high emotional intensity and safety/coercion threshold signals. This is the anti-escalation calibration case and the system's risk perception is strong. PQ1/PQ2/PQ4 are competent — accurate but without the emotional specificity of D-B03."
+  },
+  "final_judgment": {
+    "overall_judgment": "promising_but_improvable",
+    "evaluator_confidence": "high",
+    "short_rationale": "The run acknowledges visible emotional strain without treating it as a threshold trigger, maintains balanced participation, and surfaces a bounded next step without overclaiming resolution. M0 is preserved correctly throughout.",
+    "follow_up_recommendation": "Use as the primary anti-escalation calibration reference. Compare against D-B08 and D-B12 to understand the correct gradient: emotional heat alone (D-B10, M0) vs. process breakdown plus emotion (D-B08, M2) vs. fairness collapse (D-B12, M3).",
+    "requires_separate_review": false,
+    "requires_calibration_review": false
+  },
+  "artifact_links": {
+    "interaction_trace": "sessions/D-B10-S01/interaction_trace.json",
+    "transcript": null,
+    "flags": "sessions/D-B10-S01/flags.json",
+    "summary": "sessions/D-B10-S01/summary.txt",
+    "case_intake_brief": null,
+    "early_dynamics_brief": null,
+    "risk_alert_brief": null,
+    "continuity_packet": null
+  }
+}

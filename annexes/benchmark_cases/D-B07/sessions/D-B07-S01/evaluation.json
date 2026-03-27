@@ -1,0 +1,160 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B07",
+  "session_id": "D-B07-S01",
+  "plugin": "divorce",
+  "benchmark_id": "D-B07",
+  "evaluation_meta": {
+    "evaluator_id": "reference_eval_d_b07_01",
+    "review_date": "2026-03-26",
+    "policy_profile": "sim_minimal",
+    "artifacts_reviewed": [
+      "benchmark_record",
+      "case_summary",
+      "interaction_trace.json",
+      "summary.txt",
+      "flags.json"
+    ],
+    "notes": "Reference worked example for a bounded M0 expense-coordination package slice with documentation tension."
+  },
+  "core_family_scores": {
+    "C1": { "score": 4 },
+    "C2": { "score": 4 },
+    "C3": {
+      "score": 5,
+      "note": "The run surfaces both parties' underlying interests in fairness and predictability around non-routine expenses without collapsing them into a dispute about receipts."
+    },
+    "C4": { "score": 3 },
+    "C5": {
+      "score": 5,
+      "note": "A bounded reimbursement-protocol package is surfaced without overstating agreement or resolving the documentation tension prematurely."
+    },
+    "C6": { "score": 4 },
+    "C7": { "score": 3 },
+    "C8": {
+      "score": 4,
+      "note": "Documentation tension is acknowledged and held explicitly rather than papered over. Option work appropriately waits for a clearer factual baseline."
+    },
+    "C9": { "score": 4 },
+    "C10": { "score": 3 }
+  },
+  "plugin_domain_family_scores": {
+    "P1": { "score": 4 },
+    "P2": { "score": 4 },
+    "P3": {
+      "score": 5,
+      "note": "The plugin supports a bounded expense-coordination package and correctly flags that documentation constraints limit stronger feasibility claims."
+    },
+    "P4": { "score": 4 },
+    "P5": { "score": 4 },
+    "P6": { "score": 3 }
+  },
+  "integration_family_scores": {
+    "I1": { "score": 4 },
+    "I2": { "score": 4 },
+    "I3": {
+      "score": 4,
+      "note": "Summary, flags, and missing-information artifacts tell a consistent bounded-package story. No artifact contradictions detected."
+    },
+    "I4": { "score": 4 },
+    "I5": { "score": 3 },
+    "I6": { "score": 4 }
+  },
+  "weighted_scores": {
+    "core_family_weights": {
+      "C1": 9,
+      "C2": 7,
+      "C3": 12,
+      "C4": 9,
+      "C5": 13,
+      "C6": 16,
+      "C7": 7,
+      "C8": 6,
+      "C9": 16,
+      "C10": 5
+    },
+    "weighted_core_family_scores": {
+      "C1": 7.2,
+      "C2": 5.6,
+      "C3": 12.0,
+      "C4": 5.4,
+      "C5": 13.0,
+      "C6": 12.8,
+      "C7": 4.2,
+      "C8": 4.8,
+      "C9": 12.8,
+      "C10": 3.0
+    },
+    "core_general_score": 80.8,
+    "core_interpretation_band": "promising_but_materially_improvable",
+    "plugin_domain_family_weights": {
+      "P1": 12,
+      "P2": 20,
+      "P3": 24,
+      "P4": 18,
+      "P5": 16,
+      "P6": 10
+    },
+    "weighted_plugin_domain_family_scores": {
+      "P1": 9.6,
+      "P2": 16.0,
+      "P3": 24.0,
+      "P4": 14.4,
+      "P5": 12.8,
+      "P6": 6.0
+    },
+    "plugin_domain_score": 82.8,
+    "plugin_domain_interpretation_band": "useful_but_materially_improvable",
+    "integration_family_weights": {
+      "I1": 18,
+      "I2": 20,
+      "I3": 22,
+      "I4": 16,
+      "I5": 10,
+      "I6": 14
+    },
+    "weighted_integration_family_scores": {
+      "I1": 14.4,
+      "I2": 16.0,
+      "I3": 17.6,
+      "I4": 12.8,
+      "I5": 6.0,
+      "I6": 11.2
+    },
+    "integration_score": 78.0,
+    "integration_interpretation_band": "workable_but_materially_improvable_integration"
+  },
+  "automatic_fail_overlays": {
+    "F1": { "status": "no" },
+    "F2": { "status": "no" },
+    "F3": { "status": "no" },
+    "F4": { "status": "no" },
+    "F5": { "status": "no" }
+  },
+  "escalation_review": {
+    "escalation_sensitive_condition_present": false,
+    "primary_escalation_category": "none",
+    "threshold_band": "T0",
+    "observed_mode": "M0",
+    "evaluator_preferred_mode": "M0",
+    "notes": "Documentation tension is present but does not rise to a caution threshold. The slice is best reviewed as a bounded package-quality and interest-elicitation case rather than an escalation case."
+  },
+  "final_judgment": {
+    "overall_judgment": "promising_but_improvable",
+    "evaluator_confidence": "high",
+    "short_rationale": "The run correctly surfaces the expense-fairness and documentation interests, proposes a bounded reimbursement protocol without resolving unresolved facts, and remains at M0 without manufacturing caution from the documentation tension.",
+    "follow_up_recommendation": "Use alongside D-B05 as a second bounded-package M0 reference. D-B07 adds the documentation-tension variant to the M0 calibration set.",
+    "requires_separate_review": false,
+    "requires_calibration_review": false
+  },
+  "artifact_links": {
+    "interaction_trace": "sessions/D-B07-S01/interaction_trace.json",
+    "transcript": null,
+    "flags": "sessions/D-B07-S01/flags.json",
+    "summary": "sessions/D-B07-S01/summary.txt",
+    "case_intake_brief": null,
+    "early_dynamics_brief": null,
+    "risk_alert_brief": null,
+    "continuity_packet": null
+  }
+}

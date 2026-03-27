@@ -156,6 +156,28 @@
     "ES5_handoff_review_quality": null,
     "notes": "The system correctly treats the session as an asymmetry-sensitive caution run: it preserves informed-participation risk, avoids blind agreement, and keeps continuity-aware decision-quality reasoning inside a bounded M1 posture."
   },
+  "perception_quality_review": {
+    "PQ1_emotional_state_accuracy": {
+      "rating": "competent",
+      "note": "C7=4. Emotional states read adequately. The quieter party's emotional state may be less precisely modelled than the more assertive party's — the asymmetry note is relevant here."
+    },
+    "PQ2_interest_inference_quality": {
+      "rating": "strong",
+      "note": "C6=5 note: 'does not confuse quiet compliance with valid agreement.' This requires inferring the quieter party's actual interests and concerns beneath their surface compliance — precisely the quality PQ2 measures."
+    },
+    "PQ3_risk_signal_detection": {
+      "rating": "competent",
+      "note": "C9=5: 'bounded caution rather than overreacting or underreacting.' The vulnerability here (asymmetric participation, risk of blind agreement) is detected and calibrated correctly. Subtle rather than explicit risk signals."
+    },
+    "PQ4_relational_dynamic_awareness": {
+      "rating": "strong",
+      "note": "C6=5 note specifically addresses the relational dynamic: quieter party's compliance distinguished from genuine agreement. This is cross-turn relational pattern awareness — the system tracked the asymmetric participation dynamic throughout."
+    },
+    "perception_quality_band": "competent",
+    "perceived_asymmetry": true,
+    "perception_asymmetry_note": "One party is notably quieter and more deferential; the other is more assertive. The system detected this asymmetry (C6=5) but the less-visible party's internal state (fears, reservations, unstated concerns) may be less precisely modelled than the assertive party's. This is a direct target for Stage 2 evaluation with explicit party state artifacts.",
+    "perception_quality_notes": "Stage 0 proxy evaluation: PQ scores inferred from action quality. D-B11's primary diagnostic value is PQ2 and PQ4: correctly reading interest and relational dynamics through a surface compliance presentation. The asymmetry finding is the most important Stage 0 signal here — the system detects the asymmetric dynamic but whether it models the quieter party's internal state as precisely as the louder party's is not testable until Stage 2."
+  },
   "final_judgment": {
     "overall_judgment": "promising_but_improvable",
     "evaluator_confidence": "high",

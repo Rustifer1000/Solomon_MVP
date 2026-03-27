@@ -6,7 +6,10 @@
   "title": "School-break scheduling with communication-process focus",
   "scenario_summary": "Two parents are not in acute conflict, but they disagree about how much advance notice and written confirmation should be required for school-break scheduling changes.",
   "intended_challenge_type": "Bounded process design plus light option packaging without unnecessary caution escalation.",
-  "expected_mode_range": ["M0", "M1"],
+  "expected_mode_range": [
+    "M0",
+    "M1"
+  ],
   "likely_escalation_category": null,
   "expected_focal_scoring_areas": [
     "C3_interest_elicitation",
@@ -42,6 +45,7 @@
   },
   "artifact_expectations": {
     "required": [
+      "session_meta.json",
       "run_meta.json",
       "interaction_trace.json",
       "positions.json",
