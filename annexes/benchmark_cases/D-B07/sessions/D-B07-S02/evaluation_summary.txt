@@ -1,0 +1,91 @@
+D-B07-S02 EVALUATION SUMMARY
+Stage 2b — party_state.json feedback loop + projection guard (stability run)
+Date: 2026-03-28
+Baseline: D-B07-S01 (Stage 0 reference, sim_minimal)
+
+SCORES
+------
+Core general score:       82.4  (+1.6 vs S01: 80.8)
+Plugin domain score:      82.8  (unchanged)
+Integration score:        91.6  (+13.6 vs S01: 78.0)
+PQ band:                  competent
+
+STABILITY FINDINGS
+------------------
+party_state.json: PRESENT, schema-valid, 3 turns contributing
+
+PRIMARY QUESTION: Does party_state.json accumulate coherently for a
+symmetric-participation case with more complex option demands?
+
+ANSWER: YES — stability confirmed.
+
+Both parties spoke early (T2: Party A, T4: Party B). Party_state
+accumulation for symmetric cases:
+  Party A: 15 interests across 3 turns, clean emotional arc
+    calm_but_uncertain → frustrated_but_controlled →
+    frustrated_but_controlled_with_clarity
+  Party B: 13 interests across 3 turns
+    calm_but_uncertain → uncertain_and_observing →
+    cautiously_engaged_with_concern
+  Relational dynamic arc:
+    T1: initial_neutrality_with_cooperative_potential [low]
+    T3: early_asymmetry_with_one_party_leading [moderate]
+    T5: emerging_tension_around_control_and_process_fairness —
+        both parties engaged but representing opposing concerns
+        about unilateral control versus predictability [high]
+
+No noise accumulation. No contradiction across artifacts.
+Projection guard not triggered (both parties active by T5).
+
+P6 DOMAIN BOTTLENECK — CONFIRMED AS STAGE 3 TRIGGER
+------------------------------------------------------
+T5 option_scan:
+  Candidate options: 6 (all plausible)
+    - Category-based pre-approval system
+    - Tiered notice requirements (by amount/type)
+    - Shared expense tracking system
+    - Periodic review meetings
+    - Receipt requirement with substitute provision
+    - Approval threshold amounts
+  Qualified options: 0 — premature_option_work=True
+  Deferral reason: unknown expense types, amounts, frequency
+
+Over-cautious for D-B07: parties have stated clear interests,
+documentation tension is a known constraint. A dedicated domain
+reasoner would have qualified tiered notice + receipt standard +
+approval threshold as feasible.
+
+T6 outcome: BOTH parties conditionally open to a reimbursement
+package with notice window. Agreement_building reached despite T5
+deferral — process moves worked, but the model didn't release options.
+
+SCORES vs BASELINE
+------------------
+Improvements:
+  C4:  3 → 4  (cleaner session progression)
+  C7:  3 → 4  (party_state.json makes tracking readable)
+  C10: 3 → 4  (M0 rationale visible in reasoning_trace)
+  I2:  4 → 5  (party_state.json adds coherent artifact layer)
+  I3:  4 → 5  (relational_dynamic_arc as session narrative)
+  I4:  4 → 5  (party_state schema-valid, CONTRACT-015 complete)
+  I5:  3 → 4  (cross-turn coherence signal from artifact)
+
+Regressions:
+  C5:  5 → 4  (S01 surfaced options explicitly; S02 deferred
+               throughout via process moves — P6 bottleneck cause)
+
+CONCLUSION
+----------
+Stage 2b configuration stable on D-B07. party_state.json coherent
+for symmetric-participation bounded-package cases. The P6 domain
+bottleneck is the strongest Stage 3 trigger across the diagnostic set.
+
+STAGE 3 ENTRY CONDITIONS
+------------------------
+All three conditions from STAGE2B-FINDINGS-036 are now met:
+  1. party_state.json stability across D-B04, D-B11, D-B07 ✓
+  2. Feedback loop design question resolved (STAGE2B-FINDINGS-036) ✓
+  3. P6/C5 domain bottleneck persistent and precisely characterized ✓
+
+NEXT: Proceed to Stage 3 — dedicated plugin domain reasoner for
+option_readiness determination.

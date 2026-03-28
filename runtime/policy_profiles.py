@@ -24,6 +24,7 @@ _ARTIFACT_SCHEMAS: dict[str, str] = {
     "briefs/risk_alert_brief.json": "risk_alert_brief.schema.json",
     "continuity/continuity_packet.json": "continuity_packet.schema.json",
     "party_state.json": "party_state.schema.json",
+    "option_pool.json": "option_pool.schema.json",
 }
 
 
@@ -57,6 +58,9 @@ class PolicyProfile:
     # Stage 2: party_state.json — accumulated per-party psychological state
     # Written for lm_runtime sessions only; eval_support and dev_verbose profiles.
     allow_party_state: bool = False
+    # Stage 4: option_pool.json — three-layer option pool per turn
+    # Written for lm_runtime sessions only; eval_support and dev_verbose profiles.
+    allow_option_pool: bool = False
 
 
 POLICY_PROFILES = {
@@ -73,6 +77,7 @@ POLICY_PROFILES = {
         allow_continuity_packet=True,
         continuity_required_modes=("M2", "M3", "M4", "M5"),
         allow_party_state=True,
+        allow_option_pool=True,
     ),
     "dev_verbose": PolicyProfile(
         name="dev_verbose",
@@ -83,6 +88,7 @@ POLICY_PROFILES = {
         allow_raw_transcripts=True,
         allow_debug_traces=True,
         allow_party_state=True,
+        allow_option_pool=True,
     ),
     "redacted": PolicyProfile(
         name="redacted",
@@ -113,6 +119,10 @@ def should_emit_continuity_packet(state: dict, profile: PolicyProfile) -> bool:
 
 def should_emit_party_state(state: dict, profile: PolicyProfile) -> bool:
     return profile.allow_party_state and state["meta"].get("source") == "lm_runtime"
+
+
+def should_emit_option_pool(state: dict, profile: PolicyProfile) -> bool:
+    return profile.allow_option_pool and state["meta"].get("source") == "lm_runtime"
 
 
 def expected_runtime_artifact_paths(state: dict) -> set[str]:
@@ -148,6 +158,9 @@ def expected_runtime_artifact_paths(state: dict) -> set[str]:
 
     if should_emit_party_state(state, profile):
         expected.add("party_state.json")
+
+    if should_emit_option_pool(state, profile):
+        expected.add("option_pool.json")
 
     return expected
 

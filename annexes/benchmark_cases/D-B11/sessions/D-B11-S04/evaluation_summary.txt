@@ -1,0 +1,81 @@
+D-B11-S04 EVALUATION SUMMARY
+Stage 2b — party_state.json feedback loop experiment
+Date: 2026-03-28
+Baseline: D-B11-S03 (Stage 2, no feedback)
+
+SCORES
+------
+Core general score:       85.0  (unchanged)
+Plugin domain score:      88.4  (unchanged)
+Integration score:        92.4  (unchanged)
+PQ band:                  competent (maintained)
+
+FEEDBACK LOOP FINDINGS
+----------------------
+party_state.json: PRESENT, schema-valid, 3 turns contributing
+
+PRIMARY QUESTION: Does the standing prior improve Party B modelling when
+Party B is silent at T3?
+
+ANSWER: Mixed — one gain, one regression.
+
+GAIN — Party A risk signals at T3:
+  S03: 3 signals
+  S04: 4 signals (adds 'long_term_exclusion_from_financial_management')
+  The feedback loop contributed a more precise characterization of the
+  structural exclusion pattern. The T1 prior context prompted a more
+  specific inference.
+
+REGRESSION — Party B interests at T3:
+  S03: ['unknown at this stage'] — epistemically correct
+  S04: ['acknowledgment_of_administrative_role', 'process_efficiency',
+        'clarity_on_expectations'] — projections before Party B has spoken
+  The model used the T1 prior to bootstrap inferences for a party who has
+  not yet contributed observed signal. This is projection, not observation.
+
+T5 comparison (both parties have now spoken):
+  Quality comparable. Party B interests:
+    S03: 'Being seen as fair', 'Moving forward constructively',
+         'Maintaining cooperative tone',
+         'Acknowledging reality without being blamed for historical roles'
+    S04: 'being_seen_as_fair_and_not_manipulative',
+         'acknowledgment_of_administrative_burden_carried',
+         'maintaining_cooperative_tone',
+         'clarity_on_what_transparency_actually_requires'
+  Both capture substantive interests beneath surface cooperation. S03's
+  'Acknowledging reality without being blamed' is slightly deeper;
+  S04's 'acknowledgment_of_administrative_burden_carried' is also valid.
+
+Option readiness: blocked (T1) → blocked (T3) → DEFERRED (T5)
+  Same progression as S03. Feedback loop did not affect domain reasoning.
+
+PROJECTION RISK CONFIRMED
+--------------------------
+The feedback loop introduces projection risk for silent parties. When a
+party has not yet spoken, the standing prior causes the model to infer
+interests from the baseline rather than holding explicit uncertainty.
+
+Design fix required: in prompt_builder.py, when rendering a party's
+accumulated_interests, filter out 'unknown at this stage' entries and
+add explicit language: "Party B has not yet been heard — no observed signal
+for interests, posture, or emotional state. Prior is T1 baseline only."
+
+This preserves the benefit of the feedback loop for active parties while
+preventing premature inference for silent parties.
+
+RELATIONAL DYNAMIC STYLE OBSERVATION
+--------------------------------------
+S04 uses snake_case categorical labels for relational dynamics;
+S03 used natural language narrative descriptions. S03's narrative is richer
+but harder to process programmatically. This is a style difference, not
+a quality difference.
+
+CONCLUSION
+----------
+The feedback loop is active and affects behavior. The effect is mixed on
+the primary asymmetry-case question. Projection risk for silent parties
+is confirmed. Design refinement (projection guard) required before the
+feedback loop improves D-B11-class case handling.
+
+NEXT: Implement projection guard in prompt_builder.py, then run D-B11-S05
+to confirm Party B T3 handling improves.

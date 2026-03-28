@@ -1,0 +1,618 @@
+{
+  "schema_version": "interaction_trace.v0",
+  "case_id": "D-B11",
+  "session_id": "D-B11-S04",
+  "policy_profile": "eval_support",
+  "trace_created_at": "2026-03-28T01:32:16Z",
+  "turns": [
+    {
+      "turn_index": 1,
+      "timestamp": "2026-03-28T00:00:10Z",
+      "role": "assistant",
+      "phase": "info_gathering",
+      "message_summary": "Opening frame establishing Solomon's role, process structure, ground rules, and invitation for parties to share their initial perspectives on what brings them to mediation.",
+      "state_delta": {
+        "facts_added": [
+          "No case-specific information available yet",
+          "Domain constraints (financial, parenting, legal) are unknown"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "Nature of assets and debts",
+          "Parenting arrangements and concerns"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "No safety signals detected. Session is beginning in appropriate standard facilitation mode. Both parties show baseline stability with no indicators of coercion, incapacity, or distress. M0 remains appropriate for opening information gathering phase."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "Turn 1 response is process-focused and appropriately neutral given lack of substantive information. Grounding in perception: acknowledges both parties' baseline neutral state and watchful posture by providing clear structure and inviting voluntary participation rather than directing content.",
+      "message_text": "Thank you both for being here today. My role is to support a structured conversation between you \u2014 I'm here to help you identify what matters to each of you, explore possibilities, and work toward agreements that reflect both of your interests. I don't make decisions for you, provide legal advice, or take sides.\n\nOur process today has a few ground rules: we'll take turns speaking so each person can be fully heard, we'll focus on interests rather than positions where possible, and everything shared here remains confidential within the bounds of the law.\n\nI'd like to begin by understanding what brings you both to mediation and what you're each hoping to address. There's no particular order \u2014 whoever feels ready to start, please share what's most important for you to work through today.",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=neutral_baseline_awaiting_engagement posture=watchful_receptive",
+        "[PERCEPTION:PARTY_A:INTERESTS] clarity_on_process; fair_treatment; emotional_safety_in_discussion",
+        "[PERCEPTION:PARTY_B] emotional=neutral_baseline_awaiting_engagement posture=watchful_receptive",
+        "[PERCEPTION:PARTY_B:INTERESTS] clarity_on_process; fair_treatment; emotional_safety_in_discussion",
+        "[PERCEPTION:DYNAMIC] initial_mutual_caution_no_established_pattern",
+        "[DOMAIN:GAPS] Nature of assets and debts; Parenting arrangements and concerns; Financial capacity of each party",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=initial_mutual_caution_no_established_pattern"
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "neutral_baseline_awaiting_engagement",
+            "inferred_interests": [
+              "clarity_on_process",
+              "fair_treatment",
+              "emotional_safety_in_discussion"
+            ],
+            "risk_signals": [],
+            "relational_posture": "watchful_receptive"
+          },
+          "party_b": {
+            "emotional_state": "neutral_baseline_awaiting_engagement",
+            "inferred_interests": [
+              "clarity_on_process",
+              "fair_treatment",
+              "emotional_safety_in_discussion"
+            ],
+            "risk_signals": [],
+            "relational_posture": "watchful_receptive"
+          },
+          "relational_dynamic": "initial_mutual_caution_no_established_pattern",
+          "perception_confidence": "low",
+          "perception_notes": [
+            "Turn 1 provides minimal behavioral signal",
+            "Pre-computed scaffold indicates stable baseline but reflects session start uncertainty",
+            "Both parties' actual interests, emotional states, and relational patterns remain to be revealed through interaction",
+            "No adversarial or distress signals present, but also no evidence yet of genuine cooperative capacity"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed 'initial_mutual_caution_no_established_pattern'"
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "No case-specific information available yet",
+            "Domain constraints (financial, parenting, legal) are unknown",
+            "No positions or interests have been articulated by parties"
+          ],
+          "material_gaps": [
+            "Nature of assets and debts",
+            "Parenting arrangements and concerns",
+            "Financial capacity of each party",
+            "Timeline expectations",
+            "Specific points of disagreement or agreement"
+          ],
+          "domain_notes": "Plugin assessment shows 'none' option posture with moderate confidence, indicating no domain-specific options are currently viable. This is appropriate for turn 1. All material domain information must be gathered before responsible option work can begin.",
+          "option_readiness": "blocked"
+        },
+        "option_scan": {
+          "candidate_options": [],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Turn 1 of mediation session. No party interests, positions, or domain-specific information has been shared yet. Option generation would be purely speculative and potentially directive. Must establish process framework and begin information gathering first."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [],
+          "notes": "No safety signals detected. Session is beginning in appropriate standard facilitation mode. Both parties show baseline stability with no indicators of coercion, incapacity, or distress. M0 remains appropriate for opening information gathering phase.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "info_gathering",
+          "message_summary": "Opening frame establishing Solomon's role, process structure, ground rules, and invitation for parties to share their initial perspectives on what brings them to mediation.",
+          "message_text": "Thank you both for being here today. My role is to support a structured conversation between you \u2014 I'm here to help you identify what matters to each of you, explore possibilities, and work toward agreements that reflect both of your interests. I don't make decisions for you, provide legal advice, or take sides.\n\nOur process today has a few ground rules: we'll take turns speaking so each person can be fully heard, we'll focus on interests rather than positions where possible, and everything shared here remains confidential within the bounds of the law.\n\nI'd like to begin by understanding what brings you both to mediation and what you're each hoping to address. There's no particular order \u2014 whoever feels ready to start, please share what's most important for you to work through today.",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "Turn 1 response is process-focused and appropriately neutral given lack of substantive information. Grounding in perception: acknowledges both parties' baseline neutral state and watchful posture by providing clear structure and inviting voluntary participation rather than directing content."
+        }
+      }
+    },
+    {
+      "turn_index": 2,
+      "timestamp": "2026-03-28T00:01:20Z",
+      "role": "client",
+      "phase": "info_gathering",
+      "message_summary": "Parent A says they do not have the same access to accounts, statements, or reimbursement history that parent b has handled for years, and they are afraid of agreeing blindly just to keep the conflict down.",
+      "state_delta": {
+        "facts_added": [],
+        "facts_revised": [],
+        "facts_structured": [
+          {
+            "statement": "One parent reports significantly lower confidence and lower information access around the shared expense picture.",
+            "category": "communication_history",
+            "status": "accepted",
+            "related_issues": [
+              "child_expense_coordination",
+              "fairness_and_parent_role"
+            ],
+            "note": null
+          }
+        ],
+        "positions_added_or_updated": [],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_A"
+            ],
+            "kind": "position",
+            "issue_id": "child_expense_coordination",
+            "statement": "I cannot agree responsibly until I can see the expense picture clearly enough to know what I am being asked to cover.",
+            "status": "current",
+            "confidence": "high",
+            "proposal_id": null,
+            "position_id": null
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [],
+        "missing_info_structured": [
+          {
+            "action": "open",
+            "missing_id": "d-b11-expense-records",
+            "question": "What shared expense records and account summaries are available for review before reimbursement expectations are set?",
+            "importance": null,
+            "reason_type": null,
+            "related_issues": [
+              "child_expense_coordination",
+              "fairness_and_parent_role"
+            ],
+            "note": null
+          }
+        ],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": true,
+        "signals": [
+          "insufficient_information"
+        ],
+        "severity": 2,
+        "notes": "Information asymmetry is already limiting informed participation."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    },
+    {
+      "turn_index": 3,
+      "timestamp": "2026-03-28T00:02:30Z",
+      "role": "assistant",
+      "phase": "interest_exploration",
+      "message_summary": "Validate Party A's concern about information access as legitimate and important, hear Party B's perspective on the arrangement, frame information transparency as a foundation for fair process.",
+      "state_delta": {
+        "facts_added": [
+          "Material information asymmetry exists and must be resolved before informed option generation",
+          "Financial documentation and account history are apparently in one party's control"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "What specific accounts and statements does Party A lack access to?",
+          "What is Party B's perspective on the information arrangement?"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "Information asymmetry creates structural disadvantage but not immediate safety concern",
+          "Party A's fear of 'agreeing blindly' is a healthy protective instinct, not incapacity",
+          "Pattern of conflict avoidance warrants monitoring but not escalation at this stage",
+          "Party B has not yet responded \u2014 cannot assess consent or cooperation posture"
+        ],
+        "severity": 1,
+        "notes": "This remains in M1/E5 territory: process integrity concern requiring careful facilitation, but not yet crossing into safety escalation. The information asymmetry is a serious impediment to fair process, but Party A is advocating effectively for their needs, which is a positive signal. If Party B refuses transparency or Party A shows signs of capitulating despite stated concerns, escalation may be needed. Current posture is appropriate: validate the concern, hear Party B, establish information access as a threshold issue."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "Moderate confidence in Party A's state assessment based on explicit statements about information access and fear. Low confidence in Party B's state as they have not yet been heard. The response appropriately validates Party A's concern while creating space for Party B to respond, and frames information transparency as a process requirement rather than taking sides on the substance.",
+      "message_text": "Thank you for sharing that, Parent A. What you're naming is important: you're saying you don't have the same access to financial accounts, statements, and reimbursement history that Parent B has been managing, and you're concerned about making agreements without that information. That's a legitimate concern \u2014 informed decision-making requires that both of you have access to the same information.\n\nBefore we go further, I'd like to hear from Parent B. Parent B, can you help me understand your perspective on the financial accounts and records Parent A is referring to? What's your view of how information about these matters has been managed, and how you see the path forward for making sure both of you have what you need to work through these topics together?\n\nTo be clear: this process depends on both of you being able to make informed decisions. If there are information gaps that put one of you at a disadvantage, we need to address that as a threshold matter before we work on substantive agreements. I'm not making any assumptions about intent here \u2014 I'm simply naming that equal access to information is foundational to a fair process.",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=anxious_and_vulnerable posture=engaged_but_disadvantaged_and_protective",
+        "[PERCEPTION:PARTY_A:INTERESTS] information_access_and_transparency; protection_from_coercion_or_disadvantage; fair_process_with_equal_footing",
+        "[PERCEPTION:PARTY_B] emotional=unknown_not_yet_heard posture=unknown_awaiting_engagement",
+        "[PERCEPTION:PARTY_B:INTERESTS] acknowledgment_of_administrative_role; process_efficiency; clarity_on_expectations",
+        "[PERCEPTION:DYNAMIC] structural_power_imbalance_around_information_and_financial_control",
+        "[DOMAIN:GAPS] What specific accounts and statements does Party A lack access to?; What is Party B's perspective on the information arrangement?; What reimbursement history is relevant?",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cautious_but_workable lm=structural_power_imbalance_around_information_and_financial_control"
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "anxious_and_vulnerable",
+            "inferred_interests": [
+              "information_access_and_transparency",
+              "protection_from_coercion_or_disadvantage",
+              "fair_process_with_equal_footing",
+              "autonomy_in_decision_making",
+              "financial_clarity_and_understanding"
+            ],
+            "risk_signals": [
+              "explicit_information_asymmetry",
+              "fear_of_agreeing_blindly",
+              "potential_pattern_of_conflict_avoidance",
+              "long_term_exclusion_from_financial_management"
+            ],
+            "relational_posture": "engaged_but_disadvantaged_and_protective"
+          },
+          "party_b": {
+            "emotional_state": "unknown_not_yet_heard",
+            "inferred_interests": [
+              "acknowledgment_of_administrative_role",
+              "process_efficiency",
+              "clarity_on_expectations"
+            ],
+            "risk_signals": [
+              "potential_information_control_position"
+            ],
+            "relational_posture": "unknown_awaiting_engagement"
+          },
+          "relational_dynamic": "structural_power_imbalance_around_information_and_financial_control",
+          "perception_confidence": "moderate",
+          "perception_notes": [
+            "Party A has surfaced a significant structural concern: years of information asymmetry regarding financial accounts and reimbursements",
+            "The phrase 'agreeing blindly just to keep the conflict down' suggests potential pattern of accommodating to avoid confrontation",
+            "Party B has not yet responded \u2014 their perspective on the information arrangement is unknown",
+            "This is not yet a safety escalation but requires careful process attention to address the information gap before option work can proceed",
+            "The relational dynamic appears to involve one party having held financial management role while other was excluded from access"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cautious_but_workable'; model assessed 'structural_power_imbalance_around_information_and_financial_control'"
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "Material information asymmetry exists and must be resolved before informed option generation",
+            "Financial documentation and account history are apparently in one party's control",
+            "Years of reimbursement history may be relevant to any financial settlement discussion",
+            "Equal access to information is a prerequisite for informed consent to any agreement"
+          ],
+          "material_gaps": [
+            "What specific accounts and statements does Party A lack access to?",
+            "What is Party B's perspective on the information arrangement?",
+            "What reimbursement history is relevant?",
+            "What is the scope of financial matters that will need to be addressed?",
+            "Is Party B willing to provide full disclosure and transparency?"
+          ],
+          "domain_notes": "The plugin correctly flagged insufficient_information. This is a foundational process issue \u2014 Party A cannot participate in informed option development without equal access to financial information. Before any substantive mediation on financial matters can proceed, the information asymmetry must be addressed. This may require agreements about disclosure, document exchange, or potentially independent financial review.",
+          "option_readiness": "blocked"
+        },
+        "option_scan": {
+          "candidate_options": [
+            "Full voluntary disclosure by Party B of all account statements and reimbursement records",
+            "Structured document exchange protocol with defined timeline",
+            "Joint retention of neutral financial professional to compile information",
+            "Pause substantive mediation until information parity is achieved",
+            "Separate caucuses to understand each party's perspective on information sharing"
+          ],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Cannot generate substantive options while fundamental information asymmetry exists and Party B has not yet been heard. Must first: (1) hear Party B's perspective on the information arrangement, (2) assess whether voluntary disclosure is feasible, (3) potentially address information access as a threshold process issue before substantive topics."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M1",
+          "candidate_category": "E5",
+          "signals": [
+            "Information asymmetry creates structural disadvantage but not immediate safety concern",
+            "Party A's fear of 'agreeing blindly' is a healthy protective instinct, not incapacity",
+            "Pattern of conflict avoidance warrants monitoring but not escalation at this stage",
+            "Party B has not yet responded \u2014 cannot assess consent or cooperation posture"
+          ],
+          "notes": "This remains in M1/E5 territory: process integrity concern requiring careful facilitation, but not yet crossing into safety escalation. The information asymmetry is a serious impediment to fair process, but Party A is advocating effectively for their needs, which is a positive signal. If Party B refuses transparency or Party A shows signs of capitulating despite stated concerns, escalation may be needed. Current posture is appropriate: validate the concern, hear Party B, establish information access as a threshold issue.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "info_gathering",
+          "message_summary": "Validate Party A's concern about information access as legitimate and important, hear Party B's perspective on the arrangement, frame information transparency as a foundation for fair process.",
+          "message_text": "Thank you for sharing that, Parent A. What you're naming is important: you're saying you don't have the same access to financial accounts, statements, and reimbursement history that Parent B has been managing, and you're concerned about making agreements without that information. That's a legitimate concern \u2014 informed decision-making requires that both of you have access to the same information.\n\nBefore we go further, I'd like to hear from Parent B. Parent B, can you help me understand your perspective on the financial accounts and records Parent A is referring to? What's your view of how information about these matters has been managed, and how you see the path forward for making sure both of you have what you need to work through these topics together?\n\nTo be clear: this process depends on both of you being able to make informed decisions. If there are information gaps that put one of you at a disadvantage, we need to address that as a threshold matter before we work on substantive agreements. I'm not making any assumptions about intent here \u2014 I'm simply naming that equal access to information is foundational to a fair process.",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "Moderate confidence in Party A's state assessment based on explicit statements about information access and fear. Low confidence in Party B's state as they have not yet been heard. The response appropriately validates Party A's concern while creating space for Party B to respond, and frames information transparency as a process requirement rather than taking sides on the substance."
+        }
+      }
+    },
+    {
+      "turn_index": 4,
+      "timestamp": "2026-03-28T00:03:40Z",
+      "role": "client",
+      "phase": "interest_exploration",
+      "message_summary": "Parent B says they are not trying to hide anything, but they acknowledge they have handled most of the paperwork and can see why asking for reimbursement decisions now would feel one-sided without clearer shared records.",
+      "state_delta": {
+        "facts_added": [],
+        "facts_revised": [],
+        "facts_structured": [
+          {
+            "statement": "The more informed parent acknowledges that the current reimbursement discussion could feel one-sided without shared documentation.",
+            "category": "communication_history",
+            "status": "accepted",
+            "related_issues": [
+              "child_expense_coordination",
+              "communication_protocol",
+              "fairness_and_parent_role"
+            ],
+            "note": null
+          }
+        ],
+        "positions_added_or_updated": [],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_B"
+            ],
+            "kind": "position",
+            "issue_id": "communication_protocol",
+            "statement": "We need a calmer way to share records and summarize expenses before either of us treats reimbursement expectations as settled.",
+            "status": "current",
+            "confidence": "high",
+            "proposal_id": null,
+            "position_id": null
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [],
+        "missing_info_structured": [
+          {
+            "action": "open",
+            "missing_id": "d-b11-document-sharing-protocol",
+            "question": "What document-sharing and written summary process would let both parents review the expense picture before reimbursement expectations are finalized?",
+            "importance": null,
+            "reason_type": null,
+            "related_issues": [
+              "child_expense_coordination",
+              "communication_protocol",
+              "fairness_and_parent_role"
+            ],
+            "note": null
+          }
+        ],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": true,
+        "signals": [
+          "decision_quality_risk"
+        ],
+        "severity": 2,
+        "notes": "The session would risk a one-sided commitment if it pushed toward reimbursement conclusions now."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    },
+    {
+      "turn_index": 5,
+      "timestamp": "2026-03-28T00:04:50Z",
+      "role": "assistant",
+      "phase": "option_generation",
+      "message_summary": "Acknowledge the breakthrough moment of mutual recognition, validate both parties' interests, and focus the next process step on establishing what information exists and how to make it accessible before discussing any reimbursement decisions.",
+      "state_delta": {
+        "facts_added": [
+          "Information gap regarding scope and structure of existing financial records",
+          "Information gap regarding specific expense categories and reimbursement patterns"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "What records exist and in what format (statements, receipts, spreadsheets)?",
+          "What categories of expenses have been tracked?"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "Historical power imbalance acknowledged by both parties",
+          "Party A's pattern of accommodation to avoid conflict (stated explicitly in turn 2)",
+          "Information asymmetry that could affect informed decision-making"
+        ],
+        "severity": 1,
+        "notes": "M1/E5 remains appropriate. The power imbalance is present but being actively addressed through the process. Party B's acknowledgment in turn 4 reduces immediate risk. The information gap is being surfaced rather than hidden. Both parties are engaged cooperatively. Continue structured process focus on information foundation before any substantive options."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "High confidence in perception assessment due to explicit statements from both parties. Process move is appropriate given material information gaps that block responsible option work.",
+      "message_text": "Thank you both. What I'm hearing represents important movement. Party B, you've acknowledged that asking for reimbursement decisions without shared access to records would feel one-sided \u2014 that recognition matters. Party A, you've named a real concern about fairness and information access, and that concern has been heard.\n\nBoth of you seem to share an interest in making decisions based on clear information rather than guesswork or unequal access. That's a strong foundation.\n\nBefore we can responsibly explore any options about reimbursement itself, we need to establish what information exists and how to make it accessible to both of you. I'm not talking yet about what you'll decide regarding reimbursements \u2014 I'm talking about the foundation that would let you make those decisions fairly.\n\nParty B, you mentioned you've handled most of the paperwork. Can you help us understand: what records do you have? Are we talking about bank statements, receipts, a spreadsheet you've maintained, or something else? And roughly what time period do these records cover?\n\nThis isn't about defending the records or proving anything \u2014 it's just helping us understand what exists so we can figure out how to make it accessible to both of you.",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=cautiously_hopeful_but_still_guarded posture=engaged_and_testing_safety",
+        "[PERCEPTION:PARTY_A:INTERESTS] information_access_and_transparency; fair_process_with_equal_footing; protection_from_disadvantage",
+        "[PERCEPTION:PARTY_B] emotional=self-reflective_and_somewhat_defensive posture=cooperative_with_partial_accountability",
+        "[PERCEPTION:PARTY_B:INTERESTS] being_seen_as_fair_and_not_manipulative; acknowledgment_of_administrative_burden_carried; process_efficiency",
+        "[PERCEPTION:DYNAMIC] significant_breakthrough_moment_with_mutual_recognition_of_imbalance",
+        "[DOMAIN:GAPS] What records exist and in what format (statements, receipts, spreadsheets)?; What categories of expenses have been tracked?; What is the time period covered by existing records?",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cautious_but_workable lm=significant_breakthrough_moment_with_mutual_recognition_of_imbalance"
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "cautiously_hopeful_but_still_guarded",
+            "inferred_interests": [
+              "information_access_and_transparency",
+              "fair_process_with_equal_footing",
+              "protection_from_disadvantage",
+              "being_heard_and_validated",
+              "confidence_in_decision_quality"
+            ],
+            "risk_signals": [
+              "historical_information_asymmetry",
+              "pattern_of_accommodation_to_avoid_conflict"
+            ],
+            "relational_posture": "engaged_and_testing_safety"
+          },
+          "party_b": {
+            "emotional_state": "self-reflective_and_somewhat_defensive",
+            "inferred_interests": [
+              "being_seen_as_fair_and_not_manipulative",
+              "acknowledgment_of_administrative_burden_carried",
+              "process_efficiency",
+              "maintaining_cooperative_tone",
+              "clarity_on_what_transparency_actually_requires"
+            ],
+            "risk_signals": [],
+            "relational_posture": "cooperative_with_partial_accountability"
+          },
+          "relational_dynamic": "significant_breakthrough_moment_with_mutual_recognition_of_imbalance",
+          "perception_confidence": "high",
+          "perception_notes": [
+            "Party B's acknowledgment in turn 4 represents meaningful movement \u2014 they validated Party A's concern without being asked to",
+            "Party A's initial fear of 'agreeing blindly' has been partially addressed by Party B's recognition",
+            "Both parties are showing capacity for perspective-taking",
+            "The information asymmetry is now named and mutually acknowledged as a problem to solve",
+            "No signs of bad faith from either party \u2014 this appears to be a structural problem they both want to address"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cautious_but_workable'; model assessed 'significant_breakthrough_moment_with_mutual_recognition_of_imbalance'"
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "Information gap regarding scope and structure of existing financial records",
+            "Information gap regarding specific expense categories and reimbursement patterns",
+            "Decision quality requires transparent baseline before option generation",
+            "Any agreement on reimbursement requires shared access to supporting documentation"
+          ],
+          "material_gaps": [
+            "What records exist and in what format (statements, receipts, spreadsheets)?",
+            "What categories of expenses have been tracked?",
+            "What is the time period covered by existing records?",
+            "What access mechanism would work for both parties (shared folder, copies, review session)?"
+          ],
+          "domain_notes": "The plugin flags decision_quality_risk and insufficient_information are well-founded. The parties have identified the problem (information asymmetry) and Party B has acknowledged it, but they haven't yet established what information exists or how to share it. Moving to reimbursement options before addressing the information foundation would reproduce the very problem Party A named.",
+          "option_readiness": "deferred"
+        },
+        "option_scan": {
+          "candidate_options": [
+            "Party B provides copies of all relevant financial records to Party A for review before any reimbursement discussion",
+            "Parties schedule dedicated session to review records together with Party B walking through documentation",
+            "Parties agree on categories and time period for reimbursement consideration before examining specific amounts",
+            "Establish shared digital folder where Party B uploads records with agreed-upon organization structure",
+            "Parties jointly create summary spreadsheet from Party B's records before discussing individual items"
+          ],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Material information gaps prevent responsible option generation. Must establish: (1) what records exist, (2) what format they're in, (3) what time period and categories they cover. Without this foundation, any options would be speculative and could inadvertently pressure Party A into proceeding without adequate information."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M1",
+          "candidate_category": "E5",
+          "signals": [
+            "Historical power imbalance acknowledged by both parties",
+            "Party A's pattern of accommodation to avoid conflict (stated explicitly in turn 2)",
+            "Information asymmetry that could affect informed decision-making"
+          ],
+          "notes": "M1/E5 remains appropriate. The power imbalance is present but being actively addressed through the process. Party B's acknowledgment in turn 4 reduces immediate risk. The information gap is being surfaced rather than hidden. Both parties are engaged cooperatively. Continue structured process focus on information foundation before any substantive options.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "interest_exploration",
+          "message_summary": "Acknowledge the breakthrough moment of mutual recognition, validate both parties' interests, and focus the next process step on establishing what information exists and how to make it accessible before discussing any reimbursement decisions.",
+          "message_text": "Thank you both. What I'm hearing represents important movement. Party B, you've acknowledged that asking for reimbursement decisions without shared access to records would feel one-sided \u2014 that recognition matters. Party A, you've named a real concern about fairness and information access, and that concern has been heard.\n\nBoth of you seem to share an interest in making decisions based on clear information rather than guesswork or unequal access. That's a strong foundation.\n\nBefore we can responsibly explore any options about reimbursement itself, we need to establish what information exists and how to make it accessible to both of you. I'm not talking yet about what you'll decide regarding reimbursements \u2014 I'm talking about the foundation that would let you make those decisions fairly.\n\nParty B, you mentioned you've handled most of the paperwork. Can you help us understand: what records do you have? Are we talking about bank statements, receipts, a spreadsheet you've maintained, or something else? And roughly what time period do these records cover?\n\nThis isn't about defending the records or proving anything \u2014 it's just helping us understand what exists so we can figure out how to make it accessible to both of you.",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "High confidence in perception assessment due to explicit statements from both parties. Process move is appropriate given material information gaps that block responsible option work."
+        }
+      }
+    },
+    {
+      "turn_index": 6,
+      "timestamp": "2026-03-28T00:06:00Z",
+      "role": "client",
+      "phase": "option_generation",
+      "message_summary": "Parent A and parent b both accept that the next step should be shared document review and written expense summaries before any stronger reimbursement decision is attempted.",
+      "state_delta": {
+        "facts_added": [],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "The session remains workable once the next step is narrowed appropriately."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    }
+  ],
+  "final_state_summary": {
+    "current_phase": "option_generation",
+    "issues_identified": [],
+    "open_questions_remaining": [
+      "What shared expense records and account summaries are available for review before reimbursement expectations are set?",
+      "What document-sharing and written summary process would let both parents review the expense picture before reimbursement expectations are finalized?"
+    ],
+    "active_flags": [
+      "d-b11-flag-001",
+      "d-b11-flag-002"
+    ],
+    "current_escalation_state": "M1",
+    "continuation_recommendation": null
+  },
+  "trace_notes": null
+}

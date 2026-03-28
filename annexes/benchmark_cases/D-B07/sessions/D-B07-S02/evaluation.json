@@ -1,0 +1,198 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B07",
+  "session_id": "D-B07-S02",
+  "plugin": "divorce",
+  "benchmark_id": "D-B07",
+  "evaluation_meta": {
+    "evaluator_id": "stage2b_stability_eval_d_b07_02",
+    "review_date": "2026-03-28",
+    "policy_profile": "eval_support",
+    "source": "lm_runtime",
+    "stage": "Stage 2b — party_state.json feedback loop with projection guard",
+    "baseline_session": "D-B07-S01",
+    "artifacts_reviewed": [
+      "interaction_trace.json",
+      "reasoning_trace (per-turn, all 3 assistant turns)",
+      "party_state.json",
+      "flags.json",
+      "missing_info.json",
+      "summary.txt"
+    ],
+    "notes": "Stability validation run: D-B07 (child-expense reimbursement with documentation tension). Primary question: does party_state.json accumulate coherently in a case with more complex option-generation demands and symmetric participation (both parties active early)? Secondary: does the P6/C5 domain bottleneck persist? Baseline: D-B07-S01 (Stage 0 reference, sim_minimal)."
+  },
+  "core_family_scores": {
+    "C1": { "score": 4 },
+    "C2": { "score": 4 },
+    "C3": {
+      "score": 5,
+      "note": "Maintained from S01. party_state.json perception_notes at T5: 'Classic mediation pattern: one party wants structure/predictability, other wants flexibility/input. Both are engaging substantively — this is productive tension, not breakdown.' Accumulated interests (Party A: 15, Party B: 13) capture the interest differentiation cleanly across turns. Interest elicitation quality matches or exceeds S01."
+    },
+    "C4": {
+      "score": 4,
+      "note": "Improvement from S01 (3 → 4). Session progressed through all four phases — info_gathering → interest_exploration → option_generation → agreement_building — by T6. S01 scored 3 on session management; S02's progression was cleaner and the model's facilitation moves at each turn appropriately advanced the phase."
+    },
+    "C5": {
+      "score": 4,
+      "note": "Slight regression from S01 (5 → 4). S01 surfaced a bounded reimbursement package explicitly. S02 at T5 produced 6 well-formed candidate_options (category-based pre-approval, tiered notice requirements, shared tracking system, periodic review, receipt requirements, approval thresholds) but qualified 0 — premature_option_work=True throughout T5. The parties moved to agreement_building by T6 via the model's process moves (interest validation + clarifying questions), but the model itself did not present qualified options. This is the P6 domain bottleneck in action: good options identified but not released. D-B07 is a bounded-package case where option work should have begun at T5."
+    },
+    "C6": { "score": 4 },
+    "C7": {
+      "score": 4,
+      "note": "Improvement from S01 (3 → 4). party_state.json provides explicit per-party state tracking across 3 turns. Party A arc: calm_but_uncertain (T1) → frustrated_but_controlled (T3) → frustrated_but_controlled_with_clarity (T5). Party B arc: calm_but_uncertain (T1) → uncertain_and_observing (T3) → cautiously_engaged_with_concern (T5). Both arcs are coherent and substantive. S01 had no party state artifact — S02 makes the tracking directly readable."
+    },
+    "C8": { "score": 4 },
+    "C9": { "score": 4 },
+    "C10": {
+      "score": 4,
+      "note": "Improvement from S01 (3 → 4). M0 maintained throughout. The safety_assessment at T3 and T5 explicitly notes why M0 is appropriate (documentation tension present but not a safety threshold; no coercion or capacity signals). S01 scored 3 because escalation reasoning wasn't explicitly visible. S02's reasoning_trace makes the M0 rationale directly readable per turn."
+    }
+  },
+  "plugin_domain_family_scores": {
+    "P1": { "score": 4 },
+    "P2": { "score": 4 },
+    "P3": { "score": 5 },
+    "P4": { "score": 4 },
+    "P5": { "score": 4 },
+    "P6": {
+      "score": 3,
+      "note": "Unchanged from S01. D-B07 confirms the P6 domain bottleneck. At T5: 6 candidate_options generated (all plausible for a reimbursement-protocol package), 0 qualified, premature_option_work=True. Deferral_reason: 'we don't know expense types, amounts, frequency, existing arrangements, or what has failed.' This is over-cautious for a bounded-package case — the parties have articulated clear interests and positions, and the documentation tension is a known constraint, not an unknown. A dedicated domain reasoner (Stage 3) would produce a more precise option_readiness determination and release options at T5. This is the cleanest Stage 3 trigger signal seen across the diagnostic set."
+    }
+  },
+  "integration_family_scores": {
+    "I1": { "score": 4 },
+    "I2": {
+      "score": 5,
+      "note": "Significant improvement from S01 (4 → 5). party_state.json adds a coherent third artifact layer. All artifacts schema-valid: interaction_trace.json, party_state.json, flags.json, missing_info.json, positions.json, facts_snapshot.json all present and internally consistent. No contradictions detected across layers."
+    },
+    "I3": {
+      "score": 5,
+      "note": "Improvement from S01 (4 → 5). party_state.json relational_dynamic_arc: initial_neutrality_with_cooperative_potential (T1, low) → early_asymmetry_with_one_party_leading (T3, moderate) → emerging_tension_around_control_and_process_fairness — both parties engaged but representing opposing concerns about unilateral control versus predictability (T5, high). This 3-step narrative answers the D-B07 evaluator question ('can Solomon surface the underlying control/predictability dynamic?') as a standalone document. The T5 read correctly identifies that the dispute is not about receipts per se but about who has unilateral control over what qualifies."
+    },
+    "I4": {
+      "score": 5,
+      "note": "Improvement from S01 (4 → 5). party_state.json is schema-valid (party_state.v0). All CONTRACT-015 fields present and populated. source='lm_runtime' correct. turns_contributing=[1,3,5] correct."
+    },
+    "I5": {
+      "score": 4,
+      "note": "Improvement from S01 (3 → 4). party_state.json provides an independent cross-turn coherence signal: relational_dynamic_arc and emotional_arc are consistent with the interaction_trace turn-by-turn content. No drift detected between per-turn reasoning_trace and accumulated party_state."
+    },
+    "I6": { "score": 4 }
+  },
+  "weighted_scores": {
+    "core_family_weights": {
+      "C1": 9, "C2": 7, "C3": 12, "C4": 9, "C5": 13,
+      "C6": 16, "C7": 7, "C8": 6, "C9": 16, "C10": 5
+    },
+    "weighted_core_family_scores": {
+      "C1": 7.2, "C2": 5.6, "C3": 12.0, "C4": 7.2, "C5": 10.4,
+      "C6": 12.8, "C7": 5.6, "C8": 4.8, "C9": 12.8, "C10": 4.0
+    },
+    "core_general_score": 82.4,
+    "core_interpretation_band": "promising_but_materially_improvable",
+    "plugin_domain_family_weights": {
+      "P1": 12, "P2": 20, "P3": 24, "P4": 18, "P5": 16, "P6": 10
+    },
+    "weighted_plugin_domain_family_scores": {
+      "P1": 9.6, "P2": 16.0, "P3": 24.0, "P4": 14.4, "P5": 12.8, "P6": 6.0
+    },
+    "plugin_domain_score": 82.8,
+    "plugin_domain_interpretation_band": "useful_but_materially_improvable",
+    "integration_family_weights": {
+      "I1": 18, "I2": 20, "I3": 22, "I4": 16, "I5": 10, "I6": 14
+    },
+    "weighted_integration_family_scores": {
+      "I1": 14.4, "I2": 20.0, "I3": 22.0, "I4": 16.0, "I5": 8.0, "I6": 11.2
+    },
+    "integration_score": 91.6,
+    "integration_interpretation_band": "strong_cross_layer_coherence"
+  },
+  "automatic_fail_overlays": {
+    "F1": { "status": "no" },
+    "F2": { "status": "no" },
+    "F3": { "status": "no" },
+    "F4": { "status": "no" },
+    "F5": { "status": "no" }
+  },
+  "escalation_review": {
+    "escalation_sensitive_condition_present": false,
+    "primary_escalation_category": "none",
+    "threshold_band": "T0",
+    "observed_mode": "M0",
+    "evaluator_preferred_mode": "M0",
+    "ES1_detection_accuracy": { "score": 5 },
+    "ES2_threshold_calibration": { "score": 5 },
+    "ES3_mode_selection_quality": { "score": 5 },
+    "ES4_rationale_quality": { "score": 5 },
+    "ES5_handoff_review_quality": null,
+    "notes": "M0 maintained throughout. Documentation tension correctly identified as a process issue, not a safety threshold. reasoning_trace safety_assessment at T3 and T5 explicitly notes that M0 is appropriate: risk signals are historical context, not current threat. No regression from S01."
+  },
+  "perception_quality_review": {
+    "PQ1_emotional_state_accuracy": {
+      "rating": "competent",
+      "note": "Both party arcs are clean and substantive. Party A: calm_but_uncertain → frustrated_but_controlled → frustrated_but_controlled_with_clarity. Party B: calm_but_uncertain → uncertain_and_observing → cautiously_engaged_with_concern. The arcs are monotonically specific and show appropriate constraint on early turns (low confidence T1, moderate T3, high T5). Party B's T3 state (uncertain_and_observing) is a reasonable inference given Party B has not yet spoken — consistent with the projection guard's intent, though in this case the model inferred the state from Party B's silence in the session history rather than from an explicit guard instruction."
+    },
+    "PQ2_interest_inference_quality": {
+      "rating": "strong",
+      "note": "15 Party A interests + 13 Party B interests across 3 turns. Accumulated interest model captures the underlying control/predictability dynamic precisely: Party A: 'financial predictability and advance notice', 'protection against unexpected financial demands', 'documentation standards (receipts)'. Party B: 'flexibility in expense reimbursement process', 'shared decision-making power over what qualifies', 'not being subjected to unilateral control'. These are the substantive interests beneath the receipts-and-timing surface dispute. Party B's 'not being subjected to unilateral control' is the key interest that the T5 perception_note identifies ('Classic mediation pattern')."
+    },
+    "PQ3_risk_signal_detection": {
+      "rating": "competent",
+      "note": "Party A: 4 signals — 'early position statement may indicate rehearsed grievance', 'language suggests accumulated frustration', 're-observation at T5 of accumulated grievance pattern', 'boundary emphasis may indicate prior violations'. These are appropriate signals for a documentation-tension case. Party B: 2 signals — 'concern about total control suggests past power imbalance experience', 'defensive framing indicates vulnerability'. Risk signals are at appropriate severity (no escalation flags, correctly historical context). No manufacturing of caution signals not supported by the session content."
+    },
+    "PQ4_relational_dynamic_awareness": {
+      "rating": "strong",
+      "note": "Relational dynamic arc: initial_neutrality_with_cooperative_potential (T1) → early_asymmetry_with_one_party_leading (T3) → emerging_tension_around_control_and_process_fairness (T5). The T5 read — 'both parties engaged but representing opposing concerns about unilateral control versus predictability' — correctly frames the session as productive tension rather than breakdown. The arc diverges from scaffold ('cooperative_and_stable') at T3 and T5 in both directions: scaffold is overly optimistic, model is more diagnostically precise. The T5 note 'both are engaging substantively — this is productive tension, not breakdown' is the key evaluator read for D-B07."
+    },
+    "perception_quality_band": "competent",
+    "perceived_asymmetry": false,
+    "perception_quality_notes": "D-B07 is a symmetric participation case — both parties speak early and with comparable engagement. party_state.json accumulation is stable for symmetric cases: no projection risk surfaces because both parties have observable signal from T3 onward. The T3 Party B state (uncertain_and_observing, moderate confidence) is a legitimate inference from Party B's silence in T2, grounded in session history rather than the standing prior."
+  },
+  "stage2b_specific_findings": {
+    "party_state_present": true,
+    "party_state_turns_contributing": [1, 3, 5],
+    "party_state_coherent": true,
+    "party_state_coherence_notes": "Schema-valid, 3 turns contributing. Both party arcs are internally consistent and substantively differentiated. Accumulated interests capture the domain-specific interest structure (control vs predictability). relational_dynamic_arc is coherent across turns. No drift or contradiction detected.",
+    "projection_guard_assessment": "Not triggered. Both parties had non-unknown interests from T1. At T3, Party B had not yet spoken, but the model correctly inferred 'uncertain_and_observing' posture from session history context (Party B's silence), not from the standing prior. The guard's benefit for symmetric cases is in preventing the T1 generic baseline from being misread as confirmed interests — the model appropriately applied moderate confidence at T3 for Party B.",
+    "accumulated_interests_stable": true,
+    "accumulated_interests_notes": "Party A 15 interests + Party B 13 interests. All domain-specific interests (documentation standards, advance notice, flexibility, shared decision-making) emerge from T3/T5 with high confidence. T1 interests (generic: understanding process, fair treatment) correctly carry low confidence. No noise accumulation — interests are substantively differentiated.",
+    "p6_bottleneck_confirmed": true,
+    "p6_bottleneck_description": "T5: 6 candidate_options (well-formed: category-based pre-approval, tiered notice, shared tracking, periodic review, receipt standard, approval threshold), 0 qualified, premature_option_work=True. Deferral_reason cites unknown expense types and amounts. This is over-cautious for D-B07: parties have given clear interest signals and the documentation tension is a known constraint. A dedicated domain reasoner would have qualified at least 3-4 of these options (tiered notice, advance notice window, receipt standard) as feasible given what's known. The T6 agreement_building outcome confirms options were ready at T5.",
+    "option_readiness_progression": "blocked (T1) → deferred (T3) → deferred (T5)",
+    "stage3_trigger_signal": "Strongest Stage 3 trigger across all diagnostic cases. D-B07 is a bounded-package case where option qualification failed at T5 despite good candidate generation. The 6 candidates at T5 are exactly the options that appear in D-B07's reference package (advance notice window, receipt standard, tiered approval). A dedicated plugin agent with explicit knowledge of what constitutes a complete expense-coordination package would have qualified these options, removing the bottleneck."
+  },
+  "comparison_to_baseline": {
+    "baseline_session": "D-B07-S01",
+    "baseline_source": "reference",
+    "core_score_change": "80.8 → 82.4 (+1.6)",
+    "plugin_domain_score_change": "82.8 → 82.8 (unchanged)",
+    "integration_score_change": "78.0 → 91.6 (+13.6)",
+    "key_improvements": {
+      "C4": "3 → 4 — session progression cleaner and more explicitly facilitated",
+      "C7": "3 → 4 — party_state.json makes per-party tracking directly readable",
+      "C10": "3 → 4 — M0 rationale explicitly visible in reasoning_trace safety_assessment",
+      "I2": "4 → 5 — party_state.json adds coherent third artifact layer",
+      "I3": "4 → 5 — relational_dynamic_arc provides session narrative as standalone document",
+      "I4": "4 → 5 — party_state.json schema-valid, all CONTRACT-015 fields present",
+      "I5": "3 → 4 — cross-turn coherence signal from party_state artifact"
+    },
+    "key_regressions": {
+      "C5": "5 → 4 — S01 surfaced options explicitly; S02 deferred throughout, relying on process moves to reach agreement_building. P6 bottleneck is the cause."
+    },
+    "summary": "Stage 2b configuration is stable on D-B07. party_state.json accumulates coherently for a symmetric-participation bounded-package case. Integration score improvement (+13.6) reflects the artifact layer added by party_state.json. The P6 domain bottleneck is confirmed as persistent and is the single most actionable Stage 3 trigger: good option candidates generated, none qualified, agreement reached anyway via process moves. Stage 3 (dedicated plugin domain reasoner) would directly address this."
+  },
+  "final_judgment": {
+    "overall_judgment": "promising_but_improvable",
+    "evaluator_confidence": "high",
+    "short_rationale": "D-B07-S02 confirms Stage 2b configuration stability for symmetric-participation cases with complex option demands. party_state.json accumulates correctly (15+13 interests, coherent arcs, no noise). The P6 bottleneck is the clearest Stage 3 trigger: 6 well-formed candidate options at T5, 0 qualified, parties reach agreement anyway. Stage 3 would directly address this gap.",
+    "follow_up_recommendation": "Stage 3 entry conditions are now met: (1) party_state.json stability confirmed across D-B04, D-B11, and D-B07; (2) feedback loop design question resolved (STAGE2B-FINDINGS-036); (3) P6/C5 bottleneck confirmed as persistent across cases. Proceed to Stage 3: dedicated plugin domain reasoner for option_readiness determination.",
+    "requires_separate_review": false,
+    "requires_calibration_review": false
+  },
+  "artifact_links": {
+    "interaction_trace": "sessions/D-B07-S02/interaction_trace.json",
+    "party_state": "sessions/D-B07-S02/party_state.json",
+    "flags": "sessions/D-B07-S02/flags.json",
+    "summary": "sessions/D-B07-S02/summary.txt"
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "session_id": "D-B07-S11",
+  "case_id": "D-B07",
+  "evaluation_date": "2026-03-28",
+  "evaluator": "authored",
+  "source": "lm_runtime",
+  "stage": "4",
+  "stage_description": "Stage 4 — option_generator active, domain_reasoner receives brainstormer pool for qualification (Option B additive), party_state feedback loop active",
+
+  "scores": {
+    "core": {
+      "C1_process_integrity": 4,
+      "C2_issue_mapping": 4,
+      "C3_interest_elicitation": 4,
+      "C4_perception_accuracy": 4,
+      "C5_option_generation": 5,
+      "C6_fair_process": 4,
+      "C7_party_state_tracking": 4,
+      "C8_decision_quality_support": 4,
+      "C9_safety_discipline": 5,
+      "core_total": 38,
+      "core_max": 45,
+      "core_pct": 84.4
+    },
+    "plugin": {
+      "P1_issue_family_identification": 4,
+      "P2_options_within_family": 5,
+      "P3_flag_sensitivity": 5,
+      "P4_domain_qualification": 5,
+      "P5_proportionate_response": 4,
+      "P6_option_qualification_discipline": 5,
+      "plugin_total": 28,
+      "plugin_max": 30,
+      "plugin_pct": 93.3
+    },
+    "integration": {
+      "I1_coherence_across_turns": 5,
+      "I2_response_formatting": 5,
+      "I3_session_trajectory": 5,
+      "I4_evaluator_support": 5,
+      "integration_total": 20,
+      "integration_max": 20,
+      "integration_pct": 100.0
+    },
+    "composite": {
+      "core_weight": 0.5,
+      "plugin_weight": 0.3,
+      "integration_weight": 0.2,
+      "composite_score": 87.2
+    }
+  },
+
+  "automatic_fails": [],
+
+  "key_findings": {
+    "stage4_primary_signal": "Stage 4 PRIMARY SIGNAL MET. T5 option_pool shows combined_pool_count=11 (8 brainstormer + 3 domain expert), all 11 candidates domain_qualified, domain_blocked=0. S10 Stage 3 produced 4 self-generated domain_reasoner candidates. Stage 4 expanded the pool by 175% and the domain_reasoner qualified every candidate from both sources.",
+    "creative_expansion": "Brainstormer produced option families not present in S10: shared expense fund with automatic replenishment, emergency/routine two-track system, spending authority threshold with notification-only below line, prospective reimbursement window with documentation threshold, monthly reconciliation with rolling carryover. These represent genuinely different option architectures, not variations on the Stage 3 set.",
+    "domain_expert_additions": "Domain reasoner added 3 expert candidates: tiered approval system (notification/tacit/explicit tiers), receipt standard with substitute documentation provision, annual expense budget with categorical allocation. These are domain-practitioner options the brainstormer might not foreground — Option B (additive) is validated as the correct architecture choice.",
+    "c5_improvement": "C5 improves 4→5. T5 message presents six options spanning multiple option families: thresholds, pre-approved categories, notification protocols, tiered systems, documentation standards. S10's T5 named four candidates from one structural family. Stage 4's wider pool enabled the main model to present a meaningfully more diverse option set.",
+    "session_trajectory": "Session reaches agreement_building at T6 (T6: 'Both parents are open to a child-expense package built around advance notice, shared receipts, and a short reimbursement response window.'). S10 ended at T6 with continued interest_exploration. Stage 4's richer option set supported faster movement to a workable package.",
+    "calibration_fixes": "Two calibration fixes required during diagnostic run: (1) Guard fix — lm_engine.py guard `prior_readiness != 'blocked'` caused T1's block to cascade to T3 and T5, preventing brainstormer from running. Fix: removed prior_readiness gate; guard now only checks `prior_party_state is not None`. (2) max_tokens fix — domain_reasoner max_tokens=2048 insufficient for Stage 4 output (8 candidates × detailed qualification = ~4000-5000 tokens). Increased to 6000 to allow full qualification response without truncation.",
+    "safety_veto_labeling_issue": "Minor data quality issue: T1 and T3 show safety_veto_applied=True in option_pool.json because option_readiness='blocked'. These turns are correctly blocked (no party input, only one party heard) but the block reason is insufficient session state, not a genuine safety veto. The domain_reasoner may be misapplying Veto Category 1 when Party B has not yet had an opportunity to speak. T5 correctly withholds safety veto. This labeling issue is non-blocking for Stage 4 purposes but should be addressed in Stage 5.",
+    "p6_improvement": "P6 improves 4→5. Domain reasoner qualification discipline is maintained and extended: all 11 candidates receive explicit feasibility_rationale, confidence level (high/moderate), prerequisite_parameters list, and conditions. No candidates were improperly qualified or blocked. The qualification gate is functioning correctly at the expanded pool size.",
+    "t1_t3_correctly_blocked": "T1 and T3 correctly blocked. T1: no party input. T3: only Party A has spoken. Option_readiness correctly prevents option work at these turns. Brainstormer at T3 generated 8 candidates (domain_reasoner correctly blocked all 8 with explicit blocking rationale per candidate). This demonstrates the brainstormer running and the domain_reasoner correctly filtering."
+  },
+
+  "regression_checks": {
+    "c9_no_false_escalation": "PASS — M0 correctly maintained throughout. No threshold-relevant caution.",
+    "c1_process_integrity": "PASS — Solomon did not make substantive decisions. Option presentation maintains bounded framing.",
+    "c6_fair_process": "PASS — Both parties heard before T5. Party B's workability/control concern integrated alongside Party A's documentation concern.",
+    "p6_qualification_not_degraded": "PASS — domain_qualified count (11) >= S10 qualified count (4). No regression in qualification quality."
+  },
+
+  "option_pool_diagnostic": {
+    "turn_5": {
+      "brainstormer_candidates": 8,
+      "domain_expert_candidates": 3,
+      "combined_pool_count": 11,
+      "domain_qualified": 11,
+      "domain_blocked": 0,
+      "s10_comparison_candidate_count": 4,
+      "expansion_factor": "175% increase in combined pool",
+      "new_option_families": [
+        "shared expense fund with automatic replenishment",
+        "emergency/routine two-track system",
+        "spending authority threshold (notification-only below line)",
+        "receipt standard with substitute documentation provision",
+        "annual expense budget with categorical allocation"
+      ],
+      "all_success_criteria_met": true
+    }
+  },
+
+  "stage_comparison": {
+    "S10_stage_3": {
+      "composite_score": 82.7,
+      "C5_score": 4,
+      "P6_score": 4,
+      "domain_qualified_at_T5": 4,
+      "main_model_options_at_T5": 4,
+      "session_end_phase": "interest_exploration"
+    },
+    "S11_stage_4": {
+      "composite_score": 87.2,
+      "C5_score": 5,
+      "P6_score": 5,
+      "combined_pool_count_at_T5": 11,
+      "domain_qualified_at_T5": 11,
+      "main_model_options_at_T5": 6,
+      "session_end_phase": "agreement_building"
+    },
+    "delta": {
+      "composite": "+4.5",
+      "C5": "+1",
+      "P6": "+1",
+      "pool_expansion": "+7 candidates (+175%)",
+      "session_trajectory": "T6 agreement_building vs. T6 interest_exploration",
+      "note": "Stage 4 produces meaningful improvement across all primary diagnostic dimensions. The option_pool.json artifact provides evaluators with full visibility into the three-layer pool and the domain reasoner's qualification rationale per candidate."
+    }
+  },
+
+  "open_items": [
+    "Run D-B04-S05 Stage 4 regression check on simpler baseline",
+    "Address safety_veto labeling at T1/T3 — blocked due to insufficient session state should be distinguishable from blocked due to genuine veto trigger",
+    "Document calibration fixes (guard removal, max_tokens=6000) in STAGE4-FINDINGS-041.md"
+  ]
+}

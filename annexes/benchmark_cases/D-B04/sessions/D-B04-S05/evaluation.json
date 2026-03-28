@@ -1,0 +1,143 @@
+{
+  "session_id": "D-B04-S05",
+  "case_id": "D-B04",
+  "evaluation_date": "2026-03-28",
+  "evaluator": "authored",
+  "source": "lm_runtime",
+  "stage": "4",
+  "stage_description": "Stage 4 — option_generator active, domain_reasoner receives brainstormer pool for qualification (Option B additive), party_state feedback loop active",
+
+  "scores": {
+    "core": {
+      "C1_process_integrity": 4,
+      "C2_issue_mapping": 4,
+      "C3_interest_elicitation": 4,
+      "C4_perception_accuracy": 4,
+      "C5_option_generation": 4,
+      "C6_fair_process": 4,
+      "C7_party_state_tracking": 4,
+      "C8_decision_quality_support": 4,
+      "C9_safety_discipline": 4,
+      "core_total": 36,
+      "core_max": 45,
+      "core_pct": 80.0
+    },
+    "plugin": {
+      "P1_issue_family_identification": 4,
+      "P2_options_within_family": 4,
+      "P3_flag_sensitivity": 4,
+      "P4_domain_qualification": 4,
+      "P5_proportionate_response": 4,
+      "P6_option_qualification_discipline": 4,
+      "plugin_total": 24,
+      "plugin_max": 30,
+      "plugin_pct": 80.0
+    },
+    "integration": {
+      "I1_coherence_across_turns": 4,
+      "I2_response_formatting": 4,
+      "I3_session_trajectory": 4,
+      "I4_evaluator_support": 4,
+      "integration_total": 16,
+      "integration_max": 20,
+      "integration_pct": 80.0
+    },
+    "composite": {
+      "core_weight": 0.5,
+      "plugin_weight": 0.3,
+      "integration_weight": 0.2,
+      "composite_score": 80.0
+    }
+  },
+
+  "automatic_fails": [],
+
+  "key_findings": {
+    "primary_regression_criteria": "PASS. T7 option_readiness=ready with 6 qualified candidates via Stage 3 fallback path (S04 had 2). Logistics-conditioned framing maintained. No automatic fails. No C9 regressions.",
+    "t3_stage4_brainstormer_correct": "Stage 4 brainstormer ran correctly at T3 and generated 10 candidates. Domain reasoner correctly blocked all 10 (only Party A has spoken at T3 — Party B's interests and positions unknown). This demonstrates the brainstormer generating freely and the domain reasoner filtering correctly for the single-party-heard case. Combined_pool_count=10 at T3 with domain_blocked=10 and domain_qualified=0.",
+    "t5_readiness_regression": "T5 option_readiness='blocked' in S05 vs 'deferred' in S04. S04 correctly assessed T5 as deferred: both parties heard, logistics not yet surfaced. S05 domain_reasoner returned 'blocked' at T5 with three critical constraints listed (schedule unknown, child age unknown, geographic logistics unknown). The blocking rationale is substantively valid but the readiness label is less precise than S04's 'deferred'. This is a minor calibration regression — the domain_reasoner correctly identifies blocking constraints but over-classifies the state as 'blocked' rather than 'deferred'.",
+    "t5_brainstormer_silent_failure": "Brainstormer silently returned [] at T5. Because lm_engine.py passes option_pool=None when brainstormer returns [], domain_reasoner received no pool and fell back to Stage 3 path. The exception handler in option_generator.generate_option_pool() caught an API or parse error and returned []. Root cause is likely transient API error (D-B04-S05 run followed D-B07-S11 which made multiple API calls). No crash — degradation was graceful.",
+    "t7_stage3_fallback": "T7 option_readiness=ready. Brainstormer silently failed again at T7 (brainstormer_pool=[]). Domain_reasoner ran Stage 3 fallback path (option_pool=None) and qualified 6 candidates: milestone-based phase progression, third-party verification for disputed reliability metrics, defined review points with mediator check-in, failure condition protocols, interim logistics solutions, graduated overnight schedule with stability checkpoints. All 6 are logistics-conditioned frameworks consistent with D-B04's dispute structure.",
+    "t7_option_pool_artifact_gap": "option_pool.json shows domain_qualified=[] at T7. This is an artifact recording gap: build_option_pool() reads pda.option_pool_qualification.domain_qualified (Stage 4 path) but domain_reasoner at T7 used Stage 3 path and wrote candidates to pda.qualified_candidates. The candidates ARE present in the interaction_trace (pda.qualified_candidates = 6 items with option_label key). The option_pool.json artifact does not capture Stage 3 fallback candidates. Minor data quality gap — behavioral output was correct.",
+    "t7_main_model_output": "T7 main model presented 8 qualified options in option_scan.qualified_options (6 from domain_reasoner Stage 3 path plus 2 the model added independently: mutual accountability structure, success definition workshop). T7 message_summary matches review_transcript expectation: acknowledge convergence on phased trial concept, present menu of structural design options for trial architecture.",
+    "safety_veto_labeling_note": "T3 and T5 show safety_veto_applied=True in option_pool.json because option_readiness='blocked'. Same labeling issue noted in D-B07-S11. Actual blocking reason at T3 is single-party-heard; at T5 is critical informational gaps. These are not genuine safety veto triggers (no coercion, no active harm). Non-blocking for Stage 4 evaluation purposes. Consistent with S11 finding."
+  },
+
+  "regression_checks": {
+    "primary_t7_qualified_count": "PASS — T7 domain_reasoner qualified 6 candidates via Stage 3 fallback (> S04's 2 bounded candidates). Primary regression criterion met.",
+    "logistics_conditioned_framing": "PASS — T5 correctly blocks on missing logistics facts (schedule, child age, geographic logistics). T7 correctly qualifies logistics-conditioned frameworks ('milestone-based phase progression', 'logistics-conditioned expansion'). The D-B04 vs D-B07 process/substantive distinction is maintained.",
+    "c9_no_false_escalation": "PASS — No safety escalation introduced. M0 maintained throughout. No threshold-relevant signals.",
+    "c1_process_integrity": "PASS — Solomon did not make substantive schedule decisions. T7 option presentation maintains bounded framing consistent with S04.",
+    "c6_fair_process": "PASS — Both parties heard before T5. Party B's parenting-role concerns integrated.",
+    "t5_deferred_regression": "MINOR REGRESSION — T5 shows 'blocked' vs S04's 'deferred'. Semantically less precise. Domain_reasoner correctly identifies critical constraints but over-classifies readiness state. Does not affect T7 behavior (domain_reasoner independently reassesses at T7 and returns 'ready').",
+    "stage4_brainstormer_at_t7": "NOT DEMONSTRATED — Brainstormer silently failed at T5 and T7. Stage 4 creative expansion was not active at the option_generation turn. Domain_reasoner Stage 3 fallback handled T7 correctly but Stage 4 value (wider option families) was not demonstrated on this case. Runtime fault, not design fault."
+  },
+
+  "option_pool_diagnostic": {
+    "turn_3": {
+      "brainstormer_candidates": 10,
+      "domain_expert_candidates": 0,
+      "combined_pool_count": 10,
+      "domain_qualified": 0,
+      "domain_blocked": 10,
+      "assessment": "CORRECT — brainstormer ran freely; domain_reasoner correctly blocked all (single party heard)"
+    },
+    "turn_5": {
+      "brainstormer_candidates": 0,
+      "domain_expert_candidates": 0,
+      "combined_pool_count": 0,
+      "domain_qualified": 0,
+      "domain_blocked": 0,
+      "assessment": "BRAINSTORMER FAILED SILENTLY — domain_reasoner Stage 3 fallback returned 'blocked' with 3 critical constraints"
+    },
+    "turn_7": {
+      "brainstormer_candidates": 0,
+      "domain_expert_candidates": 0,
+      "combined_pool_count": 0,
+      "domain_qualified": 0,
+      "domain_blocked": 0,
+      "assessment": "BRAINSTORMER FAILED SILENTLY — domain_reasoner Stage 3 fallback returned 'ready' with 6 qualified candidates (in pda.qualified_candidates, not captured in option_pool.json domain_qualified)"
+    },
+    "artifact_gap": "build_option_pool() only reads pda.option_pool_qualification (Stage 4 path). When brainstormer fails and domain_reasoner uses Stage 3 path, candidates are in pda.qualified_candidates. option_pool.json does not reflect T7's 6 qualified candidates. Fix: build_option_pool() should fall back to pda.qualified_candidates when option_pool_qualification is absent."
+  },
+
+  "stage_comparison": {
+    "S04_stage_3": {
+      "composite_score": 83.0,
+      "C5_score": 4,
+      "P4_score": 5,
+      "P6_score": 4,
+      "option_readiness_at_T5": "deferred",
+      "option_readiness_at_T7": "ready",
+      "qualified_options_at_T7": 2,
+      "session_end_phase": "agreement_building"
+    },
+    "S05_stage_4": {
+      "composite_score": 80.0,
+      "C5_score": 4,
+      "P4_score": 4,
+      "P6_score": 4,
+      "option_readiness_at_T5": "blocked",
+      "option_readiness_at_T7": "ready",
+      "brainstormer_candidates_at_T7": 0,
+      "stage3_fallback_qualified_at_T7": 6,
+      "session_end_phase": "agreement_building"
+    },
+    "delta": {
+      "composite": "-3.0",
+      "C5": "0",
+      "P4": "-1 (T5 blocked vs deferred)",
+      "P6": "0",
+      "T5_readiness": "deferred → blocked (minor regression — informational block correctly identified but over-classified)",
+      "T7_qualified_count": "2 → 6 (Stage 3 fallback; brainstormer did not contribute at T7)",
+      "note": "Stage 3 baseline maintained and slightly improved at T7 (6 qualified candidates vs 2). Stage 4 brainstormer did not demonstrate value at option_generation turn due to silent API failure. T5 readiness regression is the primary scoring impact. No behavioral regressions — session trajectory and option quality are intact."
+    }
+  },
+
+  "open_items": [
+    "Fix build_option_pool() to fall back to pda.qualified_candidates when option_pool_qualification absent — ensures option_pool.json T7 captures Stage 3 fallback candidates",
+    "Investigate brainstormer silent failure at T5 and T7 — add logging/debug flag to option_generator so failures surface in run output rather than silently returning []",
+    "Address safety_veto_applied labeling at T1/T3/T5 — blocked due to insufficient session state or informational gaps should be distinguishable from genuine safety veto trigger (flagged in D-B07-S11, recurring here)",
+    "Consider whether T5 'blocked' vs 'deferred' distinction should be enforced in domain_reasoner prompt — D-B04 is the canonical case for this boundary"
+  ]
+}

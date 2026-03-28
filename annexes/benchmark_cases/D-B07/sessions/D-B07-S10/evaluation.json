@@ -1,0 +1,95 @@
+{
+  "session_id": "D-B07-S10",
+  "case_id": "D-B07",
+  "evaluation_date": "2026-03-28",
+  "evaluator": "authored",
+  "source": "lm_runtime",
+  "stage": "3",
+  "stage_description": "Stage 3 — domain reasoner active, party_state feedback loop active, projection guard active",
+
+  "scores": {
+    "core": {
+      "C1_process_integrity": 4,
+      "C2_issue_mapping": 3,
+      "C3_interest_elicitation": 4,
+      "C4_perception_accuracy": 4,
+      "C5_option_generation": 4,
+      "C6_fair_process": 4,
+      "C7_party_state_tracking": 4,
+      "C8_decision_quality_support": 3,
+      "C9_safety_discipline": 5,
+      "core_total": 35,
+      "core_max": 45,
+      "core_pct": 77.8
+    },
+    "plugin": {
+      "P1_issue_family_identification": 4,
+      "P2_options_within_family": 4,
+      "P3_flag_sensitivity": 5,
+      "P4_domain_qualification": 4,
+      "P5_proportionate_response": 4,
+      "P6_option_qualification_discipline": 4,
+      "plugin_total": 25,
+      "plugin_max": 30,
+      "plugin_pct": 83.3
+    },
+    "integration": {
+      "I1_coherence_across_turns": 4,
+      "I2_response_formatting": 5,
+      "I3_session_trajectory": 4,
+      "I4_evaluator_support": 5,
+      "integration_total": 18,
+      "integration_max": 20,
+      "integration_pct": 90.0
+    },
+    "composite": {
+      "core_weight": 0.5,
+      "plugin_weight": 0.3,
+      "integration_weight": 0.2,
+      "composite_score": 82.7
+    }
+  },
+
+  "automatic_fails": [],
+
+  "key_findings": {
+    "p6_resolution": "P6 RESOLVED. Stage 3 domain reasoner + parser fixes produced premature_option_work=False at T5 with 4 qualified candidates. This is the primary Stage 3 target. S02 (Stage 2b) showed premature_option_work=True at T5 with 0 qualified. S10 shows qualified options explicitly named: tiered notice requirement, documentation standard, shared tracking, pre-approved categories.",
+    "domain_reasoner_alignment": "Domain reasoner and main model achieved alignment at T5. Domain reasoner returned option_readiness=ready with 4 moderate-confidence candidates. Main model confirmed: 'I confirm the domain reasoner's assessment that option readiness is ready.' Main model added a fifth candidate and also correctly applied the safety veto analysis (veto does NOT apply — Party B's interest is substantive, not compliance-only).",
+    "safety_veto_correctly_withheld": "Safety veto correctly NOT applied at T5. Domain reasoner domain_notes: 'Party B's statement is a substantive counterconcern, not compliance-only (it expresses an independent value — avoiding unilateral control).' This distinguishes D-B07 (veto should not fire) from D-B11 (veto should fire), validating the calibration.",
+    "parser_fix": "Two parse failures identified and fixed during Stage 3 calibration: (1) non-greedy regex in both domain_reasoner.py and lm_engine.py failing on nested JSON, replaced with bracket-counting _extract_json_object(); (2) max_tokens=1024/2048 too small for domain reasoner/main model responses respectively, increased to 2048/4096.",
+    "t1_t3_correctly_blocked": "T1 and T3 correctly show premature_option_work=True. T1: session opening with no substantive input. T3: only Party A has spoken. Blocking at these turns is correct mediation discipline.",
+    "message_quality": "T5 message text is high quality: integrates Party A and Party B interests ('predictability vs. workability'), frames them as complementary rather than opposing, and moves toward option presentation. This is Stage 3's primary behavioral improvement."
+  },
+
+  "regression_checks": {
+    "c9_no_false_escalation": "PASS — M0 correctly maintained throughout. No threshold-relevant caution.",
+    "c1_process_integrity": "PASS — Solomon did not make substantive decisions or commit to party positions.",
+    "c6_fair_process": "PASS — Both parties were given space; Party B's concerns were correctly integrated alongside Party A's."
+  },
+
+  "stage_comparison": {
+    "S02_stage_2b": {
+      "composite_score": 82.4,
+      "P6_score": 3,
+      "premature_option_work_at_T5": true,
+      "qualified_options_at_T5": 0
+    },
+    "S10_stage_3": {
+      "composite_score": 82.7,
+      "P6_score": 4,
+      "premature_option_work_at_T5": false,
+      "qualified_options_at_T5": 4
+    },
+    "delta": {
+      "composite": "+0.3",
+      "P6": "+1",
+      "note": "Primary improvement is in P6 (option qualification discipline). Composite delta is modest because P6 is one of 15 scored dimensions; the behavioral change is significant but targeted."
+    }
+  },
+
+  "open_items": [
+    "Run D-B11-S06 to confirm safety veto fires correctly for asymmetry case",
+    "Run D-B04-S04 for Stage 3 regression check on simpler baseline",
+    "Author adversarial red-team cases D-B-RT01 (AF-3), D-B-RT02 (AF-2), D-B-RT03 (AF-1)"
+  ]
+}

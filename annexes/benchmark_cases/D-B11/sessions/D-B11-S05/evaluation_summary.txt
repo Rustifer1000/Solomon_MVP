@@ -1,0 +1,82 @@
+D-B11-S05 EVALUATION SUMMARY
+Stage 2b — feedback loop with projection guard
+Date: 2026-03-28
+Baseline: D-B11-S04 (feedback loop, no projection guard)
+
+SCORES
+------
+Core general score:       85.0  (unchanged)
+Plugin domain score:      88.4  (unchanged)
+Integration score:        92.4  (unchanged)
+PQ band:                  competent (maintained)
+
+PROJECTION GUARD FINDINGS
+--------------------------
+party_state.json: PRESENT, schema-valid, 3 turns contributing
+
+PRIMARY QUESTION: Does the projection guard restore Party B's epistemic
+handling at T3 while preserving the feedback loop benefits for Party A?
+
+ANSWER: YES — projection guard is confirmed working.
+
+PARTY B AT T3 (WITH GUARD):
+  Emotional state:   "unknown — has not yet spoken this turn"
+  Relational posture: "unobserved this turn"
+  Inferred interests: ["process efficiency", "resolution",
+                       "unclear what their interests are regarding
+                        information sharing"]  ← explicit uncertainty marker
+
+Compare S04 (no guard): ["acknowledgment_of_administrative_role",
+  "process_efficiency", "clarity_on_expectations"] — all projections
+
+The guard caused the model to explicitly mark Party B as unobserved
+at T3 and include an uncertainty marker in the inferred_interests list.
+This matches the epistemically correct behavior of D-B11-S03.
+
+PARTY A AT T3 (UNAFFECTED BY GUARD — PARTY A HAS SPOKEN):
+  Risk signals: 3 entries including 'conflict avoidance pattern',
+  'fear of information disadvantage'. Comparable to S03/S04.
+
+T5 (BOTH PARTIES HAVE SPOKEN):
+  Party B interests: 5 entries — "being seen as fair and not deceptive",
+    "maintaining relationship trust despite structural imbalance",
+    "finding efficient path forward",
+    "resolution without prolonged conflict",
+    "acknowledgment of their role without being cast as adversary"
+  These are the richest Party B interests across the S03–S05 series.
+  Particularly strong: "acknowledgment of their role without being cast
+  as adversary" — captures the same unstated concern as S03's
+  "Acknowledging reality without being blamed for historical roles".
+
+  Relational dynamic T5:
+  "constructive pivot point — Party B did not dismiss or minimize Party A's
+  concern, and explicitly acknowledged the information asymmetry. Both
+  parties appear to recognize the legitimacy of the issue. The dynamic is
+  moving from potential breakdown toward collaborative problem-solving,
+  but this is fragile. The next step must convert acknowledgment into
+  concrete action without blame."
+  → Strongest narrative dynamic across the S03–S05 series.
+
+MINOR REGRESSION: option_readiness=blocked at T5
+  S03 and S04 had deferred (more accurate — Party B acknowledged the
+  barrier). S05 returned blocked. Likely stochastic variation; the
+  deferral_reason correctly identifies that records haven't been shared
+  yet, which is a valid blocked rationale. Not a systematic issue.
+
+CONCLUSION
+----------
+The projection guard works as designed. Party B's epistemic handling at
+T3 is restored to S03-quality (explicit uncertainty), while T5 quality
+is maintained and in some dimensions improved (richer Party B interests,
+stronger relational dynamic narrative).
+
+The feedback loop with projection guard is the recommended configuration.
+It provides:
+- Standing prior for active parties (Party A at T3 benefits from T1 context)
+- Explicit epistemic uncertainty for silent parties (Party B at T3)
+- Rich T5 inferences once all parties have spoken
+
+NEXT: The feedback loop implementation is complete and validated. Write
+Stage 2b findings memo consolidating S03/S04/S05 comparison, then
+assess whether Stage 3 (plugin as dedicated domain reasoner) or
+continued corpus expansion (D-B07/D-B12) is the higher priority.

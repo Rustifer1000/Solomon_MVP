@@ -141,6 +141,8 @@ def build_turn_prompt(
     perception: PerceptionContext,
     turn_index: int,
     session_history: list[dict],
+    party_state: dict | None = None,
+    domain_analysis: dict | None = None,
 ) -> list[dict]:
     """
     Build the messages list for the LLM call.
@@ -159,6 +161,16 @@ def build_turn_prompt(
         The turn about to be generated.
     session_history:
         List of prior turns as dicts with 'role' and 'content' keys.
+    party_state:
+        Optional accumulated party state from prior turns (CONTRACT-015).
+        When provided, included as a standing prior for the Step 1 perception
+        pass. Only supplied when at least one prior lm_runtime turn has
+        contributed a reasoning_trace.
+    domain_analysis:
+        Optional pre-computed domain analysis from the Stage 3 domain
+        reasoner (CONTRACT-016). When provided, replaces the plugin
+        assessment section with structured option_readiness + qualified
+        candidates. Falls back to plugin assessment when absent.
     """
     user_content = _build_user_message(
         state=state,
@@ -166,6 +178,8 @@ def build_turn_prompt(
         perception=perception,
         turn_index=turn_index,
         session_history=session_history,
+        party_state=party_state,
+        domain_analysis=domain_analysis,
     )
     return [{"role": "user", "content": user_content}]
 
@@ -176,6 +190,8 @@ def _build_user_message(
     perception: PerceptionContext,
     turn_index: int,
     session_history: list[dict],
+    party_state: dict | None = None,
+    domain_analysis: dict | None = None,
 ) -> str:
     parts: list[str] = []
 
@@ -237,19 +253,70 @@ def _build_user_message(
             parts.append(f"  - {topic} (importance: {imp})")
         parts.append("")
 
-    # --- Plugin assessment ---
-    parts.append("=== PLUGIN ASSESSMENT ===")
-    parts.append(f"Plugin confidence: {plugin_assessment.get('plugin_confidence', 'unknown')}")
-    parts.append(f"Option posture: {plugin_assessment.get('option_posture', 'none')}")
-    active_flag_types = plugin_assessment.get("active_flag_types", [])
-    if active_flag_types:
-        parts.append(f"Active flag types: {', '.join(active_flag_types)}")
-    issue_families = plugin_assessment.get("issue_families", [])
-    if isinstance(issue_families, dict):
-        issue_families = [k for k, v in issue_families.items() if v]
-    if issue_families:
-        parts.append(f"Active issue families: {', '.join(issue_families)}")
-    parts.append("")
+    # --- Domain analysis (Stage 3/4 pre-computed) or plugin assessment fallback ---
+    if domain_analysis is not None and not domain_analysis.get("_fallback"):
+        parts.append("=== DOMAIN ANALYSIS (pre-computed by domain reasoner) ===")
+        readiness = domain_analysis.get("option_readiness", "deferred")
+        parts.append(f"Option readiness: {readiness}")
+        parts.append(f"Readiness rationale: {domain_analysis.get('readiness_rationale', '')}")
+        if domain_analysis.get("safety_veto_applied"):
+            parts.append(f"SAFETY VETO APPLIED: {domain_analysis.get('safety_veto_reason', '')}")
+        parts.append(f"Domain confidence: {domain_analysis.get('domain_confidence', 'unknown')}")
+        dn = domain_analysis.get("domain_notes", "")
+        if dn:
+            parts.append(f"Domain notes: {dn[:200]}")
+        constraints = domain_analysis.get("blocking_constraints", [])
+        if constraints:
+            parts.append("Blocking constraints:")
+            for bc in constraints:
+                parts.append(f"  [{bc.get('severity','?')}] {bc.get('constraint','')}: resolve via {bc.get('what_would_resolve_it','')[:80]}")
+        gaps = domain_analysis.get("material_gaps", [])
+        if gaps:
+            parts.append("Material gaps:")
+            for g in gaps[:4]:
+                parts.append(f"  [{g.get('importance','?')}] {g.get('gap','')}: blocks {g.get('what_it_blocks','')[:60]}")
+        parts.append("")
+
+        # Stage 4: full option pool when qualification data is present
+        opq = domain_analysis.get("option_pool_qualification")
+        if opq and isinstance(opq, dict):
+            _render_option_pool(parts, opq)
+        else:
+            # Stage 3 path: compact qualified_candidates list
+            candidates = domain_analysis.get("qualified_candidates", [])
+            if candidates:
+                parts.append(f"Qualified candidates ({len(candidates)}):")
+                for c in candidates:
+                    parts.append(
+                        f"  [{c.get('confidence','?')}] {c.get('option_label','?')}: "
+                        f"{c.get('feasibility_rationale','')[:120]}"
+                    )
+                parts.append("")
+
+        parts.append(
+            "INSTRUCTION: Your Step 2 (Domain Analysis) should confirm, extend, or challenge this "
+            "pre-computed assessment. Do not simply repeat it. Your Step 3 (Option Scan) should draw "
+            "from the qualified options above and may add candidates not in the pool if important — "
+            "note that additions have not been domain-qualified. "
+            "When option_readiness is 'ready', qualified options exist — present them unless your "
+            "Step 4 safety check finds a reason not to. "
+            "Record labels of options you include in message_text in the options_introduced field."
+        )
+        parts.append("")
+    else:
+        # Fallback to plugin assessment when domain reasoner unavailable
+        parts.append("=== PLUGIN ASSESSMENT ===")
+        parts.append(f"Plugin confidence: {plugin_assessment.get('plugin_confidence', 'unknown')}")
+        parts.append(f"Option posture: {plugin_assessment.get('option_posture', 'none')}")
+        active_flag_types = plugin_assessment.get("active_flag_types", [])
+        if active_flag_types:
+            parts.append(f"Active flag types: {', '.join(active_flag_types)}")
+        issue_families = plugin_assessment.get("issue_families", [])
+        if isinstance(issue_families, dict):
+            issue_families = [k for k, v in issue_families.items() if v]
+        if issue_families:
+            parts.append(f"Active issue families: {', '.join(issue_families)}")
+        parts.append("")
 
     # --- Pre-built perception context (Stage 1 scaffold) ---
     parts.append("=== PERCEPTION CONTEXT (pre-computed scaffold) ===")
@@ -274,6 +341,69 @@ def _build_user_message(
             parts.append(f"  - {note}")
     parts.append("")
 
+    # --- Accumulated party state (feedback loop — CONTRACT-015) ---
+    if party_state is not None:
+        parts.append("=== ACCUMULATED PARTY STATE (prior turns) ===")
+        parts.append(
+            "The following party state model was accumulated from all prior assistant turns "
+            "in this session. Use it as a standing prior when completing your Step 1 "
+            "perception pass — do not discard prior assessments without explicit reason."
+        )
+        for pid in ("party_a", "party_b"):
+            pb = party_state.get(pid, {})
+            if not pb:
+                continue
+            parts.append(f"{pid.upper()} accumulated model:")
+
+            # Projection guard: detect whether this party has ever been heard.
+            # A party is "unheard" if all accumulated interests are 'unknown' variants
+            # and the latest posture is an unknown variant. In that case, explicitly
+            # signal epistemic uncertainty rather than rendering speculative inferences.
+            acc_interests = pb.get("accumulated_interests", [])
+            observed_interest_texts = [
+                i.get("interest", "")
+                for i in acc_interests
+                if i.get("interest") and not i.get("interest", "").startswith("unknown")
+            ]
+            latest_posture = ""
+            arc = pb.get("relational_posture_progression", [])
+            if arc:
+                latest_posture = arc[-1].get("posture", "")
+            party_has_been_heard = bool(observed_interest_texts) or (
+                latest_posture and not latest_posture.startswith("unknown")
+            )
+
+            if not party_has_been_heard:
+                parts.append(
+                    f"  NOTE: {pid.upper()} has not yet been heard in prior turns. "
+                    "No observed signal. Hold as epistemically uncertain — do not infer "
+                    "interests, posture, or emotional state from the baseline prior alone."
+                )
+            else:
+                parts.append(f"  Current emotional state: {pb.get('current_emotional_state', 'unknown')}")
+                parts.append(f"  Current relational posture: {latest_posture or 'unknown'}")
+                if observed_interest_texts:
+                    parts.append(f"  Accumulated interests ({len(observed_interest_texts)}): {'; '.join(observed_interest_texts[:6])}")
+                risk_history = pb.get("risk_signal_history", [])
+                active_risks = [
+                    r.get("signal", "")
+                    for r in risk_history
+                    if r.get("signal") and r.get("signal") not in ("", "none")
+                ]
+                if active_risks:
+                    parts.append(f"  Risk signals seen: {'; '.join(active_risks[:4])}")
+                if arc:
+                    last = arc[-1]
+                    parts.append(f"  Posture arc (latest): T{last.get('turn_index','?')} — {last.get('posture','?')}")
+
+        cross = party_state.get("cross_party", {})
+        dyn_arc = cross.get("relational_dynamic_arc", [])
+        if dyn_arc:
+            last_dyn = dyn_arc[-1]
+            assessment = last_dyn.get("assessment") or last_dyn.get("dynamic", "?")
+            parts.append(f"Cross-party dynamic (latest): T{last_dyn.get('turn_index','?')} — {assessment}")
+        parts.append("")
+
     # --- Instruction ---
     parts.append("=== YOUR TASK ===")
     parts.append(
@@ -285,3 +415,57 @@ def _build_user_message(
     )
 
     return "\n".join(parts)
+
+
+# ---------------------------------------------------------------------------
+# Option pool renderer (Stage 4)
+# ---------------------------------------------------------------------------
+
+def _render_option_pool(parts: list[str], opq: dict) -> None:
+    """
+    Render the pre-qualified option pool into the prompt.
+
+    Called when domain_analysis contains an option_pool_qualification block
+    (Stage 4 path).  Presents the full qualified/blocked pool so the main
+    model selects from it rather than generating options from scratch.
+    """
+    qualified = opq.get("domain_qualified", [])
+    blocked = opq.get("domain_blocked", [])
+    expert = opq.get("domain_expert_candidates", [])
+
+    # Combined pool count for the header
+    # (brainstormer count inferred as qualified+blocked minus expert count)
+    total = len(qualified) + len(blocked)
+    parts.append(f"=== OPTION POOL (pre-qualified — {total} candidates reviewed) ===")
+
+    if qualified:
+        parts.append(f"QUALIFIED ({len(qualified)}) — draw from these in Step 3:")
+        for q in qualified:
+            cid = q.get("candidate_id", "?")
+            label = q.get("label", "?")
+            source = q.get("source", "?")
+            conf = q.get("confidence", "?")
+            rationale = q.get("feasibility_rationale", "")[:140]
+            parts.append(f"  [{cid}] {label}  (source: {source}, confidence: {conf})")
+            parts.append(f"    Feasibility: {rationale}")
+            prereqs = q.get("prerequisite_parameters", [])
+            if prereqs:
+                parts.append(f"    Prerequisite parameters: {', '.join(prereqs[:4])}")
+            conditions = q.get("conditions", [])
+            if conditions:
+                parts.append(f"    Conditions: {', '.join(conditions[:3])}")
+        parts.append("")
+
+    if blocked:
+        parts.append(f"BLOCKED ({len(blocked)}) — not viable now, but note what would unblock:")
+        for b in blocked:
+            label = b.get("label", "?")
+            blocking = b.get("blocking_rationale", "")[:100]
+            unblock = b.get("what_would_unblock", "")[:100]
+            parts.append(f"  {label} — blocked: {blocking}")
+            parts.append(f"    Would unblock if: {unblock}")
+        parts.append("")
+
+    if not qualified and not blocked:
+        parts.append("  (No candidates in pool — option work deferred or blocked)")
+        parts.append("")

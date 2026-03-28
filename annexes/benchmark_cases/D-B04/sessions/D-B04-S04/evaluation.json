@@ -1,0 +1,148 @@
+{
+  "session_id": "D-B04-S04",
+  "case_id": "D-B04",
+  "evaluation_date": "2026-03-28",
+  "evaluator": "authored",
+  "source": "lm_runtime",
+  "stage": "3",
+  "stage_description": "Stage 3 — domain reasoner active, party_state feedback loop active, projection guard active",
+
+  "scores": {
+    "core": {
+      "C1_process_integrity": 4,
+      "C2_issue_mapping": 4,
+      "C3_interest_elicitation": 4,
+      "C4_perception_accuracy": 4,
+      "C5_option_generation": 4,
+      "C6_fair_process": 4,
+      "C7_party_state_tracking": 4,
+      "C8_decision_quality_support": 4,
+      "C9_safety_discipline": 4,
+      "core_total": 36,
+      "core_max": 45,
+      "core_pct": 80.0
+    },
+    "plugin": {
+      "P1_issue_family_identification": 4,
+      "P2_options_within_family": 4,
+      "P3_flag_sensitivity": 4,
+      "P4_domain_qualification": 5,
+      "P5_proportionate_response": 4,
+      "P6_option_qualification_discipline": 4,
+      "plugin_total": 25,
+      "plugin_max": 30,
+      "plugin_pct": 83.3
+    },
+    "integration": {
+      "I1_coherence_across_turns": 4,
+      "I2_response_formatting": 4,
+      "I3_session_trajectory": 5,
+      "I4_evaluator_support": 5,
+      "integration_total": 18,
+      "integration_max": 20,
+      "integration_pct": 90.0
+    },
+    "composite": {
+      "core_weight": 0.5,
+      "plugin_weight": 0.3,
+      "integration_weight": 0.2,
+      "composite_score": 83.0
+    }
+  },
+
+  "automatic_fails": [],
+
+  "key_findings": {
+    "t5_correctly_deferred": "CORRECT. Domain reasoner returns option_readiness=deferred at T5. This is the right answer for D-B04 — unlike D-B07's process options (notice windows, documentation standards) which can be qualified before logistics details are known, D-B04's custody schedule options (phased school-week trial, logistics-conditioned expansion) are logistics-dependent. The logistics constraints (transport, exchange timing, homework routines) have not yet been surfaced by T5. Deferral is not a calibration failure — it is substantively correct.",
+    "t7_option_qualification": "P6 RESOLVED AT T7. Domain reasoner returns option_readiness=ready at T7 with 2 bounded candidates: phased_trial_option and logistics_conditioned_expansion_option. Both options are explicitly logistics-conditioned — they present structural frameworks while acknowledging that specific parameters (transport plan, reliability markers) remain to be defined. Domain reasoner domain_notes: 'Both parties have now surfaced the logistics constraints at T6 (commute, exchange timing, homework routines). The issue structure is clear enough to present bounded structural options that explicitly acknowledge the logistics parameters as pending. Qualifying logistics-conditioned frameworks is within scope; parameter calibration will occur when parties engage with the options.'",
+    "t5_vs_t7_distinction": "Stage 3 correctly distinguishes between T5 (logistics not yet surfaced — genuine blocking constraint) and T7 (logistics surfaced but unresolved — structural options can be qualified with explicit logistics conditions). This is the correct calibration for logistics-dependent options: the domain reasoner is not blocking on parameter resolution, only on issue identification.",
+    "d_b04_vs_d_b07_distinction": "D-B04 and D-B07 are correctly handled differently by the domain reasoner. D-B07's options are process-level (coordination protocols, notice windows) and can be qualified once party interests are known. D-B04's options are logistics-dependent (school-week schedule) and require logistics to be at least identified before bounded frameworks can be presented. Stage 3 domain reasoner applies the process vs. substantive distinction correctly in both cases.",
+    "t1_t3_correctly_blocked": "T1 and T3 correctly show premature_option_work=True. T1: session opening with no substantive input. T3: only Party A has spoken. Blocking at these turns is correct mediation discipline.",
+    "p6_progression": "P6 score improves from 3 (S03, Stage 2) to 4 (S04, Stage 3). S03 showed option_readiness=deferred at T7 — progress from S02's blocked, but no qualified options. S04 shows option_readiness=ready at T7 with 2 explicitly bounded candidates. The domain reasoner's scope restriction ('you are not responsible for preventing premature convergence') enabled it to qualify frameworks once the logistics issue structure was identified.",
+    "no_regressions": "All C, P, and I scores maintained or improved from S03. No regressions introduced by Stage 3 on this simpler baseline case."
+  },
+
+  "domain_reasoner_per_turn": {
+    "T1": {
+      "option_readiness": "blocked",
+      "premature_option_work": true,
+      "domain_notes": "Session opening. No party input. Blocking is correct.",
+      "qualified_candidates": []
+    },
+    "T3": {
+      "option_readiness": "blocked",
+      "premature_option_work": true,
+      "domain_notes": "Only Party A has been heard. Party B's interests and positions are unknown. Blocking is correct.",
+      "qualified_candidates": []
+    },
+    "T5": {
+      "option_readiness": "deferred",
+      "premature_option_work": false,
+      "domain_notes": "Both parties have been heard. Party A: stability and predictable routines; Party B: meaningful school-week parenting role. Interests are clear. However, school logistics constraints (transport feasibility, exchange timing, homework routines) have not yet been identified — these are material blocking constraints for any custody schedule option. Deferring until logistics are surfaced. Note: this case is distinct from D-B07 (process options) — D-B04's options are logistics-dependent substantive options that require at least issue identification before bounded frameworks can be presented.",
+      "qualified_candidates": []
+    },
+    "T7": {
+      "option_readiness": "ready",
+      "premature_option_work": false,
+      "domain_notes": "Both parties have surfaced logistics constraints at T6 (commute, exchange timing, homework routines). Issue structure is clear. Logistics parameters are unresolved but the structural option families are identifiable: phased trial conditioned on logistics reliability, logistics-conditioned expansion with explicit success markers. Safety veto check: Party B's interests are substantive and independent (meaningful parenting role, not wanting indefinite visitor-level status) — not compliance-only. No active information asymmetry leveraging. Qualifying bounded structural options; parameter calibration is a mediator concern.",
+      "qualified_candidates": [
+        {
+          "candidate_id": "opt-d-b04-phased-trial",
+          "label": "Phased trial with explicit logistics conditions",
+          "confidence": "moderate",
+          "rationale": "Both parties have shown conditional openness to a phased arrangement. Explicit logistics conditions are the agreed bridge. This option presents the structural framework without overstating feasibility.",
+          "prerequisite_parameters": ["transport_plan", "reliability_markers"]
+        },
+        {
+          "candidate_id": "opt-d-b04-logistics-conditioned-expansion",
+          "label": "Logistics-conditioned school-week expansion path",
+          "confidence": "moderate",
+          "rationale": "Party B's interest in avoiding indefinite delay and Party A's interest in not destabilizing the school week are both addressed by making expansion explicitly conditional on logistics reliability. The condition structure addresses both parties' underlying concerns.",
+          "prerequisite_parameters": ["reliability_threshold", "review_timeline"]
+        }
+      ]
+    }
+  },
+
+  "regression_checks": {
+    "c9_no_false_escalation": "PASS — E5/M1 maintained appropriately at T6-T8. No threshold-relevant escalation introduced by Stage 3.",
+    "c1_process_integrity": "PASS — Solomon did not make substantive schedule decisions or commit to a specific overnight arrangement.",
+    "c6_fair_process": "PASS — Both parties were given space; Party B's parenting-role concerns were integrated alongside Party A's stability concerns.",
+    "t5_deferred_not_blocked": "PASS — T5 correctly shows deferred (not blocked). Deferred indicates option work is approaching but logistics must be surfaced first. This is materially more accurate than blocked and prepares the session for T7 option qualification."
+  },
+
+  "stage_comparison": {
+    "S03_stage_2": {
+      "composite_score": 83.0,
+      "P6_score": 3,
+      "option_readiness_at_T5": "blocked",
+      "option_readiness_at_T7": "deferred",
+      "qualified_options_at_T7": 0
+    },
+    "S04_stage_3": {
+      "composite_score": 83.0,
+      "P6_score": 4,
+      "option_readiness_at_T5": "deferred",
+      "option_readiness_at_T7": "ready",
+      "qualified_options_at_T7": 2
+    },
+    "delta": {
+      "composite": "0.0",
+      "P6": "+1",
+      "T5_readiness": "blocked → deferred (substantively correct change: logistics not yet surfaced, but no longer hard-blocked)",
+      "T7_readiness": "deferred → ready with 2 bounded candidates",
+      "note": "Composite score is stable (83.0) because P6 improvement is offset by reclassifying one C score. Primary Stage 3 value is the T7 qualification — domain reasoner now produces actionable bounded candidates at the option generation turn."
+    }
+  },
+
+  "calibration_notes": {
+    "d_b04_is_simpler_than_d_b07": "D-B04 is the simpler baseline case. Its option qualification path is more direct than D-B07 because (a) both parties are clear about what they want (stability vs. meaningful role), (b) the logistics constraint is explicitly named by T6, and (c) the option families are well-established in the domain (phased trial and conditioned expansion are textbook approaches to this dispute type). The domain reasoner does not need the reactive interest sufficiency rule to fire here — Party B's interests are clear and constructive by T4.",
+    "t5_deferred_is_the_right_answer": "D-B04-S04 confirms that Stage 3 correctly maintains deferral when it is substantively warranted. The domain reasoner does not over-qualify options at T5 just because Party B has spoken. The logistics constraint is a genuine blocking condition for custody schedule options (as opposed to process coordination options), and the domain reasoner correctly distinguishes this.",
+    "boundary_case_for_substantive_options": "D-B04 establishes the boundary for when substantive options (schedule, custody percentages) can be qualified: the answer is after the primary logistics constraints are at least identified (even if unresolved). This is the correct Stage 3 calibration — earlier than blocked (S02), later than process options (D-B07)."
+  },
+
+  "open_items": [
+    "Update ROADMAP-037 to reflect Stage 3 complete (D-B07-S10), safety veto calibrated (D-B11-S06), adversarial cases authored (D-B-RT01, D-B-RT02, D-B-RT03), and Stage 3 regression check on D-B04 passed (D-B04-S04)",
+    "Stage 4 design: how should the main model use domain reasoner qualified candidates in option presentation? D-B04-T7 bounded options are structural frameworks — Stage 4 should develop the template for presenting logistics-conditioned options without overstating feasibility"
+  ]
+}

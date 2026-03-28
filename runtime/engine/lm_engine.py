@@ -31,7 +31,6 @@ from __future__ import annotations
 
 import json
 import os
-import re
 from pathlib import Path
 from typing import Any
 
@@ -39,7 +38,10 @@ import anthropic
 from dotenv import dotenv_values
 
 from .perception import PerceptionContext, build_perception_context
-from .prompt_builder import SYSTEM_PROMPT, build_turn_prompt
+from .prompt_builder import SYSTEM_PROMPT, _CANONICAL_PHASES, _PHASE_ORDER, build_turn_prompt
+from .domain_reasoner import generate_domain_analysis
+from .option_generator import generate_option_pool
+from runtime.artifacts import build_party_state
 
 
 # ---------------------------------------------------------------------------
@@ -105,6 +107,50 @@ def generate_lm_assistant_turn(
     # Build session history for context window
     session_history = _extract_session_history(state)
 
+    # Build accumulated party state from prior lm_runtime turns (CONTRACT-015 feedback loop).
+    # Only supplied when at least one prior turn has contributed a reasoning_trace —
+    # i.e. this is not the very first assistant turn in the session.
+    prior_lm_turns = [
+        t for t in state.get("trace_buffer", [])
+        if t.get("role") == "assistant" and t.get("reasoning_trace") is not None
+    ]
+    prior_party_state = build_party_state(state, timestamp) if prior_lm_turns else None
+
+    # Stage 4: option generator call before the domain reasoner.
+    # Produces a brainstormed candidate pool that the domain reasoner
+    # then qualifies alongside its own domain-expert additions (Option B).
+    #
+    # Guard: skip on T1 (no party input yet) and when party_state is absent
+    # (not enough information to brainstorm from).  Do NOT gate on prior-turn
+    # option_readiness — a block at T1/T3 (missing party input) must not
+    # cascade to T5 where both parties have spoken and options are ready.
+    # The domain reasoner handles qualification; the brainstormer generates freely.
+    if prior_party_state is not None:
+        brainstormer_pool = generate_option_pool(
+            turn_index=turn_index,
+            timestamp=timestamp,
+            state=state,
+            party_state=prior_party_state,
+            plugin_assessment=plugin_assessment,
+            session_history=session_history,
+        )
+    else:
+        brainstormer_pool = []
+
+    # Stage 3: domain reasoner call before the main five-step pass.
+    # Stage 4: now also receives the brainstormer pool for qualification.
+    # Produces option_readiness + qualified candidates as a structured prior.
+    # Fails gracefully — fallback dict used if call fails.
+    domain_analysis = generate_domain_analysis(
+        turn_index=turn_index,
+        timestamp=timestamp,
+        state=state,
+        party_state=prior_party_state,
+        plugin_assessment=plugin_assessment,
+        session_history=session_history,
+        option_pool=brainstormer_pool if brainstormer_pool else None,
+    )
+
     # Build prompt
     messages = build_turn_prompt(
         state=state,
@@ -112,6 +158,8 @@ def generate_lm_assistant_turn(
         perception=perception,
         turn_index=turn_index,
         session_history=session_history,
+        party_state=prior_party_state,
+        domain_analysis=domain_analysis,
     )
 
     # Call the model
@@ -120,7 +168,7 @@ def generate_lm_assistant_turn(
 
     response = client.messages.create(
         model=model,
-        max_tokens=2048,
+        max_tokens=4096,
         system=SYSTEM_PROMPT,
         messages=messages,
     )
@@ -146,12 +194,43 @@ def generate_lm_assistant_turn(
         model_id=model,
         current_phase=max_seen_phase,
         min_phase=min_phase,
+        domain_analysis=domain_analysis,
+        brainstormer_pool=brainstormer_pool,
     )
 
 
 # ---------------------------------------------------------------------------
 # Response parser
 # ---------------------------------------------------------------------------
+
+def _extract_json_object(text: str) -> str | None:
+    """Find the first complete JSON object in text using bracket counting."""
+    start = text.find("{")
+    if start == -1:
+        return None
+    depth = 0
+    in_string = False
+    escape_next = False
+    for i, c in enumerate(text[start:], start):
+        if escape_next:
+            escape_next = False
+            continue
+        if c == "\\" and in_string:
+            escape_next = True
+            continue
+        if c == '"':
+            in_string = not in_string
+            continue
+        if in_string:
+            continue
+        if c == "{":
+            depth += 1
+        elif c == "}":
+            depth -= 1
+            if depth == 0:
+                return text[start : i + 1]
+    return None
+
 
 def _parse_lm_response(raw_text: str) -> dict[str, Any]:
     """
@@ -166,23 +245,11 @@ def _parse_lm_response(raw_text: str) -> dict[str, Any]:
     except json.JSONDecodeError:
         pass
 
-    # Try extracting from code fence
-    fence_match = re.search(
-        r"```(?:json)?\s*(\{.*?\})\s*```",
-        raw_text,
-        re.DOTALL,
-    )
-    if fence_match:
+    # Try finding the first complete JSON object (handles code fences and preamble)
+    candidate = _extract_json_object(raw_text)
+    if candidate:
         try:
-            return json.loads(fence_match.group(1))
-        except json.JSONDecodeError:
-            pass
-
-    # Try finding the outermost JSON object
-    brace_match = re.search(r"\{.*\}", raw_text, re.DOTALL)
-    if brace_match:
-        try:
-            return json.loads(brace_match.group(0))
+            return json.loads(candidate)
         except json.JSONDecodeError:
             pass
 
@@ -216,6 +283,8 @@ def _build_turn_dict(
     model_id: str = "",
     current_phase: str = "info_gathering",
     min_phase: str = "info_gathering",
+    domain_analysis: dict | None = None,
+    brainstormer_pool: list[dict] | None = None,
 ) -> dict:
     """
     Convert the parsed LM response into a raw turn dict.
@@ -251,6 +320,8 @@ def _build_turn_dict(
         parsed=parsed,
         scaffold_perception=perception,
         model_id=model_id,
+        domain_analysis=domain_analysis,
+        brainstormer_pool=brainstormer_pool,
     )
 
     # Escalation from safety check
@@ -361,6 +432,8 @@ def _build_reasoning_trace(
     parsed: dict,
     scaffold_perception: PerceptionContext,
     model_id: str,
+    domain_analysis: dict | None = None,
+    brainstormer_pool: list[dict] | None = None,
 ) -> dict:
     """
     Build the per-turn reasoning_trace object from the parsed five-step JSON.
@@ -392,7 +465,7 @@ def _build_reasoning_trace(
     safety_assessment = dict(safety)
     safety_assessment["safe_to_proceed_to_synthesis"] = not escalation_needed
 
-    return {
+    result = {
         "source": "lm_runtime",
         "model_id": model_id,
         "perception": perception_trace,
@@ -401,6 +474,18 @@ def _build_reasoning_trace(
         "safety_assessment": safety_assessment,
         "response_synthesis": parsed.get("response", {}),
     }
+    # Attach pre-computed domain analysis (CONTRACT-016) when available.
+    # Stored separately from the model's self-generated domain_analysis block
+    # so evaluators can compare what the domain reasoner determined vs what
+    # the main model produced in Step 2.
+    if domain_analysis is not None:
+        result["pre_computed_domain_analysis"] = domain_analysis
+    # Attach brainstormer pool (CONTRACT-017) when available.
+    # Stored here so artifacts.py can assemble option_pool.json without
+    # needing to re-call either engine.
+    if brainstormer_pool is not None:
+        result["brainstormer_pool"] = brainstormer_pool
+    return result
 
 
 def _build_state_delta(
@@ -431,13 +516,6 @@ def _build_state_delta(
     return delta
 
 
-_CANONICAL_PHASES = {
-    "info_gathering",
-    "interest_exploration",
-    "option_generation",
-    "agreement_building",
-}
-
 _PHASE_ALIASES: dict[str, str] = {
     "opening": "info_gathering",
     "opening_and_orientation": "info_gathering",
@@ -452,14 +530,6 @@ _PHASE_ALIASES: dict[str, str] = {
     "agreement": "agreement_building",
     "closing": "agreement_building",
 }
-
-
-_PHASE_ORDER = [
-    "info_gathering",
-    "interest_exploration",
-    "option_generation",
-    "agreement_building",
-]
 
 
 def _max_trace_phase(trace_buffer: list[dict]) -> str:
@@ -525,6 +595,26 @@ def _infer_severity(safety: dict) -> int:
 # ---------------------------------------------------------------------------
 # Session history extractor
 # ---------------------------------------------------------------------------
+
+def _last_option_readiness(state: dict) -> str:
+    """
+    Return the option_readiness from the most recent assistant turn's
+    pre_computed_domain_analysis, if available.
+
+    Returns "unknown" when no prior domain analysis is present (e.g. T1).
+    Used to skip the option generator when the prior turn already blocked
+    options via the safety veto.
+    """
+    for turn in reversed(state.get("trace_buffer", [])):
+        if turn.get("role") != "assistant":
+            continue
+        rt = turn.get("reasoning_trace") or {}
+        pda = rt.get("pre_computed_domain_analysis") or {}
+        readiness = pda.get("option_readiness")
+        if readiness:
+            return readiness
+    return "unknown"
+
 
 def _extract_session_history(state: dict) -> list[dict]:
     """Extract turn summaries from the trace buffer."""

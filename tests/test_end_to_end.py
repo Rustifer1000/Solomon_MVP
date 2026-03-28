@@ -3501,5 +3501,161 @@ class TestPerceptionQualitySchema(unittest.TestCase):
             self.assertEqual(errors, [], f"{case} evaluation.json has unexpected schema errors: {errors}")
 
 
+class TestBuildOptionPool(unittest.TestCase):
+    """Unit tests for artifacts.build_option_pool() — Stage 4 path and Stage 3 fallback."""
+
+    def _make_state(self, case_id: str = "D-B04", session_id: str = "TEST-S01") -> dict:
+        return {
+            "meta": {"case_id": case_id, "session_id": session_id},
+            "trace_buffer": [],
+        }
+
+    def _make_assistant_turn(
+        self,
+        turn_index: int,
+        brainstormer_pool: list | None,
+        pda: dict | None,
+    ) -> dict:
+        rt: dict = {"source": "lm_runtime"}
+        if brainstormer_pool is not None:
+            rt["brainstormer_pool"] = brainstormer_pool
+        if pda is not None:
+            rt["pre_computed_domain_analysis"] = pda
+        return {"turn_index": turn_index, "role": "assistant", "reasoning_trace": rt}
+
+    def test_empty_trace_returns_empty_turns(self) -> None:
+        from runtime.artifacts import build_option_pool
+        state = self._make_state()
+        result = build_option_pool(state, "2026-01-01T00:00:00Z")
+        self.assertEqual(result["turns"], [])
+        self.assertEqual(result["schema_version"], "option_pool.v0")
+        self.assertEqual(result["case_id"], "D-B04")
+
+    def test_stage4_path_populates_from_option_pool_qualification(self) -> None:
+        """Stage 4: brainstormer pool + domain_reasoner opq both present."""
+        from runtime.artifacts import build_option_pool
+        state = self._make_state()
+        brainstormer = [{"candidate_id": "opt-gen-001", "label": "Option A", "source": "option_generator"}]
+        domain_expert = [{"candidate_id": "opt-dom-001", "label": "Option B", "source": "domain_reasoner"}]
+        qualified = [{"candidate_id": "opt-gen-001", "label": "Option A", "feasibility_rationale": "viable"}]
+        blocked = []
+        pda = {
+            "option_readiness": "ready",
+            "safety_veto_applied": False,
+            "safety_veto_reason": None,
+            "option_pool_qualification": {
+                "domain_expert_candidates": domain_expert,
+                "domain_qualified": qualified,
+                "domain_blocked": blocked,
+            },
+        }
+        state["trace_buffer"].append(self._make_assistant_turn(5, brainstormer, pda))
+        result = build_option_pool(state, "2026-01-01T00:00:00Z")
+        self.assertEqual(len(result["turns"]), 1)
+        turn = result["turns"][0]
+        self.assertEqual(turn["turn_index"], 5)
+        self.assertEqual(turn["option_readiness"], "ready")
+        self.assertFalse(turn["safety_veto_applied"])
+        self.assertIsNone(turn["safety_veto_reason"])
+        self.assertEqual(turn["brainstormer_candidates"], brainstormer)
+        self.assertEqual(turn["domain_expert_candidates"], domain_expert)
+        self.assertEqual(turn["domain_qualified"], qualified)
+        self.assertEqual(turn["combined_pool_count"], 2)
+
+    def test_stage3_fallback_uses_qualified_candidates(self) -> None:
+        """Stage 3 fallback: brainstormer returned [] and opq is absent.
+        domain_reasoner put qualified options in pda.qualified_candidates.
+        build_option_pool must surface these in domain_qualified."""
+        from runtime.artifacts import build_option_pool
+        state = self._make_state()
+        stage3_candidates = [
+            {"option_label": "Phased trial", "feasibility_rationale": "viable", "confidence": "moderate"},
+            {"option_label": "Logistics-conditioned expansion", "feasibility_rationale": "viable", "confidence": "moderate"},
+        ]
+        pda = {
+            "option_readiness": "ready",
+            "safety_veto_applied": False,
+            "safety_veto_reason": None,
+            "qualified_candidates": stage3_candidates,
+        }
+        # brainstormer returned [] (Stage 3 fallback — no opq)
+        state["trace_buffer"].append(self._make_assistant_turn(7, [], pda))
+        result = build_option_pool(state, "2026-01-01T00:00:00Z")
+        self.assertEqual(len(result["turns"]), 1)
+        turn = result["turns"][0]
+        self.assertEqual(turn["option_readiness"], "ready")
+        self.assertEqual(turn["domain_qualified"], stage3_candidates)
+        self.assertEqual(turn["domain_expert_candidates"], [])
+        self.assertEqual(turn["domain_blocked"], [])
+        self.assertEqual(turn["brainstormer_candidates"], [])
+
+    def test_blocked_turn_populates_safety_veto_reason(self) -> None:
+        """When option_readiness is blocked, safety_veto_reason must be populated
+        from pda.safety_veto_reason (schema requirement)."""
+        from runtime.artifacts import build_option_pool
+        state = self._make_state()
+        pda = {
+            "option_readiness": "blocked",
+            "safety_veto_applied": True,
+            "safety_veto_reason": "Only one party has been heard; Party B interests unknown.",
+        }
+        state["trace_buffer"].append(self._make_assistant_turn(3, [], pda))
+        result = build_option_pool(state, "2026-01-01T00:00:00Z")
+        self.assertEqual(len(result["turns"]), 1)
+        turn = result["turns"][0]
+        self.assertTrue(turn["safety_veto_applied"])
+        self.assertEqual(turn["safety_veto_reason"], "Only one party has been heard; Party B interests unknown.")
+
+    def test_non_blocked_turn_has_null_safety_veto_reason(self) -> None:
+        """When option_readiness is not blocked, safety_veto_reason must be null."""
+        from runtime.artifacts import build_option_pool
+        state = self._make_state()
+        pda = {"option_readiness": "deferred", "safety_veto_applied": False, "safety_veto_reason": None}
+        state["trace_buffer"].append(self._make_assistant_turn(5, [], pda))
+        result = build_option_pool(state, "2026-01-01T00:00:00Z")
+        turn = result["turns"][0]
+        self.assertFalse(turn["safety_veto_applied"])
+        self.assertIsNone(turn["safety_veto_reason"])
+
+    def test_turns_without_option_data_are_excluded(self) -> None:
+        """Turns with neither brainstormer_pool nor opq nor stage3 qualified candidates are skipped."""
+        from runtime.artifacts import build_option_pool
+        state = self._make_state()
+        # Turn with no brainstormer_pool key and no pda — should be excluded
+        state["trace_buffer"].append({
+            "turn_index": 1,
+            "role": "assistant",
+            "reasoning_trace": {"source": "lm_runtime"},
+        })
+        # Turn with brainstormer_pool present — should be included
+        state["trace_buffer"].append(self._make_assistant_turn(3, [], {"option_readiness": "blocked"}))
+        result = build_option_pool(state, "2026-01-01T00:00:00Z")
+        self.assertEqual(len(result["turns"]), 1)
+        self.assertEqual(result["turns"][0]["turn_index"], 3)
+
+    def test_client_turns_are_excluded(self) -> None:
+        """Only assistant turns with reasoning_trace contribute to option_pool."""
+        from runtime.artifacts import build_option_pool
+        state = self._make_state()
+        state["trace_buffer"].append({
+            "turn_index": 2, "role": "client",
+            "reasoning_trace": None,
+            "brainstormer_pool": [{"candidate_id": "opt-gen-001"}],
+        })
+        state["trace_buffer"].append(self._make_assistant_turn(3, [], {"option_readiness": "blocked"}))
+        result = build_option_pool(state, "2026-01-01T00:00:00Z")
+        self.assertEqual(len(result["turns"]), 1)
+        self.assertEqual(result["turns"][0]["turn_index"], 3)
+
+    def test_turns_sorted_by_turn_index(self) -> None:
+        """Pool turns are emitted in turn_index order regardless of trace_buffer order."""
+        from runtime.artifacts import build_option_pool
+        state = self._make_state()
+        state["trace_buffer"].append(self._make_assistant_turn(7, [], {"option_readiness": "ready"}))
+        state["trace_buffer"].append(self._make_assistant_turn(3, [], {"option_readiness": "blocked"}))
+        result = build_option_pool(state, "2026-01-01T00:00:00Z")
+        self.assertEqual([t["turn_index"] for t in result["turns"]], [3, 7])
+
+
 if __name__ == "__main__":
     unittest.main()

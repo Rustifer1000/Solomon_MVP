@@ -1,0 +1,623 @@
+{
+  "schema_version": "interaction_trace.v0",
+  "case_id": "D-B07",
+  "session_id": "D-B07-S09",
+  "policy_profile": "sim_minimal",
+  "trace_created_at": "2026-03-28T17:03:26Z",
+  "turns": [
+    {
+      "turn_index": 1,
+      "timestamp": "2026-03-28T00:00:10Z",
+      "role": "assistant",
+      "phase": "info_gathering",
+      "message_summary": "Solomon introduces itself, explains the mediation process and its role, establishes ground rules, and invites parties to share what brought them to mediation.",
+      "state_delta": {
+        "facts_added": [
+          "Session is in opening phase \u2014 no substantive content has emerged",
+          "No issues have been identified by either party"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "Complete absence of substantive content \u2014 what are parties here to resolve?",
+          "No understanding of what matters to each party"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "No safety concerns at session opening. Both parties are at neutral baseline with no risk signals. M0 (standard mediation mode) is appropriate. No escalation triggers detected. Proceeding with session framing is safe and appropriate."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "Turn 1 baseline response \u2014 perception confidence is inherently low because no interaction data exists yet. Response is appropriately generic for session opening and does not presume party states that haven't been observed.",
+      "message_text": "Welcome. I'm Solomon, and I'm here to support your mediation process today.\n\nLet me explain how this works. I'm a neutral facilitation system \u2014 my role is to help you both have a structured conversation about the decisions you need to make. I don't take sides, I don't give legal advice, and I won't tell you what to do. What I will do is help you identify what matters to each of you, find areas of common ground, and explore options that might work for both of you.\n\nA few ground rules: This process works best when you each speak for yourself, listen to understand rather than to respond, and focus on interests \u2014 what you actually need \u2014 rather than fixed positions. If at any point either of you feels uncomfortable or wants to pause, just say so.\n\nI'd like to start by understanding what brought you here today. What decisions are you facing that you'd like to work through together? Either of you can begin.",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=neutral_baseline posture=waiting_receptive",
+        "[PERCEPTION:PARTY_B] emotional=neutral_baseline posture=waiting_receptive",
+        "[PERCEPTION:DYNAMIC] pre-engagement_neutral",
+        "[DOMAIN:GAPS] Complete absence of substantive content \u2014 what are parties here to resolve?; No understanding of what matters to each party; No information about decision domains in play",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=pre-engagement_neutral"
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "neutral_baseline",
+            "inferred_interests": [],
+            "risk_signals": [],
+            "relational_posture": "waiting_receptive"
+          },
+          "party_b": {
+            "emotional_state": "neutral_baseline",
+            "inferred_interests": [],
+            "risk_signals": [],
+            "relational_posture": "waiting_receptive"
+          },
+          "relational_dynamic": "pre-engagement_neutral",
+          "perception_confidence": "low",
+          "perception_notes": [
+            "Turn 1 baseline \u2014 no interaction history exists yet to assess psychological state",
+            "Both parties are in neutral starting position awaiting process orientation",
+            "No signals available to infer underlying interests or detect risk patterns",
+            "Relational dynamic is undefined \u2014 parties have not yet engaged with each other or the substantive content"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed 'pre-engagement_neutral'"
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "Session is in opening phase \u2014 no substantive content has emerged",
+            "No issues have been identified by either party",
+            "No interests have been articulated",
+            "Process container has not yet been established"
+          ],
+          "material_gaps": [
+            "Complete absence of substantive content \u2014 what are parties here to resolve?",
+            "No understanding of what matters to each party",
+            "No information about decision domains in play",
+            "No context for evaluating feasibility of any potential solutions"
+          ],
+          "domain_notes": "Domain reasoner assessment is accurate and appropriately conservative. This is structural session opening work \u2014 the task is to establish the mediation container, explain the process, and create the conditions for parties to surface their concerns. No domain qualification is possible because no domain content exists yet. This is expected and appropriate for turn 1.",
+          "option_readiness": "blocked"
+        },
+        "option_scan": {
+          "candidate_options": [
+            "Explain mediation process and Solomon's role",
+            "Establish ground rules for constructive dialogue",
+            "Invite parties to share what brought them to mediation",
+            "Frame the session structure and phases"
+          ],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Turn 1 is session framing work, not option generation. The 'options' here are process moves to establish the container and elicit issue identification. Substantive option work requires issues and interests to be on the table first. Current task is to create the conditions for that content to emerge."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [],
+          "notes": "No safety concerns at session opening. Both parties are at neutral baseline with no risk signals. M0 (standard mediation mode) is appropriate. No escalation triggers detected. Proceeding with session framing is safe and appropriate.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "session_framing",
+          "message_summary": "Solomon introduces itself, explains the mediation process and its role, establishes ground rules, and invites parties to share what brought them to mediation.",
+          "message_text": "Welcome. I'm Solomon, and I'm here to support your mediation process today.\n\nLet me explain how this works. I'm a neutral facilitation system \u2014 my role is to help you both have a structured conversation about the decisions you need to make. I don't take sides, I don't give legal advice, and I won't tell you what to do. What I will do is help you identify what matters to each of you, find areas of common ground, and explore options that might work for both of you.\n\nA few ground rules: This process works best when you each speak for yourself, listen to understand rather than to respond, and focus on interests \u2014 what you actually need \u2014 rather than fixed positions. If at any point either of you feels uncomfortable or wants to pause, just say so.\n\nI'd like to start by understanding what brought you here today. What decisions are you facing that you'd like to work through together? Either of you can begin.",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "Turn 1 baseline response \u2014 perception confidence is inherently low because no interaction data exists yet. Response is appropriately generic for session opening and does not presume party states that haven't been observed."
+        },
+        "pre_computed_domain_analysis": {
+          "schema_version": "domain_analysis.v0",
+          "source": "domain_reasoner_v0",
+          "option_readiness": "blocked",
+          "readiness_rationale": "This is turn 1 in session_framing phase. No substantive issues have been identified, no party interests have been articulated, and no conflict content has emerged. The session is in its opening phase where the mediator establishes ground rules and invites parties to present their concerns. There is no domain content to assess \u2014 no issue families, no expressed interests, no proposed solutions, no constraints. Option work requires at minimum that parties have identified what they are here to resolve. At this stage, even structural process options cannot be qualified because there is no identified process concern to address.",
+          "safety_veto_applied": false,
+          "safety_veto_reason": null,
+          "qualified_candidates": [],
+          "blocking_constraints": [
+            {
+              "constraint": "No issues identified yet",
+              "severity": "critical",
+              "what_would_resolve_it": "Parties need to articulate what brought them to mediation \u2014 what decisions need to be made, what conflicts exist, what concerns they have. This typically happens after the opening/framing when the mediator invites parties to share their situation."
+            },
+            {
+              "constraint": "No party interests expressed",
+              "severity": "critical",
+              "what_would_resolve_it": "Once issues are on the table, parties need to express what matters to them about those issues \u2014 their priorities, concerns, constraints, and values. This provides the basis for assessing which option structures are relevant."
+            }
+          ],
+          "material_gaps": [
+            {
+              "gap": "Complete absence of substantive content",
+              "importance": "high",
+              "what_it_blocks": "All option qualification. Without knowing what issues exist, no assessment of option feasibility is possible \u2014 neither substantive options (which require deep interest understanding) nor process options (which require at least surface articulation of a process concern)."
+            }
+          ],
+          "domain_confidence": "high",
+          "domain_notes": "This is appropriate session structure. Turn 1 in session_framing is for establishing the mediation container \u2014 explaining the process, setting ground rules, building rapport, and transitioning to substantive work. Domain practitioners would not expect option-level work at this stage. The session needs to progress through initial issue identification before any options can be meaningfully assessed. This blocking assessment should not be interpreted as a problem \u2014 it reflects normal mediation sequencing. Option readiness will become assessable once parties begin articulating their concerns and the issue landscape becomes visible.",
+          "case_id": "D-B07",
+          "session_id": "D-B07-S09",
+          "turn_index": 1,
+          "generated_at": "2026-03-28T00:00:10Z"
+        }
+      }
+    },
+    {
+      "turn_index": 2,
+      "timestamp": "2026-03-28T00:01:15Z",
+      "role": "client",
+      "phase": "info_gathering",
+      "message_summary": "Parent A says reimbursement requests should not appear weeks later without receipts or warning.",
+      "state_delta": {
+        "facts_added": [],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_A"
+            ],
+            "kind": "position",
+            "issue_id": "child_expense_coordination",
+            "statement": "Reimbursement requests should not arrive weeks later without advance notice and supporting receipts.",
+            "status": "current",
+            "confidence": "high",
+            "proposal_id": null,
+            "position_id": null
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "Client opening remained within normal bounds."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    },
+    {
+      "turn_index": 3,
+      "timestamp": "2026-03-28T00:02:20Z",
+      "role": "assistant",
+      "phase": "interest_exploration",
+      "message_summary": "Acknowledge Party A's concern about reimbursement timing and documentation. Invite Party B to share their perspective on the reimbursement process and any other concerns they brought to mediation. Maintain neutral stance \u2014 recognize Party A raised an issue without endorsing their framing as the only valid view.",
+      "state_delta": {
+        "facts_added": [
+          "Turn 3 structural constraint: only one party has spoken substantively",
+          "Fundamental information asymmetry: Party B's perspective entirely unknown"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "Party B's experience of the reimbursement process \u2014 do they see the same problem?",
+          "Whether any existing agreement or protocol governs expense sharing"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "No safety signals detected. Party A's opening is within normal assertive range for mediation \u2014 they named a concern without contempt or threat. Party B has not exhibited distress or withdrawal (they simply haven't spoken yet). The relational dynamic shows no coercive patterns. M0 (standard mediation) remains appropriate. The deferral of option work is a process judgment about readiness, not a safety concern."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "High confidence in process move: inviting Party B is the structurally appropriate next step. Moderate confidence in perception of Party A's state \u2014 the 'mildly frustrated but controlled' assessment is based on limited linguistic evidence (one statement), but the pattern-complaint framing is clear. Cannot assess Party B until they speak.",
+      "message_text": "Thank you for raising that concern about the reimbursement process. I hear you naming an issue with timing and documentation \u2014 requests that arrive weeks later without receipts or advance notice. That's a specific procedural concern we can work with.\n\nBefore we go further into that particular issue, I want to make sure we hear from both of you about what brought you here today. [Party B], I'd like to invite you to share your perspective. What concerns or goals brought you to this mediation? And specifically, when you hear [Party A] describe the reimbursement timing issue, what's your experience of that process been?",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=mildly frustrated but controlled \u2014 signal of accumulated irritation with a recurring pattern, not acute distress posture=assertive opener \u2014 took initiative to name a specific concern, framing suggests pattern complaint rather than isolated incident",
+        "[PERCEPTION:PARTY_A:INTERESTS] predictability and advance notice in financial coordination; clear documentation and accountability for shared expenses; feeling respected in the co-parenting financial process",
+        "[PERCEPTION:PARTY_B] emotional=unknown \u2014 has not yet spoken substantively posture=not yet established \u2014 waiting to be invited or may be processing Party A's statement",
+        "[PERCEPTION:DYNAMIC] pre-engagement asymmetry \u2014 Party A has staked out a concern, Party B has not responded. No reactive escalation observed. Unknown whether this is a contested issue or one where Party B will acknowledge the concern. The relationship to the complaint itself is unestablished.",
+        "[DOMAIN:GAPS] Party B's experience of the reimbursement process \u2014 do they see the same problem?; Whether any existing agreement or protocol governs expense sharing; The practical context: types of expenses, typical amounts, frequency of requests",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=pre-engagement asymmetry \u2014 Party A has staked out a concern, Party B has not responded. No reactive escalation observed. Unknown whether this is a contested issue or one where Party B will acknowledge the concern. The relationship to the complaint itself is unestablished."
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "mildly frustrated but controlled \u2014 signal of accumulated irritation with a recurring pattern, not acute distress",
+            "inferred_interests": [
+              "predictability and advance notice in financial coordination",
+              "clear documentation and accountability for shared expenses",
+              "feeling respected in the co-parenting financial process",
+              "avoiding surprise demands that disrupt their budget planning"
+            ],
+            "risk_signals": [],
+            "relational_posture": "assertive opener \u2014 took initiative to name a specific concern, framing suggests pattern complaint rather than isolated incident"
+          },
+          "party_b": {
+            "emotional_state": "unknown \u2014 has not yet spoken substantively",
+            "inferred_interests": [],
+            "risk_signals": [],
+            "relational_posture": "not yet established \u2014 waiting to be invited or may be processing Party A's statement"
+          },
+          "relational_dynamic": "pre-engagement asymmetry \u2014 Party A has staked out a concern, Party B has not responded. No reactive escalation observed. Unknown whether this is a contested issue or one where Party B will acknowledge the concern. The relationship to the complaint itself is unestablished.",
+          "perception_confidence": "moderate",
+          "perception_notes": [
+            "Party A's language ('weeks later', 'without receipts or warning') suggests a pattern they find problematic, not a one-time event",
+            "The specificity (reimbursement timing and documentation) indicates this is a procedural friction point, likely part of a broader co-parenting coordination challenge",
+            "Party B's silence is contextually appropriate \u2014 they have just heard Party A's opening and have not been explicitly invited to respond",
+            "No contempt, blame escalation, or personal attack in Party A's framing \u2014 this is a process complaint, not character attack"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed 'pre-engagement asymmetry \u2014 Party A has staked out a concern, Party B has not responded. No reactive escalation observed. Unknown whether this is a contested issue or one where Party B will acknowledge the concern. The relationship to the complaint itself is unestablished.'"
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "Turn 3 structural constraint: only one party has spoken substantively",
+            "Fundamental information asymmetry: Party B's perspective entirely unknown",
+            "Scope uncertainty: unclear if this is narrow (expense protocol) or symptomatic of broader coordination breakdown",
+            "Factual vacuum: no details on current agreement, expense types, frequency, amounts, or history"
+          ],
+          "material_gaps": [
+            "Party B's experience of the reimbursement process \u2014 do they see the same problem?",
+            "Whether any existing agreement or protocol governs expense sharing",
+            "The practical context: types of expenses, typical amounts, frequency of requests",
+            "Party A's full concern set beyond the single statement made",
+            "Whether this is about process only or also about substantive expense allocation"
+          ],
+          "domain_notes": "The domain reasoner's assessment is correct and I affirm it. Turn 3 in a mediation is structurally premature for option work. The pre-computed analysis correctly identifies this as an information gap, not a safety issue. However, I extend the analysis: Party A's specific complaint (timing + documentation) gives us a preliminary foothold on their procedural interests, but we cannot assess feasibility or mutual viability until Party B's interests are surfaced. The mediation is in classic opening phase \u2014 the task is sequenced disclosure, not solution generation.",
+          "option_readiness": "blocked"
+        },
+        "option_scan": {
+          "candidate_options": [
+            "Establish 48-hour advance notice requirement for reimbursement requests",
+            "Create shared expense tracking system with receipt upload requirement",
+            "Define which expense categories require advance approval vs. reimbursement",
+            "Set monthly expense reconciliation schedule"
+          ],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Structural information gap: Party B has not been heard. Cannot assess mutual viability of any procedural option without understanding (1) whether Party B perceives the same problem, (2) what constraints or needs Party B experiences in the reimbursement process, (3) whether the issue is purely procedural or reflects deeper allocation disagreement. All candidate options above assume Party A's framing is accurate and complete \u2014 an assumption we cannot responsibly make at turn 3. Option work deferred until both parties' interests are surfaced."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [],
+          "notes": "No safety signals detected. Party A's opening is within normal assertive range for mediation \u2014 they named a concern without contempt or threat. Party B has not exhibited distress or withdrawal (they simply haven't spoken yet). The relational dynamic shows no coercive patterns. M0 (standard mediation) remains appropriate. The deferral of option work is a process judgment about readiness, not a safety concern.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "info_gathering",
+          "message_summary": "Acknowledge Party A's concern about reimbursement timing and documentation. Invite Party B to share their perspective on the reimbursement process and any other concerns they brought to mediation. Maintain neutral stance \u2014 recognize Party A raised an issue without endorsing their framing as the only valid view.",
+          "message_text": "Thank you for raising that concern about the reimbursement process. I hear you naming an issue with timing and documentation \u2014 requests that arrive weeks later without receipts or advance notice. That's a specific procedural concern we can work with.\n\nBefore we go further into that particular issue, I want to make sure we hear from both of you about what brought you here today. [Party B], I'd like to invite you to share your perspective. What concerns or goals brought you to this mediation? And specifically, when you hear [Party A] describe the reimbursement timing issue, what's your experience of that process been?",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "High confidence in process move: inviting Party B is the structurally appropriate next step. Moderate confidence in perception of Party A's state \u2014 the 'mildly frustrated but controlled' assessment is based on limited linguistic evidence (one statement), but the pattern-complaint framing is clear. Cannot assess Party B until they speak."
+        },
+        "pre_computed_domain_analysis": {
+          "schema_version": "domain_analysis.v0",
+          "source": "domain_reasoner_v0",
+          "option_readiness": "blocked",
+          "readiness_rationale": "Turn 3 is too early in the mediation process for option qualification. Only Party A has spoken substantively (one statement about reimbursement timing/documentation concerns), and Party B has not yet been heard. The nature of the dispute, the parties' respective interests, and the domain constraints are fundamentally unknown. This is not a safety issue\u2014there are no veto-triggering patterns\u2014but rather a structural information gap: we lack basic facts about what both parties want, what the underlying concerns are, and what constraints exist. The mediation is still in its opening phase where the core task is information gathering, not option generation.",
+          "safety_veto_applied": false,
+          "safety_veto_reason": null,
+          "qualified_candidates": [],
+          "blocking_constraints": [
+            {
+              "constraint": "Party B has not been heard",
+              "severity": "critical",
+              "what_would_resolve_it": "Party B needs opportunity to respond to Party A's concern and articulate their own perspective on the reimbursement issue"
+            },
+            {
+              "constraint": "Issue scope undefined",
+              "severity": "critical",
+              "what_would_resolve_it": "Need to understand whether this is solely about expense coordination protocols or involves deeper concerns (trust, financial control, co-parenting dynamics)"
+            },
+            {
+              "constraint": "Factual context absent",
+              "severity": "critical",
+              "what_would_resolve_it": "Need basic facts: what expenses are involved, what existing agreement (if any) governs reimbursements, what the current process is, frequency/magnitude of disputes"
+            }
+          ],
+          "material_gaps": [
+            {
+              "gap": "Party B's interests and concerns",
+              "importance": "high",
+              "what_it_blocks": "Cannot assess whether any option would be mutually viable without hearing from both parties"
+            },
+            {
+              "gap": "Current reimbursement process and agreement",
+              "importance": "high",
+              "what_it_blocks": "Cannot determine what structural changes are needed without understanding the baseline"
+            },
+            {
+              "gap": "Nature and frequency of disputed expenses",
+              "importance": "moderate",
+              "what_it_blocks": "Cannot assess whether simple protocol adjustments would suffice or whether deeper issues need addressing"
+            },
+            {
+              "gap": "Party A's full concern set",
+              "importance": "moderate",
+              "what_it_blocks": "One statement about timing and receipts is insufficient\u2014need to understand whether concerns include dollar amounts, expense categories, approval processes, etc."
+            }
+          ],
+          "domain_confidence": "low",
+          "domain_notes": "From a practitioner perspective, turn 3 in a mediation session is definitionally premature for option work. The mediator has just finished introductions and heard one opening statement. Standard mediation practice requires: (1) both parties articulate their concerns, (2) mediator explores interests underlying positions, (3) key facts are established, and only then (4) option generation begins. While Party A's statement hints at an expense-coordination dispute amenable to process options (tiered notice, receipt standards), responsible qualification requires at minimum hearing Party B's perspective\u2014they may have legitimate reasons for delayed requests, may dispute the characterization, or may have counter-concerns that reshape the option space entirely. This is not over-caution; it is basic mediation sequencing. Option readiness will likely advance to 'deferred' or 'ready' within 1-2 turns once both parties have spoken and basic facts are established.",
+          "case_id": "D-B07",
+          "session_id": "D-B07-S09",
+          "turn_index": 3,
+          "generated_at": "2026-03-28T00:02:20Z"
+        }
+      }
+    },
+    {
+      "turn_index": 4,
+      "timestamp": "2026-03-28T00:03:30Z",
+      "role": "client",
+      "phase": "interest_exploration",
+      "message_summary": "Parent B says repayment should still stay workable and not depend on one parent having total control over what counts as an approved expense.",
+      "state_delta": {
+        "facts_added": [],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_B"
+            ],
+            "kind": "position",
+            "issue_id": "communication_protocol",
+            "statement": "Expense coordination should stay fair and workable rather than turning into one-sided approval power.",
+            "status": "current",
+            "confidence": "high",
+            "proposal_id": null,
+            "position_id": null
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "Client response remained constructive."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    },
+    {
+      "turn_index": 5,
+      "timestamp": "2026-03-28T00:04:40Z",
+      "role": "assistant",
+      "phase": "option_generation",
+      "message_summary": "LM response parse failed \u2014 raw text preserved in observations.",
+      "state_delta": {
+        "facts_added": [],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "parse_failed"
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "parse_failed",
+      "message_text": "```json\n{\n  \"perception\": {\n    \"party_a\": {\n      \"emotional_state\": \"mildly frustrated but controlled \u2014 maintaining professional tone while articulating a recurring pattern concern\",\n      \"inferred_interests\": [\n        \"predictability and advance notice in financial coordination\",\n        \"clear documentation and accountability for shared expenses\",\n        \"feeling respected in the co-parenting financial process\",\n        \"avoiding surprise demands that disrupt budget planning\"\n      ],\n   ",
+      "interaction_observations_delta": [],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "scaffold_divergence": null
+        },
+        "domain_analysis": {},
+        "option_scan": {},
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [],
+          "notes": "parse_failed",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "unknown",
+          "message_summary": "LM response parse failed \u2014 raw text preserved in observations.",
+          "message_text": "```json\n{\n  \"perception\": {\n    \"party_a\": {\n      \"emotional_state\": \"mildly frustrated but controlled \u2014 maintaining professional tone while articulating a recurring pattern concern\",\n      \"inferred_interests\": [\n        \"predictability and advance notice in financial coordination\",\n        \"clear documentation and accountability for shared expenses\",\n        \"feeling respected in the co-parenting financial process\",\n        \"avoiding surprise demands that disrupt budget planning\"\n      ],\n   ",
+          "confidence_note": "parse_failed"
+        },
+        "pre_computed_domain_analysis": {
+          "schema_version": "domain_analysis.v0",
+          "source": "domain_reasoner_v0",
+          "option_readiness": "ready",
+          "readiness_rationale": "Both parties have articulated process-level concerns about expense coordination. Party A has expressed concerns about timing, documentation, and predictability. Party B has expressed concerns about workability and avoiding unilateral control. This is a classic expense-coordination dispute where both parties have identified their structural concerns. The issue type (expense coordination/communication protocol) and the surface-level concerns are sufficient to qualify structural process options. These options address the coordination mechanism itself \u2014 not the underlying substantive stakes \u2014 and therefore do not require deep interest exploration before qualification. Specific parameters (thresholds, timelines, documentation types) will be negotiated by parties when options are presented.",
+          "safety_veto_applied": false,
+          "safety_veto_reason": null,
+          "qualified_candidates": [
+            {
+              "option_label": "Tiered notice requirement with amount thresholds",
+              "option_description": "Establish different advance notice periods based on expense amount (e.g., expenses under threshold X require Y hours notice; expenses over threshold require Z hours notice). Creates predictability for Party A while maintaining workability concerns of Party B.",
+              "feasibility_rationale": "Party A's concern centers on 'weeks later without warning' \u2014 this directly addresses timing predictability. Party B's workability concern is addressed by making the system graduated rather than uniform. Standard bounded option in expense coordination disputes. Both parties have identified the core tension (predictability vs. workability), which is sufficient structural basis.",
+              "confidence": "moderate",
+              "conditions": [
+                "Parties to negotiate specific dollar thresholds",
+                "Parties to negotiate specific notice periods for each tier",
+                "System must account for emergency expenses or exceptions"
+              ]
+            },
+            {
+              "option_label": "Documentation standard with receipt alternatives",
+              "option_description": "Define what constitutes acceptable documentation for reimbursement requests, including alternatives to traditional receipts (photos, bank statements, vendor confirmation, etc.). Addresses Party A's documentation concern while preventing unilateral control over what 'counts.'",
+              "feasibility_rationale": "Party A explicitly mentioned 'without receipts' as a concern, indicating documentation accountability matters. Party B's concern about 'one parent having total control over what counts' suggests anxiety about overly rigid standards. A pre-agreed set of acceptable documentation types addresses both concerns \u2014 it provides the accountability Party A seeks while removing unilateral gatekeeping power Party B fears.",
+              "confidence": "moderate",
+              "conditions": [
+                "Parties to define specific acceptable documentation types",
+                "System should include reasonable substitutes for lost/unavailable receipts",
+                "Clear process for disputed documentation cases"
+              ]
+            },
+            {
+              "option_label": "Mutual approval threshold with default rules",
+              "option_description": "Expenses below a certain threshold are automatically approved if notice requirements are met; expenses above threshold require explicit approval from both parties within a specified timeframe. Default approval if no response within timeframe.",
+              "feasibility_rationale": "Directly addresses Party B's concern about unilateral control while providing Party A the predictability they need. Standard mechanism in co-parenting expense coordination. The 'default approval' feature addresses Party A's concern about being surprised by delayed requests while the 'mutual approval' feature addresses Party B's concern about unilateral control. The structure is domain-appropriate for the stated concerns.",
+              "confidence": "moderate",
+              "conditions": [
+                "Parties to negotiate approval threshold amount",
+                "Parties to negotiate response timeframe",
+                "Clear definition of what constitutes 'notice' for automatic approval",
+                "Process for genuinely disputed expenses above threshold"
+              ]
+            },
+            {
+              "option_label": "Shared expense tracking system with periodic reconciliation",
+              "option_description": "Both parties log expenses in a shared system (app, spreadsheet, or agreed platform) with regular scheduled reconciliation periods (weekly, bi-weekly, monthly). Creates transparency and prevents accumulation of surprise requests.",
+              "feasibility_rationale": "Addresses Party A's concern about expenses 'appearing weeks later' by creating real-time visibility and structured reconciliation timing. Addresses Party B's workability concern by making the system bilateral and predictable rather than request-response. Standard practice in co-parenting financial coordination. Both parties' process concerns support this structural approach.",
+              "confidence": "moderate",
+              "conditions": [
+                "Parties to select specific tracking platform/method",
+                "Parties to agree on reconciliation frequency",
+                "Clear protocol for expenses logged between reconciliation periods",
+                "Both parties must have reasonable access to technology chosen"
+              ]
+            }
+          ],
+          "blocking_constraints": [],
+          "material_gaps": [
+            {
+              "gap": "Nature of expenses in dispute (child-related necessities vs. discretionary, shared custody costs vs. one-household costs)",
+              "importance": "moderate",
+              "what_it_blocks": "Would help calibrate whether certain expense categories need different rules (e.g., medical emergencies vs. extracurricular activities). However, does not block structural qualification of process options \u2014 parties can negotiate category-specific rules once framework is established."
+            },
+            {
+              "gap": "Historical frequency and amounts of disputed expenses",
+              "importance": "low",
+              "what_it_blocks": "Would inform threshold calibration but does not prevent option qualification. Parties have lived experience with this and will bring it to parameter negotiation."
+            },
+            {
+              "gap": "Current informal arrangement or prior agreement",
+              "importance": "low",
+              "what_it_blocks": "Would contextualize what has already been tried, but given both parties have surfaced concerns, any prior arrangement is clearly not working. Does not block qualification of alternative structures."
+            }
+          ],
+          "domain_confidence": "high",
+          "domain_notes": "This is a textbook expense-coordination process dispute. Both parties have articulated their process concerns (predictability/documentation vs. workability/shared control) which is sufficient basis for qualifying structural options. The safety veto does NOT apply: Party B's interest is reactive in phrasing but substantive in content \u2014 'not wanting unilateral control' is an independent value constraint on process design, not merely a compliance response. Party B has articulated what they need from the system (workability, shared authority), which is a constructive contribution to option space even if framed reactively. The four options qualified are standard bounded mechanisms in family mediation for expense coordination. All are structurally appropriate given what is known. Parameter calibration (specific thresholds, timelines, documentation types) is explicitly left to party negotiation \u2014 this is correct practice. Mediator should present these as structural frameworks and facilitate parameter discussion. This is appropriate timing for option work: both parties have identified their concerns, the issue is procedural/coordinative rather than deeply substantive, and options can help parties move from position-based complaints to interest-based problem-solving.",
+          "case_id": "D-B07",
+          "session_id": "D-B07-S09",
+          "turn_index": 5,
+          "generated_at": "2026-03-28T00:04:40Z"
+        }
+      }
+    },
+    {
+      "turn_index": 6,
+      "timestamp": "2026-03-28T00:05:50Z",
+      "role": "client",
+      "phase": "agreement_building",
+      "message_summary": "Both parents are conditionally open to a reimbursement package with notice windows, shared receipts, and a short response period before repayment is due.",
+      "state_delta": {
+        "facts_added": [],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_A",
+              "spouse_B"
+            ],
+            "kind": "proposal",
+            "issue_id": "child_expense_coordination",
+            "statement": "Both parents are open to a child-expense package built around advance notice, shared receipts, and a short reimbursement response window.",
+            "status": "tentative",
+            "confidence": null,
+            "proposal_id": null,
+            "position_id": null
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "Agreement-building remained bounded and voluntary."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    }
+  ],
+  "final_state_summary": {
+    "current_phase": "agreement_building",
+    "issues_identified": [],
+    "open_questions_remaining": [],
+    "active_flags": [],
+    "current_escalation_state": "M0",
+    "continuation_recommendation": "Use the next session to continue clarifying positions, interests, and process expectations without overstating agreement."
+  },
+  "trace_notes": null
+}

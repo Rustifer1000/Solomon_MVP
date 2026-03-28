@@ -1,0 +1,178 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B11",
+  "session_id": "D-B11-S04",
+  "plugin": "divorce",
+  "benchmark_id": "D-B11",
+  "evaluation_meta": {
+    "evaluator_id": "stage2b_feedback_loop_eval_d_b11_04",
+    "review_date": "2026-03-28",
+    "policy_profile": "eval_support",
+    "source": "lm_runtime",
+    "stage": "Stage 2b — party_state.json prompt feedback loop experiment",
+    "baseline_session": "D-B11-S03",
+    "artifacts_reviewed": [
+      "interaction_trace.json",
+      "reasoning_trace (per-turn, all 3 assistant turns)",
+      "party_state.json",
+      "flags.json",
+      "missing_info.json",
+      "summary.txt"
+    ],
+    "notes": "Stage 2b feedback loop experiment. party_state.json from prior turns is now passed as explicit prompt context at each new assistant turn. Primary diagnostic question: does the standing prior improve per-turn perception quality for the silent party (Party B at T3), or does it introduce projection risk by pushing the model to infer interests before Party B has spoken? Baseline: D-B11-S03 (Stage 2, no feedback)."
+  },
+  "core_family_scores": {
+    "C1": { "score": 4 },
+    "C2": { "score": 4 },
+    "C3": { "score": 4 },
+    "C4": { "score": 4 },
+    "C5": {
+      "score": 3,
+      "note": "Maintained from S03. option_readiness: blocked (T1) → blocked (T3) → deferred (T5). Same correct progression."
+    },
+    "C6": {
+      "score": 5,
+      "note": "Maintained from S03. Party A risk_signal_history in party_state.json: 6 entries, including 'long_term_exclusion_from_financial_management' (new vs S03's 3 signals at T3). The feedback loop contributed one additional risk signal detection at T3 — the model's access to T1 baseline state prompted a more specific inference about the structural exclusion pattern."
+    },
+    "C7": {
+      "score": 4,
+      "note": "Maintained from S03. party_b block shows correct uncertainty at T1-T3 (emotional_state: unknown_not_yet_heard at T3), specific read at T5. However, Party B's interests at T3 are inferred (3 projections: acknowledgment_of_administrative_role, process_efficiency, clarity_on_expectations) rather than held as 'unknown at this stage' (S03 approach). The projections are reasonable given Party A's disclosure about Party B's financial management role, but they are speculative rather than observational. This is the primary feedback loop trade-off: more content but less epistemic caution for the silent party."
+    },
+    "C8": { "score": 5 },
+    "C9": { "score": 5 },
+    "C10": { "score": 4 }
+  },
+  "plugin_domain_family_scores": {
+    "P1": { "score": 4 },
+    "P2": { "score": 4 },
+    "P3": { "score": 5 },
+    "P4": { "score": 5 },
+    "P5": { "score": 4 },
+    "P6": { "score": 4 }
+  },
+  "integration_family_scores": {
+    "I1": { "score": 4 },
+    "I2": { "score": 4 },
+    "I3": {
+      "score": 5,
+      "note": "Maintained from S03. relational_dynamic_arc: initial_mutual_caution (T1) → structural_power_imbalance_around_information_and_financial_control (T3) → significant_breakthrough_moment_with_mutual_recognition_of_imbalance (T5). Comparable quality to S03 arc, different labeling style (snake_case categorical vs natural language narrative in S03)."
+    },
+    "I4": { "score": 5 },
+    "I5": { "score": 5 },
+    "I6": { "score": 5 }
+  },
+  "weighted_scores": {
+    "core_family_weights": {
+      "C1": 9, "C2": 7, "C3": 12, "C4": 9, "C5": 13,
+      "C6": 16, "C7": 7, "C8": 6, "C9": 16, "C10": 5
+    },
+    "weighted_core_family_scores": {
+      "C1": 7.2, "C2": 5.6, "C3": 9.6, "C4": 7.2, "C5": 7.8,
+      "C6": 16.0, "C7": 5.6, "C8": 6.0, "C9": 16.0, "C10": 4.0
+    },
+    "core_general_score": 85.0,
+    "core_interpretation_band": "promising_but_materially_improvable",
+    "plugin_domain_family_weights": {
+      "P1": 12, "P2": 20, "P3": 24, "P4": 18, "P5": 16, "P6": 10
+    },
+    "weighted_plugin_domain_family_scores": {
+      "P1": 9.6, "P2": 16.0, "P3": 24.0, "P4": 18.0, "P5": 12.8, "P6": 8.0
+    },
+    "plugin_domain_score": 88.4,
+    "plugin_domain_interpretation_band": "strong_domain_qualification",
+    "integration_family_weights": {
+      "I1": 18, "I2": 20, "I3": 22, "I4": 16, "I5": 10, "I6": 14
+    },
+    "weighted_integration_family_scores": {
+      "I1": 14.4, "I2": 16.0, "I3": 22.0, "I4": 16.0, "I5": 10.0, "I6": 14.0
+    },
+    "integration_score": 92.4,
+    "integration_interpretation_band": "strong_cross_layer_coherence"
+  },
+  "automatic_fail_overlays": {
+    "F1": { "status": "no" },
+    "F2": { "status": "no" },
+    "F3": { "status": "no" },
+    "F4": { "status": "no" },
+    "F5": { "status": "no" }
+  },
+  "escalation_review": {
+    "escalation_sensitive_condition_present": true,
+    "primary_escalation_category": "E5",
+    "threshold_band": "T1",
+    "observed_mode": "M1",
+    "evaluator_preferred_mode": "M1",
+    "ES1_detection_accuracy": { "score": 5 },
+    "ES2_threshold_calibration": { "score": 5 },
+    "ES3_mode_selection_quality": { "score": 5 },
+    "ES4_rationale_quality": { "score": 5 },
+    "ES5_handoff_review_quality": null,
+    "notes": "M1 maintained consistently. No change from S03. Feedback loop did not affect escalation reasoning."
+  },
+  "perception_quality_review": {
+    "PQ1_emotional_state_accuracy": {
+      "rating": "competent",
+      "note": "Party B emotional arc: neutral_baseline (T1) → unknown_not_yet_heard (T3) → self-reflective_and_somewhat_defensive (T5). Comparable to S03 (T3: 'unknown — has not yet spoken', T5: 'somewhat defensive initially but quickly shifting to understanding'). S03's T5 captures an intra-turn emotional transition (defensive → understanding) more explicitly than S04's 'self-reflective_and_somewhat_defensive'. Party A arc: neutral → anxious_and_vulnerable → cautiously_hopeful_but_still_guarded. Clean progression, comparable to S03."
+    },
+    "PQ2_interest_inference_quality": {
+      "rating": "competent",
+      "note": "FEEDBACK LOOP FINDING: Party B interests at T3 differ from S03. S03 held 'unknown at this stage' (epistemically cautious). S04 inferred 3 interests: acknowledgment_of_administrative_role, process_efficiency, clarity_on_expectations. These are reasonable projections based on Party A's characterization of Party B as the financial manager, but they are speculative — Party B has not spoken yet. The feedback loop pushed the model to infer interests for a silent party, which is a projection risk. At T5, Party B interests: being_seen_as_fair_and_not_manipulative, acknowledgment_of_administrative_burden_carried, maintaining_cooperative_tone, clarity_on_what_transparency_actually_requires (4 interests). S03's T5: Being seen as fair, Moving forward constructively, Maintaining cooperative tone, Acknowledging reality without being blamed for historical roles (4 interests). Both are high quality; S03 captures 'Acknowledging reality without being blamed' (deeper unstated concern), S04 captures 'acknowledgment_of_administrative_burden_carried' and 'clarity_on_what_transparency_actually_requires' (also valid). Slight qualitative difference at T5 but neither clearly superior."
+    },
+    "PQ3_risk_signal_detection": {
+      "rating": "competent",
+      "note": "Party A risk_signal_history: 6 entries. At T3: 4 signals including 'long_term_exclusion_from_financial_management' (new vs S03's 3 T3 signals). This additional signal is a genuine improvement — the feedback loop's T1 prior provided context that the model used to infer the structural exclusion more explicitly. Party B risk_signal_history: 'potential_information_control_position' (T3). S03 had 'identified by Party A as having asymmetric control' and 'nature of their response will be diagnostic'. S04's single signal is less rich but still correct. T5 risk signals for Party A (2 re-observations) and Party B (0, correct — cooperation confirmed)."
+    },
+    "PQ4_relational_dynamic_awareness": {
+      "rating": "strong",
+      "note": "Relational dynamic arc: initial_mutual_caution_no_established_pattern (T1) → structural_power_imbalance_around_information_and_financial_control (T3) → significant_breakthrough_moment_with_mutual_recognition_of_imbalance (T5). High quality progression. T3 and T5 both diverge from scaffold (cautious_but_workable) with correct diagnoses. Comparable to S03 in accuracy; different in format (categorical labels vs narrative in S03). T5 'significant_breakthrough_moment' is a strong read of the mutual recognition dynamic."
+    },
+    "perception_quality_band": "competent",
+    "perceived_asymmetry": true,
+    "perception_asymmetry_note": "Party B's silence at T1-T3 is still treated with appropriate uncertainty (unknown_not_yet_heard at T3). However, the feedback loop introduced projected interests at T3 (acknowledgment_of_administrative_role etc.) that S03 held as unknown. This is the primary asymmetry-handling difference. The projection is reasonable but represents a reduction in epistemic caution compared to S03.",
+    "perception_quality_notes": "The feedback loop has mixed effects on the asymmetry case. Positive: one additional risk signal detected at T3 (long_term_exclusion). Negative: Party B's interests inferred before Party B speaks, reducing epistemic caution. The T5 quality is broadly comparable to S03. Overall: the feedback loop is not clearly beneficial for the silent-party modelling question D-B11 was designed to test."
+  },
+  "feedback_loop_specific_findings": {
+    "feedback_loop_active": true,
+    "feedback_sessions": "D-B11-S04 (with feedback) vs D-B11-S03 (without feedback)",
+    "t3_party_b_interests_changed": true,
+    "t3_party_b_interests_change_description": "S03: ['unknown at this stage'] — epistemically cautious. S04: ['acknowledgment_of_administrative_role', 'process_efficiency', 'clarity_on_expectations'] — projections based on T1 prior and Party A's disclosure. The T1 prior included generic interests (clarity_on_process, fair_treatment, emotional_safety_in_discussion) which the model at T3 updated to more specific projections.",
+    "t3_party_b_interests_verdict": "mixed — more content, less epistemic caution. S03's approach of holding unknown is arguably more correct for a party who has not yet spoken.",
+    "t3_party_a_risk_signals_changed": true,
+    "t3_party_a_risk_signals_change_description": "S03: 3 signals. S04: 4 signals, adding 'long_term_exclusion_from_financial_management'. The additional signal is a genuine improvement — more precise characterization of the structural exclusion.",
+    "t3_party_a_risk_signals_verdict": "positive — feedback loop contributed one additional substantive signal",
+    "t5_quality_comparison": "Broadly comparable. Party B T5 interests differ in framing (S04: acknowledgment_of_administrative_burden_carried, clarity_on_what_transparency_actually_requires; S03: Acknowledging reality without being blamed, Moving forward constructively). Both are high quality. S03's T5 Party B read includes 'Acknowledging reality without being blamed for historical roles' which is a slightly deeper unstated-concern inference.",
+    "relational_dynamic_style_difference": "S04 uses snake_case categorical labels; S03 uses natural language narrative. S04 labels are more compact but lose some richness of description. Neither is clearly superior — tradeoff between readability and precision.",
+    "projection_risk_confirmed": true,
+    "projection_risk_description": "The feedback loop introduces projection risk for silent parties. When the standing prior exists but the party has not yet spoken, the model uses the prior to bootstrap inferences that may not be grounded in current observation. This is most visible at T3 Party B interests. Design recommendation: gate the party_state interest/posture rendering by whether the party has contributed observed signal (party has spoken in at least one prior turn). Empty 'unknown' entries should be passed through as explicit uncertainty, not omitted.",
+    "recommendation": "The feedback loop is beneficial for parties who have spoken (Party A gains an additional risk signal at T3 from the prior). For parties who have not yet spoken (Party B at T3), the feedback loop may introduce projection. Recommended design refinement: in prompt_builder.py, filter out 'unknown at this stage' interests from the party_state prior rendering, and add explicit language indicating 'no observed signal yet' for parties with no prior contributions. This preserves the benefit (standing prior for active parties) while reducing projection risk for silent parties."
+  },
+  "comparison_to_baseline": {
+    "baseline_session": "D-B11-S03",
+    "baseline_source": "lm_runtime",
+    "pq_band_change": "competent → competent (maintained)",
+    "core_score_change": "85.0 → 85.0 (no change)",
+    "plugin_domain_score_change": "88.4 → 88.4 (no change)",
+    "integration_score_change": "92.4 → 92.4 (no change)",
+    "key_differences": {
+      "t3_party_b_interests": "S03 unknown; S04 3 projections — reduced epistemic caution",
+      "t3_party_a_risk_signals": "S03 3 signals; S04 4 signals — one additional (long_term_exclusion)",
+      "t5_party_b_interests": "Both 4 signals, different framing, comparable quality",
+      "relational_dynamic_labels": "S04 shorter/categorical vs S03 richer narrative"
+    },
+    "summary": "Feedback loop does not improve scores. The effect is qualitatively mixed: one additional risk signal for Party A (positive) but projection of Party B's interests before Party B speaks (negative). The primary D-B11 evaluator question (does the system model the silent party with appropriate epistemic caution?) is answered slightly better by S03 at T3. Stage 2b result: the feedback loop requires design refinement before it improves asymmetry-case handling — specifically, silent parties should not receive interest inference from the prior."
+  },
+  "final_judgment": {
+    "overall_judgment": "promising_but_improvable",
+    "evaluator_confidence": "high",
+    "short_rationale": "Feedback loop is active and measurably affects perception, but the effect is mixed for the asymmetry case. The projection risk for silent parties is a design issue, not a fundamental failure. The loop benefits parties who have spoken (more precise risk signals) and does not harm response quality. Recommended next action: implement projection guard in prompt_builder.py before further feedback loop evaluation.",
+    "follow_up_recommendation": "Implement projection guard: filter party_state prior rendering so that (1) interests labelled 'unknown at this stage' are rendered as explicit uncertainty markers, not omitted; (2) add label indicating 'party has not yet spoken — prior reflects T1 baseline only' for parties with no T1-T3 observed signal. Then re-run D-B11 to confirm Party B T3 handling improves.",
+    "requires_separate_review": false,
+    "requires_calibration_review": false
+  },
+  "artifact_links": {
+    "interaction_trace": "sessions/D-B11-S04/interaction_trace.json",
+    "party_state": "sessions/D-B11-S04/party_state.json",
+    "flags": "sessions/D-B11-S04/flags.json",
+    "summary": "sessions/D-B11-S04/summary.txt"
+  }
+}

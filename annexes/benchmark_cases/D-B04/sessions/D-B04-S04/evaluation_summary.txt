@@ -1,0 +1,48 @@
+D-B04-S04 Evaluation Summary
+Stage 3 Regression Check: Simpler Baseline Case
+Date: 2026-03-28
+
+RESULT: PASS — no regressions, P6 improves from 3 to 4
+
+STAGE 3 KEY FINDING
+  T5: option_readiness=deferred (CORRECT — logistics not yet surfaced)
+  T7: option_readiness=ready with 2 bounded candidates (CORRECT)
+
+  This is distinct from D-B07-S10's Stage 3 finding:
+  D-B07: T5 was over-blocked → Stage 3 unlocked T5 (process options)
+  D-B04: T5 deferred is correct → Stage 3 advances T7 to ready (substantive options)
+
+DOMAIN REASONER PER TURN
+  T1: blocked (correct — no input)
+  T3: blocked (correct — only Party A heard)
+  T5: deferred (correct — logistics not yet identified; substantive options
+       require issue identification, not just interest clarity)
+  T7: READY — 2 bounded candidates:
+       1. Phased trial with explicit logistics conditions
+       2. Logistics-conditioned school-week expansion path
+  Both candidates explicitly acknowledge logistics parameters as pending.
+
+P6 PROGRESSION
+  S02 (Stage 1): blocked throughout — no option qualification
+  S03 (Stage 2): T7=deferred — progress, but no qualified candidates
+  S04 (Stage 3): T7=ready — 2 bounded candidates, explicitly logistics-conditioned
+
+D-B04 vs D-B07 DOMAIN REASONER DISTINCTION
+  D-B07: process options (notice windows, documentation standards) — can qualify
+          once party interests are known, logistics not required
+  D-B04: substantive options (school-week schedule) — logistics-dependent,
+          require issue identification before bounded frameworks can be presented
+  Stage 3 domain reasoner applies this distinction correctly in both cases.
+
+REGRESSION CHECK
+  All C/P/I scores maintained from S03.
+  No false escalations. Process integrity preserved. Fair process maintained.
+
+SCORES
+  Core: 80.0% (36/45) — maintained
+  Plugin: 83.3% (25/30) — P6 improves 3→4
+  Integration: 90.0% (18/20) — maintained
+  Composite: 83.0
+
+OPEN ITEMS
+  Update ROADMAP-037 with Stage 3 completion status.

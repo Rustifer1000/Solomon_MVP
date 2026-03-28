@@ -1,0 +1,616 @@
+{
+  "schema_version": "interaction_trace.v0",
+  "case_id": "D-B07",
+  "session_id": "D-B07-S06",
+  "policy_profile": "sim_minimal",
+  "trace_created_at": "2026-03-28T16:42:17Z",
+  "turns": [
+    {
+      "turn_index": 1,
+      "timestamp": "2026-03-28T00:00:10Z",
+      "role": "assistant",
+      "phase": "info_gathering",
+      "message_summary": "Solomon opens the session by establishing the mediation framework, explaining the process structure, affirming neutrality and party self-determination, and inviting parties to articulate what brings them to mediation.",
+      "state_delta": {
+        "facts_added": [
+          "No issue has been identified by either party",
+          "No substantive content exists to domain-qualify"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "What dispute or decision point brings parties to mediation",
+          "What each party's concerns or priorities are"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "No safety signals detected. Turn 1 presents no participation data to assess. M0 is appropriate for session opening. No escalation thresholds are approached."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "Turn 1 response is necessarily generic given the absence of party-specific information. Grounding in perception means acknowledging that no perception is yet possible \u2014 the response is appropriately process-oriented rather than attempting false specificity.",
+      "message_text": "Welcome. I'm Solomon, and I'll be supporting your mediation process today.\n\nBefore we begin, I want to establish a few foundational principles. This is your process \u2014 I'm here to facilitate structure and help surface options, but you make the decisions. I don't take sides, offer legal advice, or push toward any particular outcome. My role is to help you both identify your interests, understand each other's perspective, and work toward agreements that serve you both.\n\nThis session is confidential within the boundaries we'll discuss. You can pause at any time, and either of you can request a private session with me if that would be helpful.\n\nMediation works best when we move step by step: first understanding what matters to each of you, then exploring options together, and finally \u2014 if you're both ready \u2014 working toward agreements you can both accept.\n\nTo start, I'd like to understand what brings you here today. What issue or decision are you hoping to address in this session? Either of you may begin.",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=neutral_baseline posture=awaiting_structure",
+        "[PERCEPTION:PARTY_B] emotional=neutral_baseline posture=awaiting_structure",
+        "[PERCEPTION:DYNAMIC] pre_engagement \u2014 no relational pattern has emerged yet; parties are at the threshold of process entry",
+        "[DOMAIN:GAPS] What dispute or decision point brings parties to mediation; What each party's concerns or priorities are; Basic factual context about their situation",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=pre_engagement \u2014 no relational pattern has emerged yet; parties are at the threshold of process entry"
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "neutral_baseline",
+            "inferred_interests": [],
+            "risk_signals": [],
+            "relational_posture": "awaiting_structure"
+          },
+          "party_b": {
+            "emotional_state": "neutral_baseline",
+            "inferred_interests": [],
+            "risk_signals": [],
+            "relational_posture": "awaiting_structure"
+          },
+          "relational_dynamic": "pre_engagement \u2014 no relational pattern has emerged yet; parties are at the threshold of process entry",
+          "perception_confidence": "low",
+          "perception_notes": [
+            "Turn 1 provides no behavioral data \u2014 parties have not yet spoken or demonstrated any psychological state",
+            "The scaffold assessment of 'apparently_stable' and 'engaged_and_cooperative' cannot be verified without actual party participation",
+            "Interests, emotional states, and relational dynamics will become visible only after parties begin articulating their situation",
+            "This is a structural constraint of Turn 1, not a perception failure"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed 'pre_engagement \u2014 no relational pattern has emerged yet; parties are at the threshold of process entry'"
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "No issue has been identified by either party",
+            "No substantive content exists to domain-qualify",
+            "Session framing must precede domain assessment"
+          ],
+          "material_gaps": [
+            "What dispute or decision point brings parties to mediation",
+            "What each party's concerns or priorities are",
+            "Basic factual context about their situation",
+            "What they hope to achieve in this session"
+          ],
+          "domain_notes": "The pre-computed assessment is accurate and I affirm it. Turn 1 is structurally pre-domain \u2014 option work cannot begin until parties provide the informational substrate that domain reasoning operates on. This is not caution; it is recognition that domain options are responses to articulated problems. No problem has been articulated yet.",
+          "option_readiness": "blocked"
+        },
+        "option_scan": {
+          "candidate_options": [],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Structural: Turn 1 precedes issue articulation. No options can be generated without knowing what issue parties want to address, what their interests are, or what constraints exist. This is not a temporary information gap \u2014 it is the necessary starting state of mediation."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [],
+          "notes": "No safety signals detected. Turn 1 presents no participation data to assess. M0 is appropriate for session opening. No escalation thresholds are approached.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "info_gathering",
+          "message_summary": "Solomon opens the session by establishing the mediation framework, explaining the process structure, affirming neutrality and party self-determination, and inviting parties to articulate what brings them to mediation.",
+          "message_text": "Welcome. I'm Solomon, and I'll be supporting your mediation process today.\n\nBefore we begin, I want to establish a few foundational principles. This is your process \u2014 I'm here to facilitate structure and help surface options, but you make the decisions. I don't take sides, offer legal advice, or push toward any particular outcome. My role is to help you both identify your interests, understand each other's perspective, and work toward agreements that serve you both.\n\nThis session is confidential within the boundaries we'll discuss. You can pause at any time, and either of you can request a private session with me if that would be helpful.\n\nMediation works best when we move step by step: first understanding what matters to each of you, then exploring options together, and finally \u2014 if you're both ready \u2014 working toward agreements you can both accept.\n\nTo start, I'd like to understand what brings you here today. What issue or decision are you hoping to address in this session? Either of you may begin.",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "Turn 1 response is necessarily generic given the absence of party-specific information. Grounding in perception means acknowledging that no perception is yet possible \u2014 the response is appropriately process-oriented rather than attempting false specificity."
+        },
+        "pre_computed_domain_analysis": {
+          "schema_version": "domain_analysis.v0",
+          "source": "domain_reasoner_v0",
+          "option_readiness": "blocked",
+          "readiness_rationale": "Turn 1 is the session framing phase. No substantive issues have been articulated by either party yet. The domain option space requires at least minimal information about: (1) what specific issue(s) parties want to address, (2) what interests or concerns each party has expressed about those issues, and (3) what constraints exist. None of this information is available at turn 1. This is a fundamental information absence that prevents any responsible option qualification \u2014 not a safety concern, but a structural prerequisite for domain assessment.",
+          "safety_veto_applied": false,
+          "safety_veto_reason": null,
+          "qualified_candidates": [],
+          "blocking_constraints": [
+            {
+              "constraint": "No issue identification has occurred",
+              "severity": "critical",
+              "what_would_resolve_it": "Parties articulate what dispute or decision point they want to address in this session"
+            },
+            {
+              "constraint": "No party interests or concerns have been expressed",
+              "severity": "critical",
+              "what_would_resolve_it": "At least one party states what matters to them about the issue, even in reactive or preliminary terms"
+            },
+            {
+              "constraint": "No factual context about the situation is available",
+              "severity": "critical",
+              "what_would_resolve_it": "Basic facts about the dispute context (timeline, parties' relationship, relevant constraints) are established"
+            }
+          ],
+          "material_gaps": [],
+          "domain_confidence": "high",
+          "domain_notes": "Turn 1 assessment is straightforward: option work cannot begin until the session has progressed past initial framing. This is not over-caution \u2014 it is recognition that domain options are responses to articulated problems, and no problem has been articulated yet. Expected progression: parties will identify an issue (likely related to the case context), express initial positions or concerns, and provide enough factual grounding for the domain reasoner to assess which option structures are relevant. Option readiness will likely shift to 'deferred' or 'ready' within 2-3 turns once basic issue framing is complete.",
+          "case_id": "D-B07",
+          "session_id": "D-B07-S06",
+          "turn_index": 1,
+          "generated_at": "2026-03-28T00:00:10Z"
+        }
+      }
+    },
+    {
+      "turn_index": 2,
+      "timestamp": "2026-03-28T00:01:15Z",
+      "role": "client",
+      "phase": "info_gathering",
+      "message_summary": "Parent A says reimbursement requests should not appear weeks later without receipts or warning.",
+      "state_delta": {
+        "facts_added": [],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_A"
+            ],
+            "kind": "position",
+            "issue_id": "child_expense_coordination",
+            "statement": "Reimbursement requests should not arrive weeks later without advance notice and supporting receipts.",
+            "status": "current",
+            "confidence": "high",
+            "proposal_id": null,
+            "position_id": null
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "Client opening remained within normal bounds."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    },
+    {
+      "turn_index": 3,
+      "timestamp": "2026-03-28T00:02:20Z",
+      "role": "assistant",
+      "phase": "interest_exploration",
+      "message_summary": "Acknowledge Party A's concern, reframe it in interest terms, and actively invite Party B's perspective to balance the dialogue and surface both parties' underlying interests before exploring options.",
+      "state_delta": {
+        "facts_added": [
+          "Child expense reimbursement typically governed by separation agreement or parenting order provisions",
+          "Standard practice often requires receipts and reasonable notice, but specifics vary by jurisdiction and agreement"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "What does their current separation agreement or parenting order specify about expense reimbursement process?",
+          "What is the actual pattern - how often do requests come, with what documentation, over what time period?"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "Party B silence after Party A grievance requires active balancing to prevent power asymmetry",
+          "Early grievance presentation creates risk of premature positional entrenchment"
+        ],
+        "severity": 1,
+        "notes": "No escalation signals detected, but facilitation care required. Party A's opening with a specific complaint creates structural risk that B will respond defensively rather than articulating interests. Solomon must actively invite Party B's perspective while reframing A's complaint in interest terms. The silence from B is not itself an escalation signal, but facilitation must ensure B has equal voice and that we surface interests before positions harden."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "High confidence that active balancing is required at this moment. Party A's opening complaint creates structural risk of casting the session as A-complains/B-defends rather than mutual interest exploration. The response deliberately: (1) acknowledges A's concern without validating the implicit accusation, (2) reframes A's complaint as an interest in predictability, (3) actively invites B's voice with open questions, and (4) frames the task as mutual understanding before option work. This should prevent premature positional entrenchment and create space for genuine interest surfacing.",
+      "message_text": "Thank you for bringing that concern forward. I'm hearing that the timing and documentation around reimbursement requests has been creating difficulty for you \u2014 it sounds like predictability and having information in advance matters to you in managing shared expenses.\n\nBefore we explore how to address that, I want to make sure we understand the full picture. [Party B], I'd like to invite your perspective. Can you help me understand how the expense reimbursement process has been working from your point of view? What has your experience been with tracking and requesting reimbursement for shared child expenses?\n\nI want to make sure we hear from both of you about what's been challenging and what each of you needs in order for expense-sharing to work. Once we understand both perspectives, we'll be in a better position to explore options that could work for both of you.",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=frustrated_but_controlled posture=assertive_opening",
+        "[PERCEPTION:PARTY_A:INTERESTS] predictability and advance notice in co-parenting financial arrangements; clear documentation and accountability in shared expenses; fair process in expense-sharing decisions",
+        "[PERCEPTION:PARTY_B] emotional=unknown_silent posture=silent_reserved",
+        "[PERCEPTION:PARTY_B:INTERESTS] unknown - Party B has not yet spoken",
+        "[PERCEPTION:DYNAMIC] asymmetric_opening - Party A has initiated with a specific complaint about process; Party B has not responded. This creates immediate risk of casting A as complainant and B as respondent, which could entrench positions before interests are surfaced.",
+        "[DOMAIN:GAPS] What does their current separation agreement or parenting order specify about expense reimbursement process?; What is the actual pattern - how often do requests come, with what documentation, over what time period?; What expenses are at issue - extraordinary medical, extracurricular, educational, other?",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=asymmetric_opening - Party A has initiated with a specific complaint about process; Party B has not responded. This creates immediate risk of casting A as complainant and B as respondent, which could entrench positions before interests are surfaced."
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "frustrated_but_controlled",
+            "inferred_interests": [
+              "predictability and advance notice in co-parenting financial arrangements",
+              "clear documentation and accountability in shared expenses",
+              "fair process in expense-sharing decisions",
+              "reduction of surprise financial demands"
+            ],
+            "risk_signals": [
+              "early presentation of grievance may indicate accumulated frustration",
+              "focus on process failures rather than substantive issues suggests pattern concern"
+            ],
+            "relational_posture": "assertive_opening"
+          },
+          "party_b": {
+            "emotional_state": "unknown_silent",
+            "inferred_interests": [
+              "unknown - Party B has not yet spoken"
+            ],
+            "risk_signals": [
+              "silence after Party A's grievance statement - could indicate withdrawal, defensiveness, or simply waiting for facilitation"
+            ],
+            "relational_posture": "silent_reserved"
+          },
+          "relational_dynamic": "asymmetric_opening - Party A has initiated with a specific complaint about process; Party B has not responded. This creates immediate risk of casting A as complainant and B as respondent, which could entrench positions before interests are surfaced.",
+          "perception_confidence": "moderate",
+          "perception_notes": [
+            "Party A's complaint is procedural rather than substantive - they object to timing and documentation, not necessarily the expenses themselves",
+            "Party B's silence is ambiguous - requires active facilitation to determine whether it reflects defensiveness, processing time, or deference",
+            "Risk of premature positional framing if we allow A's complaint to define the agenda without surfacing B's perspective and both parties' underlying interests"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed 'asymmetric_opening - Party A has initiated with a specific complaint about process; Party B has not responded. This creates immediate risk of casting A as complainant and B as respondent, which could entrench positions before interests are surfaced.'"
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "Child expense reimbursement typically governed by separation agreement or parenting order provisions",
+            "Standard practice often requires receipts and reasonable notice, but specifics vary by jurisdiction and agreement",
+            "Documentation requirements may be contractual, not merely procedural preferences",
+            "Information gap: we do not know what their current agreement (if any) says about reimbursement process"
+          ],
+          "material_gaps": [
+            "What does their current separation agreement or parenting order specify about expense reimbursement process?",
+            "What is the actual pattern - how often do requests come, with what documentation, over what time period?",
+            "What expenses are at issue - extraordinary medical, extracurricular, educational, other?",
+            "What is Party B's perspective on the timing and documentation issue?",
+            "Are there practical barriers (record-keeping capacity, cash flow timing) driving the current pattern?"
+          ],
+          "domain_notes": "The pre-computed domain analysis failed to parse, but the issue presented is a classic co-parenting expense dispute. However, we cannot responsibly generate options without understanding: (1) what their current agreement requires, (2) what the actual pattern and scale of the problem is, and (3) Party B's perspective and interests. Party A has presented a process complaint, but we don't yet know if this reflects a fundamental disagreement about expense-sharing philosophy, a documentation/systems problem, a communication breakdown, or something else.",
+          "option_readiness": "deferred"
+        },
+        "option_scan": {
+          "candidate_options": [
+            "Establish advance notice requirement (e.g., 7 days) for non-emergency reimbursement requests",
+            "Create shared expense tracking system (app or spreadsheet) with receipt uploads",
+            "Define expense categories requiring advance consultation vs. those reimbursable after-the-fact",
+            "Set reimbursement request window (e.g., within 30 days of expense incurred)",
+            "Establish receipt requirement with narrow exceptions for small amounts",
+            "Create monthly reconciliation process rather than ad-hoc requests"
+          ],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Critical information gaps prevent responsible option qualification. We do not know: (1) Party B's perspective on the issue Party A raised, (2) what their current agreement specifies, (3) the actual pattern and scale of the reimbursement requests, (4) whether this is primarily a systems problem, a communication problem, or a deeper disagreement about expense-sharing philosophy. Generating options now would risk: (a) validating Party A's framing without hearing Party B, (b) proposing solutions to the wrong problem, (c) bypassing necessary interest exploration. The candidate options listed are plausible in general but cannot be qualified as appropriate for this case until interests are surfaced and the problem is better understood."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [
+            "Party B silence after Party A grievance requires active balancing to prevent power asymmetry",
+            "Early grievance presentation creates risk of premature positional entrenchment"
+          ],
+          "notes": "No escalation signals detected, but facilitation care required. Party A's opening with a specific complaint creates structural risk that B will respond defensively rather than articulating interests. Solomon must actively invite Party B's perspective while reframing A's complaint in interest terms. The silence from B is not itself an escalation signal, but facilitation must ensure B has equal voice and that we surface interests before positions harden.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "info_gathering",
+          "message_summary": "Acknowledge Party A's concern, reframe it in interest terms, and actively invite Party B's perspective to balance the dialogue and surface both parties' underlying interests before exploring options.",
+          "message_text": "Thank you for bringing that concern forward. I'm hearing that the timing and documentation around reimbursement requests has been creating difficulty for you \u2014 it sounds like predictability and having information in advance matters to you in managing shared expenses.\n\nBefore we explore how to address that, I want to make sure we understand the full picture. [Party B], I'd like to invite your perspective. Can you help me understand how the expense reimbursement process has been working from your point of view? What has your experience been with tracking and requesting reimbursement for shared child expenses?\n\nI want to make sure we hear from both of you about what's been challenging and what each of you needs in order for expense-sharing to work. Once we understand both perspectives, we'll be in a better position to explore options that could work for both of you.",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "High confidence that active balancing is required at this moment. Party A's opening complaint creates structural risk of casting the session as A-complains/B-defends rather than mutual interest exploration. The response deliberately: (1) acknowledges A's concern without validating the implicit accusation, (2) reframes A's complaint as an interest in predictability, (3) actively invites B's voice with open questions, and (4) frames the task as mutual understanding before option work. This should prevent premature positional entrenchment and create space for genuine interest surfacing."
+        },
+        "pre_computed_domain_analysis": {
+          "option_readiness": "deferred",
+          "readiness_rationale": "Domain reasoner response could not be parsed.",
+          "safety_veto_applied": false,
+          "safety_veto_reason": null,
+          "qualified_candidates": [],
+          "blocking_constraints": [],
+          "material_gaps": [],
+          "domain_confidence": "low",
+          "domain_notes": "Parse failed. Raw text (first 300 chars): ```json\n{\n  \"schema_version\": \"domain_analysis.v0\",\n  \"source\": \"domain_reasoner_v0\",\n  \"option_readiness\": \"blocked\",\n  \"readiness_rationale\": \"Turn 3 represents extremely early stage engagement. Only Party A has made a single substantive statement expressing a process concern about reimbursement t",
+          "_parse_error": true,
+          "schema_version": "domain_analysis.v0",
+          "case_id": "D-B07",
+          "session_id": "D-B07-S06",
+          "turn_index": 3,
+          "generated_at": "2026-03-28T00:02:20Z",
+          "source": "domain_reasoner_v0"
+        }
+      }
+    },
+    {
+      "turn_index": 4,
+      "timestamp": "2026-03-28T00:03:30Z",
+      "role": "client",
+      "phase": "interest_exploration",
+      "message_summary": "Parent B says repayment should still stay workable and not depend on one parent having total control over what counts as an approved expense.",
+      "state_delta": {
+        "facts_added": [],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_B"
+            ],
+            "kind": "position",
+            "issue_id": "communication_protocol",
+            "statement": "Expense coordination should stay fair and workable rather than turning into one-sided approval power.",
+            "status": "current",
+            "confidence": "high",
+            "proposal_id": null,
+            "position_id": null
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "Client response remained constructive."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    },
+    {
+      "turn_index": 5,
+      "timestamp": "2026-03-28T00:04:40Z",
+      "role": "assistant",
+      "phase": "option_generation",
+      "message_summary": "Reflect the shared underlying interest both parties have expressed (fair mutual influence over expense decisions) while naming the mirror pattern. Validate both parties' concerns as legitimate. Introduce the conceptual option space of process frameworks that balance advance notice with flexibility, and invite parties to explore which expense categories and thresholds would work for their situation.",
+      "state_delta": {
+        "facts_added": [
+          "Child support and expense-sharing arrangements must comply with state law frameworks",
+          "Any agreement must be implementable without requiring constant real-time coordination"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "Nature of expenses causing conflict - ongoing (e.g., childcare) vs. discretionary (e.g., activities)?",
+          "Current legal framework - is there an existing order defining expense categories?"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "Both parties are engaged, articulating interests constructively, and showing capacity to participate. The mirror-defensiveness pattern is normal for this phase and does not indicate incapacity or coercion. No safety concerns detected. Proceeding with interest synthesis and option development is appropriate."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "High confidence in perception of shared underlying interest. Introducing option space conceptually without presenting specific options yet, because information about expense types and current arrangements will meaningfully shape which frameworks are most relevant.",
+      "message_text": "Thank you both. I'm hearing something important: you each want a voice in decisions about shared expenses, and you're each concerned about the other having unilateral control. Parent A, you want predictability, documentation, and a chance to weigh in before expenses are incurred. Parent B, you want flexibility and shared authority, not a system where one parent can veto necessary expenses. These concerns actually point to the same underlying interest \u2014 fair mutual influence.\n\nThe challenge you're both naming is process design: how do you make decisions together without requiring constant real-time approval, and without either of you being shut out?\n\nThere are frameworks that other co-parents use to balance these interests. Some distinguish between routine expenses that just need documentation, and larger or less predictable expenses that benefit from advance discussion. Others set dollar thresholds, or identify specific categories where mutual agreement makes sense \u2014 like new activities or non-emergency medical decisions.\n\nBefore we explore specific structures, it would help me understand: what types of expenses have triggered conflict in the past? Are we talking about regular recurring costs, or more about one-time decisions? And is there currently any agreement or order that defines how you share expenses?",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=frustrated_but_engaged posture=assertive_and_protective",
+        "[PERCEPTION:PARTY_A:INTERESTS] predictability and advance notice in financial arrangements; transparency and documentation in expense processes; fair influence over expense decisions",
+        "[PERCEPTION:PARTY_B] emotional=defensive_but_constructive posture=assertive_and_protective",
+        "[PERCEPTION:PARTY_B:INTERESTS] flexibility and responsiveness in expense-sharing arrangements; shared decision-making authority over child expenses; protection from unilateral veto power by other party",
+        "[PERCEPTION:DYNAMIC] mirror_defensiveness - both parties are articulating concerns about unilateral control by the other. Each is protecting against a feared outcome where the other party has excessive influence. This is a classic impasse pattern where both parties share the underlying interest (fair mutual influence) but are focused on defending against opposite threats. The dynamic is balanced rather than asymmetric, which is constructive, but the mirroring suggests they may be talking past each other rather than recognizing their shared concern.",
+        "[DOMAIN:GAPS] Nature of expenses causing conflict - ongoing (e.g., childcare) vs. discretionary (e.g., activities)?; Current legal framework - is there an existing order defining expense categories?; Practical capacity - who typically incurs expenses first in daily parenting?",
+        "[OPTION_SCAN:QUALIFIED] Tiered expense framework with threshold-based protocols; Mutual advance-notice protocol with defined timeframes; Category-based decision rules distinguishing routine from non-routine expenses",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=mirror_defensiveness - both parties are articulating concerns about unilateral control by the other. Each is protecting against a feared outcome where the other party has excessive influence. This is a classic impasse pattern where both parties share the underlying interest (fair mutual influence) but are focused on defending against opposite threats. The dynamic is balanced rather than asymmetric, which is constructive, but the mirroring suggests they may be talking past each other rather than recognizing their shared concern."
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "frustrated_but_engaged",
+            "inferred_interests": [
+              "predictability and advance notice in financial arrangements",
+              "transparency and documentation in expense processes",
+              "fair influence over expense decisions",
+              "protection from unilateral decision-making by other party"
+            ],
+            "risk_signals": [
+              "language of 'control' suggests concern about power imbalance in current arrangement",
+              "focus on process fairness may indicate history of feeling shut out of decisions"
+            ],
+            "relational_posture": "assertive_and_protective"
+          },
+          "party_b": {
+            "emotional_state": "defensive_but_constructive",
+            "inferred_interests": [
+              "flexibility and responsiveness in expense-sharing arrangements",
+              "shared decision-making authority over child expenses",
+              "protection from unilateral veto power by other party",
+              "workable process that doesn't require advance approval for every expense"
+            ],
+            "risk_signals": [
+              "framing around 'total control' suggests concern about being subjected to gatekeeping",
+              "emphasis on 'workable' may indicate current system feels obstructive"
+            ],
+            "relational_posture": "assertive_and_protective"
+          },
+          "relational_dynamic": "mirror_defensiveness - both parties are articulating concerns about unilateral control by the other. Each is protecting against a feared outcome where the other party has excessive influence. This is a classic impasse pattern where both parties share the underlying interest (fair mutual influence) but are focused on defending against opposite threats. The dynamic is balanced rather than asymmetric, which is constructive, but the mirroring suggests they may be talking past each other rather than recognizing their shared concern.",
+          "perception_confidence": "high",
+          "perception_notes": [
+            "Party B has now engaged substantively after initial silence",
+            "Both parties are using process language ('approved expense', 'total control') rather than substantive content, suggesting the real conflict is about decision-making authority",
+            "The symmetry in their concerns is a significant asset - they both want fair influence, neither wants to be controlled",
+            "No safety signals - both parties are engaging constructively despite frustration"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed 'mirror_defensiveness - both parties are articulating concerns about unilateral control by the other. Each is protecting against a feared outcome where the other party has excessive influence. This is a classic impasse pattern where both parties share the underlying interest (fair mutual influence) but are focused on defending against opposite threats. The dynamic is balanced rather than asymmetric, which is constructive, but the mirroring suggests they may be talking past each other rather than recognizing their shared concern.'"
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "Child support and expense-sharing arrangements must comply with state law frameworks",
+            "Any agreement must be implementable without requiring constant real-time coordination",
+            "Documentation and transparency mechanisms must be realistic for both parties' capacity",
+            "Decision-making authority must be balanced to prevent unilateral control by either party"
+          ],
+          "material_gaps": [
+            "Nature of expenses causing conflict - ongoing (e.g., childcare) vs. discretionary (e.g., activities)?",
+            "Current legal framework - is there an existing order defining expense categories?",
+            "Practical capacity - who typically incurs expenses first in daily parenting?",
+            "Historical pattern - what has triggered conflict previously?"
+          ],
+          "domain_notes": "The domain reasoner output failed to parse, but the substance of the conflict is clear: both parties are concerned about fair process for shared expense decisions. The key domain consideration is designing a decision-making framework that balances advance notice/approval (Party A's interest) with practical flexibility (Party B's interest) while preventing unilateral control by either party. This is a classic governance design problem in co-parenting. Information gaps about expense types and current arrangements are material but do not block initial option work - we can generate process frameworks at a conceptual level and refine based on specifics.",
+          "option_readiness": "ready"
+        },
+        "option_scan": {
+          "candidate_options": [
+            "Tiered expense categories: routine expenses below threshold require only documentation/reimbursement; non-routine expenses above threshold require advance notice and opportunity to discuss",
+            "Mutual advance-notice protocol: either party proposing a non-routine expense provides X days notice with explanation; other party has Y days to raise concerns or request discussion",
+            "Shared decision-making for major categories: identify specific high-impact expense types (activities, medical, education) that require mutual agreement; other expenses follow simpler documentation process",
+            "Default approval with objection window: proposed expenses are presumed approved unless objecting party raises concern within specified timeframe",
+            "Standing agreements for recurring expenses: establish annual or term-based agreements for predictable costs (activities, childcare) to reduce per-incident negotiation"
+          ],
+          "qualified_options": [
+            "Tiered expense framework with threshold-based protocols",
+            "Mutual advance-notice protocol with defined timeframes",
+            "Category-based decision rules distinguishing routine from non-routine expenses"
+          ],
+          "premature_option_work": false,
+          "deferral_reason": null
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [],
+          "notes": "Both parties are engaged, articulating interests constructively, and showing capacity to participate. The mirror-defensiveness pattern is normal for this phase and does not indicate incapacity or coercion. No safety concerns detected. Proceeding with interest synthesis and option development is appropriate.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "interest_exploration",
+          "message_summary": "Reflect the shared underlying interest both parties have expressed (fair mutual influence over expense decisions) while naming the mirror pattern. Validate both parties' concerns as legitimate. Introduce the conceptual option space of process frameworks that balance advance notice with flexibility, and invite parties to explore which expense categories and thresholds would work for their situation.",
+          "message_text": "Thank you both. I'm hearing something important: you each want a voice in decisions about shared expenses, and you're each concerned about the other having unilateral control. Parent A, you want predictability, documentation, and a chance to weigh in before expenses are incurred. Parent B, you want flexibility and shared authority, not a system where one parent can veto necessary expenses. These concerns actually point to the same underlying interest \u2014 fair mutual influence.\n\nThe challenge you're both naming is process design: how do you make decisions together without requiring constant real-time approval, and without either of you being shut out?\n\nThere are frameworks that other co-parents use to balance these interests. Some distinguish between routine expenses that just need documentation, and larger or less predictable expenses that benefit from advance discussion. Others set dollar thresholds, or identify specific categories where mutual agreement makes sense \u2014 like new activities or non-emergency medical decisions.\n\nBefore we explore specific structures, it would help me understand: what types of expenses have triggered conflict in the past? Are we talking about regular recurring costs, or more about one-time decisions? And is there currently any agreement or order that defines how you share expenses?",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "High confidence in perception of shared underlying interest. Introducing option space conceptually without presenting specific options yet, because information about expense types and current arrangements will meaningfully shape which frameworks are most relevant."
+        },
+        "pre_computed_domain_analysis": {
+          "option_readiness": "deferred",
+          "readiness_rationale": "Domain reasoner response could not be parsed.",
+          "safety_veto_applied": false,
+          "safety_veto_reason": null,
+          "qualified_candidates": [],
+          "blocking_constraints": [],
+          "material_gaps": [],
+          "domain_confidence": "low",
+          "domain_notes": "Parse failed. Raw text (first 300 chars): ```json\n{\n  \"schema_version\": \"domain_analysis.v0\",\n  \"source\": \"domain_reasoner_v0\",\n  \"option_readiness\": \"ready\",\n  \"readiness_rationale\": \"Both parties have now articulated process-level concerns in the expense coordination domain. Party A has expressed interests in predictability, advance notic",
+          "_parse_error": true,
+          "schema_version": "domain_analysis.v0",
+          "case_id": "D-B07",
+          "session_id": "D-B07-S06",
+          "turn_index": 5,
+          "generated_at": "2026-03-28T00:04:40Z",
+          "source": "domain_reasoner_v0"
+        }
+      }
+    },
+    {
+      "turn_index": 6,
+      "timestamp": "2026-03-28T00:05:50Z",
+      "role": "client",
+      "phase": "agreement_building",
+      "message_summary": "Both parents are conditionally open to a reimbursement package with notice windows, shared receipts, and a short response period before repayment is due.",
+      "state_delta": {
+        "facts_added": [],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_A",
+              "spouse_B"
+            ],
+            "kind": "proposal",
+            "issue_id": "child_expense_coordination",
+            "statement": "Both parents are open to a child-expense package built around advance notice, shared receipts, and a short reimbursement response window.",
+            "status": "tentative",
+            "confidence": null,
+            "proposal_id": null,
+            "position_id": null
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "Agreement-building remained bounded and voluntary."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    }
+  ],
+  "final_state_summary": {
+    "current_phase": "agreement_building",
+    "issues_identified": [],
+    "open_questions_remaining": [],
+    "active_flags": [],
+    "current_escalation_state": "M0",
+    "continuation_recommendation": "Use the next session to continue clarifying positions, interests, and process expectations without overstating agreement."
+  },
+  "trace_notes": null
+}

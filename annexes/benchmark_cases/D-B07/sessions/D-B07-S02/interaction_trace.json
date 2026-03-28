@@ -1,0 +1,585 @@
+{
+  "schema_version": "interaction_trace.v0",
+  "case_id": "D-B07",
+  "session_id": "D-B07-S02",
+  "policy_profile": "eval_support",
+  "trace_created_at": "2026-03-28T15:35:51Z",
+  "turns": [
+    {
+      "turn_index": 1,
+      "timestamp": "2026-03-28T00:00:10Z",
+      "role": "assistant",
+      "phase": "info_gathering",
+      "message_summary": "Opening the mediation session by establishing process framework, explaining Solomon's role, confirming voluntary participation and capacity to proceed, and beginning systematic information gathering about the case.",
+      "state_delta": {
+        "facts_added": [
+          "No case-specific information yet gathered",
+          "Financial circumstances unknown"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "Basic case facts not yet established",
+          "Party priorities not yet articulated"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "No escalation signals detected. Both parties appear appropriately engaged. M0 (standard mediation mode) remains appropriate. Process is beginning in expected manner."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "Low perception confidence is appropriate for turn 1. Response focuses on process establishment and information gathering rather than substantive option work.",
+      "message_text": "Welcome. I'm Solomon, and I'll be supporting your mediation process today.\n\nBefore we begin, I want to explain how this works. I'm here as a neutral process facilitator \u2014 I don't take sides, I don't make decisions for you, and I don't provide legal advice. My role is to help you both surface what matters to you, understand each other's perspectives, and work toward agreements that serve both of your interests.\n\nThis process is voluntary. Either of you can pause or end the session at any time. What we discuss here is part of a confidential mediation process, though I should note that I'm required to escalate if I detect safety concerns or situations beyond my scope.\n\nI need to confirm a few things before we proceed:\n\nFirst, are you both participating voluntarily today, without pressure or coercion?\n\nSecond, do you both feel capable of engaging in this conversation \u2014 are there any immediate concerns about your ability to participate fully right now?\n\nOnce we've confirmed those points, I'd like to understand the basic contours of your situation. Could you help me understand: What brings you to mediation today? What are the main areas you're hoping to address?",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=calm_but_uncertain posture=appropriately_cautious_but_open",
+        "[PERCEPTION:PARTY_A:INTERESTS] understanding the process and what to expect; being heard and treated fairly; resolving matters efficiently",
+        "[PERCEPTION:PARTY_B] emotional=calm_but_uncertain posture=appropriately_cautious_but_open",
+        "[PERCEPTION:PARTY_B:INTERESTS] understanding the process and what to expect; being heard and treated fairly; resolving matters efficiently",
+        "[PERCEPTION:DYNAMIC] initial_neutrality_with_cooperative_potential",
+        "[DOMAIN:GAPS] Basic case facts not yet established; Party priorities not yet articulated; Domain-specific constraints cannot yet be assessed",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=initial_neutrality_with_cooperative_potential"
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "calm_but_uncertain",
+            "inferred_interests": [
+              "understanding the process and what to expect",
+              "being heard and treated fairly",
+              "resolving matters efficiently",
+              "protecting their interests while maintaining dignity"
+            ],
+            "risk_signals": [],
+            "relational_posture": "appropriately_cautious_but_open"
+          },
+          "party_b": {
+            "emotional_state": "calm_but_uncertain",
+            "inferred_interests": [
+              "understanding the process and what to expect",
+              "being heard and treated fairly",
+              "resolving matters efficiently",
+              "protecting their interests while maintaining dignity"
+            ],
+            "risk_signals": [],
+            "relational_posture": "appropriately_cautious_but_open"
+          },
+          "relational_dynamic": "initial_neutrality_with_cooperative_potential",
+          "perception_confidence": "low",
+          "perception_notes": [
+            "Turn 1 - limited observational data available",
+            "Both parties appear to have entered the session in good faith",
+            "No signals of overt hostility or withdrawal",
+            "Natural uncertainty is expected at session opening",
+            "Will need to observe response patterns to deepen assessment"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed 'initial_neutrality_with_cooperative_potential'"
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "No case-specific information yet gathered",
+            "Financial circumstances unknown",
+            "Property holdings unknown",
+            "Children and custody arrangements unknown",
+            "Length of relationship unknown",
+            "Immediate needs and concerns not yet surfaced"
+          ],
+          "material_gaps": [
+            "Basic case facts not yet established",
+            "Party priorities not yet articulated",
+            "Domain-specific constraints cannot yet be assessed",
+            "No foundation for feasibility analysis"
+          ],
+          "domain_notes": "At turn 1, we are in pure process establishment mode. No domain analysis can be conducted until basic case information is gathered. The immediate task is to establish process framework, build trust, and begin systematic information gathering.",
+          "option_readiness": "blocked"
+        },
+        "option_scan": {
+          "candidate_options": [],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Turn 1 - no case information available. Option generation requires understanding of basic case facts, party interests, and domain constraints. Must complete initial information gathering before option work can begin."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [],
+          "notes": "No escalation signals detected. Both parties appear appropriately engaged. M0 (standard mediation mode) remains appropriate. Process is beginning in expected manner.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "info_gathering",
+          "message_summary": "Opening the mediation session by establishing process framework, explaining Solomon's role, confirming voluntary participation and capacity to proceed, and beginning systematic information gathering about the case.",
+          "message_text": "Welcome. I'm Solomon, and I'll be supporting your mediation process today.\n\nBefore we begin, I want to explain how this works. I'm here as a neutral process facilitator \u2014 I don't take sides, I don't make decisions for you, and I don't provide legal advice. My role is to help you both surface what matters to you, understand each other's perspectives, and work toward agreements that serve both of your interests.\n\nThis process is voluntary. Either of you can pause or end the session at any time. What we discuss here is part of a confidential mediation process, though I should note that I'm required to escalate if I detect safety concerns or situations beyond my scope.\n\nI need to confirm a few things before we proceed:\n\nFirst, are you both participating voluntarily today, without pressure or coercion?\n\nSecond, do you both feel capable of engaging in this conversation \u2014 are there any immediate concerns about your ability to participate fully right now?\n\nOnce we've confirmed those points, I'd like to understand the basic contours of your situation. Could you help me understand: What brings you to mediation today? What are the main areas you're hoping to address?",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "Low perception confidence is appropriate for turn 1. Response focuses on process establishment and information gathering rather than substantive option work."
+        }
+      }
+    },
+    {
+      "turn_index": 2,
+      "timestamp": "2026-03-28T00:01:15Z",
+      "role": "client",
+      "phase": "info_gathering",
+      "message_summary": "Parent A says reimbursement requests should not appear weeks later without receipts or warning.",
+      "state_delta": {
+        "facts_added": [],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_A"
+            ],
+            "kind": "position",
+            "issue_id": "child_expense_coordination",
+            "statement": "Reimbursement requests should not arrive weeks later without advance notice and supporting receipts.",
+            "status": "current",
+            "confidence": "high",
+            "proposal_id": null,
+            "position_id": null
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "Client opening remained within normal bounds."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    },
+    {
+      "turn_index": 3,
+      "timestamp": "2026-03-28T00:02:20Z",
+      "role": "assistant",
+      "phase": "interest_exploration",
+      "message_summary": "Acknowledge Party A's concern about reimbursement process, validate the underlying interest in predictability, and invite Party B to share their perspective on the same issue before proceeding further.",
+      "state_delta": {
+        "facts_added": [
+          "Reimbursement requests implicate both past behavior patterns and future process design",
+          "Receipt documentation is standard practice but parties may have different capacity/organization levels"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "Nature of expenses requiring reimbursement (children, property, shared debts, other)",
+          "Whether any prior agreement or understanding existed about reimbursement process"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "Early asymmetry in participation (Party A speaking, Party B silent) \u2014 monitor but not threshold-crossing yet",
+          "Party A's language suggests frustration but remains controlled and process-appropriate",
+          "No indicators of incapacity, coercion, safety risk, or process breakdown"
+        ],
+        "severity": 1,
+        "notes": "Current mode M0 remains appropriate. The asymmetry between parties is notable but consistent with early-stage mediation where one party may speak first. Party B's silence requires gentle invitation to participate but does not indicate incapacity or unwillingness. No escalation triggers detected. Continue standard information gathering while ensuring both parties have equal opportunity to be heard."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "Moderate confidence in perception assessment. Party A's interests are reasonably clear from their statement. Party B's state is inferred from silence rather than content, requiring validation through their response.",
+      "message_text": "Thank you for raising that concern about reimbursement requests. I'm hearing that predictability and clear communication around financial matters is important to you \u2014 knowing what to expect and when, and having documentation to support requests. That makes sense.\n\nBefore we go further into this issue, I'd like to hear from Party B. You've just heard Party A describe a concern about reimbursement requests coming weeks later without receipts or advance notice. I'm interested in your perspective on this same issue. What's your experience been with the reimbursement process between you? And what matters to you when it comes to handling shared expenses or reimbursements?",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=frustrated_but_controlled posture=assertive_with_boundary_setting",
+        "[PERCEPTION:PARTY_A:INTERESTS] financial predictability and planning ability; fair and transparent expense sharing process; protection from unexpected financial demands",
+        "[PERCEPTION:PARTY_B] emotional=uncertain_and_observing posture=watchful_silence",
+        "[PERCEPTION:PARTY_B:INTERESTS] understanding the complaint being raised; having their perspective heard before responding; fairness in financial matters",
+        "[PERCEPTION:DYNAMIC] early_asymmetry_with_one_party_leading",
+        "[DOMAIN:GAPS] Nature of expenses requiring reimbursement (children, property, shared debts, other); Whether any prior agreement or understanding existed about reimbursement process; Party B's perspective on the same events",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=early_asymmetry_with_one_party_leading"
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "frustrated_but_controlled",
+            "inferred_interests": [
+              "financial predictability and planning ability",
+              "fair and transparent expense sharing process",
+              "protection from unexpected financial demands",
+              "dignity and respect in financial interactions",
+              "clear boundaries and documentation standards"
+            ],
+            "risk_signals": [
+              "early position statement may indicate rehearsed grievance",
+              "language suggests accumulated frustration ('weeks later', 'without receipts or warning')"
+            ],
+            "relational_posture": "assertive_with_boundary_setting"
+          },
+          "party_b": {
+            "emotional_state": "uncertain_and_observing",
+            "inferred_interests": [
+              "understanding the complaint being raised",
+              "having their perspective heard before responding",
+              "fairness in financial matters",
+              "maintaining some relational equilibrium"
+            ],
+            "risk_signals": [],
+            "relational_posture": "watchful_silence"
+          },
+          "relational_dynamic": "early_asymmetry_with_one_party_leading",
+          "perception_confidence": "moderate",
+          "perception_notes": [
+            "Party A has offered specific complaint about reimbursement process \u2014 this is substantive content, not just procedural response",
+            "Party B has not yet spoken \u2014 their silence could indicate various states (processing, deferring, uncertainty about process)",
+            "Power dynamic unclear: Party A speaking first could indicate confidence or could indicate reactive stance to prior pattern",
+            "No indicators of safety concerns yet, but asymmetry requires monitoring",
+            "Reimbursement dispute suggests post-separation financial entanglement \u2014 likely shared expenses for children or property"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed 'early_asymmetry_with_one_party_leading'"
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "Reimbursement requests implicate both past behavior patterns and future process design",
+            "Receipt documentation is standard practice but parties may have different capacity/organization levels",
+            "Timing expectations ('weeks later') suggest need for procedural agreement, not just substantive split",
+            "Unknown: what expenses are being reimbursed, what prior agreement (if any) existed, what amounts are in dispute",
+            "Unknown: whether this is child-related expense sharing (legally governed) or other post-separation financial matters"
+          ],
+          "material_gaps": [
+            "Nature of expenses requiring reimbursement (children, property, shared debts, other)",
+            "Whether any prior agreement or understanding existed about reimbursement process",
+            "Party B's perspective on the same events",
+            "Frequency and amounts involved",
+            "Current arrangements for ongoing shared expenses",
+            "Legal framework governing these particular expenses"
+          ],
+          "domain_notes": "Plugin posture is 'none' \u2014 no feasibility assessment yet because insufficient domain facts established. This is appropriate given we're at turn 3. Reimbursement disputes often mask deeper interests about control, trust, predictability, or fairness. Need both parties' narratives before option work is responsible.",
+          "option_readiness": "deferred"
+        },
+        "option_scan": {
+          "candidate_options": [
+            "Prospective reimbursement protocol with documentation requirements",
+            "Advance notice period for reimbursement requests",
+            "Shared expense tracking system or platform",
+            "Pre-approved expense categories vs. case-by-case",
+            "Maximum time window for reimbursement claims",
+            "Dispute resolution process for contested reimbursements"
+          ],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Material information gaps prevent responsible option work. Party B has not yet offered their perspective on the reimbursement issue. Unknown whether this concerns child expenses (legally constrained) or other matters. Unknown what prior understandings existed. Unknown what specific incidents have occurred. Generating options now would risk appearing to validate Party A's framing without hearing Party B, would risk offering options that don't fit the legal/practical constraints, and would skip necessary interest clarification for both parties."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [
+            "Early asymmetry in participation (Party A speaking, Party B silent) \u2014 monitor but not threshold-crossing yet",
+            "Party A's language suggests frustration but remains controlled and process-appropriate",
+            "No indicators of incapacity, coercion, safety risk, or process breakdown"
+          ],
+          "notes": "Current mode M0 remains appropriate. The asymmetry between parties is notable but consistent with early-stage mediation where one party may speak first. Party B's silence requires gentle invitation to participate but does not indicate incapacity or unwillingness. No escalation triggers detected. Continue standard information gathering while ensuring both parties have equal opportunity to be heard.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "info_gathering",
+          "message_summary": "Acknowledge Party A's concern about reimbursement process, validate the underlying interest in predictability, and invite Party B to share their perspective on the same issue before proceeding further.",
+          "message_text": "Thank you for raising that concern about reimbursement requests. I'm hearing that predictability and clear communication around financial matters is important to you \u2014 knowing what to expect and when, and having documentation to support requests. That makes sense.\n\nBefore we go further into this issue, I'd like to hear from Party B. You've just heard Party A describe a concern about reimbursement requests coming weeks later without receipts or advance notice. I'm interested in your perspective on this same issue. What's your experience been with the reimbursement process between you? And what matters to you when it comes to handling shared expenses or reimbursements?",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "Moderate confidence in perception assessment. Party A's interests are reasonably clear from their statement. Party B's state is inferred from silence rather than content, requiring validation through their response."
+        }
+      }
+    },
+    {
+      "turn_index": 4,
+      "timestamp": "2026-03-28T00:03:30Z",
+      "role": "client",
+      "phase": "interest_exploration",
+      "message_summary": "Parent B says repayment should still stay workable and not depend on one parent having total control over what counts as an approved expense.",
+      "state_delta": {
+        "facts_added": [],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_B"
+            ],
+            "kind": "position",
+            "issue_id": "communication_protocol",
+            "statement": "Expense coordination should stay fair and workable rather than turning into one-sided approval power.",
+            "status": "current",
+            "confidence": "high",
+            "proposal_id": null,
+            "position_id": null
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "Client response remained constructive."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    },
+    {
+      "turn_index": 5,
+      "timestamp": "2026-03-28T00:04:40Z",
+      "role": "assistant",
+      "phase": "option_generation",
+      "message_summary": "Validate both parties' underlying concerns (predictability vs. fairness), reframe tension as shared problem, and elicit specific information about expense context before attempting process design.",
+      "state_delta": {
+        "facts_added": [
+          "Child support reimbursement processes typically require both structure and flexibility",
+          "Documentation standards (receipts) are legally common but implementation varies"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "What types of expenses are at issue (medical, extracurricular, education, other)?",
+          "What is current informal or formal arrangement?"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "Both parties engaged and articulating clearly",
+          "Historical power dynamic concerns noted but not acute",
+          "Productive tension, not destructive conflict",
+          "No capacity, safety, or coercion signals present"
+        ],
+        "severity": 1,
+        "notes": "Healthy mediation progression. Parties have moved from opening to substantive issue engagement. Opposing concerns are expected at this phase. Continue standard process."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "High confidence in party state assessment. Deliberately deferring option work until information gaps closed. Response structured to validate both interests and elicit material context.",
+      "message_text": "Thank you both. I'm hearing two important concerns that we'll need to address together.\n\nParent A, you're describing a need for predictability \u2014 knowing what's coming, when, and with what documentation. Unexpected requests create financial planning difficulty.\n\nParent B, you're highlighting that any reimbursement process needs to be fair and workable \u2014 that decisions about what qualifies shouldn't rest entirely with one person.\n\nThese concerns actually point to the same underlying question: what process would give both of you confidence that expense sharing is handled fairly and predictably?\n\nBefore we can design that process, I need to understand the context better. Let me ask both of you:\n\nWhat types of expenses are we talking about? Medical costs, school fees, activities, something else? And roughly how often do reimbursement questions come up \u2014 weekly, monthly, a few times a year?\n\nParent A, you mentioned requests appearing 'weeks later' \u2014 can you give me an example of what happened, without rehashing the whole conflict? Just enough so I understand what you're working with.\n\nParent B, what's your concern about how expenses get approved currently? What would 'total control' look like that you want to avoid?",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=frustrated_but_controlled_with_clarity posture=assertive_with_clear_boundaries",
+        "[PERCEPTION:PARTY_A:INTERESTS] financial predictability and advance notice; transparent expense sharing rules; protection against unexpected financial demands",
+        "[PERCEPTION:PARTY_B] emotional=cautiously_engaged_with_concern posture=engaged_but_defensive",
+        "[PERCEPTION:PARTY_B:INTERESTS] flexibility in expense reimbursement process; shared decision-making power over what qualifies; not being subjected to unilateral control",
+        "[PERCEPTION:DYNAMIC] emerging_tension_around_control_and_process_fairness \u2014 both parties engaged but representing opposing concerns about unilateral control versus predictability",
+        "[DOMAIN:GAPS] What types of expenses are at issue (medical, extracurricular, education, other)?; What is current informal or formal arrangement?; What is the scale/frequency of reimbursements?",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=emerging_tension_around_control_and_process_fairness \u2014 both parties engaged but representing opposing concerns about unilateral control versus predictability"
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "frustrated_but_controlled_with_clarity",
+            "inferred_interests": [
+              "financial predictability and advance notice",
+              "transparent expense sharing rules",
+              "protection against unexpected financial demands",
+              "documentation standards (receipts)",
+              "clear process boundaries"
+            ],
+            "risk_signals": [
+              "language suggests accumulated grievance pattern ('weeks later', 'without warning')",
+              "boundary emphasis may indicate prior violations"
+            ],
+            "relational_posture": "assertive_with_clear_boundaries"
+          },
+          "party_b": {
+            "emotional_state": "cautiously_engaged_with_concern",
+            "inferred_interests": [
+              "flexibility in expense reimbursement process",
+              "shared decision-making power over what qualifies",
+              "not being subjected to unilateral control",
+              "fairness in expense determination",
+              "workability of any process"
+            ],
+            "risk_signals": [
+              "concern about 'total control' suggests past power imbalance experience",
+              "defensive framing ('should still stay workable') indicates vulnerability"
+            ],
+            "relational_posture": "engaged_but_defensive"
+          },
+          "relational_dynamic": "emerging_tension_around_control_and_process_fairness \u2014 both parties engaged but representing opposing concerns about unilateral control versus predictability",
+          "perception_confidence": "high",
+          "perception_notes": [
+            "Both parties have now stated positions that reveal underlying interest conflict",
+            "Party A concerned about being blindsided; Party B concerned about being controlled",
+            "Classic mediation pattern: one party wants structure/predictability, other wants flexibility/input",
+            "Both are engaging substantively \u2014 this is productive tension, not breakdown",
+            "No capacity concerns \u2014 both articulating positions clearly",
+            "Risk signals are historical context, not current threat"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed 'emerging_tension_around_control_and_process_fairness \u2014 both parties engaged but representing opposing concerns about unilateral control versus predictability'"
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "Child support reimbursement processes typically require both structure and flexibility",
+            "Documentation standards (receipts) are legally common but implementation varies",
+            "Advance notice periods must balance planning needs with practical expense timing",
+            "Expense categories often need agreed definition (what qualifies as reimbursable)",
+            "Unilateral approval authority is typically disfavored in shared parenting"
+          ],
+          "material_gaps": [
+            "What types of expenses are at issue (medical, extracurricular, education, other)?",
+            "What is current informal or formal arrangement?",
+            "What is the scale/frequency of reimbursements?",
+            "Are there existing court orders or agreements that govern this?",
+            "What specific incidents triggered these concerns?",
+            "What documentation currently exists or doesn't exist?"
+          ],
+          "domain_notes": "This is a classic process design issue in family mediation. Both parties have legitimate interests. The material gaps prevent responsible option generation \u2014 we need to understand the expense universe, frequency, amounts, and what has/hasn't worked before designing a process. Plugin correctly assessed 'none' posture.",
+          "option_readiness": "deferred"
+        },
+        "option_scan": {
+          "candidate_options": [
+            "Category-based pre-approval system (certain expenses auto-approved, others require discussion)",
+            "Tiered notice requirements (emergency/short/standard based on amount or type)",
+            "Shared expense tracking system with documentation upload",
+            "Periodic review meetings for expense discussion",
+            "Receipt requirement with reasonable substitute documentation provision",
+            "Approval threshold amounts (under $X auto-approved, over $X requires agreement)"
+          ],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Material information gaps prevent responsible qualification. We don't know: expense types, amounts, frequency, existing arrangements, or what has failed. Options would be abstract and potentially misleading without this context. Must elicit information before option work."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [
+            "Both parties engaged and articulating clearly",
+            "Historical power dynamic concerns noted but not acute",
+            "Productive tension, not destructive conflict",
+            "No capacity, safety, or coercion signals present"
+          ],
+          "notes": "Healthy mediation progression. Parties have moved from opening to substantive issue engagement. Opposing concerns are expected at this phase. Continue standard process.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "interest_exploration",
+          "message_summary": "Validate both parties' underlying concerns (predictability vs. fairness), reframe tension as shared problem, and elicit specific information about expense context before attempting process design.",
+          "message_text": "Thank you both. I'm hearing two important concerns that we'll need to address together.\n\nParent A, you're describing a need for predictability \u2014 knowing what's coming, when, and with what documentation. Unexpected requests create financial planning difficulty.\n\nParent B, you're highlighting that any reimbursement process needs to be fair and workable \u2014 that decisions about what qualifies shouldn't rest entirely with one person.\n\nThese concerns actually point to the same underlying question: what process would give both of you confidence that expense sharing is handled fairly and predictably?\n\nBefore we can design that process, I need to understand the context better. Let me ask both of you:\n\nWhat types of expenses are we talking about? Medical costs, school fees, activities, something else? And roughly how often do reimbursement questions come up \u2014 weekly, monthly, a few times a year?\n\nParent A, you mentioned requests appearing 'weeks later' \u2014 can you give me an example of what happened, without rehashing the whole conflict? Just enough so I understand what you're working with.\n\nParent B, what's your concern about how expenses get approved currently? What would 'total control' look like that you want to avoid?",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "High confidence in party state assessment. Deliberately deferring option work until information gaps closed. Response structured to validate both interests and elicit material context."
+        }
+      }
+    },
+    {
+      "turn_index": 6,
+      "timestamp": "2026-03-28T00:05:50Z",
+      "role": "client",
+      "phase": "agreement_building",
+      "message_summary": "Both parents are conditionally open to a reimbursement package with notice windows, shared receipts, and a short response period before repayment is due.",
+      "state_delta": {
+        "facts_added": [],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_A",
+              "spouse_B"
+            ],
+            "kind": "proposal",
+            "issue_id": "child_expense_coordination",
+            "statement": "Both parents are open to a child-expense package built around advance notice, shared receipts, and a short reimbursement response window.",
+            "status": "tentative",
+            "confidence": null,
+            "proposal_id": null,
+            "position_id": null
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "Agreement-building remained bounded and voluntary."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    }
+  ],
+  "final_state_summary": {
+    "current_phase": "agreement_building",
+    "issues_identified": [],
+    "open_questions_remaining": [],
+    "active_flags": [],
+    "current_escalation_state": "M0",
+    "continuation_recommendation": "Use the next session to continue clarifying positions, interests, and process expectations without overstating agreement."
+  },
+  "trace_notes": null
+}

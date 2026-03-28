@@ -1,0 +1,255 @@
+{
+  "schema_version": "option_pool.v0",
+  "case_id": "D-B04",
+  "session_id": "D-B04-S05",
+  "generated_at": "2026-03-28T19:00:00Z",
+  "source": "lm_runtime",
+  "turns": [
+    {
+      "turn_index": 1,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "brainstormer_candidates": [],
+      "domain_expert_candidates": [],
+      "combined_pool_count": 0,
+      "domain_qualified": [],
+      "domain_blocked": [],
+      "presented_to_parties": null
+    },
+    {
+      "turn_index": 3,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "brainstormer_candidates": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Phased overnight expansion tied to demonstrated logistics reliability",
+          "rationale": "Addresses Party A's concern about consistency by making overnight expansion conditional on successfully managing transport and homework. Gives Party B a clear pathway to more time while protecting the child's routine.",
+          "party_interest_alignment": {
+            "party_a": "Protects child's school routine and ensures logistics are proven before expanding overnights; provides control over timing through observable criteria",
+            "party_b": "Creates concrete pathway to increased overnight time; demonstrates commitment is valued and rewarded; avoids indefinite restriction"
+          },
+          "related_issues": [
+            "has_logistics"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Logistics responsibility protocol with homework handoff checklist",
+          "rationale": "Separates the logistics problem from the overnight question. If the real issue is operational reliability, create a shared system that both parents follow regardless of overnight schedule.",
+          "party_interest_alignment": {
+            "party_a": "Ensures homework and school preparation are consistently managed; reduces dysregulation triggers through predictable handoffs",
+            "party_b": "Demonstrates capability and removes logistics as objection to overnight time; creates shared accountability rather than one-sided restriction"
+          },
+          "related_issues": [
+            "has_logistics"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Trial period with defined review milestones and success metrics",
+          "rationale": "Converts overnight schedule from permanent decision to experiment. Allows both parents to test assumptions about what works, with built-in checkpoints to assess child's adjustment.",
+          "party_interest_alignment": {
+            "party_a": "Reduces risk of committing to schedule that harms child; maintains ability to adjust if dysregulation occurs; data-driven rather than positional",
+            "party_b": "Opportunity to demonstrate that overnights can work; avoids being locked out indefinitely; shows willingness to be evaluated fairly"
+          },
+          "related_issues": [
+            "has_logistics"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Exchange location and timing standardization agreement",
+          "rationale": "Party A references irregular exchanges as a dysregulation trigger. Rather than limiting overnights, fix the exchange problem directly with predictable times and neutral locations.",
+          "party_interest_alignment": {
+            "party_a": "Child experiences consistent routine and predictable transitions; eliminates a stated source of dysregulation",
+            "party_b": "Removes logistics objection without restricting parenting time; demonstrates reliability through consistent behavior"
+          },
+          "related_issues": [
+            "has_logistics"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Weeknight overnight on non-homework-heavy nights only",
+          "rationale": "Reframes the binary weeknight/weekend split. If homework is the concern, identify lower-stakes weeknights (e.g., nights before light school days) for overnight time.",
+          "party_interest_alignment": {
+            "party_a": "Protects child during high-demand school nights; maintains homework routine on critical days",
+            "party_b": "Gains some weeknight overnight time; avoids complete weekday exclusion; demonstrates flexibility"
+          },
+          "related_issues": [
+            "has_logistics"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Shared digital co-parenting calendar with homework/school task visibility",
+          "rationale": "The 'reliability' concern may stem from information asymmetry. A shared system where both parents see assignments, deadlines, and routines could reduce anxiety about the other parent's capability.",
+          "party_interest_alignment": {
+            "party_a": "Visibility into whether homework is being completed; reassurance that school tasks are tracked; early warning if issues arise",
+            "party_b": "Transparency demonstrates competence; reduces accusations of unreliability; shows commitment to child's academic success"
+          },
+          "related_issues": [
+            "has_logistics"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Parallel overnight schedule with consistent bedtime/morning routine protocol",
+          "rationale": "Party A's concern may be that different households have different routines. If both parents commit to identical school-night routines (bedtime, morning prep, transport), the 'dysregulation' concern diminishes.",
+          "party_interest_alignment": {
+            "party_a": "Child experiences same routine regardless of location; predictability reduces dysregulation risk",
+            "party_b": "Demonstrates willingness to align with child's needs; overnight time not restricted if routine is maintained"
+          },
+          "related_issues": [
+            "has_logistics"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Third-party transportation service or family member transport support",
+          "rationale": "If transport reliability is the bottleneck, outsource it. Removes the parent-capability question and ensures child arrives on time consistently.",
+          "party_interest_alignment": {
+            "party_a": "Child's transport to school becomes reliable regardless of parent's work schedule; reduces stress about logistics",
+            "party_b": "Removes transport as an objection to overnights; demonstrates problem-solving rather than restriction-acceptance"
+          },
+          "related_issues": [
+            "has_logistics"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-009",
+          "label": "Overnight schedule contingent on teacher feedback on child's adjustment",
+          "rationale": "Moves evaluation from parent perception to neutral third party. Teacher reports on homework completion, behavior, and adjustment can inform whether overnight schedule is working.",
+          "party_interest_alignment": {
+            "party_a": "Child's actual adjustment (not just Party A's worry) becomes the metric; professional input rather than subjective dispute",
+            "party_b": "Removes Party A as sole gatekeeper; demonstrates willingness to be evaluated by objective standard"
+          },
+          "related_issues": [
+            "has_logistics"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-010",
+          "label": "Limited weeknight overnights now, automatic expansion if no school issues arise within 90 days",
+          "rationale": "Combines immediate limited change with automatic future expansion. Party A gets initial caution; Party B gets guaranteed path forward without re-negotiation.",
+          "party_interest_alignment": {
+            "party_a": "Child's adjustment is protected through gradual change; maintains ability to observe impact before full expansion",
+            "party_b": "Avoids indefinite restriction; automatic expansion removes need to repeatedly ask permission or prove worthiness"
+          },
+          "related_issues": [
+            "has_logistics"
+          ],
+          "source": "option_generator"
+        }
+      ],
+      "domain_expert_candidates": [],
+      "combined_pool_count": 10,
+      "domain_qualified": [],
+      "domain_blocked": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Phased overnight expansion tied to demonstrated logistics reliability",
+          "blocking_rationale": "Cannot assess phasing structure without knowing: (a) what current overnight schedule is, (b) what expansion is proposed, (c) child's age (developmental appropriateness of overnight schedules varies significantly by age), (d) whether logistics problems are actual history or anticipated concern. 'Phased expansion' requires baseline to expand from. Party B has not indicated they are requesting expansion\u2014this may not be the actual issue structure.",
+          "what_would_unblock": "Parties clarify current schedule, proposed change, child's age, and Party B's actual position on overnights",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Logistics responsibility protocol with homework handoff checklist",
+          "blocking_rationale": "Party A mentioned homework and transportation as concerns, but we don't know: (a) whether these are current problems or preventive worries, (b) what homework support currently looks like, (c) whether Party B shares these concerns or has different perspective, (d) whether the issue is capability, communication, or something else. Creating a protocol without Party B's input or understanding of actual vs. perceived problems would be premature.",
+          "what_would_unblock": "Party B responds to logistics concerns; parties describe current homework/transport arrangements; clarification of whether problems have occurred",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Trial period with defined review milestones and success metrics",
+          "blocking_rationale": "Cannot structure a trial without knowing: (a) what is being trialed (current schedule is unknown, proposed change is unknown), (b) child's age (trial period length and metrics must be developmentally appropriate), (c) Party B's willingness to participate in trial structure, (d) what 'success' would mean to both parties. Trial periods are useful tools but require clear baseline and target state.",
+          "what_would_unblock": "Parties define current vs. proposed schedule, agree that trial period approach is acceptable, clarify what outcomes they're trying to assess",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Exchange location and timing standardization agreement",
+          "blocking_rationale": "Party A's statement does not mention exchange location or timing as a concern. The mention of 'irregular exchanges as dysregulation trigger' does not appear in the provided context\u2014this may be inference from incomplete data. Even if exchange irregularity is an issue, we don't know: current exchange arrangement, distance between homes, work schedules, or Party B's perspective on exchanges.",
+          "what_would_unblock": "Clarification that exchange logistics (not just overnight frequency) is actually an issue; parties describe current exchange arrangements; Party B's perspective",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Weeknight overnight on non-homework-heavy nights only",
+          "blocking_rationale": "Cannot assess without knowing: (a) child's age and grade level (homework load varies dramatically), (b) what current weeknight arrangement is, (c) whether Party B is actually requesting weeknight overnights, (d) whether homework difficulty is consistent across weeknights or varies, (e) Party B's capability and commitment to homework support. This option assumes Party B wants more weeknights and Party A will accept some but not all\u2014neither assumption is confirmed.",
+          "what_would_unblock": "Parties clarify what schedule change is under discussion; child's grade level; Party B's position on weeknight overnights",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Shared digital co-parenting calendar with homework/school task visibility",
+          "blocking_rationale": "While shared calendars are standard co-parenting tools, we don't know: (a) whether information asymmetry is the actual problem vs. capability concern, (b) current communication method and whether it's functional, (c) both parents' technology access and comfort, (d) whether 'reliability' concern is about information sharing or execution. Party A's concern may be about Party B's follow-through, not information access\u2014a calendar doesn't address that.",
+          "what_would_unblock": "Clarification of whether the reliability concern is information-based or execution-based; Party B's perspective on communication and coordination",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Parallel overnight schedule with consistent bedtime/morning routine protocol",
+          "blocking_rationale": "This assumes the concern is routine inconsistency between households. Party A mentioned 'consistency during school week' but didn't specify whether this means cross-household routine alignment or schedule predictability. We don't know: (a) whether routines differ between homes, (b) whether Party B would agree to routine standardization, (c) child's age (younger children need routine consistency; older children may not), (d) whether this addresses Party A's actual concern.",
+          "what_would_unblock": "Party A clarifies what 'consistency' means; Party B describes their household routines; child's age",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Third-party transportation service or family member transport support",
+          "blocking_rationale": "Party A mentioned transportation as a concern but we don't know: (a) what current transportation arrangement is, (b) whether transportation has actually been unreliable or this is preventive concern, (c) whether third-party transport is financially feasible, (d) distance between homes and school, (e) whether Party B agrees transportation is a problem or has different view. Outsourcing transport may be unnecessary or financially infeasible.",
+          "what_would_unblock": "Parties describe current transportation arrangement and any problems that have occurred; distance/logistics context; financial feasibility discussion",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-009",
+          "label": "Overnight schedule contingent on teacher feedback on child's adjustment",
+          "blocking_rationale": "Cannot assess without knowing: (a) child's age and grade level, (b) whether academic/behavioral issues have occurred or this is preventive, (c) teacher's willingness to provide feedback to parents in custody dispute, (d) whether making custody contingent on teacher reports is appropriate given family circumstances, (e) Party B's perspective on whether child is having school difficulties. Involving teachers in custody evaluation is a significant step requiring careful assessment of appropriateness.",
+          "what_would_unblock": "Clarification of whether school adjustment is an actual concern or anticipated risk; child's age; both parents' views on involving school; understanding of teacher's role boundaries",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-010",
+          "label": "Limited weeknight overnights now, automatic expansion if no school issues arise within 90 days",
+          "blocking_rationale": "This assumes: (a) Party B wants weeknight overnight expansion, (b) Party A would accept it conditionally, (c) school performance is measurable and agreed-upon metric, (d) 90 days is appropriate timeframe (depends on child's age, school calendar, baseline functioning). We don't know current schedule, what change is requested, child's age, or whether 'school issues' is the right success metric. Party B has not indicated they want expansion\u2014this may not match the actual dispute structure.",
+          "what_would_unblock": "Parties clarify current vs. desired schedule; agreement that school performance is appropriate metric; child's age and school context; Party B's actual request",
+          "source": "domain_reasoner"
+        }
+      ],
+      "presented_to_parties": null
+    },
+    {
+      "turn_index": 5,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "brainstormer_candidates": [],
+      "domain_expert_candidates": [],
+      "combined_pool_count": 0,
+      "domain_qualified": [],
+      "domain_blocked": [],
+      "presented_to_parties": null
+    },
+    {
+      "turn_index": 7,
+      "option_readiness": "ready",
+      "safety_veto_applied": false,
+      "brainstormer_candidates": [],
+      "domain_expert_candidates": [],
+      "combined_pool_count": 0,
+      "domain_qualified": [],
+      "domain_blocked": [],
+      "presented_to_parties": null
+    }
+  ]
+}

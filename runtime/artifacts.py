@@ -7,6 +7,7 @@ from pathlib import Path
 
 from runtime.policy_profiles import (
     get_policy_profile,
+    should_emit_option_pool,
     should_emit_party_state,
     validate_runtime_artifact_set,
 )
@@ -854,6 +855,83 @@ def build_party_state(state: dict, generated_at: str) -> dict:
     }
 
 
+_VALID_OPTION_READINESS = {"ready", "deferred", "blocked"}
+
+
+def build_option_pool(state: dict, generated_at: str) -> dict:
+    """Build the session-level option pool document from per-turn reasoning traces.
+
+    Collects all turns where Stage 4 option generation ran and assembles the
+    three-layer pool (brainstormer candidates + domain expert candidates →
+    qualification). CONTRACT-017 defines the schema.
+    """
+    turns_with_trace = sorted(
+        (
+            t for t in state["trace_buffer"]
+            if t.get("role") == "assistant" and t.get("reasoning_trace") is not None
+        ),
+        key=lambda t: t["turn_index"],
+    )
+
+    pool_turns: list[dict] = []
+    for turn in turns_with_trace:
+        rt = turn["reasoning_trace"]
+        brainstormer_pool = rt.get("brainstormer_pool")
+        pda = rt.get("pre_computed_domain_analysis") or {}
+        opq = pda.get("option_pool_qualification")
+
+        # Stage 3 fallback: when brainstormer failed and domain_reasoner used its
+        # Stage 3 self-generation path, qualified candidates land in pda.qualified_candidates
+        # rather than opq.domain_qualified.  Capture them so T7-style turns are not
+        # incorrectly recorded as having zero qualified candidates.
+        stage3_qualified = pda.get("qualified_candidates")
+        stage3_qualified = list(stage3_qualified) if isinstance(stage3_qualified, list) else []
+
+        # Include turn if any option generation data is present
+        if brainstormer_pool is None and opq is None and not stage3_qualified:
+            continue
+
+        brainstormer_candidates = list(brainstormer_pool) if isinstance(brainstormer_pool, list) else []
+
+        if opq is not None:
+            domain_expert_candidates = list(opq.get("domain_expert_candidates", [])) if isinstance(opq, dict) else []
+            domain_qualified = list(opq.get("domain_qualified", [])) if isinstance(opq, dict) else []
+            domain_blocked = list(opq.get("domain_blocked", [])) if isinstance(opq, dict) else []
+        else:
+            # Stage 3 fallback path — no brainstormer pool was provided to domain_reasoner
+            domain_expert_candidates = []
+            domain_qualified = stage3_qualified
+            domain_blocked = []
+
+        readiness_raw = pda.get("option_readiness", "deferred")
+        option_readiness = readiness_raw if readiness_raw in _VALID_OPTION_READINESS else "deferred"
+
+        safety_veto_applied = option_readiness == "blocked"
+        safety_veto_reason = pda.get("safety_veto_reason") if safety_veto_applied else None
+
+        pool_turns.append({
+            "turn_index": turn["turn_index"],
+            "option_readiness": option_readiness,
+            "safety_veto_applied": safety_veto_applied,
+            "safety_veto_reason": safety_veto_reason,
+            "brainstormer_candidates": brainstormer_candidates,
+            "domain_expert_candidates": domain_expert_candidates,
+            "combined_pool_count": len(brainstormer_candidates) + len(domain_expert_candidates),
+            "domain_qualified": domain_qualified,
+            "domain_blocked": domain_blocked,
+            "presented_to_parties": None,
+        })
+
+    return {
+        "schema_version": "option_pool.v0",
+        "case_id": state["meta"]["case_id"],
+        "session_id": state["meta"]["session_id"],
+        "generated_at": generated_at,
+        "source": "lm_runtime",
+        "turns": pool_turns,
+    }
+
+
 def write_artifacts(output_dir: Path, state: dict, generated_at: str, case_bundle: dict | None = None) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     profile = get_policy_profile(state["meta"]["policy_profile"])
@@ -884,6 +962,9 @@ def write_artifacts(output_dir: Path, state: dict, generated_at: str, case_bundl
         )
     if should_emit_party_state(state, profile):
         _write_json(output_dir / "party_state.json", _rj(build_party_state(state, generated_at)))
+
+    if should_emit_option_pool(state, profile):
+        _write_json(output_dir / "option_pool.json", _rj(build_option_pool(state, generated_at)))
 
     if case_bundle is not None:
         write_support_artifacts(output_dir, state, case_bundle)

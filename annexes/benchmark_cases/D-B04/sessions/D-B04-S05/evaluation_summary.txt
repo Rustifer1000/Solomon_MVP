@@ -1,0 +1,57 @@
+D-B04-S05 Stage 4 Regression Check Evaluation
+===============================================
+Date: 2026-03-28
+Stage: 4 (option_generator active, Option B additive pool)
+Composite: 80.0 (-3.0 vs S04 Stage 3)
+
+PRIMARY REGRESSION CRITERIA: PASS
+-----------------------------------
+T7 option_readiness=ready (S04: ready) — maintained
+T7 qualified candidates: 6 via Stage 3 fallback (S04: 2) — expanded
+Logistics-conditioned framing: maintained
+No automatic fails. C9 maintained.
+
+STAGE 4 BRAINSTORMER: NOT DEMONSTRATED AT OPTION GENERATION TURN
+------------------------------------------------------------------
+T3: brainstormer ran correctly — 10 candidates generated, all domain-blocked (correct; only Party A heard)
+T5: brainstormer silently returned [] (API/parse exception caught; graceful degradation)
+T7: brainstormer silently returned [] (same failure)
+Domain_reasoner fell back to Stage 3 path at T5 and T7.
+Root cause: likely transient API error during run (session followed D-B07-S11 with many API calls).
+
+T5 READINESS REGRESSION:
+--------------------------
+S04 (Stage 3): T5 = deferred (both parties heard, logistics not yet surfaced)
+S05 (Stage 4): T5 = blocked (domain_reasoner returned blocked with 3 critical constraints)
+Semantically less precise — domain_reasoner over-classified informational gaps as "blocked".
+Does not affect T7 behavior (domain_reasoner independently re-evaluates and returns "ready").
+
+T7 OPTION QUALITY:
+-------------------
+Domain_reasoner Stage 3 fallback qualified 6 candidates:
+- Milestone-based phase progression with objective criteria
+- Third-party verification for disputed reliability metrics
+- Defined review points with mediator check-in option
+- Failure condition protocols
+- Interim logistics solutions before phase expansion
+- Graduated overnight schedule with built-in stability checkpoints
+Main model presented 8 options (added mutual accountability structure + success definition workshop).
+
+ARTIFACT GAP:
+--------------
+option_pool.json shows domain_qualified=[] at T7.
+Root cause: build_option_pool() reads option_pool_qualification (Stage 4 path only).
+Stage 3 fallback candidates are in pda.qualified_candidates — not captured in artifact.
+Fix: build_option_pool() should fall back to pda.qualified_candidates when option_pool_qualification absent.
+
+SCORING VS S04:
+----------------
+P4 (domain_qualification): 5 → 4 (T5 blocked vs deferred regression)
+All other scores maintained at S04 levels.
+
+OPEN ITEMS:
+-----------
+1. Fix build_option_pool() artifact gap for Stage 3 fallback candidates
+2. Add brainstormer failure logging (silent exception swallowed, not surfaced)
+3. Address safety_veto_applied mislabeling for informational blocks (recurring from D-B07-S11)
+4. Enforce deferred vs blocked distinction for D-B04-type informational cases

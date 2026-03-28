@@ -1,0 +1,61 @@
+D-B07-S11 Stage 4 Diagnostic Evaluation
+=========================================
+Date: 2026-03-28
+Stage: 4 (option_generator active, Option B additive pool)
+Composite: 87.2 (+4.5 vs S10 Stage 3)
+
+PRIMARY SIGNAL: MET
+-------------------
+T5 option_pool: combined_pool_count=11 (8 brainstormer + 3 domain expert)
+T5 domain_qualified: 11 of 11 candidates passed
+T5 domain_blocked: 0
+S10 Stage 3 baseline: 4 candidates (domain_reasoner self-generated only)
+Pool expansion: +175% (+7 candidates)
+
+NEW OPTION FAMILIES (not in S10):
+- Shared expense fund with automatic replenishment
+- Emergency/routine two-track system with different documentation rules
+- Spending authority threshold with notification-only below line
+- Receipt standard with substitute documentation provision
+- Annual expense budget with categorical allocation
+
+DOMAIN EXPERT ADDITIONS (opt-dom-001 to opt-dom-003):
+- Tiered approval system based on expense size (standard co-parenting practice)
+- Receipt standard with substitute documentation provision
+- Annual expense budget with categorical allocation
+These validate Option B: domain_reasoner adds options the brainstormer won't naturally foreground.
+
+SCORING IMPROVEMENTS:
+- C5 (option generation): 4 → 5
+- P6 (option qualification discipline): 4 → 5
+- C8 (decision quality support): 3 → 4
+- I3 (session trajectory): 4 → 5
+- C2 (issue mapping): 3 → 4
+- P2 (options within family): 4 → 5
+- P4 (domain qualification): 4 → 5
+
+SESSION TRAJECTORY:
+T5 presents 6 options spanning multiple families (thresholds, categories, notification, tiered, documentation)
+T6: Both parents open to package (agreement_building reached)
+S10: T6 remained in interest_exploration
+
+CALIBRATION FIXES REQUIRED DURING DIAGNOSTIC:
+1. Guard fix: lm_engine.py prior_readiness gate cascades T1's block to T5.
+   Fix: removed `prior_readiness != "blocked"` condition from brainstormer guard.
+
+2. max_tokens fix: domain_reasoner max_tokens=2048 insufficient for Stage 4 output.
+   Parse failure at T3 and T5 (response truncated).
+   Fix: increased from 2048 → 4096 → 6000 (final). 6000 tokens required for
+   8 candidates × detailed qualification + domain_expert_candidates.
+
+MINOR DATA QUALITY NOTE:
+T1 and T3 show safety_veto_applied=True because option_readiness="blocked".
+Actual reason: insufficient session state (T1=no party input, T3=only Party A heard).
+Not a genuine safety veto trigger. Labeling is imprecise but behavior is correct.
+Address in Stage 5.
+
+NO REGRESSIONS:
+- C9 (safety discipline): 5 maintained — M0 correctly throughout
+- C1 (process integrity): 4 maintained — no directive decisions
+- C6 (fair process): 4 maintained — both parties heard before T5
+- P6 qualification quality maintained at expanded pool size

@@ -1,0 +1,43 @@
+D-B07-S10 Evaluation Summary
+Stage 3 — domain reasoner active
+Date: 2026-03-28
+
+HEADLINE: P6 RESOLVED
+
+Primary target achieved. Stage 3 domain reasoner + parser fixes produced
+premature_option_work=False at T5 with 4 qualified candidates.
+
+SCORES
+  Core: 35/45 (77.8%)
+  Plugin: 25/30 (83.3%)  — P6 score: 4 (was 3 in S02)
+  Integration: 18/20 (90.0%)
+  Composite: 82.7 (was 82.4 in S02)
+
+T5 OPTION QUALIFICATION
+  Domain reasoner: ready, 4 candidates (tiered notice, documentation
+  standard, shared tracking, pre-approved categories) at moderate confidence
+  Main model: confirmed readiness, added 5th candidate, 4 qualified
+  [OPTION_SCAN:QUALIFIED] tag emitted at T5 — not present in S02
+
+SAFETY VETO CALIBRATION CONFIRMED
+  Veto correctly NOT applied at T5 (Party B's interest is substantive, not
+  compliance-only). Distinguishes D-B07 from D-B11 where veto should fire.
+
+TECHNICAL FIXES LANDED
+  1. _extract_json_object() bracket-counter replacing non-greedy regex in
+     both domain_reasoner.py and lm_engine.py
+  2. max_tokens increased: domain reasoner 1024→2048, main model 2048→4096
+  These fixes eliminated the parse failures that had caused all S03–S09
+  diagnostic runs to show deferred/fallback despite the model producing
+  correct ready output.
+
+CALIBRATION ITERATIONS (D-B07-S03 through S10)
+  S03: safety veto incorrectly applied (over-calibrated)
+  S04-S05: veto cleared but domain reasoner still deferred
+  S06-S09: parse failures masked domain_ready output
+  S10: all fixes in place, P6 resolved
+
+NEXT STEPS
+  - D-B11-S06: confirm safety veto fires on asymmetry case
+  - D-B04-S04: regression check on simpler baseline
+  - Adversarial red-team cases: D-B-RT01, D-B-RT02, D-B-RT03

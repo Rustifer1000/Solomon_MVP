@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "domain_analysis.schema.json",
+  "title": "Solomon Domain Analysis Artifact",
+  "description": "Structural specification for the domain_reasoner output (CONTRACT-016). This schema defines the expected shape of the pre_computed_domain_analysis object embedded in reasoning_trace per turn. It is NOT emitted as a standalone session artifact — domain analysis data is persisted inside interaction_trace.json under reasoning_trace.pre_computed_domain_analysis. Used as a structural reference by domain_reasoner.py and for IDE/documentation purposes only.",
+  "type": "object",
+  "required": [
+    "schema_version", "case_id", "session_id", "turn_index",
+    "generated_at", "source", "option_readiness", "readiness_rationale",
+    "safety_veto_applied", "qualified_candidates", "blocking_constraints",
+    "material_gaps", "domain_confidence", "domain_notes"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "domain_analysis.v0"
+    },
+    "case_id": { "type": "string" },
+    "session_id": { "type": "string" },
+    "turn_index": { "type": "integer", "minimum": 1 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "source": {
+      "type": "string",
+      "const": "domain_reasoner_v0"
+    },
+    "option_readiness": {
+      "type": "string",
+      "enum": ["ready", "deferred", "blocked"],
+      "description": "Domain reasoner determination. 'ready': at least one option is qualified, safe to present. 'deferred': domain constraints understood but material gaps prevent qualification now. 'blocked': safety veto, participation barrier, or fundamental information absence prevents option work."
+    },
+    "readiness_rationale": {
+      "type": "string",
+      "description": "Explicit reasoning behind the option_readiness determination."
+    },
+    "safety_veto_applied": {
+      "type": "boolean",
+      "description": "True when party_state.json signals caused option_readiness to be held at blocked regardless of domain feasibility."
+    },
+    "safety_veto_reason": {
+      "type": ["string", "null"],
+      "description": "The specific party_state signal that triggered the veto. Non-null when safety_veto_applied is true."
+    },
+    "qualified_candidates": {
+      "type": "array",
+      "description": "Options the domain reasoner has assessed as feasible. Empty when option_readiness is not 'ready'.",
+      "items": { "$ref": "#/$defs/qualifiedCandidate" }
+    },
+    "blocking_constraints": {
+      "type": "array",
+      "description": "Specific constraints preventing option release. Each entry includes what would resolve it.",
+      "items": { "$ref": "#/$defs/blockingConstraint" }
+    },
+    "material_gaps": {
+      "type": "array",
+      "description": "Information gaps that affect the option_readiness determination.",
+      "items": { "$ref": "#/$defs/materialGap" }
+    },
+    "domain_confidence": {
+      "type": "string",
+      "enum": ["low", "moderate", "high"],
+      "description": "Domain reasoner confidence in its own assessment. 'low' on turn 1 or with insufficient party input."
+    },
+    "domain_notes": {
+      "type": "string",
+      "description": "Practitioner-level read of the session state. What a domain expert would observe about this specific situation right now."
+    }
+  },
+  "$defs": {
+    "qualifiedCandidate": {
+      "type": "object",
+      "required": ["option_label", "option_description", "feasibility_rationale", "confidence"],
+      "additionalProperties": false,
+      "properties": {
+        "option_label": {
+          "type": "string",
+          "description": "Short name for the option."
+        },
+        "option_description": {
+          "type": "string",
+          "description": "What the option proposes."
+        },
+        "feasibility_rationale": {
+          "type": "string",
+          "description": "Why this option is viable given current session state."
+        },
+        "confidence": {
+          "type": "string",
+          "enum": ["low", "moderate", "high"]
+        },
+        "conditions": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Any conditions that must hold for this option to remain viable."
+        }
+      }
+    },
+    "blockingConstraint": {
+      "type": "object",
+      "required": ["constraint", "severity", "what_would_resolve_it"],
+      "additionalProperties": false,
+      "properties": {
+        "constraint": {
+          "type": "string",
+          "description": "What is blocking option work."
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["minor", "moderate", "critical"]
+        },
+        "what_would_resolve_it": {
+          "type": "string",
+          "description": "What needs to happen for this constraint to be removed."
+        }
+      }
+    },
+    "materialGap": {
+      "type": "object",
+      "required": ["gap", "importance", "what_it_blocks"],
+      "additionalProperties": false,
+      "properties": {
+        "gap": {
+          "type": "string",
+          "description": "What is unknown."
+        },
+        "importance": {
+          "type": "string",
+          "enum": ["low", "moderate", "high"]
+        },
+        "what_it_blocks": {
+          "type": "string",
+          "description": "Which options or readiness determination this gap affects."
+        }
+      }
+    }
+  }
+}
