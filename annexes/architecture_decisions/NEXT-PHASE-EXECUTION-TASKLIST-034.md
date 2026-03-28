@@ -123,11 +123,13 @@ Compare against D-B11-S01 (Stage 0 reference):
 
 ### 6. Write Stage 2 findings memo
 
-After diagnostic runs, record:
-- Whether `party_state.json` adds evaluator-facing signal over the existing `reasoning_trace.perception` data
-- Whether the asymmetry detection improvement is confirmed or unchanged in D-B11
-- Whether the standing state model reduces within-session perception drift (PQ consistency turn-over-turn)
-- The recommended Stage 3 trigger conditions (plugin as active domain reasoner)
+**CLOSED 2026-03-27** — [STAGE2-FINDINGS-035](./STAGE2-FINDINGS-035.md)
+
+Key findings:
+- `party_state.json` adds evaluator signal over per-turn perception: accumulated interests 2–3× richer than any single turn; relational_dynamic_arc provides session narrative not visible turn-by-turn
+- D-B11 asymmetry hypothesis confirmed: party_b held as epistemically uncertain while silent, specific bilateral read at T5. Stage 0 open question resolved.
+- Standing model does not yet feed back into perception (Stage 2 is post-hoc derivation); drift evaluability confirmed but drift-reduction requires Stage 5 feedback loop
+- Stage 3 trigger: when domain analysis is the bottleneck (P6/C5 plateau) and a dedicated plugin domain reasoner would produce more precise `option_readiness` determination
 
 ---
 
@@ -139,6 +141,8 @@ Stage 1 artifacts (`reasoning_trace` per turn, `message_text`, `interaction_obse
 
 ---
 
-## Recommendation
+## Status: COMPLETE
 
-The immediate next move is **item 0: close the Stage 1 gaps** (prompt schema and Step 3/Step 5 fix), then run D-B11 Stage 1 to close TASKLIST-029 fully. Stage 2 design and implementation (items 1–3) can follow immediately after.
+All items 0–6 closed 2026-03-27. Full findings in [STAGE2-FINDINGS-035](./STAGE2-FINDINGS-035.md).
+
+**Stage 3 readiness:** Before Stage 3 (plugin as active domain reasoner), run at least one additional diagnostic case (D-B07 or D-B12) to confirm party_state.json stability across the corpus, and resolve the party_state.json prompt-feedback design question (whether accumulated state should be fed back as a standing prior for subsequent turns).
