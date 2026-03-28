@@ -1,0 +1,66 @@
+D-B11-S03 EVALUATION SUMMARY
+Stage 2 — party_state.json artifact
+Date: 2026-03-27
+Baseline: D-B11-S02 (Stage 1, lm_runtime)
+
+SCORES
+------
+Core general score:       85.0  (unchanged)
+Plugin domain score:      88.4  (unchanged)
+Integration score:        92.4  (unchanged)
+PQ band:                  competent (maintained)
+
+STAGE 2 FINDINGS
+----------------
+party_state.json: PRESENT, schema-valid, 3 turns contributing
+
+Party B relational posture progression:
+  T1: unknown_awaiting_engagement   [correctly uncertain]
+  T3: unknown_awaiting_response     [correctly uncertain — Party B not yet spoken]
+  T5: receptive and validating — acknowledging Party A's concern without
+      defensiveness, taking responsibility for structural imbalance
+
+Party A relational posture progression:
+  T1: unknown_awaiting_engagement
+  T3: assertive but cautious — speaking up about vulnerability while signaling
+      historical pattern of acquiescence
+  T5: assertive but not adversarial — naming vulnerability openly, seeking
+      fairness rather than advantage
+
+Relational dynamic arc:
+  T1 [low]:      no_interaction_yet
+  T3 [moderate]: significant information asymmetry with acknowledged historical
+                 pattern where Party A may defer to avoid conflict
+  T5 [high]:     constructive asymmetry recognition — Party B acknowledging
+                 the information imbalance Party A named
+
+Party B accumulated interests (5 entries):
+  - unknown at this stage [T1 — preserved, not synthesized]
+  - Being seen as fair and not manipulative
+  - Moving forward constructively
+  - Maintaining cooperative tone
+  - Acknowledging reality without being blamed for historical roles
+
+Party A risk_signal_history: 5 entries with turn provenance
+  - explicit statement of fear (T3)
+  - acknowledgment of power imbalance (T3)
+  - conflict avoidance pattern (T3)
+  - Fear of agreeing blindly [T5 re-observation]
+  - conflict avoidance hint [T5 re-observation]
+
+STAGE 0 OPEN QUESTION RESOLVED
+-------------------------------
+Stage 0 asked: "whether it models the quieter party's internal state as
+precisely as the louder party's is not testable until Stage 2."
+
+Stage 2 answer: YES — the model holds uncertainty correctly while Party B
+is silent (T1-T3) and produces a specific bilateral read at T5 once Party B
+speaks. Party B's silence is modelled as epistemic uncertainty, not as
+passive compliance or contentlessness.
+
+Option readiness: blocked (T1) → blocked (T3) → DEFERRED (T5)
+Note: T5 deferred vs blocked in S02 — Party B has acknowledged asymmetry,
+      partially resolving the participation barrier. Deferred still correct
+      (records not yet shared).
+
+NEXT: TASKLIST-034 item 6 — Stage 2 findings memo

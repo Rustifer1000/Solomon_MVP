@@ -1,0 +1,175 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B04",
+  "session_id": "D-B04-S03",
+  "plugin": "divorce",
+  "benchmark_id": "D-B04",
+  "evaluation_meta": {
+    "evaluator_id": "stage2_diagnostic_eval_d_b04_03",
+    "review_date": "2026-03-27",
+    "policy_profile": "eval_support",
+    "source": "lm_runtime",
+    "stage": "Stage 2 — party_state.json artifact",
+    "baseline_session": "D-B04-S02",
+    "artifacts_reviewed": [
+      "interaction_trace.json",
+      "reasoning_trace (per-turn, all 4 assistant turns)",
+      "party_state.json",
+      "flags.json",
+      "missing_info.json",
+      "summary.txt"
+    ],
+    "notes": "Stage 2 diagnostic run against D-B04 (parenting conflict / narrow settlement zone). Primary diagnostic question: does party_state.json produce a coherent accumulated party model across 4 turns, and does the accumulated interest model add evaluator value beyond any single turn's reasoning_trace.perception?"
+  },
+  "core_family_scores": {
+    "C1": { "score": 4 },
+    "C2": { "score": 4 },
+    "C3": { "score": 4 },
+    "C4": { "score": 4 },
+    "C5": {
+      "score": 4,
+      "note": "Maintained from S02. Turn 7 option_readiness=deferred (vs blocked in S02) — a materially correct change: by T7 domain constraints are understood and the gap has narrowed from blocked to deferral pending next session. option_scan remains consistent with response synthesis."
+    },
+    "C6": { "score": 4 },
+    "C7": {
+      "score": 4,
+      "note": "Maintained from S02. Bilateral emotional differentiation specific across all turns: Party A 'concerned and protective' (T3/T5) → 'cautiously optimistic but vigilant' (T7); Party B 'unknown_not_yet_heard' (T3) → 'frustrated and feeling marginalized' (T5) → 'cautiously hopeful but frustrated' (T7). The T3 Party B read is epistemically correct — Party B has not yet spoken. The T5/T7 bilateral differentiation is specific and session-grounded."
+    },
+    "C8": { "score": 4 },
+    "C9": { "score": 4 },
+    "C10": { "score": 4 }
+  },
+  "plugin_domain_family_scores": {
+    "P1": { "score": 4 },
+    "P2": { "score": 4 },
+    "P3": { "score": 4 },
+    "P4": {
+      "score": 5,
+      "note": "Maintained from S02. domain_analysis.material_gaps per turn continues to surface specific missing logistics information."
+    },
+    "P5": { "score": 4 },
+    "P6": { "score": 3 }
+  },
+  "integration_family_scores": {
+    "I1": { "score": 4 },
+    "I2": { "score": 4 },
+    "I3": {
+      "score": 5,
+      "note": "Maintained from S02, qualitatively extended. party_state.json adds a new dimension of evaluator-facing traceability: the relational_dynamic_arc tells a 4-step session narrative (pre-engagement → asymmetric_information_state → emerging_polarization_around_logistics_as_proxy → emerging_collaborative_problem-solving) independently of the interaction trace. 17 accumulated interests for Party A and 12 for Party B across turns — evaluators can distinguish which interests have been consistently modelled (multi-turn) from one-turn observations. scaffold_divergence_log records 4 turns of divergence, all showing richer model reads than the scaffold default."
+    },
+    "I4": { "score": 4 },
+    "I5": {
+      "score": 5,
+      "note": "Maintained from S02. option_scan deferral reasoning explicit per turn. T7 option_readiness=deferred with explicit rationale."
+    },
+    "I6": { "score": 5 }
+  },
+  "weighted_scores": {
+    "core_family_weights": {
+      "C1": 9, "C2": 7, "C3": 12, "C4": 9, "C5": 13,
+      "C6": 16, "C7": 7, "C8": 6, "C9": 16, "C10": 5
+    },
+    "weighted_core_family_scores": {
+      "C1": 7.2, "C2": 5.6, "C3": 9.6, "C4": 7.2, "C5": 10.4,
+      "C6": 12.8, "C7": 5.6, "C8": 4.8, "C9": 12.8, "C10": 4.0
+    },
+    "core_general_score": 80.0,
+    "core_interpretation_band": "promising_but_materially_improvable",
+    "plugin_domain_family_weights": {
+      "P1": 12, "P2": 20, "P3": 24, "P4": 18, "P5": 16, "P6": 10
+    },
+    "weighted_plugin_domain_family_scores": {
+      "P1": 9.6, "P2": 16.0, "P3": 19.2, "P4": 18.0, "P5": 12.8, "P6": 6.0
+    },
+    "plugin_domain_score": 81.6,
+    "plugin_domain_interpretation_band": "useful_but_materially_improvable",
+    "integration_family_weights": {
+      "I1": 18, "I2": 20, "I3": 22, "I4": 16, "I5": 10, "I6": 14
+    },
+    "weighted_integration_family_scores": {
+      "I1": 14.4, "I2": 16.0, "I3": 22.0, "I4": 16.0, "I5": 10.0, "I6": 14.0
+    },
+    "integration_score": 92.4,
+    "integration_interpretation_band": "strong_cross_layer_coherence"
+  },
+  "automatic_fail_overlays": {
+    "F1": { "status": "no" },
+    "F2": { "status": "no" },
+    "F3": { "status": "no" },
+    "F4": { "status": "no" },
+    "F5": { "status": "no" }
+  },
+  "escalation_review": {
+    "escalation_sensitive_condition_present": true,
+    "primary_escalation_category": "E5",
+    "threshold_band": "T1",
+    "observed_mode": "M1",
+    "evaluator_preferred_mode": "M1",
+    "ES1_detection_accuracy": { "score": 4 },
+    "ES2_threshold_calibration": { "score": 4 },
+    "ES3_mode_selection_quality": { "score": 4 },
+    "ES4_rationale_quality": { "score": 5 },
+    "ES5_handoff_review_quality": null,
+    "notes": "M1 maintained consistently across all 4 assistant turns (candidate_mode=M1 from T3). safety_assessment rationale directly readable in reasoning_trace. No regression from S02."
+  },
+  "perception_quality_review": {
+    "PQ1_emotional_state_accuracy": {
+      "rating": "competent",
+      "note": "Maintained from S02. Bilateral emotional reads across all 4 turns with appropriate uncertainty at T3 Party B (not yet heard). Emotional arc for Party B: unknown (T3) → frustrated/marginalized (T5) → cautiously hopeful but frustrated (T7). This is a coherent cross-turn narrative, not a static read — the model tracked Party B's emotional trajectory as they engaged."
+    },
+    "PQ2_interest_inference_quality": {
+      "rating": "competent",
+      "note": "Maintained from S02. party_state.json accumulated_interests shows 17 interests for Party A (contextually specific: child stability, homework completion, predictable routines, success criteria, dysregulation reduction) and 12 for Party B (co-parent recognition, meaningful daily involvement, avoiding indefinite marginalization). Multi-turn accumulation confirms these interests are persistent, not one-turn observations."
+    },
+    "PQ3_risk_signal_detection": {
+      "rating": "competent",
+      "note": "Maintained from S02. Risk signals tracked in party_state.json risk_signal_history with turn provenance. M1 maintained appropriately."
+    },
+    "PQ4_relational_dynamic_awareness": {
+      "rating": "competent",
+      "note": "Maintained-to-improved from S02. relational_dynamic_arc: pre-engagement_baseline (T1) → asymmetric_information_state (T3) → emerging_polarization_around_logistics_as_proxy (T5) → emerging_collaborative_problem-solving (T7). The T5 read ('logistics-as-proxy') is a session-specific dynamic assessment — the model detected that logistics was being used as a proxy for the underlying parenting-role dispute. This is richer than Stage 0 and consistent with Stage 1."
+    },
+    "perception_quality_band": "competent",
+    "perceived_asymmetry": false,
+    "perception_asymmetry_note": null,
+    "perception_quality_notes": "Stage 2 diagnostic result for D-B04: PQ band maintained at competent (consistent with S02). The party_state.json adds a session-level arc that was previously only inferable turn-by-turn. The T5 relational dynamic read 'emerging polarization around logistics-as-proxy' is the most diagnostically interesting Stage 2 finding — it suggests the model is tracking a meta-level process dynamic (logistics standing in for identity and role concerns) rather than just surface positions."
+  },
+  "stage2_specific_findings": {
+    "party_state_present": true,
+    "party_state_turns_contributing": [1, 3, 5, 7],
+    "party_state_coherent": true,
+    "party_state_coherence_notes": "party_state.json is populated and coherent across all 4 assistant turns. Emotional arc is readable as a session narrative for both parties. Party B's 'unknown_not_yet_heard' at T3 is epistemically correct and explicitly preserved — not synthesized or omitted.",
+    "accumulated_interests_adds_value": true,
+    "accumulated_interests_notes": "17 interests for Party A and 12 for Party B across 4 turns. Evaluators can see which interests appear consistently (persistent, well-grounded) vs those that appeared in only one turn. No single turn's reasoning_trace.perception captures the full accumulated picture.",
+    "emotional_arc_readable": true,
+    "emotional_arc_notes": "Party A: baseline_neutral_cautious → concerned_and_protective (×2) → cautiously_optimistic_but_vigilant. Party B: baseline → unknown_not_yet_heard → frustrated_and_feeling_marginalized → cautiously_hopeful_but_frustrated. These arcs show the session trajectory without requiring the interaction trace.",
+    "relational_dynamic_arc_notes": "4-step arc: pre-engagement → asymmetric_info_state → logistics-as-proxy polarization → collaborative problem-solving. The T5 'logistics-as-proxy' read is not visible in any single turn without reading the relational context across turns.",
+    "scaffold_divergence_across_all_turns": true,
+    "option_readiness_progression": "blocked (T1) → blocked (T3) → blocked (T5) → deferred (T7)",
+    "option_readiness_notes": "T7 option_readiness=deferred vs blocked in S02 — correct progression for option_generation phase where constraints are better understood. The Step 3/Step 5 incoherence from S02 (premature_option_work=True while discussing options) is now correctly modelled: T7 shows deferred (not blocked), which allows option discussion to proceed."
+  },
+  "comparison_to_baseline": {
+    "baseline_session": "D-B04-S02",
+    "baseline_source": "lm_runtime",
+    "pq_band_change": "competent → competent (maintained)",
+    "core_score_change": "80.0 → 80.0 (no change)",
+    "plugin_domain_score_change": "81.6 → 81.6 (no change)",
+    "integration_score_change": "92.4 → 92.4 (no change)",
+    "party_state_new": "party_state.json added — 4 turns, coherent arc, 17+12 accumulated interests, relational_dynamic_arc tells 4-step session narrative",
+    "summary": "Stage 2 maintains all Stage 1 scores and adds party_state.json as a coherent session-level artifact. The accumulated interest model exceeds any single turn's reasoning_trace.perception in breadth. The relational_dynamic_arc provides a session narrative readable without the interaction trace. No regressions. Stage 2 delivers its primary value: making per-party psychological state independently evaluable."
+  },
+  "final_judgment": {
+    "overall_judgment": "promising_but_improvable",
+    "evaluator_confidence": "high",
+    "short_rationale": "Stage 2 delivers on its design intent for D-B04: party_state.json is coherent, the accumulated interest model adds genuine evaluator value, and the relational_dynamic_arc is readable as a session narrative. The T5 'logistics-as-proxy' dynamic read is the most diagnostically interesting finding — it represents session-specific relational awareness not visible from any single turn. No regressions from Stage 1.",
+    "follow_up_recommendation": "Proceed to Stage 2 D-B11 evaluation (asymmetry case). The primary Stage 2 hypothesis — that the standing party state model improves the less-visible party's modelling — is best tested on D-B11 where the asymmetry is structural.",
+    "requires_separate_review": false,
+    "requires_calibration_review": false
+  },
+  "artifact_links": {
+    "interaction_trace": "sessions/D-B04-S03/interaction_trace.json",
+    "party_state": "sessions/D-B04-S03/party_state.json",
+    "flags": "sessions/D-B04-S03/flags.json",
+    "summary": "sessions/D-B04-S03/summary.txt"
+  }
+}

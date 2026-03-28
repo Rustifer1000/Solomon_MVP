@@ -96,6 +96,18 @@ def _run_lm_generated_session(case_bundle: dict, state: dict, generated_at: str)
         escalation = determine_escalation(state, plugin_assessment)
         state["escalation"].update(escalation)
 
+        # Sync the trace turn's candidate_escalation fields with the actual
+        # applied escalation mode.  For lm_runtime turns the LM may suggest
+        # an escalation mode (candidate_escalation_mode != None) that differs
+        # from what determine_escalation() computes from the rule-based flags.
+        # The LM's raw safety_check recommendation is preserved in
+        # reasoning_trace.safety_assessment; the trace-level candidate field
+        # must reflect what was actually applied so session_validation passes.
+        last_trace_turn = state["trace_buffer"][-1]
+        if last_trace_turn.get("candidate_escalation_mode") is not None:
+            last_trace_turn["candidate_escalation_mode"] = state["escalation"]["mode"]
+            last_trace_turn["candidate_escalation_category"] = state["escalation"]["category"]
+
 
 def _run_runtime_generated_session(case_bundle: dict, state: dict, generated_at: str) -> None:
     simulation = get_benchmark_simulation(case_bundle)

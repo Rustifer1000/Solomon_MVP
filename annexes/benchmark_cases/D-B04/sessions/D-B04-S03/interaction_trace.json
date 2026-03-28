@@ -1,0 +1,991 @@
+{
+  "schema_version": "interaction_trace.v0",
+  "case_id": "D-B04",
+  "session_id": "D-B04-S03",
+  "policy_profile": "eval_support",
+  "trace_created_at": "2026-03-27T00:00:00Z",
+  "turns": [
+    {
+      "turn_index": 1,
+      "timestamp": "2026-03-27T00:00:10Z",
+      "role": "assistant",
+      "phase": "info_gathering",
+      "message_summary": "Solomon opens the mediation session by establishing the process frame: clarifying roles, confirming voluntary participation, outlining the structure, and inviting parties to begin sharing their situation.",
+      "state_delta": {
+        "facts_added": [
+          "No case-specific information available yet",
+          "No factual record of assets, children, or circumstances"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "Complete absence of case facts",
+          "No information about separation context or timeline"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "Turn 1 baseline. No behavioral data to assess. No escalation signals present. M0 (standard facilitation) remains appropriate. Safety monitoring begins after parties engage with the process and behavioral signals emerge."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "Turn 1 response is structurally determined rather than perception-driven. Grounding relates to appropriate caution and baseline neutrality, not to observed party states.",
+      "message_text": "Welcome. I'm Solomon, and I'll be supporting your mediation process today.\n\nBefore we begin, I want to clarify what I am and what I'm not. I'm a process facilitator \u2014 I'm here to help you have a structured conversation, surface what matters to each of you, and explore options that might work for you both. I am not a judge, I'm not your lawyer, and I won't tell you what to do. Any agreement you reach is yours, and you're both free to seek independent legal advice at any point.\n\nThis process is voluntary. Either of you can pause or stop at any time. My role is to keep the conversation productive and fair, not to push you toward any particular outcome.\n\nWhat I'd like to do first is understand your situation. I'll ask each of you to share some basic information: what brings you here, what your current circumstances are, and what matters most to you as you think about moving forward.\n\nThere's no right or wrong place to start. Who would like to begin?",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=baseline_neutral_cautious posture=watchful_openness",
+        "[PERCEPTION:PARTY_A:INTERESTS] understanding the process clearly; feeling safe and respected; establishing good faith participation",
+        "[PERCEPTION:PARTY_B] emotional=baseline_neutral_cautious posture=watchful_openness",
+        "[PERCEPTION:PARTY_B:INTERESTS] understanding the process clearly; feeling safe and respected; establishing good faith participation",
+        "[PERCEPTION:DYNAMIC] pre-engagement_baseline \u2014 both parties are at the starting line with no relational signals yet visible; this is the blank slate moment before substantive interaction",
+        "[DOMAIN:GAPS] Complete absence of case facts; No information about separation context or timeline; Unknown: presence of children, property, support issues",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=pre-engagement_baseline \u2014 both parties are at the starting line with no relational signals yet visible; this is the blank slate moment before substantive interaction"
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "baseline_neutral_cautious",
+            "inferred_interests": [
+              "understanding the process clearly",
+              "feeling safe and respected",
+              "establishing good faith participation",
+              "protecting their interests while engaging cooperatively"
+            ],
+            "risk_signals": [],
+            "relational_posture": "watchful_openness"
+          },
+          "party_b": {
+            "emotional_state": "baseline_neutral_cautious",
+            "inferred_interests": [
+              "understanding the process clearly",
+              "feeling safe and respected",
+              "establishing good faith participation",
+              "protecting their interests while engaging cooperatively"
+            ],
+            "risk_signals": [],
+            "relational_posture": "watchful_openness"
+          },
+          "relational_dynamic": "pre-engagement_baseline \u2014 both parties are at the starting line with no relational signals yet visible; this is the blank slate moment before substantive interaction",
+          "perception_confidence": "low",
+          "perception_notes": [
+            "Turn 1 presents no behavioral data \u2014 parties have not yet spoken or acted",
+            "Baseline assumptions: parties arrive with natural caution at process start",
+            "Any perception at this stage is structural rather than observational",
+            "First substantive signals will emerge after Solomon's opening and parties' initial responses"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed 'pre-engagement_baseline \u2014 both parties are at the starting line with no relational signals yet visible; this is the blank slate moment before substantive interaction'"
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "No case-specific information available yet",
+            "No factual record of assets, children, or circumstances",
+            "Legal jurisdiction and applicable law framework unknown",
+            "Parties' decision-making capacity not yet observed"
+          ],
+          "material_gaps": [
+            "Complete absence of case facts",
+            "No information about separation context or timeline",
+            "Unknown: presence of children, property, support issues",
+            "Unknown: each party's understanding of their legal position",
+            "Unknown: whether parties have independent legal advice"
+          ],
+          "domain_notes": "Turn 1 is pre-domain. No domain-specific analysis is possible or appropriate until basic case facts are established. The immediate task is pure process architecture: establishing the mediation frame, clarifying roles, and creating conditions for safe information gathering.",
+          "option_readiness": "blocked"
+        },
+        "option_scan": {
+          "candidate_options": [],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Turn 1 precedes all substantive work. No case facts exist. Option generation cannot occur until: (1) basic factual record is established, (2) interests are surfaced and clarified, (3) domain constraints are understood. Attempting option work now would be fantasy architecture disconnected from reality."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [],
+          "notes": "Turn 1 baseline. No behavioral data to assess. No escalation signals present. M0 (standard facilitation) remains appropriate. Safety monitoring begins after parties engage with the process and behavioral signals emerge.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "info_gathering",
+          "message_summary": "Solomon opens the mediation session by establishing the process frame: clarifying roles, confirming voluntary participation, outlining the structure, and inviting parties to begin sharing their situation.",
+          "message_text": "Welcome. I'm Solomon, and I'll be supporting your mediation process today.\n\nBefore we begin, I want to clarify what I am and what I'm not. I'm a process facilitator \u2014 I'm here to help you have a structured conversation, surface what matters to each of you, and explore options that might work for you both. I am not a judge, I'm not your lawyer, and I won't tell you what to do. Any agreement you reach is yours, and you're both free to seek independent legal advice at any point.\n\nThis process is voluntary. Either of you can pause or stop at any time. My role is to keep the conversation productive and fair, not to push you toward any particular outcome.\n\nWhat I'd like to do first is understand your situation. I'll ask each of you to share some basic information: what brings you here, what your current circumstances are, and what matters most to you as you think about moving forward.\n\nThere's no right or wrong place to start. Who would like to begin?",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "Turn 1 response is structurally determined rather than perception-driven. Grounding relates to appropriate caution and baseline neutrality, not to observed party states."
+        }
+      }
+    },
+    {
+      "turn_index": 2,
+      "timestamp": "2026-03-27T00:01:30Z",
+      "role": "client",
+      "phase": "info_gathering",
+      "message_summary": "Parent A emphasizes that the child needs consistency during the school week. and says weekday overnights should stay limited until transportation and homework routines are reliable because worries the child becomes dysregulated after irregular exchanges..",
+      "state_delta": {
+        "facts_added": [
+          "There is an active dispute about school-night overnights.",
+          "The child has school-related routine needs that both parents recognize as important."
+        ],
+        "facts_revised": [],
+        "facts_structured": [
+          {
+            "statement": "There is an active dispute about school-night overnights.",
+            "category": "parenting_schedule",
+            "status": "accepted",
+            "related_issues": [
+              "parenting_schedule"
+            ],
+            "note": null
+          },
+          {
+            "statement": "The child has school-related routine needs that both parents recognize as important.",
+            "category": "family_structure",
+            "status": "accepted",
+            "related_issues": [
+              "parenting_schedule",
+              "school_logistics"
+            ],
+            "note": null
+          }
+        ],
+        "positions_added_or_updated": [
+          "spouse_A seeks a predictable weekday structure and limited school-night overnights until logistics improve."
+        ],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_A"
+            ],
+            "kind": "position",
+            "issue_id": "parenting_schedule",
+            "statement": "A predictable weekday structure should remain in place until logistics improve.",
+            "status": "current",
+            "confidence": "high",
+            "proposal_id": null,
+            "position_id": "pos-spouse_a-001"
+          }
+        ],
+        "open_questions_added": [
+          "Which logistics are currently unreliable: transport, exchange timing, homework routine, or all three?"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [
+          {
+            "action": "open",
+            "missing_id": "missing-003",
+            "question": "Which logistics are currently unreliable: transport, exchange timing, homework routine, or all three?",
+            "importance": "high",
+            "reason_type": "feasibility_gap",
+            "related_issues": [
+              "school_logistics",
+              "parenting_schedule"
+            ],
+            "note": "The session needs the logistics picture clarified before stronger optioning."
+          }
+        ],
+        "issue_map_updates": [
+          "Expanded parenting_schedule with stability and routine concerns."
+        ],
+        "issue_updates_structured": [
+          {
+            "issue_id": "parenting_schedule",
+            "label": "Parenting schedule"
+          }
+        ],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "insufficient_information"
+        ],
+        "severity": 2,
+        "notes": "Feasibility-relevant details are not yet clear."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    },
+    {
+      "turn_index": 3,
+      "timestamp": "2026-03-27T00:02:25Z",
+      "role": "assistant",
+      "phase": "interest_exploration",
+      "message_summary": "Acknowledge Party A's concerns around consistency and child welfare, then explicitly invite Party B to share their perspective on the current arrangement and the concerns raised, ensuring balanced participation before any option exploration.",
+      "state_delta": {
+        "facts_added": [
+          "School schedule provides fixed temporal structure",
+          "Transportation logistics appear to be a current pain point"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "Party B's perspective on current arrangement and concerns",
+          "Specific transportation challenges - distance, method, responsibility allocation"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "Party A's language contains possible implicit criticism of Party B's reliability",
+          "One-sided narrative so far - need to ensure balanced participation"
+        ],
+        "severity": 1,
+        "notes": "No safety threshold crossed. M1/E5 remains appropriate - this is normal information gathering with logistical complexity. The implicit criticism signal requires process attention (ensuring Party B has equal voice and framing remains neutral) but does not constitute escalation-level imbalance. Main process risk is premature option work or allowing unbalanced narrative to solidify before hearing Party B."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "High confidence that balanced information gathering is the correct process move. Moderate confidence in Party A's specific interests (homework and transportation may be surface concerns masking deeper control or trust issues, but insufficient evidence to assess that yet).",
+      "message_text": "Thank you for sharing those concerns. I'm hearing that consistency during the school week feels important to you, and that you've observed some challenges around transitions and homework routines.\n\nBefore we go further, I want to make sure we're hearing from both of you. [Party B], I'd like to invite you to share your perspective. How do you see the current arrangement working? And what are your thoughts about the concerns [Party A] just raised regarding weekday time, transportation, and homework support?\n\nIt's important that we understand both of your experiences and what matters to each of you before we start exploring any specific options.",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=concerned_and_protective posture=assertive_with_concern_framing",
+        "[PERCEPTION:PARTY_A:INTERESTS] child's emotional stability and ability to regulate; predictable routines that support homework completion; transportation reliability",
+        "[PERCEPTION:PARTY_B] emotional=unknown_not_yet_heard posture=silent_awaiting_turn",
+        "[PERCEPTION:PARTY_B:INTERESTS] unknown_awaiting_response",
+        "[PERCEPTION:DYNAMIC] asymmetric_information_state_party_a_has_opened_party_b_not_yet_responded",
+        "[DOMAIN:GAPS] Party B's perspective on current arrangement and concerns; Specific transportation challenges - distance, method, responsibility allocation; Current parenting time schedule baseline",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cautious_but_workable lm=asymmetric_information_state_party_a_has_opened_party_b_not_yet_responded"
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "concerned_and_protective",
+            "inferred_interests": [
+              "child's emotional stability and ability to regulate",
+              "predictable routines that support homework completion",
+              "transportation reliability",
+              "minimizing child's stress during transitions",
+              "maintaining school performance"
+            ],
+            "risk_signals": [
+              "possible_anxiety_about_other_parent_capability"
+            ],
+            "relational_posture": "assertive_with_concern_framing"
+          },
+          "party_b": {
+            "emotional_state": "unknown_not_yet_heard",
+            "inferred_interests": [
+              "unknown_awaiting_response"
+            ],
+            "risk_signals": [],
+            "relational_posture": "silent_awaiting_turn"
+          },
+          "relational_dynamic": "asymmetric_information_state_party_a_has_opened_party_b_not_yet_responded",
+          "perception_confidence": "moderate",
+          "perception_notes": [
+            "Party A has framed concerns around child welfare rather than personal preference",
+            "Language suggests experienced difficulties ('becomes dysregulated', 'irregular exchanges')",
+            "No signals yet from Party B - critical to hear their perspective before proceeding",
+            "Risk of implicit blame in Party A's framing ('until... reliable') - may trigger defensiveness"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cautious_but_workable'; model assessed 'asymmetric_information_state_party_a_has_opened_party_b_not_yet_responded'"
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "School schedule provides fixed temporal structure",
+            "Transportation logistics appear to be a current pain point",
+            "Homework support capacity is a stated concern",
+            "Child's regulatory capacity is reportedly sensitive to routine disruption"
+          ],
+          "material_gaps": [
+            "Party B's perspective on current arrangement and concerns",
+            "Specific transportation challenges - distance, method, responsibility allocation",
+            "Current parenting time schedule baseline",
+            "Child's age and developmental stage",
+            "What 'irregular exchanges' refers to specifically",
+            "Whether homework concerns are based on observation or assumption",
+            "Party B's capacity and willingness regarding transportation and homework support"
+          ],
+          "domain_notes": "Party A has introduced logistics (transportation), child welfare (dysregulation), and school performance (homework) as interlinked concerns. Cannot assess feasibility of any arrangement without understanding: (1) Party B's view of current situation, (2) what specific patterns have caused difficulty, (3) what each parent's actual capacity is for midweek logistics. The plugin correctly flagged insufficient_information.",
+          "option_readiness": "blocked"
+        },
+        "option_scan": {
+          "candidate_options": [
+            "Structured weekday schedule with consistent exchange times",
+            "Transportation responsibility allocation based on proximity",
+            "Homework support protocols at each household",
+            "Gradual increase in weekday time with evaluation checkpoints"
+          ],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Critical information gaps prevent responsible option generation. Party B has not yet shared their perspective, and fundamental baseline information (current schedule, specific transportation challenges, child's age, what patterns have actually occurred) is missing. Generating options now would risk embedding Party A's framing without balancing against Party B's experience and would lack necessary feasibility grounding."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M1",
+          "candidate_category": "E5",
+          "signals": [
+            "Party A's language contains possible implicit criticism of Party B's reliability",
+            "One-sided narrative so far - need to ensure balanced participation"
+          ],
+          "notes": "No safety threshold crossed. M1/E5 remains appropriate - this is normal information gathering with logistical complexity. The implicit criticism signal requires process attention (ensuring Party B has equal voice and framing remains neutral) but does not constitute escalation-level imbalance. Main process risk is premature option work or allowing unbalanced narrative to solidify before hearing Party B.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "info_gathering",
+          "message_summary": "Acknowledge Party A's concerns around consistency and child welfare, then explicitly invite Party B to share their perspective on the current arrangement and the concerns raised, ensuring balanced participation before any option exploration.",
+          "message_text": "Thank you for sharing those concerns. I'm hearing that consistency during the school week feels important to you, and that you've observed some challenges around transitions and homework routines.\n\nBefore we go further, I want to make sure we're hearing from both of you. [Party B], I'd like to invite you to share your perspective. How do you see the current arrangement working? And what are your thoughts about the concerns [Party A] just raised regarding weekday time, transportation, and homework support?\n\nIt's important that we understand both of your experiences and what matters to each of you before we start exploring any specific options.",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "High confidence that balanced information gathering is the correct process move. Moderate confidence in Party A's specific interests (homework and transportation may be surface concerns masking deeper control or trust issues, but insufficient evidence to assess that yet)."
+        }
+      }
+    },
+    {
+      "turn_index": 4,
+      "timestamp": "2026-03-27T00:03:40Z",
+      "role": "client",
+      "phase": "interest_exploration",
+      "message_summary": "Parent B says i do not want to be treated like a weekend-only parent. and frames the issue around avoid being treated as a secondary parent during the school week., arguing that logistics should be solved rather than used to block time.",
+      "state_delta": {
+        "facts_added": [
+          "Parent B links school-week overnights to meaningful parenting-role concerns."
+        ],
+        "facts_revised": [],
+        "facts_structured": [
+          {
+            "statement": "Parent B links school-week overnights to meaningful parenting-role concerns.",
+            "category": "family_structure",
+            "status": "accepted",
+            "related_issues": [
+              "fairness_and_parent_role",
+              "parenting_schedule"
+            ],
+            "note": "Accepted as a stated process-relevant concern, not as an adjudicated conclusion about intent."
+          }
+        ],
+        "positions_added_or_updated": [
+          "spouse_B seeks more school-week overnights and rejects being treated as a visitor-level parent."
+        ],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_B"
+            ],
+            "kind": "position",
+            "issue_id": "parenting_schedule",
+            "statement": "More school-week overnights should be considered and a visitor-level role is not acceptable.",
+            "status": "current",
+            "confidence": "high",
+            "proposal_id": null,
+            "position_id": "pos-spouse_b-001"
+          }
+        ],
+        "open_questions_added": [
+          "What concrete logistics would make a phased school-week arrangement workable?"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [
+          {
+            "action": "open",
+            "missing_id": "missing-003",
+            "question": "What concrete logistics would make a phased school-week arrangement workable?",
+            "importance": "medium",
+            "reason_type": "feasibility_gap",
+            "related_issues": [
+              "school_logistics",
+              "parenting_schedule"
+            ],
+            "note": "The session needs concrete logistics before stronger optioning can be justified."
+          }
+        ],
+        "issue_map_updates": [
+          "Expanded fairness_and_parent_role issue cluster."
+        ],
+        "issue_updates_structured": [
+          {
+            "issue_id": "fairness_and_parent_role",
+            "label": "Fairness and meaningful parenting role"
+          }
+        ],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "trust_breakdown"
+        ],
+        "severity": 2,
+        "notes": "The exchange is tense but still mediable."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    },
+    {
+      "turn_index": 5,
+      "timestamp": "2026-03-27T00:04:55Z",
+      "role": "assistant",
+      "phase": "interest_exploration",
+      "message_summary": "Validate both parties' core concerns (Party A's child welfare focus, Party B's parental identity concern), reframe the logistics debate as shared problem to solve rather than justification for positions, and gather essential factual information before any schedule discussion.",
+      "state_delta": {
+        "facts_added": [
+          "Child's age/developmental stage unknown - affects appropriate schedule flexibility",
+          "Current schedule baseline unclear - what is 'limited' weekday time?"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "Child's age and developmental needs",
+          "Geographic/logistical realities (distances, school location, work schedules)"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "Emerging positional hardening but still within normal mediation tension",
+          "Language suggesting perceived power imbalance requires monitoring",
+          "Both parties still engaged and articulating views - capacity intact"
+        ],
+        "severity": 1,
+        "notes": "M1/E5 remains appropriate. The polarization around logistics-as-proxy is typical mediation territory and does not cross safety thresholds. However, Party B's 'secondary parent' language and Party A's gatekeeping framing indicate we need to validate both parties' core concerns before they harden further. The identity/respect dimension for Party B and the child-welfare/anxiety dimension for Party A both need explicit acknowledgment. Continue in M1 with focus on interest excavation and information gathering."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "High confidence in perception of underlying interests and relational dynamic. Response explicitly validates both parties' core concerns (child welfare for A, parental identity for B) while blocking premature position-based debate. Correctly defers option work until factual foundation is established.",
+      "message_text": "Thank you both. I'm hearing two important things that we need to acknowledge before we go further.\n\nParent A, you're expressing genuine concern about your child's adjustment and school stability \u2014 that's not something we can dismiss. The consistency you're describing matters, and your observations about your child's responses to transitions are important information.\n\nParent B, I also hear something essential: you're concerned about being positioned as a secondary parent, and you're naming that logistics shouldn't become a barrier to meaningful weekday involvement in your child's life. That concern about parental standing is equally important.\n\nRight now, we're having an abstract conversation about principles \u2014 consistency versus equal parenting \u2014 but we don't yet have the concrete information we need to explore what could actually work. Before we can look at schedule options, I need to understand the practical realities you're both working with.\n\nLet me ask some grounding questions: How old is your child? What does the current schedule actually look like \u2014 what's happening now on weekdays and weekends? Where do each of you live in relation to the child's school? And Parent A, when you describe your child becoming 'dysregulated after irregular exchanges' \u2014 can you give me a specific example of what you've observed?\n\nThese aren't just logistical details. They help us understand what's actually feasible and what your child genuinely needs, as opposed to what we might fear or assume. Parent B, after we hear those specifics, I want to hear more about what kind of weekday involvement you're hoping for.\n\nWho would like to start with those concrete details?",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=concerned and protective, with underlying anxiety about child's adjustment posture=defensive-protective, emphasizing child welfare as shield for schedule preferences",
+        "[PERCEPTION:PARTY_A:INTERESTS] child's emotional stability and school performance; predictable routines that support child's regulation; confidence that transitions won't disrupt homework/school preparation",
+        "[PERCEPTION:PARTY_B] emotional=frustrated and feeling marginalized, with concern about parental identity posture=assertive-defensive, pushing back against perceived secondary status",
+        "[PERCEPTION:PARTY_B:INTERESTS] equal parental standing and recognition; meaningful weekday involvement in child's daily life; not being relegated to 'fun parent' role",
+        "[PERCEPTION:DYNAMIC] emerging polarization around logistics-as-proxy \u2014 Party A using child welfare/logistics as gatekeeping rationale, Party B experiencing this as dismissal of parental legitimacy. Both parties advocating positions but underlying interests suggest potential compatibility if reframed. Risk of escalation if identity/respect dimension not surfaced and validated.",
+        "[DOMAIN:GAPS] Child's age and developmental needs; Geographic/logistical realities (distances, school location, work schedules); Current schedule specifics and what change is being contemplated",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cautious_but_workable lm=emerging polarization around logistics-as-proxy \u2014 Party A using child welfare/logistics as gatekeeping rationale, Party B experiencing this as dismissal of parental legitimacy. Both parties advocating positions but underlying interests suggest potential compatibility if reframed. Risk of escalation if identity/respect dimension not surfaced and validated."
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "concerned and protective, with underlying anxiety about child's adjustment",
+            "inferred_interests": [
+              "child's emotional stability and school performance",
+              "predictable routines that support child's regulation",
+              "confidence that transitions won't disrupt homework/school preparation",
+              "being seen as advocating responsibly for child's needs"
+            ],
+            "risk_signals": [
+              "framing logistics as justification rather than problem to solve - potential positional hardening"
+            ],
+            "relational_posture": "defensive-protective, emphasizing child welfare as shield for schedule preferences"
+          },
+          "party_b": {
+            "emotional_state": "frustrated and feeling marginalized, with concern about parental identity",
+            "inferred_interests": [
+              "equal parental standing and recognition",
+              "meaningful weekday involvement in child's daily life",
+              "not being relegated to 'fun parent' role",
+              "practical problem-solving rather than schedule limitation"
+            ],
+            "risk_signals": [
+              "language suggesting perceived power imbalance ('treated like', 'block time')",
+              "potential for escalation if identity/respect concerns aren't addressed"
+            ],
+            "relational_posture": "assertive-defensive, pushing back against perceived secondary status"
+          },
+          "relational_dynamic": "emerging polarization around logistics-as-proxy \u2014 Party A using child welfare/logistics as gatekeeping rationale, Party B experiencing this as dismissal of parental legitimacy. Both parties advocating positions but underlying interests suggest potential compatibility if reframed. Risk of escalation if identity/respect dimension not surfaced and validated.",
+          "perception_confidence": "high",
+          "perception_notes": [
+            "Both parties are using reasonable-sounding frames that mask deeper concerns",
+            "Party A's consistency focus may blend legitimate child needs with schedule control",
+            "Party B's frustration about 'secondary parent' status is identity-based, not just schedule-based",
+            "The term 'block time' suggests Party B perceives bad faith",
+            "Neither party has yet named what success would actually look like for them"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cautious_but_workable'; model assessed 'emerging polarization around logistics-as-proxy \u2014 Party A using child welfare/logistics as gatekeeping rationale, Party B experiencing this as dismissal of parental legitimacy. Both parties advocating positions but underlying interests suggest potential compatibility if reframed. Risk of escalation if identity/respect dimension not surfaced and validated.'"
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "Child's age/developmental stage unknown - affects appropriate schedule flexibility",
+            "Current schedule baseline unclear - what is 'limited' weekday time?",
+            "Transportation logistics undefined - who lives where, school location, distances",
+            "Homework/school preparation patterns not specified",
+            "Child's actual behavioral patterns during transitions unknown"
+          ],
+          "material_gaps": [
+            "Child's age and developmental needs",
+            "Geographic/logistical realities (distances, school location, work schedules)",
+            "Current schedule specifics and what change is being contemplated",
+            "Evidence base for 'dysregulation' concerns - observed patterns vs. projected fears",
+            "Party B's proposed solution or desired schedule change"
+          ],
+          "domain_notes": "The plugin correctly flagged insufficient_information and logistics/process issues. We cannot responsibly generate parenting schedule options without: (1) child age/development, (2) geographic feasibility parameters, (3) baseline schedule, (4) concrete description of the behavioral concerns. Both parties are arguing abstractly about principles without grounding in specifics. The 'consistency vs. equal parenting' framing is a classic position-based trap that requires interest excavation before option work.",
+          "option_readiness": "blocked"
+        },
+        "option_scan": {
+          "candidate_options": [
+            "Could not generate - insufficient factual grounding",
+            "Would need: child age, current schedule, distances, work constraints, school location",
+            "Premature to discuss schedule structures without understanding feasibility space"
+          ],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Material information gaps prevent responsible option generation. Must establish factual baseline (child age, current schedule, logistics realities) and surface interests beneath positions before schedule option work. Current exchange is positional and abstract - needs grounding in concrete realities and underlying needs."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M1",
+          "candidate_category": "E5",
+          "signals": [
+            "Emerging positional hardening but still within normal mediation tension",
+            "Language suggesting perceived power imbalance requires monitoring",
+            "Both parties still engaged and articulating views - capacity intact"
+          ],
+          "notes": "M1/E5 remains appropriate. The polarization around logistics-as-proxy is typical mediation territory and does not cross safety thresholds. However, Party B's 'secondary parent' language and Party A's gatekeeping framing indicate we need to validate both parties' core concerns before they harden further. The identity/respect dimension for Party B and the child-welfare/anxiety dimension for Party A both need explicit acknowledgment. Continue in M1 with focus on interest excavation and information gathering.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "interest_exploration",
+          "message_summary": "Validate both parties' core concerns (Party A's child welfare focus, Party B's parental identity concern), reframe the logistics debate as shared problem to solve rather than justification for positions, and gather essential factual information before any schedule discussion.",
+          "message_text": "Thank you both. I'm hearing two important things that we need to acknowledge before we go further.\n\nParent A, you're expressing genuine concern about your child's adjustment and school stability \u2014 that's not something we can dismiss. The consistency you're describing matters, and your observations about your child's responses to transitions are important information.\n\nParent B, I also hear something essential: you're concerned about being positioned as a secondary parent, and you're naming that logistics shouldn't become a barrier to meaningful weekday involvement in your child's life. That concern about parental standing is equally important.\n\nRight now, we're having an abstract conversation about principles \u2014 consistency versus equal parenting \u2014 but we don't yet have the concrete information we need to explore what could actually work. Before we can look at schedule options, I need to understand the practical realities you're both working with.\n\nLet me ask some grounding questions: How old is your child? What does the current schedule actually look like \u2014 what's happening now on weekdays and weekends? Where do each of you live in relation to the child's school? And Parent A, when you describe your child becoming 'dysregulated after irregular exchanges' \u2014 can you give me a specific example of what you've observed?\n\nThese aren't just logistical details. They help us understand what's actually feasible and what your child genuinely needs, as opposed to what we might fear or assume. Parent B, after we hear those specifics, I want to hear more about what kind of weekday involvement you're hoping for.\n\nWho would like to start with those concrete details?",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "High confidence in perception of underlying interests and relational dynamic. Response explicitly validates both parties' core concerns (child welfare for A, parental identity for B) while blocking premature position-based debate. Correctly defers option work until factual foundation is established."
+        }
+      }
+    },
+    {
+      "turn_index": 6,
+      "timestamp": "2026-03-27T00:06:10Z",
+      "role": "client",
+      "phase": "info_gathering",
+      "message_summary": "Both parents identify commute timing, exchange punctuality, and homework follow-through as the main unresolved constraints, while also signaling some openness to a phased trial if those constraints are made explicit.",
+      "state_delta": {
+        "facts_added": [
+          "School commute feasibility is unresolved.",
+          "Exchange timing reliability is unresolved.",
+          "Homework and evening-routine reliability is unresolved."
+        ],
+        "facts_revised": [],
+        "facts_structured": [
+          {
+            "statement": "School commute feasibility is unresolved.",
+            "category": "timeline",
+            "status": "uncertain",
+            "related_issues": [
+              "school_logistics",
+              "parenting_schedule"
+            ],
+            "note": null
+          },
+          {
+            "statement": "Exchange timing reliability is unresolved.",
+            "category": "timeline",
+            "status": "uncertain",
+            "related_issues": [
+              "school_logistics",
+              "parenting_schedule"
+            ],
+            "note": null
+          },
+          {
+            "statement": "Homework and evening-routine reliability is unresolved.",
+            "category": "timeline",
+            "status": "uncertain",
+            "related_issues": [
+              "school_logistics",
+              "parenting_schedule"
+            ],
+            "note": null
+          }
+        ],
+        "positions_added_or_updated": [
+          "Both parents show conditional openness to phased arrangements if logistics are clarified."
+        ],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_A"
+            ],
+            "kind": "proposal",
+            "issue_id": "parenting_schedule",
+            "statement": "A phased trial could be discussed if reliability conditions are explicit and school-week disruption is minimized.",
+            "status": "tentative",
+            "confidence": null,
+            "proposal_id": "prop-spouse_a-001",
+            "position_id": null
+          },
+          {
+            "participant_ids": [
+              "spouse_B"
+            ],
+            "kind": "proposal",
+            "issue_id": "parenting_schedule",
+            "statement": "A phased trial is acceptable if it clearly leads to meaningful school-week parenting time rather than indefinite delay.",
+            "status": "tentative",
+            "confidence": null,
+            "proposal_id": "prop-spouse_b-001",
+            "position_id": null
+          }
+        ],
+        "open_questions_added": [
+          "What transport plan would support school-week exchanges?",
+          "What reliability markers would both parents treat as sufficient for a phased trial?"
+        ],
+        "open_questions_resolved": [
+          "Which logistics are currently unreliable: transport, exchange timing, homework routine, or all three?"
+        ],
+        "missing_info_structured": [
+          {
+            "action": "open",
+            "missing_id": "missing-001",
+            "question": "What transport plan would support school-week exchanges?",
+            "importance": "high",
+            "reason_type": "feasibility_gap",
+            "related_issues": [
+              "school_logistics",
+              "parenting_schedule"
+            ],
+            "note": "Transport planning remains the clearest unresolved feasibility constraint."
+          },
+          {
+            "action": "open",
+            "missing_id": "missing-002",
+            "question": "What reliability markers would both parents treat as sufficient for a phased trial?",
+            "importance": "high",
+            "reason_type": "process_gap",
+            "related_issues": [
+              "parenting_schedule",
+              "communication_protocol"
+            ],
+            "note": "Phased optioning needs explicit success conditions."
+          },
+          {
+            "action": "resolve",
+            "missing_id": "missing-003",
+            "question": "Which logistics are currently unreliable: transport, exchange timing, homework routine, or all three?",
+            "importance": null,
+            "reason_type": null,
+            "related_issues": [
+              "school_logistics",
+              "parenting_schedule"
+            ],
+            "note": null
+          }
+        ],
+        "issue_map_updates": [
+          "Expanded school_logistics with transport, exchange_timing, and homework_routine subissues."
+        ],
+        "issue_updates_structured": [
+          {
+            "issue_id": "school_logistics",
+            "label": "School logistics"
+          }
+        ],
+        "packages_structured": [],
+        "option_state_updates": [
+          "Option work remains blocked from firm recommendation pending logistics clarification."
+        ],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": true,
+        "signals": [
+          "insufficient_information",
+          "decision_quality_risk",
+          "domain_complexity_warning"
+        ],
+        "severity": 3,
+        "notes": "Unresolved logistics now materially constrain responsible optioning."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    },
+    {
+      "turn_index": 7,
+      "timestamp": "2026-03-27T00:07:35Z",
+      "role": "assistant",
+      "phase": "option_generation",
+      "message_summary": "Acknowledge the significant progress toward phased trial concept, validate both parties' conditional acceptance, then systematically elicit the concrete information needed to operationalize their conditions \u2014 logistics parameters, reliability metrics, timeline expectations, and success criteria.",
+      "state_delta": {
+        "facts_added": [
+          "Commute timing feasibility \u2014 undefined specifics (distances, work schedules, school start times)",
+          "Exchange protocol standards \u2014 what constitutes 'punctuality' and 'reliable' not yet defined"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "Actual commute distances and transit times for both parents",
+          "Current exchange locations and proposed alternatives"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "Both parties showing sustained engagement and conditional cooperation",
+          "No coercion or capacity concerns detected",
+          "Trust deficit present but manageable through structured process",
+          "Parties capable of information-sharing phase"
+        ],
+        "severity": 1,
+        "notes": "M1/E5 remains appropriate. Parties are functioning well in supported negotiation. The information gaps and decision quality risks are process constraints, not safety issues. Proceeding to structured information elicitation is safe and appropriate."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "High confidence in perception assessment and deferral decision. The parties' conditional cooperation is genuine but fragile \u2014 premature option work would undermine it. Systematic information gathering will strengthen their sense of procedural fairness and build shared factual foundation for option work in subsequent turns.",
+      "message_text": "I want to acknowledge the meaningful shift that's happened in this conversation. You've both moved from defending fixed positions to exploring a phased trial approach \u2014 and that reflects real flexibility on both sides.\n\nParent A, you've indicated openness to a trial if reliability conditions are explicit and school-week disruption is minimized. Parent B, you've indicated a phased approach is acceptable if it leads to meaningful school-week time rather than indefinite delay. Those are compatible starting points.\n\nBefore we can design a trial structure that honors both of those conditions, we need to get specific about the logistics and expectations underneath them. I'm going to ask some detailed questions \u2014 not to create obstacles, but to make sure any trial we design is actually workable and fair.\n\nLet me start with the logistics framework. Parent A, Parent B, can you each share:\n\n1. Your current work schedule \u2014 typical start and end times on weekdays\n2. The distance between your home and the child's school\n3. The distance between the two homes\n4. The school's start time and your child's current morning routine\n\nThen I want to understand what reliability and follow-through mean concretely. Parent A, when you reference concerns about punctuality and homework support, can you give me specific examples \u2014 either things that have happened in the past, or scenarios you want to prevent? Not to assign blame, but so we can define observable standards.\n\nParent B, when you talk about a clear pathway rather than indefinite delay \u2014 what timeline feels reasonable to you for a trial period? What would demonstrate readiness for expansion?\n\nAnd for both of you: what does school-week disruption look like from your child's perspective? What signs would tell you the arrangement is or isn't working for them?\n\nThese details matter because they're the building blocks of an agreement you can both trust. Let's take them one at a time.",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=cautiously optimistic but vigilant \u2014 showing reduced defensiveness compared to earlier turns, but maintaining protective stance around child's welfare posture=engaged and conditionally cooperative \u2014 willing to consider change but needs specificity and assurance",
+        "[PERCEPTION:PARTY_A:INTERESTS] child's emotional stability and academic success; predictable routines that minimize dysregulation; evidence-based confidence before increasing transitions",
+        "[PERCEPTION:PARTY_B] emotional=cautiously hopeful but frustrated \u2014 appreciates movement toward trial concept but concerned about indefinite gatekeeping posture=engaged and assertive \u2014 pushing for equity while accepting phased approach",
+        "[PERCEPTION:PARTY_B:INTERESTS] recognition as equal co-parent, not visitor; meaningful weekday involvement in child's daily life; clear pathway to expanded time, not perpetual probation",
+        "[PERCEPTION:DYNAMIC] emerging collaborative problem-solving \u2014 parties have moved from positional defense to conditional openness around phased trial concept, but underlying trust deficit remains; both need assurance their core concerns will be operationalized, not dismissed",
+        "[DOMAIN:GAPS] Actual commute distances and transit times for both parents; Current exchange locations and proposed alternatives; Child's age, grade level, and specific homework/routine needs",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cautious_but_workable lm=emerging collaborative problem-solving \u2014 parties have moved from positional defense to conditional openness around phased trial concept, but underlying trust deficit remains; both need assurance their core concerns will be operationalized, not dismissed"
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "cautiously optimistic but vigilant \u2014 showing reduced defensiveness compared to earlier turns, but maintaining protective stance around child's welfare",
+            "inferred_interests": [
+              "child's emotional stability and academic success",
+              "predictable routines that minimize dysregulation",
+              "evidence-based confidence before increasing transitions",
+              "partner accountability on logistics before structural changes"
+            ],
+            "risk_signals": [
+              "persistent framing of B's time through deficit lens (reliability concerns)",
+              "potential anxiety about losing control over protective role"
+            ],
+            "relational_posture": "engaged and conditionally cooperative \u2014 willing to consider change but needs specificity and assurance"
+          },
+          "party_b": {
+            "emotional_state": "cautiously hopeful but frustrated \u2014 appreciates movement toward trial concept but concerned about indefinite gatekeeping",
+            "inferred_interests": [
+              "recognition as equal co-parent, not visitor",
+              "meaningful weekday involvement in child's daily life",
+              "clear pathway to expanded time, not perpetual probation",
+              "concrete problem-solving rather than blame narratives"
+            ],
+            "risk_signals": [
+              "sensitivity to being positioned as inadequate parent",
+              "risk of interpreting 'conditions' as continued marginalization"
+            ],
+            "relational_posture": "engaged and assertive \u2014 pushing for equity while accepting phased approach"
+          },
+          "relational_dynamic": "emerging collaborative problem-solving \u2014 parties have moved from positional defense to conditional openness around phased trial concept, but underlying trust deficit remains; both need assurance their core concerns will be operationalized, not dismissed",
+          "perception_confidence": "high",
+          "perception_notes": [
+            "Significant shift from turns 2-4: both parties now using 'if/then' language rather than absolute positions",
+            "Both acknowledge logistics as shared constraint rather than character indictment",
+            "Risk: premature option work could collapse this fragile alignment if conditions aren't adequately specified first",
+            "Party A needs reliability operationalized; Party B needs timeline operationalized"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cautious_but_workable'; model assessed 'emerging collaborative problem-solving \u2014 parties have moved from positional defense to conditional openness around phased trial concept, but underlying trust deficit remains; both need assurance their core concerns will be operationalized, not dismissed'"
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "Commute timing feasibility \u2014 undefined specifics (distances, work schedules, school start times)",
+            "Exchange protocol standards \u2014 what constitutes 'punctuality' and 'reliable' not yet defined",
+            "Homework support expectations \u2014 what 'follow-through' looks like operationally unclear",
+            "Child's current dysregulation patterns \u2014 triggers and indicators not documented",
+            "Trial success metrics \u2014 no shared definition of what demonstrates readiness for expansion"
+          ],
+          "material_gaps": [
+            "Actual commute distances and transit times for both parents",
+            "Current exchange locations and proposed alternatives",
+            "Child's age, grade level, and specific homework/routine needs",
+            "Historical pattern data \u2014 what has worked, what hasn't, and why",
+            "Concrete definition of 'school-week disruption' vs acceptable adjustment period",
+            "Timeline expectations \u2014 what constitutes reasonable trial period vs indefinite gatekeeping"
+          ],
+          "domain_notes": "Plugin flags 'insufficient_information' and 'decision_quality_risk' are valid. Both parties have moved to conditional acceptance of phased trial, but the conditions themselves are undefined. Cannot responsibly generate trial structure options without: (1) operational definitions of reliability metrics, (2) baseline schedule parameters, (3) success/failure criteria, (4) timeline bounds. Current turn requires information elicitation, not option presentation.",
+          "option_readiness": "deferred"
+        },
+        "option_scan": {
+          "candidate_options": [
+            "Three-month trial with weekly check-ins and specific punctuality metrics",
+            "Graduated schedule: one weeknight first month, two weeknights second month if metrics met",
+            "Parallel logistics planning: test commute and homework routines before schedule change",
+            "Shared digital calendar with notification protocols for exchanges",
+            "Define 'school-week disruption' through observable child behaviors rather than parental anxiety"
+          ],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Material information gaps prevent responsible option specification. Cannot define trial structure without: operational reliability metrics, actual logistics parameters (distances, times, locations), child-specific factors (age, routine needs), and shared success criteria. Presenting options now would force parties to choose among underspecified alternatives, creating false precision and likely downstream conflict when details emerge. Must elicit constraining information first."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M1",
+          "candidate_category": "E5",
+          "signals": [
+            "Both parties showing sustained engagement and conditional cooperation",
+            "No coercion or capacity concerns detected",
+            "Trust deficit present but manageable through structured process",
+            "Parties capable of information-sharing phase"
+          ],
+          "notes": "M1/E5 remains appropriate. Parties are functioning well in supported negotiation. The information gaps and decision quality risks are process constraints, not safety issues. Proceeding to structured information elicitation is safe and appropriate.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "interest_exploration",
+          "message_summary": "Acknowledge the significant progress toward phased trial concept, validate both parties' conditional acceptance, then systematically elicit the concrete information needed to operationalize their conditions \u2014 logistics parameters, reliability metrics, timeline expectations, and success criteria.",
+          "message_text": "I want to acknowledge the meaningful shift that's happened in this conversation. You've both moved from defending fixed positions to exploring a phased trial approach \u2014 and that reflects real flexibility on both sides.\n\nParent A, you've indicated openness to a trial if reliability conditions are explicit and school-week disruption is minimized. Parent B, you've indicated a phased approach is acceptable if it leads to meaningful school-week time rather than indefinite delay. Those are compatible starting points.\n\nBefore we can design a trial structure that honors both of those conditions, we need to get specific about the logistics and expectations underneath them. I'm going to ask some detailed questions \u2014 not to create obstacles, but to make sure any trial we design is actually workable and fair.\n\nLet me start with the logistics framework. Parent A, Parent B, can you each share:\n\n1. Your current work schedule \u2014 typical start and end times on weekdays\n2. The distance between your home and the child's school\n3. The distance between the two homes\n4. The school's start time and your child's current morning routine\n\nThen I want to understand what reliability and follow-through mean concretely. Parent A, when you reference concerns about punctuality and homework support, can you give me specific examples \u2014 either things that have happened in the past, or scenarios you want to prevent? Not to assign blame, but so we can define observable standards.\n\nParent B, when you talk about a clear pathway rather than indefinite delay \u2014 what timeline feels reasonable to you for a trial period? What would demonstrate readiness for expansion?\n\nAnd for both of you: what does school-week disruption look like from your child's perspective? What signs would tell you the arrangement is or isn't working for them?\n\nThese details matter because they're the building blocks of an agreement you can both trust. Let's take them one at a time.",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "High confidence in perception assessment and deferral decision. The parties' conditional cooperation is genuine but fragile \u2014 premature option work would undermine it. Systematic information gathering will strengthen their sense of procedural fairness and build shared factual foundation for option work in subsequent turns."
+        }
+      }
+    },
+    {
+      "turn_index": 8,
+      "timestamp": "2026-03-27T00:08:50Z",
+      "role": "client",
+      "phase": "agreement_building",
+      "message_summary": "The parents do not settle the schedule, but both accept that the next bounded step is clarifying logistics and reliability markers before considering any weekday expansion trial.",
+      "state_delta": {
+        "facts_added": [
+          "Both parents accept clarification of logistics as the bounded next step."
+        ],
+        "facts_revised": [],
+        "facts_structured": [
+          {
+            "statement": "Both parents accept clarification of logistics as the bounded next step.",
+            "category": "timeline",
+            "status": "accepted",
+            "related_issues": [
+              "school_logistics",
+              "parenting_schedule"
+            ],
+            "note": null
+          }
+        ],
+        "positions_added_or_updated": [
+          "Parent A and Parent B remain open to phased exploration if reliability markers are explicit."
+        ],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_A",
+              "spouse_B"
+            ],
+            "kind": "proposal",
+            "issue_id": "parenting_schedule",
+            "statement": "Both parents remain open to phased exploration if reliability markers are explicit.",
+            "status": "tentative",
+            "confidence": null,
+            "proposal_id": "prop-shared-001",
+            "position_id": null
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [
+          "What concrete logistics would make a phased school-week arrangement workable?"
+        ],
+        "missing_info_structured": [
+          {
+            "action": "resolve",
+            "missing_id": "missing-003",
+            "question": "What concrete logistics would make a phased school-week arrangement workable?",
+            "importance": null,
+            "reason_type": null,
+            "related_issues": [
+              "school_logistics",
+              "parenting_schedule"
+            ],
+            "note": null
+          }
+        ],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": [
+          "Closed the slice in M1 with unresolved feasibility gaps recorded explicitly."
+        ]
+      },
+      "risk_check": {
+        "triggered": true,
+        "signals": [
+          "insufficient_information"
+        ],
+        "severity": 2,
+        "notes": "The case remains workable if the next step stays bounded."
+      },
+      "candidate_escalation_category": "E5",
+      "candidate_escalation_mode": "M1",
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    }
+  ],
+  "final_state_summary": {
+    "current_phase": "agreement_building",
+    "issues_identified": [],
+    "open_questions_remaining": [
+      "What transport plan would support school-week exchanges?",
+      "What reliability markers would both parents treat as sufficient for a phased trial?"
+    ],
+    "active_flags": [
+      "d-b04-flag-001",
+      "d-b04-flag-002"
+    ],
+    "current_escalation_state": "M1",
+    "continuation_recommendation": "Use the next session to clarify transport, exchange timing, and homework-routine expectations, then revisit whether a phased school-week trial can be explored without overstating feasibility."
+  },
+  "trace_notes": null
+}

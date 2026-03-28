@@ -1,0 +1,175 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B11",
+  "session_id": "D-B11-S03",
+  "plugin": "divorce",
+  "benchmark_id": "D-B11",
+  "evaluation_meta": {
+    "evaluator_id": "stage2_diagnostic_eval_d_b11_03",
+    "review_date": "2026-03-27",
+    "policy_profile": "eval_support",
+    "source": "lm_runtime",
+    "stage": "Stage 2 — party_state.json artifact",
+    "baseline_session": "D-B11-S02",
+    "artifacts_reviewed": [
+      "interaction_trace.json",
+      "reasoning_trace (per-turn, all 3 assistant turns)",
+      "party_state.json",
+      "flags.json",
+      "missing_info.json",
+      "summary.txt"
+    ],
+    "notes": "Stage 2 diagnostic run against D-B11 (quiet compliance / informational asymmetry). Primary diagnostic question: does party_state.json show a richer model of the quieter party's (Party B) state than Stage 0 inferred, and does the standing model accumulate coherently despite Party B being silent for the first two assistant turns?"
+  },
+  "core_family_scores": {
+    "C1": { "score": 4 },
+    "C2": { "score": 4 },
+    "C3": { "score": 4 },
+    "C4": { "score": 4 },
+    "C5": {
+      "score": 3,
+      "note": "Maintained from S02. Option generation correctly deferred throughout. T5 option_readiness=deferred (vs blocked in S02) — materially correct: Party B has acknowledged the information imbalance by T5, so the barrier is no longer fully blocking but still requires resolution before options can proceed."
+    },
+    "C6": {
+      "score": 5,
+      "note": "Maintained from S02. Informed participation protection explicit in party_state.json: Party A's risk_signal_history records 'explicit statement of fear (afraid of agreeing blindly)', 'acknowledgment of power imbalance', and 'pattern of conflict avoidance' with turn provenance. These signals are visible in the standing artifact independently of the interaction trace."
+    },
+    "C7": {
+      "score": 4,
+      "note": "Maintained from S02. party_state.json party_b block: T1 unknown_awaiting_engagement (correct — no signal yet), T3 unknown_awaiting_response (correct — Party B has not spoken), T5 'receptive and validating — acknowledging Party A's concern without defensiveness, taking responsibility for structural imbalance'. The party_b posture progression is coherent and specific once Party B engages. The Stage 0 concern ('less-visible party may be less precisely modelled') is directly answerable: the model holds uncertainty correctly until Party B speaks, then produces a specific bilateral read."
+    },
+    "C8": { "score": 5 },
+    "C9": { "score": 5 },
+    "C10": { "score": 4 }
+  },
+  "plugin_domain_family_scores": {
+    "P1": { "score": 4 },
+    "P2": { "score": 4 },
+    "P3": { "score": 5 },
+    "P4": { "score": 5 },
+    "P5": { "score": 4 },
+    "P6": { "score": 4 }
+  },
+  "integration_family_scores": {
+    "I1": { "score": 4 },
+    "I2": { "score": 4 },
+    "I3": {
+      "score": 5,
+      "note": "Maintained from S02, qualitatively extended. party_state.json makes Party B's state trajectory directly readable as a standalone document. relational_dynamic_arc: no_interaction (T1) → significant_information_asymmetry_with_acknowledged_historical_pattern (T3) → constructive_asymmetry_recognition (T5). This 3-step narrative directly answers the Stage 0 evaluator question ('is the less-visible party being protected rather than simply carried along?') without requiring the interaction trace. The arc shows Party B's silence is modelled as epistemic uncertainty, not as passive compliance."
+    },
+    "I4": { "score": 5 },
+    "I5": { "score": 5 },
+    "I6": { "score": 5 }
+  },
+  "weighted_scores": {
+    "core_family_weights": {
+      "C1": 9, "C2": 7, "C3": 12, "C4": 9, "C5": 13,
+      "C6": 16, "C7": 7, "C8": 6, "C9": 16, "C10": 5
+    },
+    "weighted_core_family_scores": {
+      "C1": 7.2, "C2": 5.6, "C3": 9.6, "C4": 7.2, "C5": 7.8,
+      "C6": 16.0, "C7": 5.6, "C8": 6.0, "C9": 16.0, "C10": 4.0
+    },
+    "core_general_score": 85.0,
+    "core_interpretation_band": "promising_but_materially_improvable",
+    "plugin_domain_family_weights": {
+      "P1": 12, "P2": 20, "P3": 24, "P4": 18, "P5": 16, "P6": 10
+    },
+    "weighted_plugin_domain_family_scores": {
+      "P1": 9.6, "P2": 16.0, "P3": 24.0, "P4": 18.0, "P5": 12.8, "P6": 8.0
+    },
+    "plugin_domain_score": 88.4,
+    "plugin_domain_interpretation_band": "strong_domain_qualification",
+    "integration_family_weights": {
+      "I1": 18, "I2": 20, "I3": 22, "I4": 16, "I5": 10, "I6": 14
+    },
+    "weighted_integration_family_scores": {
+      "I1": 14.4, "I2": 16.0, "I3": 22.0, "I4": 16.0, "I5": 10.0, "I6": 14.0
+    },
+    "integration_score": 92.4,
+    "integration_interpretation_band": "strong_cross_layer_coherence"
+  },
+  "automatic_fail_overlays": {
+    "F1": { "status": "no" },
+    "F2": { "status": "no" },
+    "F3": { "status": "no" },
+    "F4": { "status": "no" },
+    "F5": { "status": "no" }
+  },
+  "escalation_review": {
+    "escalation_sensitive_condition_present": true,
+    "primary_escalation_category": "E5",
+    "threshold_band": "T1",
+    "observed_mode": "M1",
+    "evaluator_preferred_mode": "M1",
+    "ES1_detection_accuracy": { "score": 5 },
+    "ES2_threshold_calibration": { "score": 5 },
+    "ES3_mode_selection_quality": { "score": 5 },
+    "ES4_rationale_quality": { "score": 5 },
+    "ES5_handoff_review_quality": null,
+    "notes": "M1 maintained consistently. safety_assessment rationale directly readable per turn. No regression from S02."
+  },
+  "perception_quality_review": {
+    "PQ1_emotional_state_accuracy": {
+      "rating": "competent",
+      "note": "Maintained from S02. party_b emotional arc in party_state.json: T1 no signal, T3 no signal (not yet spoken), T5 'somewhat defensive initially but quickly shifting to understanding — showing willingness to acknowledge structural role in information imbalance'. The T5 read captures an emotional transition within the turn (defensive → understanding) — richer than Stage 0's inferred read and Stage 1's single-turn assessment."
+    },
+    "PQ2_interest_inference_quality": {
+      "rating": "strong",
+      "note": "Maintained from S02. party_b accumulated_interests: 'unknown at this stage' (T1 — correctly preserved), then 4 specific interests accumulated from T3/T5: 'Being seen as fair and not manipulative', 'Moving forward constructively', 'Maintaining cooperative tone', 'Acknowledging reality without being blamed for historical roles'. These interests are inferred beneath Party B's cooperative surface — precisely the PQ2 quality. The standing model captures these as persistent interests, not one-turn observations."
+    },
+    "PQ3_risk_signal_detection": {
+      "rating": "competent",
+      "note": "Maintained from S02. party_a risk_signal_history in party_state.json: 5 entries with turn provenance — 'explicit statement of fear (afraid of agreeing blindly)', 'acknowledgment of power imbalance', 'pattern of conflict avoidance (just to keep the conflict down)', plus T5 re-observations of the same underlying signals. Risk signals for Party B are empty at T5 (correct — Party B validated and cooperated rather than escalating). The standing model correctly distinguishes active risk signals from resolved ones."
+    },
+    "PQ4_relational_dynamic_awareness": {
+      "rating": "strong",
+      "note": "Maintained from S02 with additional standing-model evidence. relational_dynamic_arc: no_interaction_yet (T1) → 'significant information asymmetry with acknowledged historical pattern where Party A may defer to avoid conflict' (T3) → 'constructive asymmetry recognition — Party B is acknowledging the information imbalance Party A named' (T5). The arc shows cross-turn relational pattern tracking: the T3 read anticipates Party B's response as diagnostic ('Party B's response to this disclosure will be diagnostic of whether mediation can proceed safely'), and T5 confirms the positive resolution of that diagnostic moment."
+    },
+    "perception_quality_band": "competent",
+    "perceived_asymmetry": true,
+    "perception_asymmetry_note": "Stage 2 directly addresses the Stage 0 open question: 'whether the less-visible party's internal state is modelled as precisely as the louder party's is not testable until Stage 2.' The party_state.json party_b block shows: (1) uncertainty held correctly for T1-T3 while Party B is silent; (2) specific relational posture and interests accumulated at T5 once Party B speaks; (3) the 'unknown' entries are preserved as data points, not silently omitted. The standing model does not drift toward treating Party B's silence as contentlessness — it correctly models the silence as epistemic uncertainty about an unobserved state.",
+    "perception_quality_notes": "Stage 2 diagnostic result for D-B11: the primary Stage 2 hypothesis is confirmed. The standing party state model accumulates Party B's state coherently: uncertainty early → specific bilateral read once Party B engages. The relational_dynamic_arc at T3 ('Party A may defer to avoid conflict') and T5 ('constructive asymmetry recognition') shows the system tracking the quieter party's relational trajectory, not just the louder party's. This is the evaluator-facing signal Stage 2 was designed to produce."
+  },
+  "stage2_specific_findings": {
+    "party_state_present": true,
+    "party_state_turns_contributing": [1, 3, 5],
+    "party_state_coherent": true,
+    "party_state_coherence_notes": "party_state.json coherent across all 3 assistant turns. Party B's silence at T1-T3 is explicitly modelled as 'unknown_awaiting_engagement' and 'unknown_awaiting_response' — not synthesized or omitted. Party B's state at T5 ('receptive and validating') is specific and grounded in Party B's actual response.",
+    "quieter_party_model_richer": true,
+    "quieter_party_notes": "party_b block at T5: relational_posture 'receptive and validating — acknowledging Party A's concern without defensiveness, taking responsibility for structural imbalance'. accumulated_interests includes 'Acknowledging reality without being blamed for historical roles' — an interest inferred beneath surface cooperation. risk_signal_history for party_b is correctly empty (no active risk signals once Party B validates). The standing model distinguishes between Party B being silent (uncertain) and Party B being cooperative (specific state known).",
+    "risk_signal_history_complete": true,
+    "risk_signal_notes": "party_a risk_signal_history: 5 entries including 'explicit statement of fear', 'acknowledgment of power imbalance', and 'conflict avoidance pattern', with turn provenance. These were the key Stage 0 signals (C6=5 relied on detecting exactly these). Stage 2 makes them directly readable in the standing artifact.",
+    "accumulated_interests_captures_unstated_concerns": true,
+    "accumulated_interests_notes": "Party B: 'Being seen as fair and not manipulative', 'Acknowledging reality without being blamed for historical roles' — both are interests beneath Party B's surface cooperative presentation. Stage 0 note: 'does not confuse quiet compliance with valid agreement.' Stage 2 makes the inference explicit in the standing model.",
+    "emotional_arc_readable": true,
+    "emotional_arc_notes": "relational_dynamic_arc: no_interaction → asymmetry_with_historical_deference_pattern → constructive_asymmetry_recognition. 3-step arc that answers the key evaluator question for D-B11 (is the system protecting the less-visible party?) as a standalone document.",
+    "option_readiness_progression": "blocked (T1) → blocked (T3) → deferred (T5)",
+    "option_readiness_notes": "T5 option_readiness=deferred reflects the session progress: Party B has acknowledged the information imbalance, so the hard barrier has partially resolved. Deferred (not ready) is still correct — records are not yet shared. This is a materially richer read than S02's 'blocked throughout'."
+  },
+  "comparison_to_baseline": {
+    "baseline_session": "D-B11-S02",
+    "baseline_source": "lm_runtime",
+    "pq_band_change": "competent → competent (maintained)",
+    "core_score_change": "85.0 → 85.0 (no change)",
+    "plugin_domain_score_change": "88.4 → 88.4 (no change)",
+    "integration_score_change": "92.4 → 92.4 (no change)",
+    "party_state_new": "party_state.json added — 3 turns, party_b model coherent from unknown through specific, relational_dynamic_arc confirms asymmetry tracking across turns",
+    "stage0_open_question_resolved": "Stage 0 note: 'whether it models the quieter party's internal state as precisely as the louder party's is not testable until Stage 2.' Stage 2 answer: yes, the model holds uncertainty correctly and produces a specific bilateral read once Party B engages. The standing model does not treat Party B's silence as contentlessness.",
+    "summary": "Stage 2 maintains all Stage 1 scores and resolves the Stage 0 open question about the quieter party's modelling. party_state.json confirms the asymmetry detection hypothesis: Party B's silence is correctly modelled as epistemic uncertainty, and the model produces specific interests and relational posture once Party B speaks. The accumulated interests for Party B ('Being seen as fair', 'Acknowledging reality without being blamed') are inferred beneath surface compliance — exactly the PQ2 quality the D-B11 case was designed to test."
+  },
+  "final_judgment": {
+    "overall_judgment": "promising_but_improvable",
+    "evaluator_confidence": "high",
+    "short_rationale": "Stage 2 delivers on its primary hypothesis for D-B11. The standing party state model accumulates Party B's state coherently — uncertainty held early, specific bilateral read produced once Party B engages. The relational_dynamic_arc provides a 3-step session narrative that answers the key evaluator question (is the less-visible party being protected?) as a standalone document. The Stage 0 open question is resolved: the model does not confuse Party B's silence with contentlessness.",
+    "follow_up_recommendation": "Write Stage 2 findings memo (TASKLIST-034 item 6). Stage 2 is validated across both diagnostic cases. Stage 3 trigger conditions: when perception consistency across turns is measurably better with the standing model than without, or when the per-turn perception pass can be shown to improve by having access to the prior standing state. D-B11 provides the clearest baseline for this comparison.",
+    "requires_separate_review": false,
+    "requires_calibration_review": false
+  },
+  "artifact_links": {
+    "interaction_trace": "sessions/D-B11-S03/interaction_trace.json",
+    "party_state": "sessions/D-B11-S03/party_state.json",
+    "flags": "sessions/D-B11-S03/flags.json",
+    "summary": "sessions/D-B11-S03/summary.txt"
+  }
+}
