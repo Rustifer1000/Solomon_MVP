@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "safety_monitor.schema.json",
+  "title": "Solomon Safety Monitor Result",
+  "description": "Structural specification for the safety_monitor output (Stage 5). This schema defines the expected shape of the safety_monitor_result object embedded in reasoning_trace per turn. It is NOT emitted as a standalone session artifact — safety monitor data is persisted inside interaction_trace.json under reasoning_trace.safety_monitor_result. The safety monitor observes full interaction history to detect cross-turn adversarial patterns (compliance-only, deflection-as-leverage, discordant-signal suppression) that the per-turn flag/escalation layer cannot see. Used as a structural reference by safety_monitor.py and for IDE/documentation purposes only.",
+  "type": "object",
+  "required": [
+    "schema_version", "case_id", "session_id", "turn_index",
+    "generated_at", "source",
+    "compliance_pattern", "deflection_pattern", "discordant_signals",
+    "flags_raised", "party_state_signals",
+    "veto_recommendation", "veto_reason",
+    "monitor_confidence", "monitor_notes"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "safety_monitor.v0"
+    },
+    "case_id": { "type": "string" },
+    "session_id": { "type": "string" },
+    "turn_index": { "type": "integer", "minimum": 1 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "source": {
+      "type": "string",
+      "const": "safety_monitor_v0"
+    },
+
+    "compliance_pattern": {
+      "oneOf": [
+        { "$ref": "#/$defs/compliancePattern" },
+        { "type": "null" }
+      ],
+      "description": "Cross-turn compliance analysis for each party. Null when interaction history is insufficient (turn_index < 3) or when the monitor LM call failed."
+    },
+
+    "deflection_pattern": {
+      "oneOf": [
+        { "$ref": "#/$defs/deflectionPattern" },
+        { "type": "null" }
+      ],
+      "description": "Cross-turn deflection analysis. Detects when a party with an information advantage actively deflects disclosure requests using distinct tactics across turns. Null when no deflection request baseline exists or monitor call failed."
+    },
+
+    "discordant_signals": {
+      "type": "array",
+      "description": "Signals where a party briefly surfaced a genuine interest that did not fit the dominant party's framing, and that signal was subsequently suppressed via reframe or return to compliance. Empty array when none detected.",
+      "items": { "$ref": "#/$defs/discordantSignal" }
+    },
+
+    "flags_raised": {
+      "type": "array",
+      "description": "flag_type strings the safety monitor is adding to state.flags this turn. These are processed before plugin.assess_state() so they are visible to the escalation cascade.",
+      "items": { "type": "string" }
+    },
+
+    "party_state_signals": {
+      "type": "array",
+      "description": "Signal strings to write to party_state.signals before the domain_reasoner runs. These carry veto authority into the domain_reasoner's option_readiness determination.",
+      "items": { "type": "string" }
+    },
+
+    "veto_recommendation": {
+      "type": ["string", "null"],
+      "enum": ["CATEGORY 1", "CATEGORY 2", "CATEGORY 3", null],
+      "description": "Veto category the safety monitor recommends. CATEGORY 1: compliance-only party (no independent interest expression). CATEGORY 2: information asymmetry actively used as leverage (≥2 distinct deflection tactics). CATEGORY 3: discordant signal suppressed by dominant party reframe. Null when no veto condition is met or confidence is insufficient."
+    },
+
+    "veto_reason": {
+      "type": ["string", "null"],
+      "description": "Explicit reasoning behind the veto_recommendation. Non-null when veto_recommendation is non-null. Should cite the specific turns and party actions that triggered the veto."
+    },
+
+    "monitor_confidence": {
+      "type": "string",
+      "enum": ["low", "moderate", "high"],
+      "description": "Safety monitor confidence in its own pattern assessment. Always 'low' on turns 1-2 (insufficient history). 'moderate' on turns 3-4. 'high' from turn 5+ when sufficient history exists. Also 'low' when the monitor LM call failed and a null fallback result was used."
+    },
+
+    "monitor_notes": {
+      "type": "string",
+      "description": "Practitioner-readable summary of the safety monitor's cross-turn observations. What a safety-focused reviewer would note about the session dynamics at this point."
+    }
+  },
+
+  "$defs": {
+    "compliancePattern": {
+      "type": "object",
+      "required": ["detected", "party", "evidence_turns", "pattern_type", "severity"],
+      "additionalProperties": false,
+      "properties": {
+        "detected": {
+          "type": "boolean",
+          "description": "True when the compliance pattern meets the threshold for the given severity level."
+        },
+        "party": {
+          "type": "string",
+          "enum": ["A", "B", "both"],
+          "description": "Which party exhibits the compliance pattern."
+        },
+        "evidence_turns": {
+          "type": "array",
+          "items": { "type": "integer" },
+          "description": "Turn indices where the compliance behavior was observed."
+        },
+        "pattern_type": {
+          "type": "string",
+          "enum": ["acceptance_only", "reactive_only", "reactive_with_independent"],
+          "description": "acceptance_only: party agrees with no modification or independent content. reactive_only: all party content is modifications to the other party's proposals, no independently-initiated statements. reactive_with_independent: mostly reactive but at least one independently-initiated interest statement exists — compliance pattern present but veto threshold not met."
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["low", "moderate", "high"],
+          "description": "low: 1-2 reactive turns (insufficient for veto). moderate: 3-4 reactive turns or pattern_type=reactive_only. high: ≥3 turns of acceptance_only OR ≥4 turns of reactive_only — veto threshold met."
+        }
+      }
+    },
+
+    "deflectionPattern": {
+      "type": "object",
+      "required": ["detected", "deflecting_party", "target_request_turn", "deflection_turns", "deflection_tactics", "pattern_confirmed"],
+      "additionalProperties": false,
+      "properties": {
+        "detected": {
+          "type": "boolean",
+          "description": "True when at least one deflection tactic has been observed in response to a direct disclosure request."
+        },
+        "deflecting_party": {
+          "type": "string",
+          "enum": ["A", "B"],
+          "description": "The party with the information advantage who is deflecting."
+        },
+        "target_request_turn": {
+          "type": "integer",
+          "description": "Turn index where the original disclosure request was made by the other party."
+        },
+        "deflection_turns": {
+          "type": "array",
+          "items": { "type": "integer" },
+          "description": "Turn indices where deflection tactics were observed."
+        },
+        "deflection_tactics": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["complexity_reframe", "timing_deflection", "urgency_pressure", "authority_claim", "scope_minimisation"]
+          },
+          "description": "Specific tactics used. complexity_reframe: 'you'd need an expert to understand this.' timing_deflection: 'framework first, details later.' urgency_pressure: manufactured time pressure to bypass disclosure. authority_claim: 'I understand these numbers better.' scope_minimisation: 'those details don't matter for this decision.'"
+        },
+        "pattern_confirmed": {
+          "type": "boolean",
+          "description": "True when ≥2 distinct deflection tactics have been observed in response to the same underlying disclosure request. This is the CATEGORY 2 veto threshold."
+        }
+      }
+    },
+
+    "discordantSignal": {
+      "type": "object",
+      "required": ["party", "signal_turn", "signal_summary", "was_reframed", "return_to_compliance"],
+      "additionalProperties": false,
+      "properties": {
+        "party": {
+          "type": "string",
+          "enum": ["A", "B"],
+          "description": "The party whose discordant signal was observed."
+        },
+        "signal_turn": {
+          "type": "integer",
+          "description": "Turn index where the discordant signal appeared."
+        },
+        "signal_summary": {
+          "type": "string",
+          "description": "Brief description of what the party expressed that did not fit the dominant framing."
+        },
+        "was_reframed": {
+          "type": "boolean",
+          "description": "True when the other party responded to the discordant signal by reframing it as consistent with their own position."
+        },
+        "reframe_turn": {
+          "type": ["integer", "null"],
+          "description": "Turn index of the reframe. Non-null when was_reframed is true."
+        },
+        "reframe_party": {
+          "type": ["string", "null"],
+          "enum": ["A", "B", null],
+          "description": "The party who performed the reframe."
+        },
+        "return_to_compliance": {
+          "type": "boolean",
+          "description": "True when the discordant party's next statement returned to the compliant pattern after the reframe. This is the CATEGORY 3 veto signal: genuine interest surfaced, suppressed, compliance resumed."
+        },
+        "compliance_turn": {
+          "type": ["integer", "null"],
+          "description": "Turn index where return to compliance was observed. Non-null when return_to_compliance is true."
+        }
+      }
+    }
+  }
+}

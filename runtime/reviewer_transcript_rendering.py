@@ -85,8 +85,42 @@ def _render_turn(turn: dict) -> str:
     return f"Turn {turn['turn_index']} [{turn.get('phase', 'unknown')}]\n{body}\n"
 
 
+def _render_safety_monitor_summary(state: dict) -> str:
+    """
+    Build a brief safety monitor section for the review packet.
+    Only included when at least one assistant turn has a safety_monitor_result.
+    """
+    monitor_turns = [
+        t for t in state["trace_buffer"]
+        if t.get("role") == "assistant"
+        and t.get("reasoning_trace", {}).get("safety_monitor_result") is not None
+    ]
+    if not monitor_turns:
+        return ""
+
+    lines: list[str] = ["Safety Monitor Log", "---"]
+    for turn in monitor_turns:
+        smr = turn["reasoning_trace"]["safety_monitor_result"]
+        tidx = turn["turn_index"]
+        confidence = smr.get("monitor_confidence", "?")
+        veto = smr.get("veto_recommendation")
+        notes = smr.get("monitor_notes", "")[:200]
+
+        if veto:
+            veto_reason = smr.get("veto_reason", "")[:150]
+            lines.append(f"T{tidx} [{confidence}] VETO {veto}: {veto_reason}")
+        elif smr.get("_null_result"):
+            lines.append(f"T{tidx} [low] null result (insufficient history or call failed)")
+        else:
+            lines.append(f"T{tidx} [{confidence}] {notes}")
+
+    return "\n".join(lines) + "\n"
+
+
 def build_rendered_reviewer_transcript(state: dict, renderer_name: str) -> str:
     turns = "\n".join(_render_turn(turn) for turn in state["trace_buffer"])
+    monitor_section = _render_safety_monitor_summary(state)
+    monitor_block = f"\n{monitor_section}" if monitor_section else ""
     return (
         "Reviewer Transcript\n"
         "Source Note: reviewer-facing rendered transcript derived from the structured interaction trace\n"
@@ -94,4 +128,5 @@ def build_rendered_reviewer_transcript(state: dict, renderer_name: str) -> str:
         f"Case ID: {state['meta']['case_id']}\n"
         f"Session ID: {state['meta']['session_id']}\n\n"
         f"{turns}\n"
+        f"{monitor_block}"
     )

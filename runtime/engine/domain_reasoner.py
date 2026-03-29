@@ -51,7 +51,13 @@ You are NOT the mediator. You do not generate response text. You do not assess p
 
 SAFETY VETO RULE (mandatory — apply carefully, not broadly)
 
-Before assessing domain feasibility, check the party state for the following signals. Apply the veto only when ALL of the following are true for a given signal category — not when any single indicator is present.
+Before assessing domain feasibility, check for veto conditions in two places:
+
+PRIORITY SOURCE — SAFETY MONITOR SIGNALS (Stage 5):
+When a "=== SAFETY MONITOR SIGNALS ===" section is present in the context, read it first. If it contains a VETO CATEGORY directive (CATEGORY 1, CATEGORY 2, or CATEGORY 3), apply the veto immediately — set safety_veto_applied=true, option_readiness="blocked", and copy the veto reason into safety_veto_reason. You do NOT need to re-verify the pattern. The safety monitor has already done the cross-turn analysis. Trust its finding.
+
+FALLBACK SOURCE — PARTY STATE SIGNALS:
+When no safety monitor signals are present (earlier sessions, Stage 3/4 path, or safety monitor null result), apply your own veto check against the party state below. Apply the veto only when ALL of the following are true for a given signal category — not when any single indicator is present.
 
 VETO CATEGORY 1: Compliance-only interest pattern
 Apply when BOTH: (a) a party's accumulated interests contain NO independent substantive content — every entry is a response to or constraint on the other party's proposal with no original value expression, AND (b) the party has had at least one opportunity to speak and has not initiated any content independently. Do NOT apply when a party's interests contain even one genuine independent value (e.g., "not wanting unilateral control over the process" is an independent interest even if stated reactively).
@@ -221,6 +227,7 @@ def _build_domain_context(
     session_history: list[dict],
     turn_index: int,
     option_pool: list[dict] | None = None,
+    safety_monitor_signals: list[str] | None = None,
 ) -> str:
     """Build the user message for the domain reasoner call."""
     parts: list[str] = []
@@ -315,6 +322,20 @@ def _build_domain_context(
             parts.append(f"Cross-party dynamic: {dyn}")
         parts.append("")
 
+    # Safety monitor signals (Stage 5) — injected before option pool so the
+    # domain reasoner sees them when checking the safety veto rule.
+    if safety_monitor_signals:
+        parts.append("=== SAFETY MONITOR SIGNALS (Stage 5) ===")
+        parts.append(
+            "The dedicated safety monitor has observed cross-turn patterns and raised "
+            "the following signals. If any signal contains a VETO CATEGORY directive, "
+            "apply it — set safety_veto_applied=true and option_readiness='blocked'. "
+            "You do NOT need to re-detect the pattern yourself; trust the monitor's finding."
+        )
+        for signal in safety_monitor_signals:
+            parts.append(f"  {signal}")
+        parts.append("")
+
     # Brainstormer option pool (Stage 4 only)
     if option_pool:
         parts.append("=== BRAINSTORMER OPTION POOL ===")
@@ -362,6 +383,7 @@ def generate_domain_analysis(
     plugin_assessment: dict,
     session_history: list[dict],
     option_pool: list[dict] | None = None,
+    safety_monitor_signals: list[str] | None = None,
 ) -> dict:
     """
     Call the domain reasoner and return a domain_analysis dict.
@@ -375,6 +397,11 @@ def generate_domain_analysis(
         and adds its own domain-expert candidates before returning the
         full ``option_pool_qualification`` block.  When absent (Stage 3
         path), behaviour is unchanged.
+    safety_monitor_signals:
+        Optional list of veto/caution signal strings from the Stage 5
+        safety monitor.  When present, injected into the domain context
+        before the safety veto check so the domain reasoner can honour
+        CATEGORY 1/2/3 directives without needing to re-detect them.
 
     On any failure (API error, parse failure), returns a minimal
     fallback dict with option_readiness="deferred" so the main
@@ -391,6 +418,7 @@ def generate_domain_analysis(
             session_history=session_history,
             turn_index=turn_index,
             option_pool=option_pool or [],
+            safety_monitor_signals=safety_monitor_signals,
         )
 
         response = client.messages.create(

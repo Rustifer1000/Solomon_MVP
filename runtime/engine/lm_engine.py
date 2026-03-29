@@ -84,6 +84,7 @@ def generate_lm_assistant_turn(
     state: dict,
     plugin_assessment: dict,
     min_phase: str = "info_gathering",
+    safety_monitor_result: dict | None = None,
 ) -> dict:
     """
     Generate a single assistant turn via the Anthropic API.
@@ -141,6 +142,12 @@ def generate_lm_assistant_turn(
     # Stage 4: now also receives the brainstormer pool for qualification.
     # Produces option_readiness + qualified candidates as a structured prior.
     # Fails gracefully — fallback dict used if call fails.
+    # Extract party_state_signals from safety monitor (Stage 5) to pass into
+    # domain_reasoner context so it can honour CATEGORY 1/2/3 veto signals.
+    safety_signals = (
+        safety_monitor_result.get("party_state_signals", [])
+        if safety_monitor_result else []
+    )
     domain_analysis = generate_domain_analysis(
         turn_index=turn_index,
         timestamp=timestamp,
@@ -149,6 +156,7 @@ def generate_lm_assistant_turn(
         plugin_assessment=plugin_assessment,
         session_history=session_history,
         option_pool=brainstormer_pool if brainstormer_pool else None,
+        safety_monitor_signals=safety_signals if safety_signals else None,
     )
 
     # Build prompt
@@ -196,6 +204,7 @@ def generate_lm_assistant_turn(
         min_phase=min_phase,
         domain_analysis=domain_analysis,
         brainstormer_pool=brainstormer_pool,
+        safety_monitor_result=safety_monitor_result,
     )
 
 
@@ -285,6 +294,7 @@ def _build_turn_dict(
     min_phase: str = "info_gathering",
     domain_analysis: dict | None = None,
     brainstormer_pool: list[dict] | None = None,
+    safety_monitor_result: dict | None = None,
 ) -> dict:
     """
     Convert the parsed LM response into a raw turn dict.
@@ -322,6 +332,7 @@ def _build_turn_dict(
         model_id=model_id,
         domain_analysis=domain_analysis,
         brainstormer_pool=brainstormer_pool,
+        safety_monitor_result=safety_monitor_result,
     )
 
     # Escalation from safety check
@@ -434,6 +445,7 @@ def _build_reasoning_trace(
     model_id: str,
     domain_analysis: dict | None = None,
     brainstormer_pool: list[dict] | None = None,
+    safety_monitor_result: dict | None = None,
 ) -> dict:
     """
     Build the per-turn reasoning_trace object from the parsed five-step JSON.
@@ -485,6 +497,11 @@ def _build_reasoning_trace(
     # needing to re-call either engine.
     if brainstormer_pool is not None:
         result["brainstormer_pool"] = brainstormer_pool
+    # Attach safety monitor result (Stage 5) when available.
+    # Stored alongside pre_computed_domain_analysis so evaluators can read
+    # the full pre-turn agent stack in one place.
+    if safety_monitor_result is not None:
+        result["safety_monitor_result"] = safety_monitor_result
     return result
 
 

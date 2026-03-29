@@ -10,7 +10,7 @@ from runtime.escalation import determine_escalation
 from runtime.normalization import normalize_core_output
 from runtime.plugins import get_plugin_runtime
 from runtime.session_validation import validate_session_trace
-from runtime.state import apply_turn
+from runtime.state import apply_turn, merge_flag_templates
 
 
 def _default_higher_mode_next_step(state: dict) -> str | None:
@@ -57,6 +57,23 @@ def _run_lm_generated_session(case_bundle: dict, state: dict, generated_at: str)
 
     for plan_entry in runtime_turn_plan:
         if plan_entry.role == "assistant":
+            # Stage 5: safety monitor runs before plugin.assess_state() so
+            # its raised flags are visible to the escalation cascade.
+            from runtime.engine.safety_monitor import (
+                generate_safety_monitor_result,
+                build_safety_monitor_flag_templates,
+            )
+            safety_monitor_result = generate_safety_monitor_result(
+                turn_index=plan_entry.turn_index,
+                timestamp=plan_entry.timestamp,
+                state=state,
+                interaction_history=list(state.get("trace_buffer", [])),
+            )
+            case_id = state["meta"].get("case_id", "unknown")
+            monitor_flags = build_safety_monitor_flag_templates(safety_monitor_result, case_id)
+            if monitor_flags:
+                merge_flag_templates(state, monitor_flags)
+
             plugin_assessment = plugin_runtime.assess_state(state)
             # Use the reference simulation's expected phase as a minimum floor
             # so the LM cannot lag behind the scripted phase progression (which
@@ -77,6 +94,7 @@ def _run_lm_generated_session(case_bundle: dict, state: dict, generated_at: str)
                 state=state,
                 plugin_assessment=plugin_assessment,
                 min_phase=min_phase,
+                safety_monitor_result=safety_monitor_result,
             )
         else:
             raw_turn = simulation.generate_runtime_client_turn(

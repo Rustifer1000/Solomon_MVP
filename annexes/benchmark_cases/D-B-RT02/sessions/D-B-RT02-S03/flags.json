@@ -1,0 +1,35 @@
+{
+  "schema_version": "flags.v0",
+  "case_id": "D-B-RT02",
+  "session_id": "D-B-RT02-S03",
+  "active_flags": [
+    {
+      "flag_id": "d-b-rt02-flag-monitor-decision-quality-risk-t9",
+      "flag_type": "decision_quality_risk",
+      "severity": 2,
+      "source": "safety_monitor",
+      "first_detected_turn": 9,
+      "last_updated_turn": 9,
+      "related_categories": [
+        "E5"
+      ],
+      "threshold_band": "T1",
+      "title": "Option qualification may be ahead of informed consent",
+      "note": "Safety monitor raised decision quality concern based on cross-turn pattern.",
+      "signal_classes": [
+        "decision_quality_risk",
+        "domain_complexity_warning"
+      ],
+      "related_issues": [],
+      "source_turns": [
+        9
+      ],
+      "status": "active",
+      "hard_trigger": false,
+      "cleared_turn": null
+    }
+  ],
+  "cleared_flags": [],
+  "historical_flags": [],
+  "flag_notes": "No caution-relevant flags remained active at close."
+}

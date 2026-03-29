@@ -3657,5 +3657,180 @@ class TestBuildOptionPool(unittest.TestCase):
         self.assertEqual([t["turn_index"] for t in result["turns"]], [3, 7])
 
 
+class TestSafetyMonitor(unittest.TestCase):
+    """Unit tests for runtime.engine.safety_monitor — Stage 5."""
+
+    def _make_state(self, case_id: str = "TEST-CASE") -> dict:
+        return {
+            "meta": {"case_id": case_id, "session_id": "TEST-S01"},
+            "flags": [],
+            "summary_state": {"issues": []},
+            "missing_info": [],
+            "facts": [],
+            "trace_buffer": [],
+        }
+
+    def _make_client_turn(self, turn_index: int, text: str) -> dict:
+        return {"role": "client", "turn_index": turn_index, "message_text": text, "message_summary": text}
+
+    def _make_assistant_turn(self, turn_index: int, summary: str) -> dict:
+        return {"role": "assistant", "turn_index": turn_index, "message_summary": summary, "reasoning_trace": None}
+
+    # ------------------------------------------------------------------
+    # Null result paths
+    # ------------------------------------------------------------------
+
+    def test_turn_1_returns_null_result(self) -> None:
+        """Safety monitor returns null/low-confidence result on turn 1 without API call."""
+        from runtime.engine.safety_monitor import generate_safety_monitor_result
+        state = self._make_state()
+        result = generate_safety_monitor_result(
+            turn_index=1,
+            timestamp="2026-01-01T00:00:00Z",
+            state=state,
+            interaction_history=[],
+        )
+        self.assertEqual(result["schema_version"], "safety_monitor.v0")
+        self.assertEqual(result["monitor_confidence"], "low")
+        self.assertIsNone(result["veto_recommendation"])
+        self.assertEqual(result["flags_raised"], [])
+        self.assertEqual(result["party_state_signals"], [])
+        self.assertTrue(result.get("_null_result"))
+
+    def test_turn_2_returns_null_result(self) -> None:
+        """Safety monitor returns null result on turn 2 without API call."""
+        from runtime.engine.safety_monitor import generate_safety_monitor_result
+        state = self._make_state()
+        result = generate_safety_monitor_result(
+            turn_index=2,
+            timestamp="2026-01-01T00:00:00Z",
+            state=state,
+            interaction_history=[self._make_client_turn(1, "Hello")],
+        )
+        self.assertTrue(result.get("_null_result"))
+        self.assertEqual(result["monitor_confidence"], "low")
+
+    def test_null_result_shape_matches_schema(self) -> None:
+        """Null result has all required schema fields."""
+        from runtime.engine.safety_monitor import generate_safety_monitor_result
+        required = [
+            "schema_version", "case_id", "session_id", "turn_index",
+            "generated_at", "source", "compliance_pattern", "deflection_pattern",
+            "discordant_signals", "flags_raised", "party_state_signals",
+            "veto_recommendation", "veto_reason", "monitor_confidence", "monitor_notes",
+        ]
+        state = self._make_state()
+        result = generate_safety_monitor_result(
+            turn_index=1,
+            timestamp="2026-01-01T00:00:00Z",
+            state=state,
+            interaction_history=[],
+        )
+        for field in required:
+            self.assertIn(field, result, f"Missing required field: {field}")
+
+    # ------------------------------------------------------------------
+    # Flag template builder
+    # ------------------------------------------------------------------
+
+    def test_build_flag_templates_empty_when_no_flags(self) -> None:
+        """build_safety_monitor_flag_templates returns [] when flags_raised is empty."""
+        from runtime.engine.safety_monitor import build_safety_monitor_flag_templates
+        smr = {"turn_index": 5, "flags_raised": []}
+        result = build_safety_monitor_flag_templates(smr, "TEST-CASE")
+        self.assertEqual(result, [])
+
+    def test_build_flag_templates_compliance_only(self) -> None:
+        """compliance_only_pattern flag template has correct metadata."""
+        from runtime.engine.safety_monitor import build_safety_monitor_flag_templates
+        smr = {"turn_index": 5, "flags_raised": ["compliance_only_pattern"]}
+        templates = build_safety_monitor_flag_templates(smr, "TEST-CASE")
+        self.assertEqual(len(templates), 1)
+        t = templates[0]
+        self.assertEqual(t["flag_type"], "compliance_only_pattern")
+        self.assertEqual(t["source"], "safety_monitor")
+        self.assertEqual(t["first_detected_turn"], 5)
+        self.assertIn("related_categories", t)
+        self.assertIn("flag_id", t)
+
+    def test_build_flag_templates_multiple_flags(self) -> None:
+        """Multiple flags_raised produce multiple distinct templates."""
+        from runtime.engine.safety_monitor import build_safety_monitor_flag_templates
+        smr = {"turn_index": 7, "flags_raised": ["compliance_only_pattern", "decision_quality_risk"]}
+        templates = build_safety_monitor_flag_templates(smr, "D-B-RT01")
+        self.assertEqual(len(templates), 2)
+        flag_types = {t["flag_type"] for t in templates}
+        self.assertEqual(flag_types, {"compliance_only_pattern", "decision_quality_risk"})
+
+    # ------------------------------------------------------------------
+    # _derive_actions (tested via parse output injection)
+    # ------------------------------------------------------------------
+
+    def test_derive_actions_category1_raises_flags(self) -> None:
+        """CATEGORY 1 veto recommendation populates flags_raised and party_state_signals."""
+        from runtime.engine.safety_monitor import _derive_actions
+        result = {
+            "veto_recommendation": "CATEGORY 1",
+            "veto_reason": "Party B acceptance-only across T2, T4, T6.",
+            "compliance_pattern": {"detected": True, "party": "B", "pattern_type": "acceptance_only", "severity": "high", "evidence_turns": [2, 4, 6]},
+            "deflection_pattern": None,
+            "discordant_signals": [],
+            "flags_raised": [],
+            "party_state_signals": [],
+        }
+        _derive_actions(result)
+        self.assertIn("compliance_only_pattern", result["flags_raised"])
+        self.assertTrue(len(result["party_state_signals"]) > 0)
+        self.assertIn("CATEGORY 1", result["party_state_signals"][0])
+
+    def test_derive_actions_category2_raises_flags(self) -> None:
+        """CATEGORY 2 veto recommendation populates flags_raised and party_state_signals."""
+        from runtime.engine.safety_monitor import _derive_actions
+        result = {
+            "veto_recommendation": "CATEGORY 2",
+            "veto_reason": "Party A deflected twice: complexity_reframe (T5), timing_deflection (T7).",
+            "compliance_pattern": None,
+            "deflection_pattern": {"detected": True, "deflecting_party": "A", "target_request_turn": 4, "deflection_turns": [5, 7], "deflection_tactics": ["complexity_reframe", "timing_deflection"], "pattern_confirmed": True},
+            "discordant_signals": [],
+            "flags_raised": [],
+            "party_state_signals": [],
+        }
+        _derive_actions(result)
+        self.assertIn("decision_quality_risk", result["flags_raised"])
+        self.assertIn("CATEGORY 2", result["party_state_signals"][0])
+
+    def test_derive_actions_category3_raises_flags(self) -> None:
+        """CATEGORY 3 veto recommendation populates flags_raised and party_state_signals."""
+        from runtime.engine.safety_monitor import _derive_actions
+        result = {
+            "veto_recommendation": "CATEGORY 3",
+            "veto_reason": "Party B T6 discordant signal suppressed by Party A reframe at T7.",
+            "compliance_pattern": None,
+            "deflection_pattern": None,
+            "discordant_signals": [{"party": "B", "signal_turn": 6, "signal_summary": "Worried about time", "was_reframed": True, "reframe_turn": 7, "reframe_party": "A", "return_to_compliance": True, "compliance_turn": 8}],
+            "flags_raised": [],
+            "party_state_signals": [],
+        }
+        _derive_actions(result)
+        self.assertIn("compliance_only_pattern", result["flags_raised"])
+        self.assertIn("CATEGORY 3", result["party_state_signals"][0])
+
+    def test_derive_actions_no_veto_no_flags(self) -> None:
+        """No veto and no moderate compliance signal produces no flags or signals."""
+        from runtime.engine.safety_monitor import _derive_actions
+        result = {
+            "veto_recommendation": None,
+            "veto_reason": None,
+            "compliance_pattern": {"detected": False, "party": "B", "pattern_type": "reactive_with_independent", "severity": "low", "evidence_turns": []},
+            "deflection_pattern": None,
+            "discordant_signals": [],
+            "flags_raised": [],
+            "party_state_signals": [],
+        }
+        _derive_actions(result)
+        self.assertEqual(result["flags_raised"], [])
+        self.assertEqual(result["party_state_signals"], [])
+
+
 if __name__ == "__main__":
     unittest.main()

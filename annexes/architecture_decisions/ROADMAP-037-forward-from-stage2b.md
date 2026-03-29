@@ -15,7 +15,7 @@
 | Stage 2b — Party state feedback loop | **Complete** | Projection guard, D-B11-S04/S05, D-B07-S02 |
 | Stage 3 — Plugin as active domain reasoner | **Complete** | domain_reasoner.py, D-B07-S10 (P6 resolved), D-B11-S06, D-B04-S04; STAGE3-FINDINGS-039 |
 | Stage 4 — Option generation decoupled | **Complete** | option_generator.py, domain_reasoner Option B additive pool, D-B07-S11 (+4.5 composite, C5 4→5), D-B04-S05 regression check PASS; STAGE4-FINDINGS-041 |
-| Stage 5 — Safety monitor as dedicated agent | Pending Stage 4 |  |
+| Stage 5 — Safety monitor as dedicated agent | **Design complete** | STAGE5-DESIGN-042; 8 implementation items defined; adversarial validation plan covers D-B-RT01/02/03 |
 | Stage 6 — Full multi-agent orchestration | Pending Stage 5 |  |
 
 The Stage 3 entry conditions from STAGE2B-FINDINGS-036 are all met:
@@ -253,3 +253,6 @@ Design rule: the domain reasoner gets access to party_state.json. If the party s
 | D-B07-S11 Stage 4 diagnostic | **Complete** 2026-03-28 — PASS, composite 87.2 (+4.5), C5 4→5, pool 4→11 |
 | D-B04-S05 Stage 4 regression check | **Complete** 2026-03-28 — PASS (T7=ready, 6 qualified); brainstormer silent failure at T7 noted |
 | STAGE4-FINDINGS-041 memo | **Complete** 2026-03-28 |
+| Codebase review Track 1-5 fixes | **Complete** 2026-03-28 — Stage 3 fallback in build_option_pool, safety_veto_reason population, DEFERRED/BLOCKED prompt rule, phase constant deduplication, domain_analysis.schema clarification, TestBuildOptionPool (8 tests) |
+| STAGE5-DESIGN-042 | **Complete** 2026-03-28 — safety_monitor agent design, 8 implementation items, adversarial validation plan |
+| Stage 5 implementation | Pending — 8 items defined in STAGE5-DESIGN-042 §11 |
