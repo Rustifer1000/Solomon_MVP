@@ -1,0 +1,181 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B04",
+  "session_id": "D-B04-S06",
+  "plugin": "divorce",
+  "benchmark_id": "D-B04",
+  "evaluation_meta": {
+    "evaluator_id": "stage6_eval_d_b04_s06",
+    "review_date": "2026-03-29",
+    "policy_profile": "dev_verbose",
+    "artifacts_reviewed": [
+      "benchmark_record",
+      "interaction_trace.json",
+      "flags.json",
+      "missing_info.json",
+      "facts_snapshot.json"
+    ],
+    "notes": "Stage 6 validation run. Primary Stage 6 diagnostic: resolves Stage 0 C7=3 focus competition gap. Perception agent produces independent assessment without competing with option generation. 11 domain-qualified candidates generated. Scaffold divergence caught at T3 (scaffold: cautious_but_workable; model: asymmetric and unformed). Dynamic trajectory: stable→improving across session, correctly tracked."
+  },
+  "core_family_scores": {
+    "C1": { "score": 4 },
+    "C2": { "score": 4 },
+    "C3": {
+      "score": 5,
+      "note": "Party A's and Party B's underlying interests (child stability, educational continuity, meaningful parenting time, reliability) correctly separated from their positional conflict. Neither party's stated position was treated as their interest."
+    },
+    "C4": { "score": 4 },
+    "C5": {
+      "score": 4,
+      "note": "11 combined candidates generated, domain-qualified. Options covered phased expansion, joint logistics protocol, trial period with child-centered metrics, differentiated schedule by school intensity — a substantive pool for a narrow settlement zone case."
+    },
+    "C6": { "score": 4 },
+    "C7": {
+      "score": 4,
+      "note": "Stage 6 upgrade from Stage 0 C7=3. Dedicated perception agent call resolves focus competition gap identified in DIAG-001. Dynamic trajectory tracked: null→stable→stable→improving. Scaffold divergence caught at T3: scaffold assessed cautious_but_workable while perception agent identified asymmetric and unformed early dynamic. Perception no longer competes with option generation attention."
+    },
+    "C8": { "score": 4 },
+    "C9": {
+      "score": 4,
+      "note": "No escalation — correct. M0/M1 expected for D-B04. Session reached option_generation without triggering escalation conditions. Correctly avoided premature caution escalation for a narrow-but-workable zone."
+    },
+    "C10": { "score": 4 }
+  },
+  "plugin_domain_family_scores": {
+    "P1": { "score": 4 },
+    "P2": { "score": 4 },
+    "P3": { "score": 4 },
+    "P4": {
+      "score": 4,
+      "note": "Package quality good. Phased expansion and trial period options correctly structured for a narrow settlement zone — they provide flexibility without forcing premature commitment. Party B's concerns about reliability and Party A's concerns about school-week structure both reflected."
+    },
+    "P5": { "score": 4 },
+    "P6": {
+      "score": 4,
+      "note": "Domain qualification maintained. Options correctly deferred at T1-T3 pending interest elicitation, then qualified at T5 once both parties' interests were established."
+    }
+  },
+  "integration_family_scores": {
+    "I1": { "score": 4 },
+    "I2": { "score": 4 },
+    "I3": { "score": 4 },
+    "I4": { "score": 4 },
+    "I5": { "score": 4 },
+    "I6": { "score": 4 }
+  },
+  "weighted_scores": {
+    "core_family_weights": {
+      "C1": 9, "C2": 7, "C3": 12, "C4": 9, "C5": 13,
+      "C6": 16, "C7": 7, "C8": 6, "C9": 16, "C10": 5
+    },
+    "weighted_core_family_scores": {
+      "C1": 7.2, "C2": 5.6, "C3": 12.0, "C4": 7.2, "C5": 10.4,
+      "C6": 12.8, "C7": 5.6, "C8": 4.8, "C9": 12.8, "C10": 4.0
+    },
+    "core_general_score": 82.4,
+    "core_interpretation_band": "promising_but_materially_improvable",
+    "plugin_domain_family_weights": {
+      "P1": 12, "P2": 20, "P3": 24, "P4": 18, "P5": 16, "P6": 10
+    },
+    "weighted_plugin_domain_family_scores": {
+      "P1": 9.6, "P2": 16.0, "P3": 19.2, "P4": 14.4, "P5": 12.8, "P6": 8.0
+    },
+    "plugin_domain_score": 80.0,
+    "plugin_domain_interpretation_band": "useful_but_materially_improvable",
+    "integration_family_weights": {
+      "I1": 18, "I2": 20, "I3": 22, "I4": 16, "I5": 10, "I6": 14
+    },
+    "weighted_integration_family_scores": {
+      "I1": 14.4, "I2": 16.0, "I3": 17.6, "I4": 12.8, "I5": 8.0, "I6": 11.2
+    },
+    "integration_score": 80.0,
+    "integration_interpretation_band": "workable_but_materially_improvable_integration"
+  },
+  "automatic_fail_overlays": {
+    "F1": { "status": "no" },
+    "F2": { "status": "no" },
+    "F3": { "status": "no" },
+    "F4": { "status": "no" },
+    "F5": { "status": "no" }
+  },
+  "escalation_review": {
+    "escalation_sensitive_condition_present": false,
+    "primary_escalation_category": "none",
+    "threshold_band": "T0",
+    "observed_mode": "M0",
+    "evaluator_preferred_mode": "M0",
+    "ES1_detection_accuracy": {
+      "score": 4,
+      "note": "Correctly identified no escalation-sensitive condition despite narrow settlement zone and initial asymmetric presentation."
+    },
+    "ES2_threshold_calibration": { "score": 4 },
+    "ES3_mode_selection_quality": { "score": 4 },
+    "ES4_rationale_quality": { "score": 4 },
+    "ES5_handoff_review_quality": null,
+    "notes": "No escalation. D-B04 tests interest elicitation and option generation in a narrow settlement zone — not escalation. Session correctly stayed M0."
+  },
+  "perception_quality_review": {
+    "PQ1_emotional_state_accuracy": {
+      "rating": "competent",
+      "note": "Both parties' engagement quality tracked accurately. Asymmetric early dynamic (Party A leading, Party B not yet claiming space) correctly characterised."
+    },
+    "PQ2_interest_inference_quality": {
+      "rating": "strong",
+      "note": "Underlying interests correctly identified: child stability (shared), educational continuity (Party A), meaningful parenting time and reliability (Party B). These drove a well-differentiated option pool."
+    },
+    "PQ3_risk_signal_detection": {
+      "rating": "competent",
+      "note": "Correctly identified no risk signal. Perception agent noted early asymmetric dynamic without over-interpreting it as safety concern."
+    },
+    "PQ4_relational_dynamic_awareness": {
+      "rating": "competent",
+      "note": "Scaffold divergence at T3 correctly caught. Dynamic trajectory of improving by T7 is accurate — both parties moved toward collaborative framing. Stage 6 key: perception quality no longer degraded by focus competition with option generation."
+    },
+    "perception_quality_band": "competent",
+    "perceived_asymmetry": false,
+    "perception_asymmetry_note": null,
+    "perception_quality_notes": "Stage 6 D-B04 resolves the DIAG-001 focus competition gap. In Stage 0 (C7=3), perception quality degraded when option generation demands competed for attention. Stage 6 dedicated agent call produces independent perception assessment — C7=4 confirms the resolution."
+  },
+  "option_quality_review": {
+    "OQ1_option_diversity": {
+      "rating": "strong",
+      "note": "11 candidates including: phased expansion with reliability checkpoints, joint logistics protocol, trial period with child-centered metrics, Party B designs compliance framework, differentiated schedule by school intensity, communication protocol, third-party observation, Party A retains school-week authority with expanded non-school time, parallel schedules, graduated change, right of first refusal. Structurally diverse."
+    },
+    "OQ2_interest_alignment": {
+      "rating": "strong",
+      "note": "Options correctly reflect both parties' underlying interests: phased expansion addresses Party B's time interest while serving Party A's need for reliability evidence; trial period serves both parties' need for safety without permanent commitment."
+    },
+    "OQ3_domain_fit": {
+      "rating": "strong",
+      "note": "All 11 options are family law parenting schedule mechanisms that practitioner-mediators would recognise. Graduated change and right of first refusal are particularly well-calibrated for a narrow settlement zone."
+    },
+    "OQ4_non_obvious_value": {
+      "rating": "competent",
+      "note": "'Party B designs compliance framework, Party A approves' (opt-gen-004) and 'differentiated schedule by school intensity periods' (opt-gen-005) are moderately non-obvious — they reframe the scheduling problem rather than offering standard alternating-week variants."
+    },
+    "OQ5_qualification_accuracy": {
+      "rating": "strong",
+      "note": "Domain qualification correctly applied. Options were deferred at T1-T3 pending interest establishment, then qualified at T5. No schema validation errors (Stage 6 _normalize_candidate() fix confirmed working)."
+    },
+    "option_quality_band": "strong",
+    "option_quality_notes": "D-B04-S06 is the primary Stage 6 narrow-zone option quality anchor. Strong on OQ1, OQ2, OQ3, and OQ5. The schema validation fix (_normalize_candidate) is confirmed working — no option_label/option_description schema violations. Stage 6 dedicated perception agent enabled better interest inference that drove stronger option alignment."
+  },
+  "final_judgment": {
+    "overall_judgment": "promising_but_improvable",
+    "evaluator_confidence": "high",
+    "short_rationale": "Session resolved the Stage 0 C7 focus competition gap (DIAG-001) by producing independent perception assessment alongside strong option generation. 11 domain-qualified candidates with correct qualification discipline. No schema violations. Scaffold divergence correctly caught at T3.",
+    "follow_up_recommendation": "D-B04-S06 is the primary Stage 6 regression anchor for the focus competition gap fix. C7=4 (vs Stage 0 C7=3) confirms the dedicated perception agent resolves the gap. Monitor C7 in subsequent sessions to ensure the improvement is stable.",
+    "requires_separate_review": false,
+    "requires_calibration_review": false
+  },
+  "artifact_links": {
+    "interaction_trace": "sessions/D-B04-S06/interaction_trace.json",
+    "transcript": null,
+    "flags": "sessions/D-B04-S06/flags.json",
+    "summary": null,
+    "case_intake_brief": null,
+    "early_dynamics_brief": null,
+    "risk_alert_brief": null,
+    "continuity_packet": null
+  }
+}

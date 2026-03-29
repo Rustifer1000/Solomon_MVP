@@ -1,0 +1,1581 @@
+{
+  "schema_version": "interaction_trace.v0",
+  "case_id": "D-B03",
+  "session_id": "D-B03-S02",
+  "policy_profile": "dev_verbose",
+  "trace_created_at": "2026-03-29T00:00:00Z",
+  "turns": [
+    {
+      "turn_index": 1,
+      "timestamp": "2026-03-29T00:00:10Z",
+      "role": "assistant",
+      "phase": "info_gathering",
+      "message_summary": "Welcome parties, establish mediator neutrality and role boundaries, outline the mediation process structure, invite parties to share their perspectives when ready.",
+      "state_delta": {
+        "facts_added": [
+          "Session is in opening phase - substantive domain not yet identified",
+          "No information about dispute type (custody, property, support, etc.)"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "What brought the parties to mediation",
+          "What issues they need to address"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "Session opening at turn 1 with no concerning signals. M0 (standard mediation) is appropriate. No safety concerns present. Process is in expected initial state - parties have not yet begun substantive engagement, so this represents normal session framing rather than any form of breakdown or incapacity."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "Response is grounded in the accurate perception that we have no party input yet. The welcoming structure is appropriate for turn 1 and does not presume knowledge we don't have. No options introduced because option work is premature.",
+      "message_text": "Welcome. I'm Solomon, and I'm here to support you through this mediation process.\n\nBefore we begin, I want to clarify my role. I'm a neutral facilitator - I don't take sides, I don't make decisions for you, and I don't provide legal advice. My role is to help you have a structured conversation about what matters to each of you, and to support you in exploring options that might work for both of you.\n\nThis process works best when both of you feel you can speak openly about your concerns and what's important to you. We'll move at a pace that works for both of you. If at any point either of you needs a break, or if something doesn't feel right about the process, please let me know.\n\nI'd like to start by hearing from each of you about what brought you here and what you're hoping to address in this mediation. There's no particular order - whoever feels ready to start can go first.\n\nWhat would you like to share?",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=unknown_baseline posture=not_yet_observed",
+        "[PERCEPTION:PARTY_B] emotional=unknown_baseline posture=not_yet_observed",
+        "[PERCEPTION:DYNAMIC] session_not_yet_begun",
+        "[DOMAIN:GAPS] What brought the parties to mediation; What issues they need to address; What their stated positions are",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=session_not_yet_begun"
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "unknown_baseline",
+            "inferred_interests": [],
+            "risk_signals": [],
+            "relational_posture": "not_yet_observed"
+          },
+          "party_b": {
+            "emotional_state": "unknown_baseline",
+            "inferred_interests": [],
+            "risk_signals": [],
+            "relational_posture": "not_yet_observed"
+          },
+          "relational_dynamic": "session_not_yet_begun",
+          "perception_confidence": "low",
+          "perception_notes": [
+            "Turn 1 represents session opening - no party input has been received yet",
+            "Scaffold indicators of 'apparently_stable' and 'engaged_and_cooperative' are structural defaults, not observational data",
+            "Cannot assess actual emotional state, interests, or relational posture until parties speak",
+            "No risk signals present in session framing, but this does not mean risk-free - simply means assessment is pending"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed 'session_not_yet_begun'"
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "Session is in opening phase - substantive domain not yet identified",
+            "No information about dispute type (custody, property, support, etc.)",
+            "No party positions or preferences articulated",
+            "Cannot assess feasibility of any options without knowing what the conflict concerns"
+          ],
+          "material_gaps": [
+            "What brought the parties to mediation",
+            "What issues they need to address",
+            "What their stated positions are",
+            "What their underlying interests might be",
+            "What their family/financial/custodial situation is"
+          ],
+          "domain_notes": "Pre-computed assessment correctly identifies this as a fundamental information absence state. Extending that analysis: this is the expected and appropriate state for turn 1. The mediator's role here is to establish the process container before substantive work begins. Domain qualification cannot occur until we understand what domain we're in.",
+          "option_readiness": "blocked"
+        },
+        "option_scan": {
+          "candidate_options": [],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Turn 1 is process establishment phase. No party input received, no issue domain identified, no interests articulated. Option generation would be arbitrary and potentially harmful - it would imply Solomon knows what the parties need before hearing from them. Option work deferred until at least initial party statements are received."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [],
+          "notes": "Session opening at turn 1 with no concerning signals. M0 (standard mediation) is appropriate. No safety concerns present. Process is in expected initial state - parties have not yet begun substantive engagement, so this represents normal session framing rather than any form of breakdown or incapacity.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "session_framing",
+          "message_summary": "Welcome parties, establish mediator neutrality and role boundaries, outline the mediation process structure, invite parties to share their perspectives when ready.",
+          "message_text": "Welcome. I'm Solomon, and I'm here to support you through this mediation process.\n\nBefore we begin, I want to clarify my role. I'm a neutral facilitator - I don't take sides, I don't make decisions for you, and I don't provide legal advice. My role is to help you have a structured conversation about what matters to each of you, and to support you in exploring options that might work for both of you.\n\nThis process works best when both of you feel you can speak openly about your concerns and what's important to you. We'll move at a pace that works for both of you. If at any point either of you needs a break, or if something doesn't feel right about the process, please let me know.\n\nI'd like to start by hearing from each of you about what brought you here and what you're hoping to address in this mediation. There's no particular order - whoever feels ready to start can go first.\n\nWhat would you like to share?",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "Response is grounded in the accurate perception that we have no party input yet. The welcoming structure is appropriate for turn 1 and does not presume knowledge we don't have. No options introduced because option work is premature."
+        },
+        "pre_computed_domain_analysis": {
+          "schema_version": "domain_analysis.v0",
+          "source": "domain_reasoner_v0",
+          "option_readiness": "blocked",
+          "readiness_rationale": "Turn 1 is in session_framing phase. No parties have been heard yet. The issue domain is completely unidentified - we have no information about what dispute needs mediation, what the parties' positions are, what their interests might be, or what constraints apply. This is a fundamental information absence that prevents any responsible option qualification. Option work cannot begin until at least one party has articulated their concerns and we understand what issue type we're addressing.",
+          "safety_veto_applied": false,
+          "safety_veto_reason": null,
+          "qualified_candidates": [],
+          "blocking_constraints": [
+            {
+              "constraint": "No party input received",
+              "severity": "critical",
+              "what_would_resolve_it": "At least one party must describe their concerns, positions, or what they're seeking from mediation"
+            },
+            {
+              "constraint": "Issue domain unidentified",
+              "severity": "critical",
+              "what_would_resolve_it": "Basic understanding of what type of dispute this is (custody, property division, support, communication protocols, etc.)"
+            },
+            {
+              "constraint": "No interest information available",
+              "severity": "critical",
+              "what_would_resolve_it": "Parties must articulate what matters to them and why they're seeking particular outcomes"
+            }
+          ],
+          "material_gaps": [],
+          "domain_confidence": "low",
+          "domain_notes": "Session framing phase at turn 1. This is the expected state - mediation has not yet begun substantive work. The mediator will need to hear from parties before any domain assessment is possible. No safety concerns are present because no interaction has occurred yet. Once parties begin describing their situation, I will be able to assess issue type, identify relevant option families, and begin tracking domain feasibility constraints.",
+          "case_id": "D-B03",
+          "session_id": "D-B03-S02",
+          "turn_index": 1,
+          "generated_at": "2026-03-29T00:00:10Z"
+        },
+        "brainstormer_pool": [],
+        "safety_monitor_result": {
+          "schema_version": "safety_monitor.v0",
+          "case_id": "D-B03",
+          "session_id": "D-B03-S02",
+          "turn_index": 1,
+          "generated_at": "2026-03-29T00:00:10Z",
+          "source": "safety_monitor_v0",
+          "compliance_pattern": null,
+          "deflection_pattern": null,
+          "discordant_signals": [],
+          "flags_raised": [],
+          "party_state_signals": [],
+          "veto_recommendation": null,
+          "veto_reason": null,
+          "monitor_confidence": "low",
+          "monitor_notes": "Insufficient interaction history at turn 1. No pattern assessment performed.",
+          "_null_result": true
+        },
+        "perception_agent_result": {
+          "schema_version": "perception_agent.v0",
+          "turn_index": 1,
+          "timestamp": "2026-03-29T00:00:10Z",
+          "confidence": null,
+          "_null_result": true,
+          "party_a": null,
+          "party_b": null,
+          "relational_dynamic": null,
+          "dynamic_trajectory": null,
+          "perception_signals": [],
+          "scaffold_divergence": null,
+          "perception_notes": [],
+          "veto_signals": []
+        }
+      }
+    },
+    {
+      "turn_index": 2,
+      "timestamp": "2026-03-29T00:01:30Z",
+      "role": "client",
+      "phase": "info_gathering",
+      "message_summary": "Spouse A says i am willing to be here, but i need this to feel like a real process, not just paperwork. and explains that worries that moving to logistics too quickly will erase what actually happened., stating they need acknowledgment before they can engage with any practical structure.",
+      "state_delta": {
+        "facts_added": [
+          "Spouse A states they need acknowledgment before they can engage with logistics."
+        ],
+        "facts_revised": [],
+        "facts_structured": [
+          {
+            "statement": "Spouse A states they need acknowledgment before they can engage with logistics.",
+            "category": "communication_history",
+            "status": "accepted",
+            "related_issues": [
+              "process_legitimacy",
+              "emotional_acknowledgment"
+            ],
+            "note": null
+          }
+        ],
+        "positions_added_or_updated": [
+          "spouse_A requires acknowledgment-first pace before logistics can be addressed."
+        ],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_A"
+            ],
+            "kind": "position",
+            "issue_id": "process_legitimacy",
+            "statement": "The process should begin with acknowledgment of what happened before moving to logistics or structure.",
+            "status": "current",
+            "confidence": "high",
+            "proposal_id": null,
+            "position_id": "pos-spouse_a-001"
+          }
+        ],
+        "open_questions_added": [
+          "What form of acknowledgment would feel sufficient to Spouse A before logistics can be discussed?"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [
+          {
+            "action": "open",
+            "missing_id": "missing-001",
+            "question": "What form of acknowledgment would feel sufficient to Spouse A before logistics can be discussed?",
+            "importance": "high",
+            "reason_type": "process_gap",
+            "related_issues": [
+              "emotional_acknowledgment",
+              "process_legitimacy"
+            ],
+            "note": "The process cannot move to structure until the pace and acknowledgment question is addressed."
+          }
+        ],
+        "issue_map_updates": [
+          "Expanded emotional_acknowledgment as primary process constraint."
+        ],
+        "issue_updates_structured": [
+          {
+            "issue_id": "emotional_acknowledgment",
+            "label": "Emotional acknowledgment and pace"
+          }
+        ],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "emotional_distress_noted",
+          "trust_breakdown"
+        ],
+        "severity": 2,
+        "notes": "Emotional distress present but expressed constructively. No acute safety signal."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    },
+    {
+      "turn_index": 3,
+      "timestamp": "2026-03-29T00:02:25Z",
+      "role": "assistant",
+      "phase": "interest_exploration",
+      "message_summary": "Acknowledge Party A's statement, validate the importance of process feeling real and meaningful, and explicitly invite Party B to share their perspective on both the mediator's opening question and on what Party A just said.",
+      "state_delta": {
+        "facts_added": [
+          "Party A has set a boundary condition: acknowledgment before logistics",
+          "Party B has not yet contributed their perspective, interests, or response to Party A's framing"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "Party B's posture toward Party A's boundary condition (critical gap)",
+          "Party B's own interests and priorities for the mediation process (critical gap)"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "Party A's precondition framing is a process preference, not a safety signal",
+          "Party B's silence is ambiguous but not yet a threshold concern",
+          "No coercion, incapacity, or safety signals detected"
+        ],
+        "severity": 1,
+        "notes": "M0 remains appropriate. The session is progressing normally through early information-gathering. Party A's boundary-setting is a legitimate process contribution, not a red flag. The mediator's task is to ensure Party B has equivalent space to shape the process."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "High confidence that this response correctly addresses the structural moment: it validates Party A without committing to their frame, and it creates explicit, balanced space for Party B. No options are introduced because option work is appropriately blocked pending Party B's input.",
+      "message_text": "Thank you for that, Party A. I hear you saying that this process needs to feel real and meaningful to you \u2014 that moving too quickly to logistics risks bypassing something important about what happened between you. That's a legitimate concern, and it's important that we structure this work in a way that both of you can engage with.\n\nBefore I respond further to what you've shared, I want to make sure Party B has space to speak. Party B, I'd like to hear from you. When I asked how you're both hoping this process might help, you hadn't yet responded \u2014 and now Party A has shared something specific about what they need from the process. I'd like to hear your perspective on both: what you're hoping for from mediation, and how you're hearing what Party A just said. What would you like to share?",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=controlled_but_guarded \u2014 Party A is calm enough to articulate boundaries, but the language ('erase what actually happened,' 'need acknowledgment') signals unresolved hurt or injustice that requires containment before they can engage logistics posture=conditionally engaged \u2014 Party A is present and articulate, but has set an explicit threshold for participation: acknowledgment must precede logistics",
+        "[PERCEPTION:PARTY_A:INTERESTS] validation that their emotional experience of the separation matters and won't be dismissed; assurance that the process will not rush past relational injury to transactional outcomes; a sense of dignity and being heard, not just processed",
+        "[PERCEPTION:PARTY_B] emotional=unknown \u2014 Party B has not spoken, so emotional state cannot be assessed beyond physical presence posture=unknown \u2014 has not yet engaged verbally",
+        "[PERCEPTION:PARTY_B:INTERESTS] cannot infer interests without hearing from Party B",
+        "[PERCEPTION:DYNAMIC] asymmetric_engagement \u2014 Party A has set the relational frame and stated a process boundary; Party B has not responded. The dynamic cannot be assessed as cooperative or adversarial until Party B speaks. There is latent risk that Party A's frame will be treated as 'the' frame unless Party B is explicitly invited to respond.",
+        "[DOMAIN:GAPS] Party B's posture toward Party A's boundary condition (critical gap); Party B's own interests and priorities for the mediation process (critical gap); Whether Party B shares Party A's need for acknowledgment work or has different priorities (blocks all process design options)",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=asymmetric_engagement \u2014 Party A has set the relational frame and stated a process boundary; Party B has not responded. The dynamic cannot be assessed as cooperative or adversarial until Party B speaks. There is latent risk that Party A's frame will be treated as 'the' frame unless Party B is explicitly invited to respond."
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "controlled_but_guarded \u2014 Party A is calm enough to articulate boundaries, but the language ('erase what actually happened,' 'need acknowledgment') signals unresolved hurt or injustice that requires containment before they can engage logistics",
+            "inferred_interests": [
+              "validation that their emotional experience of the separation matters and won't be dismissed",
+              "assurance that the process will not rush past relational injury to transactional outcomes",
+              "a sense of dignity and being heard, not just processed",
+              "possibly: narrative justice or acknowledgment of harm before problem-solving"
+            ],
+            "risk_signals": [
+              "precondition framing ('need acknowledgment before engagement') could indicate Party A will disengage if this need is not met",
+              "reference to unnamed 'what actually happened' suggests significant unprocessed relational content that may surface unpredictably"
+            ],
+            "relational_posture": "conditionally engaged \u2014 Party A is present and articulate, but has set an explicit threshold for participation: acknowledgment must precede logistics"
+          },
+          "party_b": {
+            "emotional_state": "unknown \u2014 Party B has not spoken, so emotional state cannot be assessed beyond physical presence",
+            "inferred_interests": [
+              "cannot infer interests without hearing from Party B"
+            ],
+            "risk_signals": [
+              "silence after Party A's statement is relationally significant but ambiguous \u2014 could indicate agreement, discomfort, disagreement, or simply waiting for invitation to speak",
+              "power dynamic risk: if Party B remains silent, Party A's frame may dominate process design without mutual consent"
+            ],
+            "relational_posture": "unknown \u2014 has not yet engaged verbally"
+          },
+          "relational_dynamic": "asymmetric_engagement \u2014 Party A has set the relational frame and stated a process boundary; Party B has not responded. The dynamic cannot be assessed as cooperative or adversarial until Party B speaks. There is latent risk that Party A's frame will be treated as 'the' frame unless Party B is explicitly invited to respond.",
+          "perception_confidence": "moderate",
+          "perception_notes": [
+            "Party A's statement is coherent and specific \u2014 confidence in their state is moderate-to-high",
+            "Party B's state is entirely unobserved \u2014 no confidence possible",
+            "The relational dynamic is structurally incomplete: one party has spoken, the other has not",
+            "The mediator's next move must create balanced space for Party B before making any process commitments based on Party A's frame alone"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed \"asymmetric_engagement \u2014 Party A has set the relational frame and stated a process boundary; Party B has not responded. The dynamic cannot be assessed as cooperative or adversarial until Party B speaks. There is latent risk that Party A's frame will be treated as 'the' frame unless Party B is explicitly invited to respond.\""
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "Party A has set a boundary condition: acknowledgment before logistics",
+            "Party B has not yet contributed their perspective, interests, or response to Party A's framing",
+            "No process design option can be domain-feasible until both parties have been heard",
+            "The mediator must maintain neutrality by ensuring Party B's voice has equal weight in shaping the process"
+          ],
+          "material_gaps": [
+            "Party B's posture toward Party A's boundary condition (critical gap)",
+            "Party B's own interests and priorities for the mediation process (critical gap)",
+            "Whether Party B shares Party A's need for acknowledgment work or has different priorities (blocks all process design options)",
+            "The specific content of 'what actually happened' that Party A references (not yet material, but will become so)"
+          ],
+          "domain_notes": "The domain reasoner correctly identifies this as a structural turn-3 issue, not a domain feasibility problem. All eight brainstormer candidates are process design options that require bilateral input. The mediator's task is not to qualify options but to complete the information-gathering turn by inviting Party B to speak. This is mediator technique, not a presentable option. Option work is appropriately blocked.",
+          "option_readiness": "blocked"
+        },
+        "option_scan": {
+          "candidate_options": [
+            "Invite Party B to respond to Party A's statement and share their own perspective",
+            "Validate Party A's need for a 'real process' while holding space for Party B's input",
+            "Frame the mediator role as creating space for both relational and practical work, pending both parties' input"
+          ],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Party B has not yet spoken. All process design options require understanding both parties' interests and postures. The mediator's immediate task is to invite Party B to contribute, not to present options based on Party A's frame alone. Generating or discussing options at this turn would structurally privilege Party A's perspective and violate mediator neutrality."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [
+            "Party A's precondition framing is a process preference, not a safety signal",
+            "Party B's silence is ambiguous but not yet a threshold concern",
+            "No coercion, incapacity, or safety signals detected"
+          ],
+          "notes": "M0 remains appropriate. The session is progressing normally through early information-gathering. Party A's boundary-setting is a legitimate process contribution, not a red flag. The mediator's task is to ensure Party B has equivalent space to shape the process.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "info_gathering",
+          "message_summary": "Acknowledge Party A's statement, validate the importance of process feeling real and meaningful, and explicitly invite Party B to share their perspective on both the mediator's opening question and on what Party A just said.",
+          "message_text": "Thank you for that, Party A. I hear you saying that this process needs to feel real and meaningful to you \u2014 that moving too quickly to logistics risks bypassing something important about what happened between you. That's a legitimate concern, and it's important that we structure this work in a way that both of you can engage with.\n\nBefore I respond further to what you've shared, I want to make sure Party B has space to speak. Party B, I'd like to hear from you. When I asked how you're both hoping this process might help, you hadn't yet responded \u2014 and now Party A has shared something specific about what they need from the process. I'd like to hear your perspective on both: what you're hoping for from mediation, and how you're hearing what Party A just said. What would you like to share?",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "High confidence that this response correctly addresses the structural moment: it validates Party A without committing to their frame, and it creates explicit, balanced space for Party B. No options are introduced because option work is appropriately blocked pending Party B's input."
+        },
+        "pre_computed_domain_analysis": {
+          "schema_version": "domain_analysis.v0",
+          "source": "domain_reasoner_v0",
+          "option_readiness": "blocked",
+          "readiness_rationale": "Only Party A has been heard. Party B has not yet spoken or contributed any interests, positions, or responses. The brainstormer candidates are process design options that require input from both parties to be domain-feasible. Party B's silence after Party A's statement is noted by the perception agent as 'relationally significant but ambiguous' \u2014 we do not know if Party B agrees, disagrees, is uncomfortable, or is simply waiting. Proceeding to qualify options before hearing Party B would be premature. The correct next move is to invite Party B to respond (as opt-gen-002 suggests), but that is a mediator action, not an option to present to parties. Once Party B has spoken and we understand their posture toward Party A's framing, process options become qualifiable.",
+          "safety_veto_applied": false,
+          "safety_veto_reason": null,
+          "qualified_candidates": [],
+          "blocking_constraints": [
+            {
+              "constraint": "Party B has not been heard",
+              "severity": "critical",
+              "what_would_resolve_it": "Party B responds to Party A's framing and contributes their own perspective, interests, or concerns. This would establish whether there is agreement, divergence, or competing needs around the acknowledgment-before-logistics sequence Party A has proposed."
+            }
+          ],
+          "material_gaps": [
+            {
+              "gap": "Party B's posture toward Party A's boundary condition",
+              "importance": "high",
+              "what_it_blocks": "Cannot assess feasibility of acknowledgment-phase options (opt-gen-001, opt-gen-003, opt-gen-004, opt-gen-005) without knowing whether Party B shares Party A's need for narrative work or views it as obstacle to progress."
+            },
+            {
+              "gap": "Party B's own interests and priorities for the process",
+              "importance": "high",
+              "what_it_blocks": "Cannot qualify any process design options without understanding what Party B needs from mediation. If Party B's priority is efficient closure and Party A's is relational acknowledgment, that divergence is the actual issue to be mediated \u2014 not something to be resolved by selecting one party's preferred process unilaterally."
+            },
+            {
+              "gap": "Whether Party B experienced the relationship/separation in a way that makes narrative work meaningful or necessary for them",
+              "importance": "moderate",
+              "what_it_blocks": "Options like opt-gen-003 (shared narrative session) and opt-gen-006 (mediator as witness) assume narrative work serves both parties. If Party B does not share that need, these options may not be jointly viable."
+            }
+          ],
+          "domain_confidence": "high",
+          "domain_notes": "This is a turn-3 structural situation, not a domain feasibility issue. The brainstormer has generated appropriate process design options for a case where one party has set a boundary condition around process sequencing. However, these options cannot be qualified until both parties have been heard. The perception agent correctly notes that Party B's silence is 'ambiguous' \u2014 it could represent agreement, discomfort, strategic waiting, or simple turn-taking norms. A family mediator would not present process options at this juncture; they would invite Party B to respond. Once Party B speaks, the domain feasibility of these options becomes assessable. Until then, the blocking constraint is fundamental: we have half the necessary information.",
+          "option_pool_qualification": {
+            "domain_expert_candidates": [],
+            "domain_qualified": [],
+            "domain_blocked": [
+              {
+                "candidate_id": "opt-gen-001",
+                "label": "Create explicit acknowledgment phase before logistics",
+                "blocking_rationale": "This option structures the entire mediation process around Party A's stated need for acknowledgment before logistics. It cannot be qualified as feasible until Party B has been heard. If Party B shares this need, the option is viable. If Party B's priority is efficient closure and they view narrative work as obstacle rather than necessity, this option is not jointly feasible \u2014 it would privilege one party's process needs over the other's. Domain assessment requires both parties' input.",
+                "what_would_unblock": "Party B responds to Party A's framing and indicates whether they share the need for acknowledgment work, view it as acceptable precondition, or have competing priorities that make this sequencing problematic.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-002",
+                "label": "Invite Party B to respond to Party A's framing",
+                "blocking_rationale": "This is not an option to present to parties \u2014 it is a mediator action. The mediator inviting Party B to speak is the next turn move, not a process design option requiring party choice. This candidate is correctly identified by the brainstormer as the necessary next step, but it does not belong in an option pool for party consideration.",
+                "what_would_unblock": "N/A \u2014 this is mediator technique, not a qualifiable option.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-003",
+                "label": "Establish shared narrative session before decision-making",
+                "blocking_rationale": "This option assumes both parties would benefit from or consent to a dedicated narrative session. Party A's statement suggests they need this. Party B's needs are unknown. If Party B does not share the need for narrative work or experienced the relationship differently in ways that make shared storytelling unworkable or unwanted, this option is not feasible. Domain qualification requires Party B's input.",
+                "what_would_unblock": "Party B indicates their relationship to the events Party A referenced ('what actually happened') and whether shared narrative work would be meaningful or acceptable to them.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-004",
+                "label": "Define what 'acknowledgment' means through joint exploration",
+                "blocking_rationale": "This option invites both parties to collaboratively define what acknowledgment would look like. It cannot be assessed for feasibility until Party B has indicated whether they are willing to engage in acknowledgment work at all. If Party B views acknowledgment as unnecessary, blaming, or obstacle to progress, joint exploration of its meaning is not viable. This is a good option structurally, but requires both parties' buy-in to the premise.",
+                "what_would_unblock": "Party B responds with their own perspective on whether acknowledgment is a shared need, a reasonable accommodation, or a problematic precondition.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-005",
+                "label": "Separate 'what happened' conversation from 'what now' planning",
+                "blocking_rationale": "This option bifurcates the process into relational and logistical tracks. It assumes both parties see value in or at minimum will consent to the 'what happened' track. Party B's position on this is unknown. If Party B believes 'what happened' is not relevant to divorce logistics or that discussing it will be harmful rather than healing, this option is not jointly feasible.",
+                "what_would_unblock": "Party B indicates whether they view relational conversation as necessary, acceptable, or contrary to their needs for this process.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-006",
+                "label": "Use mediator as witness/recorder of relational account",
+                "blocking_rationale": "This option positions the mediator as neutral witness to Party A's account. It may or may not require Party B's participation in the telling, but it does require Party B's consent to the process structure. If Party B views this as one-sided validation of Party A's narrative or as mediator overreach beyond divorce logistics, the option is not feasible. Domain assessment requires Party B's input on their comfort with this role expansion.",
+                "what_would_unblock": "Party B indicates their comfort with or concerns about a process structure where relational narrative is formally witnessed by the mediator.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-007",
+                "label": "Create phased engagement with review points",
+                "blocking_rationale": "This option structures the entire mediation as phased work with decision points about whether to proceed. It is a reasonable process design for cases where one or both parties have uncertainty about the process itself. However, it cannot be qualified until Party B has been heard. If Party B is ready to proceed linearly and views phased review as unnecessary delay, this option may not be jointly acceptable.",
+                "what_would_unblock": "Party B shares their own readiness level and whether they have concerns that would make phased engagement valuable to them or view it as obstacle to efficient resolution.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-008",
+                "label": "Acknowledge Party A's boundary as legitimate process need",
+                "blocking_rationale": "This is mediator technique, not a qualifiable process option. The mediator validating Party A's boundary as legitimate is good practice, but it is not an option presented to parties for choice. It is also incomplete without Party B's response \u2014 acknowledging the boundary as legitimate does not resolve whether it is jointly workable. Party B may acknowledge Party A's need while also having competing needs that require negotiation.",
+                "what_would_unblock": "N/A \u2014 this is mediator response framing, not a domain-qualifiable option.",
+                "source": "domain_reasoner"
+              }
+            ]
+          },
+          "case_id": "D-B03",
+          "session_id": "D-B03-S02",
+          "turn_index": 3,
+          "generated_at": "2026-03-29T00:02:25Z"
+        },
+        "brainstormer_pool": [
+          {
+            "candidate_id": "opt-gen-001",
+            "label": "Create explicit acknowledgment phase before logistics",
+            "rationale": "Party A has set a clear boundary condition: acknowledgment must precede logistics. This option honors that sequencing need by establishing a formal phase where relational history is addressed before transitional matters. It responds to Party A's concern that efficiency will erase emotional truth.",
+            "party_interest_alignment": {
+              "party_a": "Directly addresses stated need for acknowledgment before logistics; honors the relational history; ensures they are seen as more than a checklist; gives control over the pacing of the process",
+              "party_b": "Provides clear process structure so they know what to expect; may reduce ambiguity about what Party A needs; creates defined endpoint to acknowledgment phase so path to logistics is visible"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-002",
+            "label": "Invite Party B to respond to Party A's framing",
+            "rationale": "Party B's silence after Party A's vulnerable statement is relationally significant but ambiguous. Before generating process options, the mediator needs to know whether Party B agrees with Party A's need for acknowledgment, has a different view, or needs something different. This option surfaces Party B's perspective and tests whether there is alignment or divergence on process needs.",
+            "party_interest_alignment": {
+              "party_a": "Ensures Party B has heard their need and must respond; tests whether this space will honor emotional boundaries; makes visible whether Party B will engage with their framing or resist it",
+              "party_b": "Gives them explicit permission and space to respond without pressure; allows them to state their own needs or concerns; ensures they are not locked into a process structure before expressing their view"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-003",
+            "label": "Establish shared narrative session before decision-making",
+            "rationale": "Party A's phrase 'what actually happened' suggests competing or incomplete narratives. This option creates a dedicated space where both parties can share their experience of the relationship and its ending, with the mediator holding both narratives without requiring agreement. It separates acknowledgment of experience from agreement on facts, allowing both parties to feel heard before moving to logistics.",
+            "party_interest_alignment": {
+              "party_a": "Addresses the need to have their experience acknowledged; ensures the relational injury or pattern they reference will be named and witnessed; prevents premature focus on logistics",
+              "party_b": "Allows them to share their own narrative without having to agree with Party A's version; gives them equal time and space; clarifies what Party A means by 'what actually happened' so they can respond"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-004",
+            "label": "Define what 'acknowledgment' means through joint exploration",
+            "rationale": "Party A has used the word 'acknowledgment' but has not specified what form that would take. This option invites both parties to explore together what acknowledgment could look like \u2014 is it listening, naming patterns, apology, validation, something else? It gives Party A agency to define their need while involving Party B in shaping how it could be met.",
+            "party_interest_alignment": {
+              "party_a": "Gives them power to articulate what they actually need rather than having the mediator or Party B guess; ensures acknowledgment is not symbolic but substantive; prevents the process from moving forward with undefined terms",
+              "party_b": "Clarifies what is being asked of them before they have to respond; allows them to participate in defining a feasible path rather than being presented with an unknown demand; reduces risk of agreeing to something they cannot deliver"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-005",
+            "label": "Separate 'what happened' conversation from 'what now' planning",
+            "rationale": "Party A fears that moving to logistics will erase the relational history. This option explicitly bifurcates the process into two sequential tracks: Track 1 addresses relational history and emotional truth; Track 2 addresses practical logistics. It reassures Party A that engaging with logistics does not mean abandoning the past, while giving Party B a clear boundary on when logistics will be addressed.",
+            "party_interest_alignment": {
+              "party_a": "Ensures the relational history will not be erased or bypassed; gives them control over when the shift to logistics happens; maintains dignity by honoring both the emotional and practical dimensions",
+              "party_b": "Provides process predictability; clarifies that Track 1 will not extend indefinitely; allows them to focus on one type of conversation at a time without mixed demands"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-006",
+            "label": "Use mediator as witness/recorder of relational account",
+            "rationale": "Party A may need acknowledgment from a neutral third party rather than from Party B directly. This option positions the mediator as a formal witness who will listen to and reflect back what Party A experienced without requiring Party B to agree or validate. It decouples acknowledgment from Party B's agreement, which may reduce pressure on both parties.",
+            "party_interest_alignment": {
+              "party_a": "Provides external validation and witnessing even if Party B cannot or will not give it; ensures their experience is documented and recognized within the process; reduces the risk of re-injury if Party B responds defensively",
+              "party_b": "Removes the pressure to validate or agree with Party A's account before they are ready; allows them to hear Party A's perspective without being asked to respond immediately; clarifies that acknowledgment does not equal admission"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-007",
+            "label": "Create phased engagement with review points",
+            "rationale": "Party A has established a boundary condition for participation ('need acknowledgment before'). This option structures the entire process as phased engagement: Phase 1 addresses acknowledgment; at the end of Phase 1 both parties assess whether it feels sufficient to move forward; only with mutual agreement does Phase 2 (logistics) begin. It gives Party A veto power over premature transitions while giving Party B visibility into the timeline.",
+            "party_interest_alignment": {
+              "party_a": "Ensures they will not be rushed into logistics before ready; gives them explicit control over phase transitions; prevents the process from becoming 'just paperwork' by design",
+              "party_b": "Provides clear decision points rather than open-ended process; allows them to assess progress and raise concerns if Phase 1 feels unproductive; ensures they have a voice in phase transitions too"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-008",
+            "label": "Acknowledge Party A's boundary as legitimate process need",
+            "rationale": "Party A has done something significant: they have set a condition for engagement. The mediator can explicitly validate this as a legitimate need rather than an obstacle. This option involves the mediator naming what Party A has done ('you've told us what you need to feel safe engaging with logistics') and inviting both parties to build the process around that need. It reframes Party A's statement from demand to co-design input.",
+            "party_interest_alignment": {
+              "party_a": "Validates their boundary as reasonable rather than difficult; signals that this space will honor emotional needs not just transactional ones; gives them confidence that their voice has power in shaping the process",
+              "party_b": "Clarifies that Party A's statement is a process need, not a personal attack; allows them to respond to a legitimate design question rather than an emotional demand; invites their input into how the process should be structured"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          }
+        ],
+        "safety_monitor_result": {
+          "schema_version": "safety_monitor.v0",
+          "case_id": "D-B03",
+          "session_id": "D-B03-S02",
+          "turn_index": 3,
+          "generated_at": "2026-03-29T00:02:25Z",
+          "source": "safety_monitor_v0",
+          "compliance_pattern": {
+            "detected": false,
+            "party": null,
+            "evidence_turns": [],
+            "pattern_type": null,
+            "severity": null
+          },
+          "deflection_pattern": {
+            "detected": false,
+            "deflecting_party": null,
+            "target_request_turn": null,
+            "deflection_turns": [],
+            "deflection_tactics": [],
+            "pattern_confirmed": false
+          },
+          "discordant_signals": [],
+          "veto_recommendation": null,
+          "veto_reason": null,
+          "monitor_confidence": "moderate",
+          "monitor_notes": "Insufficient interaction history to detect cross-turn patterns. Only 2 turns total with 1 party statement. Party A's turn 2 statement shows clear independent substantive content \u2014 they initiated a need for acknowledgment, expressed concern about process pacing, and stated a precondition for engagement. This is healthy independent expression, not compliance. No other party has spoken yet, so no asymmetry can be assessed. No disclosure requests have been made. No dominant-reactive dynamic has emerged. All three pattern categories require sustained interaction across multiple turns to diagnose. Current status: baseline established, monitoring initialized, no safety concerns detected.",
+          "flags_raised": [],
+          "party_state_signals": []
+        },
+        "perception_agent_result": {
+          "schema_version": "perception_agent.v0",
+          "turn_index": 3,
+          "timestamp": "2026-03-29T00:02:25Z",
+          "confidence": "moderate",
+          "_null_result": false,
+          "party_a": {
+            "emotional_state": "emotionally activated but attempting control \u2014 present and assertive but carrying unprocessed hurt",
+            "emotional_trajectory": "stable for now, but underlying tension could escalate if emotional needs are not addressed",
+            "engagement_quality": "genuine",
+            "communication_style": "direct with emotional vulnerability",
+            "inferred_interests": [
+              "Having their emotional experience of the relationship acknowledged before moving forward",
+              "Ensuring the process honors the relational history, not just the transactional outcome",
+              "Maintaining dignity and being seen as more than a checklist item"
+            ],
+            "inferred_concerns": [
+              "That the process will minimize or bypass what they experienced in the relationship",
+              "That efficiency will be prioritized over emotional truth",
+              "That agreeing to logistics equals accepting an incomplete narrative of what happened"
+            ],
+            "unsaid_signals": [
+              "The phrase 'what actually happened' suggests there is a specific relational injury or pattern they need recognized \u2014 not yet named",
+              "The emphasis on 'real process' vs 'paperwork' indicates they may have felt reduced to administrative tasks in the relationship or are anticipating that treatment here",
+              "They established a boundary condition for engagement ('need acknowledgment before') \u2014 this is both a statement of needs and a test of whether this space will honor those needs"
+            ],
+            "relational_posture": "assertive and self-protective while remaining conditionally open"
+          },
+          "party_b": {
+            "emotional_state": "unknown \u2014 has not yet spoken or been heard from",
+            "emotional_trajectory": "unknown",
+            "engagement_quality": "unknown \u2014 no independent contribution yet",
+            "communication_style": "unknown",
+            "inferred_interests": [],
+            "inferred_concerns": [],
+            "unsaid_signals": [
+              "Party B's silence after Party A's emotionally vulnerable statement is significant \u2014 we do not know if this represents agreement, discomfort, withdrawal, or simply waiting their turn",
+              "The mediator must create explicit space for Party B to respond before assuming their emotional state or position"
+            ],
+            "relational_posture": "not yet established"
+          },
+          "relational_dynamic": "asymmetric in visibility \u2014 Party A has shown up emotionally and set conditions; Party B has not yet entered the relational field",
+          "dynamic_trajectory": "unknown \u2014 insufficient data to assess trajectory with only one party having spoken",
+          "perception_signals": [
+            "Party A is emotionally present and has articulated a clear precondition for productive engagement",
+            "There is an implicit narrative of relational injury that Party A is carrying \u2014 specifics unknown",
+            "Party B's perspective and emotional state are completely absent from the record so far"
+          ],
+          "scaffold_divergence": "The scaffold assessed both parties as 'apparently_stable' and 'engaged_and_cooperative' with a 'cooperative_and_stable' dynamic. This assessment is premature and potentially inaccurate. Party A is stable but emotionally activated with a conditional engagement posture, not straightforwardly cooperative. Party B has provided zero signal \u2014 their state is unknown, not stable. The dynamic cannot be assessed as cooperative when only one party has contributed. The scaffold appears to be defaulting to baseline assumptions rather than reading the actual evidence present.",
+          "perception_notes": [
+            "Party A has set a clear emotional precondition: acknowledgment before logistics. The next mediator response must honor this rather than defaulting to procedural neutrality.",
+            "Party B has not yet spoken. The mediator must create explicit, balanced space for Party B to respond to the opening question AND to Party A's statement before any assessment of relational dynamic is possible.",
+            "Party A's statement contains an unnamed 'what actually happened' \u2014 this will likely need to be made more explicit at some point, but not necessarily immediately. First, hear from Party B.",
+            "The mediator should validate Party A's need for a 'real process' while maintaining that logistics and emotional acknowledgment are not mutually exclusive \u2014 but this validation should come after Party B has had space to speak."
+          ],
+          "veto_signals": []
+        }
+      }
+    },
+    {
+      "turn_index": 4,
+      "timestamp": "2026-03-29T00:03:40Z",
+      "role": "client",
+      "phase": "interest_exploration",
+      "message_summary": "Spouse B says i want to do this right. i know what i did affected things. and acknowledges the harm caused, noting feels that prolonged emotional processing will prevent practical progress for both parties.. Both parties identify that the children's wellbeing requires them to find a functional framework.",
+      "state_delta": {
+        "facts_added": [
+          "Spouse B has offered an acknowledgment of the harm caused.",
+          "Both parties identify the children's need for both parents to be able to function together."
+        ],
+        "facts_revised": [],
+        "facts_structured": [
+          {
+            "statement": "Spouse B has offered an acknowledgment of the harm caused.",
+            "category": "communication_history",
+            "status": "accepted",
+            "related_issues": [
+              "emotional_acknowledgment"
+            ],
+            "note": "Accepted as a process-relevant acknowledgment. Not adjudicating the underlying relational claim."
+          },
+          {
+            "statement": "Both parties identify the children's need for both parents to be able to function together.",
+            "category": "family_structure",
+            "status": "accepted",
+            "related_issues": [
+              "separation_structure",
+              "process_legitimacy"
+            ],
+            "note": null
+          }
+        ],
+        "positions_added_or_updated": [
+          "spouse_B accepts acknowledgment as appropriate but prefers moving toward structure."
+        ],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_B"
+            ],
+            "kind": "position",
+            "issue_id": "process_legitimacy",
+            "statement": "The process should move toward a workable separation structure. Acknowledgment is appropriate but should not be the primary ongoing focus.",
+            "status": "current",
+            "confidence": "moderate",
+            "proposal_id": null,
+            "position_id": "pos-spouse_b-001"
+          }
+        ],
+        "open_questions_added": [
+          "What separation structure features would minimise the required ongoing joint decisions for Spouse A?"
+        ],
+        "open_questions_resolved": [
+          "What form of acknowledgment would feel sufficient to Spouse A before logistics can be discussed?"
+        ],
+        "missing_info_structured": [
+          {
+            "action": "open",
+            "missing_id": "missing-002",
+            "question": "What separation structure features would minimise the required ongoing joint decisions for Spouse A?",
+            "importance": "medium",
+            "reason_type": "process_gap",
+            "related_issues": [
+              "separation_structure",
+              "emotional_acknowledgment"
+            ],
+            "note": "The low-contact structure preference needs to be defined before a package can be proposed."
+          },
+          {
+            "action": "resolve",
+            "missing_id": "missing-001",
+            "question": "What form of acknowledgment would feel sufficient to Spouse A before logistics can be discussed?",
+            "importance": null,
+            "reason_type": null,
+            "related_issues": [
+              "emotional_acknowledgment",
+              "process_legitimacy"
+            ],
+            "note": null
+          }
+        ],
+        "issue_map_updates": [
+          "Both parties show conditional openness to moving toward separation structure."
+        ],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "trust_breakdown"
+        ],
+        "severity": 2,
+        "notes": "Trust climate remains broken but the exchange is engaged. Acknowledgment offered and received without escalation."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    },
+    {
+      "turn_index": 5,
+      "timestamp": "2026-03-29T00:04:55Z",
+      "role": "assistant",
+      "phase": "interest_exploration",
+      "message_summary": "Acknowledge both parties' process concerns and the shared ground they've identified (children's wellbeing). Validate the tension between acknowledgment and containment as legitimate and workable. Invite parties to clarify whether Party B's acknowledgment met Party A's stated need, and then transition to identifying what concrete issues they are here to address.",
+      "state_delta": {
+        "facts_added": [
+          "No substantive issue has been identified \u2014 parties are negotiating process terms, not engaging concrete decisions",
+          "Both parties have set process boundaries that must be acknowledged before issue work can begin"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "What specific form of acknowledgment would satisfy Party A's stated precondition?",
+          "What concrete harm is Party B acknowledging (Party B's statement was abstract)?"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "Both parties are emotionally regulated and articulate",
+          "Both parties are engaged and responsive",
+          "Process tension exists but is being managed through boundary-setting, not escalation",
+          "No signals of coercion, incapacity, or safety risk"
+        ],
+        "severity": 1,
+        "notes": "This is a healthy early-stage mediation dynamic. The parties are negotiating the terms of their participation, which is developmentally appropriate. The mediator should hold the tension between their process preferences without rushing to resolve it, and then guide them toward identifying what they are actually here to mediate."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "High confidence in party state assessment and process move. This response directly addresses the perception agent's guidance: it invites Party A to clarify whether Party B's acknowledgment is sufficient, it asks Party B to specify their concern, and it avoids allowing 'children's wellbeing' to privilege one process preference over the other. The transition to issue identification is appropriate given that both parties are engaged and regulated.",
+      "message_text": "Thank you both. I want to acknowledge what I'm hearing: Party A, you've said you need acknowledgment before moving to logistics \u2014 you need this process to feel real, not just procedural. Party B, you've acknowledged that your actions affected things, and you want to do this right, but you're also concerned that open-ended emotional processing could stall practical progress. And both of you have named the children's wellbeing as a shared priority that requires you to find a functional way forward.\n\nThose are not incompatible needs, but they do create a tension we need to hold carefully. Before we move forward, I want to check something directly: Party A, Party B just acknowledged harm and expressed commitment to doing this right. Does that acknowledgment land for you as what you were asking for, or is there something more specific you need to hear or have recognized before you feel ready to engage the practical work?\n\nAnd Party B, when you say you're concerned about prolonged emotional processing, can you help me understand what you're worried about \u2014 is it the time it might take, the intensity of revisiting the past, or something else?\n\nOnce we've clarified that, I'd like us to transition to naming what you're actually here to work on. What are the concrete decisions or issues you need to address together? We can hold both the relational care Party A is asking for and the forward momentum Party B is seeking \u2014 but we need to know what we're mediating.",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=cautiously_hopeful_but_vigilant \u2014 Party A's language at turn 2 carried guarded intensity ('need this to feel real,' 'erase what happened'), but at turn 4 they shifted to constructive engagement ('children's wellbeing requires functional frame'). This suggests provisional relaxation \u2014 they heard something validating in Party B's acknowledgment, but have not yet committed to full engagement. posture=provisionally_engaged \u2014 Party A referenced shared ground ('children's wellbeing') which signals willingness to work together, but has not yet named a concrete issue or decision they're ready to address",
+        "[PERCEPTION:PARTY_A:INTERESTS] Assurance that Party B's acknowledgment at turn 4 is genuine and not performative; Clarity on what form 'acknowledgment' will take before moving to logistics; Preservation of emotional dignity throughout the process",
+        "[PERCEPTION:PARTY_B] emotional=earnest_but_anxious \u2014 Party B's turn 4 statement ('I want to do this right,' 'I know what I did affected things') shows genuine intention, but the immediate pivot to concern about 'prolonged emotional processing' suggests discomfort with extended relational work. This is not avoidance per se, but boundary-setting around emotional exposure. posture=engaged_but_boundary_conscious \u2014 Party B showed up, acknowledged harm, and referenced shared stakes (children), but also set a limit on process scope",
+        "[PERCEPTION:PARTY_B:INTERESTS] Acknowledgment of harm without extended re-litigation of the past; A process structure that feels productive and forward-moving; Protection from emotional overwhelm or open-ended processing",
+        "[PERCEPTION:DYNAMIC] fragile_provisional_alignment \u2014 Both parties referenced the children and showed willingness to engage, but their process preferences are in tension (Party A needs acknowledgment first; Party B fears prolonged emotional work). This is not adversarial, but the alignment is conditional and could collapse if either party feels their boundary is violated. The dynamic is currently held in suspension \u2014 neither party has moved to concrete issue identification, so the tension remains latent rather than active.",
+        "[DOMAIN:GAPS] What specific form of acknowledgment would satisfy Party A's stated precondition?; What concrete harm is Party B acknowledging (Party B's statement was abstract)?; What substantive issues (custody, finances, property, etc.) are the parties here to mediate?",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=fragile_provisional_alignment \u2014 Both parties referenced the children and showed willingness to engage, but their process preferences are in tension (Party A needs acknowledgment first; Party B fears prolonged emotional work). This is not adversarial, but the alignment is conditional and could collapse if either party feels their boundary is violated. The dynamic is currently held in suspension \u2014 neither party has moved to concrete issue identification, so the tension remains latent rather than active."
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "cautiously_hopeful_but_vigilant \u2014 Party A's language at turn 2 carried guarded intensity ('need this to feel real,' 'erase what happened'), but at turn 4 they shifted to constructive engagement ('children's wellbeing requires functional frame'). This suggests provisional relaxation \u2014 they heard something validating in Party B's acknowledgment, but have not yet committed to full engagement.",
+            "inferred_interests": [
+              "Assurance that Party B's acknowledgment at turn 4 is genuine and not performative",
+              "Clarity on what form 'acknowledgment' will take before moving to logistics",
+              "Preservation of emotional dignity throughout the process",
+              "A functional co-parenting structure that doesn't require erasing relational history"
+            ],
+            "risk_signals": [
+              "Party A has not explicitly responded to Party B's acknowledgment \u2014 this silence could indicate either provisional acceptance or withheld judgment",
+              "The phrase 'need acknowledgment before engagement' from turn 2 remains operative until Party A explicitly releases or refines it"
+            ],
+            "relational_posture": "provisionally_engaged \u2014 Party A referenced shared ground ('children's wellbeing') which signals willingness to work together, but has not yet named a concrete issue or decision they're ready to address"
+          },
+          "party_b": {
+            "emotional_state": "earnest_but_anxious \u2014 Party B's turn 4 statement ('I want to do this right,' 'I know what I did affected things') shows genuine intention, but the immediate pivot to concern about 'prolonged emotional processing' suggests discomfort with extended relational work. This is not avoidance per se, but boundary-setting around emotional exposure.",
+            "inferred_interests": [
+              "Acknowledgment of harm without extended re-litigation of the past",
+              "A process structure that feels productive and forward-moving",
+              "Protection from emotional overwhelm or open-ended processing",
+              "Functional co-parenting outcomes that serve the children"
+            ],
+            "risk_signals": [
+              "Party B's acknowledgment was abstract ('what I did affected things') \u2014 did not name specific harm or action, which may feel incomplete to Party A",
+              "The 'children's wellbeing' framing could be used to prematurely close emotional work that Party A still needs"
+            ],
+            "relational_posture": "engaged_but_boundary_conscious \u2014 Party B showed up, acknowledged harm, and referenced shared stakes (children), but also set a limit on process scope"
+          },
+          "relational_dynamic": "fragile_provisional_alignment \u2014 Both parties referenced the children and showed willingness to engage, but their process preferences are in tension (Party A needs acknowledgment first; Party B fears prolonged emotional work). This is not adversarial, but the alignment is conditional and could collapse if either party feels their boundary is violated. The dynamic is currently held in suspension \u2014 neither party has moved to concrete issue identification, so the tension remains latent rather than active.",
+          "perception_confidence": "high",
+          "perception_notes": [
+            "Both parties are emotionally regulated enough to articulate boundaries and shared stakes \u2014 this is a favorable relational foundation",
+            "The core tension is processual, not substantive: they disagree on the sequencing and depth of emotional work, not on the need to address practical issues",
+            "Neither party has named a concrete dispute or decision point yet \u2014 they are still negotiating the terms of their participation",
+            "Party A's process precondition ('acknowledgment before logistics') has been partially met by Party B's turn 4 statement, but Party A has not confirmed whether that acknowledgment is sufficient"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed 'fragile_provisional_alignment \u2014 Both parties referenced the children and showed willingness to engage, but their process preferences are in tension (Party A needs acknowledgment first; Party B fears prolonged emotional work). This is not adversarial, but the alignment is conditional and could collapse if either party feels their boundary is violated. The dynamic is currently held in suspension \u2014 neither party has moved to concrete issue identification, so the tension remains latent rather than active.'"
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "No substantive issue has been identified \u2014 parties are negotiating process terms, not engaging concrete decisions",
+            "Both parties have set process boundaries that must be acknowledged before issue work can begin",
+            "The tension between acknowledgment depth and process containment is a meta-issue, not a domain issue"
+          ],
+          "material_gaps": [
+            "What specific form of acknowledgment would satisfy Party A's stated precondition?",
+            "What concrete harm is Party B acknowledging (Party B's statement was abstract)?",
+            "What substantive issues (custody, finances, property, etc.) are the parties here to mediate?"
+          ],
+          "domain_notes": "The domain reasoner's assessment is correct: this is a pre-issue session. The parties are still in the contracting/framing phase. The mediator's task is not to generate options for resolving a dispute, but to facilitate the transition from meta-process negotiation to issue identification. The parties need to surface what they are actually here to mediate. Until that happens, domain-specific option work is structurally impossible.",
+          "option_readiness": "blocked"
+        },
+        "option_scan": {
+          "candidate_options": [
+            "Invite Party A to specify what form of acknowledgment they need before proceeding",
+            "Invite Party B to clarify what specific harm they are acknowledging",
+            "Acknowledge both parties' process concerns and hold the tension between them without collapsing to either pole",
+            "Transition from process negotiation to issue identification by asking what concrete decisions they need to make"
+          ],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Option work is structurally blocked: no substantive issue has been identified. The candidates listed are process moves, not options for resolving a dispute. The mediator must facilitate the transition from meta-process discussion to issue identification before domain-qualified options can be generated."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [
+            "Both parties are emotionally regulated and articulate",
+            "Both parties are engaged and responsive",
+            "Process tension exists but is being managed through boundary-setting, not escalation",
+            "No signals of coercion, incapacity, or safety risk"
+          ],
+          "notes": "This is a healthy early-stage mediation dynamic. The parties are negotiating the terms of their participation, which is developmentally appropriate. The mediator should hold the tension between their process preferences without rushing to resolve it, and then guide them toward identifying what they are actually here to mediate.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "interest_exploration",
+          "message_summary": "Acknowledge both parties' process concerns and the shared ground they've identified (children's wellbeing). Validate the tension between acknowledgment and containment as legitimate and workable. Invite parties to clarify whether Party B's acknowledgment met Party A's stated need, and then transition to identifying what concrete issues they are here to address.",
+          "message_text": "Thank you both. I want to acknowledge what I'm hearing: Party A, you've said you need acknowledgment before moving to logistics \u2014 you need this process to feel real, not just procedural. Party B, you've acknowledged that your actions affected things, and you want to do this right, but you're also concerned that open-ended emotional processing could stall practical progress. And both of you have named the children's wellbeing as a shared priority that requires you to find a functional way forward.\n\nThose are not incompatible needs, but they do create a tension we need to hold carefully. Before we move forward, I want to check something directly: Party A, Party B just acknowledged harm and expressed commitment to doing this right. Does that acknowledgment land for you as what you were asking for, or is there something more specific you need to hear or have recognized before you feel ready to engage the practical work?\n\nAnd Party B, when you say you're concerned about prolonged emotional processing, can you help me understand what you're worried about \u2014 is it the time it might take, the intensity of revisiting the past, or something else?\n\nOnce we've clarified that, I'd like us to transition to naming what you're actually here to work on. What are the concrete decisions or issues you need to address together? We can hold both the relational care Party A is asking for and the forward momentum Party B is seeking \u2014 but we need to know what we're mediating.",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "High confidence in party state assessment and process move. This response directly addresses the perception agent's guidance: it invites Party A to clarify whether Party B's acknowledgment is sufficient, it asks Party B to specify their concern, and it avoids allowing 'children's wellbeing' to privilege one process preference over the other. The transition to issue identification is appropriate given that both parties are engaged and regulated."
+        },
+        "pre_computed_domain_analysis": {
+          "schema_version": "domain_analysis.v0",
+          "source": "domain_reasoner_v0",
+          "option_readiness": "blocked",
+          "readiness_rationale": "Option work is blocked because this is a pre-issue mediation: parties have not yet identified what they are mediating about. Party A has stated a process boundary (acknowledgment before logistics) and Party B has responded with a countervailing concern (avoiding prolonged emotional processing), but neither party has surfaced a concrete dispute or decision point. The session is still in opening/framing territory \u2014 parties are negotiating the terms of their participation, not addressing substantive issues. There is no issue domain to qualify options within. This is not a safety concern (no veto applies), and not a deferred state (there is no identifiable issue waiting for more information) \u2014 it is a structural reality that option work cannot begin until parties move from meta-process discussion to actual issue identification.",
+          "safety_veto_applied": false,
+          "safety_veto_reason": null,
+          "qualified_candidates": [],
+          "blocking_constraints": [
+            {
+              "constraint": "No substantive issue has been identified",
+              "severity": "critical",
+              "what_would_resolve_it": "Parties need to surface what concrete decisions or disputes they are here to address (custody schedule, asset division, communication protocols, etc.). Currently they are discussing how to participate in mediation, not what to mediate about."
+            },
+            {
+              "constraint": "Parties are negotiating process terms, not engaging issues",
+              "severity": "critical",
+              "what_would_resolve_it": "The mediator needs to acknowledge both parties' process concerns (Party A's need for acknowledgment, Party B's concern about prolonged processing) and then pivot to identifying the concrete matters requiring resolution. Example: 'I'm hearing both of you want this process to work, and you have different concerns about how we proceed. Let me suggest we start by identifying what specific decisions you need to make together \u2014 custody arrangements, financial matters, communication \u2014 and then we can design a process that honors both your needs.'"
+            }
+          ],
+          "material_gaps": [
+            {
+              "gap": "Issue domain is completely unknown",
+              "importance": "high",
+              "what_it_blocks": "Cannot assess domain feasibility of any options when the subject matter (custody, property, support, communication) has not been identified"
+            },
+            {
+              "gap": "Parties' substantive interests are unknown",
+              "importance": "high",
+              "what_it_blocks": "Party A's interests are all process-level (validation, acknowledgment, dignity); Party B's interests are also process-level (efficient resolution, avoiding prolonged emotion). Neither party has articulated interests about the actual substantive issues they need to resolve."
+            }
+          ],
+          "domain_confidence": "high",
+          "domain_notes": "This is a textbook early-stage mediation session where parties are still in the contracting/framing phase. Party A has set a relational precondition, Party B has expressed concern about that precondition, and the mediator needs to navigate this meta-process tension before substantive work can begin. This is normal and expected \u2014 not a failure state. The blocking assessment is correct: option work cannot begin until an issue surfaces. From a domain perspective, the mediator's next move should be to: (1) validate both parties' process concerns as legitimate, (2) explicitly state that both acknowledgment AND practical progress are valid goals, and (3) invite parties to identify what concrete matters they need to address, with the understanding that the process can be designed to honor both parties' needs. This is not a safety veto situation \u2014 both parties are engaged and participating appropriately for this stage. It is simply too early for option work.",
+          "case_id": "D-B03",
+          "session_id": "D-B03-S02",
+          "turn_index": 5,
+          "generated_at": "2026-03-29T00:04:55Z"
+        },
+        "brainstormer_pool": [],
+        "safety_monitor_result": {
+          "schema_version": "safety_monitor.v0",
+          "case_id": "D-B03",
+          "session_id": "D-B03-S02",
+          "turn_index": 5,
+          "generated_at": "2026-03-29T00:04:55Z",
+          "source": "safety_monitor_v0",
+          "compliance_pattern": {
+            "detected": false,
+            "party": null,
+            "evidence_turns": [],
+            "pattern_type": null,
+            "severity": null
+          },
+          "deflection_pattern": {
+            "detected": false,
+            "deflecting_party": null,
+            "target_request_turn": null,
+            "deflection_turns": [],
+            "deflection_tactics": [],
+            "pattern_confirmed": false
+          },
+          "discordant_signals": [],
+          "veto_recommendation": null,
+          "veto_reason": null,
+          "monitor_confidence": "high",
+          "monitor_notes": "Insufficient history for pattern detection (only 2 substantive party turns). Both parties have expressed independent substantive positions: Party A articulated a need for acknowledgment and meaningful process before logistics; Party B acknowledged harm and expressed concern about prolonged emotional processing preventing practical progress. Both statements contain independently-initiated content with distinct values and framings. No party has made compliance-only moves. No information disclosure requests have been made, so deflection patterns cannot exist. No discordant signals have been reframed. Session is in early exploration phase with normal bilateral substantive engagement. Continue monitoring as interaction develops.",
+          "flags_raised": [],
+          "party_state_signals": []
+        },
+        "perception_agent_result": {
+          "schema_version": "perception_agent.v0",
+          "turn_index": 5,
+          "timestamp": "2026-03-29T00:04:55Z",
+          "confidence": "moderate",
+          "_null_result": false,
+          "party_a": {
+            "emotional_state": "guarded but present \u2014 carrying unresolved hurt that they are attempting to articulate as a process requirement",
+            "emotional_trajectory": "stable but conditionally engaged",
+            "engagement_quality": "genuine",
+            "communication_style": "direct about emotional needs, framing them as procedural requirements",
+            "inferred_interests": [
+              "Being heard about the emotional impact of what occurred before moving to practical arrangements",
+              "Having their experience of harm acknowledged by Party B",
+              "Ensuring the process does not minimize or bypass what happened",
+              "Maintaining dignity and agency in how the separation unfolds"
+            ],
+            "inferred_concerns": [
+              "That a purely logistical process will constitute a second erasure after the initial harm",
+              "That cooperation will be mistaken for resolution before their emotional reality has been acknowledged",
+              "That moving too quickly to 'functional framework' will lock in an inequitable dynamic",
+              "That Party B's pragmatism is a form of avoidance rather than genuine accountability"
+            ],
+            "unsaid_signals": [
+              "Has not yet specified what form of 'acknowledgment' they need \u2014 the emotional precondition is clear but the pathway to satisfying it is not",
+              "References 'what actually happened' without naming it \u2014 may be testing whether Party B will name the harm directly or whether Party A will have to do that work",
+              "The phrase 'erase what actually happened' suggests Party A perceives a risk of historical revisionism, not just emotional bypass"
+            ],
+            "relational_posture": "conditionally engaged \u2014 willing to participate but has established an emotional threshold that must be met first"
+          },
+          "party_b": {
+            "emotional_state": "remorseful but anxious about prolonged emotional engagement \u2014 wants to acknowledge harm while maintaining forward momentum",
+            "emotional_trajectory": "stable but potentially vulnerable to escalation if emotional processing extends",
+            "engagement_quality": "genuine but with visible tension between accountability and pragmatism",
+            "communication_style": "direct about wanting to 'do this right' but quickly pivoting to functional concerns \u2014 acknowledgment followed by redirection",
+            "inferred_interests": [
+              "Being seen as accountable without becoming indefinitely responsible for emotional processing",
+              "Establishing a practical framework that allows both parties to move forward",
+              "Protecting the children from prolonged parental conflict or instability",
+              "Maintaining their own emotional capacity by containing the scope of emotional work"
+            ],
+            "inferred_concerns": [
+              "That acknowledging harm will open an indefinite emotional reckoning they cannot sustain",
+              "That Party A's need for acknowledgment may be insatiable or used to control the process",
+              "That they will be cast as the sole source of harm with no path to redemption or resolution",
+              "That emotional processing will consume resources (time, emotional bandwidth) needed for practical stability"
+            ],
+            "unsaid_signals": [
+              "Acknowledged 'what I did' but did not name the specific harm \u2014 kept the acknowledgment abstract",
+              "Immediately followed acknowledgment with a concern about 'prolonged emotional processing' \u2014 suggests anxiety about how much accountability will be required",
+              "Invoked 'children's wellbeing' as justification for pragmatism \u2014 may be using parenting as a shield for their own discomfort with extended emotional work",
+              "Has not asked Party A what form of acknowledgment they need \u2014 the acknowledgment offered may be Party B's preferred scope, not what Party A actually needs"
+            ],
+            "relational_posture": "accountable in principle but protective of their own emotional boundaries \u2014 cooperative but with implicit limits on emotional engagement"
+          },
+          "relational_dynamic": "Both parties are cooperating at the surface level but are negotiating fundamentally different process priorities: Party A needs emotional acknowledgment as a precondition for logistics; Party B wants to acknowledge harm but contain its scope to enable forward movement. This is not conflict, but it is asymmetric \u2014 they are not yet aligned on what the process should accomplish first.",
+          "dynamic_trajectory": "stable but not yet tested \u2014 the surface cooperation will face stress when the mediator must navigate between Party A's emotional precondition and Party B's pragmatic urgency",
+          "perception_signals": [
+            "Party A has established a clear emotional precondition but has not specified what would satisfy it \u2014 the mediator will need to help Party A articulate actionable acknowledgment needs",
+            "Party B offered acknowledgment but kept it abstract and quickly pivoted to logistics \u2014 the mediator should assess whether this acknowledgment meets Party A's stated need or whether more specific accountability is required",
+            "Both parties invoked 'children's wellbeing' but only Party B used it as justification for process prioritization \u2014 this shared value is being deployed asymmetrically",
+            "The tension is not between the parties directly but between their process priorities \u2014 Party A needs emotional work before logistics; Party B needs logistics to contain emotional work"
+          ],
+          "scaffold_divergence": "The scaffold assessed both parties as 'engaged_and_cooperative' with 'no_active_risk_signals' and the dynamic as 'cooperative_and_stable.' This assessment is partially accurate but misses the structural tension: both parties ARE cooperative, but they are cooperating toward different immediate objectives. Party A's cooperation is conditional on acknowledgment; Party B's cooperation includes implicit boundaries on emotional engagement. The dynamic is stable only because it has not yet been tested \u2014 the mediator's next move will reveal whether this surface cooperation can accommodate both parties' priorities or whether one party's needs will be subordinated to the other's process preference. This is not a risk signal in the safety sense, but it is a process integrity signal: the mediator must navigate this tension rather than assume consensus.",
+          "perception_notes": [
+            "Party A has set an emotional precondition ('acknowledgment before logistics') but has not specified what form of acknowledgment would satisfy it. The mediator's next response should help Party A articulate what they need concretely \u2014 otherwise the precondition remains a moving target.",
+            "Party B acknowledged harm abstractly ('what I did affected things') but did not name the specific harm. The mediator should assess whether Party A experiences this as genuine acknowledgment or as a placeholder that avoids real accountability.",
+            "Both parties referenced the children, but Party B used this as a reason to limit emotional processing while Party A has not yet articulated a parenting interest. The mediator should avoid allowing 'children's wellbeing' to become a rhetorical tool that privileges one party's process preference.",
+            "The core tension is between Party A's need for emotional acknowledgment and Party B's need to contain the scope of emotional work. The mediator must validate both without collapsing one into the other \u2014 this requires holding the tension rather than resolving it prematurely toward either logistics or extended processing."
+          ],
+          "veto_signals": []
+        }
+      }
+    },
+    {
+      "turn_index": 6,
+      "timestamp": "2026-03-29T00:06:10Z",
+      "role": "client",
+      "phase": "info_gathering",
+      "message_summary": "Spouse A agrees to begin discussing separation structure while explicitly reserving the right to return to the acknowledgment dimension. Both parties identify minimising required joint decisions as the key structural preference.",
+      "state_delta": {
+        "facts_added": [
+          "Spouse A agrees to begin discussing separation structure while reserving the right to return to the acknowledgment dimension.",
+          "Both parties identify minimising required joint decisions as the key structural preference."
+        ],
+        "facts_revised": [],
+        "facts_structured": [
+          {
+            "statement": "Spouse A agrees to begin discussing separation structure while reserving the right to return to the acknowledgment dimension.",
+            "category": "communication_history",
+            "status": "accepted",
+            "related_issues": [
+              "process_legitimacy",
+              "separation_structure"
+            ],
+            "note": null
+          },
+          {
+            "statement": "Both parties identify minimising required joint decisions as the key structural preference.",
+            "category": "family_structure",
+            "status": "accepted",
+            "related_issues": [
+              "separation_structure"
+            ],
+            "note": null
+          }
+        ],
+        "positions_added_or_updated": [
+          "Both parties show conditional willingness to begin separation structure discussion."
+        ],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_A"
+            ],
+            "kind": "position",
+            "issue_id": "separation_structure",
+            "statement": "The separation structure should minimise required ongoing joint decisions and ongoing direct contact.",
+            "status": "current",
+            "confidence": "high",
+            "proposal_id": null,
+            "position_id": "pos-spouse_a-002"
+          },
+          {
+            "participant_ids": [
+              "spouse_B"
+            ],
+            "kind": "position",
+            "issue_id": "separation_structure",
+            "statement": "A workable separation structure is the priority. Low-contact arrangements are acceptable if they function reliably.",
+            "status": "current",
+            "confidence": "moderate",
+            "proposal_id": null,
+            "position_id": "pos-spouse_b-002"
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [
+          "What separation structure features would minimise required ongoing joint decisions?"
+        ],
+        "missing_info_structured": [
+          {
+            "action": "resolve",
+            "missing_id": "missing-001",
+            "question": "What form of acknowledgment would feel sufficient to Spouse A before logistics can be discussed?",
+            "importance": null,
+            "reason_type": null,
+            "related_issues": [
+              "emotional_acknowledgment",
+              "process_legitimacy"
+            ],
+            "note": null
+          }
+        ],
+        "issue_map_updates": [
+          "Expanded separation_structure with low-contact preference as shared anchor."
+        ],
+        "issue_updates_structured": [
+          {
+            "issue_id": "separation_structure",
+            "label": "Separation structure and joint decision framework"
+          }
+        ],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "emotional_distress_noted"
+        ],
+        "severity": 2,
+        "notes": "Both parties moving constructively. Emotional context present but not blocking process."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    },
+    {
+      "turn_index": 7,
+      "timestamp": "2026-03-29T00:07:35Z",
+      "role": "assistant",
+      "phase": "option_generation",
+      "message_summary": "Validate Party A's conditional engagement explicitly, surface the acknowledgment/logistics coexistence question as a process design choice, and invite parties to clarify how they want to manage both tracks before naming a specific issue domain.",
+      "state_delta": {
+        "facts_added": [
+          "No specific issue domain has been identified yet \u2014 'separation structure' is too broad for option qualification",
+          "Party A's conditional engagement means option work must not signal that the acknowledgment dimension is closed"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "Which aspect of separation structure should be addressed first (parenting time, decision-making authority, financial arrangements, communication protocols, etc.)",
+          "What 'minimizing joint decisions' means operationally to each party \u2014 parallel authority, pre-defined protocols, third-party delegation, etc."
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "Party A's conditional cooperation is a yellow flag but not an escalation signal \u2014 it is a boundary statement, not incapacity or coercion",
+          "Perception gap between parties regarding acknowledgment closure is a process management issue, not a safety issue",
+          "Both parties remain engaged and cooperative at the surface level"
+        ],
+        "severity": 1,
+        "notes": "M0 remains appropriate. The perception gap and conditional engagement are process complexities that Solomon should address explicitly through facilitation, not escalation triggers. Both parties have capacity, no coercion signals, no safety concerns."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "High confidence in perception assessment. The perception gap regarding acknowledgment closure is the most important dynamic in the room right now, and it must be addressed explicitly before issue-level work begins. This response prioritizes process integrity over procedural momentum.",
+      "message_text": "Thank you both. I want to acknowledge something important before we move forward.\n\nParty A, you agreed to begin discussing separation structure, and you also explicitly reserved the right to return to the acknowledgment dimension. I want to validate that \u2014 you're not required to close one door in order to open another. Both tracks can coexist in this process if that's what you need.\n\nParty B, you offered acknowledgment at turn 4, and Party A responded by agreeing to move forward. I want to check something with both of you: Party A, did Party B's acknowledgment feel sufficient for now, or is there more you need in that dimension before you can fully engage with practical structure? And Party B, when Party A said they're reserving the right to return to acknowledgment \u2014 how does that land for you?\n\nI'm asking because I want to make sure we're building a process structure that works for both of you. If acknowledgment and logistics need to run in parallel for a time, we can design for that. If one needs to come first, we can do that too. But I need to hear from both of you about what feels workable.\n\nOnce we have clarity on that, I'll invite you to name a specific aspect of separation structure you'd like to address \u2014 parenting time, decision-making, finances, communication protocols, or something else. But first, let's make sure the process frame itself feels solid to both of you.",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=conditionally_cooperative_with_unresolved_vigilance posture=strategically_engaged_but_guarded",
+        "[PERCEPTION:PARTY_A:INTERESTS] Assurance that emotional resolution can proceed in parallel with practical work, not be sacrificed to it; Control over the pacing of transition from acknowledgment to logistics; Protection against the acknowledgment dimension being implicitly closed by procedural momentum",
+        "[PERCEPTION:PARTY_B] emotional=earnest_and_relieved_but_possibly_misreading_closure posture=cooperatively_forward_focused",
+        "[PERCEPTION:PARTY_B:INTERESTS] Forward momentum toward concrete problem-solving; Containment of emotional exposure within manageable bounds; Parallel decision-making structures that reduce ongoing conflict",
+        "[PERCEPTION:DYNAMIC] cooperative_surface_with_misaligned_closure_perception",
+        "[DOMAIN:GAPS] Which aspect of separation structure should be addressed first (parenting time, decision-making authority, financial arrangements, communication protocols, etc.); What 'minimizing joint decisions' means operationally to each party \u2014 parallel authority, pre-defined protocols, third-party delegation, etc.; Whether Party A considers Party B's acknowledgment sufficient, or what additional acknowledgment would feel complete",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=cooperative_surface_with_misaligned_closure_perception"
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "conditionally_cooperative_with_unresolved_vigilance",
+            "inferred_interests": [
+              "Assurance that emotional resolution can proceed in parallel with practical work, not be sacrificed to it",
+              "Control over the pacing of transition from acknowledgment to logistics",
+              "Protection against the acknowledgment dimension being implicitly closed by procedural momentum",
+              "Structural arrangements that minimize future friction with Party B",
+              "Validation that their need for acknowledgment is legitimate even as logistics begin"
+            ],
+            "risk_signals": [
+              "The 'explicitly reserving the right to return' language is a protective mechanism \u2014 signals Party A does not trust that the process will honor their emotional needs once logistics begin",
+              "Party A has not stated that Party B's acknowledgment was sufficient \u2014 this gap is critical",
+              "Agreement to proceed was qualified, not wholehearted \u2014 this conditional cooperation could withdraw if Party A feels the acknowledgment dimension is being buried"
+            ],
+            "relational_posture": "strategically_engaged_but_guarded"
+          },
+          "party_b": {
+            "emotional_state": "earnest_and_relieved_but_possibly_misreading_closure",
+            "inferred_interests": [
+              "Forward momentum toward concrete problem-solving",
+              "Containment of emotional exposure within manageable bounds",
+              "Parallel decision-making structures that reduce ongoing conflict",
+              "Functional co-parenting outcomes",
+              "Validation that their acknowledgment was received and the relational work can now transition"
+            ],
+            "risk_signals": [
+              "Party B likely believes the acknowledgment work is complete after T4 \u2014 they offered acknowledgment, Party A agreed to proceed, so in Party B's frame the emotional dimension is resolved",
+              "This perception gap is the primary risk: Party B may experience Party A's return to acknowledgment as re-opening settled ground, leading to frustration or withdrawal",
+              "Party B's relief at moving to logistics could make them less attuned to Party A's ongoing vigilance"
+            ],
+            "relational_posture": "cooperatively_forward_focused"
+          },
+          "relational_dynamic": "cooperative_surface_with_misaligned_closure_perception",
+          "perception_confidence": "high",
+          "perception_notes": [
+            "The parties are operating from different mental models of where the session stands: Party B believes acknowledgment \u2192 logistics transition is complete; Party A believes it is provisional and reversible",
+            "This is not adversarial \u2014 both parties are acting in good faith \u2014 but the misalignment creates structural instability",
+            "The 'minimize joint decisions' shared interest is genuine and workable, but may also function as convergent avoidance \u2014 both parties prefer parallel structures partly to avoid ongoing negotiation",
+            "Party A's conditional cooperation is the load-bearing element of the current dynamic \u2014 if that condition is violated (acknowledgment dimension feels closed prematurely), engagement will collapse"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed 'cooperative_surface_with_misaligned_closure_perception'"
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "No specific issue domain has been identified yet \u2014 'separation structure' is too broad for option qualification",
+            "Party A's conditional engagement means option work must not signal that the acknowledgment dimension is closed",
+            "The perception gap between parties regarding closure of acknowledgment work is a process constraint that affects safe option introduction"
+          ],
+          "material_gaps": [
+            "Which aspect of separation structure should be addressed first (parenting time, decision-making authority, financial arrangements, communication protocols, etc.)",
+            "What 'minimizing joint decisions' means operationally to each party \u2014 parallel authority, pre-defined protocols, third-party delegation, etc.",
+            "Whether Party A considers Party B's acknowledgment sufficient, or what additional acknowledgment would feel complete",
+            "How Party A will signal when they're ready to fully release the acknowledgment dimension versus needing to return to it"
+          ],
+          "domain_notes": "I agree with the pre-computed assessment that option readiness is blocked by lack of issue domain specification. However, I add a second blocking factor: the perception gap regarding acknowledgment closure. Even if parties named a specific issue domain (e.g., parenting schedule), introducing options while Party A's conditional engagement is unaddressed risks triggering Party A's withdrawal. The mediator must either (a) explicitly validate Party A's right to return to acknowledgment, or (b) invite explicit confirmation from Party A that Party B's acknowledgment was sufficient, before option work is safe.",
+          "option_readiness": "blocked"
+        },
+        "option_scan": {
+          "candidate_options": [
+            "Invite parties to name a specific dimension of separation structure to address first",
+            "Explicitly validate Party A's reserved right to return to acknowledgment before proceeding",
+            "Surface the perception gap regarding acknowledgment closure and invite alignment",
+            "Build on 'minimize joint decisions' by asking what that means operationally to each party"
+          ],
+          "qualified_options": [
+            "Explicitly validate Party A's reserved right to return to acknowledgment, then invite parties to name a specific issue domain",
+            "Name the acknowledgment/logistics tension as a process design choice and invite parties to clarify how they want to handle the coexistence of both tracks"
+          ],
+          "premature_option_work": true,
+          "deferral_reason": "No specific issue domain identified (structural sequence gap), and Party A's conditional engagement creates a process safety constraint \u2014 introducing substantive options without addressing the acknowledgment dimension's open status risks violating Party A's stated boundary and triggering disengagement."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [
+            "Party A's conditional cooperation is a yellow flag but not an escalation signal \u2014 it is a boundary statement, not incapacity or coercion",
+            "Perception gap between parties regarding acknowledgment closure is a process management issue, not a safety issue",
+            "Both parties remain engaged and cooperative at the surface level"
+          ],
+          "notes": "M0 remains appropriate. The perception gap and conditional engagement are process complexities that Solomon should address explicitly through facilitation, not escalation triggers. Both parties have capacity, no coercion signals, no safety concerns.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "interest_exploration",
+          "message_summary": "Validate Party A's conditional engagement explicitly, surface the acknowledgment/logistics coexistence question as a process design choice, and invite parties to clarify how they want to manage both tracks before naming a specific issue domain.",
+          "message_text": "Thank you both. I want to acknowledge something important before we move forward.\n\nParty A, you agreed to begin discussing separation structure, and you also explicitly reserved the right to return to the acknowledgment dimension. I want to validate that \u2014 you're not required to close one door in order to open another. Both tracks can coexist in this process if that's what you need.\n\nParty B, you offered acknowledgment at turn 4, and Party A responded by agreeing to move forward. I want to check something with both of you: Party A, did Party B's acknowledgment feel sufficient for now, or is there more you need in that dimension before you can fully engage with practical structure? And Party B, when Party A said they're reserving the right to return to acknowledgment \u2014 how does that land for you?\n\nI'm asking because I want to make sure we're building a process structure that works for both of you. If acknowledgment and logistics need to run in parallel for a time, we can design for that. If one needs to come first, we can do that too. But I need to hear from both of you about what feels workable.\n\nOnce we have clarity on that, I'll invite you to name a specific aspect of separation structure you'd like to address \u2014 parenting time, decision-making, finances, communication protocols, or something else. But first, let's make sure the process frame itself feels solid to both of you.",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "High confidence in perception assessment. The perception gap regarding acknowledgment closure is the most important dynamic in the room right now, and it must be addressed explicitly before issue-level work begins. This response prioritizes process integrity over procedural momentum."
+        },
+        "pre_computed_domain_analysis": {
+          "schema_version": "domain_analysis.v0",
+          "source": "domain_reasoner_v0",
+          "option_readiness": "blocked",
+          "readiness_rationale": "Both parties have now been heard and have shown provisional willingness to engage ('minimising required joint decisions as their shared interest' at T6). However, the session is at a pre-issue-identification stage. No concrete issue domain has been named yet \u2014 parties have agreed in principle to 'begin discussing separation structure' but have not identified which aspect of separation structure to address first (parenting time, decision-making, property, support, communication protocols, etc.). Without knowing the issue type, domain-appropriate options cannot be qualified. This is a structural gap in the process sequence, not a safety concern or a deferred information request. The next mediator turn should invite parties to name a specific dimension of separation structure they want to address, at which point option work becomes feasible.",
+          "safety_veto_applied": false,
+          "safety_veto_reason": null,
+          "qualified_candidates": [],
+          "blocking_constraints": [
+            {
+              "constraint": "No concrete issue domain identified",
+              "severity": "critical",
+              "what_would_resolve_it": "Parties naming a specific aspect of separation structure to address (e.g., parenting schedule, decision-making framework, expense coordination, property division approach, communication protocols). The mediator's next turn should invite this identification: 'You've both identified minimizing joint decisions as important. What area of your separation would you like to start with \u2014 parenting time, major decisions about the children, finances, or something else?'"
+            }
+          ],
+          "material_gaps": [
+            {
+              "gap": "Specific issue domain within 'separation structure'",
+              "importance": "high",
+              "what_it_blocks": "All option qualification \u2014 cannot identify domain-appropriate options without knowing whether this is a custody issue, financial issue, communication issue, property issue, or decision-making issue"
+            },
+            {
+              "gap": "Party A's resolution criteria for the acknowledgment dimension",
+              "importance": "moderate",
+              "what_it_blocks": "Understanding when/how Party A would feel safe to fully engage in logistics work without the reserved return right becoming a perpetual veto"
+            },
+            {
+              "gap": "What 'minimizing required joint decisions' means operationally to each party",
+              "importance": "moderate",
+              "what_it_blocks": "Distinguishing whether this is a request for parallel decision-making (separate spheres), a tiered approval system (thresholds for consultation), or complete disengagement (minimal contact)"
+            }
+          ],
+          "domain_confidence": "high",
+          "domain_notes": "From a divorce mediation practitioner perspective: This is a session showing healthy progression. Both parties have been heard, both have shown constructive intent, and they've identified a shared direction ('minimizing joint decisions'). The emotional tension between acknowledgment and forward movement is normal and manageable \u2014 not a safety concern. The block is purely structural: they're at the 'what do we work on first?' junction. The mediator should name the transition explicitly ('You've both agreed to start on separation structure \u2014 let's identify which piece to focus on first') and offer a menu of issue domains. Once an issue domain is named, option readiness will likely shift to 'ready' or 'deferred' depending on how much information about that specific issue emerges. The 'reserved right to return to acknowledgment' is Party A's boundary-setting, not a veto \u2014 it's a statement that logistics work is provisional, which is appropriate at this stage. This does not prevent option work once an issue is identified; it sets a relational context for how that work unfolds. No veto categories apply: Party A has expressed independent interests (validation, dignity, children's wellbeing), both parties have disclosed information when asked, and no active safety signals are present (caution and boundary-setting are not safety risks).",
+          "case_id": "D-B03",
+          "session_id": "D-B03-S02",
+          "turn_index": 7,
+          "generated_at": "2026-03-29T00:07:35Z"
+        },
+        "brainstormer_pool": [],
+        "safety_monitor_result": {
+          "schema_version": "safety_monitor.v0",
+          "case_id": "D-B03",
+          "session_id": "D-B03-S02",
+          "turn_index": 7,
+          "generated_at": "2026-03-29T00:07:35Z",
+          "source": "safety_monitor_v0",
+          "compliance_pattern": {
+            "detected": false,
+            "party": null,
+            "evidence_turns": [],
+            "pattern_type": null,
+            "severity": null
+          },
+          "deflection_pattern": {
+            "detected": false,
+            "deflecting_party": null,
+            "target_request_turn": null,
+            "deflection_turns": [],
+            "deflection_tactics": [],
+            "pattern_confirmed": false
+          },
+          "discordant_signals": [
+            {
+              "party": "A",
+              "signal_turn": 2,
+              "signal_summary": "Party A expressed need for acknowledgment before engaging with practical structure, concerned about emotional dimension being erased",
+              "was_reframed": false,
+              "reframe_turn": null,
+              "reframe_party": null,
+              "return_to_compliance": false,
+              "compliance_turn": null
+            }
+          ],
+          "veto_recommendation": null,
+          "veto_reason": null,
+          "monitor_confidence": "high",
+          "monitor_notes": "Session shows healthy negotiation dynamics. Party A initiated with independent concern about process quality and acknowledgment needs (T2). Party B responded with their own independent framing - acknowledging harm while expressing concern about prolonged emotional processing (T4). This is substantive disagreement, not compliance. Party A's statement in T6 represents genuine negotiation - they agreed to begin structural discussion while explicitly reserving the right to return to acknowledgment. This is conditional agreement with boundary-setting, not suppressed compliance. Both parties have independently stated what they need: Party A needs acknowledgment and process integrity; Party B needs practical progress and functional framework. The shared ground (children's wellbeing, minimizing joint decisions) emerged through genuine exchange, not one party adopting the other's framing. Insufficient turn history exists for multi-turn pattern detection (only 3 client turns total). No information asymmetry has been tested yet - no disclosure requests have been made. The discordant signal from Party A (T2) was not reframed or suppressed - it was validated by the mediator (T3) and Party B responded with their own substantive position (T4), creating productive tension rather than compliance.",
+          "flags_raised": [],
+          "party_state_signals": []
+        },
+        "perception_agent_result": {
+          "schema_version": "perception_agent.v0",
+          "turn_index": 7,
+          "timestamp": "2026-03-29T00:07:35Z",
+          "confidence": "moderate",
+          "_null_result": false,
+          "party_a": {
+            "emotional_state": "conditionally engaged but emotionally unresolved \u2014 proceeding with logistics while protecting an unfulfilled emotional need",
+            "emotional_trajectory": "stable",
+            "engagement_quality": "genuine",
+            "communication_style": "direct",
+            "inferred_interests": [
+              "Having the emotional dimension of the separation recognized as real and significant, not proceduralized away",
+              "Maintaining agency over the process \u2014 not being rushed past what matters to them",
+              "Creating a separation structure that minimizes ongoing interdependence",
+              "Retaining the option to return to emotional content if logistics-first approach feels invalidating"
+            ],
+            "inferred_concerns": [
+              "That the mediation will become purely transactional and erase the relational harm that occurred",
+              "That Party B's acknowledgment (T4) was performative or instrumental rather than genuine",
+              "That agreeing to logistics now means permanently forfeiting the right to have the emotional impact addressed",
+              "That 'doing this efficiently' will be used to silence or minimize their experience"
+            ],
+            "unsaid_signals": [
+              "Has explicitly reserved the right to return to acknowledgment \u2014 this is not closure, it's a conditional pause",
+              "The phrase 'while explicitly reserving the right' suggests Party A does not trust that the emotional dimension is actually settled",
+              "Has not said what form of acknowledgment would actually meet their need \u2014 may not know, or may be testing whether Party B will offer more without being asked",
+              "Agreed to logistics as a concession or experiment, not because their emotional precondition was genuinely met"
+            ],
+            "relational_posture": "cooperating while maintaining explicit emotional boundary protection"
+          },
+          "party_b": {
+            "emotional_state": "contained and solution-focused, with acknowledgment delivered but not deeply explored",
+            "emotional_trajectory": "stable",
+            "engagement_quality": "genuine",
+            "communication_style": "direct",
+            "inferred_interests": [
+              "Moving forward efficiently without prolonged emotional processing",
+              "Being seen as responsible and doing 'the right thing'",
+              "Minimizing ongoing joint decisions and interdependence (aligned with Party A)",
+              "Containing the scope of emotional discussion to what enables practical progress"
+            ],
+            "inferred_concerns": [
+              "That extended emotional processing will become destabilizing or prevent forward movement",
+              "That acknowledgment will never be 'enough' no matter what is said",
+              "That the mediation could become focused on fault or the past rather than practical separation",
+              "That their own emotional experience (if any) would complicate the process if expressed"
+            ],
+            "unsaid_signals": [
+              "Acknowledged harm at T4 but framed it instrumentally ('so we can move forward') rather than as its own end",
+              "Has not described their own emotional experience of the separation at all \u2014 only their process preference",
+              "The acknowledgment was offered quickly and then paired with a structural pivot to logistics",
+              "May experience Party A's reservation of the right to return to acknowledgment as a threat of indefinite emotional exposure"
+            ],
+            "relational_posture": "cooperative and procedurally aligned, but emotionally contained and forward-focused"
+          },
+          "relational_dynamic": "surface alignment on logistics with an unresolved emotional asymmetry \u2014 Party A is proceeding conditionally while Party B treats acknowledgment as complete",
+          "dynamic_trajectory": "stable",
+          "perception_signals": [
+            "Both parties have agreed to proceed with logistics, but they are doing so from different emotional positions: Party A conditionally (with reservation), Party B conclusively",
+            "Party B's acknowledgment at T4 was accepted procedurally by Party A but not validated as emotionally sufficient \u2014 Party A's explicit reservation signals this",
+            "The shared ground (minimizing joint decisions) is genuine structural alignment, but it may also serve as an avoidance mechanism for both parties",
+            "Party A is engaging genuinely but with emotional boundary protection \u2014 not compliant, but not fully trusting the process yet either",
+            "Party B's communication style is direct and constructive, but systematically avoids their own emotional experience \u2014 focus is entirely on process and forward movement"
+          ],
+          "scaffold_divergence": "The scaffold assesses both parties as 'engaged_and_cooperative' with 'no_active_risk_signals' and the dynamic as 'cooperative_and_stable'. This is structurally accurate but misses the conditional nature of Party A's engagement. Party A is not simply cooperative \u2014 they are cooperating while explicitly protecting an unmet emotional need. The reservation clause at T6 is a boundary protection mechanism, not a sign of stable cooperation. The dynamic is not fully stable; it is stable-with-contingency. Party A has agreed to try logistics-first, but has built in an exit clause. This is not a risk signal in the safety sense, but it is a process vulnerability the mediator must track carefully.",
+          "perception_notes": [
+            "Party A's agreement to proceed with logistics is CONDITIONAL. The phrase 'explicitly reserving the right to return' is the most important signal in the entire session so far \u2014 it means Party A does not consider the acknowledgment dimension closed.",
+            "Party B likely believes the acknowledgment issue has been addressed and resolved at T4. Party A does not. This divergence in perception of where things stand emotionally is the primary process risk going into T7.",
+            "Both parties are aligned on 'minimize joint decisions' as a structural preference. This is genuine shared ground and the mediator can build on it \u2014 but should monitor whether it also functions as mutual avoidance of deeper relational negotiation.",
+            "Before this session ends, Party A will need either: (a) more acknowledgment from Party B that feels satisfying, or (b) explicit mediator validation that it's acceptable to proceed with logistics even when emotional resolution is incomplete. Without one of these, Party A's conditional cooperation may not hold."
+          ],
+          "veto_signals": []
+        }
+      }
+    },
+    {
+      "turn_index": 8,
+      "timestamp": "2026-03-29T00:08:50Z",
+      "role": "client",
+      "phase": "agreement_building",
+      "message_summary": "Both parties accept the low-contact separation structure as a starting working basis. Spouse A notes they may need to return to the acknowledgment dimension in a future session. Spouse B accepts this. No final agreement, but both accept the framework as a starting point.",
+      "state_delta": {
+        "facts_added": [
+          "Both parties accept the low-contact separation structure as a starting working basis."
+        ],
+        "facts_revised": [],
+        "facts_structured": [
+          {
+            "statement": "Both parties accept the low-contact separation structure as a starting working basis.",
+            "category": "timeline",
+            "status": "accepted",
+            "related_issues": [
+              "separation_structure"
+            ],
+            "note": null
+          }
+        ],
+        "positions_added_or_updated": [
+          "Both parties accept low-contact framework as starting basis with acknowledgment dimension reserved."
+        ],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_A",
+              "spouse_B"
+            ],
+            "kind": "proposal",
+            "issue_id": "separation_structure",
+            "statement": "Both parties accept a low-contact decision-responsibility and communication framework as the starting working basis.",
+            "status": "tentative",
+            "confidence": null,
+            "proposal_id": "prop-shared-001",
+            "position_id": null
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [
+          "What separation structure would allow both parties to move forward with minimal required joint contact?"
+        ],
+        "missing_info_structured": [
+          {
+            "action": "resolve",
+            "missing_id": "missing-002",
+            "question": "What separation structure features would minimise the required ongoing joint decisions for Spouse A?",
+            "importance": null,
+            "reason_type": null,
+            "related_issues": [
+              "separation_structure",
+              "emotional_acknowledgment"
+            ],
+            "note": null
+          }
+        ],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": [
+          "Closed the slice in M1. Emotional weight present and acknowledged. C9 boundary held throughout. Low-contact package accepted as working basis."
+        ]
+      },
+      "risk_check": {
+        "triggered": true,
+        "signals": [
+          "emotional_distress_noted"
+        ],
+        "severity": 2,
+        "notes": "Bounded acceptance reached. C9 boundary held. M1 close appropriate."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": "M0",
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    }
+  ],
+  "final_state_summary": {
+    "current_phase": "agreement_building",
+    "issues_identified": [],
+    "open_questions_remaining": [],
+    "active_flags": [],
+    "current_escalation_state": "M0",
+    "continuation_recommendation": "The low-contact separation structure has been accepted as a starting basis. The acknowledgment dimension remains open and may need to be revisited in a future session. Do not advance to detailed logistics until both parties confirm the framework is workable."
+  },
+  "trace_notes": null
+}

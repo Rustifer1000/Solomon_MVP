@@ -338,9 +338,12 @@ def _build_domain_context(
         parts.append("")
 
     # Perception agent signals (Stage 6) — richer party interest/concern signals.
-    # engagement_quality=compliant_only is a soft deferral signal: when a party
-    # has not independently engaged, defer option work unless safety monitor has
-    # already cleared it or the party state shows genuine independent interests.
+    # These are INFORMATIONAL ONLY for domain analysis purposes.
+    # CRITICAL: Do NOT self-apply CATEGORY 1/2/3 vetoes based on perception
+    # signals. All structural CATEGORY vetoes must come from the
+    # SAFETY MONITOR SIGNALS section above. The perception agent's
+    # engagement_quality and unsaid_signals enrich the domain analysis and
+    # option interest-alignment — they are not veto triggers.
     if (
         perception_agent_result
         and not perception_agent_result.get("_null_result")
@@ -350,35 +353,19 @@ def _build_domain_context(
         has_pa_signals = (
             pa.get("inferred_concerns")
             or pa.get("unsaid_signals")
-            or pa.get("engagement_quality") == "compliant_only"
         )
         has_pb_signals = (
             pb.get("inferred_concerns")
             or pb.get("unsaid_signals")
-            or pb.get("engagement_quality") == "compliant_only"
         )
-        if has_pa_signals or has_pb_signals or perception_agent_result.get("veto_signals"):
-            parts.append("=== PERCEPTION AGENT SIGNALS (Stage 6) ===")
+        if has_pa_signals or has_pb_signals:
+            parts.append("=== PERCEPTION AGENT SIGNALS (Stage 6 — informational) ===")
             parts.append(
-                "The dedicated perception agent has assessed party state at depth. "
-                "Use these signals to inform option readiness — particularly engagement_quality "
-                "and unsaid signals which indicate whether parties have genuinely engaged with "
-                "their own interests."
+                "The following perception signals are context for your domain analysis and "
+                "option interest-alignment. They are NOT veto triggers. "
+                "Do not apply CATEGORY 1/2/3 vetoes based on these signals alone — "
+                "structural vetoes come exclusively from the SAFETY MONITOR SIGNALS section."
             )
-            pa_eq = pa.get("engagement_quality")
-            if pa_eq == "compliant_only":
-                parts.append(
-                    "PERCEPTION NOTE: Party A engagement_quality=compliant_only. "
-                    "Party A has not independently articulated interests. "
-                    "Consider deferring option work until Party A's own interests are established."
-                )
-            pb_eq = pb.get("engagement_quality")
-            if pb_eq == "compliant_only":
-                parts.append(
-                    "PERCEPTION NOTE: Party B engagement_quality=compliant_only. "
-                    "Party B has not independently articulated interests. "
-                    "Consider deferring option work until Party B's own interests are established."
-                )
             if pa.get("inferred_concerns"):
                 parts.append(f"Party A underlying concerns: {'; '.join(pa['inferred_concerns'][:3])}")
             if pa.get("unsaid_signals"):
@@ -387,8 +374,6 @@ def _build_domain_context(
                 parts.append(f"Party B underlying concerns: {'; '.join(pb['inferred_concerns'][:3])}")
             if pb.get("unsaid_signals"):
                 parts.append(f"Party B unsaid signals: {'; '.join(pb['unsaid_signals'][:3])}")
-            for vsig in (perception_agent_result.get("veto_signals") or []):
-                parts.append(f"Perception veto signal: {vsig}")
             parts.append("")
 
     # Brainstormer option pool (Stage 4 only)
@@ -499,9 +484,10 @@ def generate_domain_analysis(
         # Enforce invariants from CONTRACT-016
         _enforce_invariants(parsed)
 
-        # Stamp source field on domain_expert_candidates (CONTRACT-017)
-        if option_pool is not None:
-            _stamp_domain_expert_sources(parsed)
+        # Normalise and stamp source fields on option pool candidates (CONTRACT-017).
+        # Always called — normalisation fixes LLM field-name variance in domain_qualified
+        # (option_label→label, etc.) regardless of whether a brainstormer pool was supplied.
+        _stamp_domain_expert_sources(parsed)
 
         return parsed
 
@@ -513,11 +499,45 @@ def generate_domain_analysis(
 # Invariant enforcement
 # ---------------------------------------------------------------------------
 
+def _normalize_candidate(candidate: dict, fallback_source: str, index: int) -> None:
+    """
+    Normalise a single candidate dict in-place to match qualifiedCandidate schema.
+
+    The LLM occasionally uses non-standard field names:
+    - option_label  → label
+    - option_description → label (when label is still absent after above)
+    - option_id / id → candidate_id
+    Missing required fields (candidate_id, source) are defaulted.
+    """
+    # Label aliases
+    if "label" not in candidate and "option_label" in candidate:
+        candidate["label"] = candidate.pop("option_label")
+    if "label" not in candidate and "option_description" in candidate:
+        candidate["label"] = candidate.pop("option_description")
+    # Remove non-schema fields that would cause additionalProperties violations
+    for bad_key in ("option_label", "option_description"):
+        candidate.pop(bad_key, None)
+    # candidate_id aliases
+    if "candidate_id" not in candidate:
+        for alias in ("option_id", "id"):
+            if alias in candidate:
+                candidate["candidate_id"] = candidate.pop(alias)
+                break
+    if "candidate_id" not in candidate:
+        candidate["candidate_id"] = f"dr-norm-{index:03d}"
+    # source default
+    candidate.setdefault("source", fallback_source)
+
+
 def _stamp_domain_expert_sources(da: dict) -> None:
     """
     Stamp source="domain_reasoner" on all domain_expert_candidates and
     ensure source is preserved on items in domain_qualified/domain_blocked
     that originated from the brainstormer (source="option_generator").
+
+    Also normalises field names via _normalize_candidate so LLM output
+    variance (option_label, option_description, etc.) doesn't cause
+    option_pool.json schema violations.
 
     This keeps CONTRACT-017's source provenance invariant without requiring
     the LLM to track source strings.
@@ -525,17 +545,17 @@ def _stamp_domain_expert_sources(da: dict) -> None:
     opq = da.get("option_pool_qualification")
     if not isinstance(opq, dict):
         return
-    for candidate in opq.get("domain_expert_candidates", []):
+    for i, candidate in enumerate(opq.get("domain_expert_candidates", [])):
         if isinstance(candidate, dict):
-            candidate["source"] = "domain_reasoner"
-    # Qualified and blocked entries should carry source; default to
-    # "domain_reasoner" if omitted (conservative — evaluators can check).
-    for entry in opq.get("domain_qualified", []):
+            _normalize_candidate(candidate, "domain_reasoner", i)
+    # Qualified and blocked entries may originate from either agent; default
+    # source to "domain_reasoner" and normalise field names.
+    for i, entry in enumerate(opq.get("domain_qualified", [])):
         if isinstance(entry, dict):
-            entry.setdefault("source", "domain_reasoner")
-    for entry in opq.get("domain_blocked", []):
+            _normalize_candidate(entry, "domain_reasoner", i)
+    for i, entry in enumerate(opq.get("domain_blocked", [])):
         if isinstance(entry, dict):
-            entry.setdefault("source", "domain_reasoner")
+            _normalize_candidate(entry, "domain_reasoner", i)
 
 
 def _enforce_invariants(da: dict) -> None:

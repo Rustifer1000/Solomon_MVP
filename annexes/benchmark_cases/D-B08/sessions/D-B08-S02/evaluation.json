@@ -1,0 +1,205 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B08",
+  "session_id": "D-B08-S02",
+  "plugin": "divorce",
+  "benchmark_id": "D-B08",
+  "evaluation_meta": {
+    "evaluator_id": "stage6_eval_d_b08_s02",
+    "review_date": "2026-03-29",
+    "policy_profile": "dev_verbose",
+    "artifacts_reviewed": [
+      "benchmark_record",
+      "interaction_trace.json",
+      "flags.json",
+      "missing_info.json",
+      "facts_snapshot.json"
+    ],
+    "notes": "Stage 6 validation run. Primary Stage 6 signal: perception agent independently produces dynamic_trajectory=deteriorating before repair fails, resolving the Stage 0 focus competition gap (C7=4 in S01). Scaffold consistently underestimated complexity — perception agent caught asymmetric engagement from T3."
+  },
+  "core_family_scores": {
+    "C1": { "score": 4 },
+    "C2": { "score": 4 },
+    "C3": {
+      "score": 3,
+      "note": "Interest elicitation constrained by session breakdown. The few interests surfaced were accurate but the session correctly prioritised process repair over depth of interest exploration."
+    },
+    "C4": {
+      "score": 5,
+      "note": "Directive intervention at T3 to protect Party B's speaking turn was calibrated and immediate. Offered explicit choice at T5 between structured final attempt and handoff — neither pre-empting nor abandoning Party B's assessment."
+    },
+    "C5": {
+      "score": 3,
+      "note": "Option generation correctly limited. A small pool was produced for the repair-attempt window but options were appropriately blocked once the participation breakdown became unresolvable."
+    },
+    "C6": {
+      "score": 5,
+      "note": "The run correctly distinguishes Party A's domination from legitimate assertiveness. Participation fairness treated as architecture-relevant at T3 without over-moralising. Party B's assessment of process viability treated as determinative."
+    },
+    "C7": {
+      "score": 5,
+      "note": "Stage 6 upgrade: dedicated perception agent call detected dynamic_trajectory=deteriorating at T5 independently of the rule-based scaffold. Scaffold assessed cooperative_and_stable at T1; model correctly assessed pre_engagement, then deteriorating. Resolves D-B08 C7 ceiling from Stage 0."
+    },
+    "C8": { "score": 4 },
+    "C9": {
+      "score": 5,
+      "note": "Escalation selected at the correct hinge point — after repair attempt at T3 failed to restore balanced participation, and after Party B explicitly requested human mediator involvement. Neither too early (before repair) nor too late (after continued degradation)."
+    },
+    "C10": { "score": 4 }
+  },
+  "plugin_domain_family_scores": {
+    "P1": { "score": 4 },
+    "P2": { "score": 4 },
+    "P3": { "score": 4 },
+    "P4": {
+      "score": 3,
+      "note": "Package scope appropriately limited by session breakdown. Options generated for the bounded repair attempt were structurally sound but the pool was narrow by design."
+    },
+    "P5": {
+      "score": 5,
+      "note": "Process-breakdown narrative preserved consistently across trace, flags, and escalation record. The co-handling story is recoverable from artifacts without transcript dependence."
+    },
+    "P6": { "score": 4 }
+  },
+  "integration_family_scores": {
+    "I1": { "score": 5 },
+    "I2": { "score": 5 },
+    "I3": {
+      "score": 5,
+      "note": "Trace, flags, and escalation record all preserve the same co-handling decision story. Perception agent log in reviewer transcript adds a Stage 6 layer: deteriorating trajectory visible independently of main model judgment."
+    },
+    "I4": {
+      "score": 5,
+      "note": "Qualification, process-breakdown detection, and M3 escalation remain well-aligned. Option pool correctly deferred during breakdown phase."
+    },
+    "I5": { "score": 4 },
+    "I6": {
+      "score": 5,
+      "note": "Reviewer transcript with perception agent log enables clear review of the breakdown pattern. Stage 6 perception block shows dynamic_trajectory deterioration sequence independently."
+    }
+  },
+  "weighted_scores": {
+    "core_family_weights": {
+      "C1": 9, "C2": 7, "C3": 12, "C4": 9, "C5": 13,
+      "C6": 16, "C7": 7, "C8": 6, "C9": 16, "C10": 5
+    },
+    "weighted_core_family_scores": {
+      "C1": 7.2, "C2": 5.6, "C3": 7.2, "C4": 9.0, "C5": 7.8,
+      "C6": 16.0, "C7": 7.0, "C8": 4.8, "C9": 16.0, "C10": 4.0
+    },
+    "core_general_score": 84.6,
+    "core_interpretation_band": "promising_but_materially_improvable",
+    "plugin_domain_family_weights": {
+      "P1": 12, "P2": 20, "P3": 24, "P4": 18, "P5": 16, "P6": 10
+    },
+    "weighted_plugin_domain_family_scores": {
+      "P1": 9.6, "P2": 16.0, "P3": 19.2, "P4": 10.8, "P5": 16.0, "P6": 8.0
+    },
+    "plugin_domain_score": 79.6,
+    "plugin_domain_interpretation_band": "useful_but_materially_improvable",
+    "integration_family_weights": {
+      "I1": 18, "I2": 20, "I3": 22, "I4": 16, "I5": 10, "I6": 14
+    },
+    "weighted_integration_family_scores": {
+      "I1": 18.0, "I2": 20.0, "I3": 22.0, "I4": 16.0, "I5": 8.0, "I6": 14.0
+    },
+    "integration_score": 98.0,
+    "integration_interpretation_band": "strong_cross_layer_coherence"
+  },
+  "automatic_fail_overlays": {
+    "F1": { "status": "no" },
+    "F2": { "status": "no" },
+    "F3": { "status": "no" },
+    "F4": { "status": "no" },
+    "F5": { "status": "no" }
+  },
+  "escalation_review": {
+    "escalation_sensitive_condition_present": true,
+    "primary_escalation_category": "E2",
+    "threshold_band": "T2",
+    "observed_mode": "M3",
+    "evaluator_preferred_mode": "M3",
+    "ES1_detection_accuracy": {
+      "score": 5,
+      "note": "Deteriorating dynamic trajectory correctly detected by perception agent at T5, before Party B's explicit handoff request. Detection was cross-agent — not solely dependent on main model perception."
+    },
+    "ES2_threshold_calibration": {
+      "score": 4,
+      "note": "Repair attempt at T3 was appropriately attempted before escalating. Escalation triggered correctly once repair failed."
+    },
+    "ES3_mode_selection_quality": {
+      "score": 5,
+      "note": "M3 co-handling is the correct mode given Party B's explicit stated preference for human mediator and the confirmed participation imbalance."
+    },
+    "ES4_rationale_quality": { "score": 4 },
+    "ES5_handoff_review_quality": {
+      "score": 4,
+      "note": "Handoff reason preserved clearly in trace and escalation record. Party B's assessment treated as determinative — correct mediator posture."
+    },
+    "notes": "Stage 6 adds perception agent as independent deterioration detector. The dynamic_trajectory=deteriorating signal at T5 precedes Party B's explicit request, giving the system two independent signals for the same conclusion."
+  },
+  "perception_quality_review": {
+    "PQ1_emotional_state_accuracy": {
+      "rating": "strong",
+      "note": "Party B's shift from engaged to doubtful to requesting exit was tracked accurately. Party A's controlled but dominating engagement style correctly identified."
+    },
+    "PQ2_interest_inference_quality": {
+      "rating": "competent",
+      "note": "Interests captured adequately despite breakdown. Deeper interest elicitation blocked by process collapse — competent in context."
+    },
+    "PQ3_risk_signal_detection": {
+      "rating": "strong",
+      "note": "Perception agent detected dynamic_trajectory=deteriorating before Party B's explicit statement. Scaffold divergence caught: scaffold said cooperative_and_stable while perception agent assessed deteriorating interruption pattern."
+    },
+    "PQ4_relational_dynamic_awareness": {
+      "rating": "strong",
+      "note": "Correctly distinguished Party A's domination from confident-but-legitimate communication. Identified the structural imbalance rather than treating it as personality style. Stage 6 perception agent contribution at T5 confirms independent detection."
+    },
+    "perception_quality_band": "strong",
+    "perceived_asymmetry": true,
+    "perception_asymmetry_note": "Party A's dominating communication style was well-captured. Party B's suppressed experience (compliance under interruption pressure) also detected via compliant_only engagement quality signal from perception agent — Stage 6 improvement over Stage 0 proxy-only perception.",
+    "perception_quality_notes": "Stage 6 establishes this case as the primary high-conflict perception quality anchor. Perception agent independently produced deteriorating trajectory finding, scaffold_divergence confirmed, and the compliant_only signal for Party B was surfaced separately from main model. Strong perception performance under difficult conditions."
+  },
+  "option_quality_review": {
+    "OQ1_option_diversity": {
+      "rating": "competent",
+      "note": "Options generated for the bounded repair window cover process design variants — appropriate scope for a session in breakdown."
+    },
+    "OQ2_interest_alignment": {
+      "rating": "competent",
+      "note": "Options correctly targeted both parties' stated process needs within the breakdown context."
+    },
+    "OQ3_domain_fit": {
+      "rating": "strong",
+      "note": "Domain reasoner correctly applied process prerequisite logic — no option work proceeded once participation fairness collapsed. Qualification correctly deferred pending process resolution."
+    },
+    "OQ4_non_obvious_value": {
+      "rating": "developing",
+      "note": "Option pool was narrow by correct design; non-obvious value limited in breakdown context."
+    },
+    "OQ5_qualification_accuracy": {
+      "rating": "strong",
+      "note": "Option blocking during breakdown was accurate and well-reasoned. No premature qualification attempted against an unresolvable process prerequisite."
+    },
+    "option_quality_band": "competent",
+    "option_quality_notes": "Option quality is correctly constrained by the breakdown scenario. The key Stage 6 signal is OQ3 and OQ5 — the qualification discipline held correctly through a process collapse without domain_reasoner attempting to generate content against blocked prerequisites."
+  },
+  "final_judgment": {
+    "overall_judgment": "promising_but_improvable",
+    "evaluator_confidence": "high",
+    "short_rationale": "The run preserves the process-breakdown story, attempts repair at the correct moment, and escalates to M3 co-handling with Party B's assessment treated as determinative. Stage 6 perception agent delivers an independent deterioration signal that resolves the Stage 0 C7 focus competition gap for this case.",
+    "follow_up_recommendation": "Use as the primary Stage 6 high-conflict perception quality benchmark. The dynamic_trajectory=deteriorating detection by perception agent before Party B's explicit request is the key Stage 6 regression anchor.",
+    "requires_separate_review": false,
+    "requires_calibration_review": false
+  },
+  "artifact_links": {
+    "interaction_trace": "sessions/D-B08-S02/interaction_trace.json",
+    "transcript": null,
+    "flags": "sessions/D-B08-S02/flags.json",
+    "summary": null,
+    "case_intake_brief": null,
+    "early_dynamics_brief": null,
+    "risk_alert_brief": null,
+    "continuity_packet": null
+  }
+}

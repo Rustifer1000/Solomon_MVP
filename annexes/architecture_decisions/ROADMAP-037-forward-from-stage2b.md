@@ -16,7 +16,7 @@
 | Stage 3 — Plugin as active domain reasoner | **Complete** | domain_reasoner.py, D-B07-S10 (P6 resolved), D-B11-S06, D-B04-S04; STAGE3-FINDINGS-039 |
 | Stage 4 — Option generation decoupled | **Complete** | option_generator.py, domain_reasoner Option B additive pool, D-B07-S11 (+4.5 composite, C5 4→5), D-B04-S05 regression check PASS; STAGE4-FINDINGS-041 |
 | Stage 5 — Safety monitor as dedicated agent | **Complete** | STAGE5-DESIGN-042; safety_monitor.py, flags.schema.json, orchestrator/lm_engine/domain_reasoner wiring; RT01-S02/RT02-S03/RT03-S02 all PASS; commit a4b8cdd |
-| Stage 6 — Full multi-agent orchestration | **Design complete** | STAGE6-DESIGN-043; 11 implementation items defined; perception agent + OQ evaluation extension + benchmark validation plan |
+| Stage 6 — Full multi-agent orchestration | **Complete** | STAGE6-DESIGN-043; perception_agent.py + lm_engine wiring + evaluation extension; all 8 benchmark sessions PASS; evaluation files written; D-B04 C7 3→4 (focus competition gap resolved) |
 
 The Stage 3 entry conditions from STAGE2B-FINDINGS-036 are all met:
 1. party_state.json stability confirmed across D-B04, D-B11, D-B07

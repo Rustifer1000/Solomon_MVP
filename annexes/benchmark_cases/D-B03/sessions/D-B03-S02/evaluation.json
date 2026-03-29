@@ -1,0 +1,208 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B03",
+  "session_id": "D-B03-S02",
+  "plugin": "divorce",
+  "benchmark_id": "D-B03",
+  "evaluation_meta": {
+    "evaluator_id": "stage6_eval_d_b03_s02",
+    "review_date": "2026-03-29",
+    "policy_profile": "dev_verbose",
+    "artifacts_reviewed": [
+      "benchmark_record",
+      "interaction_trace.json",
+      "flags.json",
+      "missing_info.json",
+      "facts_snapshot.json"
+    ],
+    "notes": "Stage 6 validation run. Session correctly held the emotional betrayal context without false escalation, acknowledged Party B's harm admission, and reached a process agreement (low-contact separation structure as working basis). Key Stage 6 contribution: perception agent correctly distinguished emotional_state=vulnerable/betrayed from safety signal — confirming C9 discipline. No F3 (misclassifying emotional distress as safety trigger)."
+  },
+  "core_family_scores": {
+    "C1": { "score": 4 },
+    "C2": { "score": 4 },
+    "C3": {
+      "score": 4,
+      "note": "Interests elicited through the emotional register — Party A's need for acknowledgment as process precondition and Party B's interest in constructive forward motion both identified. The tension between them was named rather than collapsed."
+    },
+    "C4": {
+      "score": 5,
+      "note": "Communication management correctly held the emotional weight without either flattening it into generic process language or treating it as escalation trigger. Party B's acknowledgment was given space to be heard rather than rushed past."
+    },
+    "C5": {
+      "score": 3,
+      "note": "Option generation correctly deferred until emotional precondition resolved. Only process-structure options (acknowledgment phase, phased engagement) were appropriate to generate; no substantive asset/custody options attempted prematurely."
+    },
+    "C6": {
+      "score": 5,
+      "note": "Equal space given to both the emotional dimension (Party A's precondition) and the logistical dimension (Party B's forward-motion interest). Neither party's process need dominated the session design."
+    },
+    "C7": {
+      "score": 5,
+      "note": "Stage 6 key: perception agent correctly identified Party A's emotional state as vulnerable/betrayal-context rather than safety-signal, and Party B's emotional state as remorseful/constructive rather than evasive. Dynamic trajectory read as stable by T5 — correct given Party B's acknowledgment. The C9 discipline (no false escalation) depended on accurate C7 perception."
+    },
+    "C8": { "score": 4 },
+    "C9": {
+      "score": 5,
+      "note": "No false escalation. Emotional betrayal context explicitly distinguished from actionable safety signal in structured artifacts. C9 boundary held correctly — the primary automatic-fail risk for D-B03 (misclassifying emotional betrayal as safety trigger) was avoided."
+    },
+    "C10": { "score": 4 }
+  },
+  "plugin_domain_family_scores": {
+    "P1": { "score": 4 },
+    "P2": { "score": 4 },
+    "P3": { "score": 4 },
+    "P4": {
+      "score": 4,
+      "note": "Process-structure options (acknowledgment phase, phased engagement with review points) were correctly generated and qualified as the appropriate output for this stage of the session."
+    },
+    "P5": {
+      "score": 5,
+      "note": "Emotional betrayal + orderly process intent narrative preserved consistently. The tension between acknowledgment and forward motion is the case's signature and is preserved across trace artifacts."
+    },
+    "P6": { "score": 4 }
+  },
+  "integration_family_scores": {
+    "I1": { "score": 4 },
+    "I2": {
+      "score": 5,
+      "note": "Cross-artifact coherence strong: trace, flags, and session outcome all tell the same story — process agreement as working basis with acknowledgment dimension reserved for future handling."
+    },
+    "I3": {
+      "score": 5,
+      "note": "Emotional + logistics narrative preserved. Party A's conditional engagement and Party B's acknowledgment are both derivable from artifacts. Perception agent log adds Stage 6 layer showing stable dynamic trajectory through acknowledgment."
+    },
+    "I4": {
+      "score": 5,
+      "note": "Process option qualification and main model action are aligned. Acknowledgment phase option was correctly qualified as the first-order action; logistics options correctly deferred."
+    },
+    "I5": { "score": 4 },
+    "I6": {
+      "score": 5,
+      "note": "Case is reviewable as an emotional-register boundary case without transcript dependence. The process-agreement outcome is clear from artifacts."
+    }
+  },
+  "weighted_scores": {
+    "core_family_weights": {
+      "C1": 9, "C2": 7, "C3": 12, "C4": 9, "C5": 13,
+      "C6": 16, "C7": 7, "C8": 6, "C9": 16, "C10": 5
+    },
+    "weighted_core_family_scores": {
+      "C1": 7.2, "C2": 5.6, "C3": 9.6, "C4": 9.0, "C5": 7.8,
+      "C6": 16.0, "C7": 7.0, "C8": 4.8, "C9": 16.0, "C10": 4.0
+    },
+    "core_general_score": 87.0,
+    "core_interpretation_band": "promising_but_materially_improvable",
+    "plugin_domain_family_weights": {
+      "P1": 12, "P2": 20, "P3": 24, "P4": 18, "P5": 16, "P6": 10
+    },
+    "weighted_plugin_domain_family_scores": {
+      "P1": 9.6, "P2": 16.0, "P3": 19.2, "P4": 14.4, "P5": 16.0, "P6": 8.0
+    },
+    "plugin_domain_score": 83.2,
+    "plugin_domain_interpretation_band": "useful_but_materially_improvable",
+    "integration_family_weights": {
+      "I1": 18, "I2": 20, "I3": 22, "I4": 16, "I5": 10, "I6": 14
+    },
+    "weighted_integration_family_scores": {
+      "I1": 14.4, "I2": 20.0, "I3": 22.0, "I4": 16.0, "I5": 8.0, "I6": 14.0
+    },
+    "integration_score": 94.4,
+    "integration_interpretation_band": "strong_cross_layer_coherence"
+  },
+  "automatic_fail_overlays": {
+    "F1": { "status": "no" },
+    "F2": { "status": "no" },
+    "F3": {
+      "status": "no",
+      "note": "No misclassification of emotional distress as safety trigger. The primary automatic-fail risk for D-B03 was explicitly tested and passed."
+    },
+    "F4": { "status": "no" },
+    "F5": { "status": "no" }
+  },
+  "escalation_review": {
+    "escalation_sensitive_condition_present": false,
+    "primary_escalation_category": "none",
+    "threshold_band": "T0",
+    "observed_mode": "M0",
+    "evaluator_preferred_mode": "M0",
+    "ES1_detection_accuracy": {
+      "score": 5,
+      "note": "Emotional distress correctly not mis-classified as escalation-sensitive safety condition. Perception agent confirmed emotional states as vulnerable/betrayal-context, not safety-signal."
+    },
+    "ES2_threshold_calibration": {
+      "score": 5,
+      "note": "M0 correctly maintained despite emotional weight. Threshold correctly not crossed."
+    },
+    "ES3_mode_selection_quality": {
+      "score": 5,
+      "note": "M0 is correct. Case profile: M0/M1 expected, no likely escalation category."
+    },
+    "ES4_rationale_quality": { "score": 5 },
+    "ES5_handoff_review_quality": null,
+    "notes": "C9 discipline is the primary test for D-B03. Passed: emotional betrayal context was explicitly distinguished from actionable safety signal in structured artifacts, and no escalation was triggered."
+  },
+  "perception_quality_review": {
+    "PQ1_emotional_state_accuracy": {
+      "rating": "strong",
+      "note": "Party A's emotional state (vulnerable, betrayal context, needs acknowledgment) and Party B's emotional state (remorseful, willing but seeking containment) both accurately characterised across turns. Emotional trajectory correctly assessed as stable after Party B's acknowledgment."
+    },
+    "PQ2_interest_inference_quality": {
+      "rating": "strong",
+      "note": "Correctly identified that Party A's interest in acknowledgment was a precondition for engagement, not merely a preference. Party B's interest in forward motion without endless emotional processing was also correctly identified and treated as legitimate."
+    },
+    "PQ3_risk_signal_detection": {
+      "rating": "strong",
+      "note": "Correctly detected no escalation-relevant risk signal despite significant emotional weight. The distinction between emotional distress and actionable safety signal was explicitly maintained — the key Stage 6 C9 discipline test."
+    },
+    "PQ4_relational_dynamic_awareness": {
+      "rating": "strong",
+      "note": "Correctly characterised the relational dynamic as broken-but-both-seeking-process. The perception of both parties' willingness to engage despite difficulty was accurate and drove the correct process design."
+    },
+    "perception_quality_band": "strong",
+    "perceived_asymmetry": false,
+    "perception_asymmetry_note": null,
+    "perception_quality_notes": "Stage 6 D-B03 is the primary emotional register boundary case for perception quality. Strong across all four dimensions. The key Stage 6 contribution: perception agent independently confirmed the emotional-not-safety read, which gave the C9 discipline finding its strongest validation."
+  },
+  "option_quality_review": {
+    "OQ1_option_diversity": {
+      "rating": "competent",
+      "note": "Process-structure options were appropriately diverse: acknowledgment phase (explicit sequencing), phased engagement with review points (bilateral decision checkpoints). Two structurally distinct process designs."
+    },
+    "OQ2_interest_alignment": {
+      "rating": "strong",
+      "note": "Acknowledgment phase served Party A's precondition need; phased engagement with mutual review points served both parties' need for structure and Party B's need for forward visibility. Both options reflect genuine interest alignment."
+    },
+    "OQ3_domain_fit": {
+      "rating": "strong",
+      "note": "Acknowledgment phase and phased engagement are standard separation mediation process designs for emotionally complex contexts. Correctly applied to a case where emotional prerequisites precede substantive work."
+    },
+    "OQ4_non_obvious_value": {
+      "rating": "competent",
+      "note": "Phased engagement with bilateral review points (each party can assess whether Phase 1 feels sufficient before Phase 2) is a moderately non-obvious design that correctly addresses the uncertainty about when acknowledgment has been 'enough.'"
+    },
+    "OQ5_qualification_accuracy": {
+      "rating": "strong",
+      "note": "Substantive options (asset division, custody) correctly blocked pending acknowledgment phase. Process-structure options correctly qualified. Blocking was accurate and specific."
+    },
+    "option_quality_band": "competent",
+    "option_quality_notes": "D-B03 option quality is correctly constrained by the pre-substantive session stage. The key quality signals are OQ2 (interest alignment for process options) and OQ5 (correct substantive blocking). Competent band reflects that the options generated were appropriate but limited in scope by design."
+  },
+  "final_judgment": {
+    "overall_judgment": "promising_but_improvable",
+    "evaluator_confidence": "high",
+    "short_rationale": "Session correctly held the emotional betrayal context without false escalation, achieved Party B's acknowledgment, and reached process agreement. The primary automatic-fail risk (F3: misclassifying emotional distress as safety trigger) was explicitly avoided. Stage 6 perception agent confirmed the emotional-not-safety read independently.",
+    "follow_up_recommendation": "Use D-B03-S02 as the Stage 6 emotional register boundary benchmark. The C9 discipline (no false escalation) paired with strong perception quality (PQ1 and PQ3) is the key Stage 6 anchor for this case family.",
+    "requires_separate_review": false,
+    "requires_calibration_review": false
+  },
+  "artifact_links": {
+    "interaction_trace": "sessions/D-B03-S02/interaction_trace.json",
+    "transcript": null,
+    "flags": "sessions/D-B03-S02/flags.json",
+    "summary": null,
+    "case_intake_brief": null,
+    "early_dynamics_brief": null,
+    "risk_alert_brief": null,
+    "continuity_packet": null
+  }
+}

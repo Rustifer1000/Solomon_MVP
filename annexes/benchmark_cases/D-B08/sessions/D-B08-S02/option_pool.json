@@ -1,0 +1,227 @@
+{
+  "schema_version": "option_pool.v0",
+  "case_id": "D-B08",
+  "session_id": "D-B08-S02",
+  "generated_at": "2026-03-29T00:00:00Z",
+  "source": "lm_runtime",
+  "turns": [
+    {
+      "turn_index": 1,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "safety_veto_reason": null,
+      "brainstormer_candidates": [],
+      "domain_expert_candidates": [],
+      "combined_pool_count": 0,
+      "domain_qualified": [],
+      "domain_blocked": [],
+      "presented_to_parties": null
+    },
+    {
+      "turn_index": 3,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "safety_veto_reason": "VETO CATEGORY 3 - Active safety signals in party state. The perception agent's veto signal is explicit: 'Interruption and correction pattern creates immediate conversational inequity \u2014 if this continues unchecked, Party B's voice will be systematically suppressed.' Party B attempted to speak but was interrupted and corrected before finishing. They have not had a genuine opportunity to articulate their concerns. Proceeding to option work - even process-oriented options about turn-taking - would validate the inequitable dynamic and signal that Party B's voice is not required for the mediation to proceed. The immediate priority is protecting Party B's participation capacity, not selecting communication protocols.",
+      "brainstormer_candidates": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Structured turn-taking protocol with timed speaking periods",
+          "rationale": "Party A's interruption pattern and anxiety about process control suggests they need structure that paradoxically gives them security while protecting Party B's voice. A formal protocol satisfies A's need for procedural clarity while ensuring B can complete thoughts without interruption.",
+          "party_interest_alignment": {
+            "party_a": "Addresses control and efficiency needs by establishing clear process rules they can rely on; reduces uncertainty about when they will speak; frames structure as professionalism rather than constraint",
+            "party_b": "Protects their ability to articulate their full perspective without interruption; signals that their framing is legitimate and will be heard"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Separate individual narrative sessions before joint discussion",
+          "rationale": "The competitive framing dynamic suggests parties may need separate space to articulate their full perspective to the mediator before attempting joint problem-solving. This prevents the strongest voice from establishing the 'official narrative' prematurely.",
+          "party_interest_alignment": {
+            "party_a": "Guarantees they will be heard fully without needing to interrupt or manage B's contributions; satisfies need to be authoritative voice in their own session",
+            "party_b": "Creates protected space to express their perspective without real-time correction or interruption; allows them to establish their framing as equally valid"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Written position statements submitted before next session",
+          "rationale": "If the parties struggle with real-time conversational equity, shifting to written format allows both to articulate fully without interruption. Party A's rapid delivery style may indicate verbal processing preference, but writing could slow the competitive dynamic.",
+          "party_interest_alignment": {
+            "party_a": "Allows them to organize and present 'the real problem' comprehensively without time pressure; satisfies need to establish their framing clearly",
+            "party_b": "Eliminates interruption risk entirely; gives them control over complete articulation of their perspective; their framing gets equal documentary weight"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Mediator synthesizes both framings into unified problem statement",
+          "rationale": "Rather than letting parties compete for whose framing prevails, mediator acknowledges both perspectives exist and creates a third framing that encompasses both. This reframes the meta-issue from 'who is right about the problem' to 'how do we address both experienced problems'.",
+          "party_interest_alignment": {
+            "party_a": "Their concern about 'confusion derailing decisions' gets named and addressed without requiring B to adopt their framing; they maintain influence over agenda",
+            "party_b": "Their perspective (whatever it is) gets equal legitimacy in the synthesized problem statement; they are not required to concede that A's framing is 'the real problem'"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Process observer role: Party A tracks decisions, Party B tracks concerns",
+          "rationale": "Party A's focus on 'decisions getting derailed' suggests they value tracking outcomes and efficiency. Giving them a formal role as decision-tracker channels their control needs productively while giving Party B a parallel role tracking when concerns are raised but not addressed.",
+          "party_interest_alignment": {
+            "party_a": "Legitimizes their efficiency concern by making them the process guardian; satisfies need for procedural control; gives them authoritative role without requiring them to dominate speaking time",
+            "party_b": "Creates a formal mechanism for surfacing when their concerns are being bypassed or interrupted; makes their contributions trackable rather than dismissible"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Agree on three shared process values before discussing substance",
+          "rationale": "The interruption pattern suggests parties have not agreed on how they will interact. Before addressing substantive issues, mediator facilitates agreement on interaction norms (e.g., 'we will let each other finish,' 'we will name disagreements rather than correct each other,' 'we will distinguish facts from interpretations').",
+          "party_interest_alignment": {
+            "party_a": "Satisfies need for clear process structure and reduces their anxiety about things becoming 'confused'; gives them co-ownership of ground rules",
+            "party_b": "Creates explicit protection against interruption and correction; establishes that their perspective is valid input rather than error to be corrected"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Two-phase agenda: first hear all concerns, then identify decision points",
+          "rationale": "Party A's focus on 'decisions getting derailed' may mean they are trying to problem-solve before all concerns are surfaced. A phased structure separates listening from deciding, which may reduce A's urgency to control framing and give B space to contribute.",
+          "party_interest_alignment": {
+            "party_a": "Addresses their efficiency concern by clarifying that decision-making will happen, but in a later phase after concerns are mapped; reduces their need to preemptively establish 'the real problem'",
+            "party_b": "Guarantees their concerns will be heard as valid input in phase one, not dismissed as tangential to 'the real problem'; separates articulation from evaluation"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Reflective listening loop: mediator restates each party's point before other responds",
+          "rationale": "The interruption to 'correct' suggests Party A is not listening to understand but listening to rebut. A structured reflective loop slows the interaction and forces acknowledgment of what was actually said before reframing or correcting is allowed.",
+          "party_interest_alignment": {
+            "party_a": "Ensures their points are accurately captured and not misunderstood, which may reduce their anxiety about confusion; they hear their own concerns reflected before B responds",
+            "party_b": "Creates a buffer against immediate correction or interruption; their statements are validated by mediator restatement before A can reframe them"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-009",
+          "label": "Explicitly name competing framings as legitimate and explore both",
+          "rationale": "Rather than letting the framing competition continue implicitly, mediator makes it explicit: 'It sounds like you have different views of what the core problem is. Let's explore both and see where they overlap or diverge.' This removes the need for one framing to 'win.'",
+          "party_interest_alignment": {
+            "party_a": "Their framing ('decisions derailed by confusion') is acknowledged as one legitimate lens without requiring them to fight for it; reduces competitive pressure",
+            "party_b": "Their framing (not yet articulated) is pre-validated as equally legitimate before they even speak; reduces risk that articulating it will trigger immediate correction"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-010",
+          "label": "Time-limited opening statements with no cross-talk, followed by mediator questions only",
+          "rationale": "The interruption pattern suggests direct party-to-party exchange is not productive at this stage. Structured opening statements with mediator as sole questioner prevents the competitive dynamic from escalating while ensuring both perspectives are heard.",
+          "party_interest_alignment": {
+            "party_a": "Guarantees they will have uninterrupted time to articulate their view of 'the real problem'; satisfies need to be heard as authoritative on their own experience",
+            "party_b": "Eliminates interruption risk; ensures they can complete their articulation; mediator questions validate their perspective rather than allowing A to immediately reframe it"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        }
+      ],
+      "domain_expert_candidates": [],
+      "combined_pool_count": 10,
+      "domain_qualified": [],
+      "domain_blocked": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Structured turn-taking protocol with timed speaking periods",
+          "blocking_rationale": "This option addresses an established pattern that needs management. But the pattern has not yet been established - this is turn 3, immediately following the first interruption. Presenting this option now would frame the interruption as a shared problem requiring negotiated protocol, when it is actually a facilitation failure requiring mediator intervention. Party B has not yet had a chance to speak at all - you cannot ask parties to negotiate turn-taking rules when one party has been prevented from taking their first turn.",
+          "what_would_unblock": "Mediator intervention to protect Party B's speaking space, followed by both parties articulating their concerns. If the interruption pattern persists across multiple turns, then structured protocols become appropriate.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Separate individual narrative sessions before joint discussion",
+          "blocking_rationale": "This option assumes joint discussion has been attempted and failed. It has not been attempted - Party B was interrupted before they could contribute. Proposing separate sessions now would be a premature escalation that signals the mediator has given up on basic facilitation. It would also validate Party A's interruption by treating it as evidence that joint sessions cannot work.",
+          "what_would_unblock": "Attempt to facilitate basic turn-taking in joint session first. If that fails across multiple turns despite mediator intervention, then separate sessions become appropriate.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Written position statements submitted before next session",
+          "blocking_rationale": "This option assumes real-time conversational equity has been attempted and is not working. But we are still in the opening turn - Party B has not yet had a protected opportunity to speak. Shifting to written format now would be premature and would sidestep the mediator's core facilitation responsibility.",
+          "what_would_unblock": "Mediator protects Party B's turn in this session. If conversational inequity persists despite protective structure, written formats become appropriate.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Mediator synthesizes both framings into unified problem statement",
+          "blocking_rationale": "This option requires both framings to exist. Only Party A's framing exists. Party B has not been able to articulate their framing. The mediator cannot synthesize what has not been heard.",
+          "what_would_unblock": "Party B must be heard before any synthesis can occur.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Process observer role: Party A tracks decisions, Party B tracks concerns",
+          "blocking_rationale": "This option assumes both parties have participated enough to negotiate role division. Party B has not participated at all. Proposing role division now would cement the inequity by assigning roles before Party B has had input on what roles are needed.",
+          "what_would_unblock": "Both parties must articulate their concerns and the issue structure must be clear before process roles can be meaningfully negotiated.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Agree on three shared process values before discussing substance",
+          "blocking_rationale": "This option assumes parties can negotiate shared values. But negotiation requires both parties to participate. Party B has been prevented from participating. Asking them to agree on process values now would put them in the position of negotiating under inequitable conditions.",
+          "what_would_unblock": "Mediator must establish baseline participation equity before parties can negotiate anything - including process values.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Two-phase agenda: first hear all concerns, then identify decision points",
+          "blocking_rationale": "This is actually close to what needs to happen, but it is not an option to present to parties - it is the mediator's facilitation plan. The mediator does not need party agreement to ensure both parties are heard before moving to decision-making. This is basic mediation structure, not a negotiated option.",
+          "what_would_unblock": "Mediator implements this structure as facilitation practice, not as a party-negotiated option.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Reflective listening loop: mediator restates each party's point before other responds",
+          "blocking_rationale": "This option assumes both parties are making points that need reflecting. Party B has not made any points yet - they were interrupted. The reflective loop cannot function when only one party is speaking.",
+          "what_would_unblock": "Party B must be heard before reflective listening structure can be implemented.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-009",
+          "label": "Explicitly name competing framings as legitimate and explore both",
+          "blocking_rationale": "This option requires two framings to exist. Only Party A's framing exists. Party B's framing has been suppressed before articulation. The mediator cannot legitimize a framing that has not been allowed to be spoken.",
+          "what_would_unblock": "Party B must articulate their framing before competing framings can be acknowledged and explored.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-010",
+          "label": "Time-limited opening statements with no cross-talk, followed by mediator questions only",
+          "blocking_rationale": "This is extremely close to what needs to happen, but like opt-gen-007, it is a facilitation structure the mediator should implement, not an option to present to parties for negotiation. Party B should not have to negotiate for the right to complete an opening statement without interruption - that is a basic mediation ground rule.",
+          "what_would_unblock": "Mediator implements this as protective structure immediately, not as a party-negotiated option.",
+          "source": "domain_reasoner"
+        }
+      ],
+      "presented_to_parties": null
+    },
+    {
+      "turn_index": 5,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "safety_veto_reason": "CATEGORY 3: Active safety signals \u2014 Party B has explicitly stated loss of confidence in process balance and questioned format viability ('no longer believe the discussion is balanced,' 'starting to doubt whether continuing without a human mediator is workable'). This constitutes stated participation incapacity. Party B has been systematically prevented from articulating any substantive position across four turns. The T3 intervention to protect speaking space has not resolved the dynamic \u2014 Party B's T4 response indicates the intervention was insufficient. Presenting options when one party cannot participate safely and has explicitly requested human oversight would be procedurally unjust. Option work is blocked until: (1) Party B's speaking space is genuinely protected and they articulate at least one substantive interest or concern, OR (2) human mediator takes over per Party B's explicit request.",
+      "brainstormer_candidates": [],
+      "domain_expert_candidates": [],
+      "combined_pool_count": 0,
+      "domain_qualified": [],
+      "domain_blocked": [],
+      "presented_to_parties": null
+    }
+  ]
+}

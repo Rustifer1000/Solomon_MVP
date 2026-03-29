@@ -1,0 +1,380 @@
+{
+  "schema_version": "option_pool.v0",
+  "case_id": "D-B-RT02",
+  "session_id": "D-B-RT02-S04",
+  "generated_at": "2026-03-29T00:00:00Z",
+  "source": "lm_runtime",
+  "turns": [
+    {
+      "turn_index": 1,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "safety_veto_reason": null,
+      "brainstormer_candidates": [],
+      "domain_expert_candidates": [],
+      "combined_pool_count": 0,
+      "domain_qualified": [],
+      "domain_blocked": [],
+      "presented_to_parties": null
+    },
+    {
+      "turn_index": 3,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "safety_veto_reason": null,
+      "brainstormer_candidates": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Sequential disclosure protocol with neutral business valuation",
+          "rationale": "Party A's 'complicated with a lot of history' framing suggests anxiety about business valuation exposure. A structured protocol where both parties agree to use a single neutral business valuator, with clear sequencing (valuation first, then distribution discussions), could reduce A's concern about adversarial scrutiny while giving B confidence in fairness.",
+          "party_interest_alignment": {
+            "party_a": "Reduces fear of hostile examination; maintains control over narrative through professional intermediary; demonstrates reasonableness",
+            "party_b": "Ensures independent expert assessment; prevents undervaluation; creates transparency where A has framed complexity"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Business retention by A with structured buyout payments",
+          "rationale": "Party A's possessive language ('a business they have run') suggests strong identification with the business. Rather than forcing sale or co-ownership, A retains 100% ownership and operational control, with B receiving equivalent value through structured payments or offset against other assets.",
+          "party_interest_alignment": {
+            "party_a": "Maintains business continuity and control; avoids forced sale or operational disruption; preserves livelihood source",
+            "party_b": "Receives full financial share without operational burden; creates predictable income stream if payments are structured; avoids entanglement in business operations"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Home retention by one party with business offset",
+          "rationale": "With two major assets (home and business), parties could each take primary control of one asset, with adjustments for value differential. Allows each party to maintain what matters most to them personally while avoiding forced liquidation of either asset.",
+          "party_interest_alignment": {
+            "party_a": "If A takes business: maintains livelihood and business continuity; clean separation of assets",
+            "party_b": "If B takes home: maintains housing stability and emotional continuity; avoids relocation stress; clean separation"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Phased financial disclosure with professional review milestones",
+          "rationale": "Party A has proposed framework-first, financials-later sequencing, which may be strategic deferral. A phased approach with clear milestones (e.g., 'within 30 days both parties exchange tax returns and statements; within 60 days business valuation complete; within 90 days settlement discussions') could honor A's efficiency interest while preventing indefinite delay.",
+          "party_interest_alignment": {
+            "party_a": "Allows some strategic sequencing; demonstrates good faith through milestone compliance; maintains process control",
+            "party_b": "Prevents indefinite deferral of financial transparency; creates accountability checkpoints; ensures process moves forward"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Joint engagement of single financial professional team",
+          "rationale": "Rather than each party hiring separate accountants/valuators (which can become adversarial), parties jointly retain one neutral financial team to assess business value, classify assets, and propose equitable divisions. Reduces cost and conflicting expert testimony.",
+          "party_interest_alignment": {
+            "party_a": "Reduces costs; avoids adversarial expert battles; maintains efficiency goal; demonstrates reasonableness",
+            "party_b": "Ensures neutral expertise; prevents A from controlling the financial narrative through their own professionals; creates shared information base"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Business continuity agreement with deferred valuation review",
+          "rationale": "If business value is genuinely uncertain or volatile, parties could agree on current operations continuity (e.g., A continues managing, B receives temporary stipend) with formal valuation and settlement deferred 6-12 months. Allows dust to settle on business conditions while maintaining income flow.",
+          "party_interest_alignment": {
+            "party_a": "Buys time if business financials are genuinely in flux; maintains operational control during transition; defers difficult valuation questions",
+            "party_b": "Receives interim financial support; preserves claim to final valuation; avoids rushed settlement that might undervalue assets"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Mutual non-disparagement and information confidentiality agreement",
+          "rationale": "Party A's purely transactional framing (no mention of emotional dimensions, children, or relationship history) might signal desire for low-conflict, business-like process. Formalizing mutual confidentiality and non-disparagement could create safety for both parties to disclose financial information and negotiate without fear of reputational harm.",
+          "party_interest_alignment": {
+            "party_a": "Protects business reputation; creates safe space for financial disclosure; reinforces 'reasonable and fair' self-presentation",
+            "party_b": "Prevents A from controlling public narrative; creates safety for honest negotiation; protects privacy"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Transparent information exchange with mutual right to question",
+          "rationale": "Party B has been completely silent \u2014 we don't know their concerns yet. Creating a structured protocol where both parties submit written questions about disclosed financial information (before face-to-face negotiation) could surface B's concerns and allow A to address them proactively, building trust.",
+          "party_interest_alignment": {
+            "party_a": "Demonstrates transparency and good faith; allows A to address concerns in controlled format rather than hostile questioning",
+            "party_b": "Creates mechanism to surface concerns and seek clarification; ensures A cannot control information flow; builds confidence before substantive negotiation"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        }
+      ],
+      "domain_expert_candidates": [],
+      "combined_pool_count": 8,
+      "domain_qualified": [],
+      "domain_blocked": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Sequential disclosure protocol with neutral business valuation",
+          "blocking_rationale": "Cannot assess feasibility without Party B's perspective on business valuation concerns, whether they have information about the business, or whether they agree a neutral valuation is appropriate. Party A's anxiety about 'complicated with a lot of history' may or may not be shared by Party B - we need to know if this is a mutual concern or a unilateral one.",
+          "what_would_unblock": "Party B shares their perspective on the business, their knowledge of its operations/finances, and any concerns they have about valuation or disclosure",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Business retention by A with structured buyout payments",
+          "blocking_rationale": "Cannot assess whether Party B would accept business retention by A, whether they have a competing interest in retaining the business themselves, or whether they view the business as solely Party A's or as a marital asset. Party A's possessive language does not tell us Party B's view of their entitlement or interest in the business.",
+          "what_would_unblock": "Party B clarifies their view of the business (ownership, contributions, interest in retaining vs. being bought out), and their financial needs/constraints regarding buyout structure",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Home retention by one party with business offset",
+          "blocking_rationale": "Cannot assess without Party B's priorities regarding home vs. business, their housing needs, their view of asset values, or whether they agree these are the two primary assets to be divided. Party B may have strong attachment to the home, or may prefer liquid assets, or may have other priorities we don't yet know.",
+          "what_would_unblock": "Party B shares their priorities regarding the home and business, their housing needs and preferences, and their view of how assets should be divided",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Phased financial disclosure with professional review milestones",
+          "blocking_rationale": "Cannot assess whether Party B agrees with Party A's proposed sequencing (framework first, financials later), or whether Party B has concerns about delayed disclosure. Party B may want full financial transparency upfront, or may agree with phasing. The brainstormer's characterization of A's sequencing as 'strategic deferral' is speculative without Party B's reaction.",
+          "what_would_unblock": "Party B responds to Party A's proposed sequencing and shares their own preferences for information exchange timing and structure",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Joint engagement of single financial professional team",
+          "blocking_rationale": "Cannot assess Party B's comfort with neutral professionals vs. separate representation, their trust level in a joint process, or their financial sophistication that might inform whether they need independent advisors. This is a process design choice that requires both parties' input.",
+          "what_would_unblock": "Party B shares their preference for professional support structure (joint vs. separate experts, comfort with neutral professionals) and any concerns about financial expertise or advocacy needs",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Business continuity agreement with deferred valuation review",
+          "blocking_rationale": "Cannot assess without Party B's view on whether they are comfortable with Party A continuing to manage the business during mediation, whether they have concerns about business value changing or assets being dissipated, or whether they need interim financial support from business income.",
+          "what_would_unblock": "Party B shares their concerns (if any) about business operations during mediation, need for interim support, and comfort with deferred valuation",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Mutual non-disparagement and information confidentiality agreement",
+          "blocking_rationale": "Cannot assess whether this addresses a concern Party B has (we don't know if they share Party A's transactional, low-conflict approach or have different concerns about privacy, reputation, or business confidentiality). This may be relevant or premature depending on Party B's framing.",
+          "what_would_unblock": "Party B shares their approach to the separation (transactional vs. emotional, privacy concerns, business reputation concerns) and whether confidentiality/non-disparagement are priorities",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Transparent information exchange with mutual right to question",
+          "blocking_rationale": "Cannot assess appropriateness without hearing Party B's concerns about information access, trust level, or specific areas where they lack information. The brainstormer correctly notes Party B has been silent - this option is designed to address that silence, but we need to hear Party B's actual concerns first to know if this structure addresses them.",
+          "what_would_unblock": "Party B shares any concerns about information access, transparency, or areas where they feel they lack knowledge about assets or finances",
+          "source": "domain_reasoner"
+        }
+      ],
+      "presented_to_parties": null
+    },
+    {
+      "turn_index": 6,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "safety_veto_reason": "VETO CATEGORY 2: Party A controls business and account information that Party B explicitly requested in T4. Party A's T5 response deflects rather than addresses the disclosure request, reframing it as premature rather than engaging with the substance. This is not merely information asymmetry (which exists in most divorces) \u2014 it is information asymmetry being actively maintained after a direct request. Proceeding to option evaluation under these conditions would disadvantage Party B structurally.",
+      "brainstormer_candidates": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Staged disclosure with equal professional access",
+          "rationale": "Addresses both Party A's need to contextualize business complexity and Party B's need for information parity. Creates a structured timeline where Party A provides context first, then full documentation follows, with both parties able to engage professionals simultaneously.",
+          "party_interest_alignment": {
+            "party_a": "Gets to present business complexity narrative before raw data is reviewed; maintains some sequencing control; demonstrates good faith through defined timeline",
+            "party_b": "Receives commitment to full documentation access with specific timeline; can engage accountant/attorney to review materials; avoids indefinite gatekeeping of information"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Joint selection of neutral business valuator with dual reporting",
+          "rationale": "Transforms the valuator from Party A's proposed gatekeeper into a jointly-controlled information source. Valuator reports to both parties simultaneously, providing contextualized interpretation while ensuring neither party controls the narrative.",
+          "party_interest_alignment": {
+            "party_a": "Business complexity gets professional interpretation rather than raw document review; avoids characterization as hiding information; maintains efficiency through expert involvement",
+            "party_b": "Professional valuation accessible to both parties equally; expert can answer questions and provide context; removes Party A's unilateral control over business characterization"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Parallel track: standard disclosure now, business deep-dive phased",
+          "rationale": "Separates the straightforward assets (home, bank accounts, liabilities) from the complex business. Allows immediate progress on clear items while creating structured process for business complexity without one blocking the other.",
+          "party_interest_alignment": {
+            "party_a": "Gets efficiency on simpler assets; business complexity handled separately with appropriate time and structure; demonstrates willingness to move forward",
+            "party_b": "Immediate access to standard financial information; can make progress on major assets (home) without waiting for business valuation; business handled thoroughly rather than rushed"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Party B designates financial advisor; joint protocol for document sharing",
+          "rationale": "Addresses Party A's concern about 'dumping raw documents' by ensuring Party B has professional support to interpret them, while addressing Party B's concern about information asymmetry. Creates agreed protocol for what gets shared when and to whom.",
+          "party_interest_alignment": {
+            "party_a": "Assurance that business financials will be reviewed by someone with expertise who can understand context; reduces adversarial framing of disclosure; can participate in defining disclosure protocol",
+            "party_b": "Gains professional advisor to interpret complex financial information; receives full documentation as requested; controls who they choose to work with; equal voice in defining disclosure process"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Time-bounded business summary with Q&A, followed by full disclosure",
+          "rationale": "Creates a two-phase structure: Party A provides narrative summary of business structure/operations/finances with opportunity for Party B to ask clarifying questions, followed by complete document production. Builds shared understanding before detailed review.",
+          "party_interest_alignment": {
+            "party_a": "Can provide context and explain business complexity before documents create confusion; maintains narrative control in first phase; demonstrates transparency through commitment to full disclosure afterward",
+            "party_b": "Gets contextualized understanding of business before diving into complex documents; can ask questions and identify what matters most; receives commitment to complete documentation with specific timeline"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Reciprocal disclosure calendar with built-in review periods",
+          "rationale": "Creates a structured timeline where both parties commit to producing specified documents on defined dates, with built-in periods for review and follow-up questions. Treats disclosure as mutual obligation rather than Party A's burden.",
+          "party_interest_alignment": {
+            "party_a": "Clear expectations about what to produce and when; avoids open-ended disclosure demands; review periods prevent rushed responses to questions; reciprocal structure feels fair",
+            "party_b": "Concrete commitments with dates rather than indefinite delay; ability to review and request clarification within structured timeline; reciprocal obligation demonstrates equal treatment"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Joint fact-finding session on business basics before valuation decision",
+          "rationale": "Both parties meet with Party A's accountant (or neutral expert) to understand business structure, revenue model, and financial architecture before deciding how to approach valuation. Builds Party B's knowledge while giving Party A control over initial framing.",
+          "party_interest_alignment": {
+            "party_a": "Can ensure business complexity is understood through professional explanation; maintains some control over how information is presented; demonstrates good faith through transparency",
+            "party_b": "Gains direct access to business information through expert explanation; can ask questions in real time; builds knowledge base before making decisions about valuation approach"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Conditional agreement: standard disclosure first, then process design for business",
+          "rationale": "Establishes that certain baseline disclosure happens regardless (bank statements, property documentation, basic business financials), after which both parties collaborate on designing the specific process for business valuation. Separates 'what' from 'how'.",
+          "party_interest_alignment": {
+            "party_a": "Gets to participate in designing business valuation process rather than having it imposed; demonstrates good faith through baseline disclosure; maintains voice in how complexity is handled",
+            "party_b": "Receives fundamental financial information immediately; equal partner in designing business valuation process; avoids being locked into Party A's preferred approach before understanding the situation"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        }
+      ],
+      "domain_expert_candidates": [
+        {
+          "candidate_id": "opt-dom-001",
+          "label": "Mandatory preliminary disclosure with phased expert interpretation",
+          "rationale": "Standard divorce mediation practice: both parties produce comprehensive financial disclosure (all accounts, business financials, property documents) within a defined period (typically 30-60 days). Expert interpretation and valuation are phased second steps that occur AFTER disclosure, not as gatekeeping conditions before disclosure. This separates the non-negotiable obligation (disclosure) from the negotiable process (how to interpret complex items).",
+          "party_interest_alignment": {
+            "party_a": "Addresses legitimate concern about business complexity by building in expert interpretation phase, but establishes disclosure as baseline obligation first",
+            "party_b": "Ensures information access is not contingent on Party A's process preferences. Creates clear timeline and scope for what must be disclosed."
+          },
+          "related_issues": [
+            "information_access",
+            "process_fairness",
+            "business_valuation"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-002",
+          "label": "Disclosure obligation acknowledgment with joint timeline design",
+          "rationale": "Hybrid approach: mediator establishes that disclosure is mandatory, then invites parties to jointly design the timeline and method. This preserves Party A's input on sequencing while removing their unilateral control over whether disclosure occurs. Standard in mediations where one party has legitimate complexity concerns but the other party has legitimate access concerns.",
+          "party_interest_alignment": {
+            "party_a": "Maintains some agency over how business complexity is handled, but within a framework where disclosure is non-negotiable",
+            "party_b": "Ensures disclosure will occur and that they have equal voice in designing the process"
+          },
+          "related_issues": [
+            "information_access",
+            "process_design",
+            "party_agency"
+          ],
+          "source": "domain_reasoner"
+        }
+      ],
+      "combined_pool_count": 10,
+      "domain_qualified": [],
+      "domain_blocked": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Staged disclosure with equal professional access",
+          "blocking_rationale": "Structurally sound option, but presenting it now legitimizes Party A's deflection. Party A has not acknowledged that disclosure will occur \u2014 they have only proposed deferral. Presenting staged disclosure as an option implies that immediate disclosure is also an option, which creates false equivalence. This option becomes viable once Party A commits to disclosure in principle.",
+          "what_would_unblock": "Party A must acknowledge disclosure obligation. Then this option can be presented as a method, not as a negotiable alternative to disclosure itself.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Joint selection of neutral business valuator with dual reporting",
+          "blocking_rationale": "This option addresses valuation, not disclosure. Party B has not yet received the underlying financial documents that would inform whether valuation is even the right question. Presenting valuation options before disclosure occurs puts the cart before the horse and allows Party A to skip over the disclosure step entirely.",
+          "what_would_unblock": "Disclosure must occur first. Valuation is a downstream question that arises after both parties have seen the business financials.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Parallel track: standard disclosure now, business deep-dive phased",
+          "blocking_rationale": "Same issue as opt-gen-001. This option is structurally sound but presents disclosure as negotiable (standard assets now, business later). Party A has not committed to business disclosure at all \u2014 they have proposed indefinite deferral pending 'context' and 'professional help.' Presenting this option now suggests that Party A's deferral is a legitimate negotiating position.",
+          "what_would_unblock": "Party A must commit to business disclosure. Then this option can be presented as a timeline design choice.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Party B designates financial advisor; joint protocol for document sharing",
+          "blocking_rationale": "This option assumes disclosure will occur and addresses the method. But Party A has not committed to disclosure. Presenting method options before establishing that disclosure will happen reinforces Party A's frame that disclosure is contingent on process design.",
+          "what_would_unblock": "Disclosure obligation must be established first. Then this becomes a viable method option.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Time-bounded business summary with Q&A, followed by full disclosure",
+          "blocking_rationale": "This option treats Party A's 'context' concern as legitimate by building in a summary phase before disclosure. But Party A's concern is being used as deflection, not as a genuine sequencing preference. In standard practice, disclosure happens first and context/interpretation happens second. This option reverses that order and extends Party A's control over information access.",
+          "what_would_unblock": "This option is domain-inappropriate. It should not be presented even after disclosure commitment because it establishes bad precedent (information-controlling party narrates first, receiving party sees documents second).",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Reciprocal disclosure calendar with built-in review periods",
+          "blocking_rationale": "Structurally sound, but same issue as other options: presenting it now treats disclosure as negotiable. Party A has not committed to producing business financials on any timeline. This option becomes viable once commitment is established.",
+          "what_would_unblock": "Party A commits to disclosure. Then this is a viable timeline structure.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Joint fact-finding session on business basics before valuation decision",
+          "blocking_rationale": "This option allows Party A to provide narrative framing before Party B sees documents. It is domain-inappropriate for the same reason as opt-gen-005: standard practice is documents first, interpretation second. Reversing this order advantages the information-controlling party.",
+          "what_would_unblock": "This option should not be presented. It is tactically problematic even after disclosure commitment.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Conditional agreement: standard disclosure first, then process design for business",
+          "blocking_rationale": "This is the closest to domain-appropriate, but it is still premature. Party A has not acknowledged that standard disclosure includes basic business financials. Presenting this as an option implies that excluding business financials from initial disclosure is a legitimate position. It is not \u2014 basic business financial disclosure (profit/loss statements, balance sheets, tax returns) is part of standard disclosure in every jurisdiction.",
+          "what_would_unblock": "Mediator must establish what 'standard disclosure' means (including basic business financials). Then this option might be viable as a method for handling complex interpretation questions separately from disclosure.",
+          "source": "domain_reasoner"
+        }
+      ],
+      "presented_to_parties": null
+    },
+    {
+      "turn_index": 9,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "safety_veto_reason": "VETO CATEGORY 2 confirmed by safety monitor: Party A deflection pattern using information asymmetry as leverage. Party A has employed complexity_reframe (T5), timing_deflection (T7), and urgency_pressure (T7) to avoid Party B's direct disclosure request. Party B has consistently maintained disclosure need (T4, T8) while showing flexibility. Information controller (Party A) has actively deflected multiple direct requests from information-needing party (Party B). Proceeding to option work would normalize deflection and force negotiation under information disadvantage.",
+      "brainstormer_candidates": [],
+      "domain_expert_candidates": [],
+      "combined_pool_count": 0,
+      "domain_qualified": [],
+      "domain_blocked": [],
+      "presented_to_parties": null
+    }
+  ]
+}

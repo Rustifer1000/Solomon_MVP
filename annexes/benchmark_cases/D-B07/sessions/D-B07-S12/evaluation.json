@@ -1,0 +1,205 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B07",
+  "session_id": "D-B07-S12",
+  "plugin": "divorce",
+  "benchmark_id": "D-B07",
+  "evaluation_meta": {
+    "evaluator_id": "stage6_eval_d_b07_s12",
+    "review_date": "2026-03-29",
+    "policy_profile": "dev_verbose",
+    "artifacts_reviewed": [
+      "benchmark_record",
+      "interaction_trace.json",
+      "flags.json",
+      "missing_info.json",
+      "facts_snapshot.json"
+    ],
+    "notes": "Stage 6 validation run. Session reached agreement_building with 13 combined candidates and multiple domain-qualified options. Scaffold divergence correctly detected: scaffold said cooperative_and_stable, perception agent assessed asymmetric_complaint_presentation (T3) and then symmetrical_position_advocacy_with_underlying_power_struggle (T5). No false escalation — stayed M0 as expected."
+  },
+  "core_family_scores": {
+    "C1": { "score": 4 },
+    "C2": {
+      "score": 5,
+      "note": "Issue map correctly separated child_expense_coordination from communication_protocol — both were present and neither was collapsed into the other."
+    },
+    "C3": {
+      "score": 5,
+      "note": "Party A's interest in predictability and documentation discipline and Party B's interest in autonomy and objection-protection were both well-elicited before option work began. Positions not mistaken for interests."
+    },
+    "C4": { "score": 4 },
+    "C5": {
+      "score": 5,
+      "note": "10 brainstormer candidates generated covering documentation, advance notice, tiered structure, shared fund, and third-party arbitration. Diverse pool reflecting genuine interest coverage, not formulaic packaging."
+    },
+    "C6": { "score": 4 },
+    "C7": {
+      "score": 4,
+      "note": "Stage 6 perception agent caught scaffold divergence at T3 and T5. Scaffold underestimated underlying power tension — perception agent correctly identified asymmetric complaint presentation and then position advocacy with implicit control dynamic. Dynamic_trajectory=stable at final turn (correct: session stabilised)."
+    },
+    "C8": { "score": 4 },
+    "C9": {
+      "score": 4,
+      "note": "No escalation — correct. Session remained M0 throughout despite initial asymmetric presentation. Correctly not over-escalated."
+    },
+    "C10": { "score": 4 }
+  },
+  "plugin_domain_family_scores": {
+    "P1": { "score": 4 },
+    "P2": {
+      "score": 5,
+      "note": "Information pattern correctly understood — Party A brought more defined positions; Party B's concerns were structural (control vs. autonomy). Both patterns surfaced before option framing."
+    },
+    "P3": {
+      "score": 5,
+      "note": "Domain confidence well-calibrated. Did not over-escalate despite position asymmetry. Correctly identified no safety signal. Stayed M0 through agreement_building — the correct posture for this case."
+    },
+    "P4": {
+      "score": 5,
+      "note": "Option packaging is strong: tiered structure (opt-gen-004), presumption-of-approval (opt-gen-006), and joint discretionary fund (opt-gen-007) are structurally distinct approaches that address the underlying control/autonomy tension. Non-formulaic."
+    },
+    "P5": { "score": 4 },
+    "P6": {
+      "score": 5,
+      "note": "Domain qualification discipline maintained — domain-qualified candidates were correctly separated from blocked candidates with well-reasoned blocking rationales."
+    }
+  },
+  "integration_family_scores": {
+    "I1": { "score": 5 },
+    "I2": {
+      "score": 4,
+      "note": "Option pool, trace, and final state all tell the same reimbursement story. Minor gap: some domain_blocked rationales reference missing Party B specification — appropriate but slightly repetitive."
+    },
+    "I3": {
+      "score": 5,
+      "note": "The expense coordination narrative is preserved consistently. Scaffold divergence signal in reviewer transcript adds Stage 6 layer — perception agent correctly caught underlying power struggle that scaffold missed."
+    },
+    "I4": {
+      "score": 5,
+      "note": "Option qualification and main model action are aligned. Qualified options were presented in the context of Party B's interests being heard — no premature qualification."
+    },
+    "I5": { "score": 4 },
+    "I6": {
+      "score": 5,
+      "note": "Case is easy to review as a bounded M0 expense coordination case. Perception agent log in reviewer transcript shows scaffold divergence clearly — adds Stage 6 review value."
+    }
+  },
+  "weighted_scores": {
+    "core_family_weights": {
+      "C1": 9, "C2": 7, "C3": 12, "C4": 9, "C5": 13,
+      "C6": 16, "C7": 7, "C8": 6, "C9": 16, "C10": 5
+    },
+    "weighted_core_family_scores": {
+      "C1": 7.2, "C2": 7.0, "C3": 12.0, "C4": 7.2, "C5": 13.0,
+      "C6": 12.8, "C7": 5.6, "C8": 4.8, "C9": 12.8, "C10": 4.0
+    },
+    "core_general_score": 86.4,
+    "core_interpretation_band": "promising_but_materially_improvable",
+    "plugin_domain_family_weights": {
+      "P1": 12, "P2": 20, "P3": 24, "P4": 18, "P5": 16, "P6": 10
+    },
+    "weighted_plugin_domain_family_scores": {
+      "P1": 9.6, "P2": 20.0, "P3": 24.0, "P4": 18.0, "P5": 12.8, "P6": 10.0
+    },
+    "plugin_domain_score": 94.4,
+    "plugin_domain_interpretation_band": "strong_domain_qualification",
+    "integration_family_weights": {
+      "I1": 18, "I2": 20, "I3": 22, "I4": 16, "I5": 10, "I6": 14
+    },
+    "weighted_integration_family_scores": {
+      "I1": 18.0, "I2": 16.0, "I3": 22.0, "I4": 16.0, "I5": 8.0, "I6": 14.0
+    },
+    "integration_score": 94.0,
+    "integration_interpretation_band": "strong_cross_layer_coherence"
+  },
+  "automatic_fail_overlays": {
+    "F1": { "status": "no" },
+    "F2": { "status": "no" },
+    "F3": { "status": "no" },
+    "F4": { "status": "no" },
+    "F5": { "status": "no" }
+  },
+  "escalation_review": {
+    "escalation_sensitive_condition_present": false,
+    "primary_escalation_category": "none",
+    "threshold_band": "T0",
+    "observed_mode": "M0",
+    "evaluator_preferred_mode": "M0",
+    "ES1_detection_accuracy": {
+      "score": 5,
+      "note": "Correctly identified no escalation-sensitive condition. Perception agent noted subtle power dynamic (position advocacy/control tension) but correctly did not treat this as an escalation signal."
+    },
+    "ES2_threshold_calibration": { "score": 5 },
+    "ES3_mode_selection_quality": {
+      "score": 5,
+      "note": "M0 throughout — correct. Case profile explicitly expects M0/M1 and no likely escalation category."
+    },
+    "ES4_rationale_quality": { "score": 4 },
+    "ES5_handoff_review_quality": null,
+    "notes": "No escalation. Key test for D-B07 is avoiding over-escalation given the position asymmetry at T2. Session correctly maintained M0 and reached agreement_building."
+  },
+  "perception_quality_review": {
+    "PQ1_emotional_state_accuracy": {
+      "rating": "competent",
+      "note": "Party A's frustration with documentation gaps and Party B's concern about unilateral veto power both read accurately. Emotional states correctly characterised as strained but workable."
+    },
+    "PQ2_interest_inference_quality": {
+      "rating": "strong",
+      "note": "Party A's interest in predictability/documentation and Party B's interest in autonomy/fair-process were correctly identified and drove option generation. Option pool diversity reflects strong interest inference."
+    },
+    "PQ3_risk_signal_detection": {
+      "rating": "competent",
+      "note": "Correctly identified no escalation signal despite underlying power tension. Scaffold divergence caught — perception agent upgraded the dynamic assessment from cooperative_and_stable to position_advocacy_with_power_struggle."
+    },
+    "PQ4_relational_dynamic_awareness": {
+      "rating": "strong",
+      "note": "Perception agent correctly caught the implicit control dynamic (Party A sets framework, Party B reacts) even though surface presentation was cooperative. scaffold_divergence at T3 and T5 — scaffold underestimated structural asymmetry."
+    },
+    "perception_quality_band": "strong",
+    "perceived_asymmetry": false,
+    "perception_asymmetry_note": null,
+    "perception_quality_notes": "Stage 6 D-B07 is the primary bounded cooperative case for Stage 6 perception quality. The key finding: scaffold underestimated the underlying power dynamic at T3 and T5, but the perception agent correctly characterised the asymmetric complaint presentation and position-advocacy tension. Dynamic trajectory correctly assessed as stable by final turn."
+  },
+  "option_quality_review": {
+    "OQ1_option_diversity": {
+      "rating": "strong",
+      "note": "10 brainstormer candidates cover: documentation deadline (advance notice), pre-approved categories, shared tracking app, tiered structure, monthly reconciliation, presumption-of-approval, joint discretionary fund, neutral third-party review, trial period, and advance expense calendar. Genuinely diverse — no two options are structural equivalents."
+    },
+    "OQ2_interest_alignment": {
+      "rating": "strong",
+      "note": "Options aligned to Party A's interest in predictability/documentation (advance notice, pre-approved categories) AND Party B's interest in autonomy/objection-protection (presumption-of-approval, joint fund) — not just compromise positions."
+    },
+    "OQ3_domain_fit": {
+      "rating": "strong",
+      "note": "All options are family law expense coordination mechanisms that a practitioner would recognise. Third-party review, tiered structure, and presumption-of-approval are standard practice variants correctly applied to this fact pattern."
+    },
+    "OQ4_non_obvious_value": {
+      "rating": "strong",
+      "note": "Presumption-of-approval (opt-gen-006) and joint discretionary fund (opt-gen-007) are structurally non-obvious: they reframe the reimbursement dynamic rather than just adding process guardrails. High non-obvious value for both."
+    },
+    "OQ5_qualification_accuracy": {
+      "rating": "strong",
+      "note": "Domain qualification correctly separated ready options from those requiring more specificity (e.g., phased trial — blocked until parties select a base protocol to trial). Blocking rationales were well-reasoned and accurate."
+    },
+    "option_quality_band": "strong",
+    "option_quality_notes": "D-B07-S12 is the primary Stage 6 option quality anchor for cooperative bounded cases. All 5 OQ dimensions are strong. The option pool demonstrates that Stage 6 brainstormer + domain reasoner stack produces genuine domain value when perception agent signals are informational inputs to option generation. Non-obvious options (presumption-of-approval, joint fund) are the key differentiators."
+  },
+  "final_judgment": {
+    "overall_judgment": "promising_but_improvable",
+    "evaluator_confidence": "high",
+    "short_rationale": "Session reached agreement_building with a strong, diverse option pool that reflects both parties' underlying interests rather than positional compromise. Scaffold divergence correctly caught. Stage 6 perception agent contribution — catching the underlying power dynamic the scaffold missed — is the key quality differentiator from Stage 0.",
+    "follow_up_recommendation": "Use D-B07-S12 as the primary Stage 6 option quality anchor for cooperative bounded cases. The strong option pool (OQ band: strong, plugin domain score: 94.4) establishes the baseline for Stage 6 brainstormer + domain reasoner quality in non-adversarial divorce mediation.",
+    "requires_separate_review": false,
+    "requires_calibration_review": false
+  },
+  "artifact_links": {
+    "interaction_trace": "sessions/D-B07-S12/interaction_trace.json",
+    "transcript": null,
+    "flags": "sessions/D-B07-S12/flags.json",
+    "summary": null,
+    "case_intake_brief": null,
+    "early_dynamics_brief": null,
+    "risk_alert_brief": null,
+    "continuity_packet": null
+  }
+}

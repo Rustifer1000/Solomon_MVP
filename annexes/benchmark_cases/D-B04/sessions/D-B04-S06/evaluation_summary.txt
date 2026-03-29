@@ -1,0 +1,33 @@
+D-B04-S06 Stage 6 Evaluation Summary
+=====================================
+Case: D-B04 — Parenting conflict with narrow settlement zone
+Session: D-B04-S06 | Stage: 6 | Date: 2026-03-29
+
+SCORES
+------
+Core:        82.4 / 100  [promising_but_materially_improvable]
+Plugin:      80.0 / 100  [useful_but_materially_improvable]
+Integration: 80.0 / 100  [workable_but_materially_improvable_integration]
+
+STAGE 6 KEY FINDINGS
+--------------------
+- C7 upgraded 3→4 vs Stage 0: dedicated perception agent resolves DIAG-001 focus competition gap.
+  In Stage 0, perception quality degraded when option generation competed for attention.
+  Stage 6 dedicated agent call produces independent assessment alongside 11-candidate option pool.
+- Scaffold divergence at T3: scaffold assessed cautious_but_workable; perception agent correctly
+  identified asymmetric and unformed early dynamic.
+- Dynamic trajectory: null→stable→stable→improving (correctly tracked).
+- Schema fix confirmed: no option_label/option_description validation errors
+  (_normalize_candidate() fix working correctly).
+- Perception quality band: COMPETENT
+- Option quality band: STRONG (11 candidates, domain-qualified)
+
+OUTCOME
+-------
+Mode: M0 (autonomous — option_generation phase)
+Escalation: None
+Automatic fail overlays: NONE triggered
+
+Session generated 11 domain-qualified candidates for a narrow settlement zone. Strong option
+quality despite position asymmetry. D-B04-S06 is the primary Stage 6 regression anchor for
+the focus competition gap fix (C7: 3→4).

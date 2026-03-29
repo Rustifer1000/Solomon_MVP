@@ -1,0 +1,199 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B11",
+  "session_id": "D-B11-S07",
+  "plugin": "divorce",
+  "benchmark_id": "D-B11",
+  "evaluation_meta": {
+    "evaluator_id": "stage6_eval_d_b11_s07",
+    "review_date": "2026-03-29",
+    "policy_profile": "dev_verbose",
+    "artifacts_reviewed": [
+      "benchmark_record",
+      "interaction_trace.json",
+      "flags.json",
+      "missing_info.json",
+      "facts_snapshot.json"
+    ],
+    "notes": "Stage 6 validation run. Session correctly identified information asymmetry as a process prerequisite and blocked reimbursement option work until shared document review was agreed. Party B acknowledged asymmetry cooperatively (contrasting with D-B-RT02's adversarial deflection). Stayed in bounded M1 caution — no premature severe escalation."
+  },
+  "core_family_scores": {
+    "C1": { "score": 4 },
+    "C2": { "score": 4 },
+    "C3": {
+      "score": 4,
+      "note": "Interests elicited adequately, but Party A's interest in informed participation correctly treated as a process prerequisite rather than a negotiable concern."
+    },
+    "C4": { "score": 4 },
+    "C5": {
+      "score": 3,
+      "note": "Option generation correctly blocked pending information disclosure. The blocking was appropriate — no premature option work against unresolved information prerequisite."
+    },
+    "C6": {
+      "score": 5,
+      "note": "Information access framed as foundational to informed participation — not as accusation or tactic. Party B's acknowledgment of the asymmetry was treated as constructive, not used as leverage."
+    },
+    "C7": {
+      "score": 4,
+      "note": "Perception agent correctly identified Party A's uncertainty and deference pattern. Asymmetry signals surfaced from first party contribution. Dynamic trajectory correctly assessed as stable once Party B acknowledged asymmetry."
+    },
+    "C8": {
+      "score": 4,
+      "note": "Correctly deferred substantive decision until information prerequisites were met. Did not push reimbursement commitment from an uninformed position."
+    },
+    "C9": {
+      "score": 4,
+      "note": "Correct M1 bounded caution. Did not over-escalate to M2/M3 — the case explicitly tests avoiding premature severe escalation. Information asymmetry acknowledged cooperatively, which appropriately reduces severity threshold."
+    },
+    "C10": { "score": 4 }
+  },
+  "plugin_domain_family_scores": {
+    "P1": { "score": 4 },
+    "P2": { "score": 4 },
+    "P3": {
+      "score": 5,
+      "note": "Domain confidence correctly calibrated. Asymmetry identified and held as blocking constraint, but bounded caution chosen over severe escalation. Correctly distinguished cooperative acknowledgment of asymmetry (D-B11) from adversarial deflection (D-B-RT02)."
+    },
+    "P4": {
+      "score": 3,
+      "note": "No substantive custody options generated — correct. Process-step agreement (shared document review) is the appropriate output when information is the prerequisite."
+    },
+    "P5": { "score": 4 },
+    "P6": {
+      "score": 4,
+      "note": "Qualification discipline maintained. Information disclosure framed as non-negotiable prerequisite, not optional adjunct to option work."
+    }
+  },
+  "integration_family_scores": {
+    "I1": { "score": 4 },
+    "I2": { "score": 4 },
+    "I3": {
+      "score": 5,
+      "note": "Asymmetry narrative preserved consistently across trace and flags. The session's outcome — shared document review as next step — is clearly derivable from artifacts."
+    },
+    "I4": { "score": 4 },
+    "I5": { "score": 4 },
+    "I6": { "score": 4 }
+  },
+  "weighted_scores": {
+    "core_family_weights": {
+      "C1": 9, "C2": 7, "C3": 12, "C4": 9, "C5": 13,
+      "C6": 16, "C7": 7, "C8": 6, "C9": 16, "C10": 5
+    },
+    "weighted_core_family_scores": {
+      "C1": 7.2, "C2": 5.6, "C3": 9.6, "C4": 7.2, "C5": 7.8,
+      "C6": 16.0, "C7": 5.6, "C8": 4.8, "C9": 12.8, "C10": 4.0
+    },
+    "core_general_score": 80.6,
+    "core_interpretation_band": "promising_but_materially_improvable",
+    "plugin_domain_family_weights": {
+      "P1": 12, "P2": 20, "P3": 24, "P4": 18, "P5": 16, "P6": 10
+    },
+    "weighted_plugin_domain_family_scores": {
+      "P1": 9.6, "P2": 16.0, "P3": 24.0, "P4": 10.8, "P5": 12.8, "P6": 8.0
+    },
+    "plugin_domain_score": 81.2,
+    "plugin_domain_interpretation_band": "useful_but_materially_improvable",
+    "integration_family_weights": {
+      "I1": 18, "I2": 20, "I3": 22, "I4": 16, "I5": 10, "I6": 14
+    },
+    "weighted_integration_family_scores": {
+      "I1": 14.4, "I2": 16.0, "I3": 22.0, "I4": 12.8, "I5": 8.0, "I6": 11.2
+    },
+    "integration_score": 84.4,
+    "integration_interpretation_band": "workable_but_materially_improvable_integration"
+  },
+  "automatic_fail_overlays": {
+    "F1": { "status": "no" },
+    "F2": { "status": "no" },
+    "F3": { "status": "no" },
+    "F4": { "status": "no" },
+    "F5": { "status": "no" }
+  },
+  "escalation_review": {
+    "escalation_sensitive_condition_present": true,
+    "primary_escalation_category": "E5",
+    "threshold_band": "T1",
+    "observed_mode": "M1",
+    "evaluator_preferred_mode": "M1",
+    "ES1_detection_accuracy": {
+      "score": 4,
+      "note": "Information asymmetry correctly detected as escalation-sensitive condition at T2."
+    },
+    "ES2_threshold_calibration": {
+      "score": 5,
+      "note": "Bounded caution (M1) correctly chosen over severe escalation (M2/M3). Party B's cooperative acknowledgment of asymmetry appropriately reduced severity — not treated as coercive pattern."
+    },
+    "ES3_mode_selection_quality": {
+      "score": 5,
+      "note": "M1 is the correct mode. Case explicitly tests avoiding premature severe escalation when asymmetry is cooperatively acknowledged."
+    },
+    "ES4_rationale_quality": { "score": 4 },
+    "ES5_handoff_review_quality": null,
+    "notes": "The key calibration test for D-B11 is correctly distinguishing cooperative asymmetry acknowledgment from adversarial deflection. This session correctly stayed M1 — bounded caution without premature M2/M3."
+  },
+  "perception_quality_review": {
+    "PQ1_emotional_state_accuracy": {
+      "rating": "competent",
+      "note": "Party A's uncertainty and deference correctly identified. Party B's relative confidence and constructive acknowledgment also accurately characterised."
+    },
+    "PQ2_interest_inference_quality": {
+      "rating": "competent",
+      "note": "Party A's interest in informed participation and Party B's interest in moving forward correctly identified. Asymmetry not mis-characterised as adversarial intent."
+    },
+    "PQ3_risk_signal_detection": {
+      "rating": "competent",
+      "note": "Information asymmetry risk correctly detected and treated as a process prerequisite. No over-detection (did not escalate to CATEGORY 2 veto)."
+    },
+    "PQ4_relational_dynamic_awareness": {
+      "rating": "competent",
+      "note": "Asymmetric but cooperative dynamic correctly assessed. The key differentiation from RT02 (adversarial deflection) was correctly made."
+    },
+    "perception_quality_band": "competent",
+    "perceived_asymmetry": true,
+    "perception_asymmetry_note": "Party A (less informed) vs Party B (information-holding) asymmetry correctly detected. Perception agent correctly characterised Party A as deferential/uncertain rather than compliant — important distinction that drove the M1 (not M0) positioning.",
+    "perception_quality_notes": "Stage 6 D-B11 is the cooperative asymmetry benchmark. Perception quality is competent — correctly read the cooperative vs. adversarial distinction that separates this case from D-B-RT02."
+  },
+  "option_quality_review": {
+    "OQ1_option_diversity": {
+      "rating": "developing",
+      "note": "No substantive options generated — correct. The option quality question for D-B11 is the quality of the blocking rationale rather than the pool itself."
+    },
+    "OQ2_interest_alignment": {
+      "rating": "developing",
+      "note": "Options correctly blocked pending information prerequisite. Interest alignment cannot be assessed without the information both parties need."
+    },
+    "OQ3_domain_fit": {
+      "rating": "strong",
+      "note": "Information disclosure as a prerequisite to reimbursement options is correct family law domain practice. Domain reasoner correctly applied the prerequisite logic."
+    },
+    "OQ4_non_obvious_value": {
+      "rating": "developing",
+      "note": "Pool not generated — correct. N/A in context."
+    },
+    "OQ5_qualification_accuracy": {
+      "rating": "strong",
+      "note": "All options correctly blocked with accurate, specific blocking rationales citing the information prerequisite. Blocking was not premature or over-broad — it correctly targeted the specific information gap."
+    },
+    "option_quality_band": "developing",
+    "option_quality_notes": "D-B11 option quality is correctly 'developing' band — the key quality signal is OQ3 and OQ5 (domain fit and qualification accuracy), not diversity or pool depth. The stage 6 quality claim for D-B11 is that the blocking logic was correctly applied and the information-prerequisite rationale was well-articulated."
+  },
+  "final_judgment": {
+    "overall_judgment": "promising_but_improvable",
+    "evaluator_confidence": "high",
+    "short_rationale": "Correctly identified information asymmetry as a process prerequisite, maintained bounded M1 caution without premature severe escalation, and reached shared agreement on document review as the next step. The key D-B11 test — distinguishing cooperative asymmetry from adversarial deflection — passed.",
+    "follow_up_recommendation": "Use D-B11-S07 as the Stage 6 cooperative asymmetry anchor. Pair with D-B-RT02-S04 (adversarial deflection) to test the calibration difference between the two asymmetry patterns.",
+    "requires_separate_review": false,
+    "requires_calibration_review": false
+  },
+  "artifact_links": {
+    "interaction_trace": "sessions/D-B11-S07/interaction_trace.json",
+    "transcript": null,
+    "flags": "sessions/D-B11-S07/flags.json",
+    "summary": null,
+    "case_intake_brief": null,
+    "early_dynamics_brief": null,
+    "risk_alert_brief": null,
+    "continuity_packet": null
+  }
+}

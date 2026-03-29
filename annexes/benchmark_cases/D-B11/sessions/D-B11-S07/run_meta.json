@@ -1,0 +1,106 @@
+{
+  "schema_version": "run_meta.v0",
+  "case_id": "D-B11",
+  "session_id": "D-B11-S07",
+  "timestamp": "2026-03-29T00:00:00Z",
+  "session_type": "benchmark_runtime_scaffold",
+  "policy_profile": "dev_verbose",
+  "runtime": {
+    "environment": "local_scaffold",
+    "code_version": "runtime-scaffold-v0",
+    "git_commit_hash": "5729efe"
+  },
+  "model_config": {
+    "provider": "runtime_generated_scaffold",
+    "model_name": "d_b11_runtime_generator_v0",
+    "temperature": 0,
+    "other_decoding_settings": {
+      "process_variant": "source-aware"
+    }
+  },
+  "prompting": {
+    "prompt_version": "runtime_generator_scaffold_v0",
+    "prompt_ids": [
+      "solomon_runtime_core_v0",
+      "divorce_plugin_runtime_v0",
+      "d_b11_runtime_simulation_v0"
+    ]
+  },
+  "randomization": {
+    "seed": "stable_hash_from_generated_at",
+    "determinism_note": "This run is generated through the runtime turn loop with deterministic source-aware simulation helpers."
+  },
+  "redaction_applied": false,
+  "case_context": {
+    "plugin_type": "divorce",
+    "source": "lm_runtime",
+    "process_variant": null,
+    "benchmark_descriptor": {
+      "descriptor_id": "d_b11_asymmetry_caution_slice",
+      "content_model": "patterned_caution_slice",
+      "runtime_shape": "patterned_runtime_synthesis",
+      "template_family_ids": [
+        "TF-DIV-05",
+        "TF-DIV-02"
+      ],
+      "evaluator_attention_tags": [
+        "fairness_sensitive"
+      ]
+    },
+    "artifact_narrative_policy": {
+      "descriptor_id": "d_b11_asymmetry_caution_narrative",
+      "posture_style": "caution_bounded",
+      "missing_info_emphasis": "caution"
+    },
+    "support_artifact_policy": {
+      "descriptor_id": "d_b11_support_asymmetry_caution",
+      "review_focus": "informational_asymmetry_and_fair_participation"
+    },
+    "package_element_labels": {
+      "phased_trial_option": "a phased trial",
+      "logistics_conditioned_expansion_option": "logistics-conditioned expansion",
+      "advance_notice_window_option": "an advance-notice window",
+      "written_confirmation_option": "written confirmation",
+      "minimum_notice_option": "minimum notice",
+      "written_summary_option": "written summaries",
+      "pause_before_commitment_option": "a pause-before-commitment rule",
+      "expense_notice_window_option": "advance notice",
+      "shared_receipt_option": "shared receipts",
+      "reimbursement_response_window_option": "a reimbursement response window"
+    },
+    "evaluator_helper_policy": {
+      "descriptor_id": "divorce_evaluator_helpers_v0",
+      "fairness_flag_types": [
+        "fairness_breakdown"
+      ],
+      "fairness_terms": [
+        "fairness",
+        "balanced",
+        "bias",
+        "domination",
+        "sidelined",
+        "one-sided",
+        "pressure",
+        "pressured",
+        "emotional",
+        "heated",
+        "retaliation",
+        "coercive",
+        "coercion",
+        "unsafe"
+      ],
+      "fairness_issue_terms": [
+        "fairness and meaningful parenting role",
+        "fairness_and_parent_role"
+      ],
+      "fairness_attention_tags": [
+        "fairness_sensitive"
+      ]
+    },
+    "review_transcript_renderer": "prototype_local_v0",
+    "participant_context": [
+      "spouse_A",
+      "spouse_B"
+    ]
+  }
+}

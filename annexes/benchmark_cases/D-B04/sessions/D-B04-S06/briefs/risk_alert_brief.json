@@ -1,0 +1,28 @@
+{
+  "schema_version": "risk_alert_brief.v0",
+  "case_id": "D-B04",
+  "session_id": "D-B04-S06",
+  "mode": "M1",
+  "category": "E5",
+  "category_family": "decision_quality_caution",
+  "recommended_human_role": "bounded_review_or_caution",
+  "handoff_focus": "preserve missing information and feasibility gaps before stronger recommendations are made",
+  "support_artifact_policy_descriptor": "d_b04_support_logistics_caution",
+  "rationale": "Continue with caution because material logistics information remains unresolved, option work is ahead of full feasibility confirmation, plugin confidence remains limited, uncertain feasibility facts remain active in the state.",
+  "active_flags": [
+    {
+      "flag_type": "insufficient_information",
+      "title": "Material feasibility gaps remain unresolved",
+      "severity": 3
+    },
+    {
+      "flag_type": "decision_quality_risk",
+      "title": "Option qualification remains incomplete",
+      "severity": 2
+    }
+  ],
+  "plugin_warnings": [
+    "Plugin confidence remains limited because logistics feasibility is still not fully clarified.",
+    "Parent-role fairness concerns should be handled alongside schedule feasibility rather than treated as a substitute for it."
+  ]
+}
