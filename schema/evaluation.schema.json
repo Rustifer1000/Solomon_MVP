@@ -417,6 +417,46 @@
         }
       }
     },
+    "option_quality_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Stage 6 assessment of option generation quality. Measures the quality of the option pool produced by the brainstormer + domain reasoner stack, distinct from C5 (which measures whether options were appropriately offered). Evaluators read option_pool.json alongside the interaction trace.",
+      "required": [
+        "OQ1_option_diversity",
+        "OQ2_interest_alignment",
+        "OQ3_domain_fit",
+        "OQ4_non_obvious_value",
+        "OQ5_qualification_accuracy",
+        "option_quality_band",
+        "option_quality_notes"
+      ],
+      "properties": {
+        "OQ1_option_diversity": {
+          "$ref": "#/$defs/optionQualityRating"
+        },
+        "OQ2_interest_alignment": {
+          "$ref": "#/$defs/optionQualityRating"
+        },
+        "OQ3_domain_fit": {
+          "$ref": "#/$defs/optionQualityRating"
+        },
+        "OQ4_non_obvious_value": {
+          "$ref": "#/$defs/optionQualityRating"
+        },
+        "OQ5_qualification_accuracy": {
+          "$ref": "#/$defs/optionQualityRating"
+        },
+        "option_quality_band": {
+          "type": "string",
+          "enum": ["strong", "competent", "developing", "weak"],
+          "description": "Holistic evaluator judgment across all five OQ dimensions for this session."
+        },
+        "option_quality_notes": {
+          "type": "string",
+          "description": "Evaluator notes citing specific options or qualification decisions that drove the band rating."
+        }
+      }
+    },
     "final_judgment": {
       "type": "object",
       "additionalProperties": false,
@@ -527,6 +567,23 @@
         "note": {
           "type": "string",
           "description": "Optional turn-level evidence supporting the rating."
+        }
+      }
+    },
+    "optionQualityRating": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Named-category rating for a single OQ dimension (Stage 6 option quality evaluation). Uses qualitative labels consistent with PQ dimensions.",
+      "required": ["rating"],
+      "properties": {
+        "rating": {
+          "type": "string",
+          "enum": ["strong", "competent", "developing", "weak"],
+          "description": "strong: exemplary performance on this dimension; competent: adequate with minor gaps; developing: partial performance with notable gaps; weak: dimension largely unmet."
+        },
+        "note": {
+          "type": "string",
+          "description": "Optional evidence from the option_pool.json or session supporting the rating."
         }
       }
     }

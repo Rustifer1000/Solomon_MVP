@@ -228,6 +228,7 @@ def _build_domain_context(
     turn_index: int,
     option_pool: list[dict] | None = None,
     safety_monitor_signals: list[str] | None = None,
+    perception_agent_result: dict | None = None,
 ) -> str:
     """Build the user message for the domain reasoner call."""
     parts: list[str] = []
@@ -336,6 +337,60 @@ def _build_domain_context(
             parts.append(f"  {signal}")
         parts.append("")
 
+    # Perception agent signals (Stage 6) — richer party interest/concern signals.
+    # engagement_quality=compliant_only is a soft deferral signal: when a party
+    # has not independently engaged, defer option work unless safety monitor has
+    # already cleared it or the party state shows genuine independent interests.
+    if (
+        perception_agent_result
+        and not perception_agent_result.get("_null_result")
+    ):
+        pa = perception_agent_result.get("party_a") or {}
+        pb = perception_agent_result.get("party_b") or {}
+        has_pa_signals = (
+            pa.get("inferred_concerns")
+            or pa.get("unsaid_signals")
+            or pa.get("engagement_quality") == "compliant_only"
+        )
+        has_pb_signals = (
+            pb.get("inferred_concerns")
+            or pb.get("unsaid_signals")
+            or pb.get("engagement_quality") == "compliant_only"
+        )
+        if has_pa_signals or has_pb_signals or perception_agent_result.get("veto_signals"):
+            parts.append("=== PERCEPTION AGENT SIGNALS (Stage 6) ===")
+            parts.append(
+                "The dedicated perception agent has assessed party state at depth. "
+                "Use these signals to inform option readiness — particularly engagement_quality "
+                "and unsaid signals which indicate whether parties have genuinely engaged with "
+                "their own interests."
+            )
+            pa_eq = pa.get("engagement_quality")
+            if pa_eq == "compliant_only":
+                parts.append(
+                    "PERCEPTION NOTE: Party A engagement_quality=compliant_only. "
+                    "Party A has not independently articulated interests. "
+                    "Consider deferring option work until Party A's own interests are established."
+                )
+            pb_eq = pb.get("engagement_quality")
+            if pb_eq == "compliant_only":
+                parts.append(
+                    "PERCEPTION NOTE: Party B engagement_quality=compliant_only. "
+                    "Party B has not independently articulated interests. "
+                    "Consider deferring option work until Party B's own interests are established."
+                )
+            if pa.get("inferred_concerns"):
+                parts.append(f"Party A underlying concerns: {'; '.join(pa['inferred_concerns'][:3])}")
+            if pa.get("unsaid_signals"):
+                parts.append(f"Party A unsaid signals: {'; '.join(pa['unsaid_signals'][:3])}")
+            if pb.get("inferred_concerns"):
+                parts.append(f"Party B underlying concerns: {'; '.join(pb['inferred_concerns'][:3])}")
+            if pb.get("unsaid_signals"):
+                parts.append(f"Party B unsaid signals: {'; '.join(pb['unsaid_signals'][:3])}")
+            for vsig in (perception_agent_result.get("veto_signals") or []):
+                parts.append(f"Perception veto signal: {vsig}")
+            parts.append("")
+
     # Brainstormer option pool (Stage 4 only)
     if option_pool:
         parts.append("=== BRAINSTORMER OPTION POOL ===")
@@ -384,6 +439,7 @@ def generate_domain_analysis(
     session_history: list[dict],
     option_pool: list[dict] | None = None,
     safety_monitor_signals: list[str] | None = None,
+    perception_agent_result: dict | None = None,
 ) -> dict:
     """
     Call the domain reasoner and return a domain_analysis dict.
@@ -419,6 +475,7 @@ def generate_domain_analysis(
             turn_index=turn_index,
             option_pool=option_pool or [],
             safety_monitor_signals=safety_monitor_signals,
+            perception_agent_result=perception_agent_result,
         )
 
         response = client.messages.create(

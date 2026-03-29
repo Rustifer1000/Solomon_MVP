@@ -3832,5 +3832,208 @@ class TestSafetyMonitor(unittest.TestCase):
         self.assertEqual(result["party_state_signals"], [])
 
 
+class TestPerceptionAgent(unittest.TestCase):
+    """
+    Unit tests for runtime.engine.perception_agent (Stage 6).
+
+    Tests cover:
+    - Null result on turns 1 and 2 (no API call)
+    - Null result schema shape (required fields present)
+    - Full result schema shape (15 required fields when non-null)
+    - _build_result produces correct structure from parsed LM output
+    - _build_party normalises party perception dict correctly
+    - _enforce_confidence_floor: turns 3–5 cannot be 'high'
+    - extract_perception_notes: returns empty list on null result
+    - extract_perception_notes: returns notes from non-null result
+    - extract_party_perception: returns None on null result
+    - extract_party_perception: returns party dict from non-null result
+    """
+
+    def test_null_result_on_turn_1(self):
+        """Turns 1–2 return null result without API call."""
+        from runtime.engine.perception_agent import generate_perception_agent_result
+        from runtime.engine.perception import PerceptionContext, PartyPerception
+
+        def _dummy_perception():
+            pa = PartyPerception(
+                party_id="party_a",
+                emotional_state="apparently_stable",
+                inferred_interests=["(insufficient signal)"],
+                risk_signals=["no_active_risk_signals"],
+                relational_posture="engaged_and_cooperative",
+            )
+            pb = PartyPerception(
+                party_id="party_b",
+                emotional_state="apparently_stable",
+                inferred_interests=["(insufficient signal)"],
+                risk_signals=["no_active_risk_signals"],
+                relational_posture="engaged_and_cooperative",
+            )
+            return PerceptionContext(
+                turn_index=1,
+                party_a=pa,
+                party_b=pb,
+                relational_dynamic="cooperative_and_stable",
+                perception_confidence="low",
+            )
+
+        for t in (1, 2):
+            result = generate_perception_agent_result(
+                turn_index=t,
+                timestamp="2026-03-29T00:00:00Z",
+                state={"meta": {}, "flags": {}, "trace_buffer": []},
+                scaffold_perception=_dummy_perception(),
+                interaction_history=[],
+            )
+            self.assertTrue(result.get("_null_result"), f"Expected null result at T{t}")
+            self.assertEqual(result["schema_version"], "perception_agent.v0")
+            self.assertIsNone(result["confidence"])
+
+    def test_null_result_schema_shape(self):
+        """Null result contains all required top-level fields."""
+        from runtime.engine.perception_agent import _null_result
+
+        result = _null_result(turn_index=1, timestamp="2026-03-29T00:00:00Z")
+        required_fields = [
+            "schema_version", "turn_index", "timestamp", "confidence", "_null_result",
+            "party_a", "party_b", "relational_dynamic", "dynamic_trajectory",
+            "perception_signals", "scaffold_divergence", "perception_notes", "veto_signals",
+        ]
+        for field in required_fields:
+            self.assertIn(field, result, f"Missing field: {field}")
+        self.assertTrue(result["_null_result"])
+        self.assertIsNone(result["party_a"])
+        self.assertIsNone(result["party_b"])
+
+    def test_build_result_schema_shape(self):
+        """_build_result produces correct full result structure."""
+        from runtime.engine.perception_agent import _build_result
+
+        parsed = {
+            "party_a": {
+                "emotional_state": "anxious but cooperative",
+                "emotional_trajectory": "stable",
+                "engagement_quality": "genuine",
+                "communication_style": "direct",
+                "inferred_interests": ["stability for the children", "financial clarity"],
+                "inferred_concerns": ["loss of daily contact"],
+                "unsaid_signals": ["Has not mentioned own emotional experience"],
+                "relational_posture": "engaged and assertive",
+            },
+            "party_b": {
+                "emotional_state": "quietly resigned",
+                "emotional_trajectory": "de-escalating",
+                "engagement_quality": "compliant_only",
+                "communication_style": "indirect",
+                "inferred_interests": ["lower stress"],
+                "inferred_concerns": [],
+                "unsaid_signals": [],
+                "relational_posture": "deferential",
+            },
+            "relational_dynamic": "one party setting pace, other adjusting",
+            "dynamic_trajectory": "stable",
+            "perception_signals": ["Party B has not independently stated interests across 3 turns"],
+            "scaffold_divergence": "Scaffold assessed cooperative_and_stable; LM assessed asymmetric",
+            "perception_notes": [
+                "Party B engagement_quality=compliant_only — create space for independent articulation before options"
+            ],
+            "veto_signals": ["Party B may not have independently engaged with interests"],
+            "confidence": "moderate",
+        }
+
+        result = _build_result(parsed=parsed, turn_index=5, timestamp="2026-03-29T00:00:00Z")
+
+        self.assertEqual(result["schema_version"], "perception_agent.v0")
+        self.assertEqual(result["turn_index"], 5)
+        self.assertFalse(result["_null_result"])
+        self.assertEqual(result["confidence"], "moderate")
+        self.assertIsNotNone(result["party_a"])
+        self.assertIsNotNone(result["party_b"])
+        self.assertEqual(result["party_a"]["engagement_quality"], "genuine")
+        self.assertEqual(result["party_b"]["engagement_quality"], "compliant_only")
+        self.assertEqual(result["relational_dynamic"], "one party setting pace, other adjusting")
+        self.assertEqual(result["dynamic_trajectory"], "stable")
+        self.assertEqual(len(result["perception_notes"]), 1)
+        self.assertEqual(len(result["veto_signals"]), 1)
+        self.assertEqual(result["scaffold_divergence"], "Scaffold assessed cooperative_and_stable; LM assessed asymmetric")
+
+    def test_build_party_normalises_empty(self):
+        """_build_party handles empty dict gracefully."""
+        from runtime.engine.perception_agent import _build_party
+
+        result = _build_party({})
+        self.assertIsNone(result["emotional_state"])
+        self.assertIsNone(result["engagement_quality"])
+        self.assertEqual(result["inferred_interests"], [])
+        self.assertEqual(result["unsaid_signals"], [])
+
+    def test_build_party_normalises_full(self):
+        """_build_party extracts all fields from a full dict."""
+        from runtime.engine.perception_agent import _build_party
+
+        party = {
+            "emotional_state": "anxious",
+            "emotional_trajectory": "escalating",
+            "engagement_quality": "genuine",
+            "communication_style": "direct",
+            "inferred_interests": ["interest_a"],
+            "inferred_concerns": ["concern_a"],
+            "unsaid_signals": ["unsaid_a"],
+            "relational_posture": "assertive",
+        }
+        result = _build_party(party)
+        self.assertEqual(result["emotional_state"], "anxious")
+        self.assertEqual(result["emotional_trajectory"], "escalating")
+        self.assertEqual(result["inferred_interests"], ["interest_a"])
+        self.assertEqual(result["unsaid_signals"], ["unsaid_a"])
+
+    def test_confidence_floor_high_on_turn_3_becomes_moderate(self):
+        """Turns 3–5 cannot have confidence='high'."""
+        from runtime.engine.perception_agent import _enforce_confidence_floor
+
+        for t in (3, 4, 5):
+            result = {"confidence": "high"}
+            _enforce_confidence_floor(result, t)
+            self.assertEqual(result["confidence"], "moderate", f"Expected moderate at T{t}")
+
+    def test_confidence_floor_high_on_turn_6_unchanged(self):
+        """Turn 6+ may have confidence='high'."""
+        from runtime.engine.perception_agent import _enforce_confidence_floor
+
+        result = {"confidence": "high"}
+        _enforce_confidence_floor(result, 6)
+        self.assertEqual(result["confidence"], "high")
+
+    def test_extract_perception_notes_null_result(self):
+        """extract_perception_notes returns [] for null result."""
+        from runtime.engine.perception_agent import extract_perception_notes
+
+        self.assertEqual(extract_perception_notes(None), [])
+        self.assertEqual(extract_perception_notes({"_null_result": True, "perception_notes": ["x"]}), [])
+
+    def test_extract_perception_notes_non_null(self):
+        """extract_perception_notes returns notes from non-null result."""
+        from runtime.engine.perception_agent import extract_perception_notes
+
+        result = {"_null_result": False, "perception_notes": ["note_a", "note_b"]}
+        self.assertEqual(extract_perception_notes(result), ["note_a", "note_b"])
+
+    def test_extract_party_perception_null_result(self):
+        """extract_party_perception returns None for null result."""
+        from runtime.engine.perception_agent import extract_party_perception
+
+        self.assertIsNone(extract_party_perception(None, "party_a"))
+        self.assertIsNone(extract_party_perception({"_null_result": True}, "party_a"))
+
+    def test_extract_party_perception_non_null(self):
+        """extract_party_perception returns party dict from non-null result."""
+        from runtime.engine.perception_agent import extract_party_perception
+
+        party_data = {"emotional_state": "stable", "engagement_quality": "genuine"}
+        result = {"_null_result": False, "party_b": party_data}
+        self.assertEqual(extract_party_perception(result, "party_b"), party_data)
+        self.assertIsNone(extract_party_perception(result, "party_a"))
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -38,6 +38,11 @@ import anthropic
 from dotenv import dotenv_values
 
 from .perception import PerceptionContext, build_perception_context
+from .perception_agent import (
+    generate_perception_agent_result,
+    extract_perception_notes,
+    extract_party_perception,
+)
 from .prompt_builder import SYSTEM_PROMPT, _CANONICAL_PHASES, _PHASE_ORDER, build_turn_prompt
 from .domain_reasoner import generate_domain_analysis
 from .option_generator import generate_option_pool
@@ -117,6 +122,18 @@ def generate_lm_assistant_turn(
     ]
     prior_party_state = build_party_state(state, timestamp) if prior_lm_turns else None
 
+    # Stage 6: perception agent call — dedicated LM-based perception pass
+    # before option generator and domain reasoner, so they receive richer
+    # interest/concern signals as context. Fails safe to null result on
+    # turns 1–2 or any exception; the scaffold PerceptionContext is the fallback.
+    perception_agent_result = generate_perception_agent_result(
+        turn_index=turn_index,
+        timestamp=timestamp,
+        state=state,
+        scaffold_perception=perception,
+        interaction_history=list(state.get("trace_buffer", [])),
+    )
+
     # Stage 4: option generator call before the domain reasoner.
     # Produces a brainstormed candidate pool that the domain reasoner
     # then qualifies alongside its own domain-expert additions (Option B).
@@ -134,6 +151,7 @@ def generate_lm_assistant_turn(
             party_state=prior_party_state,
             plugin_assessment=plugin_assessment,
             session_history=session_history,
+            perception_agent_result=perception_agent_result,
         )
     else:
         brainstormer_pool = []
@@ -157,9 +175,12 @@ def generate_lm_assistant_turn(
         session_history=session_history,
         option_pool=brainstormer_pool if brainstormer_pool else None,
         safety_monitor_signals=safety_signals if safety_signals else None,
+        perception_agent_result=perception_agent_result,
     )
 
-    # Build prompt
+    # Build prompt — pass perception agent notes as a structured prior.
+    # Falls back to scaffold perception_notes when agent result is null.
+    perception_agent_notes = extract_perception_notes(perception_agent_result)
     messages = build_turn_prompt(
         state=state,
         plugin_assessment=plugin_assessment,
@@ -168,6 +189,7 @@ def generate_lm_assistant_turn(
         session_history=session_history,
         party_state=prior_party_state,
         domain_analysis=domain_analysis,
+        perception_agent_notes=perception_agent_notes if perception_agent_notes else None,
     )
 
     # Call the model
@@ -205,6 +227,7 @@ def generate_lm_assistant_turn(
         domain_analysis=domain_analysis,
         brainstormer_pool=brainstormer_pool,
         safety_monitor_result=safety_monitor_result,
+        perception_agent_result=perception_agent_result,
     )
 
 
@@ -295,6 +318,7 @@ def _build_turn_dict(
     domain_analysis: dict | None = None,
     brainstormer_pool: list[dict] | None = None,
     safety_monitor_result: dict | None = None,
+    perception_agent_result: dict | None = None,
 ) -> dict:
     """
     Convert the parsed LM response into a raw turn dict.
@@ -333,6 +357,7 @@ def _build_turn_dict(
         domain_analysis=domain_analysis,
         brainstormer_pool=brainstormer_pool,
         safety_monitor_result=safety_monitor_result,
+        perception_agent_result=perception_agent_result,
     )
 
     # Escalation from safety check
@@ -446,6 +471,7 @@ def _build_reasoning_trace(
     domain_analysis: dict | None = None,
     brainstormer_pool: list[dict] | None = None,
     safety_monitor_result: dict | None = None,
+    perception_agent_result: dict | None = None,
 ) -> dict:
     """
     Build the per-turn reasoning_trace object from the parsed five-step JSON.
@@ -502,6 +528,10 @@ def _build_reasoning_trace(
     # the full pre-turn agent stack in one place.
     if safety_monitor_result is not None:
         result["safety_monitor_result"] = safety_monitor_result
+    # Attach perception agent result (Stage 6) when available.
+    # Stored alongside safety_monitor_result — completes the pre-turn agent stack.
+    if perception_agent_result is not None:
+        result["perception_agent_result"] = perception_agent_result
     return result
 
 

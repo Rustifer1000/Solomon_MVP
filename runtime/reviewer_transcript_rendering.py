@@ -117,10 +117,62 @@ def _render_safety_monitor_summary(state: dict) -> str:
     return "\n".join(lines) + "\n"
 
 
+def _render_perception_agent_summary(state: dict) -> str:
+    """
+    Build a brief perception agent section for the review packet.
+    Only included when at least one assistant turn has a perception_agent_result.
+    """
+    perception_turns = [
+        t for t in state["trace_buffer"]
+        if t.get("role") == "assistant"
+        and t.get("reasoning_trace", {}).get("perception_agent_result") is not None
+        and not t.get("reasoning_trace", {}).get("perception_agent_result", {}).get("_null_result")
+    ]
+    if not perception_turns:
+        return ""
+
+    lines: list[str] = ["Perception Agent Log", "---"]
+    for turn in perception_turns:
+        par = turn["reasoning_trace"]["perception_agent_result"]
+        tidx = turn["turn_index"]
+        confidence = par.get("confidence", "?")
+        dynamic = par.get("relational_dynamic", "")
+        trajectory = par.get("dynamic_trajectory", "")
+        notes = par.get("perception_notes", [])
+
+        pa = par.get("party_a") or {}
+        pb = par.get("party_b") or {}
+        pa_eq = pa.get("engagement_quality", "")
+        pb_eq = pb.get("engagement_quality", "")
+
+        summary_parts = []
+        if dynamic:
+            summary_parts.append(f"dynamic={dynamic}")
+        if trajectory:
+            summary_parts.append(f"trajectory={trajectory}")
+        if pa_eq:
+            summary_parts.append(f"A:engagement={pa_eq}")
+        if pb_eq:
+            summary_parts.append(f"B:engagement={pb_eq}")
+
+        divergence = par.get("scaffold_divergence")
+        if divergence:
+            summary_parts.append(f"divergence={divergence[:80]}")
+
+        line = f"T{tidx} [{confidence}] {', '.join(summary_parts)}"
+        lines.append(line)
+        for note in notes[:2]:
+            lines.append(f"  NOTE: {note[:150]}")
+
+    return "\n".join(lines) + "\n"
+
+
 def build_rendered_reviewer_transcript(state: dict, renderer_name: str) -> str:
     turns = "\n".join(_render_turn(turn) for turn in state["trace_buffer"])
     monitor_section = _render_safety_monitor_summary(state)
     monitor_block = f"\n{monitor_section}" if monitor_section else ""
+    perception_section = _render_perception_agent_summary(state)
+    perception_block = f"\n{perception_section}" if perception_section else ""
     return (
         "Reviewer Transcript\n"
         "Source Note: reviewer-facing rendered transcript derived from the structured interaction trace\n"
@@ -129,4 +181,5 @@ def build_rendered_reviewer_transcript(state: dict, renderer_name: str) -> str:
         f"Session ID: {state['meta']['session_id']}\n\n"
         f"{turns}\n"
         f"{monitor_block}"
+        f"{perception_block}"
     )

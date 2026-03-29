@@ -143,6 +143,7 @@ def build_turn_prompt(
     session_history: list[dict],
     party_state: dict | None = None,
     domain_analysis: dict | None = None,
+    perception_agent_notes: list[str] | None = None,
 ) -> list[dict]:
     """
     Build the messages list for the LLM call.
@@ -180,6 +181,7 @@ def build_turn_prompt(
         session_history=session_history,
         party_state=party_state,
         domain_analysis=domain_analysis,
+        perception_agent_notes=perception_agent_notes,
     )
     return [{"role": "user", "content": user_content}]
 
@@ -192,6 +194,7 @@ def _build_user_message(
     session_history: list[dict],
     party_state: dict | None = None,
     domain_analysis: dict | None = None,
+    perception_agent_notes: list[str] | None = None,
 ) -> str:
     parts: list[str] = []
 
@@ -340,6 +343,22 @@ def _build_user_message(
         for note in perception.perception_notes:
             parts.append(f"  - {note}")
     parts.append("")
+
+    # --- Stage 6: Perception agent notes (LM-assessed, higher priority than scaffold) ---
+    # When the perception agent produced a non-null result, its perception_notes
+    # replace the scaffold notes as the primary actionable prior for Step 1.
+    # The scaffold section above remains as structural context; the agent notes
+    # are the richer, LM-assessed items the mediator must hold before responding.
+    if perception_agent_notes:
+        parts.append("=== PERCEPTION AGENT NOTES (Stage 6 — act on these) ===")
+        parts.append(
+            "The following perception notes were produced by the dedicated perception agent, "
+            "which assessed party state at depth from the full interaction history. "
+            "These are the most important things to hold before generating your response."
+        )
+        for note in perception_agent_notes:
+            parts.append(f"  - {note}")
+        parts.append("")
 
     # --- Accumulated party state (feedback loop — CONTRACT-015) ---
     if party_state is not None:

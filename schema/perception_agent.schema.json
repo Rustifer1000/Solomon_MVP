@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solomon/specs/perception_agent.schema.json",
+  "title": "Solomon perception_agent result schema",
+  "description": "Per-turn output of the dedicated Stage 6 perception agent. Stored in reasoning_trace.perception_agent_result. All party-level fields are nullable to support fail-safe null results on early turns or exceptions.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "turn_index",
+    "timestamp",
+    "confidence",
+    "_null_result"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "perception_agent.v0"
+    },
+    "turn_index": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "confidence": {
+      "type": ["string", "null"],
+      "enum": ["high", "moderate", "low", null]
+    },
+    "_null_result": {
+      "type": "boolean",
+      "description": "True when no LM call was made (turns 1-2 or exception). All other fields except schema_version/turn_index/timestamp/confidence may be absent."
+    },
+    "party_a": {
+      "$ref": "#/$defs/partyPerception"
+    },
+    "party_b": {
+      "$ref": "#/$defs/partyPerception"
+    },
+    "relational_dynamic": {
+      "type": ["string", "null"],
+      "description": "LM-assessed cross-party dynamic — richer than the scaffold's rule-derived value."
+    },
+    "dynamic_trajectory": {
+      "type": ["string", "null"],
+      "enum": ["improving", "stable", "deteriorating", "volatile", null],
+      "description": "Direction of change in the relational dynamic over the session so far."
+    },
+    "perception_signals": {
+      "type": "array",
+      "description": "Notable patterns or signals observed this turn that the conversational mediator should hold.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "scaffold_divergence": {
+      "type": ["string", "null"],
+      "description": "Where this LM-assessed result disagrees with the deterministic scaffold PerceptionContext. Null when the two assessments are broadly consistent."
+    },
+    "perception_notes": {
+      "type": "array",
+      "description": "Key items the conversational mediator must hold before generating a response — passed directly into the main turn prompt.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "veto_signals": {
+      "type": "array",
+      "description": "Perception-layer signals relevant to safety or domain readiness. Informational only — the safety monitor owns all structural veto decisions.",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "partyPerception": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "description": "Perception model for a single party at the current turn.",
+      "properties": {
+        "emotional_state": {
+          "type": ["string", "null"],
+          "description": "LM-assessed emotional state. Richer and more specific than the scaffold's categorical output."
+        },
+        "emotional_trajectory": {
+          "type": ["string", "null"],
+          "enum": ["stable", "escalating", "de-escalating", "volatile", null],
+          "description": "Direction of change in emotional state over the session."
+        },
+        "engagement_quality": {
+          "type": ["string", "null"],
+          "enum": ["genuine", "performative", "disengaged", "compliant_only", null],
+          "description": "Quality of this party's engagement with the process. compliant_only is a soft perception signal that complements the safety monitor's CATEGORY 1 structural detection."
+        },
+        "communication_style": {
+          "type": ["string", "null"],
+          "enum": ["direct", "indirect", "deflecting", "avoidant", "collaborative", null],
+          "description": "How this party is communicating in this session."
+        },
+        "inferred_interests": {
+          "type": "array",
+          "description": "Interests inferred from full conversation history, subtext, and pattern — beyond what the scaffold derives from proposals and missing_info.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "inferred_concerns": {
+          "type": "array",
+          "description": "What this party appears worried about beneath their stated positions.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unsaid_signals": {
+          "type": "array",
+          "description": "Patterns that suggest what this party is NOT saying. The most valuable new dimension over the scaffold.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "relational_posture": {
+          "type": ["string", "null"],
+          "description": "How this party is relating to the process and the other party at this turn."
+        }
+      }
+    }
+  }
+}

@@ -121,6 +121,7 @@ def _build_brainstorm_context(
     plugin_assessment: dict,
     session_history: list[dict],
     turn_index: int,
+    perception_agent_result: dict | None = None,
 ) -> str:
     """Build the user message for the option generator call."""
     parts: list[str] = []
@@ -224,6 +225,48 @@ def _build_brainstorm_context(
                 parts.append(f"  - {stmt[:120]}")
         parts.append("")
 
+    # Stage 6: perception agent signals — richer interests and concerns than
+    # the deterministic party_state can provide.  Injected as additive context
+    # so the brainstormer has the deepest available interest/concern picture.
+    if (
+        perception_agent_result
+        and not perception_agent_result.get("_null_result")
+    ):
+        pa_perception = perception_agent_result.get("party_a") or {}
+        pb_perception = perception_agent_result.get("party_b") or {}
+        has_signals = (
+            pa_perception.get("inferred_interests")
+            or pa_perception.get("inferred_concerns")
+            or pb_perception.get("inferred_interests")
+            or pb_perception.get("inferred_concerns")
+            or perception_agent_result.get("relational_dynamic")
+        )
+        if has_signals:
+            parts.append("=== PERCEPTION AGENT SIGNALS (Stage 6) ===")
+            parts.append(
+                "The dedicated perception agent has produced deeper interest and concern "
+                "signals than the structural party state above. Use these to generate more "
+                "precisely interest-aligned options."
+            )
+            if pa_perception.get("inferred_interests"):
+                parts.append(f"Party A deeper interests: {'; '.join(pa_perception['inferred_interests'][:5])}")
+            if pa_perception.get("inferred_concerns"):
+                parts.append(f"Party A underlying concerns: {'; '.join(pa_perception['inferred_concerns'][:4])}")
+            if pb_perception.get("inferred_interests"):
+                parts.append(f"Party B deeper interests: {'; '.join(pb_perception['inferred_interests'][:5])}")
+            if pb_perception.get("inferred_concerns"):
+                parts.append(f"Party B underlying concerns: {'; '.join(pb_perception['inferred_concerns'][:4])}")
+            lm_dynamic = perception_agent_result.get("relational_dynamic")
+            if lm_dynamic:
+                parts.append(f"Relational dynamic (LM-assessed): {lm_dynamic}")
+            unsaid_a = pa_perception.get("unsaid_signals", [])
+            unsaid_b = pb_perception.get("unsaid_signals", [])
+            if unsaid_a:
+                parts.append(f"Party A unsaid signals: {'; '.join(unsaid_a[:3])}")
+            if unsaid_b:
+                parts.append(f"Party B unsaid signals: {'; '.join(unsaid_b[:3])}")
+            parts.append("")
+
     # Task
     parts.append("=== YOUR TASK ===")
     parts.append(
@@ -248,6 +291,7 @@ def generate_option_pool(
     party_state: dict | None,
     plugin_assessment: dict,
     session_history: list[dict],
+    perception_agent_result: dict | None = None,
 ) -> list[dict]:
     """
     Call the option generator and return a list of brainstormer candidate dicts.
@@ -268,6 +312,7 @@ def generate_option_pool(
             plugin_assessment=plugin_assessment,
             session_history=session_history,
             turn_index=turn_index,
+            perception_agent_result=perception_agent_result,
         )
 
         response = client.messages.create(
