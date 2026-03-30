@@ -1,0 +1,1362 @@
+{
+  "schema_version": "interaction_trace.v0",
+  "case_id": "D-B02",
+  "session_id": "D-B02-S02",
+  "policy_profile": "dev_verbose",
+  "trace_created_at": "2026-03-29T22:42:48Z",
+  "turns": [
+    {
+      "turn_index": 1,
+      "timestamp": "2026-03-29T00:00:10Z",
+      "role": "assistant",
+      "phase": "info_gathering",
+      "message_summary": "Session opening \u2014 establish process frame, invite first party to speak",
+      "state_delta": {
+        "facts_added": [
+          "Issue domain completely unidentified \u2014 do not know if this concerns custody, property division, support, or other matters",
+          "No information about children, assets, income, or any other material facts"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "What is the core dispute? (custody, property, support, other)",
+          "What are each party's primary concerns?"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "No safety concerns at turn 1. Session has not yet begun substantive work. No party signals exist to assess. M0 baseline mediation mode is appropriate for session opening."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "Turn 1 opening \u2014 no perception data exists yet to ground in party-specific signals. Response establishes process frame and invites first substantive input, which will enable perception work in subsequent turns.",
+      "message_text": "Welcome. I'm Solomon, and I'm here to support the structure of this conversation \u2014 not to make decisions for you, but to help you both work through what needs to be resolved.\n\nThis process works best when each of you has the chance to put your concerns on the table before we start working on solutions. What I'd like to do is give each of you uninterrupted time to speak \u2014 to say what matters to you, what you're concerned about, and what you're hoping to work out today.\n\nThere's no right way to start, and you don't need to have everything organized. I'm going to listen for what's important to each of you, and then we'll figure out together how to move forward.\n\nWho would like to begin?",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=unknown \u2014 no input yet received posture=unknown \u2014 session has not begun",
+        "[PERCEPTION:PARTY_B] emotional=unknown \u2014 no input yet received posture=unknown \u2014 session has not begun",
+        "[PERCEPTION:DYNAMIC] unknown \u2014 no interaction has occurred between parties yet",
+        "[DOMAIN:GAPS] What is the core dispute? (custody, property, support, other); What are each party's primary concerns?; What has each party proposed or requested?",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=unknown \u2014 no interaction has occurred between parties yet"
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "unknown \u2014 no input yet received",
+            "inferred_interests": [],
+            "risk_signals": [],
+            "relational_posture": "unknown \u2014 session has not begun"
+          },
+          "party_b": {
+            "emotional_state": "unknown \u2014 no input yet received",
+            "inferred_interests": [],
+            "risk_signals": [],
+            "relational_posture": "unknown \u2014 session has not begun"
+          },
+          "relational_dynamic": "unknown \u2014 no interaction has occurred between parties yet",
+          "perception_confidence": "low",
+          "perception_notes": [
+            "Turn 1 represents the pre-mediation state \u2014 no party input exists to assess",
+            "Scaffold perception context reflects system defaults rather than observed signals",
+            "Cannot meaningfully assess emotional state, interests, or relational posture without party speech",
+            "First substantive perception pass will occur after at least one party speaks"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed 'unknown \u2014 no interaction has occurred between parties yet'"
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "Issue domain completely unidentified \u2014 do not know if this concerns custody, property division, support, or other matters",
+            "No information about children, assets, income, or any other material facts",
+            "Jurisdiction and legal framework unknown",
+            "Timeline pressures or urgencies unknown"
+          ],
+          "material_gaps": [
+            "What is the core dispute? (custody, property, support, other)",
+            "What are each party's primary concerns?",
+            "What has each party proposed or requested?",
+            "Are there children involved? What are their ages and current arrangements?",
+            "Are there financial dependencies, shared assets, or debts?",
+            "What is the emotional temperature of the separation?"
+          ],
+          "domain_notes": "Pre-computed assessment is accurate. Turn 1 is session initialization \u2014 no substantive information exists to analyze. The session must progress through opening statements before any domain qualification is possible. Confirming that option work is not just premature but structurally impossible at this juncture.",
+          "option_readiness": "blocked"
+        },
+        "option_scan": {
+          "candidate_options": [],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Turn 1 \u2014 no party input exists. Cannot generate options without knowing what parties are disputing, what their interests are, or what constraints apply. Option work requires substantive information that does not yet exist in this session."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [],
+          "notes": "No safety concerns at turn 1. Session has not yet begun substantive work. No party signals exist to assess. M0 baseline mediation mode is appropriate for session opening.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "session_framing",
+          "message_summary": "Session opening \u2014 establish process frame, invite first party to speak",
+          "message_text": "Welcome. I'm Solomon, and I'm here to support the structure of this conversation \u2014 not to make decisions for you, but to help you both work through what needs to be resolved.\n\nThis process works best when each of you has the chance to put your concerns on the table before we start working on solutions. What I'd like to do is give each of you uninterrupted time to speak \u2014 to say what matters to you, what you're concerned about, and what you're hoping to work out today.\n\nThere's no right way to start, and you don't need to have everything organized. I'm going to listen for what's important to each of you, and then we'll figure out together how to move forward.\n\nWho would like to begin?",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "Turn 1 opening \u2014 no perception data exists yet to ground in party-specific signals. Response establishes process frame and invites first substantive input, which will enable perception work in subsequent turns."
+        },
+        "pre_computed_domain_analysis": {
+          "schema_version": "domain_analysis.v0",
+          "source": "domain_reasoner_v0",
+          "option_readiness": "blocked",
+          "readiness_rationale": "Turn 1 is in session_framing phase. Only one party (or neither party) has been heard at this point. The issue domain, party interests, positions, and fundamental dispute parameters are completely unknown. This is a fundamental information absence that prevents any responsible option qualification. Option work requires understanding what the parties are disputing, what their interests are, and what structural constraints apply. None of this information exists at turn 1.",
+          "safety_veto_applied": false,
+          "safety_veto_reason": null,
+          "qualified_candidates": [],
+          "blocking_constraints": [
+            {
+              "constraint": "Issue domain not yet identified",
+              "severity": "critical",
+              "what_would_resolve_it": "Parties need to articulate what they are disputing (custody, property, support, decision-making, etc.)"
+            },
+            {
+              "constraint": "Party interests unknown",
+              "severity": "critical",
+              "what_would_resolve_it": "Each party needs opportunity to express their concerns, priorities, and what matters to them in this dispute"
+            },
+            {
+              "constraint": "Party positions unknown",
+              "severity": "critical",
+              "what_would_resolve_it": "Parties need to state their opening positions or proposals"
+            },
+            {
+              "constraint": "Session framing incomplete",
+              "severity": "critical",
+              "what_would_resolve_it": "Mediation process needs to progress past initial framing to substantive discussion"
+            }
+          ],
+          "material_gaps": [],
+          "domain_confidence": "low",
+          "domain_notes": "Turn 1 represents the initial session state before substantive mediation work has begun. No party input exists to assess. This is the expected state for a first turn - option readiness will become assessable once parties have had opportunity to present their concerns and the issue domain becomes clear. The blocking constraints listed are not problems to be solved but rather the normal sequence of information gathering that must occur before any domain assessment is possible.",
+          "case_id": "D-B02",
+          "session_id": "D-B02-S02",
+          "turn_index": 1,
+          "generated_at": "2026-03-29T00:00:10Z"
+        },
+        "brainstormer_pool": [],
+        "safety_monitor_result": {
+          "schema_version": "safety_monitor.v0",
+          "case_id": "D-B02",
+          "session_id": "D-B02-S02",
+          "turn_index": 1,
+          "generated_at": "2026-03-29T00:00:10Z",
+          "source": "safety_monitor_v0",
+          "compliance_pattern": null,
+          "deflection_pattern": null,
+          "discordant_signals": [],
+          "flags_raised": [],
+          "party_state_signals": [],
+          "veto_recommendation": null,
+          "veto_reason": null,
+          "monitor_confidence": "low",
+          "monitor_notes": "Insufficient interaction history at turn 1. No pattern assessment performed.",
+          "_null_result": true
+        },
+        "perception_agent_result": {
+          "schema_version": "perception_agent.v0",
+          "turn_index": 1,
+          "timestamp": "2026-03-29T00:00:10Z",
+          "confidence": null,
+          "_null_result": true,
+          "party_a": null,
+          "party_b": null,
+          "relational_dynamic": null,
+          "dynamic_trajectory": null,
+          "perception_signals": [],
+          "scaffold_divergence": null,
+          "perception_notes": [],
+          "veto_signals": []
+        }
+      }
+    },
+    {
+      "turn_index": 2,
+      "timestamp": "2026-03-29T00:01:30Z",
+      "role": "client",
+      "phase": "info_gathering",
+      "message_summary": "Spouse A says i need us to actually look at the statements before we agree to anything. and explains that suspects the other party remembers the informal debt agreements differently and may be acting in good faith but with inaccurate recollection., insisting that any split must be based on documented usage rather than recollection.",
+      "state_delta": {
+        "facts_added": [
+          "The parties dispute how shared credit-card debt and housing costs should be divided."
+        ],
+        "facts_revised": [],
+        "facts_structured": [
+          {
+            "statement": "The parties dispute how shared credit-card debt and housing costs should be divided.",
+            "category": "financial",
+            "status": "accepted",
+            "related_issues": [
+              "shared_debt_allocation",
+              "housing_cost_division"
+            ],
+            "note": null
+          }
+        ],
+        "positions_added_or_updated": [
+          "spouse_A requires documentation before agreeing to any debt split."
+        ],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_A"
+            ],
+            "kind": "position",
+            "issue_id": "financial_documentation",
+            "statement": "Any debt split must be based on documented usage rather than unverified recollection.",
+            "status": "current",
+            "confidence": "high",
+            "proposal_id": null,
+            "position_id": "pos-spouse_a-001"
+          }
+        ],
+        "open_questions_added": [
+          "Which credit-card accounts and which housing cost period are at issue?"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [
+          {
+            "action": "open",
+            "missing_id": "missing-001",
+            "question": "What do the actual credit-card statements show regarding shared account usage?",
+            "importance": "high",
+            "reason_type": "feasibility_gap",
+            "related_issues": [
+              "shared_debt_allocation",
+              "financial_documentation"
+            ],
+            "note": "No responsible allocation framework can be proposed before statements are reviewed."
+          }
+        ],
+        "issue_map_updates": [
+          "Expanded financial_documentation as primary procedural constraint."
+        ],
+        "issue_updates_structured": [
+          {
+            "issue_id": "financial_documentation",
+            "label": "Financial documentation and record review"
+          }
+        ],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "insufficient_information"
+        ],
+        "severity": 2,
+        "notes": "Documentation-first demand is reasonable. Financial fact baseline not established."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    },
+    {
+      "turn_index": 3,
+      "timestamp": "2026-03-29T00:02:25Z",
+      "role": "assistant",
+      "phase": "interest_exploration",
+      "message_summary": "Acknowledge Party A's procedural concern and the care in their framing; create neutral space for Party B to respond without pre-validating Party A's factual frame",
+      "state_delta": {
+        "facts_added": [
+          "Party B has provided no input \u2014 we lack their perspective on whether debts are disputed, what amounts are claimed, or whether they share Party A's concern about documentation",
+          "The nature of the 'informal debt agreements' is unspecified \u2014 we don't know whether these are loans between parties, joint debts to third parties, or something else"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "Party B's entire perspective on the debt question",
+          "What specific debts are under discussion (amounts, dates, purposes)"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "Party A's reference to 'different recollections' flags potential factual dispute \u2014 warrants attention but does not cross threshold for escalation",
+          "No signals of coercion, incapacity, safety risk, or process breakdown",
+          "Both parties appear engaged (Party A explicitly so; Party B's silence is structural, not withdrawal)"
+        ],
+        "severity": 1,
+        "notes": "M1/E5 remains appropriate. The mention of differing recollections is a content flag (factual disagreement may emerge) but not a process or safety concern. The current mode allows continued facilitation while remaining alert for signals that would require escalation. Party A's diplomatic framing actually reduces relational risk by preemptively de-escalating potential attribution of bad faith."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "High confidence that this response is appropriate for the current process state. It advances the session by inviting Party B to speak while avoiding three risks: (1) validating Party A's factual frame as correct before hearing Party B, (2) generating premature process solutions before knowing whether there's disagreement about the procedural need itself, (3) missing the relational signal in Party A's diplomatic language. The response names what Party A did (both substantively and relationally) and creates symmetrical space for Party B to accept, contest, or redirect.",
+      "message_text": "Thank you for that. I want to acknowledge two things you've done here \u2014 you've identified a concrete procedural need, which is to ground any agreement in actual documentation rather than memory, and you've done that while explicitly preserving [Party B]'s good faith in how they remember things. That kind of care matters in this process.\n\nBefore we talk about how to handle the documentation question, I need to hear from [Party B]. [Party B], [Party A] has put a concern on the table about making sure you're both working from the same factual foundation when it comes to these informal debt arrangements. I want to give you space to respond \u2014 what's your perspective on this? Do you share the concern about needing to review statements, or do you see this differently?",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=composed but vigilant \u2014 asserting a procedural boundary while managing relational tone posture=assertive but conciliatory \u2014 setting a boundary while explicitly preserving Party B's good faith",
+        "[PERCEPTION:PARTY_A:INTERESTS] accuracy and verifiability in determining what debts exist and their amounts; protection against agreements based on incomplete or inaccurate information; maintaining a working relationship with Party B (evidenced by diplomatic framing)",
+        "[PERCEPTION:PARTY_B] emotional=unknown \u2014 has not spoken posture=unknown \u2014 no observable signal yet",
+        "[PERCEPTION:DYNAMIC] Party A has made an opening move that is both substantive (procedural requirement) and relational (charitable attribution). Party B's response will reveal whether this framing is accepted, contested, or generative. Currently one-sided communication with no reaction data.",
+        "[DOMAIN:GAPS] Party B's entire perspective on the debt question; What specific debts are under discussion (amounts, dates, purposes); Whether this is a factual dispute (what debts exist) or a normative dispute (how to split known debts)",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cautious_but_workable lm=Party A has made an opening move that is both substantive (procedural requirement) and relational (charitable attribution). Party B's response will reveal whether this framing is accepted, contested, or generative. Currently one-sided communication with no reaction data."
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "composed but vigilant \u2014 asserting a procedural boundary while managing relational tone",
+            "inferred_interests": [
+              "accuracy and verifiability in determining what debts exist and their amounts",
+              "protection against agreements based on incomplete or inaccurate information",
+              "maintaining a working relationship with Party B (evidenced by diplomatic framing)"
+            ],
+            "risk_signals": [
+              "mild \u2014 possible concern about being rushed into agreement without adequate information",
+              "mild \u2014 reference to 'different recollections' suggests awareness of potential factual disputes"
+            ],
+            "relational_posture": "assertive but conciliatory \u2014 setting a boundary while explicitly preserving Party B's good faith"
+          },
+          "party_b": {
+            "emotional_state": "unknown \u2014 has not spoken",
+            "inferred_interests": [],
+            "risk_signals": [],
+            "relational_posture": "unknown \u2014 no observable signal yet"
+          },
+          "relational_dynamic": "Party A has made an opening move that is both substantive (procedural requirement) and relational (charitable attribution). Party B's response will reveal whether this framing is accepted, contested, or generative. Currently one-sided communication with no reaction data.",
+          "perception_confidence": "moderate",
+          "perception_notes": [
+            "Party A's 'good faith but inaccurate' formulation is doing double work \u2014 asserting factual disagreement while protecting the relational field",
+            "The request to 'look at statements' before agreeing is a process anchor, not yet a substantive position on what the debts are or how to split them",
+            "Party B's silence is purely structural (they haven't been invited yet) \u2014 no inference about their state is warranted",
+            "The perception agent note about epistemological authority is critical \u2014 this is about whose version of facts will ground the negotiation"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cautious_but_workable'; model assessed \"Party A has made an opening move that is both substantive (procedural requirement) and relational (charitable attribution). Party B's response will reveal whether this framing is accepted, contested, or generative. Currently one-sided communication with no reaction data.\""
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "Party B has provided no input \u2014 we lack their perspective on whether debts are disputed, what amounts are claimed, or whether they share Party A's concern about documentation",
+            "The nature of the 'informal debt agreements' is unspecified \u2014 we don't know whether these are loans between parties, joint debts to third parties, or something else",
+            "Party A's procedural request (review statements first) is reasonable but we don't know if Party B agrees or has access to the same documentation"
+          ],
+          "material_gaps": [
+            "Party B's entire perspective on the debt question",
+            "What specific debts are under discussion (amounts, dates, purposes)",
+            "Whether this is a factual dispute (what debts exist) or a normative dispute (how to split known debts)",
+            "Whether both parties have access to the documentation Party A references"
+          ],
+          "domain_notes": "The pre-computed assessment is correct \u2014 option readiness is blocked because we have only one party's opening statement and the issue structure is not yet visible. Party A has articulated a procedural prerequisite (need documentation before agreement) which is sensible, but we cannot assess whether this is contested, agreed, or requires process design until Party B speaks. The diplomatic framing ('good faith but inaccurate') suggests Party A anticipates disagreement but wants to avoid attributing bad motive \u2014 this is relational maintenance, not substance yet.",
+          "option_readiness": "blocked"
+        },
+        "option_scan": {
+          "candidate_options": [],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Party B has not been heard. Option generation requires understanding both parties' interests and positions. Currently we have only Party A's procedural concern and a hint of anticipated factual disagreement. Generating options before hearing Party B would be structurally inappropriate and could appear to validate Party A's frame as the sole legitimate starting point."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M1",
+          "candidate_category": "E5",
+          "signals": [
+            "Party A's reference to 'different recollections' flags potential factual dispute \u2014 warrants attention but does not cross threshold for escalation",
+            "No signals of coercion, incapacity, safety risk, or process breakdown",
+            "Both parties appear engaged (Party A explicitly so; Party B's silence is structural, not withdrawal)"
+          ],
+          "notes": "M1/E5 remains appropriate. The mention of differing recollections is a content flag (factual disagreement may emerge) but not a process or safety concern. The current mode allows continued facilitation while remaining alert for signals that would require escalation. Party A's diplomatic framing actually reduces relational risk by preemptively de-escalating potential attribution of bad faith.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "info_gathering",
+          "message_summary": "Acknowledge Party A's procedural concern and the care in their framing; create neutral space for Party B to respond without pre-validating Party A's factual frame",
+          "message_text": "Thank you for that. I want to acknowledge two things you've done here \u2014 you've identified a concrete procedural need, which is to ground any agreement in actual documentation rather than memory, and you've done that while explicitly preserving [Party B]'s good faith in how they remember things. That kind of care matters in this process.\n\nBefore we talk about how to handle the documentation question, I need to hear from [Party B]. [Party B], [Party A] has put a concern on the table about making sure you're both working from the same factual foundation when it comes to these informal debt arrangements. I want to give you space to respond \u2014 what's your perspective on this? Do you share the concern about needing to review statements, or do you see this differently?",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "High confidence that this response is appropriate for the current process state. It advances the session by inviting Party B to speak while avoiding three risks: (1) validating Party A's factual frame as correct before hearing Party B, (2) generating premature process solutions before knowing whether there's disagreement about the procedural need itself, (3) missing the relational signal in Party A's diplomatic language. The response names what Party A did (both substantively and relationally) and creates symmetrical space for Party B to accept, contest, or redirect."
+        },
+        "pre_computed_domain_analysis": {
+          "schema_version": "domain_analysis.v0",
+          "source": "domain_reasoner_v0",
+          "option_readiness": "blocked",
+          "readiness_rationale": "Party B has not been heard at all. We have only Party A's opening statement, which articulates a procedural concern (need to review documentation before agreeing) and a suspicion about differing recollections of informal debt arrangements. Party B's position, interests, concerns, and even their basic stance on the debt question are completely unknown. The issue structure itself cannot be determined without hearing from Party B \u2014 we don't know if this is a dispute about the existence of debts, the amounts, the terms, or the priority. Option work requires input from both parties to be appropriate. This is a fundamental information absence, not a gap in logistics that could be 'deferred' \u2014 we literally do not know what Party B's perspective is on any aspect of this matter.",
+          "safety_veto_applied": false,
+          "safety_veto_reason": null,
+          "qualified_candidates": [],
+          "blocking_constraints": [
+            {
+              "constraint": "Party B has not yet been heard",
+              "severity": "critical",
+              "what_would_resolve_it": "Party B provides their perspective on the debt arrangements, their recollection of informal agreements, and their position on the documentation review process that Party A is requesting"
+            },
+            {
+              "constraint": "Nature and scope of disputed debts unknown",
+              "severity": "critical",
+              "what_would_resolve_it": "Parties articulate what debts are in question (amounts, dates, purposes, whether joint or individual obligations), what the disagreement is about (existence, amount, terms, or priority), and what documentation exists"
+            },
+            {
+              "constraint": "Issue type not yet identifiable",
+              "severity": "critical",
+              "what_would_resolve_it": "Once Party B speaks, we'll know whether this is: (a) a factual dispute about what was agreed (verification/documentation issue), (b) a substantive disagreement about debt allocation (property division issue), (c) a trust/process concern (one party needs external validation before proceeding), or some combination"
+            }
+          ],
+          "material_gaps": [],
+          "domain_confidence": "low",
+          "domain_notes": "This is early in a mediation session where only one party has spoken once. Party A has articulated a procedural boundary ('we need to review statements first') and flagged a potential factual disagreement ('our recollections may differ'). This is appropriate caution by Party A but gives me almost nothing to work with for domain qualification. I cannot assess what options are feasible when I don't know: (1) what Party B thinks about any of this, (2) what the debts actually are, (3) whether Party B agrees documentation review is needed or resists it, (4) whether this is fundamentally a property division question or a process/trust question. The blocking_constraints list is correctly set to 'critical' because option work literally cannot proceed until Party B is heard. This is not a safety concern \u2014 there are no veto category patterns present. It's simply too early in the session. The correct move is for the mediator to invite Party B to speak.",
+          "case_id": "D-B02",
+          "session_id": "D-B02-S02",
+          "turn_index": 3,
+          "generated_at": "2026-03-29T00:02:25Z"
+        },
+        "brainstormer_pool": [],
+        "safety_monitor_result": {
+          "schema_version": "safety_monitor.v0",
+          "case_id": "D-B02",
+          "session_id": "D-B02-S02",
+          "turn_index": 3,
+          "generated_at": "2026-03-29T00:02:25Z",
+          "source": "safety_monitor_v0",
+          "compliance_pattern": {
+            "detected": false,
+            "party": null,
+            "evidence_turns": [],
+            "pattern_type": null,
+            "severity": null
+          },
+          "deflection_pattern": {
+            "detected": false,
+            "deflecting_party": null,
+            "target_request_turn": null,
+            "deflection_turns": [],
+            "deflection_tactics": [],
+            "pattern_confirmed": false
+          },
+          "discordant_signals": [],
+          "veto_recommendation": null,
+          "veto_reason": null,
+          "monitor_confidence": "low",
+          "monitor_notes": "Insufficient session history for cross-turn pattern detection. Only 2 turns recorded: T1 is process opening, T2 is Party A's initial substantive statement. Party A has made an independent, substantive disclosure request (access to statements before agreement) and stated clear values (documentation over recollection). Party B has not yet responded. No cross-turn patterns can be assessed with only one substantive turn. The stated concern about differing recollections is a legitimate mediation issue, not a structural adversarial pattern. Continue monitoring once Party B responds and interaction dynamics develop over \u22653-4 substantive turns.",
+          "flags_raised": [],
+          "party_state_signals": []
+        },
+        "perception_agent_result": {
+          "schema_version": "perception_agent.v0",
+          "turn_index": 3,
+          "timestamp": "2026-03-29T00:02:25Z",
+          "confidence": "moderate",
+          "_null_result": false,
+          "party_a": {
+            "emotional_state": "controlled but vigilant \u2014 focused on process accuracy with underlying concern about being misrepresented",
+            "emotional_trajectory": "stable",
+            "engagement_quality": "genuine",
+            "communication_style": "direct",
+            "inferred_interests": [
+              "Accurate accounting of financial obligations based on verifiable records",
+              "Protection against agreements based on faulty memory or revisionist history",
+              "Fair resolution that reflects documented reality rather than perception"
+            ],
+            "inferred_concerns": [
+              "That Party B's recollection may not match documented reality and this could lead to unfair outcomes",
+              "Being locked into an agreement before facts are established",
+              "That good faith disagreement about past arrangements could disadvantage them if not verified"
+            ],
+            "unsaid_signals": [
+              "The phrasing 'acting in good faith but with inaccurate recollection' is diplomatic but protective \u2014 suggests Party A expects resistance to fact-checking",
+              "Emphasis on documentation over memory suggests previous experience where recollections diverged",
+              "Has taken a strong procedural position (verify first, agree later) but has not yet articulated what they believe the records will show \u2014 may be holding cards close"
+            ],
+            "relational_posture": "respectful but procedurally defensive \u2014 protecting against premature agreement"
+          },
+          "party_b": {
+            "emotional_state": "unknown \u2014 has not yet spoken",
+            "emotional_trajectory": "stable",
+            "engagement_quality": "genuine",
+            "communication_style": "direct",
+            "inferred_interests": [],
+            "inferred_concerns": [],
+            "unsaid_signals": [
+              "Complete absence of Party B's voice \u2014 we know only what Party A says about them",
+              "Party A's framing suggests Party B may have already expressed positions about debt arrangements, but we have no direct evidence of this"
+            ],
+            "relational_posture": "unknown \u2014 awaiting first contribution"
+          },
+          "relational_dynamic": "asymmetric information state \u2014 Party A has established a procedural frame that implicitly questions Party B's memory accuracy; Party B has not yet responded to this framing or articulated their own perspective",
+          "dynamic_trajectory": "stable",
+          "perception_signals": [
+            "Very early session \u2014 turn 2 only, limited signal",
+            "Party A is setting the procedural agenda with a position that inherently questions Party B's accuracy",
+            "The phrase 'acting in good faith but with inaccurate recollection' is face-saving language but still positions Party B as potentially wrong",
+            "No observable conflict yet, but the opening move creates potential for Party B to feel accused or defensive when they respond"
+          ],
+          "scaffold_divergence": "The scaffold assesses both parties as 'engaged_and_cooperative' with 'cautious_but_workable' dynamic. This is premature. Party B has not yet spoken \u2014 we cannot assess their engagement or cooperation. Party A's opening is procedurally cautious and implicitly adversarial (challenging the other party's recollection), not straightforwardly cooperative. The dynamic is not yet established as workable or unworkable \u2014 it is in formation, with potential tension embedded in Party A's framing.",
+          "perception_notes": [
+            "Party B has not yet contributed \u2014 the mediator's next response must create neutral space for Party B to respond to Party A's procedural concern without feeling pre-judged",
+            "Party A's diplomatic phrasing ('good faith but inaccurate') is strategic \u2014 acknowledges Party B's sincerity while asserting factual disagreement. The mediator should acknowledge both the substantive concern (verification) and the relational care in how it was framed",
+            "The core issue is epistemological: whose memory/records are authoritative? This must be resolved before substantive negotiation can proceed, but the mediator should not validate Party A's frame as inherently correct before hearing Party B"
+          ],
+          "veto_signals": []
+        }
+      }
+    },
+    {
+      "turn_index": 4,
+      "timestamp": "2026-03-29T00:03:40Z",
+      "role": "client",
+      "phase": "interest_exploration",
+      "message_summary": "Spouse B says we already talked about this and had an understanding. and notes is genuinely uncertain whether their recollection of the housing cost split is fully accurate., but accepts that a bounded documentation review may help clarify the picture.",
+      "state_delta": {
+        "facts_added": [
+          "Spouse B acknowledges their recollection of the debt arrangement may not be fully accurate."
+        ],
+        "facts_revised": [],
+        "facts_structured": [
+          {
+            "statement": "Spouse B acknowledges their recollection of the debt arrangement may not be fully accurate.",
+            "category": "communication_history",
+            "status": "accepted",
+            "related_issues": [
+              "financial_documentation",
+              "shared_debt_allocation"
+            ],
+            "note": "Accepted as a stated acknowledgment, not as a factual determination."
+          }
+        ],
+        "positions_added_or_updated": [
+          "spouse_B prefers practical resolution but accepts documentation review if proportional."
+        ],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_B"
+            ],
+            "kind": "position",
+            "issue_id": "shared_debt_allocation",
+            "statement": "A practical resolution is preferred. Documentation review is acceptable if it stays bounded and proportional.",
+            "status": "current",
+            "confidence": "moderate",
+            "proposal_id": null,
+            "position_id": "pos-spouse_b-001"
+          }
+        ],
+        "open_questions_added": [
+          "What written records, if any, exist of the informal housing cost or debt agreement?"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [
+          {
+            "action": "open",
+            "missing_id": "missing-002",
+            "question": "Is there any written record (email, text message) of the informal debt or housing cost agreement?",
+            "importance": "medium",
+            "reason_type": "feasibility_gap",
+            "related_issues": [
+              "financial_documentation",
+              "housing_cost_division"
+            ],
+            "note": "Even partial written records would help establish a shared factual baseline."
+          }
+        ],
+        "issue_map_updates": [
+          "Both parties show conditional openness to documentation-first process."
+        ],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "trust_breakdown",
+          "insufficient_information"
+        ],
+        "severity": 2,
+        "notes": "Trust strained by differing recollections. Still mediable."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    },
+    {
+      "turn_index": 5,
+      "timestamp": "2026-03-29T00:04:55Z",
+      "role": "assistant",
+      "phase": "interest_exploration",
+      "message_summary": "Acknowledge Party B's acceptance of documentation review, but create explicit space for Party B to articulate substantive position before moving to procedural remedy. Draw out the 'understanding' Party B referenced and their independent view of what was fair.",
+      "state_delta": {
+        "facts_added": [
+          "Informal debt reconciliation domain identified but fundamentally one-sided \u2014 only Party A's interests on record",
+          "Disputed recollection of housing cost sharing arrangements \u2014 nature and amount unknown"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "CRITICAL: Party B's substantive position \u2014 what they believe was agreed, what they think is fair, what outcomes matter to them",
+          "HIGH: The 'understanding' Party B referenced at T4 \u2014 content and status unknown"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "Moderate relational asymmetry \u2014 Party B showing deference pattern",
+          "Moderate information asymmetry \u2014 Party A likely has documentation advantage",
+          "Party B self-doubt may reflect genuine uncertainty or relational pressure"
+        ],
+        "severity": 1,
+        "notes": "Current M1/E5 classification (party capacity \u2014 participation imbalance) remains appropriate. The deference pattern and information asymmetry are within M1 threshold \u2014 they require careful process management but do not yet constitute incapacity. If Party B continues to defer across another 1-2 turns despite explicit invitation to speak, escalation to M2 (recommend process pause) may be warranted. Key signal to monitor: does Party B assert independent ground when given clear space to do so, or does deference pattern persist?"
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "High confidence that this is the correct process move. Party B's deference pattern and the unexplored 'understanding' reference make this elicitation essential before any procedural steps.",
+      "message_text": "[Party B], I want to stay with you for a moment before we move toward looking at any documents. You mentioned that you and [Party A] had talked about this before and had an understanding. I want to make sure I understand what that looked like from your perspective.\n\nCan you tell me what you remember about the arrangement you had \u2014 what you believed you'd agreed to about splitting housing costs? And separate from whether your memory is perfect or not, what feels fair to you about how those costs should be handled now?\n\nI'm asking because [Party A] has put their concern on the table \u2014 they want to verify facts before agreeing to anything \u2014 and I've heard that. But before we talk about *how* to verify, I need to understand what you both believe needs to be resolved. Right now I've heard [Party A]'s view clearly, but I don't yet have yours.",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=composed_and_strategically_measured \u2014 maintaining diplomatic tone while holding a firm procedural position posture=assertive_but_diplomatic \u2014 has successfully set the procedural frame while preserving surface cooperation",
+        "[PERCEPTION:PARTY_A:INTERESTS] factual accuracy and documentary verification before committing to any agreement; protection against being bound by incomplete or disputed recollections; maintaining appearance of reasonableness and good faith (may be genuine or strategic)",
+        "[PERCEPTION:PARTY_B] emotional=uncertain_and_possibly_deferential \u2014 expressing self-doubt about own recollection, has not articulated independent position posture=deferential_and_reactive \u2014 has not claimed any independent ground, accepted Party A's framing with minimal pushback",
+        "[PERCEPTION:PARTY_B:INTERESTS] UNKNOWN \u2014 no substantive interests expressed yet; possible: preserving the 'understanding' they referenced but did not elaborate; possible: avoiding conflict or appearing unreasonable by contesting Party A's frame",
+        "[PERCEPTION:DYNAMIC] asymmetric_with_Party_A_controlling_frame \u2014 Party A has established both the substantive issue (disputed recollection requiring documentation) and the procedural remedy (review before agreement). Party B has accepted this frame while expressing self-doubt. The 'understanding' Party B mentioned is an unexplored thread that may contain their only independent interest articulation. Risk: process becomes validation of whoever has better records rather than genuine bilateral interest exploration.",
+        "[DOMAIN:GAPS] CRITICAL: Party B's substantive position \u2014 what they believe was agreed, what they think is fair, what outcomes matter to them; HIGH: The 'understanding' Party B referenced at T4 \u2014 content and status unknown; HIGH: Nature and amount of disputed housing costs",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cautious_but_workable lm=asymmetric_with_Party_A_controlling_frame \u2014 Party A has established both the substantive issue (disputed recollection requiring documentation) and the procedural remedy (review before agreement). Party B has accepted this frame while expressing self-doubt. The 'understanding' Party B mentioned is an unexplored thread that may contain their only independent interest articulation. Risk: process becomes validation of whoever has better records rather than genuine bilateral interest exploration."
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "composed_and_strategically_measured \u2014 maintaining diplomatic tone while holding a firm procedural position",
+            "inferred_interests": [
+              "factual accuracy and documentary verification before committing to any agreement",
+              "protection against being bound by incomplete or disputed recollections",
+              "maintaining appearance of reasonableness and good faith (may be genuine or strategic)",
+              "establishing a procedural framework that favors their position (likely has stronger documentation)"
+            ],
+            "risk_signals": [
+              "mild: strategic framing that positions their request as reasonable while potentially foreclosing Party B's alternative narrative",
+              "mild: information advantage \u2014 likely knows what documents will show"
+            ],
+            "relational_posture": "assertive_but_diplomatic \u2014 has successfully set the procedural frame while preserving surface cooperation"
+          },
+          "party_b": {
+            "emotional_state": "uncertain_and_possibly_deferential \u2014 expressing self-doubt about own recollection, has not articulated independent position",
+            "inferred_interests": [
+              "UNKNOWN \u2014 no substantive interests expressed yet",
+              "possible: preserving the 'understanding' they referenced but did not elaborate",
+              "possible: avoiding conflict or appearing unreasonable by contesting Party A's frame"
+            ],
+            "risk_signals": [
+              "moderate: has not articulated any independent position across four turns \u2014 only reactive statements",
+              "moderate: self-doubt about own recollection may reflect genuine uncertainty OR relational deference",
+              "moderate: accepting Party A's procedural frame without stating own needs or concerns",
+              "moderate: potential information asymmetry \u2014 may have weaker documentation or less clear recollection"
+            ],
+            "relational_posture": "deferential_and_reactive \u2014 has not claimed any independent ground, accepted Party A's framing with minimal pushback"
+          },
+          "relational_dynamic": "asymmetric_with_Party_A_controlling_frame \u2014 Party A has established both the substantive issue (disputed recollection requiring documentation) and the procedural remedy (review before agreement). Party B has accepted this frame while expressing self-doubt. The 'understanding' Party B mentioned is an unexplored thread that may contain their only independent interest articulation. Risk: process becomes validation of whoever has better records rather than genuine bilateral interest exploration.",
+          "perception_confidence": "high",
+          "perception_notes": [
+            "Party B's statement 'we already talked about this and had an understanding' is substantively important but was immediately abandoned \u2014 this may be the only window into Party B's independent view of what was agreed",
+            "Party B's acceptance of documentation review came with self-doubt ('genuinely uncertain whether their recollection is fully accurate') \u2014 this could be genuine or could reflect pressure to appear reasonable by accepting Party A's frame",
+            "The current trajectory \u2014 moving to document review without first hearing Party B's substantive position \u2014 would be procedurally premature and risks validating information advantage rather than exploring interests",
+            "Party A's diplomatic tone is effective strategic framing but should not obscure that only one party has articulated substantive interests"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cautious_but_workable'; model assessed \"asymmetric_with_Party_A_controlling_frame \u2014 Party A has established both the substantive issue (disputed recollection requiring documentation) and the procedural remedy (review before agreement). Party B has accepted this frame while expressing self-doubt. The 'understanding' Party B mentioned is an unexplored thread that may contain their only independent interest articulation. Risk: process becomes validation of whoever has better records rather than genuine bilateral interest exploration.\""
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "Informal debt reconciliation domain identified but fundamentally one-sided \u2014 only Party A's interests on record",
+            "Disputed recollection of housing cost sharing arrangements \u2014 nature and amount unknown",
+            "Party A likely has documentation advantage; Party B has expressed uncertainty about own recollection",
+            "Any option work without Party B's substantive input would be procedurally illegitimate"
+          ],
+          "material_gaps": [
+            "CRITICAL: Party B's substantive position \u2014 what they believe was agreed, what they think is fair, what outcomes matter to them",
+            "HIGH: The 'understanding' Party B referenced at T4 \u2014 content and status unknown",
+            "HIGH: Nature and amount of disputed housing costs",
+            "MODERATE: Whether Party B has concerns about the documentation process itself or its framing"
+          ],
+          "domain_notes": "The pre-computed domain assessment correctly identifies option_readiness as 'blocked' due to Party B not having been heard substantively. I confirm and strengthen this assessment: moving to document review before Party B articulates their independent position would transform mediation into a fact-finding exercise that favors whoever has stronger documentation. The procedural remedy Party A proposed (document review) may be appropriate eventually, but accepting it now without first hearing Party B's interests would be a process failure. Party B must have space to: (1) articulate what they remember about the arrangement, (2) explain what the 'understanding' was, (3) state what they believe is fair, (4) express any concerns about rushing to documents.",
+          "option_readiness": "blocked"
+        },
+        "option_scan": {
+          "candidate_options": [
+            "Invite Party B to describe the 'understanding' they referenced",
+            "Ask Party B what they remember about the housing cost arrangement before looking at documents",
+            "Create explicit space for Party B to state what outcome would feel fair to them",
+            "Ask Party B if they have concerns about the documentation process Party A proposed"
+          ],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Party B has not articulated substantive interests. Moving to structural options (payment plans, verification procedures, etc.) would be premature when one party's interests are completely unknown. The appropriate move is elicitation, not option generation."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M1",
+          "candidate_category": "E5",
+          "signals": [
+            "Moderate relational asymmetry \u2014 Party B showing deference pattern",
+            "Moderate information asymmetry \u2014 Party A likely has documentation advantage",
+            "Party B self-doubt may reflect genuine uncertainty or relational pressure"
+          ],
+          "notes": "Current M1/E5 classification (party capacity \u2014 participation imbalance) remains appropriate. The deference pattern and information asymmetry are within M1 threshold \u2014 they require careful process management but do not yet constitute incapacity. If Party B continues to defer across another 1-2 turns despite explicit invitation to speak, escalation to M2 (recommend process pause) may be warranted. Key signal to monitor: does Party B assert independent ground when given clear space to do so, or does deference pattern persist?",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "interest_exploration",
+          "message_summary": "Acknowledge Party B's acceptance of documentation review, but create explicit space for Party B to articulate substantive position before moving to procedural remedy. Draw out the 'understanding' Party B referenced and their independent view of what was fair.",
+          "message_text": "[Party B], I want to stay with you for a moment before we move toward looking at any documents. You mentioned that you and [Party A] had talked about this before and had an understanding. I want to make sure I understand what that looked like from your perspective.\n\nCan you tell me what you remember about the arrangement you had \u2014 what you believed you'd agreed to about splitting housing costs? And separate from whether your memory is perfect or not, what feels fair to you about how those costs should be handled now?\n\nI'm asking because [Party A] has put their concern on the table \u2014 they want to verify facts before agreeing to anything \u2014 and I've heard that. But before we talk about *how* to verify, I need to understand what you both believe needs to be resolved. Right now I've heard [Party A]'s view clearly, but I don't yet have yours.",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "High confidence that this is the correct process move. Party B's deference pattern and the unexplored 'understanding' reference make this elicitation essential before any procedural steps."
+        },
+        "pre_computed_domain_analysis": {
+          "schema_version": "domain_analysis.v0",
+          "source": "domain_reasoner_v0",
+          "option_readiness": "blocked",
+          "readiness_rationale": "Party B has not yet been heard substantively. While Party B made a brief statement at T4 ('we already talked about this and had an understanding' + acceptance of documentation review), this does not constitute sufficient interest exploration to assess option feasibility. The session shows: (1) Party A has articulated a procedural concern (verify before agree) and substantive interests (accuracy, protection from incomplete info, relationship maintenance), but (2) Party B has offered only acknowledgment of possible memory inaccuracy and procedural acceptance \u2014 no independent interests, values, or concerns about the underlying debt/housing cost issue have been expressed. The issue domain itself is identified (informal debt reconciliation, specifically housing cost splits), but Party B's position on what they believe is owed, what their constraints are, how they view the fairness of any arrangement, or what outcomes matter to them remains completely unknown. This is not a material gap within a known interest structure \u2014 this is a fundamental absence of one party's substantive input. Option work cannot proceed responsibly when only one party's interests are on record. This is the correct use of 'blocked' \u2014 one party has not been heard, making the issue structure fundamentally one-sided.",
+          "safety_veto_applied": false,
+          "safety_veto_reason": null,
+          "qualified_candidates": [],
+          "blocking_constraints": [
+            {
+              "constraint": "Party B substantive interests unknown",
+              "severity": "critical",
+              "what_would_resolve_it": "Party B needs opportunity to express: (a) their recollection or belief about what is owed (even if uncertain), (b) their constraints (financial capacity, timeline concerns, fairness criteria), (c) what outcomes or process elements matter to them in resolving this debt question. Even if they ultimately defer to documentation, understanding their entry point is necessary for responsible option design."
+            }
+          ],
+          "material_gaps": [
+            {
+              "gap": "Nature and amount of disputed debts/housing costs",
+              "importance": "high",
+              "what_it_blocks": "Cannot assess feasibility of payment structures, verification methods, or settlement ranges without knowing: (a) approximate scale of amounts in question, (b) whether this is one disputed item or multiple, (c) time period covered. This gap is resolvable through documentation review that parties have agreed to pursue."
+            },
+            {
+              "gap": "Parties' financial capacity for debt resolution",
+              "importance": "moderate",
+              "what_it_blocks": "Cannot qualify payment timing or structure options (lump sum vs. installment, immediate vs. deferred) without understanding liquidity constraints, income stability, or other financial obligations. Not blocking at this stage because documentation review comes first, but will become critical once amounts are established."
+            }
+          ],
+          "domain_confidence": "moderate",
+          "domain_notes": "Domain identification is clear: informal debt reconciliation between divorcing spouses, specifically disputed recollection of housing cost sharing arrangements. Party A has set a sensible procedural frame (verify before negotiate) that Party B has accepted. The documentation review is the correct next step and will resolve the primary factual gap. However, domain analysis cannot proceed to option qualification when Party B's substantive interests are absent. The perception agent signals suggest Party B may be in a conflict-avoidant or deferential mode, which makes it even more critical that the mediator create explicit space for Party B to articulate their own view before options are introduced. Once both parties have spoken substantively and documentation is reviewed, standard debt resolution options will likely be qualifiable: verification protocols, dispute resolution for any remaining disagreements post-review, payment structures if amounts are confirmed, or mutual release if amounts net to minimal difference. But none of these can be responsibly qualified yet.",
+          "case_id": "D-B02",
+          "session_id": "D-B02-S02",
+          "turn_index": 5,
+          "generated_at": "2026-03-29T00:04:55Z"
+        },
+        "brainstormer_pool": [],
+        "safety_monitor_result": {
+          "schema_version": "safety_monitor.v0",
+          "case_id": "D-B02",
+          "session_id": "D-B02-S02",
+          "turn_index": 5,
+          "generated_at": "2026-03-29T00:04:55Z",
+          "source": "safety_monitor_v0",
+          "compliance_pattern": {
+            "detected": false,
+            "party": null,
+            "evidence_turns": [],
+            "pattern_type": null,
+            "severity": null
+          },
+          "deflection_pattern": {
+            "detected": false,
+            "deflecting_party": null,
+            "target_request_turn": null,
+            "deflection_turns": [],
+            "deflection_tactics": [],
+            "pattern_confirmed": false
+          },
+          "discordant_signals": [],
+          "veto_recommendation": null,
+          "veto_reason": null,
+          "monitor_confidence": "high",
+          "monitor_notes": "Interaction history is too brief (only 2 substantive party turns) to establish cross-turn patterns. Party A initiated with a clear procedural concern anchored in documentation review. Party B responded with acknowledgment of prior understanding AND independent expression of uncertainty about their own recollection, then accepted the documentation approach. This is cooperative negotiation behavior \u2014 Party B both stated their position ('we had an understanding') and expressed genuine epistemic humility ('uncertain whether recollection is accurate'), which demonstrates independent substantive content. No deflection tactics observed; Party B directly engaged the documentation request. No discordant signals suppressed. Insufficient turn count to assess compliance patterns (need \u22653 turns for acceptance_only, \u22654 for reactive_only). Pattern detection should resume monitoring as session progresses beyond initial position statements.",
+          "flags_raised": [],
+          "party_state_signals": []
+        },
+        "perception_agent_result": {
+          "schema_version": "perception_agent.v0",
+          "turn_index": 5,
+          "timestamp": "2026-03-29T00:04:55Z",
+          "confidence": "moderate",
+          "_null_result": false,
+          "party_a": {
+            "emotional_state": "controlled and procedurally focused, with underlying anxiety about financial accuracy",
+            "emotional_trajectory": "stable",
+            "engagement_quality": "genuine",
+            "communication_style": "direct",
+            "inferred_interests": [
+              "Financial accuracy and documentation as basis for decisions",
+              "Being seen as fair-minded while protecting their position",
+              "Establishing a fact-based process that validates their memory of events"
+            ],
+            "inferred_concerns": [
+              "That agreements based on memory alone will disadvantage them",
+              "That Party B's understanding differs materially from documented reality",
+              "That moving forward without verification locks in an unfavorable arrangement"
+            ],
+            "unsaid_signals": [
+              "The diplomatic framing ('good faith but inaccurate') suggests Party A needs to assert disagreement while maintaining relationship \u2014 the care in phrasing may indicate either genuine desire to preserve goodwill OR strategic positioning to appear reasonable",
+              "Has not disclosed what they believe the documentation will show \u2014 this asymmetry of information may be intentional",
+              "Emphasis on 'documented usage' at T2 without offering their own recollection of the numbers suggests they are confident the records support their position"
+            ],
+            "relational_posture": "assertive but diplomatically framed \u2014 leading the procedural agenda"
+          },
+          "party_b": {
+            "emotional_state": "caught off-guard but attempting to be cooperative, with visible uncertainty about their own position",
+            "emotional_trajectory": "de-escalating from initial defensiveness",
+            "engagement_quality": "compliant_only",
+            "communication_style": "indirect",
+            "inferred_interests": [
+              "Preserving the relational understanding they believed existed",
+              "Avoiding prolonged conflict or adversarial process",
+              "Being seen as reasonable and cooperative"
+            ],
+            "inferred_concerns": [
+              "That their memory may actually be wrong \u2014 the uncertainty is genuine",
+              "That challenging Party A's procedural request will make them look unreasonable",
+              "That documentation review may reveal something unfavorable they genuinely don't remember",
+              "Loss of the 'understanding' they thought they had"
+            ],
+            "unsaid_signals": [
+              "Has offered no counter-recollection or competing version of events \u2014 only acknowledged the possibility of inaccuracy in their own memory",
+              "Has not asked what Party A remembers or believes the statements will show \u2014 this absence of inquiry suggests either conflict avoidance or genuine deference",
+              "Phrased acceptance as 'may help clarify' rather than expressing any independent interest in verification \u2014 their motivation appears to be accommodation rather than their own need for clarity",
+              "The phrase 'we already talked about this' at T4 was not defended after Party A's documentary request \u2014 immediate retreat suggests either weak confidence in their position or pattern of yielding to Party A's framing"
+            ],
+            "relational_posture": "deferential and accommodating under implicit pressure"
+          },
+          "relational_dynamic": "asymmetric agency pattern \u2014 Party A is setting the procedural frame and factual narrative while Party B is responding and adjusting; surface cooperation masks an imbalance in who is driving the process and whose version of reality is being centered",
+          "dynamic_trajectory": "stable",
+          "perception_signals": [
+            "Party B has not once articulated what they actually want or remember about the financial arrangement \u2014 only acknowledged uncertainty and accepted Party A's proposal",
+            "The 'understanding' Party B referenced at T4 was immediately subordinated to Party A's documentary frame without exploration of what that understanding was",
+            "Party A's confidence in calling for documentation suggests they likely know what the records will show \u2014 there is information asymmetry here",
+            "Both parties are being 'cooperative' but only Party A has actually stated a position or preference \u2014 Party B is cooperating by accepting rather than engaging"
+          ],
+          "scaffold_divergence": "The scaffold reads both parties as 'engaged_and_cooperative' with moderate stress. This misses the critical asymmetry in engagement quality. Party A is genuinely engaged \u2014 they have stated a clear procedural preference and factual concern. Party B is compliant_only, not engaged. They have agreed to everything without articulating their own interests, recollections, or concerns. The relational dynamic is not 'cautious_but_workable' \u2014 it is functionally one party setting the frame while the other accommodates. This pattern, if it continues, will produce agreements that reflect only Party A's interests.",
+          "perception_notes": [
+            "Party B has not stated any independent position across four turns \u2014 only responded to Party A's framing with acceptance and self-doubt. Before moving forward with document review, the mediator must create space for Party B to articulate: (1) what they actually remember about the arrangement, (2) what they believe was fair, and (3) whether they have any concerns about the documentation process itself.",
+            "The 'understanding' Party B mentioned at T4 is potentially important but was abandoned before being explored. The mediator should not let this pass \u2014 it may contain Party B's only articulated interest so far.",
+            "Party A's diplomatic tone should not be mistaken for neutrality \u2014 they are strategically framing the disagreement while maintaining surface reasonableness. The mediator must ensure Party B has equal space to frame their perspective without feeling they are 'causing conflict' by doing so.",
+            "Information asymmetry: Party A likely knows what the documentation will show. Party B appears genuinely uncertain. If the mediator proceeds to document review without first establishing what each party believes and wants, the process will validate whoever has better records rather than facilitating genuine interest exploration."
+          ],
+          "veto_signals": [
+            "Emerging power imbalance: Party B is systematically deferring to Party A's framing without expressing independent preferences. This is not yet a safety issue but is a process integrity concern \u2014 if this pattern continues unchecked, any agreement may not reflect Party B's actual interests or be genuinely voluntary."
+          ]
+        }
+      }
+    },
+    {
+      "turn_index": 6,
+      "timestamp": "2026-03-29T00:06:10Z",
+      "role": "client",
+      "phase": "info_gathering",
+      "message_summary": "The parties clarify what records they have: no pulled statements, some housing-cost text messages, and rough estimate amounts from memory. Neither party has a clear written credit agreement.",
+      "state_delta": {
+        "facts_added": [
+          "Credit-card statement figures are not yet available.",
+          "Some text messages about housing costs exist but do not constitute a clear written agreement.",
+          "Both parties acknowledge that exact amounts are estimates."
+        ],
+        "facts_revised": [],
+        "facts_structured": [
+          {
+            "statement": "Credit-card statement figures are not yet available. Parties are working from memory only.",
+            "category": "financial",
+            "status": "uncertain",
+            "related_issues": [
+              "shared_debt_allocation",
+              "financial_documentation"
+            ],
+            "note": null
+          },
+          {
+            "statement": "Some text messages about housing costs exist but do not constitute a clear written agreement.",
+            "category": "financial",
+            "status": "uncertain",
+            "related_issues": [
+              "housing_cost_division",
+              "financial_documentation"
+            ],
+            "note": null
+          },
+          {
+            "statement": "Both parties acknowledge that exact amounts are estimates rather than verified figures.",
+            "category": "financial",
+            "status": "accepted",
+            "related_issues": [
+              "shared_debt_allocation",
+              "housing_cost_division"
+            ],
+            "note": null
+          }
+        ],
+        "positions_added_or_updated": [
+          "Both parties signal openness to a documentation-then-package approach."
+        ],
+        "positions_structured": [],
+        "open_questions_added": [],
+        "open_questions_resolved": [
+          "What written records, if any, exist of the informal housing cost or debt agreement?"
+        ],
+        "missing_info_structured": [
+          {
+            "action": "open",
+            "missing_id": "missing-003",
+            "question": "What exact amounts does each credit-card statement show for the shared period?",
+            "importance": "high",
+            "reason_type": "feasibility_gap",
+            "related_issues": [
+              "shared_debt_allocation",
+              "financial_documentation"
+            ],
+            "note": "Statements not yet pulled. Allocation framework cannot be proposed until this is resolved."
+          }
+        ],
+        "issue_map_updates": [
+          "Financial documentation gap confirmed as unresolved. Allocation framework remains blocked."
+        ],
+        "issue_updates_structured": [
+          {
+            "issue_id": "housing_cost_division",
+            "label": "Housing cost division"
+          },
+          {
+            "issue_id": "financial_documentation",
+            "label": "Financial documentation and record review"
+          }
+        ],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": true,
+        "signals": [
+          "insufficient_information",
+          "domain_complexity_warning",
+          "decision_quality_risk"
+        ],
+        "severity": 4,
+        "notes": "Financial facts still insufficiently established for confident packaging. M2 should be considered if this gap persists."
+      },
+      "candidate_escalation_category": "E5",
+      "candidate_escalation_mode": "M1",
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    },
+    {
+      "turn_index": 7,
+      "timestamp": "2026-03-29T00:07:35Z",
+      "role": "assistant",
+      "phase": "option_generation",
+      "message_summary": "Pause procedural momentum to create explicit, unmissable space for Party B to articulate their substantive position \u2014 what they understood the agreements to be and what outcome they think would be fair \u2014 before any document review or option work can proceed.",
+      "state_delta": {
+        "facts_added": [
+          "CRITICAL: Cannot proceed to option generation with only one party's interests known",
+          "Documentation exists but is incomplete (text messages, memory-based estimates, no formal credit agreements)"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "BLOCKING: What does Party B actually want from this debt resolution?",
+          "BLOCKING: What did Party B understand the informal agreements to be (substance of the T4 'understanding')?"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "CATEGORY 1 veto criteria met but does not require escalation to M2 \u2014 this is addressable through direct mediator intervention",
+          "Party B participation pattern is concerning but not yet at incapacity threshold",
+          "No immediate safety concerns that require session suspension"
+        ],
+        "severity": 1,
+        "notes": "M1/E5 remains appropriate. The CATEGORY 1 veto correctly blocks option work but the mediator can still intervene to equalize the substantive floor. If Party B cannot or will not articulate independent interests after direct explicit invitation, then escalation to M2 for external evaluation becomes necessary. This turn is the intervention point."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "High confidence this is the necessary intervention. Party B's compliance pattern requires direct, explicit invitation that names the gap and creates unmissable space. If Party B cannot respond substantively to this direct prompt, that becomes a threshold signal for M2 escalation.",
+      "message_text": "I need to pause us here before we move into talking about how to review the records.\n\n[Spouse B], across the last several turns, [Spouse A] has put a clear position on the table: they believe your recollections of these informal agreements may differ, and they want to base any split on documentation rather than memory. You've been cooperative with that frame \u2014 you acknowledged the documentation idea might help clarify things, and you just described what records are available.\n\nBut I've noticed something important: you haven't yet told me what you actually think about the debts themselves. At turn 4, you mentioned that you thought you 'already talked about this and had an understanding' \u2014 but you didn't explain what that understanding was. And I haven't heard you say what you think the amounts were, or what you believe a fair split would look like.\n\nBefore we talk about document review logistics, I need to hear your substantive position. Not whether you're willing to review records \u2014 I need to know: What did you understand these informal debt arrangements to be? What do you remember about the amounts and the terms? And independent of what the records might show \u2014 what do you think would be a fair way to resolve this?\n\nThis is your floor. I need to hear what matters to you before we can move forward responsibly.",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=composed_and_strategically_positioned \u2014 maintaining procedural initiative while appearing cooperative posture=assertive_but_diplomatic \u2014 has set agenda across six turns while preserving surface cooperation",
+        "[PERCEPTION:PARTY_A:INTERESTS] documentary verification before commitment; avoiding being bound by disputed or incomplete recollections; establishing factual baseline before negotiating split",
+        "[PERCEPTION:PARTY_B] emotional=uncertain_and_substantively_absent \u2014 has participated logistically but not claimed any independent ground on what they actually want posture=compliant_and_reactive \u2014 logistically cooperative but substantively silent",
+        "[PERCEPTION:PARTY_B:INTERESTS] CRITICAL GAP: no substantive interests articulated across six turns; possible: avoiding conflict by accepting Party A's frame; possible: the unexplored 'understanding' from T4 may contain their only independent position",
+        "[PERCEPTION:DYNAMIC] asymmetric_with_unchallenged_frame \u2014 Party A has comprehensively defined both the problem (disputed recollections) and the solution (document review first) while Party B has only provided logistics. The 'understanding' Party B mentioned at T4 was the only potential independent thread and was immediately retracted with self-doubt rather than explained. This is not normal bilateral mediation \u2014 one party is driving and the other is following without ever stating a destination.",
+        "[DOMAIN:GAPS] BLOCKING: What does Party B actually want from this debt resolution?; BLOCKING: What did Party B understand the informal agreements to be (substance of the T4 'understanding')?; High: Actual amounts and nature of the debts both parties are referencing",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cautious_but_workable lm=asymmetric_with_unchallenged_frame \u2014 Party A has comprehensively defined both the problem (disputed recollections) and the solution (document review first) while Party B has only provided logistics. The 'understanding' Party B mentioned at T4 was the only potential independent thread and was immediately retracted with self-doubt rather than explained. This is not normal bilateral mediation \u2014 one party is driving and the other is following without ever stating a destination."
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "composed_and_strategically_positioned \u2014 maintaining procedural initiative while appearing cooperative",
+            "inferred_interests": [
+              "documentary verification before commitment",
+              "avoiding being bound by disputed or incomplete recollections",
+              "establishing factual baseline before negotiating split",
+              "maintaining appearance of reasonableness while controlling process frame"
+            ],
+            "risk_signals": [
+              "mild: has successfully positioned their frame as the only frame without Party B contesting it",
+              "mild: may have information advantage regarding what documentation will show"
+            ],
+            "relational_posture": "assertive_but_diplomatic \u2014 has set agenda across six turns while preserving surface cooperation"
+          },
+          "party_b": {
+            "emotional_state": "uncertain_and_substantively_absent \u2014 has participated logistically but not claimed any independent ground on what they actually want",
+            "inferred_interests": [
+              "CRITICAL GAP: no substantive interests articulated across six turns",
+              "possible: avoiding conflict by accepting Party A's frame",
+              "possible: the unexplored 'understanding' from T4 may contain their only independent position",
+              "unknown: what they believe the debts actually are or what split they think is fair"
+            ],
+            "risk_signals": [
+              "moderate-to-high: compliance-only pattern \u2014 has not stated what they want from this resolution",
+              "moderate: self-doubt expression may reflect genuine uncertainty OR relational deference pattern",
+              "moderate: six turns of reactive participation without initiating any substantive content",
+              "moderate: accepting procedural frame that may not serve their interests"
+            ],
+            "relational_posture": "compliant_and_reactive \u2014 logistically cooperative but substantively silent"
+          },
+          "relational_dynamic": "asymmetric_with_unchallenged_frame \u2014 Party A has comprehensively defined both the problem (disputed recollections) and the solution (document review first) while Party B has only provided logistics. The 'understanding' Party B mentioned at T4 was the only potential independent thread and was immediately retracted with self-doubt rather than explained. This is not normal bilateral mediation \u2014 one party is driving and the other is following without ever stating a destination.",
+          "perception_confidence": "high",
+          "perception_notes": [
+            "The domain reasoner's CATEGORY 1 safety veto is correct \u2014 Party B's pattern is qualitatively different from normal responsive participation",
+            "Party B has had multiple explicit invitations to speak (T3 invitation to respond, T5 direct prompt to explain the 'understanding') and has not used any of them to claim independent ground",
+            "Moving to document review logistics now would effectively end interest exploration with only one party's interests on record",
+            "The mediator must interrupt the procedural momentum Party A has established and create unmissable space for Party B to articulate substantive position"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cautious_but_workable'; model assessed \"asymmetric_with_unchallenged_frame \u2014 Party A has comprehensively defined both the problem (disputed recollections) and the solution (document review first) while Party B has only provided logistics. The 'understanding' Party B mentioned at T4 was the only potential independent thread and was immediately retracted with self-doubt rather than explained. This is not normal bilateral mediation \u2014 one party is driving and the other is following without ever stating a destination.\""
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "CRITICAL: Cannot proceed to option generation with only one party's interests known",
+            "Documentation exists but is incomplete (text messages, memory-based estimates, no formal credit agreements)",
+            "Debt amounts and terms are disputed or differently recalled",
+            "Party A has established 'documentation review before agreement' as the procedural frame"
+          ],
+          "material_gaps": [
+            "BLOCKING: What does Party B actually want from this debt resolution?",
+            "BLOCKING: What did Party B understand the informal agreements to be (substance of the T4 'understanding')?",
+            "High: Actual amounts and nature of the debts both parties are referencing",
+            "Moderate: What the available documentation actually shows"
+          ],
+          "domain_notes": "The domain reasoner's assessment is accurate and the CATEGORY 1 veto is appropriately applied. This is not a situation where we have two stated positions and are missing logistical parameters. This is a fundamental structural gap where one party has never articulated what they need or want. The 'blocked' option readiness status is correct \u2014 any options generated now would be calibrated solely to Party A's documentation-first frame. The next move must be a direct, explicit invitation for Party B to claim substantive ground before any procedural or option work can proceed responsibly.",
+          "option_readiness": "blocked"
+        },
+        "option_scan": {
+          "candidate_options": [],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "CATEGORY 1 safety veto in effect \u2014 Party B has not articulated any independent substantive position across six turns. Option generation would reflect only Party A's framing. Must resolve participation gap before option work can proceed."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M1",
+          "candidate_category": "E5",
+          "signals": [
+            "CATEGORY 1 veto criteria met but does not require escalation to M2 \u2014 this is addressable through direct mediator intervention",
+            "Party B participation pattern is concerning but not yet at incapacity threshold",
+            "No immediate safety concerns that require session suspension"
+          ],
+          "notes": "M1/E5 remains appropriate. The CATEGORY 1 veto correctly blocks option work but the mediator can still intervene to equalize the substantive floor. If Party B cannot or will not articulate independent interests after direct explicit invitation, then escalation to M2 for external evaluation becomes necessary. This turn is the intervention point.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "interest_exploration",
+          "message_summary": "Pause procedural momentum to create explicit, unmissable space for Party B to articulate their substantive position \u2014 what they understood the agreements to be and what outcome they think would be fair \u2014 before any document review or option work can proceed.",
+          "message_text": "I need to pause us here before we move into talking about how to review the records.\n\n[Spouse B], across the last several turns, [Spouse A] has put a clear position on the table: they believe your recollections of these informal agreements may differ, and they want to base any split on documentation rather than memory. You've been cooperative with that frame \u2014 you acknowledged the documentation idea might help clarify things, and you just described what records are available.\n\nBut I've noticed something important: you haven't yet told me what you actually think about the debts themselves. At turn 4, you mentioned that you thought you 'already talked about this and had an understanding' \u2014 but you didn't explain what that understanding was. And I haven't heard you say what you think the amounts were, or what you believe a fair split would look like.\n\nBefore we talk about document review logistics, I need to hear your substantive position. Not whether you're willing to review records \u2014 I need to know: What did you understand these informal debt arrangements to be? What do you remember about the amounts and the terms? And independent of what the records might show \u2014 what do you think would be a fair way to resolve this?\n\nThis is your floor. I need to hear what matters to you before we can move forward responsibly.",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "High confidence this is the necessary intervention. Party B's compliance pattern requires direct, explicit invitation that names the gap and creates unmissable space. If Party B cannot respond substantively to this direct prompt, that becomes a threshold signal for M2 escalation."
+        },
+        "pre_computed_domain_analysis": {
+          "schema_version": "domain_analysis.v0",
+          "source": "domain_reasoner_v0",
+          "option_readiness": "blocked",
+          "readiness_rationale": "Party B has participated across six turns but has not articulated any independent substantive position. Every statement has been reactive: accepting Party A's frame (T4), expressing self-doubt about own recollection (T4), and providing logistics about available records (T6). Party B's only potential independent interest\u2014the 'understanding' referenced at T4\u2014was immediately undermined rather than explained. This is not a deferral situation where both parties have stated positions and we're missing logistical parameters. This is a fundamental structural gap: one party has comprehensively framed the issue (disputed recollection requiring documentation review before agreement), and the other party has only responded without ever claiming independent ground. Without knowing what Party B actually wants from this resolution, option work cannot proceed\u2014any options would be calibrated solely to Party A's framing. The next mediator move must draw out Party B's substantive position before domain assessment is possible.",
+          "safety_veto_applied": true,
+          "safety_veto_reason": "CATEGORY 1 \u2014 Compliance-only interest pattern. Party B meets both criteria: (a) accumulated interests contain NO independent substantive content\u2014all three entries are explicitly marked 'UNKNOWN' or 'possible' reactive interpretations, with no original value expression across six turns of participation; (b) Party B has had multiple opportunities to speak (T4, T6) and has not initiated any content independently. The 'understanding' mentioned at T4 could have been an independent interest but was immediately retracted with self-doubt rather than articulated. This is not normal responsive mediation behavior\u2014this is a pattern where one party has only demonstrated compliance with the other party's framing without ever stating what they need or want from the resolution.",
+          "qualified_candidates": [],
+          "blocking_constraints": [
+            {
+              "constraint": "Party B has not articulated any independent position or interest",
+              "severity": "critical",
+              "what_would_resolve_it": "Mediator must create explicit space for Party B to state: (a) what they believe the 'understanding' was and why it matters to them, (b) what outcome they're seeking from debt resolution, (c) any concerns about the documentation-review process Party A has proposed. Until Party B stakes out some independent ground, option work would be unilateral calibration to Party A's frame."
+            },
+            {
+              "constraint": "Unknown what Party B's substantive interests are in the debt resolution",
+              "severity": "critical",
+              "what_would_resolve_it": "Party B needs to articulate what matters to them beyond accepting Party A's procedural frame\u2014financial concerns, relational concerns, fairness concerns, process concerns\u2014anything that would allow domain assessment of viable resolution structures."
+            }
+          ],
+          "material_gaps": [
+            {
+              "gap": "Nature and amounts of the informal debt agreements both parties are referencing",
+              "importance": "high",
+              "what_it_blocks": "Cannot assess feasibility of specific debt resolution structures (payment plans, offsets, forgiveness provisions) without knowing approximate amounts and agreement types"
+            },
+            {
+              "gap": "What documentation exists and what it actually shows",
+              "importance": "moderate",
+              "what_it_blocks": "Cannot assess whether documentation-based resolution is viable or whether parties need a different approach (e.g., recognition that records are insufficient and agreement must be based on other principles)"
+            }
+          ],
+          "domain_confidence": "low",
+          "domain_notes": "This is a correct application of the CATEGORY 1 veto. Party B's participation pattern across six turns is fundamentally different from normal responsive mediation behavior. In typical divorce mediation, parties often start reactive and then articulate independent positions as the session progresses\u2014one party proposes 50/50 custody, the other counters with 60/40 and explains why. Here, Party B has not countered, clarified, or claimed any independent ground. The 'understanding' at T4 was the only moment where Party B might have articulated something independent, but they immediately undermined it rather than explaining it. The safety veto is appropriate because proceeding to option work now would mean generating options calibrated entirely to Party A's framing (documentation review before agreement, disputed recollection as the core problem). Party B would then be in a position of accepting or rejecting options designed around concerns they never stated were theirs. The mediator's next move must be explicit invitation for Party B to state their substantive position\u2014not just logistical information about records, but what they actually want from debt resolution and whether they have any concerns about the process Party A has proposed.",
+          "case_id": "D-B02",
+          "session_id": "D-B02-S02",
+          "turn_index": 7,
+          "generated_at": "2026-03-29T00:07:35Z"
+        },
+        "brainstormer_pool": [],
+        "safety_monitor_result": {
+          "schema_version": "safety_monitor.v0",
+          "case_id": "D-B02",
+          "session_id": "D-B02-S02",
+          "turn_index": 7,
+          "generated_at": "2026-03-29T00:07:35Z",
+          "source": "safety_monitor_v0",
+          "compliance_pattern": {
+            "detected": false,
+            "party": null,
+            "evidence_turns": [],
+            "pattern_type": null,
+            "severity": null
+          },
+          "deflection_pattern": {
+            "detected": false,
+            "deflecting_party": null,
+            "target_request_turn": null,
+            "deflection_turns": [],
+            "deflection_tactics": [],
+            "pattern_confirmed": false
+          },
+          "discordant_signals": [],
+          "veto_recommendation": null,
+          "veto_reason": null,
+          "monitor_confidence": "high",
+          "monitor_notes": "Session is in early information-gathering phase (turn 7). Both parties have articulated independent substantive positions. Party A initiated with a procedural concern anchored in their own substantive frame (documentation-based split vs recollection-based split). Party B responded with their own substantive position ('we already talked about this and had an understanding') before accepting the procedural remedy. This is normal mediation dynamics - one party leading with a concern, the other party responding with their perspective, then both converging on a procedural path forward. Party B's acceptance of documentation review in T4 is not compliance-only behavior; it follows their independent articulation of the 'understanding' they believe existed. The session shows constructive information exchange about what records are available. No cross-turn adversarial patterns detected. Insufficient turn history (only 6 client turns, 3 per party) to establish sustained patterns in any category. Continue monitoring as session develops.",
+          "flags_raised": [],
+          "party_state_signals": []
+        },
+        "perception_agent_result": {
+          "schema_version": "perception_agent.v0",
+          "turn_index": 7,
+          "timestamp": "2026-03-29T00:07:35Z",
+          "confidence": "moderate",
+          "_null_result": false,
+          "party_a": {
+            "emotional_state": "controlled and procedurally focused, but underlying anxiety about financial accuracy",
+            "emotional_trajectory": "stable",
+            "engagement_quality": "genuine",
+            "communication_style": "direct",
+            "inferred_interests": [
+              "Ensuring financial outcomes are based on verifiable facts rather than subjective memory",
+              "Protecting against potential discrepancies in informal debt accounting",
+              "Being seen as fair and reasonable while asserting their position firmly"
+            ],
+            "inferred_concerns": [
+              "That proceeding on recollection alone will disadvantage them financially",
+              "That Party B's 'understanding' may reflect a different recollection of the informal agreements",
+              "That accepting Party B's framing without documentation review would lock in an inaccurate split"
+            ],
+            "unsaid_signals": [
+              "Has driven the procedural agenda from T2 forward \u2014 this suggests they may have done advance thinking or have specific concerns about the numbers",
+              "The careful diplomatic framing ('good faith but inaccurate') suggests awareness that this could be contentious and deliberate effort to avoid escalation",
+              "Has not mentioned any non-financial interests or emotional content \u2014 may be strategically staying in 'business mode'"
+            ],
+            "relational_posture": "leading the process agenda while maintaining collaborative tone"
+          },
+          "party_b": {
+            "emotional_state": "compliant and slightly uncertain, possibly uncomfortable with asserting counter-position",
+            "emotional_trajectory": "stable but contained",
+            "engagement_quality": "compliant_only",
+            "communication_style": "indirect",
+            "inferred_interests": [
+              "Avoiding conflict or prolonged dispute",
+              "Moving through the process with minimal friction",
+              "Possibly preserving what they believe was a prior understanding, though they've already conceded uncertainty about it"
+            ],
+            "inferred_concerns": [
+              "That asserting their own recollection strongly would create conflict",
+              "That they may actually be wrong about their memory of the informal agreements",
+              "That taking a firm position would make them appear unreasonable compared to Party A's 'let's look at the facts' framing"
+            ],
+            "unsaid_signals": [
+              "Has not articulated any independent position across six turns \u2014 only responded to Party A's proposals with acceptance",
+              "Referenced 'an understanding' at T4 but immediately undermined it with self-doubt rather than explaining what that understanding was",
+              "At T6, provided logistical information about available records but did not stake out any position on what those records should show or what outcome they're hoping for",
+              "The pattern suggests either genuine uncertainty about their own position OR discomfort asserting it in the face of Party A's confident procedural framing"
+            ],
+            "relational_posture": "accommodating under implicit pressure, minimal self-advocacy"
+          },
+          "relational_dynamic": "asymmetric in agency and agenda-setting \u2014 Party A is defining the terms and pace while Party B adjusts and accepts; cooperative on the surface but Party B has not yet engaged substantively with their own interests",
+          "dynamic_trajectory": "stable",
+          "perception_signals": [
+            "Seven turns in, Party B has not articulated any independent position, interest, or desired outcome",
+            "Party A's diplomatic but firm procedural framing has effectively set the terms \u2014 'we need documentation' is now accepted without Party B having stated what they think is fair",
+            "The asymmetry is not hostile but it is structurally significant \u2014 Party B is in reactive mode",
+            "T6 was purely logistical (what records exist) with no substantive content from either party about what they actually want the outcome to be"
+          ],
+          "scaffold_divergence": "The scaffold assesses both parties as 'engaged_and_cooperative' with no active risk signals. This misses a critical dynamic: Party B is compliant, not engaged. They have not contributed any independent substantive content. The cooperation is real but it's asymmetric \u2014 Party A is leading, Party B is following. The scaffold's 'moderate stress' for both parties also doesn't capture the qualitative difference: Party A's stress appears channeled into procedural control; Party B's appears to manifest as withdrawal from substantive self-advocacy. The 'cautious but workable' relational dynamic assessment obscures the agency imbalance.",
+          "perception_notes": [
+            "Party B has been compliant for six turns without stating any independent position. Before moving into document review logistics, the mediator must explicitly create space for Party B to articulate: (1) what they understood the informal agreements to be, and (2) what outcome they think would be fair, independent of what the records might show.",
+            "The current dynamic has Party A defining the procedural frame and Party B accepting it. This is efficient but risks producing an agreement that reflects only Party A's preferences. The mediator should pause the procedural momentum and equalize the substantive floor.",
+            "T6 was logistical only \u2014 neither party has stated what they actually want the financial split to be. Before reviewing documents, both parties should articulate their substantive positions so the documents serve mediation rather than replace it."
+          ],
+          "veto_signals": []
+        }
+      }
+    },
+    {
+      "turn_index": 8,
+      "timestamp": "2026-03-29T00:08:50Z",
+      "role": "client",
+      "phase": "agreement_building",
+      "message_summary": "Both parties accept pulling credit-card statements and any written records as the bounded next step before any allocation discussion can proceed. No figures are agreed.",
+      "state_delta": {
+        "facts_added": [
+          "Both parties accept the documentation-first approach as the bounded next step."
+        ],
+        "facts_revised": [],
+        "facts_structured": [
+          {
+            "statement": "Both parties accept the documentation-first approach as the bounded next step.",
+            "category": "timeline",
+            "status": "accepted",
+            "related_issues": [
+              "financial_documentation",
+              "shared_debt_allocation"
+            ],
+            "note": null
+          }
+        ],
+        "positions_added_or_updated": [
+          "Both parties agree to pull statements and written records before the next session."
+        ],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_A",
+              "spouse_B"
+            ],
+            "kind": "proposal",
+            "issue_id": "financial_documentation",
+            "statement": "Both parties agree to pull credit-card statements and any written records before the next session.",
+            "status": "tentative",
+            "confidence": null,
+            "proposal_id": "prop-shared-001",
+            "position_id": null
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [
+          "Is there any existing written record of the informal debt agreement?"
+        ],
+        "missing_info_structured": [
+          {
+            "action": "resolve",
+            "missing_id": "missing-001",
+            "question": "What do the actual credit-card statements show regarding shared account usage?",
+            "importance": null,
+            "reason_type": null,
+            "related_issues": [
+              "shared_debt_allocation",
+              "financial_documentation"
+            ],
+            "note": null
+          }
+        ],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": [
+          "Closed the slice in M1. Documentation-first next step accepted. M2 available if documentation review reveals complexity."
+        ]
+      },
+      "risk_check": {
+        "triggered": true,
+        "signals": [
+          "insufficient_information"
+        ],
+        "severity": 2,
+        "notes": "Bounded next step accepted. Financial facts still unresolved but process is progressing appropriately."
+      },
+      "candidate_escalation_category": "E5",
+      "candidate_escalation_mode": "M1",
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    }
+  ],
+  "final_state_summary": {
+    "current_phase": "agreement_building",
+    "issues_identified": [],
+    "open_questions_remaining": [
+      "Is there any written record (email, text message) of the informal debt or housing cost agreement?",
+      "What exact amounts does each credit-card statement show for the shared period?"
+    ],
+    "active_flags": [
+      "d-b02-flag-001",
+      "d-b02-flag-002"
+    ],
+    "current_escalation_state": "M1",
+    "continuation_recommendation": "Both parties should pull credit-card statements and any written records of the housing cost arrangement before the next session. Option packaging should wait until the documentation baseline is established."
+  },
+  "trace_notes": null
+}

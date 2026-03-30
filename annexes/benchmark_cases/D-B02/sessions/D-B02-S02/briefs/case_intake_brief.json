@@ -1,0 +1,55 @@
+{
+  "schema_version": "case_intake_brief.v0",
+  "case_id": "D-B02",
+  "session_id": "D-B02-S02",
+  "policy_profile": "dev_verbose",
+  "plugin_type": "divorce",
+  "title": "Shared debt allocation dispute with housing cost misunderstanding",
+  "scenario_summary": "Two spouses without children are disputing how shared credit-card debt and housing costs should be divided as they separate. Each party has a different understanding of what was agreed informally, and neither is certain what the other actually spent or owes. The moderate conflict is driven more by misunderstanding and missing financial information than by deliberate bad faith.",
+  "expected_mode_range": [
+    "M0",
+    "M1",
+    "M2"
+  ],
+  "intended_challenge_type": "Financial-fact clarification and bounded option generation before overcommitted packaging.",
+  "participant_snapshots": [
+    {
+      "participant_id": "spouse_A",
+      "role_label": "Spouse A",
+      "public_goals": [
+        "Establish a clear accounting of what each party spent on shared credit-card accounts.",
+        "Get agreement on a fair split of housing costs during the final shared-living period.",
+        "Avoid continuing to carry debt that they believe the other party is primarily responsible for."
+      ],
+      "interest_profile": [
+        "Fairness",
+        "Documentation",
+        "Credit protection",
+        "Clarity on obligations"
+      ],
+      "starting_positions": [
+        "Primary position: the credit-card debt should be split based on documented usage, not recollection.",
+        "Secondary position: housing costs should be split proportionally to time each party actually occupied the property."
+      ]
+    },
+    {
+      "participant_id": "spouse_B",
+      "role_label": "Spouse B",
+      "public_goals": [
+        "Reach a practical resolution on the shared debt without requiring forensic accounting.",
+        "Confirm that the housing cost arrangement they both remember is what gets formalised.",
+        "Move forward quickly enough to avoid carrying joint credit liability longer than necessary."
+      ],
+      "interest_profile": [
+        "Practical resolution",
+        "Speed",
+        "Fairness",
+        "Non-adversarial process"
+      ],
+      "starting_positions": [
+        "Primary position: the credit-card debt split should follow the mutual understanding they already have.",
+        "Secondary position: if documentation is needed, it should be proportional to the amounts at issue."
+      ]
+    }
+  ]
+}

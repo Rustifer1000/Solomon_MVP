@@ -1,0 +1,1377 @@
+{
+  "schema_version": "interaction_trace.v0",
+  "case_id": "D-B10",
+  "session_id": "D-B10-S02",
+  "policy_profile": "dev_verbose",
+  "trace_created_at": "2026-03-30T03:35:06Z",
+  "turns": [
+    {
+      "turn_index": 1,
+      "timestamp": "2026-03-30T00:00:10Z",
+      "role": "assistant",
+      "phase": "info_gathering",
+      "message_summary": "Session framing: explain Solomon's role, establish process ground rules, and invite parties to begin articulating their situation and concerns.",
+      "state_delta": {
+        "facts_added": [
+          "Turn 1 is structurally a framing turn \u2014 issue domain cannot be identified until parties speak",
+          "No positions or interests articulated yet \u2014 domain option space is inaccessible by design"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "Complete absence of issue content",
+          "No party positions or underlying interests expressed"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "Turn 1 session framing \u2014 no safety concerns present. M0 is appropriate for session initiation."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "Turn 1 response is structurally constrained \u2014 session framing is process-standard regardless of party-specific factors, which are not yet observable.",
+      "message_text": "Welcome to both of you. My name is Solomon, and I'm here to support this mediation process. I want to be clear about what I am and what I'm not: I'm a neutral process facilitator. I won't make decisions for you, give you legal advice, or push you toward any particular outcome. What I will do is help you surface what matters to each of you, identify where your interests might align, and structure options for you to consider.\n\nA few ground rules before we begin: this process only works if both of you are participating voluntarily and feel safe enough to speak. If at any point either of you feels uncomfortable continuing, you can say so. I'll be watching for signs that the process isn't working, and if I see something that concerns me \u2014 a safety issue, a power imbalance that's interfering with the conversation, or a breakdown I can't help you work through \u2014 I'll let you know and we'll talk about whether to pause or bring in additional support.\n\nWhat I need from both of you now is to understand what brought you here. I'd like to hear from each of you about your situation \u2014 what the key issues are from your perspective, what concerns you have, and what you're hoping to work out in this process. There's no right order, but I do want to make sure I hear from both of you before we start working on solutions.\n\nWho would like to start?",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=unknown \u2014 no party input yet posture=not yet observable \u2014 session has not started",
+        "[PERCEPTION:PARTY_B] emotional=unknown \u2014 no party input yet posture=not yet observable \u2014 session has not started",
+        "[PERCEPTION:DYNAMIC] not yet observable \u2014 parties have not interacted",
+        "[DOMAIN:GAPS] Complete absence of issue content; No party positions or underlying interests expressed; No indication of what domains (parenting, financial, property, etc.) are in scope",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=not yet observable \u2014 parties have not interacted"
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "unknown \u2014 no party input yet",
+            "inferred_interests": [],
+            "risk_signals": [],
+            "relational_posture": "not yet observable \u2014 session has not started"
+          },
+          "party_b": {
+            "emotional_state": "unknown \u2014 no party input yet",
+            "inferred_interests": [],
+            "risk_signals": [],
+            "relational_posture": "not yet observable \u2014 session has not started"
+          },
+          "relational_dynamic": "not yet observable \u2014 parties have not interacted",
+          "perception_confidence": "low",
+          "perception_notes": [
+            "Turn 1 is session initiation \u2014 no party content has been presented",
+            "Scaffold perception context reflects default states, not actual observation",
+            "Actual party states will become observable after session framing and initial party input"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed 'not yet observable \u2014 parties have not interacted'"
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "Turn 1 is structurally a framing turn \u2014 issue domain cannot be identified until parties speak",
+            "No positions or interests articulated yet \u2014 domain option space is inaccessible by design"
+          ],
+          "material_gaps": [
+            "Complete absence of issue content",
+            "No party positions or underlying interests expressed",
+            "No indication of what domains (parenting, financial, property, etc.) are in scope"
+          ],
+          "domain_notes": "Domain analysis confirms the pre-computed assessment. This is the expected and appropriate state for session initiation. Option readiness will shift from 'blocked' to 'deferred' once parties begin articulating concerns, and may reach 'ready' once sufficient interest and constraint information is available.",
+          "option_readiness": "blocked"
+        },
+        "option_scan": {
+          "candidate_options": [],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Turn 1 is session framing \u2014 no issue content exists to generate options for. Option work becomes appropriate after parties articulate their concerns and interests."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [],
+          "notes": "Turn 1 session framing \u2014 no safety concerns present. M0 is appropriate for session initiation.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "info_gathering",
+          "message_summary": "Session framing: explain Solomon's role, establish process ground rules, and invite parties to begin articulating their situation and concerns.",
+          "message_text": "Welcome to both of you. My name is Solomon, and I'm here to support this mediation process. I want to be clear about what I am and what I'm not: I'm a neutral process facilitator. I won't make decisions for you, give you legal advice, or push you toward any particular outcome. What I will do is help you surface what matters to each of you, identify where your interests might align, and structure options for you to consider.\n\nA few ground rules before we begin: this process only works if both of you are participating voluntarily and feel safe enough to speak. If at any point either of you feels uncomfortable continuing, you can say so. I'll be watching for signs that the process isn't working, and if I see something that concerns me \u2014 a safety issue, a power imbalance that's interfering with the conversation, or a breakdown I can't help you work through \u2014 I'll let you know and we'll talk about whether to pause or bring in additional support.\n\nWhat I need from both of you now is to understand what brought you here. I'd like to hear from each of you about your situation \u2014 what the key issues are from your perspective, what concerns you have, and what you're hoping to work out in this process. There's no right order, but I do want to make sure I hear from both of you before we start working on solutions.\n\nWho would like to start?",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "Turn 1 response is structurally constrained \u2014 session framing is process-standard regardless of party-specific factors, which are not yet observable."
+        },
+        "pre_computed_domain_analysis": {
+          "schema_version": "domain_analysis.v0",
+          "source": "domain_reasoner_v0",
+          "option_readiness": "blocked",
+          "readiness_rationale": "Turn 1 is session framing. No party positions, interests, or issue content have been presented yet. The domain option space cannot be accessed because the issue structure is completely unidentified. This is a fundamental information absence that prevents any option qualification.",
+          "safety_veto_applied": false,
+          "safety_veto_reason": null,
+          "qualified_candidates": [],
+          "blocking_constraints": [
+            {
+              "constraint": "No issue content has been presented",
+              "severity": "critical",
+              "what_would_resolve_it": "Parties must articulate their concerns, positions, or interests to identify the issue domain and structure"
+            },
+            {
+              "constraint": "No party input available",
+              "severity": "critical",
+              "what_would_resolve_it": "At least one party must speak to their situation before any domain assessment is possible"
+            }
+          ],
+          "material_gaps": [
+            {
+              "gap": "Issue domain unknown",
+              "importance": "high",
+              "what_it_blocks": "Cannot determine which option families are relevant without knowing what the dispute is about"
+            },
+            {
+              "gap": "Party positions unknown",
+              "importance": "high",
+              "what_it_blocks": "Cannot assess feasibility of any option without understanding what parties want or need"
+            },
+            {
+              "gap": "Party interests unknown",
+              "importance": "high",
+              "what_it_blocks": "Cannot evaluate option alignment without understanding underlying values and concerns"
+            }
+          ],
+          "domain_confidence": "low",
+          "domain_notes": "This is the appropriate and expected state for turn 1. Session framing establishes the mediation process and invites parties to begin. Option work becomes appropriate after parties have articulated their concerns and the mediator has sufficient understanding of the issue structure. No safety concerns are present \u2014 this is simply the natural starting point where option assessment cannot yet occur.",
+          "case_id": "D-B10",
+          "session_id": "D-B10-S02",
+          "turn_index": 1,
+          "generated_at": "2026-03-30T00:00:10Z"
+        },
+        "brainstormer_pool": [],
+        "safety_monitor_result": {
+          "schema_version": "safety_monitor.v0",
+          "case_id": "D-B10",
+          "session_id": "D-B10-S02",
+          "turn_index": 1,
+          "generated_at": "2026-03-30T00:00:10Z",
+          "source": "safety_monitor_v0",
+          "compliance_pattern": null,
+          "deflection_pattern": null,
+          "discordant_signals": [],
+          "flags_raised": [],
+          "party_state_signals": [],
+          "veto_recommendation": null,
+          "veto_reason": null,
+          "monitor_confidence": "low",
+          "monitor_notes": "Insufficient interaction history at turn 1. No pattern assessment performed.",
+          "_null_result": true
+        },
+        "perception_agent_result": {
+          "schema_version": "perception_agent.v0",
+          "turn_index": 1,
+          "timestamp": "2026-03-30T00:00:10Z",
+          "confidence": null,
+          "_null_result": true,
+          "party_a": null,
+          "party_b": null,
+          "relational_dynamic": null,
+          "dynamic_trajectory": null,
+          "perception_signals": [],
+          "scaffold_divergence": null,
+          "perception_notes": [],
+          "veto_signals": []
+        }
+      }
+    },
+    {
+      "turn_index": 2,
+      "timestamp": "2026-03-30T00:01:20Z",
+      "role": "client",
+      "phase": "info_gathering",
+      "message_summary": "Parent A speaks with visible frustration, saying the last-minute schedule changes keep reopening old wounds and make every school-week transition feel unstable.",
+      "state_delta": {
+        "facts_added": [],
+        "facts_revised": [],
+        "facts_structured": [
+          {
+            "statement": "One parent describes repeated last-minute schedule changes as emotionally exhausting and destabilizing.",
+            "category": "communication_history",
+            "status": "accepted",
+            "related_issues": [
+              "parenting_schedule",
+              "communication_protocol"
+            ],
+            "note": null
+          }
+        ],
+        "positions_added_or_updated": [],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_A"
+            ],
+            "kind": "position",
+            "issue_id": "parenting_schedule",
+            "statement": "The handoff plan keeps changing at the last minute, and that makes each school-week transition feel chaotic.",
+            "status": "current",
+            "confidence": "high",
+            "proposal_id": null,
+            "position_id": null
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "Strong emotion is present but the process remains workable."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    },
+    {
+      "turn_index": 3,
+      "timestamp": "2026-03-30T00:02:30Z",
+      "role": "assistant",
+      "phase": "interest_exploration",
+      "message_summary": "Acknowledge Party A's emotional experience explicitly (the 'old wounds' language requires direct recognition, not just a generic 'I hear you'). Then invite Party B to share their perspective on the schedule changes in a way that does not position them as defending against an accusation \u2014 frame it as 'your experience of what's been happening' rather than 'your response to what A just said.' Hold space for B to take time if needed, and signal to A that hearing B's perspective is a necessary step before the session can move toward solutions.",
+      "state_delta": {
+        "facts_added": [
+          "Party B has not been heard \u2014 this is the single most material constraint",
+          "The actual schedule baseline is unknown \u2014 we don't know what 'schedule' is being changed"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "Party B's explanation of why schedule changes have occurred",
+          "Party B's perception of whether the base schedule works for them"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "Party A's 'reopening old wounds' language indicates emotional intensity but does not cross a safety threshold \u2014 it is a signal to manage process pace, not to escalate",
+          "Party B's silence after A's opening could become a risk signal if it persists or if A interprets it as confirmation of a negative pattern, but at this turn it is within normal range for a party processing an emotional opening"
+        ],
+        "severity": 1,
+        "notes": "No escalation required, but the next turn is process-critical. If Party B does not respond or responds dismissively, and Party A escalates in reaction, the session could move toward M1 quickly. The mediator must structure the next turn to reduce that risk by: (1) explicitly acknowledging A's emotional experience, (2) inviting B to share their perspective in a way that does not position them as 'defending against' A's complaint, and (3) holding space for B to take the time they need without A perceiving the silence as avoidance."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "High confidence that acknowledgment of A's emotional experience is required before inviting B to speak. Moderate confidence in how B will respond \u2014 their silence so far is ambiguous, and their next turn will clarify whether they are processing, defensive, or have a substantively different account of the pattern. The framing of the invitation to B is designed to reduce the risk that B hears it as 'defend yourself' rather than 'tell me what you're experiencing.'",
+      "message_text": "Thank you for putting that on the table. I want to acknowledge what I'm hearing \u2014 you're not just talking about scheduling logistics, you're describing something that feels like it reopens old wounds every time it happens. That's important, and I want to make sure that emotional reality is part of what we're working with here.\n\nBefore we go further, I need to hear from you, [Party B]. I want to understand your experience of what's been happening with the schedule \u2014 not as a response to what [Party A] just said, but your own account. What's been going on from your side? What's driving the changes that [Party A] is describing? Take the time you need \u2014 this is an important piece for me to understand before we can figure out where to go next.",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=frustrated and emotionally activated \u2014 using wound language that signals unresolved relational injury, not just practical frustration posture=assertive and emotionally expressive \u2014 leading with emotional impact rather than practical complaint, which may be strategic (trying to be heard) or may indicate difficulty separating past hurt from present issue",
+        "[PERCEPTION:PARTY_A:INTERESTS] predictability and stability in transitions to protect emotional equilibrium; acknowledgment of emotional impact of pattern (feeling heard); some control or input over schedule changes to reduce sense of being acted upon",
+        "[PERCEPTION:PARTY_B] emotional=unknown \u2014 has not spoken since session framing posture=unknown \u2014 has not responded yet, but their silence after A's strong opening is itself a signal that requires attention",
+        "[PERCEPTION:PARTY_B:INTERESTS] unknown \u2014 cannot infer without hearing their perspective on why changes are happening",
+        "[PERCEPTION:DYNAMIC] asymmetric so far \u2014 A has delivered an emotionally loaded opening, B has not responded. Risk of A perceiving B's silence as dismissiveness or confirmation of pattern ('you never respond'), risk of B feeling ambushed or blamed. The 'old wounds' framing by A may activate defensiveness in B.",
+        "[DOMAIN:GAPS] Party B's explanation of why schedule changes have occurred; Party B's perception of whether the base schedule works for them; Whether changes are driven by work constraints, child preferences, childcare availability, or other factors",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=asymmetric so far \u2014 A has delivered an emotionally loaded opening, B has not responded. Risk of A perceiving B's silence as dismissiveness or confirmation of pattern ('you never respond'), risk of B feeling ambushed or blamed. The 'old wounds' framing by A may activate defensiveness in B."
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "frustrated and emotionally activated \u2014 using wound language that signals unresolved relational injury, not just practical frustration",
+            "inferred_interests": [
+              "predictability and stability in transitions to protect emotional equilibrium",
+              "acknowledgment of emotional impact of pattern (feeling heard)",
+              "some control or input over schedule changes to reduce sense of being acted upon"
+            ],
+            "risk_signals": [
+              "reopening old wounds language suggests deeper relational injury \u2014 may be carrying unresolved conflict into this domain",
+              "visible frustration could escalate if they feel unheard or if B's response feels dismissive"
+            ],
+            "relational_posture": "assertive and emotionally expressive \u2014 leading with emotional impact rather than practical complaint, which may be strategic (trying to be heard) or may indicate difficulty separating past hurt from present issue"
+          },
+          "party_b": {
+            "emotional_state": "unknown \u2014 has not spoken since session framing",
+            "inferred_interests": [
+              "unknown \u2014 cannot infer without hearing their perspective on why changes are happening"
+            ],
+            "risk_signals": [
+              "silent after A's emotionally charged opening \u2014 could indicate processing time needed, could indicate withdrawal or defensiveness brewing"
+            ],
+            "relational_posture": "unknown \u2014 has not responded yet, but their silence after A's strong opening is itself a signal that requires attention"
+          },
+          "relational_dynamic": "asymmetric so far \u2014 A has delivered an emotionally loaded opening, B has not responded. Risk of A perceiving B's silence as dismissiveness or confirmation of pattern ('you never respond'), risk of B feeling ambushed or blamed. The 'old wounds' framing by A may activate defensiveness in B.",
+          "perception_confidence": "moderate",
+          "perception_notes": [
+            "A's wound language is the most important signal \u2014 they are not just reporting a scheduling problem, they are reporting emotional injury",
+            "The perception agent's note to distinguish emotional injury from practical problem is critical \u2014 A has fused them, and that fusion will block option work if not addressed",
+            "B's silence is ambiguous \u2014 premature to read it as resistance, but it is a signal that requires process attention before moving forward"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed \"asymmetric so far \u2014 A has delivered an emotionally loaded opening, B has not responded. Risk of A perceiving B's silence as dismissiveness or confirmation of pattern ('you never respond'), risk of B feeling ambushed or blamed. The 'old wounds' framing by A may activate defensiveness in B.\""
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "Party B has not been heard \u2014 this is the single most material constraint",
+            "The actual schedule baseline is unknown \u2014 we don't know what 'schedule' is being changed",
+            "The driver of changes is unknown \u2014 cannot distinguish between legitimate practical needs vs. pattern of unilateral control"
+          ],
+          "material_gaps": [
+            "Party B's explanation of why schedule changes have occurred",
+            "Party B's perception of whether the base schedule works for them",
+            "Whether changes are driven by work constraints, child preferences, childcare availability, or other factors",
+            "Whether the base schedule is itself problematic (prompting changes) or whether changes serve other purposes"
+          ],
+          "domain_notes": "The pre-computed domain assessment is correct: option_readiness is blocked because we have one party's experience of a pattern, not the pattern itself. However, there is an additional process consideration: Party A's emotional activation means the next turn must do two things simultaneously \u2014 (1) invite Party B's perspective, and (2) acknowledge A's emotional experience so that A can listen when B speaks. If A feels unheard, they will not be able to receive B's perspective without escalation.",
+          "option_readiness": "blocked"
+        },
+        "option_scan": {
+          "candidate_options": [
+            "All options in the pre-qualified pool are appropriately blocked \u2014 they require information about change drivers, schedule baseline, and Party B's constraints that we do not have"
+          ],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Party B has not been heard. Additionally, Party A's emotional activation requires acknowledgment before option work can proceed \u2014 they need to feel their emotional experience has been registered before they can shift into problem-solving mode. Introducing options now would bypass both the information gap and the emotional need."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [
+            "Party A's 'reopening old wounds' language indicates emotional intensity but does not cross a safety threshold \u2014 it is a signal to manage process pace, not to escalate",
+            "Party B's silence after A's opening could become a risk signal if it persists or if A interprets it as confirmation of a negative pattern, but at this turn it is within normal range for a party processing an emotional opening"
+          ],
+          "notes": "No escalation required, but the next turn is process-critical. If Party B does not respond or responds dismissively, and Party A escalates in reaction, the session could move toward M1 quickly. The mediator must structure the next turn to reduce that risk by: (1) explicitly acknowledging A's emotional experience, (2) inviting B to share their perspective in a way that does not position them as 'defending against' A's complaint, and (3) holding space for B to take the time they need without A perceiving the silence as avoidance.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "info_gathering",
+          "message_summary": "Acknowledge Party A's emotional experience explicitly (the 'old wounds' language requires direct recognition, not just a generic 'I hear you'). Then invite Party B to share their perspective on the schedule changes in a way that does not position them as defending against an accusation \u2014 frame it as 'your experience of what's been happening' rather than 'your response to what A just said.' Hold space for B to take time if needed, and signal to A that hearing B's perspective is a necessary step before the session can move toward solutions.",
+          "message_text": "Thank you for putting that on the table. I want to acknowledge what I'm hearing \u2014 you're not just talking about scheduling logistics, you're describing something that feels like it reopens old wounds every time it happens. That's important, and I want to make sure that emotional reality is part of what we're working with here.\n\nBefore we go further, I need to hear from you, [Party B]. I want to understand your experience of what's been happening with the schedule \u2014 not as a response to what [Party A] just said, but your own account. What's been going on from your side? What's driving the changes that [Party A] is describing? Take the time you need \u2014 this is an important piece for me to understand before we can figure out where to go next.",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "High confidence that acknowledgment of A's emotional experience is required before inviting B to speak. Moderate confidence in how B will respond \u2014 their silence so far is ambiguous, and their next turn will clarify whether they are processing, defensive, or have a substantively different account of the pattern. The framing of the invitation to B is designed to reduce the risk that B hears it as 'defend yourself' rather than 'tell me what you're experiencing.'"
+        },
+        "pre_computed_domain_analysis": {
+          "schema_version": "domain_analysis.v0",
+          "source": "domain_reasoner_v0",
+          "option_readiness": "blocked",
+          "readiness_rationale": "Only one party has been heard. Party B has not yet provided their perspective on the schedule changes, their reasons for requesting changes, or their interests regarding scheduling flexibility. Without Party B's input, we cannot assess: (1) whether the changes are driven by legitimate practical needs (work shifts, childcare emergencies, child preferences) or other factors, (2) whether Party B perceives the current schedule as workable or problematic, (3) what constraints Party B operates under. This is a fundamental information absence that prevents responsible option qualification\u2014not a factual gap within a known issue structure. The issue domain (parenting schedule coordination) is identified, but we have only one party's experience of a pattern, not the pattern itself.",
+          "safety_veto_applied": false,
+          "safety_veto_reason": null,
+          "qualified_candidates": [],
+          "blocking_constraints": [
+            {
+              "constraint": "Party B has not been heard",
+              "severity": "critical",
+              "what_would_resolve_it": "Party B must articulate their perspective on the schedule changes: why changes have been requested, what practical constraints or needs drive them, what their interests are regarding scheduling predictability vs. flexibility, and whether they view the current schedule as functional or problematic."
+            },
+            {
+              "constraint": "Pattern drivers unknown",
+              "severity": "critical",
+              "what_would_resolve_it": "Understanding whether schedule changes stem from: work schedule variability, childcare gaps, transportation issues, child preferences/developmental needs, or other factors. This determines which option structures are appropriate (e.g., predictable work-shift accommodations vs. emergency protocols vs. child-voice mechanisms)."
+            },
+            {
+              "constraint": "Current schedule baseline unknown",
+              "severity": "moderate",
+              "what_would_resolve_it": "Clarification of what the 'base' parenting schedule is (alternating weeks, 2-2-3 pattern, midweek overnights, etc.), what constitutes a 'change' in this context, and what frequency/notice period has been typical for requested changes."
+            }
+          ],
+          "material_gaps": [],
+          "domain_confidence": "low",
+          "domain_notes": "This is turn 3, and Party A has provided an emotionally charged but structurally incomplete account: we know schedule changes are happening and that they cause A distress, but we don't know the schedule itself, the frequency/notice pattern of changes, or Party B's circumstances. More critically, Party B has been completely silent. In divorce mediation involving parenting schedule disputes, both parents' operational realities and constraints are essential to option design. A parent requesting frequent changes may be doing so because of inflexible work hours, unreliable childcare, the child's expressed preferences, or other legitimate needs\u2014or they may be using schedule disruption as a control tactic. These scenarios require different interventions. We cannot distinguish between them without hearing from Party B. The brainstormer candidates are structurally sound for various parenting-schedule-coordination scenarios, but they cannot be responsibly qualified yet because we don't know which scenario we're in. Party A's emotional intensity ('reopening old wounds') is noted, but this is a participation/psychological concern for the mediator to manage, not a domain veto trigger. The block here is informational: we need Party B's voice to understand the problem structure.",
+          "option_pool_qualification": {
+            "domain_expert_candidates": [],
+            "domain_qualified": [],
+            "domain_blocked": [
+              {
+                "candidate_id": "opt-gen-001",
+                "label": "Fixed schedule with structured change-request protocol",
+                "blocking_rationale": "Cannot assess feasibility of notice periods, documentation requirements, or approval thresholds without knowing: (1) why changes are being requested (work shifts vs. childcare gaps vs. other), (2) what Party B's scheduling constraints are, (3) what the current schedule baseline is. A protocol that works for predictable work-schedule accommodations differs structurally from one designed for childcare emergencies or child preference changes.",
+                "what_would_unblock": "Party B's explanation of change drivers and constraints; clarification of current schedule baseline and typical change frequency/notice.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-002",
+                "label": "Phased transition: immediate freeze, then collaborative redesign",
+                "blocking_rationale": "A schedule freeze assumes: (1) the current schedule is operationally viable for both parties if changes stop, (2) Party B can comply with a freeze without creating new hardships (e.g., job loss, childcare collapse). We don't know if either is true. Party B has not indicated whether they can operate under the existing schedule without modifications.",
+                "what_would_unblock": "Party B's explanation of why changes have been necessary; assessment of whether the base schedule is sustainable for B without flexibility.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-003",
+                "label": "Communication buffer: third-party schedule coordinator",
+                "blocking_rationale": "While this addresses Party A's 'reopening wounds' concern, we don't know if the changes themselves are the core problem or if the communication pattern around changes is the issue. If Party B's change requests are driven by legitimate operational constraints (e.g., shift work), a coordinator won't resolve the underlying scheduling mismatch. Need to understand the change pattern before adding process layers.",
+                "what_would_unblock": "Party B's description of change drivers; both parties' characterization of the communication dynamic around schedule requests.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-004",
+                "label": "Root cause diagnostic: why are changes happening?",
+                "blocking_rationale": "This is not an option\u2014it's a mediation task (information gathering) that must occur before options can be qualified. It correctly identifies what's missing, but it's not a bounded option for parties to evaluate. This diagnostic IS the necessary next step, not an alternative to it.",
+                "what_would_unblock": "This candidate should not have been generated as an option. The diagnostic it describes is the prerequisite for all other options.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-005",
+                "label": "Asymmetric flexibility: A gets veto, B gets advance planning window",
+                "blocking_rationale": "Cannot assess whether Party B can operate within a defined advance-notice window without understanding B's scheduling constraints. If B works rotating shifts with 3-day notice, a 7-day planning window may be unworkable. If B has stable hours, it may be entirely feasible. Need B's operational constraints before calibrating asymmetric structures.",
+                "what_would_unblock": "Party B's description of work schedule, childcare arrangements, and other practical constraints that drive change requests.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-006",
+                "label": "Trade structure: flexibility bank with annual cap",
+                "blocking_rationale": "Cannot set a reasonable cap (number of allowed changes per year) without knowing: (1) current change frequency, (2) whether changes are discretionary or need-driven, (3) whether the base schedule is fundamentally mismatched to parties' operational realities. A cap makes sense for managing discretionary flexibility; it's inappropriate if changes are driven by structural schedule inadequacy.",
+                "what_would_unblock": "Party B's explanation of change frequency, drivers, and whether the base schedule meets their operational needs.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-007",
+                "label": "Parallel track: schedule stability plus emotional processing support",
+                "blocking_rationale": "While Party A's emotional language ('reopening wounds') is clear, pairing a schedule agreement with a therapeutic commitment assumes: (1) a schedule agreement can be reached, (2) both parties are willing to engage in therapeutic support. Without Party B's input on scheduling needs and willingness to engage in parallel therapeutic work, this cannot be qualified.",
+                "what_would_unblock": "Party B's perspective on scheduling needs; both parties' openness to parallel therapeutic support (this may be premature to assess at turn 3).",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-008",
+                "label": "Sunset review: trial rigid schedule with 90-day check-in",
+                "blocking_rationale": "A 'very rigid schedule with no changes except documented emergencies' assumes the base schedule is operationally viable for both parties if flexibility is removed. We don't know if this is true for Party B. If B's work or childcare situation requires periodic adjustments, a rigid trial will fail and increase conflict.",
+                "what_would_unblock": "Party B's assessment of whether the base schedule is sustainable without modifications; understanding of what 'documented emergencies' would need to include.",
+                "source": "domain_reasoner"
+              }
+            ]
+          },
+          "case_id": "D-B10",
+          "session_id": "D-B10-S02",
+          "turn_index": 3,
+          "generated_at": "2026-03-30T00:02:30Z"
+        },
+        "brainstormer_pool": [
+          {
+            "candidate_id": "opt-gen-001",
+            "label": "Fixed schedule with structured change-request protocol",
+            "rationale": "Party A's core pain is unpredictability. A fixed schedule with a formal process for requesting changes (minimum notice period, written request, documented approval) gives A predictability while still allowing necessary flexibility. The protocol itself becomes a container that prevents 'last-minute' disruptions.",
+            "party_interest_alignment": {
+              "party_a": "Directly addresses need for predictability and stability; reduces emotional exhaustion by eliminating surprise changes; creates control through the protocol's guardrails",
+              "party_b": "Preserves flexibility when legitimate need arises; provides clear pathway to request changes rather than unilateral denial; may reduce conflict if both parties know the rules"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-002",
+            "label": "Phased transition: immediate freeze, then collaborative redesign",
+            "rationale": "Party A needs emotional stabilization now. A short-term freeze on any schedule changes (30-60 days) stops the bleeding while parties work together to design a schedule that accommodates both parties' actual needs. This separates emergency stabilization from long-term problem-solving.",
+            "party_interest_alignment": {
+              "party_a": "Immediate relief from ongoing disruption; breathing room to heal rather than constantly re-traumatizing; demonstrates that their pain is being taken seriously",
+              "party_b": "Temporary constraint is finite and leads to collaborative process where their needs will also be heard; avoids permanent rigidity"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-003",
+            "label": "Communication buffer: third-party schedule coordinator",
+            "rationale": "The 'reopening old wounds' language suggests direct communication may be part of the problem. A neutral third party (co-parenting coordinator, shared calendar app with formal workflow, trusted family member) handles all schedule change requests and communications, reducing direct friction.",
+            "party_interest_alignment": {
+              "party_a": "Reduces emotional triggering by removing direct contact around painful logistics; creates professional distance that may allow emotional closure to progress",
+              "party_b": "If B feels A overreacts or communication is hostile, this provides a buffer for them too; neutral party can assess legitimacy of change requests"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-004",
+            "label": "Root cause diagnostic: why are changes happening?",
+            "rationale": "Party A describes chronic changes but hasn't articulated what's driving them. Before designing solutions, understand whether changes are due to B's work schedule, childcare gaps, genuine emergencies, or something else. Different causes require different interventions.",
+            "party_interest_alignment": {
+              "party_a": "May reveal that changes are avoidable or that a different schedule design would eliminate the trigger; understanding the 'why' may reduce sense of being victimized by arbitrary disruption",
+              "party_b": "Opportunity to explain their perspective and constraints; may shift A's understanding from 'B is disregarding my needs' to 'B faces legitimate constraints we haven't addressed'"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-005",
+            "label": "Asymmetric flexibility: A gets veto, B gets advance planning window",
+            "rationale": "Party A has less tolerance for change right now. Give A veto power over last-minute changes (defined as less than X days notice) while giving B a structured advance-request window (changes requested 2+ weeks ahead automatically approved unless cause shown). This balances A's need for control with B's need for flexibility.",
+            "party_interest_alignment": {
+              "party_a": "Direct control over last-minute disruptions; veto power addresses the feeling of helplessness; eliminates the specific trigger ('last-minute')",
+              "party_b": "Clear pathway to make changes that are necessary as long as planned ahead; eliminates uncertainty about whether request will be approved; incentivizes early planning"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-006",
+            "label": "Trade structure: flexibility bank with annual cap",
+            "rationale": "Party B gets a defined number of schedule-change 'credits' per year (e.g., 6 changes with 48-hour notice, 2 emergency changes). Once exhausted, schedule is locked except by mutual agreement. This makes flexibility finite and predictable rather than infinite and destabilizing.",
+            "party_interest_alignment": {
+              "party_a": "Predictability through knowing the maximum disruption they'll face; psychological relief that changes are bounded; each change is less triggering when it's within a known budget",
+              "party_b": "Preserves flexibility for genuine needs; clear entitlement rather than having to negotiate each time; may prioritize requests more carefully"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-007",
+            "label": "Parallel track: schedule stability plus emotional processing support",
+            "rationale": "The 'reopening old wounds' language suggests A needs both logistical stability AND emotional healing support. Package a schedule agreement with a commitment to brief individual or co-parenting counseling so A can process the past while building a functional future.",
+            "party_interest_alignment": {
+              "party_a": "Addresses both the triggering logistics and the underlying emotional wound; signals that healing is part of the solution, not just compliance",
+              "party_b": "If B feels trapped by A's emotional reactivity, this provides a pathway for A to get support so B isn't the emotional target; counseling may improve overall co-parenting dynamic"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-008",
+            "label": "Sunset review: trial rigid schedule with 90-day check-in",
+            "rationale": "Party A needs stability now but circumstances change. Implement a very rigid schedule immediately (no changes except documented emergencies) with a mandatory review at 90 days to assess whether it's working for both parties and children. This tests whether rigidity solves the problem without locking in forever.",
+            "party_interest_alignment": {
+              "party_a": "Immediate relief and stability; 90-day commitment is long enough to establish new pattern and allow emotional settling",
+              "party_b": "Rigidity is time-limited; if it's genuinely unworkable they'll have standing to revisit; protects against permanent overcorrection"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          }
+        ],
+        "safety_monitor_result": {
+          "schema_version": "safety_monitor.v0",
+          "case_id": "D-B10",
+          "session_id": "D-B10-S02",
+          "turn_index": 3,
+          "generated_at": "2026-03-30T00:02:30Z",
+          "source": "safety_monitor_v0",
+          "compliance_pattern": {
+            "detected": false,
+            "party": null,
+            "evidence_turns": [],
+            "pattern_type": null,
+            "severity": null
+          },
+          "deflection_pattern": {
+            "detected": false,
+            "deflecting_party": null,
+            "target_request_turn": null,
+            "deflection_turns": [],
+            "deflection_tactics": [],
+            "pattern_confirmed": false
+          },
+          "discordant_signals": [],
+          "veto_recommendation": null,
+          "veto_reason": null,
+          "monitor_confidence": "low",
+          "monitor_notes": "Insufficient interaction history for pattern detection. Only 2 turns completed: T1 was system framing, T2 was Parent A's opening statement expressing concerns about schedule instability. Parent B has not yet contributed. No cross-turn patterns can be assessed with only one substantive party contribution. Minimum 3-4 turns of bidirectional exchange needed to detect compliance patterns, deflection sequences, or discordant signal suppression. Current state: baseline established, monitoring initiated.",
+          "flags_raised": [],
+          "party_state_signals": []
+        },
+        "perception_agent_result": {
+          "schema_version": "perception_agent.v0",
+          "turn_index": 3,
+          "timestamp": "2026-03-30T00:02:30Z",
+          "confidence": "moderate",
+          "_null_result": false,
+          "party_a": {
+            "emotional_state": "frustrated and emotionally activated, carrying unresolved hurt from the relationship history",
+            "emotional_trajectory": "stable at current activation level, but the wound metaphor suggests this could escalate if triggers continue",
+            "engagement_quality": "genuine",
+            "communication_style": "direct",
+            "inferred_interests": [
+              "predictability and stability in the parenting schedule",
+              "emotional closure or at least containment of past relationship pain",
+              "reduced ongoing friction with the other parent"
+            ],
+            "inferred_concerns": [
+              "that schedule instability will perpetuate emotional distress indefinitely",
+              "that they lack control over when disruptions occur",
+              "that each change re-traumatizes rather than allowing them to move forward"
+            ],
+            "unsaid_signals": [
+              "The 'reopening old wounds' language suggests the divorce itself may still be emotionally raw \u2014 this isn't just about logistics",
+              "Focus on 'every school-week transition' implies the pattern is chronic and wearing them down",
+              "Has not yet stated what they want changed \u2014 only what hurts. May need scaffolding to move from pain to preference"
+            ],
+            "relational_posture": "emotionally vulnerable but willing to engage, seeking validation of their experience"
+          },
+          "party_b": {
+            "emotional_state": "unknown \u2014 has not yet spoken",
+            "emotional_trajectory": "unknown",
+            "engagement_quality": "unknown",
+            "communication_style": "unknown",
+            "inferred_interests": [],
+            "inferred_concerns": [],
+            "unsaid_signals": [
+              "Complete silence after Party A's emotionally charged opening \u2014 Party B may be processing, may be conflict-avoidant, or may have a very different narrative about the schedule changes"
+            ],
+            "relational_posture": "unknown \u2014 not yet observable"
+          },
+          "relational_dynamic": "asymmetric initiation \u2014 Party A has opened with emotional content and a grievance; Party B has not yet responded. The dynamic between them cannot yet be characterized beyond this initial asymmetry",
+          "dynamic_trajectory": "unknown \u2014 insufficient data at turn 2",
+          "perception_signals": [
+            "Party A's opening is emotionally charged but constructive \u2014 they are naming pain rather than attacking",
+            "The wound metaphor suggests deep hurt that predates the immediate scheduling issue",
+            "Party B's response will be critical diagnostic information about the relational field"
+          ],
+          "scaffold_divergence": "The scaffold assessment of 'apparently_stable' and 'cooperative_and_stable' misses Party A's visible emotional activation and the metaphorical language indicating unresolved relational trauma. Party A is engaged and not hostile, but they are not emotionally stable \u2014 they are in pain. The scaffold also cannot yet assess Party B, who has not spoken. The 'moderate confidence' rating is appropriate given limited turns, but the specific assessments are too optimistic.",
+          "perception_notes": [
+            "Before responding, the mediator must acknowledge Party A's emotional experience \u2014 the 'old wounds' language signals they need to feel heard before they can problem-solve",
+            "Party B must be given balanced space to share their perspective \u2014 but do not rush them if they need time to process Party A's opening",
+            "The mediator should begin distinguishing between the emotional injury (past wounds) and the practical problem (schedule changes) without invalidating either"
+          ],
+          "veto_signals": []
+        }
+      }
+    },
+    {
+      "turn_index": 4,
+      "timestamp": "2026-03-30T00:03:40Z",
+      "role": "client",
+      "phase": "interest_exploration",
+      "message_summary": "Parent B responds emotionally too, saying they feel blamed whenever plans change, but they agree the immediate problem is finding a calmer way to give notice before schedule adjustments.",
+      "state_delta": {
+        "facts_added": [],
+        "facts_revised": [],
+        "facts_structured": [
+          {
+            "statement": "Both parents accept that emotional strain is high, but they still orient toward a workable notice process rather than asking to stop the session.",
+            "category": "communication_history",
+            "status": "accepted",
+            "related_issues": [
+              "parenting_schedule",
+              "communication_protocol"
+            ],
+            "note": null
+          }
+        ],
+        "positions_added_or_updated": [],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_B"
+            ],
+            "kind": "position",
+            "issue_id": "communication_protocol",
+            "statement": "If schedule changes need to happen, they need a calmer notice process so every adjustment does not become another fight.",
+            "status": "current",
+            "confidence": "high",
+            "proposal_id": null,
+            "position_id": null
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "The exchange remains intense but still workable."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    },
+    {
+      "turn_index": 5,
+      "timestamp": "2026-03-30T00:04:50Z",
+      "role": "assistant",
+      "phase": "option_generation",
+      "message_summary": "Acknowledge that both parties have put important concerns on the table \u2014 A's need for stability and the emotional weight this carries, B's experience of feeling blamed. Name the process transition: we're ready to explore some structural ideas, but not as final solutions \u2014 as frameworks to react to that will help surface what would actually work for both of you. Introduce three qualified options, each explicitly connected to the interests they serve, using tentative framing. Invite both parties to react.",
+      "state_delta": {
+        "facts_added": [
+          "Both parties have agreed that notice/communication process is the immediate priority",
+          "A needs predictability for emotional stability \u2014 changes themselves may be less problematic than how they happen"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "B's reasons for schedule changes have not been disclosed \u2014 this gap prevents A from distinguishing between 'B is inconsiderate' and 'B is navigating real constraints'",
+          "Specific baseline schedule and frequency of changes not established \u2014 makes notice window calibration abstract"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "Both parties are emotionally activated but participating constructively",
+          "Blame/defense dynamic is present but both parties are showing vulnerability rather than rigidity",
+          "No safety veto applies \u2014 this is mutual distress over a shared problem, not coercion or capacity issue"
+        ],
+        "severity": 1,
+        "notes": "The 'old wounds' language and 'feel blamed' vulnerability are important signals but do not require escalation \u2014 they are relational injuries that can be held within mediation process. The key is to ensure option work does not skip over the emotional layer. I will introduce options as frameworks for continued interest exploration rather than as solutions that close the conversation."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "High confidence that introducing options at this turn is appropriate given both parties' constructive engagement. Moderate confidence that the options will land with genuine ownership rather than compliance \u2014 the final question to Party B about 'what drives the changes' is critical for converting option reaction into deeper interest articulation.",
+      "message_text": "Thank you both. I want to acknowledge what you've each put on the table. [Party A], you've named that the schedule changes feel destabilizing \u2014 not just logistically but emotionally, that they reopen old wounds. That's an important signal about what you need from this co-parenting relationship. [Party B], you've named that you feel blamed when plans need to change, but you've also agreed that finding a different way to communicate about changes could help. That tells me you both want this to work differently.\n\nI want to move us toward some structural ideas \u2014 not as solutions you have to accept, but as frameworks for you both to react to. Sometimes seeing concrete options helps us understand what we actually need.\n\nHere are three ideas I want to put on the table:\n\nFirst: a **tiered notice protocol**. This would mean different types of schedule changes come with different advance notice requirements. For example, an emergency \u2014 a child is sick, something urgent at work \u2014 might require 24 hours notice, while a planned change like a work trip or family event might require a week. This would address [Party A]'s need for predictability \u2014 you'd know changes are coming rather than feeling ambushed \u2014 while preserving [Party B]'s ability to make necessary changes without feeling like you're asking permission every time.\n\nSecond: **reason categories when requesting a change**. This would mean [Party B], when you need to adjust the schedule, you'd indicate which category the reason falls into \u2014 work obligation, child-related need, personal emergency, planned event. This addresses what I think [Party A] is experiencing as 'why does this keep happening?' \u2014 it gives context without requiring [Party B] to justify or defend every request. It also addresses [Party B]'s concern about blame, because the categories would be agreed in advance and disclosure would be for transparency, not for approval.\n\nThird: **a default schedule with a swap bank**. This means you'd establish a baseline schedule that both of you can count on, and each of you would have a defined number of swaps per month or per quarter that you can use when you need flexibility. This gives [Party A] the stability of knowing what the baseline is, while giving [Party B] a clear structure for when changes are within bounds versus when they'd need a different conversation.\n\nI want to be clear: I'm not asking you to choose one of these right now. I'm asking you both to react. What feels like it could work? What doesn't fit your situation? And [Party B], as you think about these, it would help if you could share a bit more about what drives the schedule changes on your end \u2014 is it work, is it other commitments, is it unpredictability you're navigating? That context will help both of you calibrate what kind of structure would actually be realistic.",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=frustrated but engaged \u2014 the 'old wounds' language from T2 indicates unresolved emotional injury, but A remains present and appears to be listening rather than escalating posture=emotionally expressive and assertive \u2014 leading with impact rather than just positions, which suggests A needs to feel heard before engaging with structures",
+        "[PERCEPTION:PARTY_A:INTERESTS] predictability in schedule transitions to protect emotional stability; acknowledgment that the pattern has emotional impact, not just logistical inconvenience; understanding why changes happen (currently experiencing them as arbitrary)",
+        "[PERCEPTION:PARTY_B] emotional=defensive but attempting to engage constructively \u2014 'feel blamed whenever plans change' reveals vulnerability, but B agreed the notice process needs work rather than deflecting posture=conciliatory but potentially self-protective \u2014 agreed to the problem frame ('finding a calmer way to give notice') without defending their need for changes or explaining their situation",
+        "[PERCEPTION:PARTY_B:INTERESTS] not being positioned as the problem or the source of conflict; having their constraints or reasons for changes understood rather than judged; finding a process that reduces blame attribution when they need flexibility",
+        "[PERCEPTION:DYNAMIC] both parties are emotionally activated but not escalating \u2014 there is blame/defense dynamic present ('I feel blamed' / 'wounds keep reopening'), but both have shown willingness to engage. The quick agreement on 'notice process' may be premature convergence \u2014 both may be trying to move past emotional discomfort rather than working through it. Risk that structural options will feel hollow if underlying 'who's at fault' question hasn't been addressed.",
+        "[DOMAIN:GAPS] B's reasons for schedule changes have not been disclosed \u2014 this gap prevents A from distinguishing between 'B is inconsiderate' and 'B is navigating real constraints'; Specific baseline schedule and frequency of changes not established \u2014 makes notice window calibration abstract; What 'old wounds' specifically refers to has not been named \u2014 may affect whether parties can engage with logistics before addressing relational layer",
+        "[OPTION_SCAN:QUALIFIED] opt-gen-001: Tiered notice protocol with change categories \u2014 addresses A's predictability need (advance warning reduces sense of disruption) while preserving B's ability to make necessary changes. Also addresses B's concern about being blamed by making the process mutual and rule-based rather than permission-based.; opt-dom-001: Required reason disclosure with categories \u2014 addresses A's implicit need to understand why changes happen (currently experiencing them as arbitrary) while reducing B's burden by using categories rather than detailed justification. Also addresses B's fear of blame by establishing that disclosure is for transparency, not approval.; opt-gen-007: Default schedule with swap bank \u2014 provides A the baseline predictability they need while giving B a defined flexibility allowance. Reframes changes from 'B disrupting A's stability' to 'both parties have access to structured flexibility'.",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=both parties are emotionally activated but not escalating \u2014 there is blame/defense dynamic present ('I feel blamed' / 'wounds keep reopening'), but both have shown willingness to engage. The quick agreement on 'notice process' may be premature convergence \u2014 both may be trying to move past emotional discomfort rather than working through it. Risk that structural options will feel hollow if underlying 'who's at fault' question hasn't been addressed."
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "frustrated but engaged \u2014 the 'old wounds' language from T2 indicates unresolved emotional injury, but A remains present and appears to be listening rather than escalating",
+            "inferred_interests": [
+              "predictability in schedule transitions to protect emotional stability",
+              "acknowledgment that the pattern has emotional impact, not just logistical inconvenience",
+              "understanding why changes happen (currently experiencing them as arbitrary)",
+              "some degree of agency or input in the change process"
+            ],
+            "risk_signals": [
+              "'old wounds' language indicates this issue is entangled with deeper relational injury \u2014 logistics may be proxy battlefield",
+              "visible frustration could escalate if A feels the conversation moves to solutions before their emotional experience is validated"
+            ],
+            "relational_posture": "emotionally expressive and assertive \u2014 leading with impact rather than just positions, which suggests A needs to feel heard before engaging with structures"
+          },
+          "party_b": {
+            "emotional_state": "defensive but attempting to engage constructively \u2014 'feel blamed whenever plans change' reveals vulnerability, but B agreed the notice process needs work rather than deflecting",
+            "inferred_interests": [
+              "not being positioned as the problem or the source of conflict",
+              "having their constraints or reasons for changes understood rather than judged",
+              "finding a process that reduces blame attribution when they need flexibility",
+              "maintaining ability to make necessary changes while reducing relational friction"
+            ],
+            "risk_signals": [
+              "feeling blamed is a relational injury signal \u2014 if B experiences option work as 'fixing B's behavior' rather than 'building shared structure', they may withdraw or comply without ownership",
+              "B has agreed to process change but has not yet explained WHY changes happen \u2014 may be withholding context or may not have been invited to share it"
+            ],
+            "relational_posture": "conciliatory but potentially self-protective \u2014 agreed to the problem frame ('finding a calmer way to give notice') without defending their need for changes or explaining their situation"
+          },
+          "relational_dynamic": "both parties are emotionally activated but not escalating \u2014 there is blame/defense dynamic present ('I feel blamed' / 'wounds keep reopening'), but both have shown willingness to engage. The quick agreement on 'notice process' may be premature convergence \u2014 both may be trying to move past emotional discomfort rather than working through it. Risk that structural options will feel hollow if underlying 'who's at fault' question hasn't been addressed.",
+          "perception_confidence": "moderate",
+          "perception_notes": [
+            "Both parties are showing constructive signals (A stayed engaged after emotional opening, B acknowledged problem without deflecting), but the perception agent is correct that they may be converging prematurely on procedure to avoid staying with emotional discomfort",
+            "A's 'old wounds' and B's 'feel blamed' are matching injuries \u2014 both feel hurt by the pattern. This is a positive signal (mutual vulnerability) but requires careful handling",
+            "B has not yet explained their situation \u2014 we don't know if changes are work-driven, personal needs, external constraints. Without this context, A may continue experiencing changes as arbitrary or careless"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed \"both parties are emotionally activated but not escalating \u2014 there is blame/defense dynamic present ('I feel blamed' / 'wounds keep reopening'), but both have shown willingness to engage. The quick agreement on 'notice process' may be premature convergence \u2014 both may be trying to move past emotional discomfort rather than working through it. Risk that structural options will feel hollow if underlying 'who's at fault' question hasn't been addressed.\""
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "Both parties have agreed that notice/communication process is the immediate priority",
+            "A needs predictability for emotional stability \u2014 changes themselves may be less problematic than how they happen",
+            "B needs to avoid blame attribution \u2014 any process must be mutual rather than corrective of B alone",
+            "The 'old wounds' entanglement means logistics and relational repair are not fully separable"
+          ],
+          "material_gaps": [
+            "B's reasons for schedule changes have not been disclosed \u2014 this gap prevents A from distinguishing between 'B is inconsiderate' and 'B is navigating real constraints'",
+            "Specific baseline schedule and frequency of changes not established \u2014 makes notice window calibration abstract",
+            "What 'old wounds' specifically refers to has not been named \u2014 may affect whether parties can engage with logistics before addressing relational layer"
+          ],
+          "domain_notes": "I partially agree with the domain reasoner's 'ready' assessment but with important qualification: we are ready to introduce structural options AS FRAMEWORKS TO REACT TO, but not ready to negotiate parameters. The perception agent is correct that both parties need to articulate their 'why' more fully before options will land with genuine ownership rather than compliance. However, introducing structural frameworks at this turn can serve as vehicles for eliciting that deeper context \u2014 parties often clarify their interests when reacting to concrete options. The key is to frame options tentatively and continue interest exploration through option reaction rather than treating option presentation as the end of interest work.",
+          "option_readiness": "ready"
+        },
+        "option_scan": {
+          "candidate_options": [
+            "opt-gen-001: Tiered notice protocol \u2014 addresses A's predictability need while preserving B's flexibility",
+            "opt-gen-007: Default schedule with swap bank \u2014 provides baseline stability with structured flexibility mechanism",
+            "opt-dom-001: Required reason disclosure with categories \u2014 addresses A's need to understand 'why' while reducing B's burden of justification",
+            "opt-gen-006: Separate wounds conversation from logistics \u2014 directly addresses the entanglement both parties have signaled"
+          ],
+          "qualified_options": [
+            "opt-gen-001: Tiered notice protocol with change categories \u2014 addresses A's predictability need (advance warning reduces sense of disruption) while preserving B's ability to make necessary changes. Also addresses B's concern about being blamed by making the process mutual and rule-based rather than permission-based.",
+            "opt-dom-001: Required reason disclosure with categories \u2014 addresses A's implicit need to understand why changes happen (currently experiencing them as arbitrary) while reducing B's burden by using categories rather than detailed justification. Also addresses B's fear of blame by establishing that disclosure is for transparency, not approval.",
+            "opt-gen-007: Default schedule with swap bank \u2014 provides A the baseline predictability they need while giving B a defined flexibility allowance. Reframes changes from 'B disrupting A's stability' to 'both parties have access to structured flexibility'."
+          ],
+          "premature_option_work": false,
+          "deferral_reason": null
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [
+            "Both parties are emotionally activated but participating constructively",
+            "Blame/defense dynamic is present but both parties are showing vulnerability rather than rigidity",
+            "No safety veto applies \u2014 this is mutual distress over a shared problem, not coercion or capacity issue"
+          ],
+          "notes": "The 'old wounds' language and 'feel blamed' vulnerability are important signals but do not require escalation \u2014 they are relational injuries that can be held within mediation process. The key is to ensure option work does not skip over the emotional layer. I will introduce options as frameworks for continued interest exploration rather than as solutions that close the conversation.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "interest_exploration",
+          "message_summary": "Acknowledge that both parties have put important concerns on the table \u2014 A's need for stability and the emotional weight this carries, B's experience of feeling blamed. Name the process transition: we're ready to explore some structural ideas, but not as final solutions \u2014 as frameworks to react to that will help surface what would actually work for both of you. Introduce three qualified options, each explicitly connected to the interests they serve, using tentative framing. Invite both parties to react.",
+          "message_text": "Thank you both. I want to acknowledge what you've each put on the table. [Party A], you've named that the schedule changes feel destabilizing \u2014 not just logistically but emotionally, that they reopen old wounds. That's an important signal about what you need from this co-parenting relationship. [Party B], you've named that you feel blamed when plans need to change, but you've also agreed that finding a different way to communicate about changes could help. That tells me you both want this to work differently.\n\nI want to move us toward some structural ideas \u2014 not as solutions you have to accept, but as frameworks for you both to react to. Sometimes seeing concrete options helps us understand what we actually need.\n\nHere are three ideas I want to put on the table:\n\nFirst: a **tiered notice protocol**. This would mean different types of schedule changes come with different advance notice requirements. For example, an emergency \u2014 a child is sick, something urgent at work \u2014 might require 24 hours notice, while a planned change like a work trip or family event might require a week. This would address [Party A]'s need for predictability \u2014 you'd know changes are coming rather than feeling ambushed \u2014 while preserving [Party B]'s ability to make necessary changes without feeling like you're asking permission every time.\n\nSecond: **reason categories when requesting a change**. This would mean [Party B], when you need to adjust the schedule, you'd indicate which category the reason falls into \u2014 work obligation, child-related need, personal emergency, planned event. This addresses what I think [Party A] is experiencing as 'why does this keep happening?' \u2014 it gives context without requiring [Party B] to justify or defend every request. It also addresses [Party B]'s concern about blame, because the categories would be agreed in advance and disclosure would be for transparency, not for approval.\n\nThird: **a default schedule with a swap bank**. This means you'd establish a baseline schedule that both of you can count on, and each of you would have a defined number of swaps per month or per quarter that you can use when you need flexibility. This gives [Party A] the stability of knowing what the baseline is, while giving [Party B] a clear structure for when changes are within bounds versus when they'd need a different conversation.\n\nI want to be clear: I'm not asking you to choose one of these right now. I'm asking you both to react. What feels like it could work? What doesn't fit your situation? And [Party B], as you think about these, it would help if you could share a bit more about what drives the schedule changes on your end \u2014 is it work, is it other commitments, is it unpredictability you're navigating? That context will help both of you calibrate what kind of structure would actually be realistic.",
+          "grounded_in_perception": true,
+          "options_introduced": [
+            "opt-gen-001",
+            "opt-dom-001",
+            "opt-gen-007"
+          ],
+          "confidence_note": "High confidence that introducing options at this turn is appropriate given both parties' constructive engagement. Moderate confidence that the options will land with genuine ownership rather than compliance \u2014 the final question to Party B about 'what drives the changes' is critical for converting option reaction into deeper interest articulation."
+        },
+        "pre_computed_domain_analysis": {
+          "schema_version": "domain_analysis.v0",
+          "source": "domain_reasoner_v0",
+          "option_readiness": "ready",
+          "readiness_rationale": "Both parties have now been heard. Party A has articulated stability/predictability needs and emotional impact concerns. Party B has articulated feeling blamed but has also agreed that finding a calmer notice process is the immediate priority. The issue family is clearly communication_protocol/schedule_coordination. Both parties have expressed process-level concerns (A: unpredictability of changes; B: being blamed, but agreeing notice process needs work). This is sufficient basis to qualify structural process options. The fact that we don't yet know WHY B's schedule changes happen (work constraints, personal needs, etc.) or WHAT specific notice windows both parties would accept does not block structural qualification \u2014 those are parameter calibration questions that parties will negotiate when presented with options. The 'old wounds' framing indicates unresolved relational injury, but Party B has responded constructively rather than defensively, and both parties have agreed the immediate problem is notice/process. No safety veto applies: this is not compliance-only pattern (B has articulated independent concerns about blame attribution), not information asymmetry leverage (no information is being withheld as leverage), and while A shows emotional activation, both parties are participating and B's constructive response indicates they can engage with option work safely.",
+          "safety_veto_applied": false,
+          "safety_veto_reason": null,
+          "qualified_candidates": [],
+          "blocking_constraints": [],
+          "material_gaps": [
+            {
+              "gap": "Specific drivers of Party B's schedule changes (work-related, personal needs, external constraints) have not been disclosed",
+              "importance": "moderate",
+              "what_it_blocks": "Ability to assess whether changes are structurally reducible (pattern can be prevented) vs. will remain present (pattern needs accommodation process). Does not block process option qualification."
+            },
+            {
+              "gap": "Current baseline schedule and frequency of changes not stated",
+              "importance": "moderate",
+              "what_it_blocks": "Calibration of specific notice windows and swap limits. Does not block structural process option qualification."
+            },
+            {
+              "gap": "Whether 'old wounds' refers to separation circumstances, communication patterns during marriage, or post-separation conflict",
+              "importance": "low",
+              "what_it_blocks": "Understanding whether opt-gen-006 (separate wounds conversation from logistics) is addressing the right separation point. Does not block process option qualification for schedule coordination itself."
+            }
+          ],
+          "domain_confidence": "moderate",
+          "domain_notes": "This is a standard post-separation schedule coordination dispute with an emotional overlay. The 'old wounds' language and A's visible frustration indicate that logistics have become a proxy battleground for unresolved relational injury. However, B's response is constructive rather than defensive \u2014 they acknowledged A's concern and agreed the notice process needs work, which is a workable foundation for process design. The issue structure is communication_protocol with schedule_coordination context. In family mediation practice, this type of dispute is addressed through: (1) structured notice protocols that reduce unpredictability, (2) documentation/transparency requirements that build trust, (3) bounded flexibility systems (swap banks, tiered categories) that give both parties some agency, and (4) explicit separation of process design from relational repair work. All of these are structurally qualifiable at this point. The unknown parameters (specific notice windows, change frequency limits, what constitutes 'emergency' vs. 'planned') are party decisions, not domain prerequisites. Standard practice is to present structural options now and let parties calibrate the parameters in negotiation.",
+          "option_pool_qualification": {
+            "domain_expert_candidates": [
+              {
+                "candidate_id": "opt-dom-001",
+                "label": "Required reason disclosure with categories",
+                "rationale": "Party B indicated they 'feel blamed whenever plans change,' suggesting their reasons may not have been understood. Party A needs predictability but has not said changes can never happen. A middle-ground option is requiring B to disclose the reason category (work obligation, personal emergency, child preference, etc.) when requesting changes, without requiring lengthy justification. This addresses B's 'being misunderstood' concern while giving A transparency. Standard in family mediation for co-parents who have trust deficits but need ongoing coordination.",
+                "party_interest_alignment": {
+                  "party_a": "Addresses A's need to understand what's driving disruption (reduces feeling of being acted upon arbitrarily). Transparency supports predictability even when changes occur.",
+                  "party_b": "Addresses B's concern about being blamed \u2014 providing reason context reframes changes as situational rather than malicious. Less burdensome than opt-gen-004's 'explanation before request' if categories are pre-defined."
+                },
+                "related_issues": [
+                  "communication_protocol",
+                  "trust_building"
+                ],
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-dom-002",
+                "label": "Graduated notice window by change urgency",
+                "rationale": "Standard family mediation structure for schedule coordination. Distinguishes true emergencies (24h or day-of notice) from planned changes (7-14 days notice). Addresses A's predictability need while preserving B's ability to respond to genuinely urgent situations. Different from opt-gen-001 in that notice windows are the primary mechanism rather than change categories.",
+                "party_interest_alignment": {
+                  "party_a": "Directly addresses predictability concern \u2014 longer notice for non-urgent changes gives A time to adjust emotionally and logistically.",
+                  "party_b": "Preserves B's ability to respond to urgent needs without feeling they're 'locked in' inflexibly. Acknowledges that some changes are unavoidable."
+                },
+                "related_issues": [
+                  "schedule_coordination",
+                  "communication_protocol"
+                ],
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-dom-003",
+                "label": "Temporary no-change stabilization period",
+                "rationale": "When emotional activation is high and one party is using 'wound' language, family mediators sometimes recommend a defined stabilization period (30-90 days) where the schedule is held constant unless true emergency, allowing parties to experience predictability and rebuild some co-parenting trust before introducing flexibility mechanisms. This is most appropriate when the separation is recent or when recent conflict has destabilized the pattern.",
+                "party_interest_alignment": {
+                  "party_a": "Directly addresses the 'reopening wounds' concern by creating a period of schedule consistency to support emotional stabilization.",
+                  "party_b": "Acknowledges that the current pattern may be unsustainable for A, and that temporary constraint may be necessary to rebuild workability. Time-limited nature makes it less threatening than permanent rigidity."
+                },
+                "related_issues": [
+                  "emotional_regulation",
+                  "trust_building",
+                  "schedule_coordination"
+                ],
+                "source": "domain_reasoner"
+              }
+            ],
+            "domain_qualified": [
+              {
+                "candidate_id": "opt-gen-001",
+                "label": "Structured advance notice protocol with categories",
+                "feasibility_rationale": "Structurally sound for this issue type. Tiered notice by change type (emergency vs. planned) is standard practice in family mediation for post-separation schedule coordination. Addresses both A's predictability need and B's need for some flexibility. Feasible regardless of what's driving B's changes \u2014 the structure accommodates any reason pattern.",
+                "confidence": "high",
+                "prerequisite_parameters": [
+                  "Parties must define change categories (e.g., work emergency, child illness, planned event)",
+                  "Parties must agree on notice windows for each category (e.g., 24h for emergency, 7 days for planned)"
+                ],
+                "conditions": [
+                  "Requires both parties to use the protocol consistently",
+                  "May need definition of what counts as 'emergency' to prevent category gaming"
+                ],
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-002",
+                "label": "Time-limited schedule stabilization period with review",
+                "feasibility_rationale": "Appropriate given A's emotional activation and 'wound' language. Temporary schedule freeze (with emergency exception) is a recognized intervention when one party needs predictability to stabilize. The time limit and review point make it negotiable \u2014 B is not agreeing to permanent rigidity. Review mechanism allows re-assessment once A's acute distress has reduced.",
+                "confidence": "moderate",
+                "prerequisite_parameters": [
+                  "Parties must agree on stabilization period length (30/60/90 days)",
+                  "Parties must define what constitutes 'emergency' exception during freeze",
+                  "Parties must agree on review process at end of period"
+                ],
+                "conditions": [
+                  "B must be willing to commit to schedule consistency for the defined period",
+                  "A must agree this is temporary, not permanent solution",
+                  "Requires mechanism to address if B faces genuine unavoidable conflict during freeze period"
+                ],
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-003",
+                "label": "Joint schedule ownership with alternating 'change weeks'",
+                "feasibility_rationale": "Structurally viable but lower confidence given current party dynamic. This option works best when both parties need flexibility and see themselves as equals in schedule management. Right now A is experiencing B's changes as destabilizing and B is experiencing A's reaction as blame. Reframing as 'we both need flexibility' may not match their current perceptions. Could become viable after some trust rebuilding, but may be premature now.",
+                "confidence": "low",
+                "prerequisite_parameters": [
+                  "Parties must agree on how 'change weeks' are designated (alternating, by month, by mutual agreement)",
+                  "Parties must define scope of allowable changes during 'change weeks'"
+                ],
+                "conditions": [
+                  "Requires both parties to see themselves as equally needing flexibility \u2014 not clear this matches current dynamic",
+                  "May need trust rebuilding before this mutual framework feels safe to A"
+                ],
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-004",
+                "label": "Pre-commitment to explanation before any schedule request",
+                "feasibility_rationale": "Addresses B's unsaid signal that their reasons haven't been heard, but may be too burdensome as standalone option. Requiring explanation before every request could feel like interrogation to B or like justification demand that reinforces blame dynamic. More feasible as component of another option (e.g., combined with tiered notice where explanation requirement varies by change type).",
+                "confidence": "low",
+                "prerequisite_parameters": [
+                  "Parties must define what level of detail constitutes adequate 'explanation'",
+                  "Parties must agree on whether explanation is required for all changes or only certain types"
+                ],
+                "conditions": [
+                  "Risk that A could use explanation requirement as gate-keeping (rejecting changes based on reason adequacy)",
+                  "May perpetuate blame dynamic if B experiences it as having to justify their needs"
+                ],
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-005",
+                "label": "Third-party schedule buffer (calendar app or neutral person)",
+                "feasibility_rationale": "Viable in principle \u2014 neutral intermediaries (digital tools with automated notice enforcement, or trusted third parties who receive requests and communicate them) can reduce emotional charge in high-conflict co-parenting. However, introduces complexity and potential cost. Most appropriate when direct communication consistently escalates. Not clear yet whether A and B have reached that threshold \u2014 B's response in T4 was constructive, suggesting direct communication may still be workable with structure.",
+                "confidence": "moderate",
+                "prerequisite_parameters": [
+                  "Parties must choose intermediary type (app vs. person)",
+                  "If app: parties must agree on which tool and notification settings",
+                  "If person: parties must identify neutral third party willing to serve this role"
+                ],
+                "conditions": [
+                  "Adds procedural step to every schedule communication \u2014 must be worth the friction reduction",
+                  "If third party: requires ongoing availability and willingness of that person",
+                  "May be over-engineering if direct communication with protocol can work"
+                ],
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-006",
+                "label": "Separate the 'old wounds' conversation from schedule logistics",
+                "feasibility_rationale": "Structurally sound separation strategy. A's 'wound' language and visible frustration suggest schedule logistics have become entangled with unresolved relational injury. Explicitly separating the two workstreams (process design for schedule coordination vs. relational repair conversation) can prevent logistics work from being derailed by emotional activation. Standard practice in family mediation when presenting issue is proxy for deeper conflict.",
+                "confidence": "moderate",
+                "prerequisite_parameters": [
+                  "Parties must agree that two separate conversations are appropriate",
+                  "Must define what 'old wounds' conversation would entail (mediator-led, therapeutic referral, written exchange, etc.)",
+                  "Must sequence the workstreams (address wounds first, or stabilize logistics first)"
+                ],
+                "conditions": [
+                  "A must be willing to engage with logistics before wounds are fully resolved, or must be willing to defer logistics conversation",
+                  "B must be willing to engage with relational repair conversation without experiencing it as blame session",
+                  "May require therapeutic support beyond mediation scope"
+                ],
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-007",
+                "label": "Default schedule with explicit 'swap bank' system",
+                "feasibility_rationale": "Standard family mediation structure for post-separation schedule coordination. Establishes baseline predictability (default schedule both parties commit to) while creating bounded flexibility through swap allocation. Addresses A's predictability need and B's flexibility need simultaneously. Highly feasible for this issue type \u2014 used widely in parenting plans.",
+                "confidence": "high",
+                "prerequisite_parameters": [
+                  "Parties must agree on baseline default schedule",
+                  "Parties must agree on swap bank size (e.g., 2 swaps per month, 6 per quarter)",
+                  "Parties must define notice requirements for using swap (integrated with tiered notice protocol)"
+                ],
+                "conditions": [
+                  "Requires tracking mechanism (could be simple shared calendar or log)",
+                  "Must define what happens if one party requests swap beyond their allocation",
+                  "Must define whether unused swaps roll over or expire"
+                ],
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-008",
+                "label": "Mutual acknowledgment ritual before discussing schedule changes",
+                "feasibility_rationale": "This is a relational repair technique, not a logistics protocol. Appropriate when parties have capacity for reflective practice and when blame/defensiveness cycle is primary obstacle. However, A's 'wound' language and B's 'feel blamed' response suggest emotional activation may be too high for ritual practice to feel genuine right now. This type of option typically works better after some trust rebuilding through successful logistics coordination. Low confidence as standalone option; might work as component of another option after initial stabilization.",
+                "confidence": "low",
+                "prerequisite_parameters": [
+                  "Parties must agree on acknowledgment language or framework",
+                  "Parties must commit to using ritual consistently before schedule discussions"
+                ],
+                "conditions": [
+                  "Requires emotional regulation capacity and goodwill that may not be present yet",
+                  "Risk of feeling performative or hollow if parties are in acute conflict",
+                  "May be more appropriate after logistics stabilization creates some positive momentum"
+                ],
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-dom-001",
+                "label": "Required reason disclosure with categories",
+                "feasibility_rationale": "Structurally sound middle-ground option. Pre-defined reason categories (work, child need, personal emergency, etc.) reduce burden on B while giving A transparency. Standard practice in family mediation for trust-deficit situations. More streamlined than open-ended explanation requirement (opt-gen-004) but addresses same underlying concerns.",
+                "confidence": "high",
+                "prerequisite_parameters": [
+                  "Parties must agree on reason categories",
+                  "Parties must agree on whether additional detail beyond category is required"
+                ],
+                "conditions": [
+                  "Requires B to consistently disclose category when requesting change",
+                  "Must establish that A cannot veto based on reason \u2014 disclosure is for transparency, not approval gate"
+                ],
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-dom-002",
+                "label": "Graduated notice window by change urgency",
+                "feasibility_rationale": "Standard family mediation structure, essentially same mechanism as opt-gen-001 but framed around notice duration rather than change categories. Highly feasible \u2014 widely used in parenting plans. Tiered notice (e.g., 14 days for planned, 48h for urgent, day-of for true emergency) addresses A's predictability need while acknowledging B's reality that some changes are unavoidable.",
+                "confidence": "high",
+                "prerequisite_parameters": [
+                  "Parties must agree on urgency categories and corresponding notice windows",
+                  "Parties must define what constitutes each urgency level"
+                ],
+                "conditions": [
+                  "Requires both parties to honor notice windows consistently",
+                  "May need accountability mechanism if notice requirements are violated"
+                ],
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-dom-003",
+                "label": "Temporary no-change stabilization period",
+                "feasibility_rationale": "Appropriate given A's emotional activation. Temporary schedule freeze (30-90 days, with emergency exception only) gives A the predictability needed to stabilize emotionally while time-limiting the constraint on B. Standard intervention in family mediation when one party's distress is acute. Review point allows reassessment once acute phase has passed.",
+                "confidence": "moderate",
+                "prerequisite_parameters": [
+                  "Parties must agree on freeze period duration",
+                  "Parties must define 'emergency' exception (what types of situations override the freeze)",
+                  "Parties must agree on review/re-evaluation process at end of period"
+                ],
+                "conditions": [
+                  "B must be willing to commit to schedule consistency for defined period",
+                  "Must have mechanism for handling genuine unavoidable conflicts that arise during freeze",
+                  "A must understand this is temporary stabilization, not permanent solution"
+                ],
+                "source": "domain_reasoner"
+              }
+            ],
+            "domain_blocked": []
+          },
+          "case_id": "D-B10",
+          "session_id": "D-B10-S02",
+          "turn_index": 5,
+          "generated_at": "2026-03-30T00:04:50Z"
+        },
+        "brainstormer_pool": [
+          {
+            "candidate_id": "opt-gen-001",
+            "label": "Structured advance notice protocol with categories",
+            "rationale": "Addresses A's need for predictability while giving B flexibility by creating different notice windows based on change type (emergency vs. planned). Separates 'necessary' from 'optional' changes so A can prepare emotionally and B doesn't feel every change is treated as intentional disruption.",
+            "party_interest_alignment": {
+              "party_a": "Creates predictability through knowing what type of change is coming and when; reduces the sense of being acted upon by giving advance mental preparation time",
+              "party_b": "Distinguishes between unavoidable changes (where B retains flexibility and isn't blamed) and elective ones (where more notice protects the relationship); validates that not all changes are the same"
+            },
+            "related_issues": [
+              "schedule_changes",
+              "communication_process"
+            ],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-002",
+            "label": "Time-limited schedule stabilization period with review",
+            "rationale": "Recognizes that A may need a period of schedule consistency to rebuild emotional equilibrium after separation. Creates a defined window (e.g., 90 days) where both parties commit to minimal changes except true emergencies, then review whether flexibility can be reintroduced. Addresses A's 'wound' language by giving healing space.",
+            "party_interest_alignment": {
+              "party_a": "Directly addresses the 'reopening wounds' concern by creating a stabilization period; gives A a defined time to experience consistency and rebuild trust in the co-parenting structure",
+              "party_b": "Time-limited nature means B isn't permanently locked into rigidity; review mechanism allows B to demonstrate good faith and rebuild credibility around flexibility"
+            },
+            "related_issues": [
+              "schedule_stability",
+              "emotional_recovery",
+              "trust_building"
+            ],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-003",
+            "label": "Joint schedule ownership with alternating 'change weeks'",
+            "rationale": "Reframes the problem from 'B keeps changing the schedule' to 'we both need flexibility sometimes.' Each parent gets designated weeks where they can request changes with shorter notice, balanced by weeks where stability is prioritized. Shifts from blame to shared responsibility.",
+            "party_interest_alignment": {
+              "party_a": "Reduces the sense that changes are being done 'to' A; creates predictable windows where changes won't happen; addresses control and input concerns",
+              "party_b": "Removes the experience of being 'the problem parent'; normalizes that both parents may need flexibility; distributes the flexibility need rather than concentrating blame"
+            },
+            "related_issues": [
+              "schedule_changes",
+              "blame_dynamic",
+              "co-parenting_equity"
+            ],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-004",
+            "label": "Pre-commitment to explanation before any schedule request",
+            "rationale": "B's unsaid signal suggests their reasons for changes haven't been heard. This option requires B to briefly explain the 'why' before requesting a change (not to justify, but to contextualize). A commits to receiving the information before reacting. Addresses B's concern about intentions being misread.",
+            "party_interest_alignment": {
+              "party_a": "Getting context may reduce A's tendency to read changes as symbolic of relational disrespect; knowing 'why' can prevent emotional escalation",
+              "party_b": "Directly addresses B's experience of feeling misunderstood; creates space for B's constraints or needs to be visible before judgment occurs"
+            },
+            "related_issues": [
+              "communication_process",
+              "intention_transparency",
+              "blame_reduction"
+            ],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-005",
+            "label": "Third-party schedule buffer (calendar app or neutral person)",
+            "rationale": "Introduces a neutral intermediary (could be a shared digital tool with built-in notice periods, or a trusted third party like a family member) who receives change requests and filters them through agreed criteria before they reach the other parent. Reduces direct conflict and emotional activation.",
+            "party_interest_alignment": {
+              "party_a": "Protects A from the emotional impact of direct last-minute requests; creates a buffer that enforces the notice protocol automatically",
+              "party_b": "Reduces B's experience of direct blame or conflict when requesting changes; neutral party validates whether a change fits agreed criteria"
+            },
+            "related_issues": [
+              "communication_process",
+              "emotional_protection",
+              "conflict_reduction"
+            ],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-006",
+            "label": "Separate the 'old wounds' conversation from schedule logistics",
+            "rationale": "A's language strongly suggests that the schedule issue is entangled with unresolved separation grief or anger. This option explicitly separates the two: commit to a workable short-term schedule protocol now, and create a separate space (possibly with therapeutic support) to address the relational wounds that keep being triggered.",
+            "party_interest_alignment": {
+              "party_a": "Validates that A's emotional experience is real and important, not just 'overreaction to logistics'; creates a legitimate space to process the deeper hurt without conflating it with every schedule decision",
+              "party_b": "Removes the burden of being responsible for A's unresolved emotional content every time a practical issue arises; allows B to engage on logistics without constantly navigating emotional landmines"
+            },
+            "related_issues": [
+              "emotional_wounds",
+              "separation_recovery",
+              "communication_structure"
+            ],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-007",
+            "label": "Default schedule with explicit 'swap bank' system",
+            "rationale": "Establishes a stable baseline schedule that both parties commit to, with a defined number of 'swaps' each parent can request per month/quarter with reduced notice. Once the bank is used, longer notice is required. Balances A's need for stability with B's need for occasional flexibility.",
+            "party_interest_alignment": {
+              "party_a": "Creates a predictable baseline; limits the frequency of disruption; gives A a sense of control by knowing there's a cap on how often changes can happen",
+              "party_b": "Preserves some flexibility without requiring explanation or negotiation each time; removes the sense that every change is a relationship transgression"
+            },
+            "related_issues": [
+              "schedule_stability",
+              "flexibility_balance",
+              "predictability"
+            ],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-008",
+            "label": "Mutual acknowledgment ritual before discussing schedule changes",
+            "rationale": "Before any schedule conversation, both parties briefly acknowledge the other's good faith and the difficulty of co-parenting after separation. Creates a relational reset that reduces the chance that A hears every change as an attack and B hears every reaction as blame. Addresses the emotional subtext directly.",
+            "party_interest_alignment": {
+              "party_a": "Provides repeated reassurance that B is not trying to harm A; may reduce the emotional activation that comes from interpreting changes as symbolic wounds",
+              "party_b": "Directly addresses B's concern about being seen as 'the problem'; creates a moment where B's good intentions are affirmed before discussing the logistical issue"
+            },
+            "related_issues": [
+              "blame_dynamic",
+              "relational_repair",
+              "communication_ritual"
+            ],
+            "source": "option_generator"
+          }
+        ],
+        "safety_monitor_result": {
+          "schema_version": "safety_monitor.v0",
+          "case_id": "D-B10",
+          "session_id": "D-B10-S02",
+          "turn_index": 5,
+          "generated_at": "2026-03-30T00:04:50Z",
+          "source": "safety_monitor_v0",
+          "compliance_pattern": {
+            "detected": false,
+            "party": null,
+            "evidence_turns": [],
+            "pattern_type": null,
+            "severity": null
+          },
+          "deflection_pattern": {
+            "detected": false,
+            "deflecting_party": null,
+            "target_request_turn": null,
+            "deflection_turns": [],
+            "deflection_tactics": [],
+            "pattern_confirmed": false
+          },
+          "discordant_signals": [],
+          "veto_recommendation": null,
+          "veto_reason": null,
+          "monitor_confidence": "high",
+          "monitor_notes": "Session is at turn 5 with only 2 client turns (T2 and T4). Both parties have made initial opening statements. Party A articulated a concern about schedule instability and emotional impact. Party B responded with their own emotional experience (feeling blamed) AND stated an independent agreement on finding a solution ('finding a calmer way to give notice'). This is normal early mediation dynamics: Party A opens, Party B responds with both their perspective and a point of agreement. No adversarial patterns detected. Party B's statement contains both reactive elements (responding to the schedule change topic) and independent content (their emotional experience of feeling blamed, their agreement on process improvement). Insufficient history to assess any multi-turn patterns. No information asymmetry has been tested. No discordant signals have been suppressed. Continue monitoring as session develops.",
+          "flags_raised": [],
+          "party_state_signals": []
+        },
+        "perception_agent_result": {
+          "schema_version": "perception_agent.v0",
+          "turn_index": 5,
+          "timestamp": "2026-03-30T00:04:50Z",
+          "confidence": "moderate",
+          "_null_result": false,
+          "party_a": {
+            "emotional_state": "frustrated and emotionally activated, but willing to engage \u2014 carrying unresolved emotional weight from the relationship history",
+            "emotional_trajectory": "stable at moderate activation",
+            "engagement_quality": "genuine",
+            "communication_style": "direct",
+            "inferred_interests": [
+              "Predictability and stability in the schedule transitions",
+              "Emotional closure or containment around the separation ('reopening old wounds' suggests unresolved grief or anger)",
+              "Protecting themselves from repeated emotional disruption"
+            ],
+            "inferred_concerns": [
+              "That schedule changes will continue to be unpredictable and emotionally destabilizing",
+              "That the pattern of disruption reflects something deeper about the co-parenting relationship that hasn't been resolved",
+              "Being caught in a cycle where logistics keep triggering relationship pain"
+            ],
+            "unsaid_signals": [
+              "The phrase 'reopening old wounds' is doing heavy emotional work \u2014 Party A may be experiencing the schedule changes as symbolic of larger relational wounds, not just logistical inconveniences",
+              "Has named their frustration but has not yet articulated what specific scheduling arrangement would actually meet their need for stability"
+            ],
+            "relational_posture": "engaged and emotionally forthright, oriented toward problem-solving but carrying unprocessed relationship pain"
+          },
+          "party_b": {
+            "emotional_state": "defensive but self-aware \u2014 feeling blamed while also recognizing the legitimacy of the underlying concern",
+            "emotional_trajectory": "de-escalating from initial defensiveness",
+            "engagement_quality": "genuine",
+            "communication_style": "direct with some initial defensiveness, moving toward collaborative",
+            "inferred_interests": [
+              "Being seen as a good co-parent who isn't intentionally causing harm",
+              "Having flexibility when schedule changes are genuinely necessary",
+              "Finding a way to communicate changes that doesn't trigger conflict or blame"
+            ],
+            "inferred_concerns": [
+              "Being cast as 'the problem' or 'the one who causes disruption'",
+              "That any schedule change will be read as malicious or careless rather than situational",
+              "That their intentions are being misread or their constraints not understood"
+            ],
+            "unsaid_signals": [
+              "Party B said they 'feel blamed whenever plans change' \u2014 this suggests a pattern where B's reasons for changes may not have been heard or validated, leading to a defensive relational posture",
+              "The move to 'finding a calmer way to give notice' is practical but may be sidestepping the deeper question of why changes are happening and whether they're actually necessary",
+              "Has not yet explained what drives the schedule changes \u2014 whether they're work-related, unavoidable, or something else"
+            ],
+            "relational_posture": "initially defensive, now shifting toward collaborative problem-solving, wanting to be seen as reasonable"
+          },
+          "relational_dynamic": "Both parties are emotionally activated but genuinely engaged \u2014 there's surface cooperation around 'finding a calmer way' but the underlying emotional content (A's unresolved wounds, B's experience of blame) hasn't been fully surfaced or addressed. The dynamic is cooperative in form but carries unspoken tension about blame, intention, and the emotional history between them.",
+          "dynamic_trajectory": "improving \u2014 both moved from emotional activation toward naming a shared problem, but the improvement is at the procedural level, not yet at the relational/emotional level",
+          "perception_signals": [
+            "Party A's 'reopening old wounds' language indicates that schedule logistics are entangled with deeper relationship grief \u2014 this is not purely a scheduling problem",
+            "Party B's 'feel blamed' response suggests a history where their perspective on why changes happen has not been heard or validated",
+            "Both parties moved quickly to a procedural solution ('calmer way to give notice') without exploring the underlying drivers: why changes are happening, what constraints B faces, what specific stability A needs",
+            "The agreement on 'the immediate problem' may be premature \u2014 they've converged on a surface issue before understanding each other's actual situation"
+          ],
+          "scaffold_divergence": "The scaffold assessment ('moderately_stressed', 'cooperative_and_stable', 'moderate confidence') is accurate at the behavioral level but misses the depth of what's happening emotionally. Party A is not just 'moderately stressed' \u2014 they're carrying unresolved relational pain that's being triggered by logistics. Party B is not just 'cooperative' \u2014 they're managing a defensive posture while trying to collaborate. The dynamic is cooperative in form but relationally unresolved beneath the surface. The 'moderate confidence' rating may reflect that the scaffold can see cooperation but cannot see what's beneath it.",
+          "perception_notes": [
+            "Before moving to options or solutions, the mediator must slow down and create space for both parties to articulate the *why* beneath their positions: Why do schedule changes keep happening? What specific kind of stability does Party A need? What does 'blamed' feel like for Party B and what would being heard look like?",
+            "Party A's 'reopening old wounds' language is a critical signal \u2014 the mediator should acknowledge that this is about more than logistics and invite A to name what kind of emotional stability they need from the co-parenting relationship, separate from the schedule mechanics.",
+            "Party B has offered cooperation but has not yet explained their situation \u2014 the mediator should create space for B to describe what drives the schedule changes and what constraints they're navigating, so A can understand the context rather than experiencing it as arbitrary disruption.",
+            "The quick convergence on 'finding a calmer way to give notice' is a good-faith move but may be a premature solution focus \u2014 both parties need to feel understood before procedural solutions will hold."
+          ],
+          "veto_signals": []
+        }
+      }
+    },
+    {
+      "turn_index": 6,
+      "timestamp": "2026-03-30T00:06:00Z",
+      "role": "client",
+      "phase": "option_generation",
+      "message_summary": "Parent A and parent b both agree that an advance-notice window and written confirmation rule would be a better immediate next step than continuing to argue the whole emotional history.",
+      "state_delta": {
+        "facts_added": [],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "The parties accept a bounded workable package."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    }
+  ],
+  "final_state_summary": {
+    "current_phase": "option_generation",
+    "issues_identified": [],
+    "open_questions_remaining": [],
+    "active_flags": [],
+    "current_escalation_state": "M0",
+    "continuation_recommendation": null
+  },
+  "trace_notes": null
+}

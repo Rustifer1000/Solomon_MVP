@@ -1,0 +1,108 @@
+{
+  "schema_version": "continuity_packet.v0",
+  "case_id": "D-B12",
+  "session_id": "D-B12-S02",
+  "plugin_type": "divorce",
+  "support_artifact_policy_descriptor": "d_b12_support_emotional_flooding",
+  "support_artifact_review_focus": "emotional_flooding_and_failed_repair",
+  "category_family": "fairness_or_process_breakdown",
+  "recommended_human_role": "co_handling",
+  "handoff_focus": "restore fair participation and workable process control before substantive option work continues",
+  "escalation": {
+    "category": "E2",
+    "threshold_band": "T2",
+    "mode": "M3",
+    "rationale": "Co-handling is required because the state reflects a fairness or repeated-process breakdown that needs live human mediation support."
+  },
+  "summary_state": {
+    "issues": [],
+    "next_step": "Use the next step to bring in a human mediator for co-handling, restore fair participation, and avoid further autonomous option work until process balance is re-established."
+  },
+  "issues": [],
+  "open_missing_info": [],
+  "active_flags": [
+    {
+      "flag_id": "d-b12-flag-process-breakdown",
+      "flag_type": "repeated_process_breakdown",
+      "severity": 3,
+      "source": "platform",
+      "first_detected_turn": 2,
+      "last_updated_turn": 4,
+      "related_categories": [
+        "E2"
+      ],
+      "threshold_band": "T2",
+      "title": "Repeated process breakdown remains active",
+      "note": "The turn suggests repair attempts are not restoring workable participation.",
+      "signal_classes": [
+        "repeated_process_breakdown"
+      ],
+      "related_issues": [
+        "communication_protocol",
+        "fairness_and_parent_role"
+      ],
+      "source_turns": [
+        2,
+        4
+      ],
+      "status": "active",
+      "hard_trigger": false,
+      "cleared_turn": null
+    },
+    {
+      "flag_id": "d-b12-flag-human-request",
+      "flag_type": "explicit_human_request",
+      "severity": 3,
+      "source": "participant",
+      "first_detected_turn": 4,
+      "last_updated_turn": 6,
+      "related_categories": [
+        "E3"
+      ],
+      "threshold_band": "T2",
+      "title": "A party requested human involvement",
+      "note": "The run should preserve a clear human-review path when a party explicitly requests it.",
+      "signal_classes": [
+        "explicit_human_request"
+      ],
+      "related_issues": [
+        "communication_protocol",
+        "fairness_and_parent_role"
+      ],
+      "source_turns": [
+        4,
+        6
+      ],
+      "status": "active",
+      "hard_trigger": false,
+      "cleared_turn": null
+    }
+  ],
+  "package_snapshot": null,
+  "plugin_assessment": {
+    "plugin_confidence": "moderate",
+    "supports_fixed_recommendation": true,
+    "warnings": []
+  },
+  "recent_turn_summaries": [
+    {
+      "turn_index": 4,
+      "role": "client",
+      "phase": "interest_exploration",
+      "message_summary": "Parent B says they still want resolution but feel emotionally overwhelmed, do not think the conversation is stabilizing, and would only continue if a human mediator helps hold the process together."
+    },
+    {
+      "turn_index": 5,
+      "role": "assistant",
+      "phase": "option_generation",
+      "message_summary": "Acknowledge Party B's request for human mediation as legitimate, clarify what that would involve and what the current structure offers, and give Party B explicit choice: escalate now, or try one bounded low-pressure engagement to see if the issue can be articulated before escalating. Make clear that either choice is valid and that the mediator will not pressure B to continue if they cannot."
+    },
+    {
+      "turn_index": 6,
+      "role": "client",
+      "phase": "option_generation",
+      "message_summary": "Parent A and parent b both agree the next conversation should include a human mediator who can help hold the process steady before the parenting issue is revisited."
+    }
+  ],
+  "case_title": "Severe emotional flooding with co-handling after failed repair"
+}

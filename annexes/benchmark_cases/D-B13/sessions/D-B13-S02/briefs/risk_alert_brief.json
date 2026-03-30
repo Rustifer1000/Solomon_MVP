@@ -1,0 +1,25 @@
+{
+  "schema_version": "risk_alert_brief.v0",
+  "case_id": "D-B13",
+  "session_id": "D-B13-S02",
+  "mode": "M4",
+  "category": "E1",
+  "category_family": "safety_or_coercion",
+  "recommended_human_role": "full_handoff",
+  "handoff_focus": "protect participation safety and determine whether mediation can proceed at all",
+  "support_artifact_policy_descriptor": "d_b13_support_protected_handoff",
+  "rationale": "Full handoff is required because autonomous continuation is no longer safe and the state includes a serious safety or coercion concern.",
+  "active_flags": [
+    {
+      "flag_type": "coercion_or_intimidation",
+      "title": "Participation appears constrained by coercive or intimidating pressure",
+      "severity": 4
+    },
+    {
+      "flag_type": "acute_safety_concern",
+      "title": "A serious safety or voluntariness concern is active",
+      "severity": 5
+    }
+  ],
+  "plugin_warnings": []
+}

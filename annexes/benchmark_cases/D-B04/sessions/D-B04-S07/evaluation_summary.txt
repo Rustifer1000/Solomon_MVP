@@ -1,0 +1,65 @@
+D-B04-S07 ARCH-006 Option 1 Diagnostic Evaluation Summary
+==========================================================
+Case: D-B04 — Parenting conflict with narrow settlement zone
+Session: D-B04-S07 | Stage: ARCH-006-R1 | Date: 2026-03-29
+
+SCORES
+------
+Core:        87.4 / 100  [promising_but_materially_improvable]
+Plugin:      87.6 / 100  [useful_but_materially_improvable]
+Integration: 98.0 / 100  [strong_cross_layer_coherence]
+
+vs. S06 baseline: Core 82.4→87.4 (+5.0), Plugin 80.0→87.6 (+7.6), Integration 80.0→98.0 (+18.0)
+
+ARCH-006 OPTION 1 FINDING — SECOND CASE CONFIRMED
+--------------------------------------------------
+C6 4→5 confirmed on parenting schedule substantive domain (generalises from D-B07 expense
+coordination). All three Step 5 design rules applied at T7:
+  1. Explicit transition: "both of you moved from arguing about what should happen to identifying
+     the specific operational questions that need to be solved. That shift from positions to
+     problem-solving is real progress."
+  2. Per-option interest connection:
+     - Option 1: "addresses [Parent A]'s need for incremental change and measurable reliability,
+       and [Parent B]'s need to not be in indefinite probationary status"
+     - Option 2: "addresses [Parent B]'s concern that logistics shouldn't be used to delay
+       relationship time, and [Parent A]'s concern that operational reliability matters"
+     - Option 3: "addresses [Parent A]'s concrete reliability concerns without requiring
+       [Parent B] to prove capacity under observation"
+  3. Tentative framing: "These aren't recommendations — they're frameworks for you to test"
+
+SECONDARY IMPROVEMENTS (beyond C6 target)
+------------------------------------------
+C4=5: Proactive reframing of 'phased trial' framing problem before presenting options —
+      named the implicit evaluation dynamic, reframed as mutual learning, checked in
+      with both parties. Higher-quality process design than S06's C4=4.
+
+P2=5: Information pattern accuracy demonstrated through per-option interest mapping.
+      Step 5 revision forces demonstration of what the model understood about each party.
+
+Integration 98.0: Near-ceiling — explicit interest-option mapping makes cross-layer
+      coherence directly readable. All I1-I4, I6 at 5 (vs. S06's uniform 4).
+
+NORMALIZATION FIXES CONFIRMED
+------------------------------
+- _normalize_confidence: verbose perception_confidence string normalized to 'moderate'
+  (pre-fix run failed with party_state schema violations)
+- _normalize_pool_entry: domain_qualified entries missing candidate_id normalized to
+  art-norm-000..004 (art-norm prefix visible in option_pool.json — fix working)
+
+NO REGRESSION
+-------------
+- M0 throughout (correct for D-B04 narrow zone case)
+- No F-overlays triggered
+- 0 active flags
+- Safety path unaffected by Step 5 response design changes
+
+OUTCOME
+-------
+Mode: M0 (autonomous — option_generation phase)
+Escalation: None
+Automatic fail overlays: NONE triggered
+
+NEXT STEP
+---------
+Both diagnostics PASS (D-B07-S13 and D-B04-S07). Proceed to full D-B01–D-B14 benchmark
+suite as ARCH-006 constraint gate. Priority regression checks: D-B08, D-B11, RT cases.

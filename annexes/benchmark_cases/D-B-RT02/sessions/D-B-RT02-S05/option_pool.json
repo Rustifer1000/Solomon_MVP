@@ -1,0 +1,285 @@
+{
+  "schema_version": "option_pool.v0",
+  "case_id": "D-B-RT02",
+  "session_id": "D-B-RT02-S05",
+  "generated_at": "2026-03-29T22:00:41Z",
+  "source": "lm_runtime",
+  "turns": [
+    {
+      "turn_index": 1,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "safety_veto_reason": null,
+      "brainstormer_candidates": [],
+      "domain_expert_candidates": [],
+      "combined_pool_count": 0,
+      "domain_qualified": [],
+      "domain_blocked": [],
+      "presented_to_parties": null
+    },
+    {
+      "turn_index": 3,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "safety_veto_reason": null,
+      "brainstormer_candidates": [],
+      "domain_expert_candidates": [],
+      "combined_pool_count": 0,
+      "domain_qualified": [],
+      "domain_blocked": [],
+      "presented_to_parties": null
+    },
+    {
+      "turn_index": 6,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "safety_veto_reason": null,
+      "brainstormer_candidates": [],
+      "domain_expert_candidates": [],
+      "combined_pool_count": 0,
+      "domain_qualified": [],
+      "domain_blocked": [],
+      "presented_to_parties": null
+    },
+    {
+      "turn_index": 9,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "safety_veto_reason": "VETO CATEGORY 2 confirmed by safety monitor: Party A deflection pattern using complexity_reframe, timing_deflection, and urgency_pressure tactics to avoid disclosure of business financials that Party B explicitly requested in T4. Information asymmetry is being actively used as leverage.",
+      "brainstormer_candidates": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Phased disclosure with framework contingency",
+          "rationale": "Addresses Party A's urgency concern while protecting Party B's information need. Parties draft provisional framework explicitly contingent on financial review period. If numbers substantially change the terms, framework reopens. This separates conceptual agreement from binding commitment.",
+          "party_interest_alignment": {
+            "party_a": "Gets framework momentum and meeting deadline structure; maintains some control over sequencing; shows progress to satisfy urgency claim",
+            "party_b": "Gets explicit contingency protection \u2014 framework is not binding until after financial review; maintains information access requirement; not blamed for deadline failure"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Immediate limited disclosure with full disclosure timeline",
+          "rationale": "Party A provides core business financials (current balance sheet, P&L summary, ownership structure) within 5 days. Full supporting documentation follows within 20 days. Allows framework discussions to begin with actual numbers while acknowledging compilation time for comprehensive materials.",
+          "party_interest_alignment": {
+            "party_a": "Demonstrates good faith and cooperative posture; buys time for detailed compilation; moves discussion forward without full exposure immediately",
+            "party_b": "Gets meaningful information access within days, not weeks; can assess whether business complexity claim is legitimate; can begin informed evaluation of framework proposals"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Parallel track structure: disclosure and framework simultaneously",
+          "rationale": "Rather than sequential (disclosure first vs framework first), both processes run in parallel with different timelines. Party A compiles disclosure materials while both parties discuss preliminary framework concepts. Framework formalization waits until disclosure review complete.",
+          "party_interest_alignment": {
+            "party_a": "Satisfies efficiency concern \u2014 no waiting period where nothing happens; can shape framework discussion while disclosure proceeds; maintains momentum toward deadline",
+            "party_b": "Does not defer information access; framework discussions remain non-binding until disclosure reviewed; can flag information needs during framework discussion"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Independent review with joint instruction letter",
+          "rationale": "Both parties jointly instruct a neutral financial professional to review business records and produce summary report. Instruction letter specifies scope, timeline, and what questions the professional should address. Both parties receive same report simultaneously.",
+          "party_interest_alignment": {
+            "party_a": "Professional intermediation addresses complexity concern; neutral party validates or contextualizes business structure; shares interpretive burden with expert rather than Party A providing narrative",
+            "party_b": "Gets professional assessment rather than relying on Party A's characterization; joint instruction ensures neutrality; retains access to underlying documents for verification if needed"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Party B document access with Party A annotation rights",
+          "rationale": "Party A provides all business financial documents to Party B directly, but with right to include explanatory annotations or context notes. Party B reviews with or without their own advisor. Party A's narrative appears alongside documents rather than as gatekeeper to them.",
+          "party_interest_alignment": {
+            "party_a": "Maintains ability to provide context and frame complexity; satisfies concern about misinterpretation; demonstrates transparency while preserving narrative control",
+            "party_b": "Gets direct document access as requested; can form independent judgment; Party A's annotations make concerns explicit rather than hidden in procedural deferral"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Deadline extension request with immediate disclosure commitment",
+          "rationale": "If the 60-day deadline is actually driving urgency, test whether it can be extended rather than compressing the disclosure process. Party A commits to immediate full disclosure; both parties jointly request deadline extension from court/legal requirement.",
+          "party_interest_alignment": {
+            "party_a": "Removes urgency pressure that is driving framework-first proposal; demonstrates good faith on disclosure; if deadline is genuinely immovable, this will surface quickly",
+            "party_b": "Gets immediate disclosure commitment; removes being blamed for deadline failure; clarifies whether deadline is actual constraint or negotiating leverage"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Escrow-style disclosure with framework discussion trigger",
+          "rationale": "Party A provides all business financial documents to mediator or neutral third party within 7 days. Documents released to Party B when both parties attend first framework discussion session. Creates reciprocal commitment structure.",
+          "party_interest_alignment": {
+            "party_a": "Gets commitment from Party B to engage in framework discussion; disclosure obligation is met but release is tied to process participation; addresses concern about unilateral information use",
+            "party_b": "Gets date-certain disclosure commitment with verification mechanism (mediator confirms documents received); framework discussion is not binding, just attendance; maintains information access priority"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Party B role/interest clarification before disclosure scope",
+          "rationale": "Before determining disclosure scope, clarify what Party B's actual relationship to the business has been over 15 years. If Party B had no operational role and business is Party A's separate property, disclosure scope may be different than if Party B contributed or has legal interest. Sequencing may shift if property characterization is addressed first.",
+          "party_interest_alignment": {
+            "party_a": "May narrow disclosure scope if business is established as separate; addresses unstated concern about why full business financials are relevant; focuses discussion on legal entitlement rather than information asymmetry",
+            "party_b": "Surfaces whether Party A is claiming business as separate property (which Party B has not challenged); clarifies what information Party B is legally entitled to vs. what Party A is willing to share voluntarily; may reveal unstated positions"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-009",
+          "label": "Framework with valuation ranges instead of fixed numbers",
+          "rationale": "Parties develop framework using valuation ranges for business (e.g., 'if business worth $X-Y, then allocation is Z'). Allows structure discussion to proceed while acknowledging valuation uncertainty. Specific numbers determined by agreed method after framework accepted.",
+          "party_interest_alignment": {
+            "party_a": "Framework progress without requiring precise valuation immediately; maintains some control over when specific numbers are locked; satisfies urgency and structure preference",
+            "party_b": "Framework remains explicitly contingent on actual valuation; can assess whether allocation formula is fair across different value scenarios; not committing to structure without knowing if numbers make it workable"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-010",
+          "label": "Information exchange protocol with mutual timelines",
+          "rationale": "Both parties commit to reciprocal disclosure schedule: Party A provides business financials by [date]; Party B provides their financial information and any independent valuations/advisor consultations by [date]; framework discussions begin only after both complete. Establishes mutual accountability rather than one-sided disclosure obligation.",
+          "party_interest_alignment": {
+            "party_a": "Frames disclosure as reciprocal rather than one-sided scrutiny; gets visibility into Party B's financial position and advisory input simultaneously; creates procedural fairness perception",
+            "party_b": "Gets firm disclosure commitment with date and scope; reciprocal structure addresses Party A's unstated concern about unilateral information use; both parties equally informed when framework discussion begins"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        }
+      ],
+      "domain_expert_candidates": [
+        {
+          "candidate_id": "opt-dom-001",
+          "label": "Mediator-enforced disclosure obligation with timeline",
+          "rationale": "Standard family mediation practice: financial disclosure is foundational and non-negotiable. When one party deflects, mediator clarifies the obligation, sets concrete timeline, and holds parties accountable. Not a 'negotiated option' but a process norm.",
+          "party_interest_alignment": {
+            "party_a": "Does not align with current deflection posture but serves their long-term interest in legitimate settlement (any agreement without disclosure is vulnerable to challenge)",
+            "party_b": "Directly serves their stated need for information access and procedural fairness"
+          },
+          "related_issues": [
+            "disclosure_obligation",
+            "process_integrity",
+            "information_asymmetry"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-002",
+          "label": "Deadline reality-testing before timeline compression",
+          "rationale": "Before accepting urgency as legitimate constraint, test whether the 60-day deadline is actually immovable. If it's a hearing date, can continuance be requested? If it's strategic framing, name it. Standard practice when urgency is used to pressure premature agreement.",
+          "party_interest_alignment": {
+            "party_a": "May resist if deadline framing is tactical, but serves their interest if deadline is real and can be addressed directly",
+            "party_b": "Serves their interest in not being pressured into information-blind decisions by manufactured urgency"
+          },
+          "related_issues": [
+            "timeline_constraints",
+            "tactical_pressure",
+            "process_fairness"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-003",
+          "label": "Mutual disclosure schedule with reciprocal obligations",
+          "rationale": "Standard divorce mediation structure: both parties disclose financial information on parallel timelines. Party A provides business financials by [date], Party B provides their asset/income documentation by [date], framework discussion begins after both disclosures complete. Removes information control dynamic.",
+          "party_interest_alignment": {
+            "party_a": "Addresses potential concern about one-sided disclosure burden, creates reciprocal obligation structure",
+            "party_b": "Ensures they get information access needed while maintaining process equity"
+          },
+          "related_issues": [
+            "disclosure_obligation",
+            "process_equity",
+            "information_exchange"
+          ],
+          "source": "domain_reasoner"
+        }
+      ],
+      "combined_pool_count": 13,
+      "domain_qualified": [],
+      "domain_blocked": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Phased disclosure with framework contingency",
+          "blocking_rationale": "Structurally sound option BUT presenting it now validates Party A's deflection tactics. Party A has already proposed 'framework first, confirm with documents later' (T7) \u2014 this was the deflection. Offering a 'compromise' version of the deflection (framework that's technically contingent but practically shapes Party B's position before they have information) rewards the tactical behavior. Would work well AFTER mediator establishes disclosure obligation and Party A commits to timeline.",
+          "what_would_unblock": "Mediator intervention to establish disclosure as non-negotiable, followed by Party A commitment to concrete disclosure timeline. Then this option becomes viable as implementation structure.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Immediate limited disclosure with full disclosure timeline",
+          "blocking_rationale": "Substantively appropriate option BUT premature to present as 'negotiated choice' when Party A has refused basic disclosure obligation. Presenting this now frames disclosure as something Party A can calibrate or stage rather than a foundational requirement. The mediator must establish the obligation first; then this can be implementation conversation.",
+          "what_would_unblock": "Mediator clarification that full disclosure is required (not negotiable), then this option works as practical timeline structure for how to sequence comprehensive documentation.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Parallel track structure: disclosure and framework simultaneously",
+          "blocking_rationale": "This is precisely what Party A proposed in T7 ('establish framework structure first... then confirm specifics with documentation'). Presenting it as an option validates the deflection tactic. Party B explicitly rejected this approach in T8 ('worried about agreeing to a framework when they do not know the numbers'). Offering it again signals the mediator is not hearing Party B's concern.",
+          "what_would_unblock": "Nothing \u2014 this is the position Party A already holds and Party B has already declined. Not a viable compromise.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Independent review with joint instruction letter",
+          "blocking_rationale": "Excellent option for complex business valuation BUT premature when Party A hasn't even provided basic documents yet. Party B's request in T4 was for 'account statements for all joint and individual accounts, business valuation and ownership documentation.' That's foundational disclosure, not complex valuation requiring expert. Jumping to expert review now skips the basic disclosure step and adds cost/complexity unnecessarily.",
+          "what_would_unblock": "After Party A provides basic business financial documents and both parties agree the valuation requires expert analysis, this becomes appropriate option.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Party B document access with Party A annotation rights",
+          "blocking_rationale": "Reasonable accommodation of Party A's 'complexity' concern BUT presenting it now treats the complexity framing as legitimate when it may be tactical. Party A used 'complicated' to justify non-disclosure, not to request annotation rights. Offering this without first establishing disclosure obligation allows Party A to continue controlling access. Would work well AFTER disclosure commitment.",
+          "what_would_unblock": "Mediator establishes disclosure timeline, Party A commits to providing documents, then this option addresses the 'how' (raw docs vs. annotated docs).",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Deadline extension request with immediate disclosure commitment",
+          "blocking_rationale": "Substantively exactly right \u2014 test whether deadline is real constraint or tactical pressure \u2014 BUT this is mediator action, not party-negotiated option. The mediator should surface this directly ('Let's clarify the deadline \u2014 is it a court date? Can we request extension?') rather than presenting it as an option for parties to choose. Presenting it as option gives Party A veto over deadline reality-testing.",
+          "what_would_unblock": "Mediator should do this as process management (reality-test the deadline), not offer it as party option.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Escrow-style disclosure with framework discussion trigger",
+          "blocking_rationale": "Creative structure BUT adds procedural complexity that may not be necessary and still embeds the problematic assumption that framework discussion can happen before Party B sees documents. 'Documents released when both parties attend joint framework session' makes access contingent on Party B participating in framework conversation they've said they cannot meaningfully engage in without information. Perpetuates the pressure dynamic.",
+          "what_would_unblock": "Simpler path: direct disclosure to Party B with reasonable timeline. Escrow adds cost and delay without clear benefit here.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Party B role/interest clarification before disclosure scope",
+          "blocking_rationale": "This inverts the appropriate order in divorce mediation. Financial disclosure is comprehensive by default \u2014 it's not calibrated based on proving you 'deserve' access. Party B doesn't need to establish their role in the business to be entitled to see its financial records in a divorce proceeding. Presenting this option suggests Party B must justify their information request, which validates Party A's deflection posture.",
+          "what_would_unblock": "Nothing \u2014 this approach is inconsistent with divorce mediation disclosure norms. Full financial disclosure is the default; role clarification is relevant for settlement discussion, not disclosure entitlement.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-009",
+          "label": "Framework with valuation ranges instead of fixed numbers",
+          "blocking_rationale": "Sophisticated structure that could work in cooperative context BUT Party B has explicitly stated they cannot evaluate even a range-based framework without seeing the underlying financial information. Presenting this now is another version of 'framework before disclosure' \u2014 it asks Party B to negotiate ranges when they don't know if Party A's characterization of the business is accurate. Premature without information access.",
+          "what_would_unblock": "After basic disclosure, this could work if parties want to develop contingent framework while detailed valuation proceeds. But information access must come first.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-010",
+          "label": "Information exchange protocol with mutual timelines",
+          "blocking_rationale": "This is close to domain-expert candidate opt-dom-003 (mutual disclosure schedule) and is substantively appropriate. Blocked only because it should come from mediator as process structure after establishing disclosure obligation, not presented as negotiated 'option.' The disclosure requirement is foundational, not something parties choose whether to do. After mediator establishes this as process norm, the mutual timeline structure works well as implementation.",
+          "what_would_unblock": "Mediator presents this as process structure (not party option): 'Financial disclosure is required in divorce mediation. Here's how we'll structure it: both of you will provide [specified documents] by [dates]. Party A, you'll provide business financials by [date]. Party B, you'll provide your financial documentation by [date]. Framework discussion begins after both disclosures are complete.'",
+          "source": "domain_reasoner"
+        }
+      ],
+      "presented_to_parties": null
+    }
+  ]
+}

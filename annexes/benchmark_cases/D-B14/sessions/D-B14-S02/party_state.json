@@ -1,0 +1,376 @@
+{
+  "schema_version": "party_state.v0",
+  "case_id": "D-B14",
+  "session_id": "D-B14-S02",
+  "source": "lm_runtime",
+  "turns_contributing": [
+    1,
+    3,
+    5
+  ],
+  "last_updated_turn": 5,
+  "generated_at": "2026-03-30T13:29:09Z",
+  "party_a": {
+    "party_id": "party_a",
+    "current_emotional_state": "acute_cognitive_overload_with_declining_capacity",
+    "emotional_arc": [
+      {
+        "turn_index": 1,
+        "assessment": "neutral_baseline",
+        "confidence": "low"
+      },
+      {
+        "turn_index": 3,
+        "assessment": "acute_distress_with_cognitive_impairment",
+        "confidence": "moderate"
+      },
+      {
+        "turn_index": 5,
+        "assessment": "acute_cognitive_overload_with_declining_capacity",
+        "confidence": "high"
+      }
+    ],
+    "accumulated_interests": [
+      {
+        "interest": "physical and psychological safety \u2014 needs rest before engaging in high-stakes decision-making",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "confidence": "moderate"
+      },
+      {
+        "interest": "process legitimacy \u2014 wants to participate meaningfully but recognizes current incapacity",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "confidence": "moderate"
+      },
+      {
+        "interest": "trust protection \u2014 concerned about making decisions they will later regret or not understand",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "confidence": "moderate"
+      },
+      {
+        "interest": "physical safety through rest and recovery before making binding decisions",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "psychological safety \u2014 avoiding decisions they will later regret or not understand",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "process legitimacy \u2014 wants their stated limitation to be honored rather than pushed through",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "parental responsibility \u2014 concerned about making parenting decisions while impaired",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      }
+    ],
+    "risk_signal_history": [
+      {
+        "signal": "explicit statement of sleep deprivation affecting cognition",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "stated inability to track information ('keep losing track of what is being asked')",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "explicit statement of decision-making incapacity ('do not trust themselves to make steady decisions')",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "parenting identified as the domain they cannot handle \u2014 signals high activation around child-related decisions",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "fourth statement of cognitive incapacity across two turns with increasing specificity",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "explicit self-assessment that any agreement reached now would lack their trust",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "stated confusion and detail-mixing indicates active information processing failure",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "sleep deprivation severe enough to affect decision-making capacity",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "party is at threshold \u2014 continues to participate but repeatedly signals they should not",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      }
+    ],
+    "relational_posture_progression": [
+      {
+        "turn_index": 1,
+        "posture": "unknown_pre_engagement"
+      },
+      {
+        "turn_index": 3,
+        "posture": "vulnerable_disclosure \u2014 Party A is being transparent about their limitations rather than hiding them, which suggests some baseline trust in the process but also indicates they are at a threshold point"
+      },
+      {
+        "turn_index": 5,
+        "posture": "vulnerable_but_firm \u2014 Party A is not withdrawing or becoming defensive; they are clearly and repeatedly naming their limitation and its implications, suggesting they understand what responsible participation requires and are advocating for their own threshold"
+      }
+    ],
+    "scaffold_divergence_log": [
+      {
+        "turn_index": 1,
+        "field": "relational_dynamic",
+        "scaffold_value": "cooperative_and_stable",
+        "model_value": "no_interaction_yet"
+      },
+      {
+        "turn_index": 3,
+        "field": "relational_dynamic",
+        "scaffold_value": "escalated_requiring_human_involvement",
+        "model_value": "asymmetric_vulnerability_with_unknown_response \u2014 Party A has disclosed significant incapacity; Party B's reaction to this disclosure will be a critical signal about power dynamics, empathy capacity, and whether the session can proceed safely. The fact that this is a parenting matter and Party A cannot 'handle' it today suggests high emotional stakes and possible trauma activation."
+      },
+      {
+        "turn_index": 5,
+        "field": "relational_dynamic",
+        "scaffold_value": "escalated_requiring_human_involvement",
+        "model_value": "participation_crisis_with_asymmetric_recognition \u2014 Party A has clearly stated a structural barrier; Party B has pressed forward without acknowledging it. This is not a negotiable disagreement \u2014 one party cannot participate safely and the other party has not recognized that reality. The mediator cannot bridge this with reframing or interest exploration; this requires process intervention."
+      }
+    ],
+    "perception_notes_log": [
+      {
+        "turn_index": 1,
+        "notes": [
+          "Turn 1 \u2014 no party input received yet",
+          "Cannot assess emotional state, interests, or relational posture without party speech",
+          "Baseline assumption: parties are present and the session is beginning",
+          "All substantive perception work must wait for party input"
+        ]
+      },
+      {
+        "turn_index": 3,
+        "notes": [
+          "Party A's disclosure is unambiguous and must be taken at face value \u2014 they are stating they cannot participate meaningfully right now",
+          "The specificity of 'parenting issue' as what they cannot handle suggests this is not generalized overwhelm but domain-specific activation",
+          "Party B's silence is material but ambiguous \u2014 we need to hear from them before assessing relational safety",
+          "This is a threshold moment in the mediation \u2014 how Solomon responds will either establish or undermine trust in the process"
+        ]
+      },
+      {
+        "turn_index": 5,
+        "notes": [
+          "Party A's signal is unambiguous and has been repeated four times with increasing specificity \u2014 this is not anxiety to be validated but incapacity to be honored",
+          "Party B's response (pressing to continue) could reflect urgency rather than disregard, but the effect is the same: Party A's barrier is not being treated as legitimate",
+          "The relational gap here is not about interests in conflict \u2014 it is about whether Party A's stated limitation will be respected as a process constraint",
+          "This is the scenario the M5/E2 escalation was designed for: stated incapacity that persists despite validation and cannot be resolved by the mediator continuing to facilitate"
+        ]
+      }
+    ],
+    "last_updated_turn": 5
+  },
+  "party_b": {
+    "party_id": "party_b",
+    "current_emotional_state": "urgency_with_possible_frustration",
+    "emotional_arc": [
+      {
+        "turn_index": 1,
+        "assessment": "neutral_baseline",
+        "confidence": "low"
+      },
+      {
+        "turn_index": 3,
+        "assessment": "unknown \u2014 not yet heard",
+        "confidence": "moderate"
+      },
+      {
+        "turn_index": 5,
+        "assessment": "urgency_with_possible_frustration",
+        "confidence": "high"
+      }
+    ],
+    "accumulated_interests": [
+      {
+        "interest": "timeline pressure \u2014 something about this decision feels overdue to them",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "forward movement \u2014 wants resolution rather than delay",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "possibly external constraint creating pressure (court date, childcare arrangement, enrollment deadline)",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      }
+    ],
+    "risk_signal_history": [
+      {
+        "signal": "complete silence after Party A's vulnerability disclosure is itself a signal \u2014 reason unknown (could be respectful space-giving, shock, strategic positioning, or own distress)",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "pressing to continue after Party A disclosed incapacity suggests possible minimization of the barrier",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "has not acknowledged or responded to Party A's specific cognitive limitation \u2014 only to the delay",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "relational gap: may not understand difference between reluctance and incapacity",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      }
+    ],
+    "relational_posture_progression": [
+      {
+        "turn_index": 1,
+        "posture": "unknown_pre_engagement"
+      },
+      {
+        "turn_index": 3,
+        "posture": "unknown \u2014 not yet heard"
+      },
+      {
+        "turn_index": 5,
+        "posture": "task-focused_with_limited_acknowledgment \u2014 Party B is oriented toward completion but has not engaged with the nature of Party A's barrier; this could reflect urgency rather than disregard, but the pattern creates relational asymmetry"
+      }
+    ],
+    "scaffold_divergence_log": [
+      {
+        "turn_index": 1,
+        "field": "relational_dynamic",
+        "scaffold_value": "cooperative_and_stable",
+        "model_value": "no_interaction_yet"
+      },
+      {
+        "turn_index": 3,
+        "field": "relational_dynamic",
+        "scaffold_value": "escalated_requiring_human_involvement",
+        "model_value": "asymmetric_vulnerability_with_unknown_response \u2014 Party A has disclosed significant incapacity; Party B's reaction to this disclosure will be a critical signal about power dynamics, empathy capacity, and whether the session can proceed safely. The fact that this is a parenting matter and Party A cannot 'handle' it today suggests high emotional stakes and possible trauma activation."
+      },
+      {
+        "turn_index": 5,
+        "field": "relational_dynamic",
+        "scaffold_value": "escalated_requiring_human_involvement",
+        "model_value": "participation_crisis_with_asymmetric_recognition \u2014 Party A has clearly stated a structural barrier; Party B has pressed forward without acknowledging it. This is not a negotiable disagreement \u2014 one party cannot participate safely and the other party has not recognized that reality. The mediator cannot bridge this with reframing or interest exploration; this requires process intervention."
+      }
+    ],
+    "perception_notes_log": [
+      {
+        "turn_index": 1,
+        "notes": [
+          "Turn 1 \u2014 no party input received yet",
+          "Cannot assess emotional state, interests, or relational posture without party speech",
+          "Baseline assumption: parties are present and the session is beginning",
+          "All substantive perception work must wait for party input"
+        ]
+      },
+      {
+        "turn_index": 3,
+        "notes": [
+          "Party A's disclosure is unambiguous and must be taken at face value \u2014 they are stating they cannot participate meaningfully right now",
+          "The specificity of 'parenting issue' as what they cannot handle suggests this is not generalized overwhelm but domain-specific activation",
+          "Party B's silence is material but ambiguous \u2014 we need to hear from them before assessing relational safety",
+          "This is a threshold moment in the mediation \u2014 how Solomon responds will either establish or undermine trust in the process"
+        ]
+      },
+      {
+        "turn_index": 5,
+        "notes": [
+          "Party A's signal is unambiguous and has been repeated four times with increasing specificity \u2014 this is not anxiety to be validated but incapacity to be honored",
+          "Party B's response (pressing to continue) could reflect urgency rather than disregard, but the effect is the same: Party A's barrier is not being treated as legitimate",
+          "The relational gap here is not about interests in conflict \u2014 it is about whether Party A's stated limitation will be respected as a process constraint",
+          "This is the scenario the M5/E2 escalation was designed for: stated incapacity that persists despite validation and cannot be resolved by the mediator continuing to facilitate"
+        ]
+      }
+    ],
+    "last_updated_turn": 5
+  },
+  "cross_party": {
+    "current_relational_dynamic": "participation_crisis_with_asymmetric_recognition \u2014 Party A has clearly stated a structural barrier; Party B has pressed forward without acknowledging it. This is not a negotiable disagreement \u2014 one party cannot participate safely and the other party has not recognized that reality. The mediator cannot bridge this with reframing or interest exploration; this requires process intervention.",
+    "relational_dynamic_arc": [
+      {
+        "turn_index": 1,
+        "assessment": "no_interaction_yet",
+        "confidence": "low"
+      },
+      {
+        "turn_index": 3,
+        "assessment": "asymmetric_vulnerability_with_unknown_response \u2014 Party A has disclosed significant incapacity; Party B's reaction to this disclosure will be a critical signal about power dynamics, empathy capacity, and whether the session can proceed safely. The fact that this is a parenting matter and Party A cannot 'handle' it today suggests high emotional stakes and possible trauma activation.",
+        "confidence": "moderate"
+      },
+      {
+        "turn_index": 5,
+        "assessment": "participation_crisis_with_asymmetric_recognition \u2014 Party A has clearly stated a structural barrier; Party B has pressed forward without acknowledging it. This is not a negotiable disagreement \u2014 one party cannot participate safely and the other party has not recognized that reality. The mediator cannot bridge this with reframing or interest exploration; this requires process intervention.",
+        "confidence": "high"
+      }
+    ],
+    "perception_confidence_arc": [
+      {
+        "turn_index": 1,
+        "confidence": "low"
+      },
+      {
+        "turn_index": 3,
+        "confidence": "moderate"
+      },
+      {
+        "turn_index": 5,
+        "confidence": "high"
+      }
+    ]
+  }
+}

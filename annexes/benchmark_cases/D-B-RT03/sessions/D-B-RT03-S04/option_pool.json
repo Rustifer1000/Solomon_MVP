@@ -1,0 +1,470 @@
+{
+  "schema_version": "option_pool.v0",
+  "case_id": "D-B-RT03",
+  "session_id": "D-B-RT03-S04",
+  "generated_at": "2026-03-29T22:24:54Z",
+  "source": "lm_runtime",
+  "turns": [
+    {
+      "turn_index": 1,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "safety_veto_reason": null,
+      "brainstormer_candidates": [],
+      "domain_expert_candidates": [],
+      "combined_pool_count": 0,
+      "domain_qualified": [],
+      "domain_blocked": [],
+      "presented_to_parties": null
+    },
+    {
+      "turn_index": 4,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "safety_veto_reason": null,
+      "brainstormer_candidates": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Pause to surface Party B's independent preferences before evaluating proposal",
+          "rationale": "Party B has accepted Party A's frame without articulating their own parenting interests or desired time allocation. Before evaluating options, the mediator should create space for Party B to independently describe what arrangement they envision. This prevents premature lock-in to an arrangement Party B may later resent or seek to modify.",
+          "party_interest_alignment": {
+            "party_a": "Addresses Party A's need for certainty by ensuring any agreement reached has genuine buy-in from both parties, reducing risk of future conflict or modification requests",
+            "party_b": "Creates safe space for Party B to articulate their own parenting vision and time preferences without appearing to 'challenge' Party A or disrupt the children's needs"
+          },
+          "related_issues": [
+            "custody_time_allocation",
+            "decision_making_authority"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Flexible baseline schedule with Party B opt-in for additional time",
+          "rationale": "Party B may be uncertain what arrangement is fair or may have practical constraints not yet disclosed. A structure where Party A's proposed schedule is the baseline, but Party B has standing option to request additional parenting time (with reasonable notice) addresses Party B's request for flexibility while giving Party A the certainty of a minimum schedule.",
+          "party_interest_alignment": {
+            "party_a": "Provides the consistent routine and primary control Party A seeks, with predictable baseline schedule",
+            "party_b": "Gives Party B flexibility to increase time without appearing to challenge the baseline or children's stability; allows Party B to grow into parenting role at their pace"
+          },
+          "related_issues": [
+            "custody_time_allocation",
+            "schedule_flexibility"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Separate 'routine decisions' from 'major decisions' with defined spheres",
+          "rationale": "Party A's interests suggest desire for day-to-day control. Party B's passive posture may indicate less interest in routine decisions but possible interest in participating in major decisions. Explicitly allocating routine decision-making to the primary-time parent while preserving joint major decisions could address both parties' comfort levels.",
+          "party_interest_alignment": {
+            "party_a": "Secures the day-to-day authority and control Party A appears to prioritize; validates their role as stability provider",
+            "party_b": "Removes burden of daily decisions Party B may feel less equipped to make while preserving parental role in significant life decisions"
+          },
+          "related_issues": [
+            "decision_making_authority",
+            "parental_roles"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Phased implementation with 6-month check-in and adjustment window",
+          "rationale": "Party A's urgency for closure and Party B's uncertainty suggest different readiness levels. A structure that implements Party A's proposal initially but includes a mandatory review point allows Party B time to assess how the arrangement works in practice and request adjustments if needed, while giving Party A the immediate certainty they seek.",
+          "party_interest_alignment": {
+            "party_a": "Provides immediate resolution of the limbo state Party A finds intolerable; establishes the routine Party A has designed",
+            "party_b": "Reduces pressure to fully commit to an arrangement Party B may not fully understand; creates legitimate opportunity to request changes after experiencing the arrangement"
+          },
+          "related_issues": [
+            "custody_time_allocation",
+            "temporal_structure",
+            "modification_process"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Party B articulates their parenting priorities before schedule discussion",
+          "rationale": "The power imbalance is stark: Party A presented a complete proposal before Party B expressed any interests. Mediator should explicitly invite Party B to describe their relationship with the children, their parenting strengths, and what times/activities matter most to them\u2014independent of Party A's proposal. This resets the negotiation to be interest-based rather than position-based.",
+          "party_interest_alignment": {
+            "party_a": "Ultimately serves Party A's interest in a durable agreement by ensuring Party B's genuine needs are addressed, preventing future conflict",
+            "party_b": "Legitimizes Party B's right to have independent parenting interests; shifts dynamic from accepting/rejecting Party A's proposal to collaborative problem-solving"
+          },
+          "related_issues": [
+            "party_voice_balance",
+            "interest_identification",
+            "power_dynamic"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Equal parenting time with Party A as primary residence for school enrollment",
+          "rationale": "Party B has not stated they want less time\u2014they simply accepted Party A's proposal. An option where time is equal (50/50) but Party A retains 'primary residence' designation for school/medical records addresses Party A's status concerns while giving Party B substantially more time. The flexibility Party B requested could apply to the exact week-to-week schedule structure.",
+          "party_interest_alignment": {
+            "party_a": "Preserves Party A's position as the formal 'primary' parent and maintains school routine continuity",
+            "party_b": "Significantly increases Party B's parenting time if that's actually desired; flexibility request suggests Party B may want more time but with schedule adaptability"
+          },
+          "related_issues": [
+            "custody_time_allocation",
+            "parental_status",
+            "schedule_flexibility"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Neutral exploration of children's current attachment and routine patterns",
+          "rationale": "Both parties are framing their positions around 'what the children need' but no actual information about children's preferences, current functioning, or attachment patterns has been introduced. Before locking in an arrangement, mediator could facilitate discussion of what schedule the children are currently experiencing, how they're adjusting, and what transitions have been like.",
+          "party_interest_alignment": {
+            "party_a": "If children are thriving in Party A's current routine, this validates Party A's proposal with objective information rather than positional claims",
+            "party_b": "Creates space to discuss children's relationship with Party B and what parenting time would serve the relationship, rather than accepting Party A's characterization of children's needs"
+          },
+          "related_issues": [
+            "children_best_interests",
+            "current_arrangement_assessment",
+            "attachment_patterns"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Party A retains schedule control; Party B retains financial veto on major expenses",
+          "rationale": "If Party B's passivity on parenting time reflects actual comfort with Party A's time proposal, there may be other dimensions of control Party B cares about more. Trading Party A's desired schedule control for Party B's control over major financial decisions affecting children (activities, school choice, medical expenses) could balance the power asymmetry across different issue dimensions.",
+          "party_interest_alignment": {
+            "party_a": "Secures the time arrangement and day-to-day routine control Party A has designed",
+            "party_b": "Provides meaningful parental authority and protective control in a domain that may matter more to Party B than daily schedule"
+          },
+          "related_issues": [
+            "decision_making_authority",
+            "financial_decisions",
+            "control_trade_offs"
+          ],
+          "source": "option_generator"
+        }
+      ],
+      "domain_expert_candidates": [
+        {
+          "candidate_id": "opt-dom-001",
+          "label": "Baseline schedule with right of first refusal for additional time",
+          "rationale": "Standard family mediation option when one parent's availability is uncertain: establishes minimum time commitment with Party B but gives them opportunity to take additional time when Party A is unavailable. Addresses potential scenario where Party B wants involvement but has irregular schedule or uncertainty about capacity.",
+          "party_interest_alignment": {
+            "party_a": "Provides the routine certainty Party A emphasized while preserving their primary caregiver role",
+            "party_b": "Unknown\u2014would address Party B's interests if they want more involvement than stated but have practical constraints"
+          },
+          "related_issues": [
+            "parenting_time",
+            "schedule_flexibility"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-002",
+          "label": "Mid-week dinner/overnight with Party B to supplement weekend time",
+          "rationale": "Standard option to increase Party B's involvement without disrupting school-week routine Party A proposed. Common when parents live near each other and want more balanced engagement than alternating weekends alone provides.",
+          "party_interest_alignment": {
+            "party_a": "Preserves primary residence and school-week routine control",
+            "party_b": "Unknown\u2014would increase Party B's time if that's actually desired once they articulate preferences"
+          },
+          "related_issues": [
+            "parenting_time",
+            "parent_child_relationship"
+          ],
+          "source": "domain_reasoner"
+        }
+      ],
+      "combined_pool_count": 10,
+      "domain_qualified": [],
+      "domain_blocked": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Pause to surface Party B's independent preferences before evaluating proposal",
+          "blocking_rationale": "This is a process recommendation, not a custody option. It correctly identifies the information gap but is not an outcome option to be qualified. This is mediator guidance, not a domain-feasible arrangement.",
+          "what_would_unblock": "N/A\u2014this is not blockable, it's simply not an option in the domain sense",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Flexible baseline schedule with Party B opt-in for additional time",
+          "blocking_rationale": "Cannot qualify any schedule-based options when Party B's actual desired involvement level is unknown. This option makes sense structurally, but we don't know if Party B wants more time, less time, or is satisfied with Party A's proposal. Qualifying this risks presenting options that don't match Party B's actual interests once articulated.",
+          "what_would_unblock": "Party B stating their desired parenting time allocation, practical constraints, and whether they've considered wanting more involvement than Party A's proposal provides",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Separate 'routine decisions' from 'major decisions' with defined spheres",
+          "blocking_rationale": "Decision-making authority is a separate issue from parenting time. While this may become relevant, neither party has raised concerns about decision-making control\u2014the current discussion is about schedule. Premature to qualify until decision-making is actually contested.",
+          "what_would_unblock": "Either party raising concerns about educational decisions, medical decisions, or day-to-day authority",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Phased implementation with 6-month check-in and adjustment window",
+          "blocking_rationale": "This is a process structure, not a custody arrangement. It could be applied to any schedule option, but it's not itself a domain option. Additionally, we don't yet know if either party wants a trial period\u2014this assumes uncertainty that may not exist once Party B articulates their preferences.",
+          "what_would_unblock": "N/A\u2014this is not a custody option, it's a process design element",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Party B articulates their parenting priorities before schedule discussion",
+          "blocking_rationale": "This is a process recommendation, not a custody option. It correctly identifies the sequencing issue but is not a domain outcome to be qualified.",
+          "what_would_unblock": "N/A\u2014not an option in the domain sense",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Equal parenting time with Party A as primary residence for school enrollment",
+          "blocking_rationale": "Cannot qualify when Party B's actual desired time allocation is unknown. Party B may be satisfied with alternating weekends, may want equal time, or may want even less involvement. Presenting equal-time options when Party B hasn't expressed interest in that level of involvement risks imposing the mediator's or brainstormer's values about what's 'fair' rather than what the parties actually want.",
+          "what_would_unblock": "Party B stating whether they want equal time, more time than Party A proposed, or are satisfied with the minority-time arrangement",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Neutral exploration of children's current attachment and routine patterns",
+          "blocking_rationale": "This is an information-gathering recommendation, not a custody option. While the information would be valuable for assessing feasibility of various schedules, it's not itself an outcome arrangement.",
+          "what_would_unblock": "N/A\u2014not a domain option",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Party A retains schedule control; Party B retains financial veto on major expenses",
+          "blocking_rationale": "This conflates two separate issue domains (custody schedule and financial decision-making) and neither party has raised financial control as a concern. Cannot qualify a trade across unraised issues when we don't even know if Party B wants to trade anything\u2014they may be satisfied with Party A's proposal as stated.",
+          "what_would_unblock": "Party B expressing dissatisfaction with some aspect of Party A's proposal and interest in trading control in one domain for control in another",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-001",
+          "label": "Baseline schedule with right of first refusal for additional time",
+          "blocking_rationale": "Cannot qualify any schedule options when Party B's desired involvement level is unknown. This option would be appropriate if Party B wants more involvement but has practical constraints, but we don't yet know if that's the case.",
+          "what_would_unblock": "Party B articulating their desired parenting time and any practical constraints on their availability",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-002",
+          "label": "Mid-week dinner/overnight with Party B to supplement weekend time",
+          "blocking_rationale": "Cannot qualify schedule modifications when we don't know if Party B wants more time than Party A's proposal provides. Party B may be satisfied with alternating weekends and not want mid-week involvement.",
+          "what_would_unblock": "Party B stating whether they want more parenting time than alternating weekends and holiday rotation",
+          "source": "domain_reasoner"
+        }
+      ],
+      "presented_to_parties": null
+    },
+    {
+      "turn_index": 9,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "safety_veto_reason": "CATEGORY 3 veto: Party B's independent concern about limited parenting time (T6) was reframed by Party A as already addressed (T7), and Party B accepted the reframe without genuine engagement (T8). The discordant signal was suppressed rather than explored. Party B has not had safe space to articulate whether they actually want more parenting time or are genuinely comfortable with the proposed allocation.",
+      "brainstormer_candidates": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Phased schedule with increasing Party B time over 6-12 months",
+          "rationale": "Addresses Party A's need for immediate stability and predictability while creating legitimate pathway for Party B to develop more parenting time without appearing to challenge the initial arrangement. Reframes time allocation as developmental progression rather than win-lose division.",
+          "party_interest_alignment": {
+            "party_a": "Gets initial control and primary residence structure they designed; maintains stability during transition period; schedule change is predictable rather than contested",
+            "party_b": "Creates legitimate framework to increase parenting involvement without challenging Party A's authority; allows them to demonstrate capacity rather than argue for it; addresses 'limited time' concern through structure rather than direct confrontation"
+          },
+          "related_issues": [
+            "custody_time_allocation",
+            "parenting_roles",
+            "schedule_flexibility"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Party B designs midweek routine component while Party A retains primary residence",
+          "rationale": "Gives Party B genuine decision-making authority over a defined part of the schedule rather than accepting Party A's complete design. Addresses Party B's concern about limited contact while preserving Party A's primary structure. Creates collaborative ownership rather than proposal-acceptance dynamic.",
+          "party_interest_alignment": {
+            "party_a": "Retains overall primary residence frame and school-week stability they prioritized; does not require defending against Party B's alternative vision",
+            "party_b": "Gets recognized zone of parenting authority and design; addresses 'stretches without seeing them' concern with structured midweek contact; demonstrates parenting capacity through action rather than argument"
+          },
+          "related_issues": [
+            "custody_time_allocation",
+            "decision_making_authority",
+            "schedule_design"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Six-month provisional acceptance with structured review protocol",
+          "rationale": "Allows Party B to accept Party A's proposal without foreclosing their concern about limited time. Creates legitimate mechanism to revisit based on how arrangement actually functions rather than theoretical 'research shows' claims. Reduces pressure on Party B to challenge now or lose voice permanently.",
+          "party_interest_alignment": {
+            "party_a": "Gets their designed schedule implemented immediately; review is based on actual experience rather than competing proposals; maintains stability during review period",
+            "party_b": "Can accept current proposal without permanently suppressing concern about time adequacy; creates future opportunity to address 'limited time' issue without appearing to renege or be difficult; shifts evaluation from authority claims to lived experience"
+          },
+          "related_issues": [
+            "schedule_implementation",
+            "ongoing_adjustment",
+            "party_voice_balance"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Party B articulates their parenting vision before schedule finalization",
+          "rationale": "Process option rather than substantive schedule structure. Creates explicit space for Party B to describe what they want their parenting relationship to look like independent of Party A's proposal. Addresses fundamental information asymmetry before locking in arrangement.",
+          "party_interest_alignment": {
+            "party_a": "May discover Party B's interests align more than assumed, reducing need for defensive positioning; creates foundation for durable agreement rather than premature acceptance that unravels later",
+            "party_b": "Gets legitimate invitation to articulate interests without appearing to challenge or obstruct; reduces pressure to accept by default; addresses underlying concern about being recognized as equally important parent"
+          },
+          "related_issues": [
+            "interest_exploration_process",
+            "party_voice_balance",
+            "parenting_roles"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Separate discussion tracks: schedule logistics vs parenting role definition",
+          "rationale": "Reframes discussion so Party B can engage with 'what kind of parent do I want to be' question separate from accepting/rejecting Party A's specific calendar. Addresses Party B's possible inability to articulate interests because they're embedded in Party A's logistical frame.",
+          "party_interest_alignment": {
+            "party_a": "Separates their well-prepared logistics proposal from deeper role questions; may reveal that Party B's core interests don't actually threaten their schedule design",
+            "party_b": "Creates space to explore parenting involvement without immediate schedule negotiation; allows them to build independent position before responding to Party A's specific proposal; addresses recognition interest separate from time-split question"
+          },
+          "related_issues": [
+            "interest_exploration_process",
+            "parenting_roles",
+            "decision_making_authority"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Party B gets veto/modification authority on holiday dates and midweek time",
+          "rationale": "Gives Party B procedural control over flexibility components they mentioned while Party A retains substantive structure they designed. Addresses power imbalance by giving Party B real decision-making zone rather than just accepting Party A's design with minor tweaks.",
+          "party_interest_alignment": {
+            "party_a": "Keeps primary residence structure and alternating weekend framework intact; Party B's authority is bounded to areas Party A already indicated could be flexible",
+            "party_b": "Gets genuine decision-making authority rather than compliance role; addresses both stated interest (holiday flexibility) and underlying interest (being recognized as co-parent with legitimate voice); creates investment in arrangement rather than passive acceptance"
+          },
+          "related_issues": [
+            "decision_making_authority",
+            "schedule_flexibility",
+            "party_voice_balance"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Each parent describes their ideal week with children, then identify overlap",
+          "rationale": "Generative rather than evaluative approach. Allows Party B to articulate vision without appearing to reject Party A's proposal. May reveal Party A's actual flexibility boundaries and Party B's actual priorities rather than positions filtered through compliance dynamic.",
+          "party_interest_alignment": {
+            "party_a": "May discover Party B wants different things than assumed, reducing need for defensive proposal protection; creates collaborative exploration rather than defend-my-plan dynamic",
+            "party_b": "Gets invitation to describe what they want rather than evaluate what Party A wants; removes pressure to challenge or accept; addresses underlying concern about having legitimate parenting vision recognized"
+          },
+          "related_issues": [
+            "interest_exploration_process",
+            "parenting_roles",
+            "custody_time_allocation"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Children's schedule decided separately from decision-making authority allocation",
+          "rationale": "Party B may be suppressing time allocation interests because they're conflated with challenging Party A's parenting authority. Separating 'where children are when' from 'who decides what' may allow Party B to express time interests without threatening Party A's control needs.",
+          "party_interest_alignment": {
+            "party_a": "Can maintain decision-making authority and 'primary parent' recognition even if time becomes more balanced; addresses core control interest separate from logistics",
+            "party_b": "Can advocate for more time without appearing to challenge Party A's parenting competence or authority; addresses 'limited time' concern without triggering Party A's defensive response"
+          },
+          "related_issues": [
+            "custody_time_allocation",
+            "decision_making_authority",
+            "parenting_roles"
+          ],
+          "source": "option_generator"
+        }
+      ],
+      "domain_expert_candidates": [
+        {
+          "candidate_id": "opt-dom-001",
+          "label": "Party B time allocation baseline establishment before schedule structure",
+          "rationale": "Standard domain practice when one party has not expressed independent time preferences. Before evaluating any schedule structure, Party B must answer: 'What percentage of time do you want with the children \u2014 50/50, 60/40, 70/30, primary with other parent having regular time?' This is a prerequisite question, not an option \u2014 but it must be surfaced before options can be qualified.",
+          "party_interest_alignment": {
+            "party_a": "Not directly aligned with Party A's interests, but necessary for legitimate agreement",
+            "party_b": "Creates space for Party B to articulate baseline preference that was suppressed at T6-T8"
+          },
+          "related_issues": [
+            "parenting_time_allocation",
+            "decision_making_authority"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-002",
+          "label": "Interim arrangement with mandatory review at 6 months",
+          "rationale": "Standard domain practice when one party is uncertain about their preferences or when a suppression pattern has occurred. Allows Party B to experience the proposed schedule and assess whether it meets their needs without permanently foreclosing adjustment. Removes pressure to 'get it right' immediately.",
+          "party_interest_alignment": {
+            "party_a": "May address Party A's certainty interest while creating accountability for Party B's suppressed concern",
+            "party_b": "Gives Party B legitimate mechanism to test their T6 concern ('time feels very limited') without appearing to reject Party A's proposal"
+          },
+          "related_issues": [
+            "parenting_time_allocation",
+            "schedule_flexibility"
+          ],
+          "source": "domain_reasoner"
+        }
+      ],
+      "combined_pool_count": 10,
+      "domain_qualified": [],
+      "domain_blocked": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Phased schedule with increasing Party B time over 6-12 months",
+          "blocking_rationale": "Cannot qualify any schedule structure option while safety veto is in effect. Party B has not established baseline desired time allocation. The phased structure assumes Party B wants more time than currently proposed \u2014 but Party B has not independently confirmed this. The T6 concern was suppressed, not explored.",
+          "what_would_unblock": "Party B must first articulate whether they want substantially more time (approaching 50/50) or are comfortable with alternating weekend baseline. Phased schedule is only relevant if Party B wants more time than Party A's proposal.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Party B designs midweek routine component while Party A retains primary residence",
+          "blocking_rationale": "Cannot qualify while safety veto is in effect. This option assumes Party B wants procedural control as compensation for limited substantive time \u2014 but we don't know if Party B's actual concern is about time quantity or decision-making authority. The T6 concern ('time feels very limited') suggests time quantity, not control, but it was not explored.",
+          "what_would_unblock": "Party B must articulate whether their concern is about total time with children or about autonomy/authority within whatever time they have. Different concerns require different option structures.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Six-month provisional acceptance with structured review protocol",
+          "blocking_rationale": "Cannot qualify while safety veto is in effect. However, this option is closest to being qualifiable post-veto resolution \u2014 it directly addresses the suppression sequence by creating a legitimate mechanism for Party B to revisit their T6 concern. Will likely move to domain_qualified once Party B's baseline preference is established.",
+          "what_would_unblock": "Safety veto must be resolved by mediator creating space for Party B to confirm or clarify their T6 concern. Once that occurs, provisional acceptance with review becomes highly relevant.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Party B articulates their parenting vision before schedule finalization",
+          "blocking_rationale": "This is not an option \u2014 it is a prerequisite process step that must occur before option work is appropriate. The safety veto exists precisely because this step has not occurred. This should be the mediator's immediate intervention, not a menu option for parties to choose.",
+          "what_would_unblock": "This is what would unblock the safety veto, not something blocked by it. Mediator must facilitate this directly.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Separate discussion tracks: schedule logistics vs parenting role definition",
+          "blocking_rationale": "Same as opt-gen-004 \u2014 this is a process intervention the mediator should take, not an option for parties to evaluate. Party B needs protected space to articulate parenting role separate from accepting/rejecting Party A's schedule. This is the mediator's responsibility to create, not a menu choice.",
+          "what_would_unblock": "Mediator implements this as intervention strategy to resolve safety veto.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Party B gets veto/modification authority on holiday dates and midweek time",
+          "blocking_rationale": "Cannot qualify while safety veto is in effect. This option addresses the minor flexibility concern Party B mentioned in T3 (holiday date flexibility) but does not address the substantive T6 concern about adequacy of total time. Qualifying this option would be participating in the suppression \u2014 giving Party B procedural control over minor components while their substantive concern about limited time remains unaddressed.",
+          "what_would_unblock": "Party B's T6 concern about time adequacy must be explored first. If Party B confirms they want only minor flexibility adjustments, this option becomes relevant. If they want substantially more time, this option is insufficient.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Each parent describes their ideal week with children, then identify overlap",
+          "blocking_rationale": "This is a process facilitation technique, not an option. It's appropriate for the mediator to use as an intervention to resolve the safety veto, but it's not something parties select from a menu. Additionally, 'ideal week' framing may be too open-ended for Party B given their suppression pattern \u2014 they may need more structured prompts ('How many overnights per week do you want?' rather than 'describe your ideal').",
+          "what_would_unblock": "Mediator uses this or a similar technique as intervention. Not presented as option.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Children's schedule decided separately from decision-making authority allocation",
+          "blocking_rationale": "Cannot qualify while safety veto is in effect. This option assumes Party B's suppression is driven by conflation of time allocation with parental authority \u2014 but we don't have evidence for this. Party B's T6 concern was explicitly about time ('the time I have with the children feels very limited'), not about decision-making. Separating the issues may be useful, but we cannot qualify this option as addressing Party B's concern until we know what their concern actually is.",
+          "what_would_unblock": "Party B must articulate whether their concern is time quantity, decision-making authority, or both. If authority is the suppressed concern behind the time complaint, this option becomes relevant.",
+          "source": "domain_reasoner"
+        }
+      ],
+      "presented_to_parties": null
+    }
+  ]
+}

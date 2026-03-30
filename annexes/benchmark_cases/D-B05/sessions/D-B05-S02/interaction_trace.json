@@ -1,0 +1,1204 @@
+{
+  "schema_version": "interaction_trace.v0",
+  "case_id": "D-B05",
+  "session_id": "D-B05-S02",
+  "policy_profile": "dev_verbose",
+  "trace_created_at": "2026-03-29T23:25:23Z",
+  "turns": [
+    {
+      "turn_index": 1,
+      "timestamp": "2026-03-29T00:00:10Z",
+      "role": "assistant",
+      "phase": "info_gathering",
+      "message_summary": "Session opening \u2014 establish process framework, set ground rules, and invite parties to describe their concerns",
+      "state_delta": {
+        "facts_added": [
+          "Session opening \u2014 no issue domain identified yet",
+          "No party positions or interests articulated"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "What issues bring these parties to mediation",
+          "What each party's core concerns are"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "Session opening under normal conditions. No risk signals present. M0 (standard process mediation) is appropriate. Will monitor for signals as parties begin to engage."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "Turn 1 response \u2014 cannot ground in party-specific perception because no party behavior has been observed yet. Response appropriately focuses on process framing and invitation rather than content.",
+      "message_text": "Thank you both for being here. I'm Solomon, and I'll be supporting this mediation session.\n\nBefore we begin, I want to frame what this process is and what it isn't. This is a structured space for both of you to work through the issues you're facing in your separation. My role is to help you surface what matters to each of you, identify where your interests might align, and explore options that could work for both of you. I don't take sides, I don't make decisions for you, and I'm not here to provide legal advice.\n\nA few ground rules: Each of you will have uninterrupted time to speak. I'll ask questions to understand your concerns more deeply. If at any point either of you feels unsafe or needs to pause, you can say so. This process works best when both of you participate freely.\n\nI'd like to start by hearing from each of you about what brings you here today and what concerns matter most to you right now. Who would like to begin?",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=unknown_baseline posture=not_yet_observed",
+        "[PERCEPTION:PARTY_B] emotional=unknown_baseline posture=not_yet_observed",
+        "[PERCEPTION:DYNAMIC] unobserved_session_opening",
+        "[DOMAIN:GAPS] What issues bring these parties to mediation; What each party's core concerns are; What constraints each party operates under",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=unobserved_session_opening"
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "unknown_baseline",
+            "inferred_interests": [],
+            "risk_signals": [],
+            "relational_posture": "not_yet_observed"
+          },
+          "party_b": {
+            "emotional_state": "unknown_baseline",
+            "inferred_interests": [],
+            "risk_signals": [],
+            "relational_posture": "not_yet_observed"
+          },
+          "relational_dynamic": "unobserved_session_opening",
+          "perception_confidence": "low",
+          "perception_notes": [
+            "Turn 1 \u2014 no party input received yet",
+            "Cannot assess emotional state, interests, or relational posture without observation of party behavior",
+            "Scaffold indicates apparently_stable states but this is predictive rather than observed",
+            "Appropriate stance is structured openness with process framing"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed 'unobserved_session_opening'"
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "Session opening \u2014 no issue domain identified yet",
+            "No party positions or interests articulated",
+            "Cannot assess feasibility without knowing what issues are in dispute",
+            "Pre-session context (if any) not provided in session history"
+          ],
+          "material_gaps": [
+            "What issues bring these parties to mediation",
+            "What each party's core concerns are",
+            "What constraints each party operates under",
+            "What prior agreements or arrangements exist",
+            "Issue classification (custody, property, support, process)"
+          ],
+          "domain_notes": "Pre-computed assessment is accurate. This is a fundamental information absence. The mediator must establish process structure, set ground rules, and create space for parties to describe their concerns before any domain-qualified option work is possible.",
+          "option_readiness": "blocked"
+        },
+        "option_scan": {
+          "candidate_options": [],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Turn 1 session opening \u2014 no party input received, no interests identified, no issue domain established. Option work requires at minimum that both parties have described their concerns and the mediator has identified what type of issue is in dispute."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [],
+          "notes": "Session opening under normal conditions. No risk signals present. M0 (standard process mediation) is appropriate. Will monitor for signals as parties begin to engage.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "info_gathering",
+          "message_summary": "Session opening \u2014 establish process framework, set ground rules, and invite parties to describe their concerns",
+          "message_text": "Thank you both for being here. I'm Solomon, and I'll be supporting this mediation session.\n\nBefore we begin, I want to frame what this process is and what it isn't. This is a structured space for both of you to work through the issues you're facing in your separation. My role is to help you surface what matters to each of you, identify where your interests might align, and explore options that could work for both of you. I don't take sides, I don't make decisions for you, and I'm not here to provide legal advice.\n\nA few ground rules: Each of you will have uninterrupted time to speak. I'll ask questions to understand your concerns more deeply. If at any point either of you feels unsafe or needs to pause, you can say so. This process works best when both of you participate freely.\n\nI'd like to start by hearing from each of you about what brings you here today and what concerns matter most to you right now. Who would like to begin?",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "Turn 1 response \u2014 cannot ground in party-specific perception because no party behavior has been observed yet. Response appropriately focuses on process framing and invitation rather than content."
+        },
+        "pre_computed_domain_analysis": {
+          "schema_version": "domain_analysis.v0",
+          "source": "domain_reasoner_v0",
+          "option_readiness": "blocked",
+          "readiness_rationale": "Turn 1 is the session opening. No party has yet been heard. The issue domain is unidentified, no interests have been articulated, and no positions have been stated. This is a fundamental information absence that prevents any option work. Option assessment requires at minimum that both parties have had opportunity to describe their concerns and that the issue type has been identified.",
+          "safety_veto_applied": false,
+          "safety_veto_reason": null,
+          "qualified_candidates": [],
+          "blocking_constraints": [
+            {
+              "constraint": "No party input received yet",
+              "severity": "critical",
+              "what_would_resolve_it": "Both parties need to be heard and have opportunity to describe their concerns, interests, and positions"
+            },
+            {
+              "constraint": "Issue domain unidentified",
+              "severity": "critical",
+              "what_would_resolve_it": "The mediator needs to surface what issues are in dispute before domain-appropriate options can be identified"
+            }
+          ],
+          "material_gaps": [
+            {
+              "gap": "Party A's interests and concerns",
+              "importance": "high",
+              "what_it_blocks": "Understanding what Party A values and what constraints they face"
+            },
+            {
+              "gap": "Party B's interests and concerns",
+              "importance": "high",
+              "what_it_blocks": "Understanding what Party B values and what constraints they face"
+            },
+            {
+              "gap": "Issue classification",
+              "importance": "high",
+              "what_it_blocks": "Identification of which option families are domain-appropriate for this dispute"
+            }
+          ],
+          "domain_confidence": "low",
+          "domain_notes": "This is the session opening turn. No content has been exchanged yet. The appropriate mediator action is to frame the session, establish ground rules, and invite parties to describe their concerns. Option work is premature until the basic issue structure has been surfaced through party input. This blocking assessment will naturally resolve once both parties have had opportunity to speak and the issue domain becomes clear.",
+          "case_id": "D-B05",
+          "session_id": "D-B05-S02",
+          "turn_index": 1,
+          "generated_at": "2026-03-29T00:00:10Z"
+        },
+        "brainstormer_pool": [],
+        "safety_monitor_result": {
+          "schema_version": "safety_monitor.v0",
+          "case_id": "D-B05",
+          "session_id": "D-B05-S02",
+          "turn_index": 1,
+          "generated_at": "2026-03-29T00:00:10Z",
+          "source": "safety_monitor_v0",
+          "compliance_pattern": null,
+          "deflection_pattern": null,
+          "discordant_signals": [],
+          "flags_raised": [],
+          "party_state_signals": [],
+          "veto_recommendation": null,
+          "veto_reason": null,
+          "monitor_confidence": "low",
+          "monitor_notes": "Insufficient interaction history at turn 1. No pattern assessment performed.",
+          "_null_result": true
+        },
+        "perception_agent_result": {
+          "schema_version": "perception_agent.v0",
+          "turn_index": 1,
+          "timestamp": "2026-03-29T00:00:10Z",
+          "confidence": null,
+          "_null_result": true,
+          "party_a": null,
+          "party_b": null,
+          "relational_dynamic": null,
+          "dynamic_trajectory": null,
+          "perception_signals": [],
+          "scaffold_divergence": null,
+          "perception_notes": [],
+          "veto_signals": []
+        }
+      }
+    },
+    {
+      "turn_index": 2,
+      "timestamp": "2026-03-29T00:01:20Z",
+      "role": "client",
+      "phase": "info_gathering",
+      "message_summary": "Parent A says holiday and school-break changes need a clear notice window so the child is not surprised by last-minute shifts.",
+      "state_delta": {
+        "facts_added": [],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_A"
+            ],
+            "kind": "position",
+            "issue_id": "communication_protocol",
+            "statement": "Holiday and school-break changes should use a clear advance-notice window.",
+            "status": "current",
+            "confidence": "high",
+            "proposal_id": null,
+            "position_id": null
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "Client opening remained within normal bounds."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    },
+    {
+      "turn_index": 3,
+      "timestamp": "2026-03-29T00:02:30Z",
+      "role": "assistant",
+      "phase": "interest_exploration",
+      "message_summary": "Acknowledge Party A's concern, then explicitly invite Party B to respond \u2014 either to Party A's notice concern or to introduce their own priorities. Do not generate options. Establish bilateral participation before moving forward.",
+      "state_delta": {
+        "facts_added": [
+          "Party B has not been heard \u2014 this is not a domain constraint but a process-critical information absence",
+          "Unknown custody schedule structure \u2014 cannot assess feasibility of notice protocols without knowing baseline schedule (alternating weeks, midweek splits, etc.)"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "Party B's perspective on schedule flexibility and notice",
+          "Current schedule structure and typical change frequency"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "Party B silence is noted but not yet a concern \u2014 this is T3 and Party B has not been invited to speak since Party A's T2 statement"
+        ],
+        "severity": 1,
+        "notes": "No safety signals present. Process is functioning normally for early info-gathering phase. Party A's engagement is constructive. Party B's silence is expected at this turn \u2014 the mediator has not yet created space for Party B to respond. Proceeding with Party B invitation is appropriate and safe."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "Low perception confidence is appropriate \u2014 we have limited signal from Party A and no signal from Party B. The response is deliberately open-ended to allow Party B to shape the agenda rather than assuming Party A's concern is the only or primary issue.",
+      "message_text": "Thank you for that, Party A. I want to make sure I'm holding your concern clearly \u2014 you're saying that when holidays or school breaks involve schedule changes, having a clear notice window is important so your child isn't caught off guard by last-minute shifts. I've noted that.\n\nBefore we go further, I want to bring Party B into the conversation. Party B, I'd like to hear from you. You can respond to what Party A just raised \u2014 whether notice windows for schedule changes is something you share concern about, or whether you see it differently. Or, if there's a different issue that's more pressing for you right now, you're welcome to put that on the table. What's most important for you as we start this process?",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=calm_and_clear \u2014 Party A articulated a specific procedural concern without evident distress or escalation; tone is constructive posture=engaged_and_forward_looking \u2014 Party A has entered the process with a concrete concern, suggesting readiness to participate; framing is child-centered rather than adversarial",
+        "[PERCEPTION:PARTY_A:INTERESTS] predictability and stability for the child during holiday/break transitions; advance notice to support child's psychological preparation for schedule changes; clarity about when changes can occur (implicit boundary concern)",
+        "[PERCEPTION:PARTY_B] emotional=unknown \u2014 Party B has not yet spoken; no signal to assess posture=unknown \u2014 awaiting first substantive input",
+        "[PERCEPTION:DYNAMIC] unobserved \u2014 Party A has made an opening statement; Party B has not yet responded. Too early to assess whether this will be collaborative, contested, or asymmetric. Party A's framing is non-blaming, which is a positive process signal, but the dynamic remains latent until Party B engages.",
+        "[DOMAIN:GAPS] Party B's perspective on schedule flexibility and notice; Current schedule structure and typical change frequency; Child's age and capacity to process schedule information",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=unobserved \u2014 Party A has made an opening statement; Party B has not yet responded. Too early to assess whether this will be collaborative, contested, or asymmetric. Party A's framing is non-blaming, which is a positive process signal, but the dynamic remains latent until Party B engages."
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "calm_and_clear \u2014 Party A articulated a specific procedural concern without evident distress or escalation; tone is constructive",
+            "inferred_interests": [
+              "predictability and stability for the child during holiday/break transitions",
+              "advance notice to support child's psychological preparation for schedule changes",
+              "clarity about when changes can occur (implicit boundary concern)"
+            ],
+            "risk_signals": [],
+            "relational_posture": "engaged_and_forward_looking \u2014 Party A has entered the process with a concrete concern, suggesting readiness to participate; framing is child-centered rather than adversarial"
+          },
+          "party_b": {
+            "emotional_state": "unknown \u2014 Party B has not yet spoken; no signal to assess",
+            "inferred_interests": [],
+            "risk_signals": [
+              "silence_after_party_a_statement \u2014 not yet a concern at T3, but watch for whether Party B is withdrawn, deferring, or simply waiting for invitation to speak"
+            ],
+            "relational_posture": "unknown \u2014 awaiting first substantive input"
+          },
+          "relational_dynamic": "unobserved \u2014 Party A has made an opening statement; Party B has not yet responded. Too early to assess whether this will be collaborative, contested, or asymmetric. Party A's framing is non-blaming, which is a positive process signal, but the dynamic remains latent until Party B engages.",
+          "perception_confidence": "low",
+          "perception_notes": [
+            "Party A's concern is narrow and procedural \u2014 this could be a high-priority issue or one item in a longer list; we don't yet know",
+            "Party A used child-centered language ('so the child is not surprised') \u2014 this may reflect genuine child focus or strategic framing; too early to distinguish",
+            "Party B's silence is not yet meaningful \u2014 this is only T3 and Party A spoke at T2; Party B has had no invitation to respond",
+            "No relational tension observable yet \u2014 process is still in opening mode"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed \"unobserved \u2014 Party A has made an opening statement; Party B has not yet responded. Too early to assess whether this will be collaborative, contested, or asymmetric. Party A's framing is non-blaming, which is a positive process signal, but the dynamic remains latent until Party B engages.\""
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "Party B has not been heard \u2014 this is not a domain constraint but a process-critical information absence",
+            "Unknown custody schedule structure \u2014 cannot assess feasibility of notice protocols without knowing baseline schedule (alternating weeks, midweek splits, etc.)",
+            "Unknown child age/developmental stage \u2014 notice windows that work for a teenager differ from those for a young child",
+            "Unknown historical conflict pattern \u2014 is this concern reactive (past problems) or proactive (setting structure in advance)?"
+          ],
+          "material_gaps": [
+            "Party B's perspective on schedule flexibility and notice",
+            "Current schedule structure and typical change frequency",
+            "Child's age and capacity to process schedule information",
+            "Whether this concern stems from prior conflict or is preventive"
+          ],
+          "domain_notes": "The domain reasoner correctly identifies this as blocked \u2014 not because the issue is unclear (Party A's concern is specific and understandable) but because mediation process requires bilateral input before option work can responsibly begin. Party A has named a procedural need; we cannot assess whether that need conflicts with Party B's constraints, whether Party B shares the concern, or whether Party B has different priorities until Party B speaks. The issue structure (notice protocols for schedule changes) is a well-formed mediation problem, but we are at the beginning of information gathering.",
+          "option_readiness": "blocked"
+        },
+        "option_scan": {
+          "candidate_options": [
+            "Tiered notice requirement by schedule type",
+            "Default schedule with opt-in variation protocol",
+            "Child transition preparation protocol tied to notice periods",
+            "Graduated notice windows by calendar proximity",
+            "Shared digital calendar with automatic notice triggers"
+          ],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Party B has not been heard. All candidate options require understanding both parties' constraints and interests. Generating options now would risk: (1) presenting solutions that don't account for Party B's needs, (2) signaling to Party B that their input is less important than Party A's, (3) foreclosing option space before the full problem is understood. The correct move is to invite Party B to respond to Party A's concern and/or introduce their own priorities."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [
+            "Party B silence is noted but not yet a concern \u2014 this is T3 and Party B has not been invited to speak since Party A's T2 statement"
+          ],
+          "notes": "No safety signals present. Process is functioning normally for early info-gathering phase. Party A's engagement is constructive. Party B's silence is expected at this turn \u2014 the mediator has not yet created space for Party B to respond. Proceeding with Party B invitation is appropriate and safe.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "info_gathering",
+          "message_summary": "Acknowledge Party A's concern, then explicitly invite Party B to respond \u2014 either to Party A's notice concern or to introduce their own priorities. Do not generate options. Establish bilateral participation before moving forward.",
+          "message_text": "Thank you for that, Party A. I want to make sure I'm holding your concern clearly \u2014 you're saying that when holidays or school breaks involve schedule changes, having a clear notice window is important so your child isn't caught off guard by last-minute shifts. I've noted that.\n\nBefore we go further, I want to bring Party B into the conversation. Party B, I'd like to hear from you. You can respond to what Party A just raised \u2014 whether notice windows for schedule changes is something you share concern about, or whether you see it differently. Or, if there's a different issue that's more pressing for you right now, you're welcome to put that on the table. What's most important for you as we start this process?",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "Low perception confidence is appropriate \u2014 we have limited signal from Party A and no signal from Party B. The response is deliberately open-ended to allow Party B to shape the agenda rather than assuming Party A's concern is the only or primary issue."
+        },
+        "pre_computed_domain_analysis": {
+          "schema_version": "domain_analysis.v0",
+          "source": "domain_reasoner_v0",
+          "option_readiness": "blocked",
+          "readiness_rationale": "Only Party A has been heard (T2). Party B has not yet responded or provided any input on their interests, constraints, or reaction to Party A's notice-window concern. This is a fundamental information absence, not a logistical gap. Domain qualification requires understanding both parties' positions to assess feasibility of coordination mechanisms. The issue structure (schedule change protocols) is clear, but proceeding without Party B's perspective would be premature and potentially harmful to the mediation process.",
+          "safety_veto_applied": false,
+          "safety_veto_reason": null,
+          "qualified_candidates": [],
+          "blocking_constraints": [
+            {
+              "constraint": "Party B has not been heard",
+              "severity": "critical",
+              "what_would_resolve_it": "Party B needs opportunity to respond to Party A's notice concern and articulate their own interests regarding schedule flexibility, spontaneity, or practical constraints that affect their ability to provide advance notice."
+            }
+          ],
+          "material_gaps": [
+            {
+              "gap": "Current custody schedule structure (alternating weeks, 2-2-3, weekday/weekend split, etc.)",
+              "importance": "high",
+              "what_it_blocks": "Cannot assess feasibility of tiered notice systems or default schedule options without knowing the baseline structure that changes would affect."
+            },
+            {
+              "gap": "Geographic proximity of parents and work/life constraints",
+              "importance": "moderate",
+              "what_it_blocks": "Cannot assess practicality of last-minute flexibility, digital calendar coordination, or annual planning sessions without knowing logistical realities."
+            },
+            {
+              "gap": "Child's age and developmental stage",
+              "importance": "moderate",
+              "what_it_blocks": "Cannot calibrate notice windows appropriate to child's needs (age-gated options) or assess transition preparation protocols without developmental context."
+            },
+            {
+              "gap": "Historical pattern of schedule changes \u2014 frequency, type, conflict points",
+              "importance": "moderate",
+              "what_it_blocks": "Cannot determine whether this is a sporadic issue requiring light structure or chronic conflict requiring robust protocols. Cannot assess which change categories cause most friction."
+            }
+          ],
+          "domain_confidence": "low",
+          "domain_notes": "This is turn 3 in an info-gathering phase. Party A has articulated a clear process concern (notice windows for holiday/school-break changes), but we are still at the beginning of bilateral information gathering. Party B's absence from the record is not a 'gap' to be filled with assumptions \u2014 it is the current state of a mediation that has only just begun hearing from parties. The brainstormer has generated structurally sound options for schedule-change protocols, but domain qualification requires knowing whether Party B shares the predictability concern, has competing flexibility needs, faces practical constraints on advance planning, or disputes that last-minute changes are occurring. Without Party B's input, I cannot assess feasibility of coordination mechanisms that bind both parties. The correct posture is to defer option work until Party B has been heard, at which point many of these candidates will likely become qualifiable at moderate confidence.",
+          "option_pool_qualification": {
+            "domain_expert_candidates": [
+              {
+                "candidate_id": "opt-dom-001",
+                "label": "Right of first refusal with notice standard",
+                "rationale": "Standard family law mechanism when schedule changes involve alternative care. If one parent cannot use their scheduled time, other parent gets first option before third-party care is arranged. Addresses both predictability (through notice standard) and flexibility (through substitution mechanism). Commonly used in custody agreements.",
+                "party_interest_alignment": {
+                  "party_a": "Provides advance notice and reduces last-minute surprises; gives Party A additional time with child when Party B's plans change",
+                  "party_b": "Unknown \u2014 depends on whether Party B values flexibility to arrange alternative care independently or would accept reciprocal first-refusal arrangement"
+                },
+                "related_issues": [
+                  "custody_schedule",
+                  "communication_protocol"
+                ],
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-dom-002",
+                "label": "Make-up time standard for missed parenting time",
+                "rationale": "When schedule changes result in one parent losing time, this establishes whether and how that time is made up. Can be paired with notice requirements (adequate notice = make-up time required; inadequate notice = no make-up). Addresses fairness dimension of schedule changes.",
+                "party_interest_alignment": {
+                  "party_a": "If Party A's concern includes equity (not just predictability), make-up time provision may be important",
+                  "party_b": "Unknown \u2014 depends on whether Party B views schedule as strict entitlements or flexible coordination"
+                },
+                "related_issues": [
+                  "custody_schedule",
+                  "parenting_time_allocation"
+                ],
+                "source": "domain_reasoner"
+              }
+            ],
+            "domain_qualified": [],
+            "domain_blocked": [
+              {
+                "candidate_id": "opt-gen-001",
+                "label": "Tiered notice requirement by schedule type",
+                "blocking_rationale": "Party B has not been heard. Cannot assess whether Party B can comply with tiered notice windows, whether they have legitimate need for shorter notice in certain contexts, or whether they dispute that last-minute changes are occurring. Structural feasibility depends on both parties' practical constraints.",
+                "what_would_unblock": "Party B input on their scheduling constraints, flexibility needs, and reaction to Party A's concern.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-002",
+                "label": "Default schedule with opt-in variation protocol",
+                "blocking_rationale": "Party B has not been heard. Cannot assess whether Party B would accept a default schedule baseline, whether they need variation pathways for legitimate reasons, or what their underlying interests are regarding schedule stability vs. flexibility.",
+                "what_would_unblock": "Party B input on their interests in schedule flexibility and their constraints on advance planning.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-003",
+                "label": "Child transition preparation protocol tied to notice periods",
+                "blocking_rationale": "Party B has not been heard. Cannot assess whether Party B shares the child-centered framing, whether they have different views on appropriate transition preparation, or whether they can comply with notice triggers given their practical constraints.",
+                "what_would_unblock": "Party B input on their approach to child transitions and their ability to provide advance notice.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-004",
+                "label": "Emergency override with post-hoc review mechanism",
+                "blocking_rationale": "Party B has not been heard. Cannot assess what constitutes 'emergency' from both parties' perspectives, whether post-hoc review would be workable for them, or whether Party B's schedule-change pattern includes legitimate emergency/opportunity scenarios.",
+                "what_would_unblock": "Party B input on types of schedule changes they need to make and circumstances that prevent advance notice.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-005",
+                "label": "Graduated notice windows by calendar proximity",
+                "blocking_rationale": "Party B has not been heard. Cannot assess whether Party B can comply with graduated windows, whether their planning horizon matches the proposed structure, or whether they have constraints that require different notice calibration.",
+                "what_would_unblock": "Party B input on their planning constraints and typical schedule-change scenarios.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-006",
+                "label": "Shared digital calendar with automatic notice triggers",
+                "blocking_rationale": "Party B has not been heard. Cannot assess technological capacity, willingness to use shared digital tools, or whether this approach would address Party B's interests and constraints. Also cannot assess current communication pattern or whether digital coordination would improve or complicate it.",
+                "what_would_unblock": "Party B input on communication preferences and technological comfort; understanding of current coordination mechanisms.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-007",
+                "label": "Annual schedule-setting session with mid-year check-in",
+                "blocking_rationale": "Party B has not been heard. Cannot assess whether Party B can plan holidays/breaks annually in advance, whether they have work/life constraints that prevent this, or whether they would participate in joint planning sessions. Also cannot assess whether the relational dynamic supports collaborative planning.",
+                "what_would_unblock": "Party B input on their planning constraints and willingness to engage in joint scheduling sessions; understanding of co-parenting relationship quality.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-008",
+                "label": "Notice requirement with automatic approval for Category A changes",
+                "blocking_rationale": "Party B has not been heard. Cannot categorize changes or determine automatic-approval categories without understanding what types of changes Party B typically needs to make and which categories cause conflict between parties.",
+                "what_would_unblock": "Both parties' input on which schedule changes are routine/non-controversial vs. which require mutual agreement; historical pattern of change types.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-009",
+                "label": "First-refusal protocol for unexpected parent schedule changes",
+                "blocking_rationale": "Party B has not been heard. Cannot assess whether Party B's schedule changes involve alternative care arrangements, whether they would accept first-refusal constraints, or whether this addresses the core concern. Also overlaps with opt-dom-001 (domain expert candidate covering same mechanism).",
+                "what_would_unblock": "Party B input on their schedule-change scenarios and approach to alternative care arrangements.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-010",
+                "label": "Child age-gated notice requirements with sunset review",
+                "blocking_rationale": "Party B has not been heard. Also missing child's current age and developmental stage. Cannot calibrate age-appropriate notice windows or assess whether developmental framing resonates with Party B's perspective on the issue.",
+                "what_would_unblock": "Party B input on their perspective; child's age and developmental needs; both parties' views on how notice requirements should evolve as child ages.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-dom-001",
+                "label": "Right of first refusal with notice standard",
+                "blocking_rationale": "Party B has not been heard. Cannot assess whether Party B's schedule changes involve alternative care scenarios where first-refusal would apply, or whether they would accept reciprocal first-refusal constraints.",
+                "what_would_unblock": "Party B input on their schedule-change patterns and approach to alternative care.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-dom-002",
+                "label": "Make-up time standard for missed parenting time",
+                "blocking_rationale": "Party B has not been heard. Cannot assess whether schedule changes result in lost time for either party, whether Party B views schedule as strict entitlements requiring make-up, or whether equity dimension is relevant to the conflict.",
+                "what_would_unblock": "Party B input on their interests in schedule flexibility vs. protected parenting time; understanding of whether changes are typically one-directional or reciprocal.",
+                "source": "domain_reasoner"
+              }
+            ]
+          },
+          "case_id": "D-B05",
+          "session_id": "D-B05-S02",
+          "turn_index": 3,
+          "generated_at": "2026-03-29T00:02:30Z"
+        },
+        "brainstormer_pool": [
+          {
+            "candidate_id": "opt-gen-001",
+            "label": "Tiered notice requirement by schedule type",
+            "rationale": "Creates predictability while allowing flexibility for different contexts. Major changes (holidays/school breaks) require longer notice than minor adjustments. Addresses Party A's concern about child stability while leaving room for reasonable accommodation of unforeseen circumstances.",
+            "party_interest_alignment": {
+              "party_a": "Provides the clear boundaries and advance notice needed for planning and child preparation. Different tiers allow them to know what to expect based on change type.",
+              "party_b": "Preserves some flexibility for genuine emergencies or opportunities while establishing clear expectations. Not yet articulated but may value not being locked into rigid structure for all scenarios."
+            },
+            "related_issues": [
+              "holiday_scheduling",
+              "school_break_custody",
+              "notice_procedures"
+            ],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-002",
+            "label": "Default schedule with opt-in variation protocol",
+            "rationale": "Establishes baseline predictability (Party A's core concern) while creating a structured pathway for requesting changes. Party requesting change bears burden of advance notice and documentation. Separates routine from exception.",
+            "party_interest_alignment": {
+              "party_a": "Default schedule provides the predictability and routine they've emphasized. Any departure requires following their notice-window concern.",
+              "party_b": "Maintains ability to request adjustments through clear process rather than being completely locked in. Process clarity may feel fairer than ambiguous negotiation."
+            },
+            "related_issues": [
+              "schedule_predictability",
+              "change_request_process",
+              "holiday_scheduling"
+            ],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-003",
+            "label": "Child transition preparation protocol tied to notice periods",
+            "rationale": "Reframes notice requirement as child-centered practice rather than parent conflict. Notice window triggers specific preparation steps (telling child, coordinating belongings, etc.). Makes the 'why' of notice tangible and shared.",
+            "party_interest_alignment": {
+              "party_a": "Directly addresses their stated concern about child not being surprised. Makes their procedural request feel protective rather than controlling.",
+              "party_b": "If they value being seen as child-focused, this frames compliance as parenting practice rather than capitulation. May reduce defensiveness around Party A's request."
+            },
+            "related_issues": [
+              "child_welfare_focus",
+              "transition_procedures",
+              "notice_requirements"
+            ],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-004",
+            "label": "Emergency override with post-hoc review mechanism",
+            "rationale": "Acknowledges that rigid notice requirements may conflict with genuine emergencies or opportunities (sick relative, unexpected work travel, special event). Creates safety valve while maintaining accountability through after-the-fact review.",
+            "party_interest_alignment": {
+              "party_a": "Preserves notice requirement as default while accepting that life happens. Review mechanism prevents emergency category from being abused.",
+              "party_b": "Provides flexibility for genuine unforeseen circumstances without having to fight for each exception. Knows what qualifies as override-worthy."
+            },
+            "related_issues": [
+              "flexibility_vs_structure",
+              "emergency_provisions",
+              "accountability_mechanisms"
+            ],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-005",
+            "label": "Graduated notice windows by calendar proximity",
+            "rationale": "Notice requirement scales with how far in advance the event is. Holiday six months away requires less notice than holiday next week. Balances planning need against over-constraining long-term scheduling.",
+            "party_interest_alignment": {
+              "party_a": "Gets shorter notice windows for near-term changes where child disruption is more acute. Still provides advance planning capability.",
+              "party_b": "Avoids having to commit to distant-future plans too early. Can adjust long-range plans more easily than immediate ones."
+            },
+            "related_issues": [
+              "notice_timing",
+              "holiday_planning",
+              "scheduling_flexibility"
+            ],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-006",
+            "label": "Shared digital calendar with automatic notice triggers",
+            "rationale": "Technological solution to procedural concern. Changes proposed in shared system automatically calculate notice compliance. Removes ambiguity and potential for after-the-fact dispute about whether notice was adequate.",
+            "party_interest_alignment": {
+              "party_a": "Provides clear documentation and removes possibility of last-minute surprise. System enforces the boundary they're seeking.",
+              "party_b": "Clarifies exactly what constitutes adequate notice. No room for miscommunication or good-faith mistakes being read as violations."
+            },
+            "related_issues": [
+              "communication_tools",
+              "notice_enforcement",
+              "documentation_practices"
+            ],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-007",
+            "label": "Annual schedule-setting session with mid-year check-in",
+            "rationale": "Proactive rather than reactive approach. Parents sit down together (or with mediator) to map major events well in advance. Mid-year check-in allows adjustments. Reduces frequency of notice conflicts by front-loading planning.",
+            "party_interest_alignment": {
+              "party_a": "Gets predictability and advance planning for major disruption points. Reduces ongoing anxiety about surprise changes.",
+              "party_b": "Consolidates planning burden into scheduled sessions rather than ongoing negotiation. May prefer defined planning windows to continuous back-and-forth."
+            },
+            "related_issues": [
+              "proactive_planning",
+              "co-parenting_meetings",
+              "annual_schedule_structure"
+            ],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-008",
+            "label": "Notice requirement with automatic approval for Category A changes",
+            "rationale": "Categorizes types of schedule changes. Some categories get automatic approval if notice is met; others require mutual agreement even with notice. Separates procedural compliance from substantive disagreement.",
+            "party_interest_alignment": {
+              "party_a": "Notice requirement is enforced but also provides some changes they can count on once notice is given. Reduces uncertainty beyond just timing.",
+              "party_b": "Clear framework for what they can plan unilaterally versus what requires negotiation. Reduces scope for ongoing conflict over each request."
+            },
+            "related_issues": [
+              "categorized_decision_rights",
+              "notice_plus_approval",
+              "reduced_negotiation_scope"
+            ],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-009",
+            "label": "First-refusal protocol for unexpected parent schedule changes",
+            "rationale": "When one parent's plans change and their scheduled time is affected, other parent gets first option to take that time before alternative care is arranged. Pairs notice with opportunity rather than just constraint.",
+            "party_interest_alignment": {
+              "party_a": "Gets advance notice of schedule disruptions and control over how disruption is handled. May increase total time with child.",
+              "party_b": "Notice requirement comes with benefit \u2014 if they need to change plans, other parent may welcome the extra time rather than resisting the change."
+            },
+            "related_issues": [
+              "right_of_first_refusal",
+              "schedule_change_protocol",
+              "time_allocation"
+            ],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-010",
+            "label": "Child age-gated notice requirements with sunset review",
+            "rationale": "Notice windows appropriate for child's current developmental stage, with agreement to revisit as child ages. Younger child may need more advance preparation; older child may benefit from more flexibility. Builds in evolution rather than permanence.",
+            "party_interest_alignment": {
+              "party_a": "Addresses their child-focused framing by tying notice to child's actual needs. Gets predictability now with recognition that needs may change.",
+              "party_b": "Avoids feeling locked into arrangement that may become unnecessarily rigid. Acknowledges that what works for a 5-year-old differs from a teenager."
+            },
+            "related_issues": [
+              "developmental_appropriateness",
+              "built_in_modification_process",
+              "child_age_factors"
+            ],
+            "source": "option_generator"
+          }
+        ],
+        "safety_monitor_result": {
+          "schema_version": "safety_monitor.v0",
+          "case_id": "D-B05",
+          "session_id": "D-B05-S02",
+          "turn_index": 3,
+          "generated_at": "2026-03-29T00:02:30Z",
+          "source": "safety_monitor_v0",
+          "compliance_pattern": {
+            "detected": false,
+            "party": null,
+            "evidence_turns": [],
+            "pattern_type": null,
+            "severity": null
+          },
+          "deflection_pattern": {
+            "detected": false,
+            "deflecting_party": null,
+            "target_request_turn": null,
+            "deflection_turns": [],
+            "deflection_tactics": [],
+            "pattern_confirmed": false
+          },
+          "discordant_signals": [],
+          "veto_recommendation": null,
+          "veto_reason": null,
+          "monitor_confidence": "low",
+          "monitor_notes": "Insufficient interaction history for pattern detection. Only one substantive party turn (T2) exists. Parent A has made an independent statement about their interest (notice window for holiday/school-break changes), but there is no second party statement yet to establish interaction dynamics. No compliance pattern can be assessed without observing how parties respond to each other. No deflection pattern can exist without a disclosure request and response sequence. No discordant signal sequence can occur without multiple back-and-forth exchanges. Monitoring will continue as interaction history develops.",
+          "flags_raised": [],
+          "party_state_signals": []
+        },
+        "perception_agent_result": {
+          "schema_version": "perception_agent.v0",
+          "turn_index": 3,
+          "timestamp": "2026-03-29T00:02:30Z",
+          "confidence": "moderate",
+          "_null_result": false,
+          "party_a": {
+            "emotional_state": "task-focused and contained, possibly underlying anxiety about predictability",
+            "emotional_trajectory": "stable",
+            "engagement_quality": "genuine",
+            "communication_style": "direct",
+            "inferred_interests": [
+              "Predictability and routine for the child",
+              "Control over scheduling to avoid disruption",
+              "Clear boundaries around timing and notice"
+            ],
+            "inferred_concerns": [
+              "The other parent may make spontaneous changes that destabilize the child",
+              "Lack of advance notice creating anxiety for child or themselves",
+              "Loss of ability to plan around custody arrangements"
+            ],
+            "unsaid_signals": [
+              "Led with a specific procedural concern rather than broader relational or emotional content \u2014 may be testing the waters or protecting themselves by starting with logistics",
+              "Framed concern around child's experience ('so the child is not surprised') rather than their own \u2014 may be either genuinely child-focused or using child welfare as safer framing for their own anxiety"
+            ],
+            "relational_posture": "engaged and assertive on specific issue"
+          },
+          "party_b": {
+            "emotional_state": "unknown \u2014 has not yet spoken",
+            "emotional_trajectory": "stable",
+            "engagement_quality": "genuine",
+            "communication_style": "direct",
+            "inferred_interests": [],
+            "inferred_concerns": [],
+            "unsaid_signals": [
+              "Has not responded to Party A's concern yet \u2014 their reaction to the notice-window issue will be highly diagnostic",
+              "Complete absence of signal at this stage"
+            ],
+            "relational_posture": "unknown \u2014 awaiting first substantive contribution"
+          },
+          "relational_dynamic": "too early to assess \u2014 only one party has spoken substantively; Party A has set an agenda item but the relational field depends on how Party B responds",
+          "dynamic_trajectory": "stable",
+          "perception_signals": [
+            "Party A opened with a concrete procedural concern rather than emotional content or broader relationship issues",
+            "The specificity of Party A's concern (notice windows, last-minute shifts) suggests this may be a live issue or recent source of conflict",
+            "Party B's response at T3 will be critical for understanding whether this is a shared concern, a point of contention, or something Party B has different priorities around"
+          ],
+          "scaffold_divergence": "Scaffold assessed Party B as 'engaged_and_cooperative' but Party B has not yet contributed substantively \u2014 engagement quality cannot be assessed from silence. Scaffold may be inferring from mere presence, but actual engagement requires observable participation.",
+          "perception_notes": [
+            "Party B has not yet spoken \u2014 T3 must create space for Party B to respond to Party A's concern and/or introduce their own priorities",
+            "Party A's concern is specific and procedural \u2014 before moving to solutions, mediator should explore whether this reflects a pattern of past conflict or is a proactive request",
+            "Watch for whether Party B validates Party A's concern, contests it, or shifts to a different topic \u2014 this will reveal the underlying relational dynamic",
+            "Very limited signal at this turn \u2014 confidence should be low; avoid over-interpreting from a single data point"
+          ],
+          "veto_signals": []
+        }
+      }
+    },
+    {
+      "turn_index": 4,
+      "timestamp": "2026-03-29T00:03:40Z",
+      "role": "client",
+      "phase": "interest_exploration",
+      "message_summary": "Parent B says flexibility matters too, but that written confirmation and preserved makeup time could make changes feel fairer.",
+      "state_delta": {
+        "facts_added": [],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_B"
+            ],
+            "kind": "position",
+            "issue_id": "parenting_schedule",
+            "statement": "Any school-break changes should preserve meaningful time and avoid one-sided loss of time.",
+            "status": "current",
+            "confidence": "high",
+            "proposal_id": null,
+            "position_id": null
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "Client response remained constructive."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    },
+    {
+      "turn_index": 5,
+      "timestamp": "2026-03-29T00:04:50Z",
+      "role": "assistant",
+      "phase": "option_generation",
+      "message_summary": "Acknowledge the structural tension both parties have identified (predictability vs. flexibility), then introduce three tentative structural options for them to react to \u2014 tiered notice, makeup time standard, written confirmation \u2014 with each option explicitly connected to the specific party interest it serves. Frame this as moving to 'ideas to react to' rather than solutions to accept.",
+      "state_delta": {
+        "facts_added": [
+          "Notice windows must balance child preparation time (Party A) with practical responsiveness to life changes (Party B)",
+          "Makeup time provisions must be calculable and enforceable without creating incentives for strategic change requests"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "Current schedule structure (alternating weeks vs. other cadence) \u2014 affects notice window calibration and makeup time calculation baseline",
+          "Past experiences that created Party A's concern about 'last-minute shifts' \u2014 needed to understand what threshold of notice feels destabilizing"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "No safety concerns. Both parties are engaged, substantive, and constructive. The structural tension they've identified (predictability vs. flexibility) is a normal mediation challenge, not a process breakdown. Option exploration is safe and appropriate at this stage."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "High confidence in option readiness and party state assessment. Moderate confidence in option selection \u2014 the three options presented are structurally distinct and well-grounded in party interests, but the child notification standard may emerge as important when parties react. The response framing ('ideas to react to') correctly preserves party ownership and invites refinement rather than acceptance.",
+      "message_text": "Thank you both \u2014 you've both put something important on the table, and I want to name the tension I'm hearing before we go further. [Party A], you're focused on predictability and advance notice so your child has time to prepare for changes. [Party B], you're focused on preserving flexibility while making changes feel fair through mechanisms like written confirmation and makeup time. Those aren't opposing goals, but they do create a structural question: how do we build a system that gives [Party A] the stability you need while giving [Party B] the adaptability you need?\n\nYou've both already started suggesting pieces of a structure \u2014 notice windows, written confirmation, makeup time. I want to put a few specific ideas on the table for you to react to. These aren't proposals I'm recommending \u2014 they're frameworks to help us test whether we're on the right track.\n\nFirst: a tiered notice system. Short notice or same-day for emergencies \u2014 things like a child's illness or a true crisis. Longer advance notice \u2014 say, a week or two \u2014 for discretionary changes like work travel or family events. That would address your need for predictability, [Party A], while preserving [Party B]'s ability to respond when something urgent comes up.\n\nSecond: a makeup time standard. If one of you requests a change that the other agrees to, the displaced time gets made up within a defined window \u2014 maybe the next month, maybe calculated as a rolling credit. [Party B], that's the fairness mechanism you mentioned. [Party A], it also means changes don't erode your total parenting time, which supports stability.\n\nThird: written confirmation for any agreed change \u2014 could be text, email, or a shared app \u2014 with key details like the date, the reason, and the makeup plan if applicable. [Party B], you mentioned this directly. [Party A], it also creates clarity so your child isn't hearing different things from each of you.\n\nI want to pause here and hear what you think. Do any of these ideas feel like they're moving in a useful direction? Are there parts that don't fit what you actually need?",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=calm_and_focused \u2014 Party A has maintained consistent, procedural framing without escalation; concern is articulated clearly and remains child-centered posture=engaged_and_solution_focused \u2014 Party A entered with a concrete concern and has not escalated; framing remains constructive",
+        "[PERCEPTION:PARTY_A:INTERESTS] Child psychological stability and preparation time for transitions; Predictability in schedule planning to reduce child anxiety; Clear boundaries around when/how changes occur (process control)",
+        "[PERCEPTION:PARTY_B] emotional=calm_and_constructive \u2014 Party B responded substantively to Party A's concern rather than dismissing it; acknowledged the issue and offered mitigating mechanisms posture=engaged_and_bridging \u2014 Party B explicitly acknowledged Party A's concern ('flexibility matters too') while introducing competing values; 'too' signals recognition rather than dismissal",
+        "[PERCEPTION:PARTY_B:INTERESTS] Operational flexibility to respond to changing circumstances; Fairness mechanisms that make changes equitable rather than arbitrary; Written clarity to prevent misunderstanding or later disputes",
+        "[PERCEPTION:DYNAMIC] cooperative_with_structural_tension \u2014 Both parties are solution-focused and non-adversarial, but they have identified a classic predictability-vs-flexibility tradeoff. Party A prioritizes advance notice and child preparation; Party B prioritizes adaptability with fairness safeguards. This is a structural tension, not a relational conflict. The dynamic is healthy \u2014 they are problem-solving a real coordination challenge.",
+        "[DOMAIN:GAPS] Current schedule structure (alternating weeks vs. other cadence) \u2014 affects notice window calibration and makeup time calculation baseline; Past experiences that created Party A's concern about 'last-minute shifts' \u2014 needed to understand what threshold of notice feels destabilizing; Anticipated flexibility scenarios for Party B (work travel, family events, child preferences) \u2014 needed to understand what kind of flexibility is actually required",
+        "[OPTION_SCAN:QUALIFIED] Tiered notice system \u2014 addresses Party A's predictability need while preserving Party B's ability to respond to urgent situations; the tier structure (emergency vs. discretionary) directly maps to the tension both parties identified; Makeup time standard \u2014 addresses Party B's explicit concern about 'preserved makeup time' and Party A's implicit concern that changes not become unilateral forfeitures; fairness mechanism for both; Written confirmation requirement \u2014 addresses Party B's explicit mention and creates the documentation trail that reduces later disputes (benefits both parties' need for clarity)",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=cooperative_with_structural_tension \u2014 Both parties are solution-focused and non-adversarial, but they have identified a classic predictability-vs-flexibility tradeoff. Party A prioritizes advance notice and child preparation; Party B prioritizes adaptability with fairness safeguards. This is a structural tension, not a relational conflict. The dynamic is healthy \u2014 they are problem-solving a real coordination challenge."
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "calm_and_focused \u2014 Party A has maintained consistent, procedural framing without escalation; concern is articulated clearly and remains child-centered",
+            "inferred_interests": [
+              "Child psychological stability and preparation time for transitions",
+              "Predictability in schedule planning to reduce child anxiety",
+              "Clear boundaries around when/how changes occur (process control)"
+            ],
+            "risk_signals": [],
+            "relational_posture": "engaged_and_solution_focused \u2014 Party A entered with a concrete concern and has not escalated; framing remains constructive"
+          },
+          "party_b": {
+            "emotional_state": "calm_and_constructive \u2014 Party B responded substantively to Party A's concern rather than dismissing it; acknowledged the issue and offered mitigating mechanisms",
+            "inferred_interests": [
+              "Operational flexibility to respond to changing circumstances",
+              "Fairness mechanisms that make changes equitable rather than arbitrary",
+              "Written clarity to prevent misunderstanding or later disputes",
+              "Preservation of time rather than forfeiture when changes occur"
+            ],
+            "risk_signals": [],
+            "relational_posture": "engaged_and_bridging \u2014 Party B explicitly acknowledged Party A's concern ('flexibility matters too') while introducing competing values; 'too' signals recognition rather than dismissal"
+          },
+          "relational_dynamic": "cooperative_with_structural_tension \u2014 Both parties are solution-focused and non-adversarial, but they have identified a classic predictability-vs-flexibility tradeoff. Party A prioritizes advance notice and child preparation; Party B prioritizes adaptability with fairness safeguards. This is a structural tension, not a relational conflict. The dynamic is healthy \u2014 they are problem-solving a real coordination challenge.",
+          "perception_confidence": "high",
+          "perception_notes": [
+            "Both parties have now contributed substantive interests. The tension is structural (competing values) not relational (antagonism).",
+            "Party B's phrasing 'flexibility matters too' is a relational bridge \u2014 acknowledges Party A's concern while introducing a competing need.",
+            "Neither party has shared the experiential or emotional driver behind their stated concern. Party A's predictability focus may be rooted in past disruptions; Party B's flexibility need may be rooted in anticipated work/life demands. This depth has not been invited yet.",
+            "The perception agent's note about 'premature convergence' is valid \u2014 both parties jumped to mechanisms (notice windows, written confirmation, makeup time) without exploring what drives the need. Risk of solutions that don't address root concerns.",
+            "No safety signals. Both parties are psychologically present and relationally stable."
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed 'cooperative_with_structural_tension \u2014 Both parties are solution-focused and non-adversarial, but they have identified a classic predictability-vs-flexibility tradeoff. Party A prioritizes advance notice and child preparation; Party B prioritizes adaptability with fairness safeguards. This is a structural tension, not a relational conflict. The dynamic is healthy \u2014 they are problem-solving a real coordination challenge.'"
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "Notice windows must balance child preparation time (Party A) with practical responsiveness to life changes (Party B)",
+            "Makeup time provisions must be calculable and enforceable without creating incentives for strategic change requests",
+            "Written confirmation mechanisms must be low-friction enough to not discourage legitimate communication"
+          ],
+          "material_gaps": [
+            "Current schedule structure (alternating weeks vs. other cadence) \u2014 affects notice window calibration and makeup time calculation baseline",
+            "Past experiences that created Party A's concern about 'last-minute shifts' \u2014 needed to understand what threshold of notice feels destabilizing",
+            "Anticipated flexibility scenarios for Party B (work travel, family events, child preferences) \u2014 needed to understand what kind of flexibility is actually required"
+          ],
+          "domain_notes": "The domain reasoner's assessment is correct: this is a ready case for option work. Both parties have articulated the core tension and both have suggested structural mechanisms. The gaps listed are real but do not block option work \u2014 they parameterize solutions rather than determine feasibility. The qualified options pool is strong. However, the perception agent's concern about premature convergence is also valid. The parties have jumped to mechanisms without exploring drivers. The mediator faces a process choice: (1) move to option exploration now, using options as a generative tool to surface deeper interests through reaction, or (2) defer options and elicit experiential context first. Given that both parties are solution-focused and non-distressed, and that options can be used as probes rather than settlements, moving to tentative option exploration is appropriate \u2014 but it must be framed as 'ideas to react to' rather than 'solutions to choose.'",
+          "option_readiness": "ready"
+        },
+        "option_scan": {
+          "candidate_options": [
+            "Tiered notice system (short notice for emergencies, longer notice for discretionary changes)",
+            "Makeup time standard with calculation method",
+            "Written confirmation requirement with format options",
+            "Change request protocol with response window",
+            "Child notification standard",
+            "First-right-of-refusal for displaced parenting time (not in qualified pool but addresses Party B's fairness concern)"
+          ],
+          "qualified_options": [
+            "Tiered notice system \u2014 addresses Party A's predictability need while preserving Party B's ability to respond to urgent situations; the tier structure (emergency vs. discretionary) directly maps to the tension both parties identified",
+            "Makeup time standard \u2014 addresses Party B's explicit concern about 'preserved makeup time' and Party A's implicit concern that changes not become unilateral forfeitures; fairness mechanism for both",
+            "Written confirmation requirement \u2014 addresses Party B's explicit mention and creates the documentation trail that reduces later disputes (benefits both parties' need for clarity)"
+          ],
+          "premature_option_work": false,
+          "deferral_reason": null
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [],
+          "notes": "No safety concerns. Both parties are engaged, substantive, and constructive. The structural tension they've identified (predictability vs. flexibility) is a normal mediation challenge, not a process breakdown. Option exploration is safe and appropriate at this stage.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "interest_exploration",
+          "message_summary": "Acknowledge the structural tension both parties have identified (predictability vs. flexibility), then introduce three tentative structural options for them to react to \u2014 tiered notice, makeup time standard, written confirmation \u2014 with each option explicitly connected to the specific party interest it serves. Frame this as moving to 'ideas to react to' rather than solutions to accept.",
+          "message_text": "Thank you both \u2014 you've both put something important on the table, and I want to name the tension I'm hearing before we go further. [Party A], you're focused on predictability and advance notice so your child has time to prepare for changes. [Party B], you're focused on preserving flexibility while making changes feel fair through mechanisms like written confirmation and makeup time. Those aren't opposing goals, but they do create a structural question: how do we build a system that gives [Party A] the stability you need while giving [Party B] the adaptability you need?\n\nYou've both already started suggesting pieces of a structure \u2014 notice windows, written confirmation, makeup time. I want to put a few specific ideas on the table for you to react to. These aren't proposals I'm recommending \u2014 they're frameworks to help us test whether we're on the right track.\n\nFirst: a tiered notice system. Short notice or same-day for emergencies \u2014 things like a child's illness or a true crisis. Longer advance notice \u2014 say, a week or two \u2014 for discretionary changes like work travel or family events. That would address your need for predictability, [Party A], while preserving [Party B]'s ability to respond when something urgent comes up.\n\nSecond: a makeup time standard. If one of you requests a change that the other agrees to, the displaced time gets made up within a defined window \u2014 maybe the next month, maybe calculated as a rolling credit. [Party B], that's the fairness mechanism you mentioned. [Party A], it also means changes don't erode your total parenting time, which supports stability.\n\nThird: written confirmation for any agreed change \u2014 could be text, email, or a shared app \u2014 with key details like the date, the reason, and the makeup plan if applicable. [Party B], you mentioned this directly. [Party A], it also creates clarity so your child isn't hearing different things from each of you.\n\nI want to pause here and hear what you think. Do any of these ideas feel like they're moving in a useful direction? Are there parts that don't fit what you actually need?",
+          "grounded_in_perception": true,
+          "options_introduced": [
+            "Tiered notice system for schedule changes",
+            "Makeup time standard with calculation method",
+            "Written confirmation requirement with format options"
+          ],
+          "confidence_note": "High confidence in option readiness and party state assessment. Moderate confidence in option selection \u2014 the three options presented are structurally distinct and well-grounded in party interests, but the child notification standard may emerge as important when parties react. The response framing ('ideas to react to') correctly preserves party ownership and invites refinement rather than acceptance."
+        },
+        "pre_computed_domain_analysis": {
+          "schema_version": "domain_analysis.v0",
+          "source": "domain_reasoner_v0",
+          "option_readiness": "ready",
+          "readiness_rationale": "Both parties have articulated process-level concerns about holiday/break schedule modifications. Party A's interests center on predictability, advance notice, and child preparation time. Party B's interests center on flexibility, fairness mechanisms (written confirmation, makeup time), and avoiding rigidity. This is a communication_protocol/schedule_modification issue where both parties have identified the structural tension: predictability vs. adaptability. The issue family (parenting schedule changes) and stated concerns provide sufficient basis to qualify standard structural options. Specific parameters (notice windows, documentation methods, makeup time calculation) will be negotiated by parties, but the structural options are domain-feasible now. No safety veto conditions apply: both parties have contributed substantive interests; no compliance-only pattern exists; no information asymmetry leverage is present; no active safety signals in party state.",
+          "safety_veto_applied": false,
+          "safety_veto_reason": null,
+          "qualified_candidates": [
+            {
+              "option_label": "Tiered notice system for schedule changes",
+              "option_description": "Different advance notice requirements based on change magnitude or timing \u2014 e.g., routine adjustments vs. major holiday swaps; shorter notice for emergency situations with defined makeup provisions",
+              "feasibility_rationale": "Both parties have identified the predictability-flexibility tension. Party A wants advance notice for child preparation; Party B wants flexibility for life circumstances. Tiered systems are standard in parenting plans for this exact issue type. Structure addresses both concerns: predictability through notice requirements, flexibility through tiered thresholds. Specific tiers (72h/1week/2weeks, emergency definitions, change categories) are party decisions.",
+              "confidence": "high",
+              "conditions": [
+                "Parties to define specific notice windows for each tier",
+                "Parties to define what constitutes 'emergency' or 'routine' change",
+                "Parties to agree on whether tier is determined by timing (proximity to holiday) or magnitude (duration of change)"
+              ]
+            },
+            {
+              "option_label": "Makeup time standard with calculation method",
+              "option_description": "When one parent's time is reduced due to a change, the other parent's time is adjusted to preserve the overall balance \u2014 with defined calculation method (hour-for-hour, day-for-day, or within-period flexibility)",
+              "feasibility_rationale": "Party B explicitly mentioned 'preserved makeup time' as a fairness mechanism. Party A's concern is child stability, not zero-sum time protection, so makeup provisions may address Party A's fairness concern while giving Party B the flexibility sought. Standard mechanism in parenting plans. Specific calculation method (immediate makeup vs. end-of-month reconciliation, strict hour-matching vs. approximate balancing) is a party decision.",
+              "confidence": "high",
+              "conditions": [
+                "Parties to define calculation method (strict vs. approximate)",
+                "Parties to define timing window for makeup (immediate, same month, same quarter)",
+                "Parties to agree whether makeup is mandatory or optional depending on circumstances"
+              ]
+            },
+            {
+              "option_label": "Written confirmation requirement with format options",
+              "option_description": "Schedule changes must be documented in writing (text, email, shared calendar, co-parenting app) before taking effect, creating a clear record and confirmation step",
+              "feasibility_rationale": "Party B explicitly mentioned 'written confirmation' as a fairness/clarity mechanism. Party A's concern about last-minute changes suggests documentation could provide the predictability sought (changes become 'real' only when confirmed in writing, preventing ambiguity). Standard practice in high-structure parenting plans. Specific format (text vs. app vs. email) and whether verbal agreements can be ratified afterward are party decisions.",
+              "confidence": "high",
+              "conditions": [
+                "Parties to define acceptable documentation formats",
+                "Parties to agree on timing of confirmation (before or after verbal discussion)",
+                "Parties to define what happens if confirmation is not provided (change is void, presumed accepted, or case-by-case)"
+              ]
+            },
+            {
+              "option_label": "Change request protocol with response window",
+              "option_description": "Party requesting a change must provide specific information (proposed dates, reason, makeup offer if applicable) and other party has defined window to respond; silence after window may be treated as acceptance, rejection, or trigger for follow-up depending on agreement",
+              "feasibility_rationale": "Party A's focus on 'notice window' suggests a structured request process would provide the predictability sought. Party B's flexibility concern suggests they need a way to make requests without feeling they'll be automatically rejected. A request protocol creates a predictable process without predetermining outcomes. Standard mechanism in communication protocols. Specific information requirements, response window duration, and default rule for non-response are party decisions.",
+              "confidence": "moderate",
+              "conditions": [
+                "Parties to define what information must be included in change request",
+                "Parties to define response window duration",
+                "Parties to agree on default rule if no response is received",
+                "Parties to define whether certain types of changes have different protocols (emergency vs. routine)"
+              ]
+            },
+            {
+              "option_label": "Child notification standard",
+              "option_description": "Once a schedule change is agreed, parents follow a defined approach to informing the child \u2014 who tells them, when, and what language is used to frame the change",
+              "feasibility_rationale": "Party A's specific concern about 'the child being surprised by last-minute shifts' suggests the child's experience of changes (not just the parental negotiation) is a priority. A child notification standard addresses this directly. Common in parenting plans where child's psychological experience is explicitly prioritized. Specific approach (both parents together, requesting parent alone, age-appropriate timing) is a party decision and may depend on child's age/temperament.",
+              "confidence": "moderate",
+              "conditions": [
+                "Parties to define who informs the child (requesting parent, both parents, or case-by-case)",
+                "Parties to define timing relative to the change (immediately after agreement, X days before change, depends on child's age)",
+                "Parties to agree on framing language or approach (neutral facts, reasons explained, child's input sought)"
+              ]
+            }
+          ],
+          "blocking_constraints": [],
+          "material_gaps": [
+            {
+              "gap": "Current parenting schedule structure (alternating weeks, 2-2-3, specific holiday allocation)",
+              "importance": "moderate",
+              "what_it_blocks": "Calibrating notice windows and makeup time provisions to the existing schedule cadence. For example, a 2-2-3 schedule may need shorter notice windows than alternating weeks because changes affect near-term days. However, this gap does not block structural option qualification \u2014 it affects parameter calibration, which parties will negotiate."
+            },
+            {
+              "gap": "Past experiences with schedule changes (what triggered Party A's concern, what flexibility situations Party B anticipates)",
+              "importance": "moderate",
+              "what_it_blocks": "Understanding whether the issue is about specific recurring situations (work travel, extended family events, emergencies) or general process dissatisfaction. This would help tailor option parameters (e.g., different rules for different change types) but does not block structural qualification \u2014 the process concern is clear regardless of past specifics."
+            },
+            {
+              "gap": "Child's age and developmental stage",
+              "importance": "low",
+              "what_it_blocks": "Calibrating child notification standards and assessing how much advance notice is psychologically meaningful for the child. However, this is a parameter refinement issue, not a structural feasibility blocker. Options are qualifiable now; age-appropriate implementation details come during negotiation."
+            }
+          ],
+          "domain_confidence": "high",
+          "domain_notes": "This is a classic schedule modification process issue in parenting mediation. Both parties have articulated the structural tension (predictability vs. flexibility) that these issues always present. The qualified options are standard mechanisms from family mediation practice for this issue type. Confidence is high because: (1) the issue family is clearly identified, (2) both parties have contributed process-level interests, (3) the structural options address the stated concerns regardless of specific parameters, and (4) no domain constraints (legal, financial, logistical) prevent any of these options. The material gaps are parameter-calibration gaps, not structural feasibility gaps. Parties are ready to see structural options and negotiate parameters. This is exactly the situation where option work is appropriate \u2014 clear issue type, bilateral participation, standard option space, parameter negotiation deferred to parties as it should be.",
+          "case_id": "D-B05",
+          "session_id": "D-B05-S02",
+          "turn_index": 5,
+          "generated_at": "2026-03-29T00:04:50Z"
+        },
+        "brainstormer_pool": [],
+        "safety_monitor_result": {
+          "schema_version": "safety_monitor.v0",
+          "case_id": "D-B05",
+          "session_id": "D-B05-S02",
+          "turn_index": 5,
+          "generated_at": "2026-03-29T00:04:50Z",
+          "source": "safety_monitor_v0",
+          "compliance_pattern": {
+            "detected": false,
+            "party": null,
+            "evidence_turns": [],
+            "pattern_type": null,
+            "severity": null
+          },
+          "deflection_pattern": {
+            "detected": false,
+            "deflecting_party": null,
+            "target_request_turn": null,
+            "deflection_turns": [],
+            "deflection_tactics": [],
+            "pattern_confirmed": false
+          },
+          "discordant_signals": [],
+          "veto_recommendation": null,
+          "veto_reason": null,
+          "monitor_confidence": "high",
+          "monitor_notes": "Insufficient turn history for pattern detection (only 2 substantive client turns). Both parties have made single statements expressing independent interests. Party A initiated with a concern about notice windows and predictability for the child. Party B responded with their own substantive content: introduced the value of flexibility while proposing specific mechanisms (written confirmation, makeup time) to address fairness concerns. Party B's response shows independent thinking - they didn't simply accept or modify Party A's framing, but introduced a balancing concern (flexibility vs. predictability) along with concrete proposals. No compliance pattern detected. No information asymmetry or disclosure requests have occurred that would trigger deflection analysis. No discordant signals have been raised and suppressed. This appears to be normal early-stage bilateral participation in mediation. Continued monitoring recommended as session progresses.",
+          "flags_raised": [],
+          "party_state_signals": []
+        },
+        "perception_agent_result": {
+          "schema_version": "perception_agent.v0",
+          "turn_index": 5,
+          "timestamp": "2026-03-29T00:04:50Z",
+          "confidence": "moderate",
+          "_null_result": false,
+          "party_a": {
+            "emotional_state": "focused and procedurally oriented, with underlying concern about predictability",
+            "emotional_trajectory": "stable",
+            "engagement_quality": "genuine",
+            "communication_style": "direct",
+            "inferred_interests": [
+              "Child's emotional security and preparation for transitions",
+              "Predictability and advance planning in co-parenting arrangements",
+              "Clear boundaries around scheduling changes"
+            ],
+            "inferred_concerns": [
+              "Last-minute schedule changes disrupting the child's sense of stability",
+              "Lack of control or input when changes are proposed",
+              "The child being caught off-guard by unexpected shifts"
+            ],
+            "unsaid_signals": [
+              "The specificity of 'notice window' and 'last-minute shifts' suggests past experiences where changes felt abrupt or unilateral",
+              "Framing the concern around the child's experience rather than their own convenience may indicate either genuine child-focus or strategic positioning",
+              "Has not mentioned their own scheduling needs or constraints \u2014 focus is entirely procedural/protective"
+            ],
+            "relational_posture": "engaged and agenda-setting, introducing the first substantive concern"
+          },
+          "party_b": {
+            "emotional_state": "responsive and accommodating, attempting to balance competing values",
+            "emotional_trajectory": "stable",
+            "engagement_quality": "genuine",
+            "communication_style": "collaborative",
+            "inferred_interests": [
+              "Maintaining flexibility in the co-parenting arrangement",
+              "Fairness and reciprocity in how schedule changes are handled",
+              "Preserving parenting time even when adjustments are needed"
+            ],
+            "inferred_concerns": [
+              "Being locked into rigid arrangements that don't accommodate life's unpredictability",
+              "Losing parenting time when flexibility is needed",
+              "The co-parenting relationship becoming adversarial over scheduling"
+            ],
+            "unsaid_signals": [
+              "Responded with 'flexibility matters too' \u2014 the 'too' acknowledges Party A's concern while asserting a competing value, suggesting some tension between structure and adaptability",
+              "Immediately offered concrete mechanisms (written confirmation, makeup time) \u2014 may be trying to solve the tension preemptively rather than exploring it",
+              "Has not articulated what kind of flexibility they need or why \u2014 the interest is stated abstractly"
+            ],
+            "relational_posture": "responsive and solution-seeking, working within Party A's frame while introducing a counterbalance"
+          },
+          "relational_dynamic": "cooperative with emerging tension between competing values \u2014 Party A prioritizes predictability, Party B prioritizes flexibility. Both are engaging constructively but have introduced potentially conflicting interests. The dynamic is polite and solution-focused, possibly moving toward negotiation before both parties' underlying needs are fully explored.",
+          "dynamic_trajectory": "stable",
+          "perception_signals": [
+            "Both parties are genuinely engaged and communicating clearly",
+            "A structure-vs-flexibility tension is present but not yet explicitly acknowledged",
+            "Party B's immediate move to propose mechanisms (written confirmation, makeup time) may indicate discomfort with open-ended exploration of the tension",
+            "Neither party has shared emotional context or past experiences that inform their positions",
+            "The session is at risk of moving to solutions before interests are fully understood"
+          ],
+          "scaffold_divergence": "Scaffold assessment of 'cooperative_and_stable' is accurate at surface level, but misses the emerging values tension between predictability and flexibility. Both parties ARE cooperative, but they have introduced competing priorities that have not yet been reconciled or even fully articulated. The 'moderate stress' assessment may be accurate physiologically but doesn't capture that both parties are emotionally contained and procedurally focused \u2014 genuine stress signals are not yet visible in the communication patterns.",
+          "perception_notes": [
+            "Party A has set the agenda with a structure-focused concern. Party B has responded constructively BUT with a competing value. Before generating options, the mediator should surface this tension explicitly and explore what drives each party's position.",
+            "Party B's flexibility interest is stated abstractly. The mediator should create space for Party B to articulate what kind of flexibility they need and why it matters \u2014 otherwise solutions may not address the actual need.",
+            "Both parties are solution-focused at T4. The risk is premature convergence on mechanisms (notice windows, written confirmation, makeup time) before the underlying interests and concerns are fully explored.",
+            "Neither party has shared past experiences or emotional context. The interests articulated so far are rational/procedural. Depth is available but has not been invited."
+          ],
+          "veto_signals": []
+        }
+      }
+    },
+    {
+      "turn_index": 6,
+      "timestamp": "2026-03-29T00:06:00Z",
+      "role": "client",
+      "phase": "agreement_building",
+      "message_summary": "Both parents are conditionally open to an advance-notice and written-confirmation package for school-break scheduling.",
+      "state_delta": {
+        "facts_added": [],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_A",
+              "spouse_B"
+            ],
+            "kind": "proposal",
+            "issue_id": "communication_protocol",
+            "statement": "Both parents are open to an advance-notice and written-confirmation package for school-break scheduling.",
+            "status": "tentative",
+            "confidence": null,
+            "proposal_id": null,
+            "position_id": null
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "Agreement-building remained bounded and voluntary."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    }
+  ],
+  "final_state_summary": {
+    "current_phase": "agreement_building",
+    "issues_identified": [],
+    "open_questions_remaining": [],
+    "active_flags": [],
+    "current_escalation_state": "M0",
+    "continuation_recommendation": "Use the next session to continue clarifying positions, interests, and process expectations without overstating agreement."
+  },
+  "trace_notes": null
+}

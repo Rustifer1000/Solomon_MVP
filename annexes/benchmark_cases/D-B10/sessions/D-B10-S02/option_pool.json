@@ -1,0 +1,532 @@
+{
+  "schema_version": "option_pool.v0",
+  "case_id": "D-B10",
+  "session_id": "D-B10-S02",
+  "generated_at": "2026-03-30T03:35:06Z",
+  "source": "lm_runtime",
+  "turns": [
+    {
+      "turn_index": 1,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "safety_veto_reason": null,
+      "brainstormer_candidates": [],
+      "domain_expert_candidates": [],
+      "combined_pool_count": 0,
+      "domain_qualified": [],
+      "domain_blocked": [],
+      "presented_to_parties": null
+    },
+    {
+      "turn_index": 3,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "safety_veto_reason": null,
+      "brainstormer_candidates": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Fixed schedule with structured change-request protocol",
+          "rationale": "Party A's core pain is unpredictability. A fixed schedule with a formal process for requesting changes (minimum notice period, written request, documented approval) gives A predictability while still allowing necessary flexibility. The protocol itself becomes a container that prevents 'last-minute' disruptions.",
+          "party_interest_alignment": {
+            "party_a": "Directly addresses need for predictability and stability; reduces emotional exhaustion by eliminating surprise changes; creates control through the protocol's guardrails",
+            "party_b": "Preserves flexibility when legitimate need arises; provides clear pathway to request changes rather than unilateral denial; may reduce conflict if both parties know the rules"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Phased transition: immediate freeze, then collaborative redesign",
+          "rationale": "Party A needs emotional stabilization now. A short-term freeze on any schedule changes (30-60 days) stops the bleeding while parties work together to design a schedule that accommodates both parties' actual needs. This separates emergency stabilization from long-term problem-solving.",
+          "party_interest_alignment": {
+            "party_a": "Immediate relief from ongoing disruption; breathing room to heal rather than constantly re-traumatizing; demonstrates that their pain is being taken seriously",
+            "party_b": "Temporary constraint is finite and leads to collaborative process where their needs will also be heard; avoids permanent rigidity"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Communication buffer: third-party schedule coordinator",
+          "rationale": "The 'reopening old wounds' language suggests direct communication may be part of the problem. A neutral third party (co-parenting coordinator, shared calendar app with formal workflow, trusted family member) handles all schedule change requests and communications, reducing direct friction.",
+          "party_interest_alignment": {
+            "party_a": "Reduces emotional triggering by removing direct contact around painful logistics; creates professional distance that may allow emotional closure to progress",
+            "party_b": "If B feels A overreacts or communication is hostile, this provides a buffer for them too; neutral party can assess legitimacy of change requests"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Root cause diagnostic: why are changes happening?",
+          "rationale": "Party A describes chronic changes but hasn't articulated what's driving them. Before designing solutions, understand whether changes are due to B's work schedule, childcare gaps, genuine emergencies, or something else. Different causes require different interventions.",
+          "party_interest_alignment": {
+            "party_a": "May reveal that changes are avoidable or that a different schedule design would eliminate the trigger; understanding the 'why' may reduce sense of being victimized by arbitrary disruption",
+            "party_b": "Opportunity to explain their perspective and constraints; may shift A's understanding from 'B is disregarding my needs' to 'B faces legitimate constraints we haven't addressed'"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Asymmetric flexibility: A gets veto, B gets advance planning window",
+          "rationale": "Party A has less tolerance for change right now. Give A veto power over last-minute changes (defined as less than X days notice) while giving B a structured advance-request window (changes requested 2+ weeks ahead automatically approved unless cause shown). This balances A's need for control with B's need for flexibility.",
+          "party_interest_alignment": {
+            "party_a": "Direct control over last-minute disruptions; veto power addresses the feeling of helplessness; eliminates the specific trigger ('last-minute')",
+            "party_b": "Clear pathway to make changes that are necessary as long as planned ahead; eliminates uncertainty about whether request will be approved; incentivizes early planning"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Trade structure: flexibility bank with annual cap",
+          "rationale": "Party B gets a defined number of schedule-change 'credits' per year (e.g., 6 changes with 48-hour notice, 2 emergency changes). Once exhausted, schedule is locked except by mutual agreement. This makes flexibility finite and predictable rather than infinite and destabilizing.",
+          "party_interest_alignment": {
+            "party_a": "Predictability through knowing the maximum disruption they'll face; psychological relief that changes are bounded; each change is less triggering when it's within a known budget",
+            "party_b": "Preserves flexibility for genuine needs; clear entitlement rather than having to negotiate each time; may prioritize requests more carefully"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Parallel track: schedule stability plus emotional processing support",
+          "rationale": "The 'reopening old wounds' language suggests A needs both logistical stability AND emotional healing support. Package a schedule agreement with a commitment to brief individual or co-parenting counseling so A can process the past while building a functional future.",
+          "party_interest_alignment": {
+            "party_a": "Addresses both the triggering logistics and the underlying emotional wound; signals that healing is part of the solution, not just compliance",
+            "party_b": "If B feels trapped by A's emotional reactivity, this provides a pathway for A to get support so B isn't the emotional target; counseling may improve overall co-parenting dynamic"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Sunset review: trial rigid schedule with 90-day check-in",
+          "rationale": "Party A needs stability now but circumstances change. Implement a very rigid schedule immediately (no changes except documented emergencies) with a mandatory review at 90 days to assess whether it's working for both parties and children. This tests whether rigidity solves the problem without locking in forever.",
+          "party_interest_alignment": {
+            "party_a": "Immediate relief and stability; 90-day commitment is long enough to establish new pattern and allow emotional settling",
+            "party_b": "Rigidity is time-limited; if it's genuinely unworkable they'll have standing to revisit; protects against permanent overcorrection"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        }
+      ],
+      "domain_expert_candidates": [],
+      "combined_pool_count": 8,
+      "domain_qualified": [],
+      "domain_blocked": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Fixed schedule with structured change-request protocol",
+          "blocking_rationale": "Cannot assess feasibility of notice periods, documentation requirements, or approval thresholds without knowing: (1) why changes are being requested (work shifts vs. childcare gaps vs. other), (2) what Party B's scheduling constraints are, (3) what the current schedule baseline is. A protocol that works for predictable work-schedule accommodations differs structurally from one designed for childcare emergencies or child preference changes.",
+          "what_would_unblock": "Party B's explanation of change drivers and constraints; clarification of current schedule baseline and typical change frequency/notice.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Phased transition: immediate freeze, then collaborative redesign",
+          "blocking_rationale": "A schedule freeze assumes: (1) the current schedule is operationally viable for both parties if changes stop, (2) Party B can comply with a freeze without creating new hardships (e.g., job loss, childcare collapse). We don't know if either is true. Party B has not indicated whether they can operate under the existing schedule without modifications.",
+          "what_would_unblock": "Party B's explanation of why changes have been necessary; assessment of whether the base schedule is sustainable for B without flexibility.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Communication buffer: third-party schedule coordinator",
+          "blocking_rationale": "While this addresses Party A's 'reopening wounds' concern, we don't know if the changes themselves are the core problem or if the communication pattern around changes is the issue. If Party B's change requests are driven by legitimate operational constraints (e.g., shift work), a coordinator won't resolve the underlying scheduling mismatch. Need to understand the change pattern before adding process layers.",
+          "what_would_unblock": "Party B's description of change drivers; both parties' characterization of the communication dynamic around schedule requests.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Root cause diagnostic: why are changes happening?",
+          "blocking_rationale": "This is not an option\u2014it's a mediation task (information gathering) that must occur before options can be qualified. It correctly identifies what's missing, but it's not a bounded option for parties to evaluate. This diagnostic IS the necessary next step, not an alternative to it.",
+          "what_would_unblock": "This candidate should not have been generated as an option. The diagnostic it describes is the prerequisite for all other options.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Asymmetric flexibility: A gets veto, B gets advance planning window",
+          "blocking_rationale": "Cannot assess whether Party B can operate within a defined advance-notice window without understanding B's scheduling constraints. If B works rotating shifts with 3-day notice, a 7-day planning window may be unworkable. If B has stable hours, it may be entirely feasible. Need B's operational constraints before calibrating asymmetric structures.",
+          "what_would_unblock": "Party B's description of work schedule, childcare arrangements, and other practical constraints that drive change requests.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Trade structure: flexibility bank with annual cap",
+          "blocking_rationale": "Cannot set a reasonable cap (number of allowed changes per year) without knowing: (1) current change frequency, (2) whether changes are discretionary or need-driven, (3) whether the base schedule is fundamentally mismatched to parties' operational realities. A cap makes sense for managing discretionary flexibility; it's inappropriate if changes are driven by structural schedule inadequacy.",
+          "what_would_unblock": "Party B's explanation of change frequency, drivers, and whether the base schedule meets their operational needs.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Parallel track: schedule stability plus emotional processing support",
+          "blocking_rationale": "While Party A's emotional language ('reopening wounds') is clear, pairing a schedule agreement with a therapeutic commitment assumes: (1) a schedule agreement can be reached, (2) both parties are willing to engage in therapeutic support. Without Party B's input on scheduling needs and willingness to engage in parallel therapeutic work, this cannot be qualified.",
+          "what_would_unblock": "Party B's perspective on scheduling needs; both parties' openness to parallel therapeutic support (this may be premature to assess at turn 3).",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Sunset review: trial rigid schedule with 90-day check-in",
+          "blocking_rationale": "A 'very rigid schedule with no changes except documented emergencies' assumes the base schedule is operationally viable for both parties if flexibility is removed. We don't know if this is true for Party B. If B's work or childcare situation requires periodic adjustments, a rigid trial will fail and increase conflict.",
+          "what_would_unblock": "Party B's assessment of whether the base schedule is sustainable without modifications; understanding of what 'documented emergencies' would need to include.",
+          "source": "domain_reasoner"
+        }
+      ],
+      "presented_to_parties": null
+    },
+    {
+      "turn_index": 5,
+      "option_readiness": "ready",
+      "safety_veto_applied": false,
+      "safety_veto_reason": null,
+      "brainstormer_candidates": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Structured advance notice protocol with categories",
+          "rationale": "Addresses A's need for predictability while giving B flexibility by creating different notice windows based on change type (emergency vs. planned). Separates 'necessary' from 'optional' changes so A can prepare emotionally and B doesn't feel every change is treated as intentional disruption.",
+          "party_interest_alignment": {
+            "party_a": "Creates predictability through knowing what type of change is coming and when; reduces the sense of being acted upon by giving advance mental preparation time",
+            "party_b": "Distinguishes between unavoidable changes (where B retains flexibility and isn't blamed) and elective ones (where more notice protects the relationship); validates that not all changes are the same"
+          },
+          "related_issues": [
+            "schedule_changes",
+            "communication_process"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Time-limited schedule stabilization period with review",
+          "rationale": "Recognizes that A may need a period of schedule consistency to rebuild emotional equilibrium after separation. Creates a defined window (e.g., 90 days) where both parties commit to minimal changes except true emergencies, then review whether flexibility can be reintroduced. Addresses A's 'wound' language by giving healing space.",
+          "party_interest_alignment": {
+            "party_a": "Directly addresses the 'reopening wounds' concern by creating a stabilization period; gives A a defined time to experience consistency and rebuild trust in the co-parenting structure",
+            "party_b": "Time-limited nature means B isn't permanently locked into rigidity; review mechanism allows B to demonstrate good faith and rebuild credibility around flexibility"
+          },
+          "related_issues": [
+            "schedule_stability",
+            "emotional_recovery",
+            "trust_building"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Joint schedule ownership with alternating 'change weeks'",
+          "rationale": "Reframes the problem from 'B keeps changing the schedule' to 'we both need flexibility sometimes.' Each parent gets designated weeks where they can request changes with shorter notice, balanced by weeks where stability is prioritized. Shifts from blame to shared responsibility.",
+          "party_interest_alignment": {
+            "party_a": "Reduces the sense that changes are being done 'to' A; creates predictable windows where changes won't happen; addresses control and input concerns",
+            "party_b": "Removes the experience of being 'the problem parent'; normalizes that both parents may need flexibility; distributes the flexibility need rather than concentrating blame"
+          },
+          "related_issues": [
+            "schedule_changes",
+            "blame_dynamic",
+            "co-parenting_equity"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Pre-commitment to explanation before any schedule request",
+          "rationale": "B's unsaid signal suggests their reasons for changes haven't been heard. This option requires B to briefly explain the 'why' before requesting a change (not to justify, but to contextualize). A commits to receiving the information before reacting. Addresses B's concern about intentions being misread.",
+          "party_interest_alignment": {
+            "party_a": "Getting context may reduce A's tendency to read changes as symbolic of relational disrespect; knowing 'why' can prevent emotional escalation",
+            "party_b": "Directly addresses B's experience of feeling misunderstood; creates space for B's constraints or needs to be visible before judgment occurs"
+          },
+          "related_issues": [
+            "communication_process",
+            "intention_transparency",
+            "blame_reduction"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Third-party schedule buffer (calendar app or neutral person)",
+          "rationale": "Introduces a neutral intermediary (could be a shared digital tool with built-in notice periods, or a trusted third party like a family member) who receives change requests and filters them through agreed criteria before they reach the other parent. Reduces direct conflict and emotional activation.",
+          "party_interest_alignment": {
+            "party_a": "Protects A from the emotional impact of direct last-minute requests; creates a buffer that enforces the notice protocol automatically",
+            "party_b": "Reduces B's experience of direct blame or conflict when requesting changes; neutral party validates whether a change fits agreed criteria"
+          },
+          "related_issues": [
+            "communication_process",
+            "emotional_protection",
+            "conflict_reduction"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Separate the 'old wounds' conversation from schedule logistics",
+          "rationale": "A's language strongly suggests that the schedule issue is entangled with unresolved separation grief or anger. This option explicitly separates the two: commit to a workable short-term schedule protocol now, and create a separate space (possibly with therapeutic support) to address the relational wounds that keep being triggered.",
+          "party_interest_alignment": {
+            "party_a": "Validates that A's emotional experience is real and important, not just 'overreaction to logistics'; creates a legitimate space to process the deeper hurt without conflating it with every schedule decision",
+            "party_b": "Removes the burden of being responsible for A's unresolved emotional content every time a practical issue arises; allows B to engage on logistics without constantly navigating emotional landmines"
+          },
+          "related_issues": [
+            "emotional_wounds",
+            "separation_recovery",
+            "communication_structure"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Default schedule with explicit 'swap bank' system",
+          "rationale": "Establishes a stable baseline schedule that both parties commit to, with a defined number of 'swaps' each parent can request per month/quarter with reduced notice. Once the bank is used, longer notice is required. Balances A's need for stability with B's need for occasional flexibility.",
+          "party_interest_alignment": {
+            "party_a": "Creates a predictable baseline; limits the frequency of disruption; gives A a sense of control by knowing there's a cap on how often changes can happen",
+            "party_b": "Preserves some flexibility without requiring explanation or negotiation each time; removes the sense that every change is a relationship transgression"
+          },
+          "related_issues": [
+            "schedule_stability",
+            "flexibility_balance",
+            "predictability"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Mutual acknowledgment ritual before discussing schedule changes",
+          "rationale": "Before any schedule conversation, both parties briefly acknowledge the other's good faith and the difficulty of co-parenting after separation. Creates a relational reset that reduces the chance that A hears every change as an attack and B hears every reaction as blame. Addresses the emotional subtext directly.",
+          "party_interest_alignment": {
+            "party_a": "Provides repeated reassurance that B is not trying to harm A; may reduce the emotional activation that comes from interpreting changes as symbolic wounds",
+            "party_b": "Directly addresses B's concern about being seen as 'the problem'; creates a moment where B's good intentions are affirmed before discussing the logistical issue"
+          },
+          "related_issues": [
+            "blame_dynamic",
+            "relational_repair",
+            "communication_ritual"
+          ],
+          "source": "option_generator"
+        }
+      ],
+      "domain_expert_candidates": [
+        {
+          "candidate_id": "opt-dom-001",
+          "label": "Required reason disclosure with categories",
+          "rationale": "Party B indicated they 'feel blamed whenever plans change,' suggesting their reasons may not have been understood. Party A needs predictability but has not said changes can never happen. A middle-ground option is requiring B to disclose the reason category (work obligation, personal emergency, child preference, etc.) when requesting changes, without requiring lengthy justification. This addresses B's 'being misunderstood' concern while giving A transparency. Standard in family mediation for co-parents who have trust deficits but need ongoing coordination.",
+          "party_interest_alignment": {
+            "party_a": "Addresses A's need to understand what's driving disruption (reduces feeling of being acted upon arbitrarily). Transparency supports predictability even when changes occur.",
+            "party_b": "Addresses B's concern about being blamed \u2014 providing reason context reframes changes as situational rather than malicious. Less burdensome than opt-gen-004's 'explanation before request' if categories are pre-defined."
+          },
+          "related_issues": [
+            "communication_protocol",
+            "trust_building"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-002",
+          "label": "Graduated notice window by change urgency",
+          "rationale": "Standard family mediation structure for schedule coordination. Distinguishes true emergencies (24h or day-of notice) from planned changes (7-14 days notice). Addresses A's predictability need while preserving B's ability to respond to genuinely urgent situations. Different from opt-gen-001 in that notice windows are the primary mechanism rather than change categories.",
+          "party_interest_alignment": {
+            "party_a": "Directly addresses predictability concern \u2014 longer notice for non-urgent changes gives A time to adjust emotionally and logistically.",
+            "party_b": "Preserves B's ability to respond to urgent needs without feeling they're 'locked in' inflexibly. Acknowledges that some changes are unavoidable."
+          },
+          "related_issues": [
+            "schedule_coordination",
+            "communication_protocol"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-003",
+          "label": "Temporary no-change stabilization period",
+          "rationale": "When emotional activation is high and one party is using 'wound' language, family mediators sometimes recommend a defined stabilization period (30-90 days) where the schedule is held constant unless true emergency, allowing parties to experience predictability and rebuild some co-parenting trust before introducing flexibility mechanisms. This is most appropriate when the separation is recent or when recent conflict has destabilized the pattern.",
+          "party_interest_alignment": {
+            "party_a": "Directly addresses the 'reopening wounds' concern by creating a period of schedule consistency to support emotional stabilization.",
+            "party_b": "Acknowledges that the current pattern may be unsustainable for A, and that temporary constraint may be necessary to rebuild workability. Time-limited nature makes it less threatening than permanent rigidity."
+          },
+          "related_issues": [
+            "emotional_regulation",
+            "trust_building",
+            "schedule_coordination"
+          ],
+          "source": "domain_reasoner"
+        }
+      ],
+      "combined_pool_count": 11,
+      "domain_qualified": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Structured advance notice protocol with categories",
+          "feasibility_rationale": "Structurally sound for this issue type. Tiered notice by change type (emergency vs. planned) is standard practice in family mediation for post-separation schedule coordination. Addresses both A's predictability need and B's need for some flexibility. Feasible regardless of what's driving B's changes \u2014 the structure accommodates any reason pattern.",
+          "confidence": "high",
+          "prerequisite_parameters": [
+            "Parties must define change categories (e.g., work emergency, child illness, planned event)",
+            "Parties must agree on notice windows for each category (e.g., 24h for emergency, 7 days for planned)"
+          ],
+          "conditions": [
+            "Requires both parties to use the protocol consistently",
+            "May need definition of what counts as 'emergency' to prevent category gaming"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Time-limited schedule stabilization period with review",
+          "feasibility_rationale": "Appropriate given A's emotional activation and 'wound' language. Temporary schedule freeze (with emergency exception) is a recognized intervention when one party needs predictability to stabilize. The time limit and review point make it negotiable \u2014 B is not agreeing to permanent rigidity. Review mechanism allows re-assessment once A's acute distress has reduced.",
+          "confidence": "moderate",
+          "prerequisite_parameters": [
+            "Parties must agree on stabilization period length (30/60/90 days)",
+            "Parties must define what constitutes 'emergency' exception during freeze",
+            "Parties must agree on review process at end of period"
+          ],
+          "conditions": [
+            "B must be willing to commit to schedule consistency for the defined period",
+            "A must agree this is temporary, not permanent solution",
+            "Requires mechanism to address if B faces genuine unavoidable conflict during freeze period"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Joint schedule ownership with alternating 'change weeks'",
+          "feasibility_rationale": "Structurally viable but lower confidence given current party dynamic. This option works best when both parties need flexibility and see themselves as equals in schedule management. Right now A is experiencing B's changes as destabilizing and B is experiencing A's reaction as blame. Reframing as 'we both need flexibility' may not match their current perceptions. Could become viable after some trust rebuilding, but may be premature now.",
+          "confidence": "low",
+          "prerequisite_parameters": [
+            "Parties must agree on how 'change weeks' are designated (alternating, by month, by mutual agreement)",
+            "Parties must define scope of allowable changes during 'change weeks'"
+          ],
+          "conditions": [
+            "Requires both parties to see themselves as equally needing flexibility \u2014 not clear this matches current dynamic",
+            "May need trust rebuilding before this mutual framework feels safe to A"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Pre-commitment to explanation before any schedule request",
+          "feasibility_rationale": "Addresses B's unsaid signal that their reasons haven't been heard, but may be too burdensome as standalone option. Requiring explanation before every request could feel like interrogation to B or like justification demand that reinforces blame dynamic. More feasible as component of another option (e.g., combined with tiered notice where explanation requirement varies by change type).",
+          "confidence": "low",
+          "prerequisite_parameters": [
+            "Parties must define what level of detail constitutes adequate 'explanation'",
+            "Parties must agree on whether explanation is required for all changes or only certain types"
+          ],
+          "conditions": [
+            "Risk that A could use explanation requirement as gate-keeping (rejecting changes based on reason adequacy)",
+            "May perpetuate blame dynamic if B experiences it as having to justify their needs"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Third-party schedule buffer (calendar app or neutral person)",
+          "feasibility_rationale": "Viable in principle \u2014 neutral intermediaries (digital tools with automated notice enforcement, or trusted third parties who receive requests and communicate them) can reduce emotional charge in high-conflict co-parenting. However, introduces complexity and potential cost. Most appropriate when direct communication consistently escalates. Not clear yet whether A and B have reached that threshold \u2014 B's response in T4 was constructive, suggesting direct communication may still be workable with structure.",
+          "confidence": "moderate",
+          "prerequisite_parameters": [
+            "Parties must choose intermediary type (app vs. person)",
+            "If app: parties must agree on which tool and notification settings",
+            "If person: parties must identify neutral third party willing to serve this role"
+          ],
+          "conditions": [
+            "Adds procedural step to every schedule communication \u2014 must be worth the friction reduction",
+            "If third party: requires ongoing availability and willingness of that person",
+            "May be over-engineering if direct communication with protocol can work"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Separate the 'old wounds' conversation from schedule logistics",
+          "feasibility_rationale": "Structurally sound separation strategy. A's 'wound' language and visible frustration suggest schedule logistics have become entangled with unresolved relational injury. Explicitly separating the two workstreams (process design for schedule coordination vs. relational repair conversation) can prevent logistics work from being derailed by emotional activation. Standard practice in family mediation when presenting issue is proxy for deeper conflict.",
+          "confidence": "moderate",
+          "prerequisite_parameters": [
+            "Parties must agree that two separate conversations are appropriate",
+            "Must define what 'old wounds' conversation would entail (mediator-led, therapeutic referral, written exchange, etc.)",
+            "Must sequence the workstreams (address wounds first, or stabilize logistics first)"
+          ],
+          "conditions": [
+            "A must be willing to engage with logistics before wounds are fully resolved, or must be willing to defer logistics conversation",
+            "B must be willing to engage with relational repair conversation without experiencing it as blame session",
+            "May require therapeutic support beyond mediation scope"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Default schedule with explicit 'swap bank' system",
+          "feasibility_rationale": "Standard family mediation structure for post-separation schedule coordination. Establishes baseline predictability (default schedule both parties commit to) while creating bounded flexibility through swap allocation. Addresses A's predictability need and B's flexibility need simultaneously. Highly feasible for this issue type \u2014 used widely in parenting plans.",
+          "confidence": "high",
+          "prerequisite_parameters": [
+            "Parties must agree on baseline default schedule",
+            "Parties must agree on swap bank size (e.g., 2 swaps per month, 6 per quarter)",
+            "Parties must define notice requirements for using swap (integrated with tiered notice protocol)"
+          ],
+          "conditions": [
+            "Requires tracking mechanism (could be simple shared calendar or log)",
+            "Must define what happens if one party requests swap beyond their allocation",
+            "Must define whether unused swaps roll over or expire"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Mutual acknowledgment ritual before discussing schedule changes",
+          "feasibility_rationale": "This is a relational repair technique, not a logistics protocol. Appropriate when parties have capacity for reflective practice and when blame/defensiveness cycle is primary obstacle. However, A's 'wound' language and B's 'feel blamed' response suggest emotional activation may be too high for ritual practice to feel genuine right now. This type of option typically works better after some trust rebuilding through successful logistics coordination. Low confidence as standalone option; might work as component of another option after initial stabilization.",
+          "confidence": "low",
+          "prerequisite_parameters": [
+            "Parties must agree on acknowledgment language or framework",
+            "Parties must commit to using ritual consistently before schedule discussions"
+          ],
+          "conditions": [
+            "Requires emotional regulation capacity and goodwill that may not be present yet",
+            "Risk of feeling performative or hollow if parties are in acute conflict",
+            "May be more appropriate after logistics stabilization creates some positive momentum"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-001",
+          "label": "Required reason disclosure with categories",
+          "feasibility_rationale": "Structurally sound middle-ground option. Pre-defined reason categories (work, child need, personal emergency, etc.) reduce burden on B while giving A transparency. Standard practice in family mediation for trust-deficit situations. More streamlined than open-ended explanation requirement (opt-gen-004) but addresses same underlying concerns.",
+          "confidence": "high",
+          "prerequisite_parameters": [
+            "Parties must agree on reason categories",
+            "Parties must agree on whether additional detail beyond category is required"
+          ],
+          "conditions": [
+            "Requires B to consistently disclose category when requesting change",
+            "Must establish that A cannot veto based on reason \u2014 disclosure is for transparency, not approval gate"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-002",
+          "label": "Graduated notice window by change urgency",
+          "feasibility_rationale": "Standard family mediation structure, essentially same mechanism as opt-gen-001 but framed around notice duration rather than change categories. Highly feasible \u2014 widely used in parenting plans. Tiered notice (e.g., 14 days for planned, 48h for urgent, day-of for true emergency) addresses A's predictability need while acknowledging B's reality that some changes are unavoidable.",
+          "confidence": "high",
+          "prerequisite_parameters": [
+            "Parties must agree on urgency categories and corresponding notice windows",
+            "Parties must define what constitutes each urgency level"
+          ],
+          "conditions": [
+            "Requires both parties to honor notice windows consistently",
+            "May need accountability mechanism if notice requirements are violated"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-003",
+          "label": "Temporary no-change stabilization period",
+          "feasibility_rationale": "Appropriate given A's emotional activation. Temporary schedule freeze (30-90 days, with emergency exception only) gives A the predictability needed to stabilize emotionally while time-limiting the constraint on B. Standard intervention in family mediation when one party's distress is acute. Review point allows reassessment once acute phase has passed.",
+          "confidence": "moderate",
+          "prerequisite_parameters": [
+            "Parties must agree on freeze period duration",
+            "Parties must define 'emergency' exception (what types of situations override the freeze)",
+            "Parties must agree on review/re-evaluation process at end of period"
+          ],
+          "conditions": [
+            "B must be willing to commit to schedule consistency for defined period",
+            "Must have mechanism for handling genuine unavoidable conflicts that arise during freeze",
+            "A must understand this is temporary stabilization, not permanent solution"
+          ],
+          "source": "domain_reasoner"
+        }
+      ],
+      "domain_blocked": [],
+      "presented_to_parties": null
+    }
+  ]
+}

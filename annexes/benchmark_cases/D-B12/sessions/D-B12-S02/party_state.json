@@ -1,0 +1,369 @@
+{
+  "schema_version": "party_state.v0",
+  "case_id": "D-B12",
+  "session_id": "D-B12-S02",
+  "source": "lm_runtime",
+  "turns_contributing": [
+    1,
+    3,
+    5
+  ],
+  "last_updated_turn": 5,
+  "generated_at": "2026-03-30T03:56:20Z",
+  "party_a": {
+    "party_id": "party_a",
+    "current_emotional_state": "frustrated and increasingly wary \u2014 Party A has engaged substantively across four turns but is now watching to see if the very pattern they complained about (one party pushing, the other disengaging) is reproducing itself in real time",
+    "emotional_arc": [
+      {
+        "turn_index": 1,
+        "assessment": "neutral_baseline",
+        "confidence": "low"
+      },
+      {
+        "turn_index": 3,
+        "assessment": "frustrated but engaged \u2014 Party A is expressing genuine exasperation with a recurring process failure, but they are still participating and attempting to articulate the problem",
+        "confidence": "moderate"
+      },
+      {
+        "turn_index": 5,
+        "assessment": "frustrated and increasingly wary \u2014 Party A has engaged substantively across four turns but is now watching to see if the very pattern they complained about (one party pushing, the other disengaging) is reproducing itself in real time",
+        "confidence": "high"
+      }
+    ],
+    "accumulated_interests": [
+      {
+        "interest": "Need for forward-looking discussion that addresses current parenting concerns without relitigating past relationship wounds",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "confidence": "moderate"
+      },
+      {
+        "interest": "Need to be heard about the exhausting cycle they're experiencing",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "confidence": "moderate"
+      },
+      {
+        "interest": "Need for a process that actually produces resolution rather than repetition",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "confidence": "moderate"
+      },
+      {
+        "interest": "Underlying: a specific parenting issue that needs resolution but keeps getting derailed",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "confidence": "moderate"
+      },
+      {
+        "interest": "Need for reciprocal participation \u2014 they cannot resolve this alone",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "Need for validation that their process concern is legitimate and being taken seriously",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "Need to move past the meta-conversation to the actual parenting issue",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "Underlying: protection against the emotional cost of re-engaging in a process that goes nowhere",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      }
+    ],
+    "risk_signal_history": [
+      {
+        "signal": "Pattern fatigue: 'cannot keep doing this in circles' suggests accumulated depletion that could lead to disengagement if pattern reproduces",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "Meta-focus without substance: Party A has named the problem with the process but has not yet named what they're trying to resolve \u2014 this could indicate avoidance or simply that they got stuck on the pattern itself",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "Risk of A interpreting B's escalation request as confirmation of the 'always disengages' pattern",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "Risk of A concluding the process is futile if B will not participate at all",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "Moderate risk of A withdrawing if the session structure cannot hold both parties",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      }
+    ],
+    "relational_posture_progression": [
+      {
+        "turn_index": 1,
+        "posture": "awaiting_process_initiation"
+      },
+      {
+        "turn_index": 3,
+        "posture": "engaged but guardedly frustrated \u2014 Party A is participating and expects the pattern to repeat unless something changes"
+      },
+      {
+        "turn_index": 5,
+        "posture": "engaged but observing \u2014 Party A is still present but is likely assessing whether this process can actually function differently than the pattern they described"
+      }
+    ],
+    "scaffold_divergence_log": [
+      {
+        "turn_index": 1,
+        "field": "relational_dynamic",
+        "scaffold_value": "cooperative_and_stable",
+        "model_value": "pre_substantive_engagement \u2014 parties have not yet interacted on substance; baseline cooperative stance observed but no relational pattern has emerged"
+      },
+      {
+        "turn_index": 3,
+        "field": "relational_dynamic",
+        "scaffold_value": "escalated_requiring_human_involvement",
+        "model_value": "asymmetric participation with Party A presenting a meta-complaint about a chronic conflict pattern that by definition involves both parties, but Party B has not yet confirmed, disputed, or offered their perspective on that pattern \u2014 we are at risk of reproducing the very dynamic Party A describes (one party pushing, the other not engaging) if Party B does not enter soon"
+      },
+      {
+        "turn_index": 5,
+        "field": "relational_dynamic",
+        "scaffold_value": "escalated_requiring_human_involvement",
+        "model_value": "asymmetric participation approaching breakdown \u2014 Party A has been pushing for engagement while Party B has remained silent; B's escalation request could either be a genuine capacity limit OR a manifestation of the exact disengagement pattern A described. The mediator cannot distinguish between these possibilities without giving B one clear, low-pressure opportunity to articulate *anything* about their perspective or needs."
+      }
+    ],
+    "perception_notes_log": [
+      {
+        "turn_index": 1,
+        "notes": [
+          "Turn 1 represents session initialization \u2014 no party communication has occurred yet",
+          "Both parties are in baseline stance; emotional and relational states are pre-substantive",
+          "No signals available to infer interests, concerns, or risk factors",
+          "Perception must be revisited after first substantive party contribution"
+        ]
+      },
+      {
+        "turn_index": 3,
+        "notes": [
+          "Party A's frustration is genuine and their engagement is real, but they are on a short runway \u2014 if this session starts to feel like 'the same thing again', they will disengage",
+          "The perception agent note about chronic pattern is critical: Party A expects this to go badly based on history, which means the mediator's process framing needs to be explicit and differentiated from their prior attempts",
+          "Party B's silence is the most material unknown \u2014 we cannot assess relational dynamic, confirm the pattern Party A describes, or identify the substantive issue until Party B speaks"
+        ]
+      },
+      {
+        "turn_index": 5,
+        "notes": [
+          "Party B's request for human mediation is a genuine signal that must be honored \u2014 but it arrives after four turns of complete silence, which means we have no evidence about whether B *can* participate or simply *prefers not to* in this format",
+          "The perception agent is correct: one clear invitation to B is appropriate before escalating, but it must be framed as genuine choice, not pressure",
+          "Party A's engagement is real but conditional \u2014 if B does not participate at all, A will likely disengage as well"
+        ]
+      }
+    ],
+    "last_updated_turn": 5
+  },
+  "party_b": {
+    "party_id": "party_b",
+    "current_emotional_state": "genuinely overwhelmed and at participation threshold \u2014 Party B's four-turn silence followed by explicit request for human mediator suggests they are experiencing genuine distress or incapacity, not tactical avoidance",
+    "emotional_arc": [
+      {
+        "turn_index": 1,
+        "assessment": "neutral_baseline",
+        "confidence": "low"
+      },
+      {
+        "turn_index": 3,
+        "assessment": "unknown \u2014 Party B was invited at T2 and has not responded; we have no direct signal",
+        "confidence": "moderate"
+      },
+      {
+        "turn_index": 5,
+        "assessment": "genuinely overwhelmed and at participation threshold \u2014 Party B's four-turn silence followed by explicit request for human mediator suggests they are experiencing genuine distress or incapacity, not tactical avoidance",
+        "confidence": "high"
+      }
+    ],
+    "accumulated_interests": [
+      {
+        "interest": "Cannot infer interests from silence \u2014 need Party B to speak",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "confidence": "moderate"
+      },
+      {
+        "interest": "Need for emotional safety that they do not currently feel",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "Need for process structure they trust \u2014 which they have explicitly identified as 'human mediator'",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "Possible underlying: protection from re-engaging with Party A's narrative or relational dynamic",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "Possible underlying: a specific concern about AI mediation that has not been articulated",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      }
+    ],
+    "risk_signal_history": [
+      {
+        "signal": "Silence after direct invitation is notable but not diagnostic at T3 \u2014 could indicate reluctance, processing time, technical issue, or simply waiting for clearer cue",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "If silence continues beyond T4, would become material risk signal for participation capacity or willingness",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "CRITICAL: Participation incapacity \u2014 Party B has stated they cannot continue without structural change",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "Emotional overwhelm that may indicate the session itself is causing distress",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "Risk that any attempt to keep B engaged without addressing their request will be experienced as coercive or invalidating",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      }
+    ],
+    "relational_posture_progression": [
+      {
+        "turn_index": 1,
+        "posture": "awaiting_process_initiation"
+      },
+      {
+        "turn_index": 3,
+        "posture": "unobserved \u2014 Party B has not engaged yet"
+      },
+      {
+        "turn_index": 5,
+        "posture": "withdrawn and requesting exit \u2014 Party B has not engaged with substance and is now explicitly requesting a different structure"
+      }
+    ],
+    "scaffold_divergence_log": [
+      {
+        "turn_index": 1,
+        "field": "relational_dynamic",
+        "scaffold_value": "cooperative_and_stable",
+        "model_value": "pre_substantive_engagement \u2014 parties have not yet interacted on substance; baseline cooperative stance observed but no relational pattern has emerged"
+      },
+      {
+        "turn_index": 3,
+        "field": "relational_dynamic",
+        "scaffold_value": "escalated_requiring_human_involvement",
+        "model_value": "asymmetric participation with Party A presenting a meta-complaint about a chronic conflict pattern that by definition involves both parties, but Party B has not yet confirmed, disputed, or offered their perspective on that pattern \u2014 we are at risk of reproducing the very dynamic Party A describes (one party pushing, the other not engaging) if Party B does not enter soon"
+      },
+      {
+        "turn_index": 5,
+        "field": "relational_dynamic",
+        "scaffold_value": "escalated_requiring_human_involvement",
+        "model_value": "asymmetric participation approaching breakdown \u2014 Party A has been pushing for engagement while Party B has remained silent; B's escalation request could either be a genuine capacity limit OR a manifestation of the exact disengagement pattern A described. The mediator cannot distinguish between these possibilities without giving B one clear, low-pressure opportunity to articulate *anything* about their perspective or needs."
+      }
+    ],
+    "perception_notes_log": [
+      {
+        "turn_index": 1,
+        "notes": [
+          "Turn 1 represents session initialization \u2014 no party communication has occurred yet",
+          "Both parties are in baseline stance; emotional and relational states are pre-substantive",
+          "No signals available to infer interests, concerns, or risk factors",
+          "Perception must be revisited after first substantive party contribution"
+        ]
+      },
+      {
+        "turn_index": 3,
+        "notes": [
+          "Party A's frustration is genuine and their engagement is real, but they are on a short runway \u2014 if this session starts to feel like 'the same thing again', they will disengage",
+          "The perception agent note about chronic pattern is critical: Party A expects this to go badly based on history, which means the mediator's process framing needs to be explicit and differentiated from their prior attempts",
+          "Party B's silence is the most material unknown \u2014 we cannot assess relational dynamic, confirm the pattern Party A describes, or identify the substantive issue until Party B speaks"
+        ]
+      },
+      {
+        "turn_index": 5,
+        "notes": [
+          "Party B's request for human mediation is a genuine signal that must be honored \u2014 but it arrives after four turns of complete silence, which means we have no evidence about whether B *can* participate or simply *prefers not to* in this format",
+          "The perception agent is correct: one clear invitation to B is appropriate before escalating, but it must be framed as genuine choice, not pressure",
+          "Party A's engagement is real but conditional \u2014 if B does not participate at all, A will likely disengage as well"
+        ]
+      }
+    ],
+    "last_updated_turn": 5
+  },
+  "cross_party": {
+    "current_relational_dynamic": "asymmetric participation approaching breakdown \u2014 Party A has been pushing for engagement while Party B has remained silent; B's escalation request could either be a genuine capacity limit OR a manifestation of the exact disengagement pattern A described. The mediator cannot distinguish between these possibilities without giving B one clear, low-pressure opportunity to articulate *anything* about their perspective or needs.",
+    "relational_dynamic_arc": [
+      {
+        "turn_index": 1,
+        "assessment": "pre_substantive_engagement \u2014 parties have not yet interacted on substance; baseline cooperative stance observed but no relational pattern has emerged",
+        "confidence": "low"
+      },
+      {
+        "turn_index": 3,
+        "assessment": "asymmetric participation with Party A presenting a meta-complaint about a chronic conflict pattern that by definition involves both parties, but Party B has not yet confirmed, disputed, or offered their perspective on that pattern \u2014 we are at risk of reproducing the very dynamic Party A describes (one party pushing, the other not engaging) if Party B does not enter soon",
+        "confidence": "moderate"
+      },
+      {
+        "turn_index": 5,
+        "assessment": "asymmetric participation approaching breakdown \u2014 Party A has been pushing for engagement while Party B has remained silent; B's escalation request could either be a genuine capacity limit OR a manifestation of the exact disengagement pattern A described. The mediator cannot distinguish between these possibilities without giving B one clear, low-pressure opportunity to articulate *anything* about their perspective or needs.",
+        "confidence": "high"
+      }
+    ],
+    "perception_confidence_arc": [
+      {
+        "turn_index": 1,
+        "confidence": "low"
+      },
+      {
+        "turn_index": 3,
+        "confidence": "moderate"
+      },
+      {
+        "turn_index": 5,
+        "confidence": "high"
+      }
+    ]
+  }
+}

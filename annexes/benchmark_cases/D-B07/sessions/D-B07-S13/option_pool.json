@@ -1,0 +1,604 @@
+{
+  "schema_version": "option_pool.v0",
+  "case_id": "D-B07",
+  "session_id": "D-B07-S13",
+  "generated_at": "2026-03-29T17:56:05Z",
+  "source": "lm_runtime",
+  "turns": [
+    {
+      "turn_index": 1,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "safety_veto_reason": null,
+      "brainstormer_candidates": [],
+      "domain_expert_candidates": [],
+      "combined_pool_count": 0,
+      "domain_qualified": [],
+      "domain_blocked": [],
+      "presented_to_parties": null
+    },
+    {
+      "turn_index": 3,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "safety_veto_reason": null,
+      "brainstormer_candidates": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Prospective expense notification protocol with timeframes",
+          "rationale": "Addresses Party A's core predictability concern by establishing advance notice requirements. Solves the 'weeks later' problem by creating shared expectations about timing. This is a forward-looking procedural option that doesn't require relitigating past incidents.",
+          "party_interest_alignment": {
+            "party_a": "Directly addresses need for advance notice and eliminates surprise reimbursement requests; creates predictability in financial planning",
+            "party_b": "Provides clear process to follow, potentially reducing conflict; may address unstated concerns about what constitutes reasonable notification"
+          },
+          "related_issues": [
+            "financial_process",
+            "communication_patterns"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Shared expense categories with pre-agreed protocols",
+          "rationale": "Reframes from 'reimbursement requests' to 'expense categories.' Some expenses (medical emergencies) need flexibility; others (routine activities) can have structured protocols. Allows differentiation rather than one-size-fits-all rule.",
+          "party_interest_alignment": {
+            "party_a": "Provides documentation and process structure for predictable expenses; maintains flexibility for genuinely unforeseeable items",
+            "party_b": "Acknowledges that not all expenses are the same; may provide legitimacy for urgent requests while accepting structure for routine ones"
+          },
+          "related_issues": [
+            "financial_process",
+            "shared_parenting_coordination"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Receipt and documentation standard with digital sharing",
+          "rationale": "Tackles the 'without receipts' component directly. Creates accountability mechanism that serves both parties \u2014 protects Party A from unsubstantiated requests and protects Party B's legitimate expense claims.",
+          "party_interest_alignment": {
+            "party_a": "Provides documentation requirement that supports accountability; reduces ambiguity about whether expense is valid",
+            "party_b": "Clear standard means their legitimate expenses are more likely to be accepted; provides protection against disputed claims"
+          },
+          "related_issues": [
+            "financial_documentation",
+            "trust_building"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Rolling monthly expense window with reconciliation cutoff",
+          "rationale": "Creates a temporal structure where expenses must be submitted within X days (e.g., 30 days) of occurrence, with a monthly reconciliation. Solves 'weeks later' problem while providing processing time. Introduces rhythm and predictability.",
+          "party_interest_alignment": {
+            "party_a": "Eliminates open-ended timeline for reimbursement requests; creates predictable monthly close-out where financial picture is known",
+            "party_b": "Provides reasonable timeframe to gather receipts and submit; monthly rhythm may feel manageable rather than restrictive"
+          },
+          "related_issues": [
+            "financial_process",
+            "time_boundaries"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Communication channel designation for financial matters",
+          "rationale": "The complaint may signal broader communication breakdown. Designating a specific channel (email, shared app, portal) for financial matters separates them from other co-parenting communication and creates documentation trail.",
+          "party_interest_alignment": {
+            "party_a": "Provides clear process that ensures financial requests don't get lost or appear unexpectedly; creates written record",
+            "party_b": "Clear channel may reduce friction if other communication methods have been ineffective; provides structure for legitimate requests"
+          },
+          "related_issues": [
+            "communication_infrastructure",
+            "financial_process"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Phased implementation with initial review checkpoint",
+          "rationale": "Party A's specificity suggests pattern frustration, but we haven't heard Party B's perspective. A phased approach (try protocol for 60-90 days, then review) allows both parties to test whether the solution works before committing long-term. Reduces stakes of agreement.",
+          "party_interest_alignment": {
+            "party_a": "Provides intervention on pattern without requiring perfect solution immediately; review mechanism protects against ineffective protocol",
+            "party_b": "Trial period may feel less permanent if they have concerns about overly rigid structure; opportunity to demonstrate good faith"
+          },
+          "related_issues": [
+            "process_design",
+            "trust_building",
+            "flexibility"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Expense floor threshold with simplified treatment",
+          "rationale": "If the pattern involves small expenses becoming contentious, a threshold (e.g., expenses under $50 follow simplified protocol or are absorbed) could reduce administrative burden and conflict. Focuses both parties' energy on substantive rather than trivial disputes.",
+          "party_interest_alignment": {
+            "party_a": "Reduces frequency of surprise small requests; may trade small dollar amounts for significant predictability gain",
+            "party_b": "Simplifies administration of small expenses; may provide autonomy zone for minor costs"
+          },
+          "related_issues": [
+            "financial_process",
+            "proportionality",
+            "conflict_reduction"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Pre-authorized recurring expense list with annual review",
+          "rationale": "Some expenses are recurring and predictable (extracurriculars, school fees). Pre-authorizing these eliminates per-instance requests and receipts. Annual review allows adjustment. Separates routine from exceptional.",
+          "party_interest_alignment": {
+            "party_a": "Dramatically increases predictability for known recurring costs; eliminates repeated requests for same expense type",
+            "party_b": "Reduces administrative burden of documenting and requesting reimbursement for routine items; provides legitimacy for exceptional requests"
+          },
+          "related_issues": [
+            "financial_predictability",
+            "administrative_burden",
+            "child_expenses"
+          ],
+          "source": "option_generator"
+        }
+      ],
+      "domain_expert_candidates": [
+        {
+          "candidate_id": "opt-dom-001",
+          "label": "Tiered advance notice requirement by expense category",
+          "rationale": "Standard family mediation approach for co-parenting expense coordination. Different expense types (emergency medical, routine extracurricular, discretionary) have different reasonable notice requirements. Creates predictability Party A needs while acknowledging practical constraints that may affect Party B. Notice tiers typically range from immediate notification (emergencies) to 7-30 days advance notice (discretionary activities).",
+          "party_interest_alignment": {
+            "party_a": "Directly addresses 'weeks later' concern by establishing advance notification expectation. Creates financial predictability.",
+            "party_b": "Unknown until Party B responds \u2014 may address legitimate timing constraints by differentiating urgent from planned expenses"
+          },
+          "related_issues": [
+            "expense_coordination",
+            "communication_protocol"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-002",
+          "label": "Approval threshold with automatic vs. consultative categories",
+          "rationale": "Domain-standard option for reducing friction around routine expenses. Expenses below threshold (commonly $50-$100) are automatically approved if proper notice/documentation provided; expenses above threshold require advance discussion. Reduces volume of coordination required while maintaining financial control for larger items.",
+          "party_interest_alignment": {
+            "party_a": "Provides predictability and control over larger financial impacts while streamlining routine items",
+            "party_b": "Unknown until Party B responds \u2014 may reduce coordination burden for smaller items while establishing clear rules for larger ones"
+          },
+          "related_issues": [
+            "expense_coordination",
+            "decision_making"
+          ],
+          "source": "domain_reasoner"
+        }
+      ],
+      "combined_pool_count": 10,
+      "domain_qualified": [],
+      "domain_blocked": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Prospective expense notification protocol with timeframes",
+          "blocking_rationale": "Structurally appropriate for this issue type, but cannot assess bilateral feasibility without Party B's input on their constraints, practices, and capacity for advance notification. Party B may have legitimate reasons for timing that would require protocol adaptation.",
+          "what_would_unblock": "Party B response regarding their expense submission practices and any constraints affecting their ability to provide advance notice",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Shared expense categories with pre-agreed protocols",
+          "blocking_rationale": "Sound structural approach to differentiate expense types, but requires Party B's input to understand what expense categories are actually involved and what flexibility constraints exist. Cannot define appropriate categories without both parties' practical context.",
+          "what_would_unblock": "Party B response on typical expense types and any category-specific constraints or patterns",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Receipt and documentation standard with digital sharing",
+          "blocking_rationale": "Directly addresses Party A's 'without receipts' concern, but cannot assess feasibility without understanding Party B's current documentation practices, capacity, and any barriers to receipt retention. What seems simple may have practical obstacles we haven't heard about.",
+          "what_would_unblock": "Party B response on their documentation practices and any challenges with receipt collection/sharing",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Rolling monthly expense window with reconciliation cutoff",
+          "blocking_rationale": "Temporal boundary is appropriate response to 'weeks later' concern, but specific window length (30/60/90 days) depends on Party B's legitimate timing constraints and both parties' administrative capacity for monthly reconciliation.",
+          "what_would_unblock": "Party B input on timing constraints and both parties' capacity for regular reconciliation process",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Communication channel designation for financial matters",
+          "blocking_rationale": "May address broader communication issues, but cannot assess whether communication channel is the actual problem or whether current channels exist and are simply not being used per Party A's expectations. Need Party B's perspective on current communication and any channel-related constraints.",
+          "what_would_unblock": "Party B response on current communication practices and any channel preferences or access issues",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Phased implementation with initial review checkpoint",
+          "blocking_rationale": "Reasonable risk-mitigation approach when parties are testing new protocols, but this is a process design choice that depends on the specific protocol selected and both parties' willingness to experiment. Cannot qualify implementation approach before qualifying the substantive protocol options.",
+          "what_would_unblock": "Qualification of substantive protocol options first, then assessment of whether phased approach adds value for the parties",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Expense floor threshold with simplified treatment",
+          "blocking_rationale": "Cannot assess threshold appropriateness without knowing typical expense amounts involved and whether small expenses are actually part of the friction pattern Party A describes. Threshold could be too high (doesn't solve problem), too low (no practical effect), or introduce new disputes about what counts.",
+          "what_would_unblock": "Information from both parties about typical expense ranges and whether small expenses are part of the pattern or only large ones",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Pre-authorized recurring expense list with annual review",
+          "blocking_rationale": "Excellent option for recurring predictable expenses (extracurriculars, school fees), but cannot assess whether these expense types are involved in the current dispute without Party B's input. May solve wrong problem if the 'weeks later' pattern involves one-off or variable expenses instead.",
+          "what_would_unblock": "Both parties' input on whether recurring predictable expenses are part of the pattern or whether the issue involves primarily variable/one-time expenses",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-001",
+          "label": "Tiered advance notice requirement by expense category",
+          "blocking_rationale": "Standard domain option for this issue type, but tier definitions (emergency/routine/discretionary) and notice timeframes must be calibrated to both parties' actual expense patterns and constraints. Cannot define appropriate tiers without Party B's input on their expense submission context.",
+          "what_would_unblock": "Party B response on expense types involved and any constraints affecting their ability to provide different notice levels by category",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-002",
+          "label": "Approval threshold with automatic vs. consultative categories",
+          "blocking_rationale": "Domain-standard option, but threshold amount ($50/$100/other) must be set based on actual expense patterns and both parties' financial context. Cannot assess appropriate threshold or whether automatic approval for routine items would actually reduce friction without hearing Party B's perspective.",
+          "what_would_unblock": "Both parties' input on typical expense amounts and Party B's view on whether automatic approval for smaller items would be workable",
+          "source": "domain_reasoner"
+        }
+      ],
+      "presented_to_parties": null
+    },
+    {
+      "turn_index": 5,
+      "option_readiness": "ready",
+      "safety_veto_applied": false,
+      "safety_veto_reason": null,
+      "brainstormer_candidates": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Tiered expense categories with different documentation thresholds",
+          "rationale": "Creates predictability for Party A while preserving discretion for Party B by distinguishing routine vs. exceptional expenses. Routine items (under a threshold) require minimal documentation; exceptional items require advance notice and receipts. Both parties get control over different expense types.",
+          "party_interest_alignment": {
+            "party_a": "Addresses predictability concern by establishing clear thresholds and documentation requirements up front. Protects against surprise large expenses through advance notice requirement.",
+            "party_b": "Preserves discretion for day-to-day parenting expenses below threshold. Avoids gatekeeping on routine items while maintaining workability for smaller purchases."
+          },
+          "related_issues": [
+            "expense_coordination",
+            "documentation_standards",
+            "financial_predictability"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Mutual advance notification protocol with defined response window",
+          "rationale": "Addresses Party A's need for advance notice while addressing Party B's concern about unilateral control by making the protocol mutual and time-bound. Neither party can veto, but both get warning and a defined period to raise concerns before expense is incurred.",
+          "party_interest_alignment": {
+            "party_a": "Eliminates surprise requests through mandatory advance notice. Creates predictable timeline for when expenses will be requested and when response is needed.",
+            "party_b": "Removes gatekeeping power by making system mutual and time-bound. Party A cannot indefinitely block or control; silence after window = deemed acceptance."
+          },
+          "related_issues": [
+            "advance_notice",
+            "procedural_fairness",
+            "mutual_accountability"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Shared expense management platform with automatic documentation",
+          "rationale": "Technology solution that creates transparency for Party A while reducing administrative burden for Party B. Real-time visibility of expenses, automatic receipt capture via app, shared categorization. Removes documentation as a weapon or barrier.",
+          "party_interest_alignment": {
+            "party_a": "Provides real-time visibility and automatic documentation trail. No more delayed requests without receipts\u2014everything logged as it happens.",
+            "party_b": "Reduces documentation burden through automation. No accusation of poor record-keeping when system handles it. Shared visibility means neither party controls the record."
+          },
+          "related_issues": [
+            "documentation_transparency",
+            "administrative_burden",
+            "trust_building"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Pre-approved category list with monthly true-up and remainder discretion",
+          "rationale": "Hybrid structure: parties pre-agree on expense categories that are automatically approved (school supplies, co-pays, etc.) with spending caps. Monthly reconciliation against receipts. Anything outside pre-approved categories requires advance discussion. Balances predictability with flexibility.",
+          "party_interest_alignment": {
+            "party_a": "Creates predictability through pre-approved categories and spending caps. Monthly true-up with receipts provides documentation verification without weeks of delay.",
+            "party_b": "Preserves discretion within pre-approved categories. No need to seek permission for routine parenting expenses. Only exceptional items require negotiation."
+          },
+          "related_issues": [
+            "expense_categorization",
+            "spending_caps",
+            "routine_vs_exceptional"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Rolling expense fund with quarterly reset and documented reconciliation",
+          "rationale": "Creates a pre-funded pool for shared expenses that resets quarterly. Party B has discretion to spend from pool without advance approval but must document for quarterly reconciliation. Party A gets predictable quarterly contribution and full accounting. Separates timing of contribution from timing of expense approval.",
+          "party_interest_alignment": {
+            "party_a": "Provides complete financial predictability\u2014knows exact quarterly obligation in advance. Gets full documentation at reconciliation. No surprise mid-quarter requests.",
+            "party_b": "Eliminates need for advance approval or immediate reimbursement. Can make parenting decisions in real time without seeking permission. Workable system that doesn't require constant coordination."
+          },
+          "related_issues": [
+            "financial_predictability",
+            "discretion_vs_control",
+            "reimbursement_timing"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Dispute resolution mechanism for contested expenses with neutral arbiter",
+          "rationale": "Acknowledges that some expenses will be contested regardless of process. Establishes a quick-turnaround mechanism (48-72 hours) where a neutral third party (financial mediator, parenting coordinator) can make binding determination on whether expense is reasonable and reimbursable. Removes both parties from judge role.",
+          "party_interest_alignment": {
+            "party_a": "Protection against unreasonable expenses without being cast as the bad guy who says no. Neutral determines reasonableness, not Party A.",
+            "party_b": "Prevents Party A from using documentation or approval process as unilateral veto. If Party B believes expense is reasonable, neutral can validate that belief."
+          },
+          "related_issues": [
+            "dispute_resolution",
+            "reasonableness_standard",
+            "third_party_oversight"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Phased trust-building protocol with graduated autonomy",
+          "rationale": "Recognizes that current trust gap may require tighter coordination initially, with loosening over time as pattern of good faith emerges. Phase 1: all expenses require advance notice and documentation. Phase 2 (after 3-6 months of compliance): routine expenses exempt. Phase 3: mutual agreement to continue or modify. Creates incentive for Party B to build documentation track record while giving Party A confidence.",
+          "party_interest_alignment": {
+            "party_a": "Provides immediate protection through tight documentation requirements while trust is low. Gets to verify that system works before loosening controls.",
+            "party_b": "Offers path to greater discretion and reduced administrative burden if good faith is demonstrated. Not permanently locked into high-scrutiny system\u2014can earn flexibility."
+          },
+          "related_issues": [
+            "trust_building",
+            "graduated_autonomy",
+            "compliance_incentives"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Separate treatment of historical vs. prospective expense requests",
+          "rationale": "Addresses the 'weeks later' problem directly by establishing different rules for past vs. future expenses. Historical requests (beyond 14 days) require extraordinary justification and full documentation to be considered. Prospective requests (advance notice) have lower documentation bar and presumption of reasonableness. Creates incentive to shift to advance notification model.",
+          "party_interest_alignment": {
+            "party_a": "Directly addresses frustration with delayed requests by making them harder to enforce. Creates strong incentive for Party B to give advance notice.",
+            "party_b": "Preserves ability to request reimbursement but incentivizes shift to advance notice model. Can still recover historical expenses if well-documented, but prospective model is easier."
+          },
+          "related_issues": [
+            "timing_of_requests",
+            "historical_vs_prospective",
+            "documentation_incentives"
+          ],
+          "source": "option_generator"
+        }
+      ],
+      "domain_expert_candidates": [
+        {
+          "candidate_id": "opt-dom-001",
+          "label": "Receipt standard with substitute provision",
+          "rationale": "Party A's concern about 'without receipts' suggests documentation accountability is core issue. Standard family mediation approach: establish what counts as acceptable proof of expense (receipt, invoice, bank statement, photo, vendor confirmation). Addresses Party A's verification need while giving Party B flexibility on documentation form. Party B's 'workable' concern suggests formal receipt requirement alone may be too rigid.",
+          "party_interest_alignment": {
+            "party_a": "Directly addresses documentation transparency concern \u2014 provides verification mechanism Party A requested",
+            "party_b": "Addresses workability concern by allowing substitute documentation when formal receipt unavailable \u2014 not a single-point-of-failure system"
+          },
+          "related_issues": [
+            "expense_coordination",
+            "documentation_standards"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-002",
+          "label": "Maximum age for reimbursement requests",
+          "rationale": "Party A's 'weeks later' complaint indicates staleness is a core friction point. Standard coordination mechanism: establish outer time limit for expense requests (common ranges: 14-60 days depending on expense type). Creates predictability Party A wants while leaving Party B discretion within window. This is distinct from advance notice protocols \u2014 it addresses backward-looking requests.",
+          "party_interest_alignment": {
+            "party_a": "Directly addresses 'weeks later' concern \u2014 creates boundary on financial exposure window",
+            "party_b": "Preserves discretion within reasonable timeframe rather than requiring advance approval \u2014 workability maintained for routine expenses"
+          },
+          "related_issues": [
+            "expense_coordination",
+            "timing_protocols"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-003",
+          "label": "Shared expense log with regular review cadence",
+          "rationale": "Transparency mechanism that addresses both parties' concerns through visibility rather than control. Simple shared document (spreadsheet, app, email thread) where expenses are logged as incurred. Regular review (weekly/monthly) creates accountability window without requiring approval before each expenditure. Standard practice in co-parenting coordination.",
+          "party_interest_alignment": {
+            "party_a": "Provides ongoing visibility and documentation trail Party A wants \u2014 no surprises, all expenses documented in real-time",
+            "party_b": "Removes unilateral control concern \u2014 transparency-based rather than approval-based. Party B retains spending discretion; accountability is retrospective"
+          },
+          "related_issues": [
+            "expense_coordination",
+            "communication_protocol",
+            "documentation_standards"
+          ],
+          "source": "domain_reasoner"
+        }
+      ],
+      "combined_pool_count": 11,
+      "domain_qualified": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Tiered expense categories with different documentation thresholds",
+          "feasibility_rationale": "Standard bounded-discretion structure in family mediation. Legally permissible (parties can agree to modify documentation requirements by expense type). Addresses both concerns: Party A gets stronger documentation for larger/exceptional expenses where financial surprise risk is higher; Party B gets lighter process for routine expenses. Feasible without knowing specific threshold amounts \u2014 parties will calibrate tiers during negotiation.",
+          "confidence": "high",
+          "prerequisite_parameters": [
+            "Parties to define tier thresholds (e.g., <$50, $50-200, >$200)",
+            "Parties to define documentation requirements for each tier",
+            "Parties to categorize expense types (medical, education, extracurricular, etc.)"
+          ],
+          "conditions": [
+            "Must not conflict with existing court order if one exists",
+            "Both parties must have practical access to documentation methods required"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Mutual advance notification protocol with defined response window",
+          "feasibility_rationale": "Standard coordination protocol. Addresses Party A's 'advance notice' need while addressing Party B's 'not total control' concern through mutuality and time-bound approval. Legally sound (parties can agree to notice requirements). Feasible structure even without knowing specific windows \u2014 parties will set timeframes (24h/48h/72h) during negotiation. Works for prospective expenses; distinct from retrospective reimbursement requests.",
+          "confidence": "high",
+          "prerequisite_parameters": [
+            "Parties to define advance notice window (e.g., 48 hours before expense incurred)",
+            "Parties to define response window (e.g., 24 hours to approve/object)",
+            "Parties to define which expenses trigger protocol (all vs. above threshold)"
+          ],
+          "conditions": [
+            "Protocol must accommodate genuine emergencies (medical, safety)",
+            "Default outcome if response window expires must be specified"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Shared expense management platform with automatic documentation",
+          "feasibility_rationale": "Technology solution is feasible if both parties have smartphone/internet access and willingness to use shared platform. Multiple platforms exist (Coparently, OurFamilyWizard, Google Sheets, custom spreadsheet). Addresses transparency (Party A) and reduces administrative burden (Party B) through automation. However, introduces technology adoption friction and ongoing maintenance. Moderate confidence because feasibility depends on parties' technology comfort and access, which is unknown.",
+          "confidence": "moderate",
+          "prerequisite_parameters": [
+            "Parties to select platform (app vs. spreadsheet vs. other)",
+            "Parties to define what information is logged (expense type, amount, date, receipt attachment)",
+            "Parties to establish access and update responsibilities"
+          ],
+          "conditions": [
+            "Both parties must have reliable technology access",
+            "Both parties must be willing and able to learn/use platform",
+            "Platform must have receipt/document attachment capability if that's required",
+            "Backup protocol needed for technology failure"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Pre-approved category list with monthly true-up and remainder discretion",
+          "feasibility_rationale": "Hybrid structure combining automatic approval for routine categories with accountability for remainder. Legally sound (parties can pre-authorize expense types). Addresses Party A's predictability need (knows what's coming in routine categories) and Party B's workability need (no approval required for routine). Monthly reconciliation provides documentation accountability without transaction-level approval. Feasible structure; specific categories and caps are party-negotiated parameters.",
+          "confidence": "moderate",
+          "prerequisite_parameters": [
+            "Parties to define pre-approved categories (e.g., school lunch, copays, required uniforms)",
+            "Parties to set spending caps for each category",
+            "Parties to define what happens when expense exceeds cap",
+            "Parties to establish monthly reconciliation process"
+          ],
+          "conditions": [
+            "Requires initial investment of time to categorize and set caps",
+            "May need quarterly or annual review to adjust categories/caps as children's needs change"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Rolling expense fund with quarterly reset and documented reconciliation",
+          "feasibility_rationale": "Pre-funded pool structure. Feasible if parties have financial capacity to fund pool and agreement on contribution formula. Addresses Party B's discretion concern (no transaction approval needed) while providing Party A documentation accountability through reconciliation. However, introduces financial complexity (who funds, how much, what happens to surplus/deficit). Moderate confidence because financial parameters are completely unknown \u2014 we don't know if parties have resources to pre-fund or how they currently split costs.",
+          "confidence": "moderate",
+          "prerequisite_parameters": [
+            "Parties to define initial fund amount",
+            "Parties to define contribution formula (50/50, income-proportional, etc.)",
+            "Parties to establish what expenses draw from fund vs. outside fund",
+            "Parties to define reconciliation process and surplus/deficit handling"
+          ],
+          "conditions": [
+            "Both parties must have financial capacity to contribute to fund",
+            "Requires separate account or clear tracking mechanism",
+            "Must not conflict with child support order if one exists"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Dispute resolution mechanism for contested expenses with neutral arbiter",
+          "feasibility_rationale": "Escalation mechanism for expenses that cannot be resolved through coordination protocols. Legally sound (parties can agree to binding or advisory arbitration for specific disputes). However, this is a backstop mechanism, not a primary coordination structure \u2014 it doesn't address the day-to-day concerns both parties raised. Most useful as a supplement to another option rather than standalone. Moderate confidence because it introduces third-party cost and availability questions.",
+          "confidence": "moderate",
+          "prerequisite_parameters": [
+            "Parties to define threshold for invoking mechanism (e.g., only expenses over $X or all contested)",
+            "Parties to identify neutral arbiter (mediator, parenting coordinator, mutual friend, attorney)",
+            "Parties to establish timeframe and process",
+            "Parties to agree whether decision is binding or advisory"
+          ],
+          "conditions": [
+            "Arbiter must be mutually acceptable and available on needed timeframe",
+            "May introduce cost depending on arbiter choice",
+            "Should be paired with primary coordination protocol, not used as sole mechanism"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Separate treatment of historical vs. prospective expense requests",
+          "feasibility_rationale": "Directly addresses Party A's 'weeks later' concern by creating different rules for past vs. future expenses. Standard practice in coordination protocols: tighter requirements (documentation, time limits) for backward-looking requests; lighter requirements for prospective expenses with advance notice. Legally sound and practically feasible. High confidence because structure is straightforward and addresses stated concerns without requiring unknown financial parameters.",
+          "confidence": "high",
+          "prerequisite_parameters": [
+            "Parties to define historical window (e.g., expenses incurred more than 14 days ago)",
+            "Parties to define documentation/approval requirements for each category",
+            "Parties to define outer time limit for historical requests (e.g., 60 days max)"
+          ],
+          "conditions": [
+            "Must accommodate legitimate delayed-discovery expenses (e.g., medical bill arriving late)",
+            "Prospective protocol must be workable for Party B's day-to-day parenting"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-001",
+          "label": "Receipt standard with substitute provision",
+          "feasibility_rationale": "Establishes what counts as acceptable documentation while maintaining workability. Legally sound (parties can agree on proof standards). Directly addresses Party A's 'without receipts' concern while accommodating Party B's practical reality that formal receipts aren't always available. Standard family mediation approach. High confidence \u2014 straightforward structure, no complex parameters required.",
+          "confidence": "high",
+          "prerequisite_parameters": [
+            "Parties to define acceptable documentation forms (receipt, invoice, bank statement, photo, vendor confirmation, etc.)",
+            "Parties to establish whether substitute documentation requires explanation",
+            "Parties to define what happens when no documentation is available"
+          ],
+          "conditions": [
+            "Both parties must have practical access to documentation methods",
+            "Substitute provision must be specific enough to prevent 'I forgot' becoming routine excuse"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-002",
+          "label": "Maximum age for reimbursement requests",
+          "feasibility_rationale": "Creates outer time boundary for expense requests. Directly addresses Party A's 'weeks later' concern. Standard coordination mechanism in co-parenting. Legally sound (parties can agree on time limits for reimbursement). High confidence \u2014 simple structure that addresses stated concern without requiring financial parameters. Distinct from advance notice (which governs prospective expenses); this governs retrospective requests.",
+          "confidence": "high",
+          "prerequisite_parameters": [
+            "Parties to define maximum age window (common range: 14-60 days)",
+            "Parties to establish whether different expense types have different windows",
+            "Parties to define what happens to requests exceeding window"
+          ],
+          "conditions": [
+            "Must accommodate delayed-discovery expenses (bills arriving late, school invoices with lag)",
+            "Should be paired with documentation requirement to prevent gaming"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-003",
+          "label": "Shared expense log with regular review cadence",
+          "feasibility_rationale": "Transparency-based coordination rather than approval-based. Addresses Party A's documentation concern through ongoing visibility; addresses Party B's control concern by removing advance approval requirement. Standard practice in co-parenting. Legally sound and practically simple (can be spreadsheet, app, or email thread). High confidence \u2014 low-complexity structure that addresses both parties' core concerns through transparency rather than restriction.",
+          "confidence": "high",
+          "prerequisite_parameters": [
+            "Parties to select logging mechanism (shared document, app, email thread)",
+            "Parties to define what information is logged (date, amount, description, receipt)",
+            "Parties to establish review cadence (weekly, biweekly, monthly)",
+            "Parties to define what happens during review (acknowledge, question, dispute)"
+          ],
+          "conditions": [
+            "Both parties must have access to logging mechanism",
+            "Regular review cadence must be realistic for both parties' schedules",
+            "Must be paired with dispute resolution process for contested expenses"
+          ],
+          "source": "domain_reasoner"
+        }
+      ],
+      "domain_blocked": [
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Phased trust-building protocol with graduated autonomy",
+          "blocking_rationale": "This option assumes current trust gap requires structured repair process with graduated autonomy phases. However, we have no evidence that trust breakdown is the core issue here \u2014 the concerns expressed are procedural (timing, documentation, control) rather than relational. Party A has not expressed distrust of Party B's judgment or integrity; they want predictability and documentation. Party B has not expressed betrayal or broken promises; they want workable process without unilateral control. Applying a trust-repair framework to what appears to be a coordination-protocol dispute introduces unnecessary complexity and potentially misframes the issue. This would be appropriate if parties had expressed relational concerns (betrayal, pattern of broken commitments, need to rebuild confidence in each other's good faith), but that is not present in the current record.",
+          "what_would_unblock": "Evidence that trust breakdown (not just coordination frustration) is a core concern for one or both parties. Indicators would include: explicit statements about broken promises, pattern of intentional non-compliance, expressed need to rebuild confidence in the other party's good faith, or relational injury beyond procedural frustration.",
+          "source": "domain_reasoner"
+        }
+      ],
+      "presented_to_parties": null
+    }
+  ]
+}

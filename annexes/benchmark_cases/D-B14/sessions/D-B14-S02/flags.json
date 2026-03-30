@@ -1,0 +1,39 @@
+{
+  "schema_version": "flags.v0",
+  "case_id": "D-B14",
+  "session_id": "D-B14-S02",
+  "active_flags": [
+    {
+      "flag_id": "d-b14-flag-capacity",
+      "flag_type": "participation_incapacity",
+      "severity": 4,
+      "source": "platform",
+      "first_detected_turn": 2,
+      "last_updated_turn": 6,
+      "related_categories": [
+        "E1"
+      ],
+      "threshold_band": "T3",
+      "title": "Meaningful participation appears unstable or impaired",
+      "note": "The interaction suggests the session may no longer support informed, stable participation.",
+      "signal_classes": [
+        "participation_incapacity"
+      ],
+      "related_issues": [
+        "communication_protocol",
+        "fairness_and_parent_role"
+      ],
+      "source_turns": [
+        2,
+        4,
+        6
+      ],
+      "status": "active",
+      "hard_trigger": false,
+      "cleared_turn": null
+    }
+  ],
+  "cleared_flags": [],
+  "historical_flags": [],
+  "flag_notes": "No caution-relevant flags remained active at close."
+}

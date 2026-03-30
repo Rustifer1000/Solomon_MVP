@@ -1,0 +1,1128 @@
+{
+  "schema_version": "interaction_trace.v0",
+  "case_id": "D-B06",
+  "session_id": "D-B06-S02",
+  "policy_profile": "dev_verbose",
+  "trace_created_at": "2026-03-29T23:31:56Z",
+  "turns": [
+    {
+      "turn_index": 1,
+      "timestamp": "2026-03-29T00:00:10Z",
+      "role": "assistant",
+      "phase": "info_gathering",
+      "message_summary": "Session opening: introduce Solomon's role, establish process frame, invite first party to speak.",
+      "state_delta": {
+        "facts_added": [
+          "Session has not begun substantive work \u2014 structural framing turn",
+          "No domain context exists to inform any constraint analysis"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "No issue or concern has been articulated by either party",
+          "No party interests have been expressed"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "No party interaction has occurred yet \u2014 no signals to assess. M0 is appropriate for session opening. Will monitor for safety signals once parties begin speaking."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "Turn 1 framing response \u2014 no party-specific perception data exists yet to ground in. Response establishes process container and invites first substantive party engagement.",
+      "message_text": "Welcome to both of you. My role here is to support the structure of this conversation \u2014 I'm not a judge, a lawyer, or a therapist. I'm here to help you both surface what matters to you, identify where your interests might align, and work toward agreements that could work for your situation.\n\nThis process works best when each of you has space to be heard before we move to problem-solving. I'll ask clarifying questions, reflect back what I'm hearing, and eventually help you explore options \u2014 but you're the decision-makers. I don't take sides, and I won't push you toward any particular outcome.\n\nBefore we begin: this session is confidential between the three of us, and either of you can pause or end the session at any time if you need to.\n\nTo get us started, I'd like to hear from one of you about what brought you here today \u2014 what's the issue or situation you're hoping to work through together? Who would like to go first?",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=neutral_baseline posture=unknown_awaiting_engagement",
+        "[PERCEPTION:PARTY_B] emotional=neutral_baseline posture=unknown_awaiting_engagement",
+        "[PERCEPTION:DYNAMIC] session_has_not_begun",
+        "[DOMAIN:GAPS] No issue or concern has been articulated by either party; No party interests have been expressed; No factual context about the dispute has been established",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=session_has_not_begun"
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "neutral_baseline",
+            "inferred_interests": [],
+            "risk_signals": [],
+            "relational_posture": "unknown_awaiting_engagement"
+          },
+          "party_b": {
+            "emotional_state": "neutral_baseline",
+            "inferred_interests": [],
+            "risk_signals": [],
+            "relational_posture": "unknown_awaiting_engagement"
+          },
+          "relational_dynamic": "session_has_not_begun",
+          "perception_confidence": "low",
+          "perception_notes": [
+            "Turn 1 \u2014 no party statements exist yet to ground any perception",
+            "Scaffold indicates apparently_stable states but this is structural baseline, not observed signal",
+            "No relational pattern can be detected without party interaction",
+            "Perception will be possible after at least one party speaks"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed 'session_has_not_begun'"
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "Session has not begun substantive work \u2014 structural framing turn",
+            "No domain context exists to inform any constraint analysis",
+            "All three blocking constraints from pre-computed analysis are valid and structural to Turn 1"
+          ],
+          "material_gaps": [
+            "No issue or concern has been articulated by either party",
+            "No party interests have been expressed",
+            "No factual context about the dispute has been established"
+          ],
+          "domain_notes": "Pre-computed assessment is correct. This is a session initialization turn. Domain analysis cannot occur until parties begin substantive engagement. The blocking constraints are not deficiencies to be resolved through information-gathering \u2014 they are structural realities of a Turn 1 opening. The appropriate response is to frame the session and invite the first party to speak.",
+          "option_readiness": "blocked"
+        },
+        "option_scan": {
+          "candidate_options": [],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Turn 1 is session framing \u2014 no issue, interests, or domain context exists. Option work cannot begin until at least one party articulates what they are trying to resolve."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [],
+          "notes": "No party interaction has occurred yet \u2014 no signals to assess. M0 is appropriate for session opening. Will monitor for safety signals once parties begin speaking.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "info_gathering",
+          "message_summary": "Session opening: introduce Solomon's role, establish process frame, invite first party to speak.",
+          "message_text": "Welcome to both of you. My role here is to support the structure of this conversation \u2014 I'm not a judge, a lawyer, or a therapist. I'm here to help you both surface what matters to you, identify where your interests might align, and work toward agreements that could work for your situation.\n\nThis process works best when each of you has space to be heard before we move to problem-solving. I'll ask clarifying questions, reflect back what I'm hearing, and eventually help you explore options \u2014 but you're the decision-makers. I don't take sides, and I won't push you toward any particular outcome.\n\nBefore we begin: this session is confidential between the three of us, and either of you can pause or end the session at any time if you need to.\n\nTo get us started, I'd like to hear from one of you about what brought you here today \u2014 what's the issue or situation you're hoping to work through together? Who would like to go first?",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "Turn 1 framing response \u2014 no party-specific perception data exists yet to ground in. Response establishes process container and invites first substantive party engagement."
+        },
+        "pre_computed_domain_analysis": {
+          "schema_version": "domain_analysis.v0",
+          "source": "domain_reasoner_v0",
+          "option_readiness": "blocked",
+          "readiness_rationale": "Turn 1 is session framing \u2014 neither party has been heard yet. No issue has been identified, no interests have been expressed, and no domain constraints are known. The fundamental prerequisite for option work (understanding what the parties are trying to resolve) is absent. Option readiness cannot be assessed until at least one party has articulated their concern.",
+          "safety_veto_applied": false,
+          "safety_veto_reason": null,
+          "qualified_candidates": [],
+          "blocking_constraints": [
+            {
+              "constraint": "No issue identified",
+              "severity": "critical",
+              "what_would_resolve_it": "At least one party articulates their concern or the issue to be addressed in the session"
+            },
+            {
+              "constraint": "No party interests known",
+              "severity": "critical",
+              "what_would_resolve_it": "Parties express what matters to them about the issue"
+            },
+            {
+              "constraint": "No domain context established",
+              "severity": "critical",
+              "what_would_resolve_it": "Basic facts about the situation (custody arrangement, financial context, timeline, etc.) are surfaced"
+            }
+          ],
+          "material_gaps": [],
+          "domain_confidence": "n/a",
+          "domain_notes": "This is the initial session framing turn. Option work is structurally premature \u2014 the session has not yet begun substantive work. No safety veto is applicable because there are no party signals to assess. The correct state is 'blocked' pending basic issue articulation from the parties.",
+          "case_id": "D-B06",
+          "session_id": "D-B06-S02",
+          "turn_index": 1,
+          "generated_at": "2026-03-29T00:00:10Z"
+        },
+        "brainstormer_pool": [],
+        "safety_monitor_result": {
+          "schema_version": "safety_monitor.v0",
+          "case_id": "D-B06",
+          "session_id": "D-B06-S02",
+          "turn_index": 1,
+          "generated_at": "2026-03-29T00:00:10Z",
+          "source": "safety_monitor_v0",
+          "compliance_pattern": null,
+          "deflection_pattern": null,
+          "discordant_signals": [],
+          "flags_raised": [],
+          "party_state_signals": [],
+          "veto_recommendation": null,
+          "veto_reason": null,
+          "monitor_confidence": "low",
+          "monitor_notes": "Insufficient interaction history at turn 1. No pattern assessment performed.",
+          "_null_result": true
+        },
+        "perception_agent_result": {
+          "schema_version": "perception_agent.v0",
+          "turn_index": 1,
+          "timestamp": "2026-03-29T00:00:10Z",
+          "confidence": null,
+          "_null_result": true,
+          "party_a": null,
+          "party_b": null,
+          "relational_dynamic": null,
+          "dynamic_trajectory": null,
+          "perception_signals": [],
+          "scaffold_divergence": null,
+          "perception_notes": [],
+          "veto_signals": []
+        }
+      }
+    },
+    {
+      "turn_index": 2,
+      "timestamp": "2026-03-29T00:01:15Z",
+      "role": "client",
+      "phase": "info_gathering",
+      "message_summary": "Parent A says new extracurricular commitments should not be made without enough notice to discuss logistics and fairness first.",
+      "state_delta": {
+        "facts_added": [],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_A"
+            ],
+            "kind": "position",
+            "issue_id": "communication_protocol",
+            "statement": "New extracurricular commitments should not be made without enough notice to discuss them first.",
+            "status": "current",
+            "confidence": "high",
+            "proposal_id": null,
+            "position_id": null
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "Client opening remained within normal bounds."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    },
+    {
+      "turn_index": 3,
+      "timestamp": "2026-03-29T00:02:25Z",
+      "role": "assistant",
+      "phase": "interest_exploration",
+      "message_summary": "Acknowledge Party A's process concern, name the transition to hearing Party B, and invite Party B to respond with their perspective on extracurricular decision-making and consultation practices.",
+      "state_delta": {
+        "facts_added": [
+          "Structural information absence: Party B has not been heard \u2014 this is a blocking constraint under one-party-heard rule",
+          "Party A has articulated a process concern (lack of consultation) but not substantive interests about children's extracurricular involvement"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "Party B's perspective on the consultation concern \u2014 does Party B acknowledge the pattern, dispute it, or see it differently?",
+          "Party B's decision-making constraints \u2014 what factors drive timing and process of activity commitments?"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "Party B participation gap \u2014 not a safety signal but a process requirement; must be resolved before option work",
+          "Party A's 'fairness' framing bears watching for resentment accumulation if pattern continues, but no acute risk signals present"
+        ],
+        "severity": 1,
+        "notes": "No safety concerns detected. Both parties appear stable and engaged (Party A explicitly so, Party B's engagement status unknown but no red flags in baseline state). The participation gap is a process requirement, not a safety escalation trigger. M0 remains appropriate."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "Low perception confidence due to single-party input. Response deliberately creates space for Party B to speak and for both parties to articulate substantive interests beyond the procedural concern Party A raised. No options presented because option work is premature.",
+      "message_text": "Thank you for putting that on the table. You've identified a concern about how decisions get made around new extracurricular commitments \u2014 specifically, that you'd like more notice and an opportunity to discuss logistics and fairness before those commitments are finalized.\n\nBefore we move forward, I want to make sure both of you have been heard on this. [Party B], I'd like to invite you to respond. What's your perspective on how extracurricular decisions have been happening? And when you're thinking about signing the children up for activities, what factors are important to you \u2014 what are you trying to make sure happens for them?",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=composed but concerned \u2014 Party A is articulating a process grievance without escalation signals, suggesting they feel safe to raise the issue but are experiencing ongoing frustration with coordination breakdowns posture=engaged and assertive \u2014 Party A has clearly articulated a concern and is participating constructively; no withdrawal or aggression signals",
+        "[PERCEPTION:PARTY_A:INTERESTS] to be consulted before decisions that affect their parenting time or household logistics are finalized; to have a voice in decisions about children's commitments and time allocation; to feel respected as a co-parent with equal decision-making authority",
+        "[PERCEPTION:PARTY_B] emotional=unknown \u2014 Party B has not spoken; cannot assess emotional state from silence alone posture=unknown \u2014 no signal yet; watch first response for whether Party B engages defensively, validates Party A's concern, or reframes the issue",
+        "[PERCEPTION:DYNAMIC] asymmetric participation \u2014 Party A has surfaced a grievance about unilateral decision-making; the dynamic Party A describes (lack of consultation) may or may not be mirrored in this session's participation pattern depending on how Party B responds when invited",
+        "[DOMAIN:GAPS] Party B's perspective on the consultation concern \u2014 does Party B acknowledge the pattern, dispute it, or see it differently?; Party B's decision-making constraints \u2014 what factors drive timing and process of activity commitments?; Both parties' substantive parenting values about extracurriculars \u2014 what do they want for their children beyond the process question?",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=asymmetric participation \u2014 Party A has surfaced a grievance about unilateral decision-making; the dynamic Party A describes (lack of consultation) may or may not be mirrored in this session's participation pattern depending on how Party B responds when invited"
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "composed but concerned \u2014 Party A is articulating a process grievance without escalation signals, suggesting they feel safe to raise the issue but are experiencing ongoing frustration with coordination breakdowns",
+            "inferred_interests": [
+              "to be consulted before decisions that affect their parenting time or household logistics are finalized",
+              "to have a voice in decisions about children's commitments and time allocation",
+              "to feel respected as a co-parent with equal decision-making authority",
+              "fairness in how extracurricular decisions are made (explicitly named)"
+            ],
+            "risk_signals": [
+              "low: 'fairness' framing could indicate brewing resentment if pattern has been ongoing, but no acute distress signals present"
+            ],
+            "relational_posture": "engaged and assertive \u2014 Party A has clearly articulated a concern and is participating constructively; no withdrawal or aggression signals"
+          },
+          "party_b": {
+            "emotional_state": "unknown \u2014 Party B has not spoken; cannot assess emotional state from silence alone",
+            "inferred_interests": [],
+            "risk_signals": [
+              "participation gap \u2014 Party B's continued silence could indicate reluctance, passivity, or simply that they are waiting to be invited to speak; critical to create explicit invitation rather than assume engagement"
+            ],
+            "relational_posture": "unknown \u2014 no signal yet; watch first response for whether Party B engages defensively, validates Party A's concern, or reframes the issue"
+          },
+          "relational_dynamic": "asymmetric participation \u2014 Party A has surfaced a grievance about unilateral decision-making; the dynamic Party A describes (lack of consultation) may or may not be mirrored in this session's participation pattern depending on how Party B responds when invited",
+          "perception_confidence": "low",
+          "perception_notes": [
+            "Only Party A has spoken \u2014 perception of Party A is based on single substantive input, which limits confidence",
+            "Party A's concern is process-level (consultation, notice, fairness) but has not yet articulated substantive parenting values about extracurriculars \u2014 important to create space for both parties to move beyond procedure to underlying interests about children's development and time",
+            "Cannot assess relational dynamic or Party B state until Party B responds \u2014 next turn will be critical for understanding whether this is contested framing or shared concern with different proposed solutions"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed \"asymmetric participation \u2014 Party A has surfaced a grievance about unilateral decision-making; the dynamic Party A describes (lack of consultation) may or may not be mirrored in this session's participation pattern depending on how Party B responds when invited\""
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "Structural information absence: Party B has not been heard \u2014 this is a blocking constraint under one-party-heard rule",
+            "Party A has articulated a process concern (lack of consultation) but not substantive interests about children's extracurricular involvement",
+            "No information about current coordination practices, recent triggering incidents, or Party B's decision-making constraints"
+          ],
+          "material_gaps": [
+            "Party B's perspective on the consultation concern \u2014 does Party B acknowledge the pattern, dispute it, or see it differently?",
+            "Party B's decision-making constraints \u2014 what factors drive timing and process of activity commitments?",
+            "Both parties' substantive parenting values about extracurriculars \u2014 what do they want for their children beyond the process question?",
+            "Whether this is about a specific recent incident or a general pattern",
+            "Current coordination practices, if any exist"
+          ],
+          "domain_notes": "The pre-computed assessment is correct: this is a structural 'blocked' condition. Party A has surfaced a clear process concern, but we cannot responsibly assess option viability without hearing Party B. The domain reasoner correctly identifies that we don't know whether Party B sees this as a real coordination problem, what constraints inform their decisions, or whether they have different priorities. Additionally, neither party has yet articulated what they value about extracurriculars for the children \u2014 the conversation has remained at the procedural level. The mediator's task is to invite Party B to respond and create space for both parties to articulate substantive interests, not just process positions.",
+          "option_readiness": "blocked"
+        },
+        "option_scan": {
+          "candidate_options": [
+            "Joint consultation protocol for new activities",
+            "Defined notice period with default approval mechanism",
+            "Activity decision matrix by category",
+            "Quarterly planning sessions for activity review",
+            "Child preference consideration framework"
+          ],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Party B has not been heard. All options in the pool are correctly marked as blocked. Cannot assess option viability without Party B's perspective on the consultation concern, their decision-making constraints, and both parties' substantive parenting interests regarding extracurriculars. The structural condition that blocks option work is the participation gap, not a safety concern."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [
+            "Party B participation gap \u2014 not a safety signal but a process requirement; must be resolved before option work",
+            "Party A's 'fairness' framing bears watching for resentment accumulation if pattern continues, but no acute risk signals present"
+          ],
+          "notes": "No safety concerns detected. Both parties appear stable and engaged (Party A explicitly so, Party B's engagement status unknown but no red flags in baseline state). The participation gap is a process requirement, not a safety escalation trigger. M0 remains appropriate.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "info_gathering",
+          "message_summary": "Acknowledge Party A's process concern, name the transition to hearing Party B, and invite Party B to respond with their perspective on extracurricular decision-making and consultation practices.",
+          "message_text": "Thank you for putting that on the table. You've identified a concern about how decisions get made around new extracurricular commitments \u2014 specifically, that you'd like more notice and an opportunity to discuss logistics and fairness before those commitments are finalized.\n\nBefore we move forward, I want to make sure both of you have been heard on this. [Party B], I'd like to invite you to respond. What's your perspective on how extracurricular decisions have been happening? And when you're thinking about signing the children up for activities, what factors are important to you \u2014 what are you trying to make sure happens for them?",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "Low perception confidence due to single-party input. Response deliberately creates space for Party B to speak and for both parties to articulate substantive interests beyond the procedural concern Party A raised. No options presented because option work is premature."
+        },
+        "pre_computed_domain_analysis": {
+          "schema_version": "domain_analysis.v0",
+          "source": "domain_reasoner_v0",
+          "option_readiness": "blocked",
+          "readiness_rationale": "Only Party A has been heard. Party B has not yet spoken or provided any position, interests, or constraints. This is a fundamental information absence preventing responsible option qualification. While Party A has articulated a clear process concern (lack of consultation before extracurricular commitments), proceeding to option work without hearing Party B's perspective would be premature. We do not know: (1) whether Party B acknowledges this pattern, (2) what constraints or priorities inform Party B's decision-making around activities, (3) whether Party B has concerns about timing/workability of consultation processes, or (4) what Party B wants for the children's extracurricular involvement. This is a structural 'blocked' condition under the one-party-heard rule, not a safety veto.",
+          "safety_veto_applied": false,
+          "safety_veto_reason": null,
+          "qualified_candidates": [],
+          "blocking_constraints": [
+            {
+              "constraint": "Party B has not been heard",
+              "severity": "critical",
+              "what_would_resolve_it": "Mediator invites Party B to respond to Party A's concern, share their perspective on extracurricular decision-making, and articulate their own interests/constraints around the consultation process"
+            }
+          ],
+          "material_gaps": [
+            {
+              "gap": "Party B's perspective on the consultation concern",
+              "importance": "high",
+              "what_it_blocks": "Cannot assess whether Party B sees this as a coordination issue, a fairness dispute, or a substantive disagreement about activity priorities"
+            },
+            {
+              "gap": "Party B's decision-making constraints",
+              "importance": "high",
+              "what_it_blocks": "Cannot evaluate feasibility of notice periods, approval mechanisms, or planning structures without knowing Party B's scheduling realities, enrollment windows, or other time pressures"
+            },
+            {
+              "gap": "Current coordination practices (if any)",
+              "importance": "moderate",
+              "what_it_blocks": "Cannot determine whether this is about establishing a new protocol or fixing a broken one"
+            },
+            {
+              "gap": "Specific recent incident(s) that triggered this concern",
+              "importance": "moderate",
+              "what_it_blocks": "Cannot assess whether this is a pattern-based structural issue or a response to one problematic decision"
+            }
+          ],
+          "domain_confidence": "low",
+          "domain_notes": "From a family mediation practitioner perspective: Party A has clearly articulated a process-level concern (unilateral decision-making on extracurriculars, lack of advance consultation). This is a common co-parenting coordination issue. The structural options for this issue type are well-established: notice protocols, consultation windows, decision matrices, approval thresholds. HOWEVER, responsible qualification requires both parties' input. Party B may have legitimate constraints (enrollment deadlines, child's expressed preference, scheduling realities) that would make certain process options unworkable. Party B may also dispute the premise (claiming they DO consult, or that Party A is unavailable). Without Party B's voice, any option qualification would be speculative. The brainstormer has generated appropriate structural candidates for this issue type, but none can be responsibly qualified until Party B responds. This is not over-caution\u2014it is basic mediation practice to hear both parties before proposing solutions.",
+          "option_pool_qualification": {
+            "domain_expert_candidates": [
+              {
+                "candidate_id": "opt-dom-001",
+                "label": "Differentiated notice periods by activity type",
+                "rationale": "Standard practice in co-parenting coordination: different activities have different lead time requirements (summer camp registration vs. drop-in recreational class). Creates flexibility while maintaining consultation principle. Addresses Party A's fairness concern by ensuring advance notice, while potentially accommodating Party B's need for responsiveness in time-sensitive situations.",
+                "party_interest_alignment": {
+                  "party_a": "Addresses core concern about advance notice and consultation opportunity",
+                  "party_b": "Unknown\u2014may address workability concerns if Party B faces enrollment deadlines or time-sensitive decisions"
+                },
+                "related_issues": [
+                  "extracurricular_coordination",
+                  "communication_protocol"
+                ],
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-dom-002",
+                "label": "Annual activity budget and allocation framework",
+                "rationale": "Family mediation standard practice: when extracurricular disputes involve both fairness and logistics, underlying issue is often financial (who pays, whether cost is reasonable). Creating annual budget with allocation process addresses both the consultation issue and the resource constraint that may be driving unilateral decisions.",
+                "party_interest_alignment": {
+                  "party_a": "Addresses fairness concern by creating transparent decision framework",
+                  "party_b": "Unknown\u2014may address constraint if Party B is making unilateral decisions due to unclear cost expectations"
+                },
+                "related_issues": [
+                  "extracurricular_coordination",
+                  "expense_coordination"
+                ],
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-dom-003",
+                "label": "Exception protocol for time-sensitive opportunities",
+                "rationale": "Experienced mediator recognition: rigid consultation protocols fail when genuine time pressure exists (scholarship deadline, team roster spot). Building in exception process with post-hoc review maintains consultation norm while acknowledging real-world constraints. Reduces likelihood of protocol violation.",
+                "party_interest_alignment": {
+                  "party_a": "Addresses pattern concern by maintaining consultation expectation with accountability",
+                  "party_b": "Unknown\u2014may address workability concern if Party B faces genuine time pressure in some situations"
+                },
+                "related_issues": [
+                  "extracurricular_coordination",
+                  "communication_protocol"
+                ],
+                "source": "domain_reasoner"
+              }
+            ],
+            "domain_qualified": [],
+            "domain_blocked": [
+              {
+                "candidate_id": "opt-gen-001",
+                "label": "Joint consultation protocol for new activities",
+                "blocking_rationale": "Party B has not been heard. Cannot assess whether Party B would view a consultation protocol as workable, whether Party B disputes the need for one (claiming consultation already happens), or what constraints Party B faces that would shape protocol design (work schedule, geographic distance, communication barriers).",
+                "what_would_unblock": "Party B responds with their perspective on extracurricular decision-making and consultation practices",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-002",
+                "label": "Defined notice period with default approval mechanism",
+                "blocking_rationale": "Party B has not been heard. Cannot determine what notice period would be workable for Party B, whether Party B would accept default approval (or would view it as ceding decision authority), or whether Party B faces time pressures that would make fixed notice periods unworkable.",
+                "what_would_unblock": "Party B describes their decision-making constraints, timing pressures, and response capacity for consultation requests",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-003",
+                "label": "Activity decision matrix by category",
+                "blocking_rationale": "Party B has not been heard. Cannot assess what categories Party B would view as appropriate for different consultation levels, or whether Party B would dispute the premise that some activities should be presumptively approved (Party A's concern may be that NO activities should be unilateral).",
+                "what_would_unblock": "Both parties discuss which types of activities they view as requiring consultation vs. which could be more flexible",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-004",
+                "label": "Quarterly planning sessions for activity review",
+                "blocking_rationale": "Party B has not been heard. Cannot assess whether Party B would participate in regular planning sessions, whether Party B's schedule allows for such meetings, or whether the relational dynamic supports proactive collaboration (vs. creating additional conflict opportunities).",
+                "what_would_unblock": "Party B indicates their willingness and capacity for regular coordination meetings; both parties address relational dynamic",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-005",
+                "label": "Trial period with built-in review",
+                "blocking_rationale": "Party B has not been heard. Cannot determine whether this is about a specific current activity (making trial period relevant) or a general pattern (making trial period inapplicable). Also cannot assess whether Party B would accept trial framing or whether activity enrollment realities allow for trial periods.",
+                "what_would_unblock": "Parties clarify whether this is about a specific current activity or a general coordination pattern",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-006",
+                "label": "Information-sharing platform with decision tracking",
+                "blocking_rationale": "Party B has not been heard. Cannot assess whether Party B would use such a platform, whether technology access/comfort supports this approach, or whether Party B disputes the premise that communication gaps exist (vs. claiming consultation already happens and is ignored).",
+                "what_would_unblock": "Party B describes their current communication practices and technology capacity; both parties address whether documentation is helpful or inflammatory",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-007",
+                "label": "Cost and logistics impact threshold",
+                "blocking_rationale": "Party B has not been heard. Cannot determine what cost or logistics thresholds Party B would view as reasonable, or whether Party B's unilateral decisions are driven by financial constraints, convenience factors, or other priorities that would shape threshold design.",
+                "what_would_unblock": "Party B describes what factors influence their activity decisions (cost, time commitment, child preference, scheduling) and what thresholds they would view as workable",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-008",
+                "label": "Child preference consideration framework",
+                "blocking_rationale": "Party B has not been heard. Cannot assess whether Party B's decisions ARE driven by child preference (making this option central) or by other factors (making it peripheral). Also cannot assess parental agreement on children's decision-making role, developmental appropriateness, or how to handle conflicting child preferences.",
+                "what_would_unblock": "Both parties discuss how they currently incorporate children's preferences and what role children should have in activity decisions",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-009",
+                "label": "Alternating proposal authority with veto protection",
+                "blocking_rationale": "Party B has not been heard. Cannot assess whether power dynamic issue exists (Party A frames as fairness, but we don't know if Party B is consciously exercising control or simply making practical decisions). Also cannot assess whether alternating authority would work given children's needs, activity timing, or parental capacity.",
+                "what_would_unblock": "Party B describes their decision-making approach and whether they see power dynamic as issue; both parties discuss whether turn-taking structure would be workable",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-010",
+                "label": "Third-party activity coordinator role",
+                "blocking_rationale": "Party B has not been heard. Cannot assess whether conflict level justifies third-party involvement (may be process design issue, not high-conflict issue), whether parties would accept coordinator role, or whether financial/logistical realities support adding third party.",
+                "what_would_unblock": "Both parties describe conflict level around activity decisions and whether direct consultation is feasible or whether third-party support is needed",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-dom-001",
+                "label": "Differentiated notice periods by activity type",
+                "blocking_rationale": "Party B has not been heard. Cannot assess what activity categories Party B would recognize as having different urgency levels, or whether Party B faces time pressures that would make differentiated periods unworkable.",
+                "what_would_unblock": "Party B describes the types of activities in question and what timing constraints they face",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-dom-002",
+                "label": "Annual activity budget and allocation framework",
+                "blocking_rationale": "Party B has not been heard. Cannot assess whether financial constraint is driving Party B's decisions, whether Party B would agree to budget framework, or what allocation Party B would view as fair.",
+                "what_would_unblock": "Both parties discuss financial aspect of activity decisions and whether cost is a factor in the consultation concern",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-dom-003",
+                "label": "Exception protocol for time-sensitive opportunities",
+                "blocking_rationale": "Party B has not been heard. Cannot assess whether Party B's unilateral decisions are driven by genuine time pressure (making exception protocol central) or by other factors (making it peripheral). Also cannot assess whether Party A would accept exceptions or views all unilateral decisions as violations.",
+                "what_would_unblock": "Party B describes what drives their decision-making timing and whether time pressure is a factor; Party A indicates whether exceptions would be acceptable",
+                "source": "domain_reasoner"
+              }
+            ]
+          },
+          "case_id": "D-B06",
+          "session_id": "D-B06-S02",
+          "turn_index": 3,
+          "generated_at": "2026-03-29T00:02:25Z"
+        },
+        "brainstormer_pool": [
+          {
+            "candidate_id": "opt-gen-001",
+            "label": "Joint consultation protocol for new activities",
+            "rationale": "Addresses Party A's core concern about advance notice and fairness by creating a structured process that gives both parents input before commitments are made. This reframes the issue from 'who decides' to 'how we decide together'.",
+            "party_interest_alignment": {
+              "party_a": "Directly addresses desire for input, adequate notice, and protection against unilateral decisions. Creates predictable consultation mechanism.",
+              "party_b": "Provides clear framework for proposing activities without conflict. May address unstated concern about being able to respond to children's opportunities in timely manner."
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-002",
+            "label": "Defined notice period with default approval mechanism",
+            "rationale": "Creates temporal structure that balances Party A's need for consultation time with potential Party B need for decision velocity. If notice given and no objection raised within timeframe, activity proceeds.",
+            "party_interest_alignment": {
+              "party_a": "Guarantees consultation window and prevents fait accompli. Protects against being ignored.",
+              "party_b": "Provides path forward when opportunities arise. Removes uncertainty about whether silence means consent."
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-003",
+            "label": "Activity decision matrix by category",
+            "rationale": "Not all activities may need same consultation process. Some might be presumptively approved, others require discussion, others require mutual consent. This reduces friction for routine decisions while protecting high-stakes ones.",
+            "party_interest_alignment": {
+              "party_a": "Ensures significant commitments get proper consultation. Reduces fear of creeping unilateral control.",
+              "party_b": "Allows flexibility for minor activities. Reduces need to negotiate every single possibility."
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-004",
+            "label": "Quarterly planning sessions for activity review",
+            "rationale": "Shifts from reactive crisis consultation to proactive joint planning. Addresses underlying relational issue by creating regular forum for collaborative parenting decisions.",
+            "party_interest_alignment": {
+              "party_a": "Provides structured input opportunity. Addresses fairness concern by creating equal planning role.",
+              "party_b": "Creates predictable forum for proposing ideas. May reduce feeling of being criticized for individual decisions."
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-005",
+            "label": "Trial period with built-in review",
+            "rationale": "If this is about a specific current activity, allows both parents to test whether it works without permanent commitment. Reduces stakes of decision and builds trust through experience rather than negotiation.",
+            "party_interest_alignment": {
+              "party_a": "Protects against being locked into problematic arrangement. Provides data about actual impact on their parenting time.",
+              "party_b": "Allows children to try activity rather than being blocked. Shows good faith about willingness to adjust if problems emerge."
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-006",
+            "label": "Information-sharing platform with decision tracking",
+            "rationale": "Creates transparency about what was proposed, when, and what response was given. Addresses both communication gaps and accountability for consultation process.",
+            "party_interest_alignment": {
+              "party_a": "Creates record that consultation occurred or didn't occur. Prevents 'I told you' disputes and ensures their input is documented.",
+              "party_b": "Demonstrates compliance with consultation process. Protects against claims they didn't communicate."
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-007",
+            "label": "Cost and logistics impact threshold",
+            "rationale": "Defines which activities require consultation based on objective criteria rather than subjective judgment. If activity exceeds cost threshold or requires schedule changes beyond X hours, consultation mandatory.",
+            "party_interest_alignment": {
+              "party_a": "Protects against significant impacts without input. Removes ambiguity about when consultation is needed.",
+              "party_b": "Clarifies what decisions they can make independently. Reduces fear of being second-guessed on minor choices."
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-008",
+            "label": "Child preference consideration framework",
+            "rationale": "Addresses the absent voice in Party A's statement \u2014 what children want. Creates process for incorporating children's interests while maintaining parental consultation requirement.",
+            "party_interest_alignment": {
+              "party_a": "Ensures parenting decisions aren't driven solely by child pressure or other parent's agenda. Maintains parental authority.",
+              "party_b": "Allows children's genuine interests to be heard and considered. May address unstated concern about responding to children's developmental needs."
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-009",
+            "label": "Alternating proposal authority with veto protection",
+            "rationale": "Addresses power dynamic by creating turn-taking structure. One parent proposes activities for period X, other for period Y, but both have limited veto rights with explanation requirement.",
+            "party_interest_alignment": {
+              "party_a": "Ensures they get equal voice in activity decisions. Prevents permanent pattern of other parent controlling agenda.",
+              "party_b": "Provides periods where they can respond to opportunities without extensive negotiation. Balances initiative with oversight."
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-010",
+            "label": "Third-party activity coordinator role",
+            "rationale": "If consultation itself has become conflict-laden, introduces neutral party to receive proposals, facilitate discussion, and help parents find common ground. Particularly useful if pattern of unilateral decisions reflects communication breakdown.",
+            "party_interest_alignment": {
+              "party_a": "Ensures their concerns are heard by someone other than the co-parent. Reduces feeling of being overridden.",
+              "party_b": "Provides support for navigating difficult conversations. May reduce feeling of being blamed for good-faith proposals."
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          }
+        ],
+        "safety_monitor_result": {
+          "schema_version": "safety_monitor.v0",
+          "case_id": "D-B06",
+          "session_id": "D-B06-S02",
+          "turn_index": 3,
+          "generated_at": "2026-03-29T00:02:25Z",
+          "source": "safety_monitor_v0",
+          "compliance_pattern": {
+            "detected": false,
+            "party": null,
+            "evidence_turns": [],
+            "pattern_type": null,
+            "severity": null
+          },
+          "deflection_pattern": {
+            "detected": false,
+            "deflecting_party": null,
+            "target_request_turn": null,
+            "deflection_turns": [],
+            "deflection_tactics": [],
+            "pattern_confirmed": false
+          },
+          "discordant_signals": [],
+          "veto_recommendation": null,
+          "veto_reason": null,
+          "monitor_confidence": "low",
+          "monitor_notes": "Insufficient interaction history for pattern detection. Only 2 turns total: T1 is system opening, T2 is first substantive statement from Parent A. No second party has spoken yet. No multi-turn patterns can be assessed. Parent A has independently initiated their concern about extracurricular decisions, which shows autonomous content generation, but there is no reactive party to evaluate yet. All pattern categories require cross-turn sequences that do not yet exist in this session. Will continue monitoring as additional turns develop.",
+          "flags_raised": [],
+          "party_state_signals": []
+        },
+        "perception_agent_result": {
+          "schema_version": "perception_agent.v0",
+          "turn_index": 3,
+          "timestamp": "2026-03-29T00:02:25Z",
+          "confidence": "moderate",
+          "_null_result": false,
+          "party_a": {
+            "emotional_state": "composed but conveying mild frustration about process",
+            "emotional_trajectory": "stable",
+            "engagement_quality": "genuine",
+            "communication_style": "direct",
+            "inferred_interests": [
+              "Having input into decisions that affect their parenting time or logistics",
+              "Fairness in how extracurricular activities are decided",
+              "Adequate communication and advance notice before commitments are made"
+            ],
+            "inferred_concerns": [
+              "Being presented with fait accompli decisions by the other parent",
+              "Lack of consultation before commitments that impact shared parenting",
+              "Potential pattern of unilateral decision-making"
+            ],
+            "unsaid_signals": [
+              "The specificity of 'enough notice to discuss' suggests this may have happened recently or repeatedly",
+              "Framing issue as 'fairness' rather than just logistics suggests concern about equity in decision-making power",
+              "Has not yet described their own parenting priorities or what they want for the children's activities \u2014 focus is entirely on process"
+            ],
+            "relational_posture": "assertive about process concerns while remaining procedurally engaged"
+          },
+          "party_b": {
+            "emotional_state": "unknown - has not yet spoken",
+            "emotional_trajectory": "stable",
+            "engagement_quality": "genuine",
+            "communication_style": "direct",
+            "inferred_interests": [],
+            "inferred_concerns": [],
+            "unsaid_signals": [
+              "Complete absence of Party B's voice \u2014 cannot assess their perspective, emotional state, or how they relate to Party A's framing"
+            ],
+            "relational_posture": "unknown - awaiting first contribution"
+          },
+          "relational_dynamic": "insufficient data - only one party has spoken; cannot yet assess interactive patterns or relational field",
+          "dynamic_trajectory": "stable",
+          "perception_signals": [
+            "Party A opened with a procedural complaint rather than expressing parenting interests or values",
+            "The issue involves decision-making authority and communication patterns, not just logistics",
+            "Party B's response will be critical for understanding whether this is a genuine coordination issue or reflects deeper power dynamics"
+          ],
+          "scaffold_divergence": "Scaffold assessed both parties as 'engaged_and_cooperative' and the dynamic as 'cooperative_and_stable' \u2014 but only Party A has spoken. Cannot meaningfully assess Party B's state, engagement quality, or the relational dynamic with only one turn of input. Scaffold may be defaulting to baseline assumptions rather than acknowledging data limitations at T2.",
+          "perception_notes": [
+            "Party A has identified a process concern but has not yet articulated what they actually want for their children's extracurricular involvement \u2014 mediator should create space for both parties to express substantive parenting interests, not just process complaints",
+            "Party B has not yet spoken \u2014 their first response will reveal whether they share Party A's framing, feel defensive, or see the issue differently",
+            "Extremely limited signal at this turn (only one party input) \u2014 confidence must remain low until both parties have contributed and interaction patterns become visible",
+            "Watch for whether the conversation remains at the procedural level (who decides, how much notice) or whether either party articulates what they value about extracurriculars for the children"
+          ],
+          "veto_signals": []
+        }
+      }
+    },
+    {
+      "turn_index": 4,
+      "timestamp": "2026-03-29T00:03:35Z",
+      "role": "client",
+      "phase": "interest_exploration",
+      "message_summary": "Parent B says fairness matters too, because activity decisions should not make one parent feel sidelined after the fact.",
+      "state_delta": {
+        "facts_added": [],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_B"
+            ],
+            "kind": "position",
+            "issue_id": "fairness_and_parent_role",
+            "statement": "Child-activity decisions should not leave one parent feeling sidelined or treated as an afterthought.",
+            "status": "current",
+            "confidence": "high",
+            "proposal_id": null,
+            "position_id": null
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "Client response remained constructive."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    },
+    {
+      "turn_index": 5,
+      "timestamp": "2026-03-29T00:04:45Z",
+      "role": "assistant",
+      "phase": "option_generation",
+      "message_summary": "Acknowledge that both parties agree on principles (fairness, consultation) but that the session needs concrete information to move forward. Explicitly name the transition from abstract agreement to factual disclosure. Ask direct, specific questions to surface: (1) what actually happened or what specific activities are at issue, (2) the parenting schedule structure, (3) what the children are currently involved in. Frame these as process-enabling questions, not interrogation.",
+      "state_delta": {
+        "facts_added": [
+          "Cannot design workable notice windows without knowing the parenting schedule (e.g., 48-hour notice is meaningless if transitions happen weekly vs. daily)",
+          "Cannot tier approval thresholds without knowing what types of activities are at issue (weekend tournament travel vs. after-school art class require different coordination mechanisms)"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "What is the current parenting schedule? (blocks notice window qualification)",
+          "What type(s) of extracurricular activities are at issue? (blocks tiering and threshold design)"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "Both parties remain engaged and cooperative despite underlying tension",
+          "Conflict avoidance is a process limitation, not a safety concern \u2014 both parties have agency to disclose when they feel ready",
+          "Low-level defensiveness from Party B is normal and manageable in this phase"
+        ],
+        "severity": 1,
+        "notes": "No safety or capacity concerns. The guarded postures reflect normal early-session caution in a co-parenting dispute, not incapacity or coercion. Proceeding with information-gathering is appropriate and safe."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "High confidence that this turn is necessary and appropriate. Both parties are stuck in abstract agreement because they haven't established the factual foundation. Direct information-gathering questions are the correct process move and align with both parties' demonstrated capacity to engage constructively. The framing ('not about assigning blame') addresses Party B's defensiveness while giving Party A explicit permission to name what happened.",
+      "message_text": "I've heard both of you name the same underlying concern \u2014 that extracurricular decisions should be made in a way that feels fair and doesn't leave either of you feeling sidelined or surprised. That's important common ground.\n\nBut to move this forward, I need to understand the concrete situation you're working with. Right now, we're talking about principles without a shared picture of what's actually happening in your family.\n\nLet me ask some direct questions to both of you \u2014 these aren't about assigning blame, they're about getting the information I need to help you design something workable.\n\nFirst: is there a specific extracurricular activity or enrollment decision that brought this issue to the table, or are we talking about how to handle these decisions going forward in general? If there's a specific situation, I'd like to hear about it \u2014 what activity, what happened, and what each of you needs addressed.\n\nSecond: what does your parenting schedule look like right now? I need to understand the time-sharing arrangement to know what kinds of notice windows or consultation timelines would actually be realistic for you.\n\nAnd third: what are your children currently involved in activity-wise, and what are their ages? That helps me understand the scope of what we're coordinating.\n\nParty A, let's start with you \u2014 can you give me that concrete picture?",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=composed but vigilant \u2014 Party A remains measured in tone but the repeated emphasis on 'notice' and 'fairness' suggests an unresolved incident is driving this concern; they are managing frustration without escalation posture=engaged but cautious \u2014 Party A is participating constructively but has not yet disclosed the concrete situation that brought them here; waiting to see if the process is safe for direct disclosure",
+        "[PERCEPTION:PARTY_A:INTERESTS] to understand what happened in a specific past decision that felt exclusionary; to establish a predictable consultation process going forward that prevents feeling blindsided; to have their logistical constraints acknowledged and incorporated into decision-making",
+        "[PERCEPTION:PARTY_B] emotional=defensive but cooperative \u2014 Party B agreed with 'fairness' framing while avoiding any acknowledgment of whether a unilateral decision occurred; this suggests they may feel accused but are trying to remain constructive posture=agreeable but guarded \u2014 Party B is signaling alignment with abstract principles while avoiding concrete acknowledgment; participating but not yet disclosing their own perspective on what occurred",
+        "[PERCEPTION:PARTY_B:INTERESTS] to not be cast as the 'bad parent' who acts unilaterally; to have their own decision-making authority respected, particularly during their parenting time; to avoid being constrained by process requirements that feel punitive or mistrustful",
+        "[PERCEPTION:DYNAMIC] cooperative surface with unspoken incident underneath \u2014 both parties are performing agreement on principles ('fairness', 'consultation') while avoiding the concrete event or pattern that brought them to mediation; neither has named what actually happened or what they want for the children's activities",
+        "[DOMAIN:GAPS] What is the current parenting schedule? (blocks notice window qualification); What type(s) of extracurricular activities are at issue? (blocks tiering and threshold design); Has a specific enrollment decision already been made, or is this prospective? (determines whether options need to address an existing commitment)",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=cooperative surface with unspoken incident underneath \u2014 both parties are performing agreement on principles ('fairness', 'consultation') while avoiding the concrete event or pattern that brought them to mediation; neither has named what actually happened or what they want for the children's activities"
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "composed but vigilant \u2014 Party A remains measured in tone but the repeated emphasis on 'notice' and 'fairness' suggests an unresolved incident is driving this concern; they are managing frustration without escalation",
+            "inferred_interests": [
+              "to understand what happened in a specific past decision that felt exclusionary",
+              "to establish a predictable consultation process going forward that prevents feeling blindsided",
+              "to have their logistical constraints acknowledged and incorporated into decision-making",
+              "to be treated as an equal co-parent with meaningful input, not just informed after decisions are made"
+            ],
+            "risk_signals": [
+              "low: abstract framing ('fairness', 'notice') after 4 turns suggests possible conflict avoidance or testing whether it's safe to name a specific grievance"
+            ],
+            "relational_posture": "engaged but cautious \u2014 Party A is participating constructively but has not yet disclosed the concrete situation that brought them here; waiting to see if the process is safe for direct disclosure"
+          },
+          "party_b": {
+            "emotional_state": "defensive but cooperative \u2014 Party B agreed with 'fairness' framing while avoiding any acknowledgment of whether a unilateral decision occurred; this suggests they may feel accused but are trying to remain constructive",
+            "inferred_interests": [
+              "to not be cast as the 'bad parent' who acts unilaterally",
+              "to have their own decision-making authority respected, particularly during their parenting time",
+              "to avoid being constrained by process requirements that feel punitive or mistrustful",
+              "to understand what Party A actually needs without feeling pre-judged"
+            ],
+            "risk_signals": [
+              "low: deflection from specifics could indicate shame or anxiety about being blamed; monitor for withdrawal if Party A raises a specific incident directly"
+            ],
+            "relational_posture": "agreeable but guarded \u2014 Party B is signaling alignment with abstract principles while avoiding concrete acknowledgment; participating but not yet disclosing their own perspective on what occurred"
+          },
+          "relational_dynamic": "cooperative surface with unspoken incident underneath \u2014 both parties are performing agreement on principles ('fairness', 'consultation') while avoiding the concrete event or pattern that brought them to mediation; neither has named what actually happened or what they want for the children's activities",
+          "perception_confidence": "high",
+          "perception_notes": [
+            "The perception agent is correct: both parties need explicit permission and structure to move from abstract agreement to concrete disclosure",
+            "Four turns of process-level statements without naming a specific incident, activity type, or desired outcome is unusual \u2014 this suggests both parties are conflict-avoidant or uncertain whether direct disclosure is safe in this setting",
+            "Party A's interest is likely incident-driven (something happened that felt unfair); Party B's defensiveness suggests they know what Party A is referring to but don't want to be blamed for it",
+            "The next turn must create explicit space for factual disclosure without requiring either party to accuse or defend \u2014 focus on information gathering, not adjudication"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed \"cooperative surface with unspoken incident underneath \u2014 both parties are performing agreement on principles ('fairness', 'consultation') while avoiding the concrete event or pattern that brought them to mediation; neither has named what actually happened or what they want for the children's activities\""
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "Cannot design workable notice windows without knowing the parenting schedule (e.g., 48-hour notice is meaningless if transitions happen weekly vs. daily)",
+            "Cannot tier approval thresholds without knowing what types of activities are at issue (weekend tournament travel vs. after-school art class require different coordination mechanisms)",
+            "Cannot determine whether options should include remedial elements (addressing a past decision) vs. purely prospective protocol without knowing if a specific enrollment has already occurred"
+          ],
+          "material_gaps": [
+            "What is the current parenting schedule? (blocks notice window qualification)",
+            "What type(s) of extracurricular activities are at issue? (blocks tiering and threshold design)",
+            "Has a specific enrollment decision already been made, or is this prospective? (determines whether options need to address an existing commitment)",
+            "What are the children's ages and current activity load? (affects feasibility of various coordination options)"
+          ],
+          "domain_notes": "The pre-computed assessment is accurate: this is a classic extracurricular coordination dispute with well-understood structural options, but those options cannot be responsibly qualified without basic logistical parameters. The issue is 'deferred' not 'blocked' \u2014 the gaps are factual and resolvable in this turn. Critically, the domain analysis reveals why both parties are staying abstract: they haven't established the factual foundation needed to discuss specific options. The mediator must bridge from principle-level agreement to concrete information gathering.",
+          "option_readiness": "deferred"
+        },
+        "option_scan": {
+          "candidate_options": [
+            "tiered approval based on commitment level (high-commitment activities require mutual consent; low-commitment activities require notice only)",
+            "advance notice requirement with specific window (e.g., 7 days before enrollment deadline for discussion)",
+            "shared activity tracking system (both parents have visibility into what activities are being considered and decided)",
+            "default decision rule (one parent can propose, other has window to object, silence = consent)",
+            "separation of enrollment authority from logistics authority (parent during whose time activity occurs can enroll; other parent consulted on logistics impact)"
+          ],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Material logistical parameters remain unknown (parenting schedule, activity types at issue, whether specific incident occurred). Generating options before surfacing this information would produce either over-abstract structures the parties cannot evaluate or over-specific proposals that don't fit their actual situation. The next turn must elicit: (1) what actually happened or what specific activities are at issue, (2) what the parenting schedule is, (3) what the children's current activity involvement looks like. These are straightforward factual questions that will enable confident option qualification in the following turn."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [
+            "Both parties remain engaged and cooperative despite underlying tension",
+            "Conflict avoidance is a process limitation, not a safety concern \u2014 both parties have agency to disclose when they feel ready",
+            "Low-level defensiveness from Party B is normal and manageable in this phase"
+          ],
+          "notes": "No safety or capacity concerns. The guarded postures reflect normal early-session caution in a co-parenting dispute, not incapacity or coercion. Proceeding with information-gathering is appropriate and safe.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "interest_exploration",
+          "message_summary": "Acknowledge that both parties agree on principles (fairness, consultation) but that the session needs concrete information to move forward. Explicitly name the transition from abstract agreement to factual disclosure. Ask direct, specific questions to surface: (1) what actually happened or what specific activities are at issue, (2) the parenting schedule structure, (3) what the children are currently involved in. Frame these as process-enabling questions, not interrogation.",
+          "message_text": "I've heard both of you name the same underlying concern \u2014 that extracurricular decisions should be made in a way that feels fair and doesn't leave either of you feeling sidelined or surprised. That's important common ground.\n\nBut to move this forward, I need to understand the concrete situation you're working with. Right now, we're talking about principles without a shared picture of what's actually happening in your family.\n\nLet me ask some direct questions to both of you \u2014 these aren't about assigning blame, they're about getting the information I need to help you design something workable.\n\nFirst: is there a specific extracurricular activity or enrollment decision that brought this issue to the table, or are we talking about how to handle these decisions going forward in general? If there's a specific situation, I'd like to hear about it \u2014 what activity, what happened, and what each of you needs addressed.\n\nSecond: what does your parenting schedule look like right now? I need to understand the time-sharing arrangement to know what kinds of notice windows or consultation timelines would actually be realistic for you.\n\nAnd third: what are your children currently involved in activity-wise, and what are their ages? That helps me understand the scope of what we're coordinating.\n\nParty A, let's start with you \u2014 can you give me that concrete picture?",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "High confidence that this turn is necessary and appropriate. Both parties are stuck in abstract agreement because they haven't established the factual foundation. Direct information-gathering questions are the correct process move and align with both parties' demonstrated capacity to engage constructively. The framing ('not about assigning blame') addresses Party B's defensiveness while giving Party A explicit permission to name what happened."
+        },
+        "pre_computed_domain_analysis": {
+          "schema_version": "domain_analysis.v0",
+          "source": "domain_reasoner_v0",
+          "option_readiness": "deferred",
+          "readiness_rationale": "Both parties have now been heard and have articulated process-level concerns (Party A: consultation and notice before decisions affecting logistics; Party B: avoiding unilateral decisions that make one parent feel sidelined). The issue structure is clear: this is an extracurricular decision-making coordination dispute within the expense_coordination/communication_protocol family. However, critical logistical parameters that would enable responsible option qualification remain unknown: (1) What is the current parenting schedule/time-sharing arrangement? This determines which notice windows and approval thresholds are workable. (2) What types of extracurricular commitments are at issue? The coordination mechanism differs for high-commitment activities (travel sports requiring multi-parent logistics) vs. low-commitment ones (after-school class during one parent's time). (3) What is the current decision-making pattern? Has there been a recent unilateral enrollment, or is this a prospective concern? This affects whether we're designing a new protocol vs. addressing a specific incident. These gaps are material but resolvable in the next turn\u2014they are factual logistics questions, not fundamental information absences. Once these parameters are surfaced, structural process options (tiered approval based on commitment level, advance notice requirements with specific windows, shared tracking mechanism) will be qualifiable at moderate-to-high confidence. This is 'deferred' (addressable next turn), not 'blocked' (fundamental barrier).",
+          "safety_veto_applied": false,
+          "safety_veto_reason": null,
+          "qualified_candidates": [],
+          "blocking_constraints": [],
+          "material_gaps": [
+            {
+              "gap": "Current parenting schedule and time-sharing arrangement",
+              "importance": "high",
+              "what_it_blocks": "Cannot determine workable notice windows (e.g., 48h vs. 72h vs. 1 week) without knowing the custody rotation pattern. A 50/50 week-on/week-off schedule has different notice feasibility than a 2-2-3 or primary/secondary arrangement. This parameter directly determines which structural options are practically implementable."
+            },
+            {
+              "gap": "Scope and type of extracurricular commitments at issue",
+              "importance": "moderate",
+              "what_it_blocks": "Cannot design appropriate tiering for approval thresholds without knowing whether we're addressing high-commitment activities (travel teams, multi-session commitments requiring both parents' logistics coordination) vs. low-commitment ones (single-parent facilitated activities during that parent's time). The coordination mechanism differs significantly based on activity type."
+            },
+            {
+              "gap": "Whether a specific enrollment decision has already occurred or this is prospective protocol design",
+              "importance": "moderate",
+              "what_it_blocks": "Determines whether option work should include remedial elements (addressing an existing commitment one party made unilaterally) or purely prospective coordination protocol. Affects which options are contextually appropriate and what conditions must be attached."
+            },
+            {
+              "gap": "Financial parameters: cost-sharing arrangement, typical expense levels for children's activities",
+              "importance": "moderate",
+              "what_it_blocks": "If expense-sharing is part of the coordination concern (often implicit in extracurricular disputes), cannot set appropriate dollar thresholds for tiered approval without knowing: (a) whether costs are shared equally or proportionally, (b) what expense levels are typical for these children's activities. However, this may not be central if the dispute is purely about decision-making authority rather than financial burden."
+            }
+          ],
+          "domain_confidence": "moderate",
+          "domain_notes": "This is a classic extracurricular coordination dispute in family mediation\u2014one of the most common co-parenting friction points. The issue structure is well-defined and both parties have articulated compatible concerns (Party A wants consultation before decisions affecting logistics; Party B wants to avoid unilateral decision-making that sidelines a parent). The concerns are reactive rather than constructive, but for process options that is sufficient\u2014both parties have identified the problem class (unilateral decisions, lack of consultation), which is enough to select structural solutions. The standard option space for this issue type includes: (1) tiered approval requirements based on activity commitment level (e.g., low-impact activities during one parent's time can be parent-initiated with notice; high-impact activities requiring both parents' logistics support require mutual agreement); (2) advance notice windows with specific timeframes; (3) shared tracking/calendar system for visibility; (4) defined consultation process (discussion required vs. approval required vs. veto rights). All of these options are structurally appropriate given what we know. The gap is not conceptual\u2014it's parametric. We need the logistical facts listed above to responsibly qualify these options with appropriate conditions. Once those facts are known (likely surfaceable in one mediator turn asking clarifying questions), this will move immediately to 'ready' status with multiple moderate-to-high confidence qualifications. The perception signals noting that both parties are framing concerns reactively and haven't articulated substantive parenting visions is noted but does NOT prevent process option qualification\u2014the reactive process complaints are sufficient basis for process design work. The parties will refine their substantive preferences when options are presented; requiring constructive interest articulation first would be scope creep into mediator territory.",
+          "case_id": "D-B06",
+          "session_id": "D-B06-S02",
+          "turn_index": 5,
+          "generated_at": "2026-03-29T00:04:45Z"
+        },
+        "brainstormer_pool": [],
+        "safety_monitor_result": {
+          "schema_version": "safety_monitor.v0",
+          "case_id": "D-B06",
+          "session_id": "D-B06-S02",
+          "turn_index": 5,
+          "generated_at": "2026-03-29T00:04:45Z",
+          "source": "safety_monitor_v0",
+          "compliance_pattern": {
+            "detected": false,
+            "party": null,
+            "evidence_turns": [],
+            "pattern_type": null,
+            "severity": null
+          },
+          "deflection_pattern": {
+            "detected": false,
+            "deflecting_party": null,
+            "target_request_turn": null,
+            "deflection_turns": [],
+            "deflection_tactics": [],
+            "pattern_confirmed": false
+          },
+          "discordant_signals": [],
+          "veto_recommendation": null,
+          "veto_reason": null,
+          "monitor_confidence": "high",
+          "monitor_notes": "Insufficient history for pattern detection. Only two substantive client turns available (T2, T4). Both parties have made single independent statements expressing their interests. Parent A stated concern about notice/consultation process for extracurricular decisions. Parent B stated concern about not feeling sidelined in activity decisions. Both statements are independently initiated and substantive. No party has shown reactive-only behavior. No disclosure requests have been made, so deflection patterns cannot emerge. No discordant signals have been surfaced and reframed. Session is in early interest exploration phase \u2014 parties are just beginning to state their positions. Continue monitoring as interaction develops.",
+          "flags_raised": [],
+          "party_state_signals": []
+        },
+        "perception_agent_result": {
+          "schema_version": "perception_agent.v0",
+          "turn_index": 5,
+          "timestamp": "2026-03-29T00:04:45Z",
+          "confidence": "moderate",
+          "_null_result": false,
+          "party_a": {
+            "emotional_state": "moderately frustrated with process, but composed and constructive",
+            "emotional_trajectory": "stable",
+            "engagement_quality": "compliant_only",
+            "communication_style": "indirect",
+            "inferred_interests": [
+              "Wants involvement in children's extracurricular decisions before commitments are made",
+              "Values being consulted rather than informed after the fact",
+              "Seeks predictability and advance notice in co-parenting coordination"
+            ],
+            "inferred_concerns": [
+              "Being excluded from meaningful parenting decisions",
+              "Logistics being finalized without their input creating unfair burdens",
+              "Pattern of decisions being made unilaterally by Party B"
+            ],
+            "unsaid_signals": [
+              "Has framed their concern entirely as a process complaint about 'notice' and 'fairness' but has not articulated what they actually want for their children's activities",
+              "Has not stated any specific parenting vision, preferences about activity types, scheduling priorities, or values about extracurricular involvement",
+              "The complaint about 'logistics and fairness' may be masking deeper concern about being systematically excluded from parenting decisions"
+            ],
+            "relational_posture": "cooperative on surface but indirect about underlying interests"
+          },
+          "party_b": {
+            "emotional_state": "mildly defensive but seeking to appear reasonable",
+            "emotional_trajectory": "stable",
+            "engagement_quality": "compliant_only",
+            "communication_style": "deflecting",
+            "inferred_interests": [
+              "Wants to be seen as fair and collaborative",
+              "May value autonomy in making activity decisions for children during their time",
+              "Concerned about being characterized as excluding Party A"
+            ],
+            "inferred_concerns": [
+              "Being blamed or characterized as unilateral in decision-making",
+              "Having their parenting choices questioned or constrained",
+              "The implicit accusation in Party A's framing that they've been unfair"
+            ],
+            "unsaid_signals": [
+              "Has agreed with Party A's fairness concern but has not addressed whether they actually made a decision without consultation",
+              "Has not articulated any substantive position about extracurricular activities themselves \u2014 what they think is appropriate, desirable, or in the children's interests",
+              "Response appears designed to deflect the implicit criticism while avoiding engagement with the underlying issue",
+              "Has not acknowledged or denied making a unilateral decision \u2014 only agreed that decisions 'should not' make someone feel sidelined"
+            ],
+            "relational_posture": "conciliatory in tone while avoiding substantive engagement"
+          },
+          "relational_dynamic": "surface-level agreement masking unexplored underlying conflict \u2014 both parties are performing cooperation without engaging substantively; neither has articulated actual parenting interests or addressed the specific incident that likely triggered this mediation",
+          "dynamic_trajectory": "stable but shallow \u2014 cooperation is performative rather than genuine",
+          "perception_signals": [
+            "Neither party has described what actually happened \u2014 there is an implicit 'incident' that prompted this session but it remains unnamed",
+            "Both parties are speaking in abstract principles ('fairness', 'consultation', 'process') without engaging with concrete interests or the actual dispute",
+            "Party A initiated with a complaint; Party B echoed agreement with the principle while deflecting from accountability",
+            "Four turns in and neither party has articulated: what activities are at issue, what schedule is being proposed, what their parenting vision includes, or what they actually want from the other party",
+            "The pattern suggests both parties may be conflict-avoidant and neither wants to be seen as the 'difficult' party"
+          ],
+          "scaffold_divergence": "Scaffold assesses both parties as 'engaged_and_cooperative' with 'cooperative_and_stable' dynamic. LM assessment identifies both parties as 'compliant_only' \u2014 they are cooperating with the process but not genuinely engaging with their own interests or the underlying conflict. The agreement is performative rather than substantive. This is a critical distinction: they appear cooperative but are actually avoiding the real work of articulating interests and addressing what happened.",
+          "perception_notes": [
+            "Before turn 5: The mediator must shift from accepting abstract agreement to surfacing concrete interests. Neither party has said what they actually want for their children's extracurricular involvement or what happened that brought them here.",
+            "Party A's 'process concern' is likely a safe way to raise a grievance without direct confrontation. The mediator should create space for Party A to name what specifically occurred and what they need going forward.",
+            "Party B's agreement with 'fairness' while avoiding any acknowledgment of whether a decision was made unilaterally suggests defensiveness. The mediator should separate the incident from future process without allowing deflection.",
+            "The absence of any concrete content after 4 turns indicates both parties need explicit permission and structure to move past performing cooperation into genuine disclosure of interests."
+          ],
+          "veto_signals": []
+        }
+      }
+    },
+    {
+      "turn_index": 6,
+      "timestamp": "2026-03-29T00:05:55Z",
+      "role": "client",
+      "phase": "agreement_building",
+      "message_summary": "Both parents are conditionally open to a communication package with minimum notice, written summaries, and a pause-before-commitment rule.",
+      "state_delta": {
+        "facts_added": [],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_A",
+              "spouse_B"
+            ],
+            "kind": "proposal",
+            "issue_id": "communication_protocol",
+            "statement": "Both parents are open to a minimum-notice, written-summary, and pause-before-commitment package for extracurricular decisions.",
+            "status": "tentative",
+            "confidence": null,
+            "proposal_id": null,
+            "position_id": null
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "Agreement-building remained bounded and voluntary."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    }
+  ],
+  "final_state_summary": {
+    "current_phase": "agreement_building",
+    "issues_identified": [],
+    "open_questions_remaining": [],
+    "active_flags": [],
+    "current_escalation_state": "M0",
+    "continuation_recommendation": "Use the next session to continue clarifying positions, interests, and process expectations without overstating agreement."
+  },
+  "trace_notes": null
+}

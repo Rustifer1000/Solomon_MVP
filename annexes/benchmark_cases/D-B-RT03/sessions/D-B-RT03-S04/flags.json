@@ -1,0 +1,34 @@
+{
+  "schema_version": "flags.v0",
+  "case_id": "D-B-RT03",
+  "session_id": "D-B-RT03-S04",
+  "active_flags": [
+    {
+      "flag_id": "d-b-rt03-flag-monitor-compliance-only-pattern-t9",
+      "flag_type": "compliance_only_pattern",
+      "severity": 3,
+      "source": "safety_monitor",
+      "first_detected_turn": 9,
+      "last_updated_turn": 9,
+      "related_categories": [
+        "E1"
+      ],
+      "threshold_band": "T2",
+      "title": "Compliance-only party pattern detected",
+      "note": "Safety monitor detected a sustained cross-turn compliance pattern. A party has not independently articulated their own interests.",
+      "signal_classes": [
+        "compliance_only_pattern"
+      ],
+      "related_issues": [],
+      "source_turns": [
+        9
+      ],
+      "status": "active",
+      "hard_trigger": false,
+      "cleared_turn": null
+    }
+  ],
+  "cleared_flags": [],
+  "historical_flags": [],
+  "flag_notes": "No caution-relevant flags remained active at close."
+}

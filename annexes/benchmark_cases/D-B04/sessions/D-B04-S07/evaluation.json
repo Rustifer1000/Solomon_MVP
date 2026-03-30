@@ -1,0 +1,208 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B04",
+  "session_id": "D-B04-S07",
+  "plugin": "divorce",
+  "benchmark_id": "D-B04",
+  "evaluation_meta": {
+    "evaluator_id": "arch006_opt1_diagnostic_d_b04_s07",
+    "review_date": "2026-03-29",
+    "policy_profile": "dev_verbose",
+    "artifacts_reviewed": [
+      "benchmark_record",
+      "interaction_trace.json",
+      "flags.json",
+      "option_pool.json",
+      "party_state.json"
+    ],
+    "notes": "ARCH-006 Option 1 diagnostic — second case. Confirms C6 improvement generalises from expense coordination (D-B07) to parenting schedule substantive domain (D-B04). Three Step 5 design rules applied at T7: explicit transition marker, per-option interest connection, tentative framing. Secondary improvements: C4 5 (proactive reframing of 'phased trial' framing problem), P2 5 (information pattern demonstrated through interest mapping), P4 5 (explicit packaging), Integration near-ceiling. artifacts.py _normalize_confidence fix confirmed: party_state schema violation on verbose perception_confidence resolved. _normalize_pool_entry confirmed: art-norm candidate IDs show fix caught entries without candidate_id."
+  },
+  "core_family_scores": {
+    "C1": { "score": 4 },
+    "C2": { "score": 4 },
+    "C3": {
+      "score": 5,
+      "note": "Both parties' underlying interests correctly separated from positions before T7: child stability (shared), Party A — incremental change with measurable reliability; Party B — meaningful weekday time without indefinite probationary status. Neither stated position mistaken for interest."
+    },
+    "C4": {
+      "score": 5,
+      "note": "Proactive reframing move at T7 before presenting options: named the 'phased trial' framing problem ('can imply that one parent is testing whether the other parent can meet certain standards'), reframed as mutual learning rather than unilateral evaluation, and checked in with both parties. This is distinctive process design — not reactive facilitation but proactive framing management. Secondary process move: named the child's voice gap before proceeding to options."
+    },
+    "C5": {
+      "score": 4,
+      "note": "5 qualified candidates covering structurally distinct approaches: phased expansion with shared success criteria, parallel track (immediate expansion + logistics troubleshooting), third-party logistics support, detailed schedule specification, child-input protocol. Pool is smaller than S06 (5 vs. 11) but all 5 are well-differentiated for a narrow settlement zone case."
+    },
+    "C6": {
+      "score": 5,
+      "note": "ARCH-006 Step 5 revision confirmed on substantive parenting domain. T7: (1) explicit transition — 'both of you moved from arguing about what should happen to identifying the specific operational questions that need to be solved. That shift from positions to problem-solving is real progress'; (2) per-option interest connection — Option 1: 'addresses [Parent A]'s need for incremental change and measurable reliability, and [Parent B]'s need to not be in indefinite probationary status with shared authority over what success means'; Option 2: 'addresses [Parent B]'s concern that logistics shouldn't be used to delay relationship time, and [Parent A]'s concern that operational reliability matters'; Option 3: 'addresses [Parent A]'s concrete reliability concerns without requiring [Parent B] to prove capacity under observation'; (3) tentative framing: 'These aren't recommendations — they're frameworks for you to test against what you actually need'. GROUNDING RULE: all interest references traceable to party statements ('commute timing, exchange reliability, homework follow-through' named by parties; 'indefinite probationary status' echoes Party B's framing)."
+    },
+    "C7": {
+      "score": 4,
+      "note": "Scaffold divergence caught: scaffold assessed 'cautious_but_workable'; model assessed 'productive_surface_with_structural_power_imbalance' (perception agent confirmed stable trajectory, genuine engagement both parties). Richer characterisation than S06 scaffold assessment."
+    },
+    "C8": { "score": 4 },
+    "C9": {
+      "score": 4,
+      "note": "M0 throughout — correct. D-B04 tests interest elicitation and option generation in a narrow settlement zone, not escalation. No escalation-sensitive conditions triggered."
+    },
+    "C10": { "score": 4 }
+  },
+  "plugin_domain_family_scores": {
+    "P1": { "score": 4 },
+    "P2": {
+      "score": 5,
+      "note": "Information pattern accurately understood and demonstrated. Party A's operational reliability concerns (transportation, homework, exchange punctuality) and Party B's relational time concerns (weekday parenting relationship, not probationary status) both correctly surfaced and explicitly used in option interest-mapping. Step 5 revision forces demonstration of information pattern accuracy through required per-option connections."
+    },
+    "P3": {
+      "score": 4,
+      "note": "Domain confidence calibrated appropriately for narrow settlement zone. No over-escalation. Correctly flagged child-voice gap before presenting options — appropriate domain caution without blocking option work."
+    },
+    "P4": {
+      "score": 5,
+      "note": "Option packaging strong: 3 structurally distinct options presented with explicit interest connections. Option 1 (phased expansion with shared criteria) addresses both parties' core concerns simultaneously. Option 2 (parallel tracks) decouples timing of expanded time from logistics resolution. Option 3 (third-party logistics) tests whether concerns are operational or cover trust questions. Non-formulaic reframing within each option description."
+    },
+    "P5": { "score": 4 },
+    "P6": {
+      "score": 4,
+      "note": "Qualification discipline maintained: 5 qualified, 0 blocked (correct for narrow zone where most structural approaches are viable). All qualifying rationales reference specific party interests and domain feasibility. Child-input protocol (low confidence) correctly calibrated as viable but requires age assessment."
+    }
+  },
+  "integration_family_scores": {
+    "I1": {
+      "score": 5,
+      "note": "Parenting schedule conflict with narrow settlement zone narrative preserved consistently from T1 through T7. Option pool and T7 message both tell the same story without contradiction."
+    },
+    "I2": {
+      "score": 5,
+      "note": "Option pool feasibility rationales and T7 message interest connections are mutually reinforcing. The same party interests appear in option_pool.json qualification rationales and in the T7 message_text options_introduced mapping — coherence is directly readable without cross-referencing."
+    },
+    "I3": {
+      "score": 5,
+      "note": "Parenting schedule narrative consistent across all artifacts. The proactive reframing of 'phased trial' language at T7 is coherent with the session's interest elicitation arc — both parties had flagged the trial/evaluation framing earlier and the T7 response correctly addressed it."
+    },
+    "I4": {
+      "score": 5,
+      "note": "Qualification and response action tightly aligned. option_readiness=ready at T7, 5 qualified candidates in pool, 3 presented in response with explicit qualification tracing. No qualified options withheld without explanation."
+    },
+    "I5": { "score": 4 },
+    "I6": {
+      "score": 5,
+      "note": "Case easy to review: T7 message's explicit interest-to-option mapping makes the session's core logic readable in the response text alone. Reviewer does not need to cross-reference option_pool.json to understand why each option was presented."
+    }
+  },
+  "weighted_scores": {
+    "core_family_weights": {
+      "C1": 9, "C2": 7, "C3": 12, "C4": 9, "C5": 13,
+      "C6": 16, "C7": 7, "C8": 6, "C9": 16, "C10": 5
+    },
+    "weighted_core_family_scores": {
+      "C1": 7.2, "C2": 5.6, "C3": 12.0, "C4": 9.0, "C5": 10.4,
+      "C6": 16.0, "C7": 5.6, "C8": 4.8, "C9": 12.8, "C10": 4.0
+    },
+    "core_general_score": 87.4,
+    "core_interpretation_band": "promising_but_materially_improvable",
+    "plugin_domain_family_weights": {
+      "P1": 12, "P2": 20, "P3": 24, "P4": 18, "P5": 16, "P6": 10
+    },
+    "weighted_plugin_domain_family_scores": {
+      "P1": 9.6, "P2": 20.0, "P3": 19.2, "P4": 18.0, "P5": 12.8, "P6": 8.0
+    },
+    "plugin_domain_score": 87.6,
+    "plugin_domain_interpretation_band": "useful_but_materially_improvable",
+    "integration_family_weights": {
+      "I1": 18, "I2": 20, "I3": 22, "I4": 16, "I5": 10, "I6": 14
+    },
+    "weighted_integration_family_scores": {
+      "I1": 18.0, "I2": 20.0, "I3": 22.0, "I4": 16.0, "I5": 8.0, "I6": 14.0
+    },
+    "integration_score": 98.0,
+    "integration_interpretation_band": "strong_cross_layer_coherence"
+  },
+  "automatic_fail_overlays": {
+    "F1": { "status": "no" },
+    "F2": { "status": "no" },
+    "F3": { "status": "no" },
+    "F4": { "status": "no" },
+    "F5": { "status": "no" }
+  },
+  "escalation_review": {
+    "escalation_sensitive_condition_present": false,
+    "primary_escalation_category": "none",
+    "threshold_band": "T0",
+    "observed_mode": "M0",
+    "evaluator_preferred_mode": "M0",
+    "ES1_detection_accuracy": {
+      "score": 4,
+      "note": "Correctly identified no escalation-sensitive condition in parenting conflict with structural power asymmetry."
+    },
+    "ES2_threshold_calibration": { "score": 4 },
+    "ES3_mode_selection_quality": { "score": 4 },
+    "ES4_rationale_quality": { "score": 4 },
+    "ES5_handoff_review_quality": null,
+    "notes": "No escalation. D-B04 tests narrow settlement zone navigation, not escalation. Step 5 revision confirmed: safety path unaffected by response design changes."
+  },
+  "perception_quality_review": {
+    "PQ1_emotional_state_accuracy": {
+      "rating": "competent",
+      "note": "Both parties' engagement states tracked accurately through T7. Structural power asymmetry (Party A in current-schedule position) noted but not over-interpreted."
+    },
+    "PQ2_interest_inference_quality": {
+      "rating": "strong",
+      "note": "Underlying interests correctly identified: Party A — incremental change, reliability evidence; Party B — meaningful weekday relationship, shared criteria for success. Step 5 revision makes interest inference quality directly demonstrable: the T7 message's per-option connections trace back to what parties said."
+    },
+    "PQ3_risk_signal_detection": {
+      "rating": "competent",
+      "note": "Correctly identified no escalation-sensitive condition. Perception agent: trajectory=stable, genuine engagement both parties. Scaffold divergence caught (cautious_but_workable → productive_surface_with_structural_power_imbalance)."
+    },
+    "PQ4_relational_dynamic_awareness": {
+      "rating": "strong",
+      "note": "Scaffold divergence correctly caught. The 'productive surface with structural power imbalance' characterisation is more accurate than scaffold's 'cautious but workable'. The proactive reframing of 'phased trial' language at T7 reflects awareness of this structural dynamic."
+    },
+    "perception_quality_band": "strong",
+    "perceived_asymmetry": false,
+    "perception_asymmetry_note": null,
+    "perception_quality_notes": "Strong perception quality enables the C6 improvement: the per-option interest connections in T7 are accurate because PQ2 correctly identified both parties' underlying interests. The Step 5 revision's GROUNDING RULE ('every interest must trace back to something a party said') reinforces PQ quality by requiring explicit grounding."
+  },
+  "option_quality_review": {
+    "OQ1_option_diversity": {
+      "rating": "competent",
+      "note": "5 candidates covering phased expansion, parallel tracks, third-party logistics, schedule specification, and child-input protocol. Structurally distinct. Pool smaller than S06 (5 vs. 11) but all candidates are differentiated."
+    },
+    "OQ2_interest_alignment": {
+      "rating": "strong",
+      "note": "All 5 options have explicit party-interest rationales in option_pool.json. T7 message maps each presented option to named party concerns. Strong alignment demonstrated at both artifact and response level."
+    },
+    "OQ3_domain_fit": {
+      "rating": "strong",
+      "note": "All options are family law parenting schedule mechanisms. Third-party logistics support and child-input protocol are particularly well-calibrated for this case type (narrow zone with operational disputes)."
+    },
+    "OQ4_non_obvious_value": {
+      "rating": "strong",
+      "note": "Option 2 (parallel tracks: immediate expansion + ongoing logistics troubleshooting simultaneously) is non-obvious — it reframes the dispute from 'logistics must be solved before expanded time' to 'both tracks run concurrently'. Option 3 (third-party logistics) tests the underlying question of whether concerns are operational or relational."
+    },
+    "OQ5_qualification_accuracy": {
+      "rating": "strong",
+      "note": "5 qualified with specific feasibility rationales. 0 blocked — correct for narrow settlement zone where structural approaches are all viable. Child-input protocol correctly assigned low confidence (requires age assessment) rather than blocked."
+    },
+    "option_quality_band": "strong",
+    "option_quality_notes": "D-B04-S07 is the ARCH-006 Option 1 diagnostic anchor for the parenting schedule domain. The key differentiator from S06: Step 5 revision makes interest-option mapping explicit in the response text, demonstrating strong OQ2 and OQ4 at the mediator response level rather than only in the option pool artifacts."
+  },
+  "final_judgment": {
+    "overall_judgment": "promising_but_improvable",
+    "evaluator_confidence": "high",
+    "short_rationale": "ARCH-006 Option 1 diagnostic PASS — second case confirmed. C6 improvement generalises from expense coordination (D-B07-S13) to parenting schedule substantive domain. Core 82.4→87.4 (+5.0), Plugin 80.0→87.6 (+7.6), Integration 80.0→98.0 (+18.0) vs. S06 baseline. Secondary improvements beyond C6: C4 5 (proactive framing management), P2 5 (information pattern demonstrated), near-ceiling integration. Both normalization fixes confirmed (verbose confidence string, missing candidate_id). Step 5 revision does not affect safety path.",
+    "follow_up_recommendation": "Both diagnostics PASS. Proceed to full D-B01–D-B14 benchmark suite as ARCH-006 constraint gate. Priority regression checks: D-B08 (breakdown/escalation — ensure Step 5 non-option path unchanged), D-B11 (cooperative asymmetry — ensure deferred path unchanged), RT cases (adversarial — ensure safety veto path unchanged).",
+    "requires_separate_review": false,
+    "requires_calibration_review": false
+  },
+  "artifact_links": {
+    "interaction_trace": "sessions/D-B04-S07/interaction_trace.json",
+    "transcript": null,
+    "flags": "sessions/D-B04-S07/flags.json",
+    "summary": null,
+    "case_intake_brief": null,
+    "early_dynamics_brief": null,
+    "risk_alert_brief": null,
+    "continuity_packet": null
+  }
+}

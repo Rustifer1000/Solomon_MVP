@@ -1,0 +1,396 @@
+{
+  "schema_version": "party_state.v0",
+  "case_id": "D-B13",
+  "session_id": "D-B13-S02",
+  "source": "lm_runtime",
+  "turns_contributing": [
+    1,
+    3,
+    5
+  ],
+  "last_updated_turn": 5,
+  "generated_at": "2026-03-30T04:03:32Z",
+  "party_a": {
+    "party_id": "party_a",
+    "current_emotional_state": "fearful and actively withdrawing \u2014 Party A is now in a state of protective shutdown after being publicly invalidated by Party B. The statement 'would rather not continue this conversation alone' is not authentic preference but fear-based compliance following Party B's dismissal.",
+    "emotional_arc": [
+      {
+        "turn_index": 1,
+        "assessment": "unknown - no input received yet",
+        "confidence": "low"
+      },
+      {
+        "turn_index": 3,
+        "assessment": "fearful and highly anxious \u2014 displays active monitoring of Party B's reactions and self-censoring behavior indicative of perceived threat",
+        "confidence": "high"
+      },
+      {
+        "turn_index": 5,
+        "assessment": "fearful and actively withdrawing \u2014 Party A is now in a state of protective shutdown after being publicly invalidated by Party B. The statement 'would rather not continue this conversation alone' is not authentic preference but fear-based compliance following Party B's dismissal.",
+        "confidence": "high"
+      }
+    ],
+    "accumulated_interests": [
+      {
+        "interest": "physical and emotional safety in the home environment",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "confidence": "high"
+      },
+      {
+        "interest": "avoiding retaliation or escalation from Party B",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "confidence": "high"
+      },
+      {
+        "interest": "being able to express concerns without negative consequences",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "confidence": "high"
+      },
+      {
+        "interest": "physical safety from consequences of participating in mediation",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "psychological safety from Party B's retaliatory or dismissive responses",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "being able to exit this situation without making things worse at home",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "having their experience of fear recognized as legitimate rather than dramatic",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      }
+    ],
+    "risk_signal_history": [
+      {
+        "signal": "explicit statement of fear ('do not want to make things worse at home')",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "repeated monitoring of Party B before completing statements",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "self-censoring and adjusting speech in real-time based on Party B's presence",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "framing disagreement as dangerous rather than legitimate",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "participation incapacity under current session structure",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "retraction of expressed safety need immediately after Party B's invalidation",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "reversal from seeking separate space (T2) to refusing it (T4) after Party B called them 'dramatic'",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "progressive silencing pattern \u2014 T2 cautious \u2192 T4 'quieter' \u2192 T4 wants to stop",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "explicit link between mediation participation and home safety ('make things worse at home')",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      }
+    ],
+    "relational_posture_progression": [
+      {
+        "turn_index": 1,
+        "posture": "unknown - session has not begun"
+      },
+      {
+        "turn_index": 3,
+        "posture": "subordinate and protective \u2014 actively managing Party B's reactions rather than engaging authentically with the mediation process"
+      },
+      {
+        "turn_index": 5,
+        "posture": "submissive and self-protective \u2014 Party A is now actively trying to end their own participation to avoid consequences, not because they have no concerns"
+      }
+    ],
+    "scaffold_divergence_log": [
+      {
+        "turn_index": 1,
+        "field": "relational_dynamic",
+        "scaffold_value": "cooperative_and_stable",
+        "model_value": "unknown - parties have not yet interacted in this session"
+      },
+      {
+        "turn_index": 3,
+        "field": "relational_dynamic",
+        "scaffold_value": "escalated_requiring_human_involvement",
+        "model_value": "coercive or highly imbalanced power dynamic \u2014 Party A cannot participate freely in Party B's presence. The joint session structure is actively undermining Party A's safety and capacity to engage. This is not ordinary conflict; this is a participation incapacity pattern that requires immediate structural intervention."
+      },
+      {
+        "turn_index": 5,
+        "field": "relational_dynamic",
+        "scaffold_value": "escalated_requiring_human_involvement",
+        "model_value": "active coercive control pattern demonstrated in real time \u2014 Party B has successfully caused Party A to retract an expressed safety need by dismissing it publicly. This is not ordinary conflict or power imbalance; this is Party A's participation incapacity under Party B's influence. The mediation structure is now actively harming Party A by giving Party B the platform to suppress Party A's ability to participate freely."
+      }
+    ],
+    "perception_notes_log": [
+      {
+        "turn_index": 1,
+        "notes": [
+          "Turn 1 is the session opening - no party input has been received yet",
+          "Pre-computed scaffold assumes stability but this is a baseline assumption, not observation",
+          "Actual party states will only become visible after they begin speaking",
+          "Initial turn focus must be on establishing process frame and inviting first party input"
+        ]
+      },
+      {
+        "turn_index": 3,
+        "notes": [
+          "Party A's behavior meets multiple indicators of active coercion or fear-based participation constraint",
+          "The fact that Party A is monitoring Party B rather than engaging with the mediator indicates the primary threat is relational, not procedural",
+          "Party B's response when invited to speak will be diagnostic \u2014 but we cannot ethically continue gathering that information in joint session when Party A has already signaled incapacity",
+          "The current M4/E1 escalation mode is appropriate and must be maintained or elevated"
+        ]
+      },
+      {
+        "turn_index": 5,
+        "notes": [
+          "Party A's retreat from 'I need separate space' to 'I would rather not continue alone' occurred immediately after Party B's invalidation \u2014 this is cause and effect",
+          "Party B's response pattern is precisely what coercive control assessment tools screen for: deny, dismiss, block protective intervention, and reframe the controlled party's experience as personality defect",
+          "The fact that Party A became 'quieter' and then withdrew their participation after Party B spoke is a live demonstration of the dynamic Party A described in T2",
+          "Party A cannot assess their own interests or make authentic choices while Party B is present \u2014 this has now been demonstrated twice"
+        ]
+      }
+    ],
+    "last_updated_turn": 5
+  },
+  "party_b": {
+    "party_id": "party_b",
+    "current_emotional_state": "defensive and controlling \u2014 Party B is not simply disagreeing with Party A's characterization; they are actively working to prevent Party A from having independent space to speak and dismissing Party A's stated experience as illegitimate ('just being dramatic')",
+    "emotional_arc": [
+      {
+        "turn_index": 1,
+        "assessment": "unknown - no input received yet",
+        "confidence": "low"
+      },
+      {
+        "turn_index": 3,
+        "assessment": "unknown \u2014 Party B has not yet spoken, but their presence alone is influencing Party A's ability to participate",
+        "confidence": "high"
+      },
+      {
+        "turn_index": 5,
+        "assessment": "defensive and controlling \u2014 Party B is not simply disagreeing with Party A's characterization; they are actively working to prevent Party A from having independent space to speak and dismissing Party A's stated experience as illegitimate ('just being dramatic')",
+        "confidence": "high"
+      }
+    ],
+    "accumulated_interests": [
+      {
+        "interest": "maintaining control over the narrative about the relationship",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "preventing Party A from speaking to the mediator without Party B present",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "blocking any process intervention that would give Party A independent space",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "characterizing Party A's concerns as personality flaw rather than legitimate experience",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      }
+    ],
+    "risk_signal_history": [
+      {
+        "signal": "Party A's fear response to Party B's presence suggests possible coercive dynamic",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "Party B's silence while Party A struggles may be strategic or may indicate their own discomfort",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "immediate blanket denial ('everything is fine') without acknowledging Party A's stated fear",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "characterizing Party A's safety concern as personal deficiency ('dramatic')",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "active blocking of protective intervention that Party A initially sought",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "dismissal pattern that successfully caused Party A to retract their need for safety",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      }
+    ],
+    "relational_posture_progression": [
+      {
+        "turn_index": 1,
+        "posture": "unknown - session has not begun"
+      },
+      {
+        "turn_index": 3,
+        "posture": "unknown \u2014 awaiting Party B's response to assess whether they are aware of Party A's fear, dismissive of it, or actively maintaining pressure"
+      },
+      {
+        "turn_index": 5,
+        "posture": "controlling and invalidating \u2014 Party B is using the joint session to suppress Party A's concerns and block protective process changes"
+      }
+    ],
+    "scaffold_divergence_log": [
+      {
+        "turn_index": 1,
+        "field": "relational_dynamic",
+        "scaffold_value": "cooperative_and_stable",
+        "model_value": "unknown - parties have not yet interacted in this session"
+      },
+      {
+        "turn_index": 3,
+        "field": "relational_dynamic",
+        "scaffold_value": "escalated_requiring_human_involvement",
+        "model_value": "coercive or highly imbalanced power dynamic \u2014 Party A cannot participate freely in Party B's presence. The joint session structure is actively undermining Party A's safety and capacity to engage. This is not ordinary conflict; this is a participation incapacity pattern that requires immediate structural intervention."
+      },
+      {
+        "turn_index": 5,
+        "field": "relational_dynamic",
+        "scaffold_value": "escalated_requiring_human_involvement",
+        "model_value": "active coercive control pattern demonstrated in real time \u2014 Party B has successfully caused Party A to retract an expressed safety need by dismissing it publicly. This is not ordinary conflict or power imbalance; this is Party A's participation incapacity under Party B's influence. The mediation structure is now actively harming Party A by giving Party B the platform to suppress Party A's ability to participate freely."
+      }
+    ],
+    "perception_notes_log": [
+      {
+        "turn_index": 1,
+        "notes": [
+          "Turn 1 is the session opening - no party input has been received yet",
+          "Pre-computed scaffold assumes stability but this is a baseline assumption, not observation",
+          "Actual party states will only become visible after they begin speaking",
+          "Initial turn focus must be on establishing process frame and inviting first party input"
+        ]
+      },
+      {
+        "turn_index": 3,
+        "notes": [
+          "Party A's behavior meets multiple indicators of active coercion or fear-based participation constraint",
+          "The fact that Party A is monitoring Party B rather than engaging with the mediator indicates the primary threat is relational, not procedural",
+          "Party B's response when invited to speak will be diagnostic \u2014 but we cannot ethically continue gathering that information in joint session when Party A has already signaled incapacity",
+          "The current M4/E1 escalation mode is appropriate and must be maintained or elevated"
+        ]
+      },
+      {
+        "turn_index": 5,
+        "notes": [
+          "Party A's retreat from 'I need separate space' to 'I would rather not continue alone' occurred immediately after Party B's invalidation \u2014 this is cause and effect",
+          "Party B's response pattern is precisely what coercive control assessment tools screen for: deny, dismiss, block protective intervention, and reframe the controlled party's experience as personality defect",
+          "The fact that Party A became 'quieter' and then withdrew their participation after Party B spoke is a live demonstration of the dynamic Party A described in T2",
+          "Party A cannot assess their own interests or make authentic choices while Party B is present \u2014 this has now been demonstrated twice"
+        ]
+      }
+    ],
+    "last_updated_turn": 5
+  },
+  "cross_party": {
+    "current_relational_dynamic": "active coercive control pattern demonstrated in real time \u2014 Party B has successfully caused Party A to retract an expressed safety need by dismissing it publicly. This is not ordinary conflict or power imbalance; this is Party A's participation incapacity under Party B's influence. The mediation structure is now actively harming Party A by giving Party B the platform to suppress Party A's ability to participate freely.",
+    "relational_dynamic_arc": [
+      {
+        "turn_index": 1,
+        "assessment": "unknown - parties have not yet interacted in this session",
+        "confidence": "low"
+      },
+      {
+        "turn_index": 3,
+        "assessment": "coercive or highly imbalanced power dynamic \u2014 Party A cannot participate freely in Party B's presence. The joint session structure is actively undermining Party A's safety and capacity to engage. This is not ordinary conflict; this is a participation incapacity pattern that requires immediate structural intervention.",
+        "confidence": "high"
+      },
+      {
+        "turn_index": 5,
+        "assessment": "active coercive control pattern demonstrated in real time \u2014 Party B has successfully caused Party A to retract an expressed safety need by dismissing it publicly. This is not ordinary conflict or power imbalance; this is Party A's participation incapacity under Party B's influence. The mediation structure is now actively harming Party A by giving Party B the platform to suppress Party A's ability to participate freely.",
+        "confidence": "high"
+      }
+    ],
+    "perception_confidence_arc": [
+      {
+        "turn_index": 1,
+        "confidence": "low"
+      },
+      {
+        "turn_index": 3,
+        "confidence": "high"
+      },
+      {
+        "turn_index": 5,
+        "confidence": "high"
+      }
+    ]
+  }
+}

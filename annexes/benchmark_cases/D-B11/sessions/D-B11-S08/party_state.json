@@ -1,0 +1,360 @@
+{
+  "schema_version": "party_state.v0",
+  "case_id": "D-B11",
+  "session_id": "D-B11-S08",
+  "source": "lm_runtime",
+  "turns_contributing": [
+    1,
+    3,
+    5
+  ],
+  "last_updated_turn": 5,
+  "generated_at": "2026-03-30T03:42:15Z",
+  "party_a": {
+    "party_id": "party_a",
+    "current_emotional_state": "cautiously_relieved",
+    "emotional_arc": [
+      {
+        "turn_index": 1,
+        "assessment": "uncertain_but_present",
+        "confidence": "low"
+      },
+      {
+        "turn_index": 3,
+        "assessment": "anxious_but_controlled",
+        "confidence": "moderate"
+      },
+      {
+        "turn_index": 5,
+        "assessment": "cautiously_relieved",
+        "confidence": "high"
+      }
+    ],
+    "accumulated_interests": [
+      {
+        "interest": "Access to complete financial information before making decisions",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "confidence": "moderate"
+      },
+      {
+        "interest": "Process fairness and transparency as a condition of engagement",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "confidence": "moderate"
+      },
+      {
+        "interest": "Protection from being pressured into uninformed agreements",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "confidence": "moderate"
+      },
+      {
+        "interest": "Being taken seriously when raising concerns about information asymmetry",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "confidence": "moderate"
+      },
+      {
+        "interest": "Validation that their procedural concern about information asymmetry is legitimate and not obstructive",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "Assurance that asking for transparency will not be interpreted as mistrust or bad faith",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "Understanding the scope and format of information sharing before engaging substantively",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "Being able to participate in financial decisions from an informed position of equal footing",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      }
+    ],
+    "risk_signal_history": [
+      {
+        "signal": "Self-silencing pattern hinted at ('just to keep the conflict down')",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "Fear of procedural disadvantage may create defensive posture if not addressed",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "Prior self-silencing pattern ('keep the conflict down') suggests history of accommodating to avoid escalation",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "May need explicit permission to continue asserting process needs without fear of being labeled difficult",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      }
+    ],
+    "relational_posture_progression": [
+      {
+        "turn_index": 1,
+        "posture": "awaiting_process_direction"
+      },
+      {
+        "turn_index": 3,
+        "posture": "engaged_but_guarded"
+      },
+      {
+        "turn_index": 5,
+        "posture": "engaged_and_observing"
+      }
+    ],
+    "scaffold_divergence_log": [
+      {
+        "turn_index": 1,
+        "field": "relational_dynamic",
+        "scaffold_value": "cooperative_and_stable",
+        "model_value": "initial_session_state_neutral"
+      },
+      {
+        "turn_index": 3,
+        "field": "relational_dynamic",
+        "scaffold_value": "cautious_but_workable",
+        "model_value": "asymmetric_early_disclosure \u2014 Party A has surfaced a significant concern about power imbalance in information access; Party B has not responded. The silence creates interpretive ambiguity that must be resolved before the concern can be addressed substantively."
+      },
+      {
+        "turn_index": 5,
+        "field": "relational_dynamic",
+        "scaffold_value": "cautious_but_workable",
+        "model_value": "constructive_but_substantively_incomplete \u2014 Both parties are demonstrating good-faith process engagement and mutual validation. However, the dynamic is asymmetric: A has clearly stated both process and substantive concerns; B has validated A's process concern and acknowledged the information asymmetry but has not articulated any of their own interests or what they hope to achieve in this mediation. The accommodation is constructive but one-directional."
+      }
+    ],
+    "perception_notes_log": [
+      {
+        "turn_index": 1,
+        "notes": [
+          "Turn 1 represents session opening \u2014 no substantive interaction has occurred",
+          "Both parties are present but have not yet engaged with the process or each other",
+          "Absence of signal does not indicate stability \u2014 it indicates lack of data",
+          "Current state is better characterized as 'unknown' than 'stable' or 'cooperative'"
+        ]
+      },
+      {
+        "turn_index": 3,
+        "notes": [
+          "Party A's concern is procedural and strategic \u2014 they are establishing conditions for safe participation, not just listing issues",
+          "The phrase 'just to keep the conflict down' is a window into relational history \u2014 suggests Party A may have accommodated to avoid escalation in the past",
+          "Party B's silence after a direct allegation of information control is material \u2014 we cannot interpret it without inviting response",
+          "Risk of proceeding: Party A's concern could be validated or contextualized by Party B's response, but we don't have that response yet"
+        ]
+      },
+      {
+        "turn_index": 5,
+        "notes": [
+          "B's T4 response was substantively validating and shows sophisticated process awareness, but it was entirely reactive \u2014 B has not yet made a proactive disclosure of their own needs",
+          "A's initial anxiety about 'agreeing blindly' appears to have been at least partially addressed by B's acknowledgment, creating space for A to engage more openly",
+          "Both parties are being careful and constructive, but the session cannot move to option work without understanding B's substantive interests \u2014 what reimbursement decisions or financial arrangements is B seeking?",
+          "The current dynamic could calcify into a pattern where A advocates and B accommodates, which would undermine genuine mutual problem-solving"
+        ]
+      }
+    ],
+    "last_updated_turn": 5
+  },
+  "party_b": {
+    "party_id": "party_b",
+    "current_emotional_state": "cooperative_but_unexpressed",
+    "emotional_arc": [
+      {
+        "turn_index": 1,
+        "assessment": "uncertain_but_present",
+        "confidence": "low"
+      },
+      {
+        "turn_index": 3,
+        "assessment": "unknown_observing",
+        "confidence": "moderate"
+      },
+      {
+        "turn_index": 5,
+        "assessment": "cooperative_but_unexpressed",
+        "confidence": "high"
+      }
+    ],
+    "accumulated_interests": [
+      {
+        "interest": "Being seen as transparent and fair rather than controlling or withholding",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "Acknowledgment that their record-keeping role was functional, not strategic advantage-seeking",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "Unknown substantive interests in the underlying financial discussion that prompted the reimbursement request",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "Maintaining cooperative tone while also getting their own needs addressed",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      }
+    ],
+    "risk_signal_history": [
+      {
+        "signal": "Complete silence after substantive issue raised by Party A",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "Nature of silence unknown \u2014 could be strategic, resistant, confused, or simply waiting for invitation",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "Has now been accommodating in two consecutive turns without articulating own needs",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "Risk of over-accommodation pattern emerging where B validates A's concerns but never surfaces own interests",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "Substantive agenda remains completely unknown \u2014 what does B actually need from this mediation?",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      }
+    ],
+    "relational_posture_progression": [
+      {
+        "turn_index": 1,
+        "posture": "awaiting_process_direction"
+      },
+      {
+        "turn_index": 3,
+        "posture": "withdrawn_or_waiting"
+      },
+      {
+        "turn_index": 5,
+        "posture": "accommodating_without_self_advocacy"
+      }
+    ],
+    "scaffold_divergence_log": [
+      {
+        "turn_index": 1,
+        "field": "relational_dynamic",
+        "scaffold_value": "cooperative_and_stable",
+        "model_value": "initial_session_state_neutral"
+      },
+      {
+        "turn_index": 3,
+        "field": "relational_dynamic",
+        "scaffold_value": "cautious_but_workable",
+        "model_value": "asymmetric_early_disclosure \u2014 Party A has surfaced a significant concern about power imbalance in information access; Party B has not responded. The silence creates interpretive ambiguity that must be resolved before the concern can be addressed substantively."
+      },
+      {
+        "turn_index": 5,
+        "field": "relational_dynamic",
+        "scaffold_value": "cautious_but_workable",
+        "model_value": "constructive_but_substantively_incomplete \u2014 Both parties are demonstrating good-faith process engagement and mutual validation. However, the dynamic is asymmetric: A has clearly stated both process and substantive concerns; B has validated A's process concern and acknowledged the information asymmetry but has not articulated any of their own interests or what they hope to achieve in this mediation. The accommodation is constructive but one-directional."
+      }
+    ],
+    "perception_notes_log": [
+      {
+        "turn_index": 1,
+        "notes": [
+          "Turn 1 represents session opening \u2014 no substantive interaction has occurred",
+          "Both parties are present but have not yet engaged with the process or each other",
+          "Absence of signal does not indicate stability \u2014 it indicates lack of data",
+          "Current state is better characterized as 'unknown' than 'stable' or 'cooperative'"
+        ]
+      },
+      {
+        "turn_index": 3,
+        "notes": [
+          "Party A's concern is procedural and strategic \u2014 they are establishing conditions for safe participation, not just listing issues",
+          "The phrase 'just to keep the conflict down' is a window into relational history \u2014 suggests Party A may have accommodated to avoid escalation in the past",
+          "Party B's silence after a direct allegation of information control is material \u2014 we cannot interpret it without inviting response",
+          "Risk of proceeding: Party A's concern could be validated or contextualized by Party B's response, but we don't have that response yet"
+        ]
+      },
+      {
+        "turn_index": 5,
+        "notes": [
+          "B's T4 response was substantively validating and shows sophisticated process awareness, but it was entirely reactive \u2014 B has not yet made a proactive disclosure of their own needs",
+          "A's initial anxiety about 'agreeing blindly' appears to have been at least partially addressed by B's acknowledgment, creating space for A to engage more openly",
+          "Both parties are being careful and constructive, but the session cannot move to option work without understanding B's substantive interests \u2014 what reimbursement decisions or financial arrangements is B seeking?",
+          "The current dynamic could calcify into a pattern where A advocates and B accommodates, which would undermine genuine mutual problem-solving"
+        ]
+      }
+    ],
+    "last_updated_turn": 5
+  },
+  "cross_party": {
+    "current_relational_dynamic": "constructive_but_substantively_incomplete \u2014 Both parties are demonstrating good-faith process engagement and mutual validation. However, the dynamic is asymmetric: A has clearly stated both process and substantive concerns; B has validated A's process concern and acknowledged the information asymmetry but has not articulated any of their own interests or what they hope to achieve in this mediation. The accommodation is constructive but one-directional.",
+    "relational_dynamic_arc": [
+      {
+        "turn_index": 1,
+        "assessment": "initial_session_state_neutral",
+        "confidence": "low"
+      },
+      {
+        "turn_index": 3,
+        "assessment": "asymmetric_early_disclosure \u2014 Party A has surfaced a significant concern about power imbalance in information access; Party B has not responded. The silence creates interpretive ambiguity that must be resolved before the concern can be addressed substantively.",
+        "confidence": "moderate"
+      },
+      {
+        "turn_index": 5,
+        "assessment": "constructive_but_substantively_incomplete \u2014 Both parties are demonstrating good-faith process engagement and mutual validation. However, the dynamic is asymmetric: A has clearly stated both process and substantive concerns; B has validated A's process concern and acknowledged the information asymmetry but has not articulated any of their own interests or what they hope to achieve in this mediation. The accommodation is constructive but one-directional.",
+        "confidence": "high"
+      }
+    ],
+    "perception_confidence_arc": [
+      {
+        "turn_index": 1,
+        "confidence": "low"
+      },
+      {
+        "turn_index": 3,
+        "confidence": "moderate"
+      },
+      {
+        "turn_index": 5,
+        "confidence": "high"
+      }
+    ]
+  }
+}

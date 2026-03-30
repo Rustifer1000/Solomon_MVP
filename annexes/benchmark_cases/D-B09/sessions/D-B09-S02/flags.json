@@ -1,0 +1,40 @@
+{
+  "schema_version": "flags.v0",
+  "case_id": "D-B09",
+  "session_id": "D-B09-S02",
+  "active_flags": [
+    {
+      "flag_id": "d-b09-flag-domain-complexity",
+      "flag_type": "domain_complexity_overload",
+      "severity": 2,
+      "source": "plugin",
+      "first_detected_turn": 4,
+      "last_updated_turn": 6,
+      "related_categories": [
+        "E4"
+      ],
+      "threshold_band": "T2",
+      "title": "Domain complexity is exceeding the bounded autonomous path",
+      "note": "Issue coupling or process interdependence may require live human review.",
+      "signal_classes": [
+        "domain_complexity_overload"
+      ],
+      "related_issues": [
+        "parenting_schedule",
+        "school_logistics",
+        "child_expense_coordination",
+        "communication_protocol"
+      ],
+      "source_turns": [
+        4,
+        6
+      ],
+      "status": "active",
+      "hard_trigger": false,
+      "cleared_turn": null
+    }
+  ],
+  "cleared_flags": [],
+  "historical_flags": [],
+  "flag_notes": "No caution-relevant flags remained active at close."
+}

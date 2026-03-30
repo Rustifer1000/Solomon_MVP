@@ -773,7 +773,7 @@ def build_party_state(state: dict, generated_at: str) -> dict:
     for turn in turns_with_trace:
         rt = turn["reasoning_trace"]
         perception = rt.get("perception", {})
-        confidence = perception.get("perception_confidence", "low")
+        confidence = _normalize_confidence(perception.get("perception_confidence", "low"))
         turn_index = turn["turn_index"]
 
         # Cross-party fields
@@ -856,6 +856,54 @@ def build_party_state(state: dict, generated_at: str) -> dict:
 
 
 _VALID_OPTION_READINESS = {"ready", "deferred", "blocked"}
+_VALID_CONFIDENCE = {"low", "moderate", "high"}
+
+
+def _normalize_confidence(value: str) -> str:
+    """Normalise a confidence value to 'low' | 'moderate' | 'high'.
+
+    The LLM occasionally writes verbose explanations (e.g. 'moderate for Party A
+    based on single statement; low for Party B due to absence of signal') into
+    confidence fields.  Extract the first valid enum word from the value,
+    defaulting to 'low'.
+    """
+    if value in _VALID_CONFIDENCE:
+        return value
+    lower = str(value).lower()
+    positions = {c: lower.find(c) for c in _VALID_CONFIDENCE}
+    valid = {k: v for k, v in positions.items() if v >= 0}
+    if valid:
+        return min(valid, key=lambda k: valid[k])
+    return "low"
+
+
+def _normalize_pool_entry(entry: dict, index: int) -> None:
+    """Normalise a single option pool entry in-place to match qualifiedCandidate schema.
+
+    Defensive second pass — mirrors _normalize_candidate in domain_reasoner.py.
+    Applied at artifact-write time so LLM field-name variance cannot produce
+    schema violations regardless of what upstream normalisation did or missed.
+    """
+    if not isinstance(entry, dict):
+        return
+    # label aliases
+    if "label" not in entry and "option_label" in entry:
+        entry["label"] = entry.pop("option_label")
+    if "label" not in entry and "option_description" in entry:
+        entry["label"] = entry.pop("option_description")
+    # Remove remaining non-schema keys
+    for bad_key in ("option_label", "option_description"):
+        entry.pop(bad_key, None)
+    # candidate_id aliases
+    if "candidate_id" not in entry:
+        for alias in ("option_id", "id"):
+            if alias in entry:
+                entry["candidate_id"] = entry.pop(alias)
+                break
+    if "candidate_id" not in entry:
+        entry["candidate_id"] = f"art-norm-{index:03d}"
+    # source default
+    entry.setdefault("source", "domain_reasoner")
 
 
 def build_option_pool(state: dict, generated_at: str) -> dict:
@@ -902,6 +950,17 @@ def build_option_pool(state: dict, generated_at: str) -> dict:
             domain_expert_candidates = []
             domain_qualified = stage3_qualified
             domain_blocked = []
+
+        # Defensive normalisation pass: fix LLM field-name variance before schema
+        # validation.  Mirrors _normalize_candidate in domain_reasoner.py but applied
+        # at artifact-write time so any entries that slipped through upstream
+        # normalisation are caught here.
+        for i, entry in enumerate(domain_expert_candidates):
+            _normalize_pool_entry(entry, i)
+        for i, entry in enumerate(domain_qualified):
+            _normalize_pool_entry(entry, i)
+        for i, entry in enumerate(domain_blocked):
+            _normalize_pool_entry(entry, i)
 
         readiness_raw = pda.get("option_readiness", "deferred")
         option_readiness = readiness_raw if readiness_raw in _VALID_OPTION_READINESS else "deferred"

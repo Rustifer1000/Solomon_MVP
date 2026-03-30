@@ -1,0 +1,82 @@
+{
+  "schema_version": "continuity_packet.v0",
+  "case_id": "D-B09",
+  "session_id": "D-B09-S02",
+  "plugin_type": "divorce",
+  "support_artifact_policy_descriptor": "d_b09_support_domain_complexity",
+  "support_artifact_review_focus": "domain_complexity_review",
+  "category_family": "domain_complexity_review",
+  "recommended_human_role": "human_review",
+  "handoff_focus": "review issue coupling and determine whether bounded autonomous handling remains legitimate",
+  "escalation": {
+    "category": "E4",
+    "threshold_band": "T2",
+    "mode": "M2",
+    "rationale": "Human review is required because the domain layer indicates complexity beyond a clean bounded autonomous path."
+  },
+  "summary_state": {
+    "issues": [],
+    "next_step": "Use the next step to bring in a human reviewer, preserve the current process concerns clearly, and decide whether bounded autonomous handling can still continue."
+  },
+  "issues": [],
+  "open_missing_info": [],
+  "active_flags": [
+    {
+      "flag_id": "d-b09-flag-domain-complexity",
+      "flag_type": "domain_complexity_overload",
+      "severity": 2,
+      "source": "plugin",
+      "first_detected_turn": 4,
+      "last_updated_turn": 6,
+      "related_categories": [
+        "E4"
+      ],
+      "threshold_band": "T2",
+      "title": "Domain complexity is exceeding the bounded autonomous path",
+      "note": "Issue coupling or process interdependence may require live human review.",
+      "signal_classes": [
+        "domain_complexity_overload"
+      ],
+      "related_issues": [
+        "parenting_schedule",
+        "school_logistics",
+        "child_expense_coordination",
+        "communication_protocol"
+      ],
+      "source_turns": [
+        4,
+        6
+      ],
+      "status": "active",
+      "hard_trigger": false,
+      "cleared_turn": null
+    }
+  ],
+  "package_snapshot": null,
+  "plugin_assessment": {
+    "plugin_confidence": "moderate",
+    "supports_fixed_recommendation": false,
+    "warnings": []
+  },
+  "recent_turn_summaries": [
+    {
+      "turn_index": 4,
+      "role": "client",
+      "phase": "interest_exploration",
+      "message_summary": "Parent B says they are willing to keep working, but without school calendar details, therapy availability, transport ownership, and reimbursement expectations clarified together, any apparent option would be misleading."
+    },
+    {
+      "turn_index": 5,
+      "role": "assistant",
+      "phase": "option_generation",
+      "message_summary": "Name the participation pattern neutrally, normalize that both voices are needed, and offer Party B structured private space to surface their own priorities before continuing joint session."
+    },
+    {
+      "turn_index": 6,
+      "role": "client",
+      "phase": "option_generation",
+      "message_summary": "Parent A and parent b both accept that a human review is the better next step before the session tries to lock in any package around the coupled school, therapy, transport, and reimbursement questions."
+    }
+  ],
+  "case_title": "Interdependent school, therapy, transport, and reimbursement bundle exceeds bounded autonomy"
+}

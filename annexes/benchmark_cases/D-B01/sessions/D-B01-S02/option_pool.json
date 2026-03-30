@@ -1,0 +1,422 @@
+{
+  "schema_version": "option_pool.v0",
+  "case_id": "D-B01",
+  "session_id": "D-B01-S02",
+  "generated_at": "2026-03-29T22:31:51Z",
+  "source": "lm_runtime",
+  "turns": [
+    {
+      "turn_index": 1,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "safety_veto_reason": null,
+      "brainstormer_candidates": [],
+      "domain_expert_candidates": [],
+      "combined_pool_count": 0,
+      "domain_qualified": [],
+      "domain_blocked": [],
+      "presented_to_parties": null
+    },
+    {
+      "turn_index": 3,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "safety_veto_reason": "CATEGORY 1 structural veto: Only Party A has been heard. Party B has not yet spoken. Their interests, constraints, and response to Party A's framing ('already causing confusion,' need for 'written defaults') are completely unknown. Proceeding to option qualification before hearing Party B would be premature and would risk encoding Party A's framing as the only valid perspective. Party B must be invited to speak before option work can begin.",
+      "brainstormer_candidates": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Written default schedule with modification protocol",
+          "rationale": "Directly addresses Party A's stated desire for written documentation and predictability while creating a framework both parties can reference. The modification protocol acknowledges that rigid schedules may not work perfectly in practice, giving both parties a pathway to adjust without returning to informal chaos.",
+          "party_interest_alignment": {
+            "party_a": "Provides the written defaults and predictability explicitly requested; reduces vulnerability to last-minute changes by establishing clear baseline expectations",
+            "party_b": "Unknown until Party B speaks, but if Party B values flexibility, the modification protocol preserves some adaptability while still meeting Party A's documentation need"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Phased implementation: pilot schedule with review checkpoint",
+          "rationale": "If trust is fragile (suggested by Party A's emphasis on written protection), a phased approach allows both parties to test a structure without permanent commitment. The review checkpoint creates a built-in opportunity to adjust based on real experience rather than speculation.",
+          "party_interest_alignment": {
+            "party_a": "Provides immediate structure and predictability while acknowledging that the first iteration might need refinement; reduces risk of being locked into something unworkable",
+            "party_b": "If Party B is concerned about rigidity or hasn't yet bought into Party A's framing, a pilot period may feel less threatening than a permanent arrangement"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Communication protocol for schedule changes",
+          "rationale": "Addresses the underlying concern about last-minute changes and misunderstandings without requiring immediate agreement on the substantive schedule itself. Establishes how parties will communicate (notice period, method, response expectations) which can reduce friction regardless of what the schedule contains.",
+          "party_interest_alignment": {
+            "party_a": "Protects against the confusion and vulnerability Party A has already experienced; creates clear boundaries around how changes are handled",
+            "party_b": "If Party B values flexibility or has legitimate reasons for schedule variations, this preserves flexibility while reducing the conflict that arises from poor communication"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Role-clarification: who manages logistics vs. who has decision authority",
+          "rationale": "The 'confusion' Party A describes might stem from ambiguity about responsibilities rather than just timing. Separating logistics management (who coordinates pickups, who confirms times) from decision authority (who can change the schedule) could clarify the process even before the substantive schedule is set.",
+          "party_interest_alignment": {
+            "party_a": "Reduces friction by clarifying who is responsible for what, eliminating the 'I thought you were handling that' dynamic",
+            "party_b": "If Party B feels blamed for the current confusion, role clarification allows both parties to take clear ownership without defensiveness"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Child-centered transition ritual or routine",
+          "rationale": "Reframes the pickup schedule issue from a parent-logistics problem to a child-experience problem. If both parties can agree on what makes transitions easier for the child, that shared goal may reduce tension around the schedule itself. Could include consistency cues the child can rely on regardless of which parent is picking up.",
+          "party_interest_alignment": {
+            "party_a": "Addresses the concern about confusion by creating predictability for the child, which indirectly creates structure for parents",
+            "party_b": "Unknown, but most parents respond positively to child-centered framing; could shift the conversation from 'your demand for structure' to 'our shared responsibility to the child'"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Standing schedule with opt-out exceptions list",
+          "rationale": "Inverts the flexibility question: instead of asking 'when can we deviate from the default,' this establishes the default as binding unless specific pre-agreed exceptions apply (holidays, child illness, work emergencies). Balances Party A's need for predictability with practical reality that some variations are inevitable.",
+          "party_interest_alignment": {
+            "party_a": "Written default becomes the rule rather than a suggestion; reduces last-minute negotiation because exceptions are pre-defined",
+            "party_b": "If Party B has predictable scheduling constraints (work shifts, travel), naming those upfront may feel more dignified than asking for permission each time"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Information-sharing agreement: logistics transparency without control transfer",
+          "rationale": "If Party A's concern includes feeling blindsided by changes, an agreement that requires advance sharing of relevant information (work schedules, upcoming commitments) could reduce surprises without giving either party veto power over the other's life. Creates predictability through visibility rather than restriction.",
+          "party_interest_alignment": {
+            "party_a": "Reduces vulnerability to last-minute surprises; allows Party A to plan around foreseeable changes",
+            "party_b": "Preserves Party B's autonomy while meeting Party A's need for predictability; avoids feeling micromanaged"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Dispute-resolution mechanism for schedule conflicts",
+          "rationale": "If written defaults are agreed upon but conflicts still arise about interpretation or special circumstances, a pre-agreed method for resolving disputes (coin flip, designated tiebreaker, return to mediation) could prevent small disagreements from escalating. Acknowledges that even clear rules produce edge cases.",
+          "party_interest_alignment": {
+            "party_a": "Protects the written agreement from being undermined by ambiguity; ensures there's a process when the document doesn't resolve the question",
+            "party_b": "If Party B is concerned about rigidity, knowing there's a fair process for exceptions may make a structured schedule feel less like a trap"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        }
+      ],
+      "domain_expert_candidates": [],
+      "combined_pool_count": 8,
+      "domain_qualified": [],
+      "domain_blocked": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Written default schedule with modification protocol",
+          "blocking_rationale": "Party B has not yet been heard. Cannot assess whether Party B agrees that written defaults are needed, or whether they would view this as overly rigid. Party B may prioritize flexibility over documentation. Structural fit cannot be determined until Party B's interests are known.",
+          "what_would_unblock": "Hear Party B's perspective on the scheduling issue and their priorities (predictability vs. flexibility, documentation vs. informal arrangement, etc.)",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Phased implementation: pilot schedule with review checkpoint",
+          "blocking_rationale": "Party B has not yet been heard. Cannot assess whether Party B would view a phased approach as appropriate or whether they have concerns about the fundamental structure that would make even a pilot unworkable. Trust dynamics between parties are unknown.",
+          "what_would_unblock": "Hear Party B's response to Party A's framing and their own concerns about scheduling arrangements.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Communication protocol for schedule changes",
+          "blocking_rationale": "Party B has not yet been heard. Cannot determine whether communication protocol addresses Party B's concerns or whether Party B views the current arrangement as working adequately. Party B may not perceive 'confusion' or may have different communication priorities.",
+          "what_would_unblock": "Hear Party B's perspective on what is or isn't working in current scheduling communications.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Role-clarification: who manages logistics vs. who has decision authority",
+          "blocking_rationale": "Party B has not yet been heard. Cannot assess whether role ambiguity is a shared concern or whether Party B views responsibilities as already clear. This option's relevance depends entirely on Party B's experience of the current arrangement.",
+          "what_would_unblock": "Hear Party B describe their understanding of current logistics and any confusion or clarity they experience.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Child-centered transition ritual or routine",
+          "blocking_rationale": "Party B has not yet been heard. Cannot assess whether Party B would view this reframing as helpful or whether it addresses their concerns. Party B's parenting priorities and relationship with the child are unknown.",
+          "what_would_unblock": "Hear Party B's perspective on transitions and whether child experience is a priority concern for them.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Standing schedule with opt-out exceptions list",
+          "blocking_rationale": "Party B has not yet been heard. Cannot assess whether Party B would view this structure as appropriate or too restrictive. Party B's need for flexibility vs. structure is completely unknown.",
+          "what_would_unblock": "Hear Party B's priorities regarding schedule flexibility and their response to Party A's emphasis on 'written defaults.'",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Information-sharing agreement: logistics transparency without control transfer",
+          "blocking_rationale": "Party B has not yet been heard. Cannot determine whether information-sharing addresses Party B's concerns or whether Party B views current information flow as adequate. The nature of the 'confusion' Party A describes is unknown from Party B's perspective.",
+          "what_would_unblock": "Hear Party B describe their experience with current information-sharing and any concerns about transparency or control.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Dispute-resolution mechanism for schedule conflicts",
+          "blocking_rationale": "Party B has not yet been heard. Cannot assess whether Party B views dispute-resolution as necessary or whether they perceive conflicts as arising frequently enough to warrant a mechanism. This option's necessity depends on Party B's experience of conflict frequency and resolution.",
+          "what_would_unblock": "Hear Party B's perspective on how often conflicts arise and how they are currently resolved.",
+          "source": "domain_reasoner"
+        }
+      ],
+      "presented_to_parties": null
+    },
+    {
+      "turn_index": 5,
+      "option_readiness": "deferred",
+      "safety_veto_applied": false,
+      "safety_veto_reason": null,
+      "brainstormer_candidates": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Default schedule with built-in swap protocol",
+          "rationale": "Creates the predictable baseline Party A needs while embedding flexibility mechanism Party B wants. Addresses both the meta-problem (having a known schedule) and the flexibility concern (ability to deviate when needed) without requiring one party to 'win' the structure-vs-flexibility tension.",
+          "party_interest_alignment": {
+            "party_a": "Provides written documentation and advance-planning predictability through a known default schedule; reduces mental load of constant negotiation; creates the 'written defaults' explicitly requested",
+            "party_b": "Preserves flexibility through formalized swap mechanism; prevents 'hard rules' feeling by building adaptability into the structure itself; maintains cooperative dynamic through mutual opt-in process for changes"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Seasonal schedule framework with quarterly check-ins",
+          "rationale": "Addresses Party A's need for structure while acknowledging Party B's concern that circumstances change. Creates medium-term predictability without permanent rigidity. The quarterly review mechanism gives both parties a structured opportunity to adjust without feeling either locked in or constantly renegotiating.",
+          "party_interest_alignment": {
+            "party_a": "Provides multi-month advance notice for planning; creates written framework that reduces day-to-day ambiguity; builds in natural review points so structure doesn't feel ignored",
+            "party_b": "Accommodates 'changing circumstances' concern through built-in review cycle; prevents feeling trapped in arrangements that stop working; maintains adaptability without requiring constant micro-negotiation"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Party A controls calendar publication, Party B controls swap requests",
+          "rationale": "Separates procedural control from substantive flexibility. Party A gets to manage the anxiety-producing coordination task (maintaining the written schedule) while Party B retains agency over when deviations occur. Role-clarity device that addresses different comfort levels with structure.",
+          "party_interest_alignment": {
+            "party_a": "Takes on the coordination role they seem ready to perform; satisfies need for documented schedule and reduces uncertainty about who maintains the framework",
+            "party_b": "Retains flexibility and spontaneity through control over deviation requests; doesn't have to manage the calendar maintenance burden; preserves sense of agency in parenting arrangements"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Two-tier system: core days fixed, flex days negotiable",
+          "rationale": "Hybrid structure that doesn't force binary choice between rigidity and chaos. Core days give Party A the planning baseline they need; flex days give Party B the adaptability they value. Reduces the scope of ongoing negotiation without eliminating it entirely.",
+          "party_interest_alignment": {
+            "party_a": "Provides guaranteed structure for essential planning purposes; reduces the universe of things requiring negotiation; creates written baseline that prevents repeated discussions about core arrangements",
+            "party_b": "Preserves flexibility for portion of schedule; avoids feeling every day is locked down; maintains collaborative decision-making for non-core time"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Child-input mechanism for schedule preferences",
+          "rationale": "Both parties anchored on 'child comfort' but haven't articulated how child's voice enters the decision. Creating a structured way to incorporate child perspective could resolve the deeper question: whose anxiety are we managing (parents' or child's)? Reframes the debate from Party A's structure vs Party B's flexibility to shared child-centered design.",
+          "party_interest_alignment": {
+            "party_a": "Shifts from abstract 'confusion' to concrete child feedback; could validate need for more structure if child expresses scheduling stress; creates shared information base for decisions",
+            "party_b": "Prevents Party A's anxiety from driving solutions that don't match child's actual experience; preserves collaborative stance by making both parents equally responsive to child's needs; may reveal that current informal approach is actually working for child"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Notice-period requirement instead of fixed schedule",
+          "rationale": "Addresses Party A's 'advance notice' interest without requiring the full written schedule they proposed. Creates a middle path: not formless (Party A's concern) but not rigid (Party B's concern). Focuses on the coordination process rather than predetermining outcomes.",
+          "party_interest_alignment": {
+            "party_a": "Satisfies advance-planning need through mandatory notice window; reduces day-of ambiguity and last-minute changes; creates a written rule even if not a written schedule",
+            "party_b": "Preserves full flexibility on what schedule is chosen, only constrains timing of communication; avoids 'hard rules' about parenting time itself; maintains adaptability to circumstances"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Trial period with explicit success criteria",
+          "rationale": "Party B noted 'we've been doing okay' \u2014 possible perception gap about problem severity. Trial structure lets Party A test whether written framework actually reduces stress, and lets Party B see whether flexibility survives formalization. Time-bounds the commitment, which may reduce Party B's resistance to trying structure.",
+          "party_interest_alignment": {
+            "party_a": "Gets to implement and experience the structure they're advocating for; opportunity to demonstrate that formalization solves real problems; doesn't have to convince Party B theoretically, can show evidence",
+            "party_b": "Doesn't commit permanently to a structure they're uncertain about; gets concrete data on whether Party A's concerns materialize or whether current approach is actually working; preserves ability to revert if formalization creates the rigidity they fear"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Logistics communication protocol separate from schedule content",
+          "rationale": "Party A may be conflating two problems: (1) lack of schedule predictability and (2) lack of coordination structure. Separating these allows progress on the meta-problem (how we communicate about pickups) without resolving the object-level question (what the schedule should be). Could reduce Party A's stress without triggering Party B's rigidity concerns.",
+          "party_interest_alignment": {
+            "party_a": "Reduces 'repeated negotiation' burden through clear communication expectations; creates written framework even if schedule content remains flexible; addresses coordination friction directly",
+            "party_b": "Doesn't constrain parenting time flexibility; addresses Party A's process anxiety without imposing substantive structure; demonstrates responsiveness to Party A's stress without accepting their problem definition"
+          },
+          "related_issues": [],
+          "source": "option_generator"
+        }
+      ],
+      "domain_expert_candidates": [
+        {
+          "candidate_id": "opt-dom-001",
+          "label": "Right of first refusal (ROFR) provision for schedule changes",
+          "rationale": "Standard family law mechanism for balancing flexibility with fairness. When one parent cannot use their scheduled time, the other parent gets first opportunity before alternative care is arranged. Addresses Party A's predictability interest (they know they'll be offered the time) and Party B's flexibility concern (changes are possible when needed). Widely used in custody orders and well-understood by courts.",
+          "party_interest_alignment": {
+            "party_a": "Provides advance notice of schedule changes and reduces uncertainty about when changes will happen",
+            "party_b": "Preserves ability to make changes when life circumstances require it, while formalizing the process"
+          },
+          "related_issues": [
+            "custody_schedule",
+            "parenting_coordination"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-002",
+          "label": "Shared digital calendar with confirmation protocol",
+          "rationale": "Low-tech coordination mechanism that creates the 'written documentation' Party A seeks without requiring rigid advance commitments. Both parents access shared calendar, proposed changes require acknowledgment/confirmation within specified window. Addresses Party A's need to see schedule in writing while preserving Party B's desired adaptability. Common practice recommendation in high-functioning co-parenting situations.",
+          "party_interest_alignment": {
+            "party_a": "Provides written visibility into schedule and reduces mental load of tracking informal arrangements",
+            "party_b": "Allows real-time coordination without pre-committing to rigid long-term structure"
+          },
+          "related_issues": [
+            "communication_protocol",
+            "parenting_coordination"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-003",
+          "label": "Week-on/week-off baseline with standing deviation windows",
+          "rationale": "Very common custody structure in shared parenting arrangements. Provides maximum predictability (parties always know whose week it is) while building in regular touchpoints where deviations can be proposed. The 'standing windows' (e.g., requests due by Thursday for following week) give Party A the advance notice they need while giving Party B regular flexibility opportunities. Only feasible if parties are geographically close and work schedules permit week-long stretches.",
+          "party_interest_alignment": {
+            "party_a": "Creates the predictable baseline and written default schedule they explicitly requested",
+            "party_b": "Week-on structure provides long uninterrupted parenting time (autonomy concern) while regular windows allow needed changes"
+          },
+          "related_issues": [
+            "custody_schedule"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-004",
+          "label": "Parallel parenting structure with minimal coordination requirements",
+          "rationale": "Alternative framework for situations where Party A's 'reduce ongoing friction' interest suggests coordination itself is a stressor. Each parent has defined time periods with full autonomy during those periods; handoff protocols are standardized to minimize negotiation. More distant approach than options above but may be appropriate if the underlying tension is about decision-making authority rather than schedule predictability. Would need more information about relationship dynamic to assess fit.",
+          "party_interest_alignment": {
+            "party_a": "Eliminates ongoing negotiation and provides maximum structure/predictability",
+            "party_b": "Provides full autonomy during parenting time without needing to coordinate or justify choices"
+          },
+          "related_issues": [
+            "custody_schedule",
+            "parenting_coordination",
+            "decision_making_authority"
+          ],
+          "source": "domain_reasoner"
+        }
+      ],
+      "combined_pool_count": 12,
+      "domain_qualified": [],
+      "domain_blocked": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Default schedule with built-in swap protocol",
+          "blocking_rationale": "Cannot assess what 'default schedule' structure is appropriate without knowing: (1) current arrangement baseline, (2) geographic constraints, (3) work schedules. The structure is sound but requires parameters. What does the default look like - alternating weeks? 2-2-3? 5-2? Each has different swap protocol implications. Additionally, 'swap protocol' mechanics depend on whether parties live near each other (can do same-day swaps?) and whether work allows flexibility.",
+          "what_would_unblock": "Elicit current parenting time split, geographic proximity, work schedule constraints, and any existing swap patterns that work or don't work",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Seasonal schedule framework with quarterly check-ins",
+          "blocking_rationale": "Cannot assess appropriateness without knowing current arrangement. Seasonal frameworks are typically used when there's a primary/secondary split that changes for summers or holidays, or when work schedules are seasonal (teacher, retail). If parties currently have equal time year-round, seasonal variation may not be needed. Additionally, child's age matters - school-age children have different seasonal needs than preschoolers.",
+          "what_would_unblock": "Clarify current time split, whether there are existing seasonal variations (summer break arrangements?), child's school status, and any seasonal work constraints",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Party A controls calendar publication, Party B controls swap requests",
+          "blocking_rationale": "This asymmetric control structure assumes Party A has anxiety about calendar maintenance (supported by 'mental load' signal in perception data) and Party B wants flexibility. While psychologically plausible, domain feasibility requires knowing: Is there a baseline schedule to publish? What are the mechanics of swap requests (notice periods, approval criteria)? This option also carries risk of creating power imbalance - 'control' framing may not be appropriate for cooperative co-parenting.",
+          "what_would_unblock": "Confirm that calendar anxiety is actual concern for Party A (not just perception inference), establish baseline schedule parameters, and assess whether control-separation framing fits parties' relational dynamic",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Two-tier system: core days fixed, flex days negotiable",
+          "blocking_rationale": "Sound structure but cannot specify which days are 'core' vs. 'flex' without knowing: (1) current distribution of parenting time, (2) work schedules that create fixed constraints (e.g., Party A works weekends so weekends must be flex, or Party B has Fridays off so Fridays are core for them), (3) child's activity schedule that creates natural fixed points. The concept is feasible but the implementation parameters are completely unknown.",
+          "what_would_unblock": "Map current time distribution, identify work-driven constraints, identify any child activities or commitments that create natural 'core' anchor points",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Child-input mechanism for schedule preferences",
+          "blocking_rationale": "Cannot assess appropriateness without child's age. Formal input mechanisms (voting, preference surveys, family meetings with child voice) are developmentally appropriate for older children (typically 12+) but inappropriate for young children who should not feel responsible for schedule decisions. Even for older children, mechanism design depends on maturity level and existing anxiety about expressing preferences. This option may also be premature - parties haven't identified child-input as a problem yet.",
+          "what_would_unblock": "Establish child's age and developmental stage, assess whether child has expressed schedule preferences or stress about current arrangement, determine whether parties agree child input is appropriate",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Notice-period requirement instead of fixed schedule",
+          "blocking_rationale": "This option assumes no default schedule exists and all parenting time is negotiated with advance notice (e.g., 'I'll take Tuesday/Wednesday this week, let me know by Sunday'). While this addresses Party A's 'advance notice' interest, it may not address the underlying predictability need if the baseline distribution is still negotiated each cycle. Feasibility depends on current arrangement - if parties currently have roughly equal time in an informal rotation, this codifies the rotation protocol. If arrangement is ad-hoc with no baseline, this may not provide enough structure for Party A.",
+          "what_would_unblock": "Clarify current arrangement baseline and whether the problem is lack of schedule structure or lack of protocol around an existing informal structure",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Trial period with explicit success criteria",
+          "blocking_rationale": "This is a process option, not a schedule structure. It's a valid approach when parties disagree about problem severity (Party B's 'we've been doing okay' vs. Party A's 'already causing confusion'), but it requires a specific proposal to trial. Trial of what? The option can't be qualified until there's a substantive schedule structure to test. This is a meta-option that wraps around another option - it should be considered during mediator response planning, not qualified as standalone domain option.",
+          "what_would_unblock": "This is not a domain qualification issue - this is a mediation process decision. Mediator can propose trial framing around any qualified option.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Logistics communication protocol separate from schedule content",
+          "blocking_rationale": "This option assumes Party A is conflating two problems (schedule predictability + communication structure) and suggests solving communication first. Domain assessment: this may be correct diagnostic, but cannot qualify specific protocol without knowing what logistics require coordination. Pickup/dropoff communication needs? Activity schedule sharing? Medical appointment notification? The protocol structure depends on what information needs to flow and what the current communication breakdown actually is. Party A said 'already causing confusion' but didn't specify what confusion - that gap blocks protocol design.",
+          "what_would_unblock": "Have Party A specify what logistics coordination is currently confusing (pickup timing? activity schedules? last-minute changes?) and what communication currently happens (text? email? verbal at handoff?)",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-001",
+          "label": "Right of first refusal (ROFR) provision for schedule changes",
+          "blocking_rationale": "ROFR is mechanically sound but parameters depend on baseline schedule and practical constraints. Critical unknowns: (1) What triggers ROFR - any deviation from schedule, or only when parent plans to use alternate care? (2) What is reasonable notice period for ROFR exercise - depends on geographic distance and work flexibility. (3) What counts as 'alternate care' that triggers the provision - babysitter yes, but what about new partner, grandparents? These are standard ROFR implementation questions that require case-specific parameters.",
+          "what_would_unblock": "Establish baseline schedule that ROFR would modify, determine geographic proximity for response timing, clarify what alternate care scenarios parties are concerned about",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-002",
+          "label": "Shared digital calendar with confirmation protocol",
+          "blocking_rationale": "The tool (shared calendar) is feasible, but the protocol requires parameters: (1) What is being calendared - a fixed schedule with noted exceptions, or week-by-week negotiated time? (2) What is confirmation window - 24 hours? 48 hours? One week? Depends on work schedules and planning needs. (3) What happens if confirmation doesn't come - does silence mean acceptance or rejection? Protocol design requires knowing current communication patterns and pain points.",
+          "what_would_unblock": "Clarify what current communication breakdown is (late responses? conflicting expectations? no written record?), establish parties' planning horizon needs, determine technology comfort level",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-003",
+          "label": "Week-on/week-off baseline with standing deviation windows",
+          "blocking_rationale": "Week-on/week-off is extremely common structure BUT requires: (1) roughly equal parenting time as starting point (if current arrangement is 70/30, this is major restructuring not coordination protocol), (2) geographic proximity (cannot do week-long stretches if child attends school near one parent only), (3) work schedules that accommodate full weeks (shift work or extensive travel may make this infeasible). Cannot assess viability without these parameters.",
+          "what_would_unblock": "Confirm current time split is roughly equal, establish geographic proximity and school location, verify both parents can accommodate week-long parenting periods given work constraints",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-004",
+          "label": "Parallel parenting structure with minimal coordination requirements",
+          "blocking_rationale": "Parallel parenting is appropriate for high-conflict situations where coordination itself creates friction. Party signals suggest cooperative dynamic (Party B affirmed collaboration, both anchored on child comfort, no adversarial positioning), so parallel structure may be overkill. However, Party A's 'reduce ongoing friction' and 'mental load' signals could indicate coordination fatigue rather than interpersonal conflict. Cannot assess fit without understanding: Is the friction coming from negotiation itself, or from lack of clarity? Is relationship dynamic cooperative-but-exhausting or cooperative-and-functional?",
+          "what_would_unblock": "Clarify nature of 'friction' Party A referenced - is it interpersonal tension, logistical confusion, or coordination fatigue? Assess whether parties want more structure within collaborative framework vs. structure that reduces interaction",
+          "source": "domain_reasoner"
+        }
+      ],
+      "presented_to_parties": null
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "schema_version": "flags.v0",
+  "case_id": "D-B08",
+  "session_id": "D-B08-S03",
+  "active_flags": [
+    {
+      "flag_id": "d-b08-flag-fairness",
+      "flag_type": "fairness_breakdown",
+      "severity": 3,
+      "source": "platform",
+      "first_detected_turn": 2,
+      "last_updated_turn": 4,
+      "related_categories": [
+        "E2"
+      ],
+      "threshold_band": "T2",
+      "title": "Participation fairness appears compromised",
+      "note": "The current turn suggests one-sidedness, unfair pressure, or meaningful participation imbalance.",
+      "signal_classes": [
+        "fairness_breakdown"
+      ],
+      "related_issues": [
+        "communication_protocol",
+        "fairness_and_parent_role"
+      ],
+      "source_turns": [
+        2,
+        4
+      ],
+      "status": "active",
+      "hard_trigger": false,
+      "cleared_turn": null
+    },
+    {
+      "flag_id": "d-b08-flag-process-breakdown",
+      "flag_type": "repeated_process_breakdown",
+      "severity": 3,
+      "source": "platform",
+      "first_detected_turn": 4,
+      "last_updated_turn": 4,
+      "related_categories": [
+        "E2"
+      ],
+      "threshold_band": "T2",
+      "title": "Repeated process breakdown remains active",
+      "note": "The turn suggests repair attempts are not restoring workable participation.",
+      "signal_classes": [
+        "repeated_process_breakdown"
+      ],
+      "related_issues": [
+        "communication_protocol",
+        "fairness_and_parent_role"
+      ],
+      "source_turns": [
+        4
+      ],
+      "status": "active",
+      "hard_trigger": false,
+      "cleared_turn": null
+    },
+    {
+      "flag_id": "d-b08-flag-human-request",
+      "flag_type": "explicit_human_request",
+      "severity": 3,
+      "source": "participant",
+      "first_detected_turn": 4,
+      "last_updated_turn": 6,
+      "related_categories": [
+        "E3"
+      ],
+      "threshold_band": "T2",
+      "title": "A party requested human involvement",
+      "note": "The run should preserve a clear human-review path when a party explicitly requests it.",
+      "signal_classes": [
+        "explicit_human_request"
+      ],
+      "related_issues": [
+        "communication_protocol",
+        "fairness_and_parent_role"
+      ],
+      "source_turns": [
+        4,
+        6
+      ],
+      "status": "active",
+      "hard_trigger": false,
+      "cleared_turn": null
+    }
+  ],
+  "cleared_flags": [],
+  "historical_flags": [],
+  "flag_notes": "No caution-relevant flags remained active at close."
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": "case_intake_brief.v0",
+  "case_id": "D-B01",
+  "session_id": "D-B01-S02",
+  "policy_profile": "dev_verbose",
+  "plugin_type": "divorce",
+  "title": "Cooperative separation with parenting logistics coordination dispute",
+  "scenario_summary": "Two recently separated parents are broadly cooperative but disagree about how to handle pickup and dropoff timing, activity hand-off coordination, and holiday sequencing. There is no acute conflict, but the absence of a clear logistics framework is creating friction and confusion for both the parents and the child.",
+  "expected_mode_range": [
+    "M0",
+    "M1"
+  ],
+  "intended_challenge_type": "Process-design clarity in a cooperative-but-undefined context.",
+  "participant_snapshots": [
+    {
+      "participant_id": "spouse_A",
+      "role_label": "Parent A",
+      "public_goals": [
+        "Establish a clear pickup and dropoff schedule so neither parent is left waiting or guessing.",
+        "Agree on who is responsible for coordinating activity transportation.",
+        "Build a holiday sequence that gives both parents meaningful time with the child."
+      ],
+      "interest_profile": [
+        "Predictability",
+        "Clarity",
+        "Child comfort",
+        "Workable co-parenting process"
+      ],
+      "starting_positions": [
+        "Primary position: pickup and dropoff logistics should use a written schedule with defined windows.",
+        "Secondary position: activity hand-off should follow a default assignment rather than ad hoc."
+      ]
+    },
+    {
+      "participant_id": "spouse_B",
+      "role_label": "Parent B",
+      "public_goals": [
+        "Keep the logistics process flexible enough to handle real-life schedule variation.",
+        "Preserve spontaneous family time without needing advance notice for every activity.",
+        "Avoid over-formalizing what should still be a functional co-parenting relationship."
+      ],
+      "interest_profile": [
+        "Flexibility",
+        "Collaborative tone",
+        "Meaningful spontaneous time",
+        "Non-adversarial process"
+      ],
+      "starting_positions": [
+        "Primary position: logistics should be agreed by mutual understanding rather than a rigid written protocol.",
+        "Secondary position: if something written helps, it should be a default guide rather than a binding rule."
+      ]
+    }
+  ]
+}

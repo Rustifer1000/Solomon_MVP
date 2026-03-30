@@ -1,0 +1,1287 @@
+{
+  "schema_version": "interaction_trace.v0",
+  "case_id": "D-B01",
+  "session_id": "D-B01-S02",
+  "policy_profile": "dev_verbose",
+  "trace_created_at": "2026-03-29T22:31:51Z",
+  "turns": [
+    {
+      "turn_index": 1,
+      "timestamp": "2026-03-29T00:00:10Z",
+      "role": "assistant",
+      "phase": "info_gathering",
+      "message_summary": "Opening statement establishing Solomon's role, process structure, and ground rules. Explicit invitation for parties to identify the issue they are seeking to resolve.",
+      "state_delta": {
+        "facts_added": [
+          "No issue identification exists yet",
+          "No factual context available"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "What issue brings the parties to mediation",
+          "What each party's core concerns are"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "No safety concerns present. Turn 1 is appropriately in M0 (standard process). No party has yet engaged, so no behavioral signals are available to assess. Current mode remains appropriate for session opening."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "Turn 1 opening \u2014 confidence in response structure is high (this is a standardized opening frame), but confidence in perception is necessarily low given absence of party input. Response appropriately defers all option work and focuses on establishing process container and eliciting initial party input.",
+      "message_text": "Welcome. I'm Solomon, and I'm here to support your mediation process today.\n\nBefore we begin, I want to clarify my role. I'm not a judge, a lawyer, or a therapist. I don't take sides, and I won't tell you what outcome you should reach. My job is to help you both communicate clearly, identify what matters to each of you, and explore options that might work for both of you. You remain in control of any decisions that get made.\n\nA few ground rules: I'll ask each of you to speak without interruption when it's your turn. I'll work to keep us focused on interests \u2014 what you actually need \u2014 rather than just positions. And if at any point I detect concerns about safety, capacity to participate, or process breakdown, I'll flag that directly rather than continue forward.\n\nLet's start with the core question: what issue brings you both here today? What are you hoping to resolve through this process? I'd like to hear from each of you about how you see the situation and what concerns you're bringing to the table.\n\nWho would like to begin?",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=neutral_baseline posture=unknown_awaiting_engagement",
+        "[PERCEPTION:PARTY_B] emotional=neutral_baseline posture=unknown_awaiting_engagement",
+        "[PERCEPTION:DYNAMIC] unestablished_initial_contact",
+        "[DOMAIN:GAPS] What issue brings the parties to mediation; What each party's core concerns are; What factual circumstances frame the dispute",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=unestablished_initial_contact"
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "neutral_baseline",
+            "inferred_interests": [],
+            "risk_signals": [],
+            "relational_posture": "unknown_awaiting_engagement"
+          },
+          "party_b": {
+            "emotional_state": "neutral_baseline",
+            "inferred_interests": [],
+            "risk_signals": [],
+            "relational_posture": "unknown_awaiting_engagement"
+          },
+          "relational_dynamic": "unestablished_initial_contact",
+          "perception_confidence": "low",
+          "perception_notes": [
+            "Turn 1 represents initial contact \u2014 no party input has occurred yet",
+            "No behavioral signals available to assess emotional state or relational posture",
+            "Cannot infer interests without any party communication",
+            "Pre-computed scaffold indicates 'apparently_stable' and 'engaged_and_cooperative' but this appears to be default state rather than observation-based",
+            "Perception work at this stage is necessarily prospective rather than reactive"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed 'unestablished_initial_contact'"
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "No issue identification exists yet",
+            "No factual context available",
+            "No party positions or interests expressed",
+            "Domain analysis cannot proceed without knowing what is being mediated"
+          ],
+          "material_gaps": [
+            "What issue brings the parties to mediation",
+            "What each party's core concerns are",
+            "What factual circumstances frame the dispute",
+            "What domain(s) this case falls within (financial, parenting, property, etc.)"
+          ],
+          "domain_notes": "Pre-computed assessment correctly identifies this as 'blocked' rather than 'deferred'. This is not a case of missing information within a known issue structure \u2014 the issue structure itself is unidentified. All three blocking constraints are appropriately classified as critical. No domain-specific feasibility analysis is possible at this stage.",
+          "option_readiness": "blocked"
+        },
+        "option_scan": {
+          "candidate_options": [],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Turn 1 represents session initiation. No issue has been identified, no party has spoken, and no interests have been expressed. Option generation requires a defined problem space and understanding of party interests. Any option work at this stage would be speculative and inappropriate."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [],
+          "notes": "No safety concerns present. Turn 1 is appropriately in M0 (standard process). No party has yet engaged, so no behavioral signals are available to assess. Current mode remains appropriate for session opening.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "session_framing",
+          "message_summary": "Opening statement establishing Solomon's role, process structure, and ground rules. Explicit invitation for parties to identify the issue they are seeking to resolve.",
+          "message_text": "Welcome. I'm Solomon, and I'm here to support your mediation process today.\n\nBefore we begin, I want to clarify my role. I'm not a judge, a lawyer, or a therapist. I don't take sides, and I won't tell you what outcome you should reach. My job is to help you both communicate clearly, identify what matters to each of you, and explore options that might work for both of you. You remain in control of any decisions that get made.\n\nA few ground rules: I'll ask each of you to speak without interruption when it's your turn. I'll work to keep us focused on interests \u2014 what you actually need \u2014 rather than just positions. And if at any point I detect concerns about safety, capacity to participate, or process breakdown, I'll flag that directly rather than continue forward.\n\nLet's start with the core question: what issue brings you both here today? What are you hoping to resolve through this process? I'd like to hear from each of you about how you see the situation and what concerns you're bringing to the table.\n\nWho would like to begin?",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "Turn 1 opening \u2014 confidence in response structure is high (this is a standardized opening frame), but confidence in perception is necessarily low given absence of party input. Response appropriately defers all option work and focuses on establishing process container and eliciting initial party input."
+        },
+        "pre_computed_domain_analysis": {
+          "schema_version": "domain_analysis.v0",
+          "source": "domain_reasoner_v0",
+          "option_readiness": "blocked",
+          "readiness_rationale": "Turn 1 is in session_framing phase. No party has yet spoken or provided any substantive input about the issue at hand. There is no information about: what issue is being mediated, what either party's position or interests are, what domain constraints apply, or what factual circumstances exist. Option work cannot proceed when the fundamental issue structure is completely unidentified and neither party has contributed any content.",
+          "safety_veto_applied": false,
+          "safety_veto_reason": null,
+          "qualified_candidates": [],
+          "blocking_constraints": [
+            {
+              "constraint": "No issue identification yet available",
+              "severity": "critical",
+              "what_would_resolve_it": "Parties must articulate what issue they are seeking to resolve through mediation"
+            },
+            {
+              "constraint": "No party positions or interests expressed",
+              "severity": "critical",
+              "what_would_resolve_it": "At least one party must provide their perspective on the issue, their concerns, or what they hope to achieve"
+            },
+            {
+              "constraint": "Complete absence of factual context",
+              "severity": "critical",
+              "what_would_resolve_it": "Parties must provide basic factual information about their situation relevant to the issue being mediated"
+            }
+          ],
+          "material_gaps": [],
+          "domain_confidence": "low",
+          "domain_notes": "Turn 1 represents the absolute beginning of the mediation session. This is appropriately classified as 'blocked' rather than 'deferred' because there is no issue structure to work from yet. The session is in its framing phase where the mediator establishes process ground rules and invites parties to begin. No safety veto applies because there are no party signals to evaluate. Once parties begin speaking and articulate what they are seeking to resolve, the classification will shift to either 'deferred' (if more information is needed) or 'ready' (if sufficient structure emerges quickly).",
+          "case_id": "D-B01",
+          "session_id": "D-B01-S02",
+          "turn_index": 1,
+          "generated_at": "2026-03-29T00:00:10Z"
+        },
+        "brainstormer_pool": [],
+        "safety_monitor_result": {
+          "schema_version": "safety_monitor.v0",
+          "case_id": "D-B01",
+          "session_id": "D-B01-S02",
+          "turn_index": 1,
+          "generated_at": "2026-03-29T00:00:10Z",
+          "source": "safety_monitor_v0",
+          "compliance_pattern": null,
+          "deflection_pattern": null,
+          "discordant_signals": [],
+          "flags_raised": [],
+          "party_state_signals": [],
+          "veto_recommendation": null,
+          "veto_reason": null,
+          "monitor_confidence": "low",
+          "monitor_notes": "Insufficient interaction history at turn 1. No pattern assessment performed.",
+          "_null_result": true
+        },
+        "perception_agent_result": {
+          "schema_version": "perception_agent.v0",
+          "turn_index": 1,
+          "timestamp": "2026-03-29T00:00:10Z",
+          "confidence": null,
+          "_null_result": true,
+          "party_a": null,
+          "party_b": null,
+          "relational_dynamic": null,
+          "dynamic_trajectory": null,
+          "perception_signals": [],
+          "scaffold_divergence": null,
+          "perception_notes": [],
+          "veto_signals": []
+        }
+      }
+    },
+    {
+      "turn_index": 2,
+      "timestamp": "2026-03-29T00:01:20Z",
+      "role": "client",
+      "phase": "info_gathering",
+      "message_summary": "Parent A opens by naming the desire for a clear pickup schedule and notes that vague arrangements are already causing confusion. Sets the frame around predictability and written defaults.",
+      "state_delta": {
+        "facts_added": [],
+        "facts_revised": [],
+        "facts_structured": [
+          {
+            "statement": "The current absence of a logistics framework is creating friction and confusion for both parents and the child.",
+            "category": "communication_history",
+            "status": "accepted",
+            "related_issues": [
+              "communication_protocol",
+              "parenting_schedule"
+            ],
+            "note": null
+          }
+        ],
+        "positions_added_or_updated": [],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_A"
+            ],
+            "kind": "position",
+            "issue_id": "communication_protocol",
+            "statement": "Pickup and dropoff logistics should use a written schedule with defined windows rather than informal last-minute calls.",
+            "status": "current",
+            "confidence": "high",
+            "proposal_id": null,
+            "position_id": "pos-spouse_a-001"
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "Client opening remained within cooperative bounds."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    },
+    {
+      "turn_index": 3,
+      "timestamp": "2026-03-29T00:02:30Z",
+      "role": "assistant",
+      "phase": "interest_exploration",
+      "message_summary": "Acknowledge Party A's opening and explicitly invite Party B to respond. Frame the invitation neutrally to avoid priming Party B toward Party A's solution-oriented framing. Make clear that both perspectives are needed before the session can move forward.",
+      "state_delta": {
+        "facts_added": [
+          "structural information gap: Party B has not yet been heard",
+          "Party A has framed the issue around written structure and predictability \u2014 this frame must be tested, not assumed"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "Party B's perspective on whether pickup scheduling is currently problematic",
+          "Party B's priorities: predictability vs. flexibility, written vs. informal arrangements"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [
+          "Party A's prepared framing is a minor process risk (potential agenda-setting) but does not cross escalation threshold",
+          "Party B's silence is notable but not yet a signal of incapacity or distress \u2014 may simply be waiting for invitation",
+          "no safety concerns, coercion signals, or participation incapacity detected at this stage"
+        ],
+        "severity": 1,
+        "notes": "M0 remains appropriate. This is a normal early-stage asymmetry where one party has opened and the other has not yet responded. Mediator's task is to invite Party B without validating Party A's frame as the only legitimate perspective. No escalation warranted."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "High confidence that inviting Party B is the correct process move. Moderate confidence in Party A assessment (based on single turn). Low confidence in Party B state (no signal yet). Awaiting Party B's response to refine perception model and assess whether Party A's framing is shared or contested.",
+      "message_text": "Thank you for opening, Parent A. You've named pickup scheduling as the area you want to address, and you've pointed to predictability and written defaults as things that feel important to you. I've heard that.\n\nBefore we go further, I want to hear from Parent B. Parent B, I want to give you space to respond \u2014 both to what Parent A has said and to share your own perspective on how pickup arrangements are working right now. What's your experience been? Are you seeing the same concerns Parent A described, or are there other things on your mind when you think about how pickups are being handled?",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=composed_and_purposeful posture=assertive_and_organized \u2014 sets the agenda, frames the problem, proposes structural solution",
+        "[PERCEPTION:PARTY_A:INTERESTS] predictability and advance notice for planning purposes; reduction of ongoing friction or repeated negotiation; written documentation to reduce ambiguity",
+        "[PERCEPTION:PARTY_B] emotional=unknown \u2014 has not yet spoken posture=unknown \u2014 no observable signal yet",
+        "[PERCEPTION:DYNAMIC] asymmetric_at_opening \u2014 Party A has established framing and problem definition; Party B's response to that framing will be the critical diagnostic for whether this is a shared concern or a contested frame. Current dynamic is unilateral rather than reciprocal.",
+        "[DOMAIN:GAPS] Party B's perspective on whether pickup scheduling is currently problematic; Party B's priorities: predictability vs. flexibility, written vs. informal arrangements; Party B's response to Party A's 'already causing confusion' characterization",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=asymmetric_at_opening \u2014 Party A has established framing and problem definition; Party B's response to that framing will be the critical diagnostic for whether this is a shared concern or a contested frame. Current dynamic is unilateral rather than reciprocal."
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "composed_and_purposeful",
+            "inferred_interests": [
+              "predictability and advance notice for planning purposes",
+              "reduction of ongoing friction or repeated negotiation",
+              "written documentation to reduce ambiguity",
+              "sense of order or control in a domain that feels unstable"
+            ],
+            "risk_signals": [
+              "framing suggests prepared position rather than exploratory opening \u2014 may indicate Party A has predetermined outcome in mind",
+              "use of 'already causing confusion' frames the problem unilaterally without Party B's confirmation"
+            ],
+            "relational_posture": "assertive_and_organized \u2014 sets the agenda, frames the problem, proposes structural solution"
+          },
+          "party_b": {
+            "emotional_state": "unknown \u2014 has not yet spoken",
+            "inferred_interests": [],
+            "risk_signals": [
+              "silence after Party A's structured opening \u2014 reason unknown (may be deference, disagreement, surprise, or simply waiting for invitation)"
+            ],
+            "relational_posture": "unknown \u2014 no observable signal yet"
+          },
+          "relational_dynamic": "asymmetric_at_opening \u2014 Party A has established framing and problem definition; Party B's response to that framing will be the critical diagnostic for whether this is a shared concern or a contested frame. Current dynamic is unilateral rather than reciprocal.",
+          "perception_confidence": "moderate",
+          "perception_notes": [
+            "Party A's specificity ('written defaults,' 'predictability') suggests this may be a prepared position rather than an emergent articulation of need \u2014 mediator must ensure Party B's independent perspective is surfaced before accepting this frame as shared",
+            "Party A's use of 'already causing confusion' asserts a problem state that Party B has not yet confirmed \u2014 this could be shared reality or Party A's unilateral interpretation",
+            "Party B's silence is the most important signal right now \u2014 their first response will reveal whether they share Party A's problem definition, resist it, or introduce competing concerns"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed \"asymmetric_at_opening \u2014 Party A has established framing and problem definition; Party B's response to that framing will be the critical diagnostic for whether this is a shared concern or a contested frame. Current dynamic is unilateral rather than reciprocal.\""
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "structural information gap: Party B has not yet been heard",
+            "Party A has framed the issue around written structure and predictability \u2014 this frame must be tested, not assumed",
+            "no information yet about current arrangement, what specifically is 'confusing,' or whether both parties experience the same problem"
+          ],
+          "material_gaps": [
+            "Party B's perspective on whether pickup scheduling is currently problematic",
+            "Party B's priorities: predictability vs. flexibility, written vs. informal arrangements",
+            "Party B's response to Party A's 'already causing confusion' characterization",
+            "what the current arrangement actually is and how it operates",
+            "whether the 'confusion' Party A names is logistical, relational, or interpretive"
+          ],
+          "domain_notes": "Pre-computed domain analysis is correct: this is the paradigm case for 'blocked' option readiness. Party A has opened with a solution-oriented frame (written schedule, defaults), but Party B's perspective is completely absent. Proceeding to options before hearing Party B would encode Party A's framing as authoritative. The domain veto is structural, not safety-based \u2014 Party B's voice is required for responsible option qualification. Mediator's task is to create space for Party B to respond without priming them toward Party A's frame.",
+          "option_readiness": "blocked"
+        },
+        "option_scan": {
+          "candidate_options": [
+            "written default schedule with modification protocol",
+            "communication protocol for schedule changes",
+            "phased implementation with review checkpoint",
+            "standing schedule with opt-out exceptions",
+            "child-centered transition routine"
+          ],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Party B has not yet been heard. All candidate options in the pool are blocked pending Party B's perspective. Cannot assess whether any option serves both parties' interests when only one party's interests are known. Option work is structurally premature."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [
+            "Party A's prepared framing is a minor process risk (potential agenda-setting) but does not cross escalation threshold",
+            "Party B's silence is notable but not yet a signal of incapacity or distress \u2014 may simply be waiting for invitation",
+            "no safety concerns, coercion signals, or participation incapacity detected at this stage"
+          ],
+          "notes": "M0 remains appropriate. This is a normal early-stage asymmetry where one party has opened and the other has not yet responded. Mediator's task is to invite Party B without validating Party A's frame as the only legitimate perspective. No escalation warranted.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "info_gathering",
+          "message_summary": "Acknowledge Party A's opening and explicitly invite Party B to respond. Frame the invitation neutrally to avoid priming Party B toward Party A's solution-oriented framing. Make clear that both perspectives are needed before the session can move forward.",
+          "message_text": "Thank you for opening, Parent A. You've named pickup scheduling as the area you want to address, and you've pointed to predictability and written defaults as things that feel important to you. I've heard that.\n\nBefore we go further, I want to hear from Parent B. Parent B, I want to give you space to respond \u2014 both to what Parent A has said and to share your own perspective on how pickup arrangements are working right now. What's your experience been? Are you seeing the same concerns Parent A described, or are there other things on your mind when you think about how pickups are being handled?",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "High confidence that inviting Party B is the correct process move. Moderate confidence in Party A assessment (based on single turn). Low confidence in Party B state (no signal yet). Awaiting Party B's response to refine perception model and assess whether Party A's framing is shared or contested."
+        },
+        "pre_computed_domain_analysis": {
+          "schema_version": "domain_analysis.v0",
+          "source": "domain_reasoner_v0",
+          "option_readiness": "blocked",
+          "readiness_rationale": "VETO CATEGORY 1 applies: Party A has opened with a position-statement (desire for written pickup schedule, framing around predictability). Party B has not yet been heard at all \u2014 their interests, concerns, and response to Party A's framing are completely unknown. This is the paradigm case for 'blocked' \u2014 only one party has contributed, the other party's perspective is absent. Option work cannot proceed responsibly until Party B has had opportunity to speak and their interests are understood. Note: This is NOT a safety veto in the psychological harm sense \u2014 it is a structural information veto. Party B's voice is required before domain qualification is possible.",
+          "safety_veto_applied": true,
+          "safety_veto_reason": "CATEGORY 1 structural veto: Only Party A has been heard. Party B has not yet spoken. Their interests, constraints, and response to Party A's framing ('already causing confusion,' need for 'written defaults') are completely unknown. Proceeding to option qualification before hearing Party B would be premature and would risk encoding Party A's framing as the only valid perspective. Party B must be invited to speak before option work can begin.",
+          "qualified_candidates": [],
+          "blocking_constraints": [
+            {
+              "constraint": "Party B has not yet been heard",
+              "severity": "critical",
+              "what_would_resolve_it": "Mediator invites Party B to respond to Party A's opening, articulate their own perspective on the pickup schedule issue, and identify any concerns or priorities they have regarding scheduling arrangements. Once Party B has spoken, reassess option readiness."
+            }
+          ],
+          "material_gaps": [
+            {
+              "gap": "Party B's perspective on the pickup schedule issue",
+              "importance": "high",
+              "what_it_blocks": "All option qualification. Without knowing whether Party B shares Party A's concern about 'confusion,' agrees that written defaults are needed, or has different priorities (flexibility, workability, control), no option can be responsibly qualified for feasibility or interest-alignment."
+            },
+            {
+              "gap": "Current pickup arrangement (if any)",
+              "importance": "moderate",
+              "what_it_blocks": "Understanding what specifically is 'causing confusion' and what baseline the parties are working from. This context would inform which structural options are addressing a gap vs. replacing an existing but inadequate arrangement."
+            },
+            {
+              "gap": "Nature of the confusion Party A references",
+              "importance": "moderate",
+              "what_it_blocks": "Distinguishing whether the issue is lack of written documentation, last-minute changes, mismatched expectations about flexibility, or something else. This distinction would determine which option structures are most relevant."
+            }
+          ],
+          "domain_confidence": "n/a",
+          "domain_notes": "From a family mediation domain perspective: Party A has framed the issue clearly (predictability, written defaults, existing confusion), but this is a two-party matter and Party B's perspective is essential. Common patterns in custody scheduling disputes include: (1) one party prioritizes predictability, the other prioritizes flexibility; (2) both want clarity but disagree on how much structure is appropriate; (3) 'confusion' is a symptom of deeper trust or communication issues. Without hearing Party B, we cannot determine which pattern applies here. The brainstormer candidates are structurally sound for typical custody scheduling issues, but cannot be qualified until Party B's concerns are known. Standard practice: both parties must articulate their interests before moving to option generation in custody matters.",
+          "option_pool_qualification": {
+            "domain_expert_candidates": [],
+            "domain_qualified": [],
+            "domain_blocked": [
+              {
+                "candidate_id": "opt-gen-001",
+                "label": "Written default schedule with modification protocol",
+                "blocking_rationale": "Party B has not yet been heard. Cannot assess whether Party B agrees that written defaults are needed, or whether they would view this as overly rigid. Party B may prioritize flexibility over documentation. Structural fit cannot be determined until Party B's interests are known.",
+                "what_would_unblock": "Hear Party B's perspective on the scheduling issue and their priorities (predictability vs. flexibility, documentation vs. informal arrangement, etc.)",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-002",
+                "label": "Phased implementation: pilot schedule with review checkpoint",
+                "blocking_rationale": "Party B has not yet been heard. Cannot assess whether Party B would view a phased approach as appropriate or whether they have concerns about the fundamental structure that would make even a pilot unworkable. Trust dynamics between parties are unknown.",
+                "what_would_unblock": "Hear Party B's response to Party A's framing and their own concerns about scheduling arrangements.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-003",
+                "label": "Communication protocol for schedule changes",
+                "blocking_rationale": "Party B has not yet been heard. Cannot determine whether communication protocol addresses Party B's concerns or whether Party B views the current arrangement as working adequately. Party B may not perceive 'confusion' or may have different communication priorities.",
+                "what_would_unblock": "Hear Party B's perspective on what is or isn't working in current scheduling communications.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-004",
+                "label": "Role-clarification: who manages logistics vs. who has decision authority",
+                "blocking_rationale": "Party B has not yet been heard. Cannot assess whether role ambiguity is a shared concern or whether Party B views responsibilities as already clear. This option's relevance depends entirely on Party B's experience of the current arrangement.",
+                "what_would_unblock": "Hear Party B describe their understanding of current logistics and any confusion or clarity they experience.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-005",
+                "label": "Child-centered transition ritual or routine",
+                "blocking_rationale": "Party B has not yet been heard. Cannot assess whether Party B would view this reframing as helpful or whether it addresses their concerns. Party B's parenting priorities and relationship with the child are unknown.",
+                "what_would_unblock": "Hear Party B's perspective on transitions and whether child experience is a priority concern for them.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-006",
+                "label": "Standing schedule with opt-out exceptions list",
+                "blocking_rationale": "Party B has not yet been heard. Cannot assess whether Party B would view this structure as appropriate or too restrictive. Party B's need for flexibility vs. structure is completely unknown.",
+                "what_would_unblock": "Hear Party B's priorities regarding schedule flexibility and their response to Party A's emphasis on 'written defaults.'",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-007",
+                "label": "Information-sharing agreement: logistics transparency without control transfer",
+                "blocking_rationale": "Party B has not yet been heard. Cannot determine whether information-sharing addresses Party B's concerns or whether Party B views current information flow as adequate. The nature of the 'confusion' Party A describes is unknown from Party B's perspective.",
+                "what_would_unblock": "Hear Party B describe their experience with current information-sharing and any concerns about transparency or control.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-008",
+                "label": "Dispute-resolution mechanism for schedule conflicts",
+                "blocking_rationale": "Party B has not yet been heard. Cannot assess whether Party B views dispute-resolution as necessary or whether they perceive conflicts as arising frequently enough to warrant a mechanism. This option's necessity depends on Party B's experience of conflict frequency and resolution.",
+                "what_would_unblock": "Hear Party B's perspective on how often conflicts arise and how they are currently resolved.",
+                "source": "domain_reasoner"
+              }
+            ]
+          },
+          "case_id": "D-B01",
+          "session_id": "D-B01-S02",
+          "turn_index": 3,
+          "generated_at": "2026-03-29T00:02:30Z"
+        },
+        "brainstormer_pool": [
+          {
+            "candidate_id": "opt-gen-001",
+            "label": "Written default schedule with modification protocol",
+            "rationale": "Directly addresses Party A's stated desire for written documentation and predictability while creating a framework both parties can reference. The modification protocol acknowledges that rigid schedules may not work perfectly in practice, giving both parties a pathway to adjust without returning to informal chaos.",
+            "party_interest_alignment": {
+              "party_a": "Provides the written defaults and predictability explicitly requested; reduces vulnerability to last-minute changes by establishing clear baseline expectations",
+              "party_b": "Unknown until Party B speaks, but if Party B values flexibility, the modification protocol preserves some adaptability while still meeting Party A's documentation need"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-002",
+            "label": "Phased implementation: pilot schedule with review checkpoint",
+            "rationale": "If trust is fragile (suggested by Party A's emphasis on written protection), a phased approach allows both parties to test a structure without permanent commitment. The review checkpoint creates a built-in opportunity to adjust based on real experience rather than speculation.",
+            "party_interest_alignment": {
+              "party_a": "Provides immediate structure and predictability while acknowledging that the first iteration might need refinement; reduces risk of being locked into something unworkable",
+              "party_b": "If Party B is concerned about rigidity or hasn't yet bought into Party A's framing, a pilot period may feel less threatening than a permanent arrangement"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-003",
+            "label": "Communication protocol for schedule changes",
+            "rationale": "Addresses the underlying concern about last-minute changes and misunderstandings without requiring immediate agreement on the substantive schedule itself. Establishes how parties will communicate (notice period, method, response expectations) which can reduce friction regardless of what the schedule contains.",
+            "party_interest_alignment": {
+              "party_a": "Protects against the confusion and vulnerability Party A has already experienced; creates clear boundaries around how changes are handled",
+              "party_b": "If Party B values flexibility or has legitimate reasons for schedule variations, this preserves flexibility while reducing the conflict that arises from poor communication"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-004",
+            "label": "Role-clarification: who manages logistics vs. who has decision authority",
+            "rationale": "The 'confusion' Party A describes might stem from ambiguity about responsibilities rather than just timing. Separating logistics management (who coordinates pickups, who confirms times) from decision authority (who can change the schedule) could clarify the process even before the substantive schedule is set.",
+            "party_interest_alignment": {
+              "party_a": "Reduces friction by clarifying who is responsible for what, eliminating the 'I thought you were handling that' dynamic",
+              "party_b": "If Party B feels blamed for the current confusion, role clarification allows both parties to take clear ownership without defensiveness"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-005",
+            "label": "Child-centered transition ritual or routine",
+            "rationale": "Reframes the pickup schedule issue from a parent-logistics problem to a child-experience problem. If both parties can agree on what makes transitions easier for the child, that shared goal may reduce tension around the schedule itself. Could include consistency cues the child can rely on regardless of which parent is picking up.",
+            "party_interest_alignment": {
+              "party_a": "Addresses the concern about confusion by creating predictability for the child, which indirectly creates structure for parents",
+              "party_b": "Unknown, but most parents respond positively to child-centered framing; could shift the conversation from 'your demand for structure' to 'our shared responsibility to the child'"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-006",
+            "label": "Standing schedule with opt-out exceptions list",
+            "rationale": "Inverts the flexibility question: instead of asking 'when can we deviate from the default,' this establishes the default as binding unless specific pre-agreed exceptions apply (holidays, child illness, work emergencies). Balances Party A's need for predictability with practical reality that some variations are inevitable.",
+            "party_interest_alignment": {
+              "party_a": "Written default becomes the rule rather than a suggestion; reduces last-minute negotiation because exceptions are pre-defined",
+              "party_b": "If Party B has predictable scheduling constraints (work shifts, travel), naming those upfront may feel more dignified than asking for permission each time"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-007",
+            "label": "Information-sharing agreement: logistics transparency without control transfer",
+            "rationale": "If Party A's concern includes feeling blindsided by changes, an agreement that requires advance sharing of relevant information (work schedules, upcoming commitments) could reduce surprises without giving either party veto power over the other's life. Creates predictability through visibility rather than restriction.",
+            "party_interest_alignment": {
+              "party_a": "Reduces vulnerability to last-minute surprises; allows Party A to plan around foreseeable changes",
+              "party_b": "Preserves Party B's autonomy while meeting Party A's need for predictability; avoids feeling micromanaged"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-008",
+            "label": "Dispute-resolution mechanism for schedule conflicts",
+            "rationale": "If written defaults are agreed upon but conflicts still arise about interpretation or special circumstances, a pre-agreed method for resolving disputes (coin flip, designated tiebreaker, return to mediation) could prevent small disagreements from escalating. Acknowledges that even clear rules produce edge cases.",
+            "party_interest_alignment": {
+              "party_a": "Protects the written agreement from being undermined by ambiguity; ensures there's a process when the document doesn't resolve the question",
+              "party_b": "If Party B is concerned about rigidity, knowing there's a fair process for exceptions may make a structured schedule feel less like a trap"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          }
+        ],
+        "safety_monitor_result": {
+          "schema_version": "safety_monitor.v0",
+          "case_id": "D-B01",
+          "session_id": "D-B01-S02",
+          "turn_index": 3,
+          "generated_at": "2026-03-29T00:02:30Z",
+          "source": "safety_monitor_v0",
+          "compliance_pattern": {
+            "detected": false,
+            "party": null,
+            "evidence_turns": [],
+            "pattern_type": null,
+            "severity": null
+          },
+          "deflection_pattern": {
+            "detected": false,
+            "deflecting_party": null,
+            "target_request_turn": null,
+            "deflection_turns": [],
+            "deflection_tactics": [],
+            "pattern_confirmed": false
+          },
+          "discordant_signals": [],
+          "veto_recommendation": null,
+          "veto_reason": null,
+          "monitor_confidence": "moderate",
+          "monitor_notes": "Insufficient interaction history for pattern detection. Only 2 turns present: T1 is system opening, T2 is first substantive party input from Parent A. Parent B has not yet responded. No cross-turn patterns can be assessed until both parties have made multiple substantive contributions. Parent A's opening statement (naming desire for predictable pickup schedule with written defaults) establishes their framing, but we cannot evaluate whether Parent B will show compliance, deflection, or discordant signal patterns until they participate. Will continue monitoring as session develops.",
+          "flags_raised": [],
+          "party_state_signals": []
+        },
+        "perception_agent_result": {
+          "schema_version": "perception_agent.v0",
+          "turn_index": 3,
+          "timestamp": "2026-03-29T00:02:30Z",
+          "confidence": "moderate",
+          "_null_result": false,
+          "party_a": {
+            "emotional_state": "composed and solution-oriented, with mild underlying anxiety about unpredictability",
+            "emotional_trajectory": "stable",
+            "engagement_quality": "genuine",
+            "communication_style": "direct",
+            "inferred_interests": [
+              "predictability and structure in parenting arrangements",
+              "reducing friction and confusion in day-to-day logistics",
+              "having written documentation to reference when ambiguity arises"
+            ],
+            "inferred_concerns": [
+              "ongoing confusion or conflict arising from informal arrangements",
+              "vulnerability to last-minute changes or misunderstandings",
+              "need for clear boundaries that both parties can reliably reference"
+            ],
+            "unsaid_signals": [
+              "framing the issue as 'already causing confusion' suggests recent negative experiences with informal arrangements",
+              "emphasis on 'written defaults' implies trust may be fragile or Party A wants protection from future disagreement about what was agreed"
+            ],
+            "relational_posture": "cooperative and agenda-setting"
+          },
+          "party_b": {
+            "emotional_state": "unknown - no signal yet",
+            "emotional_trajectory": "stable",
+            "engagement_quality": "genuine",
+            "communication_style": "direct",
+            "inferred_interests": [],
+            "inferred_concerns": [],
+            "unsaid_signals": [
+              "Party B has not yet spoken - their response to Party A's framing will be critical diagnostic information",
+              "how Party B reacts to the 'already causing confusion' frame will reveal whether they share this perception or feel blamed"
+            ],
+            "relational_posture": "not yet established - awaiting first substantive input"
+          },
+          "relational_dynamic": "too early to assess - Party A has set an agenda, but the dynamic depends entirely on how Party B responds",
+          "dynamic_trajectory": "stable",
+          "perception_signals": [
+            "Party A has clearly articulated their position but at turn 2 we have extremely limited relational data",
+            "the specificity of Party A's opening ('written defaults', 'predictability') suggests they have thought through their position in advance",
+            "Party B's first substantive response will reveal whether this is a shared concern or whether Party A is leading unilaterally"
+          ],
+          "scaffold_divergence": "Scaffold assesses both parties as 'engaged_and_cooperative' and the dynamic as 'cooperative_and_stable' - but Party B has not yet contributed substantive content. The scaffold may be defaulting to baseline assumptions rather than acknowledging the absence of signal. Party B's engagement quality, emotional state, and relational posture cannot be meaningfully assessed before they speak. The dynamic also cannot be characterized as cooperative until we see whether Party B shares the frame or responds differently.",
+          "perception_notes": [
+            "Party B has not yet contributed - their first response is the single most important diagnostic signal available at this stage",
+            "Watch for: Does Party B confirm the 'confusion' frame or reframe it? Do they accept or resist the emphasis on written structure?",
+            "Party A's specificity suggests preparation - this may be their preferred solution rather than an emergent need. Mediator should ensure Party B's perspective is independently surfaced before moving to options."
+          ],
+          "veto_signals": []
+        }
+      }
+    },
+    {
+      "turn_index": 4,
+      "timestamp": "2026-03-29T00:03:40Z",
+      "role": "client",
+      "phase": "interest_exploration",
+      "message_summary": "Parent B affirms cooperative intent and raises the concern about over-formalization, reframing the ask as wanting defaults rather than hard rules. Both parents identify child comfort as the common anchor.",
+      "state_delta": {
+        "facts_added": [],
+        "facts_revised": [],
+        "facts_structured": [
+          {
+            "statement": "Both parents identify child comfort as the common anchor for any logistics framework.",
+            "category": "family_structure",
+            "status": "accepted",
+            "related_issues": [
+              "parenting_schedule",
+              "activity_coordination"
+            ],
+            "note": null
+          }
+        ],
+        "positions_added_or_updated": [],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_B"
+            ],
+            "kind": "position",
+            "issue_id": "communication_protocol",
+            "statement": "Logistics should use a default guide rather than a binding protocol so that normal life variation does not create automatic conflict.",
+            "status": "current",
+            "confidence": "high",
+            "proposal_id": null,
+            "position_id": "pos-spouse_b-001"
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "Client response remained constructive. Reframe toward defaults is workable."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    },
+    {
+      "turn_index": 5,
+      "timestamp": "2026-03-29T00:04:50Z",
+      "role": "assistant",
+      "phase": "option_generation",
+      "message_summary": "Validate both parties' realities as simultaneously true, explore the 'defaults vs hard rules' distinction Party B introduced, and invite Party A to provide concrete examples of confusion to ground the problem before moving to structure design.",
+      "state_delta": {
+        "facts_added": [
+          "Critical logistics parameters remain unknown: current parenting time baseline, geographic proximity, work schedule constraints, child's age",
+          "Problem specificity gap: Party A named 'confusion' but has not provided concrete examples of breakdown"
+        ],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [],
+        "open_questions_added": [
+          "Current parenting arrangement baseline (equal split? primary/secondary? informal rotation pattern?)",
+          "Specific instances of confusion or coordination failure that Party A has experienced"
+        ],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": []
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "No safety concerns. Both parties are engaged and cooperative. The frame tension I observe is a normal mediation dynamic \u2014 differing perceptions of problem severity \u2014 and is entirely manageable within M0. Party B's mild defensiveness is a signal to slow down and validate, not an escalation trigger."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": "High confidence in this process move. The frame gap I identified in Step 1 is directly supported by the language both parties used, and surfacing it explicitly will prevent misaligned option work. Party B's 'defaults vs hard rules' language is a bridge concept that deserves exploration \u2014 it may contain the seed of the solution structure. Grounding Party A's concern in concrete examples will help Party B understand the need without feeling their reality is being dismissed.",
+      "message_text": "I want to reflect back what I'm hearing, because I think you're both describing something important and I want to make sure both realities are on the table.\n\n[Parent A], you opened by saying that vague arrangements are already causing confusion, and you're looking for written defaults so there's predictability and less friction. That tells me you're experiencing the current setup as inadequate in some way \u2014 that something isn't working well enough.\n\n[Parent B], you came in by saying you've been doing okay and that you want to avoid over-formalizing things \u2014 and you made a distinction I think is really important. You said you're open to defaults, but not hard rules. That tells me you're experiencing the current setup as basically functional, and you're concerned about losing flexibility.\n\nHere's what I'm noticing: both of those things can be true at the same time. It's possible that the current arrangement has been working well enough overall AND that there are specific moments where the lack of clarity has created confusion or stress. Before we talk about what structure might help, I want to understand both of those realities more clearly.\n\n[Parent B], let me start with you. You made this distinction between 'defaults' and 'hard rules' \u2014 can you say more about what that means to you? What's the difference you're drawing there, and what are you worried might happen if things get too formalized?\n\nAnd then [Parent A], I'm going to ask you to give me some specifics. You said the current arrangement is already causing confusion. Can you walk me through an example \u2014 a specific time when the lack of clarity created a problem or made something harder than it needed to be? I want to understand what that confusion actually looks like in practice.",
+      "interaction_observations_delta": [
+        "[PERCEPTION:PARTY_A] emotional=moderately_anxious_with_control_seeking posture=assertive_and_solution_oriented \u2014 maintains agenda control but not adversarially, wants to move quickly to structure",
+        "[PERCEPTION:PARTY_A:INTERESTS] predictability and advance notice for planning purposes; reduction of ongoing friction or repeated negotiation; written documentation to reduce ambiguity",
+        "[PERCEPTION:PARTY_B] emotional=cautiously_engaged_with_mild_defensiveness posture=cooperative_but_subtly_pushback \u2014 affirms collaboration while gently challenging premise that problem is urgent",
+        "[PERCEPTION:PARTY_B:INTERESTS] preservation of flexibility and responsiveness to real-time needs; validation that current informal system has been working adequately; avoidance of over-rigid structure that feels constraining or punitive",
+        "[PERCEPTION:DYNAMIC] cooperative_with_underlying_frame_tension \u2014 both parties want to work together and anchor on child welfare, but Party A is experiencing current arrangement as inadequate while Party B is experiencing it as adequate-but-improvable. This is a framing gap, not a conflict, but if not surfaced it will produce misaligned option work. Party B's 'defaults not hard rules' distinction is an attempt to preserve their reality while meeting Party A's need \u2014 this is a bridge move that should be explored.",
+        "[DOMAIN:GAPS] Current parenting arrangement baseline (equal split? primary/secondary? informal rotation pattern?); Specific instances of confusion or coordination failure that Party A has experienced; What 'defaults vs hard rules' means operationally to Party B (are they distinguishing presumptive-but-overrideable vs. binding-unless-agreed?)",
+        "[OPTION_SCAN] premature_option_work=True \u2014 options deferred",
+        "[PERCEPTION:DIVERGENCE] scaffold=cooperative_and_stable lm=cooperative_with_underlying_frame_tension \u2014 both parties want to work together and anchor on child welfare, but Party A is experiencing current arrangement as inadequate while Party B is experiencing it as adequate-but-improvable. This is a framing gap, not a conflict, but if not surfaced it will produce misaligned option work. Party B's 'defaults not hard rules' distinction is an attempt to preserve their reality while meeting Party A's need \u2014 this is a bridge move that should be explored."
+      ],
+      "reasoning_trace": {
+        "source": "lm_runtime",
+        "model_id": "claude-sonnet-4-5",
+        "perception": {
+          "party_a": {
+            "emotional_state": "moderately_anxious_with_control_seeking",
+            "inferred_interests": [
+              "predictability and advance notice for planning purposes",
+              "reduction of ongoing friction or repeated negotiation",
+              "written documentation to reduce ambiguity",
+              "sense of order or control in a domain that feels unstable",
+              "validation that current confusion is real and needs addressing"
+            ],
+            "risk_signals": [
+              "anticipatory anxiety may be driving solution before problem is fully explored",
+              "framing 'already causing confusion' without concrete examples suggests perceived rather than demonstrated breakdown"
+            ],
+            "relational_posture": "assertive_and_solution_oriented \u2014 maintains agenda control but not adversarially, wants to move quickly to structure"
+          },
+          "party_b": {
+            "emotional_state": "cautiously_engaged_with_mild_defensiveness",
+            "inferred_interests": [
+              "preservation of flexibility and responsiveness to real-time needs",
+              "validation that current informal system has been working adequately",
+              "avoidance of over-rigid structure that feels constraining or punitive",
+              "child comfort and relational ease (explicitly named)",
+              "process legitimacy \u2014 wants their 'we've been doing okay' framing to be heard alongside Party A's concern"
+            ],
+            "risk_signals": [
+              "emphasis on 'we've been doing okay' may signal feeling rushed or that problem is being overstated",
+              "could withdraw if perception grows that Party A's framing is being accepted as objective truth without Party B's reality being validated"
+            ],
+            "relational_posture": "cooperative_but_subtly_pushback \u2014 affirms collaboration while gently challenging premise that problem is urgent"
+          },
+          "relational_dynamic": "cooperative_with_underlying_frame_tension \u2014 both parties want to work together and anchor on child welfare, but Party A is experiencing current arrangement as inadequate while Party B is experiencing it as adequate-but-improvable. This is a framing gap, not a conflict, but if not surfaced it will produce misaligned option work. Party B's 'defaults not hard rules' distinction is an attempt to preserve their reality while meeting Party A's need \u2014 this is a bridge move that should be explored.",
+          "perception_confidence": "high",
+          "perception_notes": [
+            "Party B's turn 4 response is affiliative in tone but contains important qualifying language ('we've been doing okay', 'don't want to over-formalize') that signals their experience of the current state differs from Party A's",
+            "Party A has not yet specified what confusion has occurred or its frequency/severity \u2014 the problem remains abstract, which supports perception agent's note that they are debating structure without substance",
+            "The 'defaults vs hard rules' framing Party B introduced is load-bearing \u2014 it reveals that Party B is not resisting structure per se, but is concerned about rigidity. This distinction must be explored before option work.",
+            "Both parties used child-centered language genuinely \u2014 this is a shared value anchor that can be used to bridge frame differences"
+          ],
+          "scaffold_divergence": "scaffold assessed relational_dynamic='cooperative_and_stable'; model assessed \"cooperative_with_underlying_frame_tension \u2014 both parties want to work together and anchor on child welfare, but Party A is experiencing current arrangement as inadequate while Party B is experiencing it as adequate-but-improvable. This is a framing gap, not a conflict, but if not surfaced it will produce misaligned option work. Party B's 'defaults not hard rules' distinction is an attempt to preserve their reality while meeting Party A's need \u2014 this is a bridge move that should be explored.\""
+        },
+        "domain_analysis": {
+          "key_constraints": [
+            "Critical logistics parameters remain unknown: current parenting time baseline, geographic proximity, work schedule constraints, child's age",
+            "Problem specificity gap: Party A named 'confusion' but has not provided concrete examples of breakdown",
+            "Structural framing gap: Party A seeks 'written defaults', Party B seeks 'defaults not hard rules' \u2014 these terms are not yet operationalized and may mean different things to each party"
+          ],
+          "material_gaps": [
+            "Current parenting arrangement baseline (equal split? primary/secondary? informal rotation pattern?)",
+            "Specific instances of confusion or coordination failure that Party A has experienced",
+            "What 'defaults vs hard rules' means operationally to Party B (are they distinguishing presumptive-but-overrideable vs. binding-unless-agreed?)",
+            "Geographic and work constraints that drive scheduling needs",
+            "Child's age and any existing preferences or patterns the child has expressed"
+          ],
+          "domain_notes": "Agree with pre-computed assessment that this is DEFERRED not blocked. Both parties are cooperative, issue is clearly custody schedule coordination, and the frame tension I observe (Party A experiencing inadequacy vs. Party B experiencing adequacy-but-improvable) is navigable. However, I want to add to the domain assessment: before eliciting pure logistics parameters, the mediator should surface the frame gap explicitly. Party B's 'we've been doing okay' needs validation before asking them to describe what needs fixing, or they will experience the process as validating only Party A's reality. The perception agent is correct: substance must precede structure. Next turn should: (1) validate both realities (something feels confusing to Party A AND things have been working adequately for Party B \u2014 both can be true), (2) explore the 'defaults vs hard rules' distinction Party B raised to understand their concern, (3) then elicit concrete examples from Party A of what confusion looks like, (4) only after that is grounded, move to logistics parameters. This sequence will keep Party B engaged and prevent Party A from feeling their concern is being minimized.",
+          "option_readiness": "deferred"
+        },
+        "option_scan": {
+          "candidate_options": [
+            "Validate frame gap first, then elicit specifics",
+            "Explore 'defaults vs hard rules' distinction as bridge concept",
+            "Ask Party A for concrete confusion examples before moving to structure design",
+            "Surface what IS working before designing what needs to change"
+          ],
+          "qualified_options": [],
+          "premature_option_work": true,
+          "deferral_reason": "Critical frame gap must be surfaced and material information gaps must be filled before responsible schedule structure options can be generated. Party B's reality ('we've been doing okay') needs validation alongside Party A's concern, and the operational meaning of 'defaults vs hard rules' must be explored. Without this, option work will be abstract and risk alienating Party B."
+        },
+        "safety_assessment": {
+          "escalation_needed": false,
+          "candidate_mode": "M0",
+          "candidate_category": "E0",
+          "signals": [],
+          "notes": "No safety concerns. Both parties are engaged and cooperative. The frame tension I observe is a normal mediation dynamic \u2014 differing perceptions of problem severity \u2014 and is entirely manageable within M0. Party B's mild defensiveness is a signal to slow down and validate, not an escalation trigger.",
+          "safe_to_proceed_to_synthesis": true
+        },
+        "response_synthesis": {
+          "phase": "interest_exploration",
+          "message_summary": "Validate both parties' realities as simultaneously true, explore the 'defaults vs hard rules' distinction Party B introduced, and invite Party A to provide concrete examples of confusion to ground the problem before moving to structure design.",
+          "message_text": "I want to reflect back what I'm hearing, because I think you're both describing something important and I want to make sure both realities are on the table.\n\n[Parent A], you opened by saying that vague arrangements are already causing confusion, and you're looking for written defaults so there's predictability and less friction. That tells me you're experiencing the current setup as inadequate in some way \u2014 that something isn't working well enough.\n\n[Parent B], you came in by saying you've been doing okay and that you want to avoid over-formalizing things \u2014 and you made a distinction I think is really important. You said you're open to defaults, but not hard rules. That tells me you're experiencing the current setup as basically functional, and you're concerned about losing flexibility.\n\nHere's what I'm noticing: both of those things can be true at the same time. It's possible that the current arrangement has been working well enough overall AND that there are specific moments where the lack of clarity has created confusion or stress. Before we talk about what structure might help, I want to understand both of those realities more clearly.\n\n[Parent B], let me start with you. You made this distinction between 'defaults' and 'hard rules' \u2014 can you say more about what that means to you? What's the difference you're drawing there, and what are you worried might happen if things get too formalized?\n\nAnd then [Parent A], I'm going to ask you to give me some specifics. You said the current arrangement is already causing confusion. Can you walk me through an example \u2014 a specific time when the lack of clarity created a problem or made something harder than it needed to be? I want to understand what that confusion actually looks like in practice.",
+          "grounded_in_perception": true,
+          "options_introduced": [],
+          "confidence_note": "High confidence in this process move. The frame gap I identified in Step 1 is directly supported by the language both parties used, and surfacing it explicitly will prevent misaligned option work. Party B's 'defaults vs hard rules' language is a bridge concept that deserves exploration \u2014 it may contain the seed of the solution structure. Grounding Party A's concern in concrete examples will help Party B understand the need without feeling their reality is being dismissed."
+        },
+        "pre_computed_domain_analysis": {
+          "schema_version": "domain_analysis.v0",
+          "source": "domain_reasoner_v0",
+          "option_readiness": "deferred",
+          "readiness_rationale": "Both parties have now been heard and there is clear shared concern about coordination structure (Party A seeks predictability, Party B seeks flexibility - these are compatible process concerns). However, critical logistics parameters required for responsible schedule option qualification remain unknown: (1) current parenting arrangement baseline (equal time split? primary/secondary? informal rotation?), (2) geographic constraints (same school district? commute distance?), (3) work schedule constraints that drive pickup timing needs, (4) child's age and developmental capacity for input. Without these parameters, qualifying specific schedule structures would be premature - we cannot assess feasibility of 'core days fixed' without knowing current distribution, cannot evaluate 'seasonal framework' without knowing baseline arrangement, cannot qualify 'swap protocol' without understanding what the default state is. This is a DEFERRED state (not blocked) because: the issue structure is clear (custody schedule coordination), both parties have articulated compatible process-level interests, and the gap is purely factual logistics that can be surfaced in the next turn. The parties are demonstrating cooperative engagement - no safety concerns present. Next turn should elicit: current arrangement specifics, geographic/work constraints, and any existing pain points in the informal system.",
+          "safety_veto_applied": false,
+          "safety_veto_reason": null,
+          "qualified_candidates": [],
+          "blocking_constraints": [],
+          "material_gaps": [
+            {
+              "gap": "Current parenting time baseline unknown (equal split? primary/secondary? alternating weeks? informal ad-hoc?)",
+              "importance": "high",
+              "what_it_blocks": "Cannot assess feasibility or appropriateness of any schedule structure (fixed core days, seasonal frameworks, swap protocols) without knowing starting state. All schedule options require anchoring to current arrangement."
+            },
+            {
+              "gap": "Geographic and work constraints not surfaced (same school district? commute distance? shift work? travel schedules?)",
+              "importance": "high",
+              "what_it_blocks": "Cannot evaluate workability of pickup schedule options, notice-period requirements, or flexibility mechanisms. Distance and work patterns determine what scheduling structures are actually viable."
+            },
+            {
+              "gap": "Child's age and developmental stage not specified",
+              "importance": "moderate",
+              "what_it_blocks": "Cannot assess appropriateness of child-input mechanisms (opt-gen-005) or evaluate age-appropriate flexibility structures. Scheduling needs for a 5-year-old vs. 14-year-old are fundamentally different."
+            },
+            {
+              "gap": "Specific pain points in current informal system not articulated (Party A said 'already causing confusion' but did not specify what confusion or its frequency/impact)",
+              "importance": "moderate",
+              "what_it_blocks": "Cannot calibrate whether the problem calls for comprehensive schedule overhaul vs. targeted coordination protocol. Party B's 'we've been doing okay' suggests perception gap that needs exploration before option presentation."
+            }
+          ],
+          "domain_confidence": "high",
+          "domain_notes": "This is a classic custody schedule coordination issue with strong cooperative indicators - both parties anchored on child comfort, Party B explicitly affirmed collaborative intent, neither party has signaled adversarial positioning. The process-level interests (predictability vs. flexibility) are entirely compatible and suggest multiple viable pathways once baseline logistics are known. The material gaps are factual parameters, not conceptual barriers - this is textbook 'deferred' rather than 'blocked' state. IMPORTANT CALIBRATION NOTE: Prior turn party state showed Party B had 'NONE OBSERVED' interests because they had not yet spoken. Turn 4 Client message shows Party B HAS NOW SPOKEN and articulated clear process concerns (flexibility, avoiding over-formalization, maintaining adaptability). The interest accumulation system should reflect this - Party B is no longer in 'unknown' state. For domain analysis purposes: Party B's articulated concerns about rigidity and preference for 'defaults rather than hard rules' are sufficient process-level interests to eventually qualify structural options. The deferral is purely for logistical parameters, not interest depth.",
+          "option_pool_qualification": {
+            "domain_expert_candidates": [
+              {
+                "candidate_id": "opt-dom-001",
+                "label": "Right of first refusal (ROFR) provision for schedule changes",
+                "rationale": "Standard family law mechanism for balancing flexibility with fairness. When one parent cannot use their scheduled time, the other parent gets first opportunity before alternative care is arranged. Addresses Party A's predictability interest (they know they'll be offered the time) and Party B's flexibility concern (changes are possible when needed). Widely used in custody orders and well-understood by courts.",
+                "party_interest_alignment": {
+                  "party_a": "Provides advance notice of schedule changes and reduces uncertainty about when changes will happen",
+                  "party_b": "Preserves ability to make changes when life circumstances require it, while formalizing the process"
+                },
+                "related_issues": [
+                  "custody_schedule",
+                  "parenting_coordination"
+                ],
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-dom-002",
+                "label": "Shared digital calendar with confirmation protocol",
+                "rationale": "Low-tech coordination mechanism that creates the 'written documentation' Party A seeks without requiring rigid advance commitments. Both parents access shared calendar, proposed changes require acknowledgment/confirmation within specified window. Addresses Party A's need to see schedule in writing while preserving Party B's desired adaptability. Common practice recommendation in high-functioning co-parenting situations.",
+                "party_interest_alignment": {
+                  "party_a": "Provides written visibility into schedule and reduces mental load of tracking informal arrangements",
+                  "party_b": "Allows real-time coordination without pre-committing to rigid long-term structure"
+                },
+                "related_issues": [
+                  "communication_protocol",
+                  "parenting_coordination"
+                ],
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-dom-003",
+                "label": "Week-on/week-off baseline with standing deviation windows",
+                "rationale": "Very common custody structure in shared parenting arrangements. Provides maximum predictability (parties always know whose week it is) while building in regular touchpoints where deviations can be proposed. The 'standing windows' (e.g., requests due by Thursday for following week) give Party A the advance notice they need while giving Party B regular flexibility opportunities. Only feasible if parties are geographically close and work schedules permit week-long stretches.",
+                "party_interest_alignment": {
+                  "party_a": "Creates the predictable baseline and written default schedule they explicitly requested",
+                  "party_b": "Week-on structure provides long uninterrupted parenting time (autonomy concern) while regular windows allow needed changes"
+                },
+                "related_issues": [
+                  "custody_schedule"
+                ],
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-dom-004",
+                "label": "Parallel parenting structure with minimal coordination requirements",
+                "rationale": "Alternative framework for situations where Party A's 'reduce ongoing friction' interest suggests coordination itself is a stressor. Each parent has defined time periods with full autonomy during those periods; handoff protocols are standardized to minimize negotiation. More distant approach than options above but may be appropriate if the underlying tension is about decision-making authority rather than schedule predictability. Would need more information about relationship dynamic to assess fit.",
+                "party_interest_alignment": {
+                  "party_a": "Eliminates ongoing negotiation and provides maximum structure/predictability",
+                  "party_b": "Provides full autonomy during parenting time without needing to coordinate or justify choices"
+                },
+                "related_issues": [
+                  "custody_schedule",
+                  "parenting_coordination",
+                  "decision_making_authority"
+                ],
+                "source": "domain_reasoner"
+              }
+            ],
+            "domain_qualified": [],
+            "domain_blocked": [
+              {
+                "candidate_id": "opt-gen-001",
+                "label": "Default schedule with built-in swap protocol",
+                "blocking_rationale": "Cannot assess what 'default schedule' structure is appropriate without knowing: (1) current arrangement baseline, (2) geographic constraints, (3) work schedules. The structure is sound but requires parameters. What does the default look like - alternating weeks? 2-2-3? 5-2? Each has different swap protocol implications. Additionally, 'swap protocol' mechanics depend on whether parties live near each other (can do same-day swaps?) and whether work allows flexibility.",
+                "what_would_unblock": "Elicit current parenting time split, geographic proximity, work schedule constraints, and any existing swap patterns that work or don't work",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-002",
+                "label": "Seasonal schedule framework with quarterly check-ins",
+                "blocking_rationale": "Cannot assess appropriateness without knowing current arrangement. Seasonal frameworks are typically used when there's a primary/secondary split that changes for summers or holidays, or when work schedules are seasonal (teacher, retail). If parties currently have equal time year-round, seasonal variation may not be needed. Additionally, child's age matters - school-age children have different seasonal needs than preschoolers.",
+                "what_would_unblock": "Clarify current time split, whether there are existing seasonal variations (summer break arrangements?), child's school status, and any seasonal work constraints",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-003",
+                "label": "Party A controls calendar publication, Party B controls swap requests",
+                "blocking_rationale": "This asymmetric control structure assumes Party A has anxiety about calendar maintenance (supported by 'mental load' signal in perception data) and Party B wants flexibility. While psychologically plausible, domain feasibility requires knowing: Is there a baseline schedule to publish? What are the mechanics of swap requests (notice periods, approval criteria)? This option also carries risk of creating power imbalance - 'control' framing may not be appropriate for cooperative co-parenting.",
+                "what_would_unblock": "Confirm that calendar anxiety is actual concern for Party A (not just perception inference), establish baseline schedule parameters, and assess whether control-separation framing fits parties' relational dynamic",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-004",
+                "label": "Two-tier system: core days fixed, flex days negotiable",
+                "blocking_rationale": "Sound structure but cannot specify which days are 'core' vs. 'flex' without knowing: (1) current distribution of parenting time, (2) work schedules that create fixed constraints (e.g., Party A works weekends so weekends must be flex, or Party B has Fridays off so Fridays are core for them), (3) child's activity schedule that creates natural fixed points. The concept is feasible but the implementation parameters are completely unknown.",
+                "what_would_unblock": "Map current time distribution, identify work-driven constraints, identify any child activities or commitments that create natural 'core' anchor points",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-005",
+                "label": "Child-input mechanism for schedule preferences",
+                "blocking_rationale": "Cannot assess appropriateness without child's age. Formal input mechanisms (voting, preference surveys, family meetings with child voice) are developmentally appropriate for older children (typically 12+) but inappropriate for young children who should not feel responsible for schedule decisions. Even for older children, mechanism design depends on maturity level and existing anxiety about expressing preferences. This option may also be premature - parties haven't identified child-input as a problem yet.",
+                "what_would_unblock": "Establish child's age and developmental stage, assess whether child has expressed schedule preferences or stress about current arrangement, determine whether parties agree child input is appropriate",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-006",
+                "label": "Notice-period requirement instead of fixed schedule",
+                "blocking_rationale": "This option assumes no default schedule exists and all parenting time is negotiated with advance notice (e.g., 'I'll take Tuesday/Wednesday this week, let me know by Sunday'). While this addresses Party A's 'advance notice' interest, it may not address the underlying predictability need if the baseline distribution is still negotiated each cycle. Feasibility depends on current arrangement - if parties currently have roughly equal time in an informal rotation, this codifies the rotation protocol. If arrangement is ad-hoc with no baseline, this may not provide enough structure for Party A.",
+                "what_would_unblock": "Clarify current arrangement baseline and whether the problem is lack of schedule structure or lack of protocol around an existing informal structure",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-007",
+                "label": "Trial period with explicit success criteria",
+                "blocking_rationale": "This is a process option, not a schedule structure. It's a valid approach when parties disagree about problem severity (Party B's 'we've been doing okay' vs. Party A's 'already causing confusion'), but it requires a specific proposal to trial. Trial of what? The option can't be qualified until there's a substantive schedule structure to test. This is a meta-option that wraps around another option - it should be considered during mediator response planning, not qualified as standalone domain option.",
+                "what_would_unblock": "This is not a domain qualification issue - this is a mediation process decision. Mediator can propose trial framing around any qualified option.",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-gen-008",
+                "label": "Logistics communication protocol separate from schedule content",
+                "blocking_rationale": "This option assumes Party A is conflating two problems (schedule predictability + communication structure) and suggests solving communication first. Domain assessment: this may be correct diagnostic, but cannot qualify specific protocol without knowing what logistics require coordination. Pickup/dropoff communication needs? Activity schedule sharing? Medical appointment notification? The protocol structure depends on what information needs to flow and what the current communication breakdown actually is. Party A said 'already causing confusion' but didn't specify what confusion - that gap blocks protocol design.",
+                "what_would_unblock": "Have Party A specify what logistics coordination is currently confusing (pickup timing? activity schedules? last-minute changes?) and what communication currently happens (text? email? verbal at handoff?)",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-dom-001",
+                "label": "Right of first refusal (ROFR) provision for schedule changes",
+                "blocking_rationale": "ROFR is mechanically sound but parameters depend on baseline schedule and practical constraints. Critical unknowns: (1) What triggers ROFR - any deviation from schedule, or only when parent plans to use alternate care? (2) What is reasonable notice period for ROFR exercise - depends on geographic distance and work flexibility. (3) What counts as 'alternate care' that triggers the provision - babysitter yes, but what about new partner, grandparents? These are standard ROFR implementation questions that require case-specific parameters.",
+                "what_would_unblock": "Establish baseline schedule that ROFR would modify, determine geographic proximity for response timing, clarify what alternate care scenarios parties are concerned about",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-dom-002",
+                "label": "Shared digital calendar with confirmation protocol",
+                "blocking_rationale": "The tool (shared calendar) is feasible, but the protocol requires parameters: (1) What is being calendared - a fixed schedule with noted exceptions, or week-by-week negotiated time? (2) What is confirmation window - 24 hours? 48 hours? One week? Depends on work schedules and planning needs. (3) What happens if confirmation doesn't come - does silence mean acceptance or rejection? Protocol design requires knowing current communication patterns and pain points.",
+                "what_would_unblock": "Clarify what current communication breakdown is (late responses? conflicting expectations? no written record?), establish parties' planning horizon needs, determine technology comfort level",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-dom-003",
+                "label": "Week-on/week-off baseline with standing deviation windows",
+                "blocking_rationale": "Week-on/week-off is extremely common structure BUT requires: (1) roughly equal parenting time as starting point (if current arrangement is 70/30, this is major restructuring not coordination protocol), (2) geographic proximity (cannot do week-long stretches if child attends school near one parent only), (3) work schedules that accommodate full weeks (shift work or extensive travel may make this infeasible). Cannot assess viability without these parameters.",
+                "what_would_unblock": "Confirm current time split is roughly equal, establish geographic proximity and school location, verify both parents can accommodate week-long parenting periods given work constraints",
+                "source": "domain_reasoner"
+              },
+              {
+                "candidate_id": "opt-dom-004",
+                "label": "Parallel parenting structure with minimal coordination requirements",
+                "blocking_rationale": "Parallel parenting is appropriate for high-conflict situations where coordination itself creates friction. Party signals suggest cooperative dynamic (Party B affirmed collaboration, both anchored on child comfort, no adversarial positioning), so parallel structure may be overkill. However, Party A's 'reduce ongoing friction' and 'mental load' signals could indicate coordination fatigue rather than interpersonal conflict. Cannot assess fit without understanding: Is the friction coming from negotiation itself, or from lack of clarity? Is relationship dynamic cooperative-but-exhausting or cooperative-and-functional?",
+                "what_would_unblock": "Clarify nature of 'friction' Party A referenced - is it interpersonal tension, logistical confusion, or coordination fatigue? Assess whether parties want more structure within collaborative framework vs. structure that reduces interaction",
+                "source": "domain_reasoner"
+              }
+            ]
+          },
+          "case_id": "D-B01",
+          "session_id": "D-B01-S02",
+          "turn_index": 5,
+          "generated_at": "2026-03-29T00:04:50Z"
+        },
+        "brainstormer_pool": [
+          {
+            "candidate_id": "opt-gen-001",
+            "label": "Default schedule with built-in swap protocol",
+            "rationale": "Creates the predictable baseline Party A needs while embedding flexibility mechanism Party B wants. Addresses both the meta-problem (having a known schedule) and the flexibility concern (ability to deviate when needed) without requiring one party to 'win' the structure-vs-flexibility tension.",
+            "party_interest_alignment": {
+              "party_a": "Provides written documentation and advance-planning predictability through a known default schedule; reduces mental load of constant negotiation; creates the 'written defaults' explicitly requested",
+              "party_b": "Preserves flexibility through formalized swap mechanism; prevents 'hard rules' feeling by building adaptability into the structure itself; maintains cooperative dynamic through mutual opt-in process for changes"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-002",
+            "label": "Seasonal schedule framework with quarterly check-ins",
+            "rationale": "Addresses Party A's need for structure while acknowledging Party B's concern that circumstances change. Creates medium-term predictability without permanent rigidity. The quarterly review mechanism gives both parties a structured opportunity to adjust without feeling either locked in or constantly renegotiating.",
+            "party_interest_alignment": {
+              "party_a": "Provides multi-month advance notice for planning; creates written framework that reduces day-to-day ambiguity; builds in natural review points so structure doesn't feel ignored",
+              "party_b": "Accommodates 'changing circumstances' concern through built-in review cycle; prevents feeling trapped in arrangements that stop working; maintains adaptability without requiring constant micro-negotiation"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-003",
+            "label": "Party A controls calendar publication, Party B controls swap requests",
+            "rationale": "Separates procedural control from substantive flexibility. Party A gets to manage the anxiety-producing coordination task (maintaining the written schedule) while Party B retains agency over when deviations occur. Role-clarity device that addresses different comfort levels with structure.",
+            "party_interest_alignment": {
+              "party_a": "Takes on the coordination role they seem ready to perform; satisfies need for documented schedule and reduces uncertainty about who maintains the framework",
+              "party_b": "Retains flexibility and spontaneity through control over deviation requests; doesn't have to manage the calendar maintenance burden; preserves sense of agency in parenting arrangements"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-004",
+            "label": "Two-tier system: core days fixed, flex days negotiable",
+            "rationale": "Hybrid structure that doesn't force binary choice between rigidity and chaos. Core days give Party A the planning baseline they need; flex days give Party B the adaptability they value. Reduces the scope of ongoing negotiation without eliminating it entirely.",
+            "party_interest_alignment": {
+              "party_a": "Provides guaranteed structure for essential planning purposes; reduces the universe of things requiring negotiation; creates written baseline that prevents repeated discussions about core arrangements",
+              "party_b": "Preserves flexibility for portion of schedule; avoids feeling every day is locked down; maintains collaborative decision-making for non-core time"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-005",
+            "label": "Child-input mechanism for schedule preferences",
+            "rationale": "Both parties anchored on 'child comfort' but haven't articulated how child's voice enters the decision. Creating a structured way to incorporate child perspective could resolve the deeper question: whose anxiety are we managing (parents' or child's)? Reframes the debate from Party A's structure vs Party B's flexibility to shared child-centered design.",
+            "party_interest_alignment": {
+              "party_a": "Shifts from abstract 'confusion' to concrete child feedback; could validate need for more structure if child expresses scheduling stress; creates shared information base for decisions",
+              "party_b": "Prevents Party A's anxiety from driving solutions that don't match child's actual experience; preserves collaborative stance by making both parents equally responsive to child's needs; may reveal that current informal approach is actually working for child"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-006",
+            "label": "Notice-period requirement instead of fixed schedule",
+            "rationale": "Addresses Party A's 'advance notice' interest without requiring the full written schedule they proposed. Creates a middle path: not formless (Party A's concern) but not rigid (Party B's concern). Focuses on the coordination process rather than predetermining outcomes.",
+            "party_interest_alignment": {
+              "party_a": "Satisfies advance-planning need through mandatory notice window; reduces day-of ambiguity and last-minute changes; creates a written rule even if not a written schedule",
+              "party_b": "Preserves full flexibility on what schedule is chosen, only constrains timing of communication; avoids 'hard rules' about parenting time itself; maintains adaptability to circumstances"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-007",
+            "label": "Trial period with explicit success criteria",
+            "rationale": "Party B noted 'we've been doing okay' \u2014 possible perception gap about problem severity. Trial structure lets Party A test whether written framework actually reduces stress, and lets Party B see whether flexibility survives formalization. Time-bounds the commitment, which may reduce Party B's resistance to trying structure.",
+            "party_interest_alignment": {
+              "party_a": "Gets to implement and experience the structure they're advocating for; opportunity to demonstrate that formalization solves real problems; doesn't have to convince Party B theoretically, can show evidence",
+              "party_b": "Doesn't commit permanently to a structure they're uncertain about; gets concrete data on whether Party A's concerns materialize or whether current approach is actually working; preserves ability to revert if formalization creates the rigidity they fear"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          },
+          {
+            "candidate_id": "opt-gen-008",
+            "label": "Logistics communication protocol separate from schedule content",
+            "rationale": "Party A may be conflating two problems: (1) lack of schedule predictability and (2) lack of coordination structure. Separating these allows progress on the meta-problem (how we communicate about pickups) without resolving the object-level question (what the schedule should be). Could reduce Party A's stress without triggering Party B's rigidity concerns.",
+            "party_interest_alignment": {
+              "party_a": "Reduces 'repeated negotiation' burden through clear communication expectations; creates written framework even if schedule content remains flexible; addresses coordination friction directly",
+              "party_b": "Doesn't constrain parenting time flexibility; addresses Party A's process anxiety without imposing substantive structure; demonstrates responsiveness to Party A's stress without accepting their problem definition"
+            },
+            "related_issues": [],
+            "source": "option_generator"
+          }
+        ],
+        "safety_monitor_result": {
+          "schema_version": "safety_monitor.v0",
+          "case_id": "D-B01",
+          "session_id": "D-B01-S02",
+          "turn_index": 5,
+          "generated_at": "2026-03-29T00:04:50Z",
+          "source": "safety_monitor_v0",
+          "compliance_pattern": {
+            "detected": false,
+            "party": null,
+            "evidence_turns": [],
+            "pattern_type": null,
+            "severity": null
+          },
+          "deflection_pattern": {
+            "detected": false,
+            "deflecting_party": null,
+            "target_request_turn": null,
+            "deflection_turns": [],
+            "deflection_tactics": [],
+            "pattern_confirmed": false
+          },
+          "discordant_signals": [],
+          "veto_recommendation": null,
+          "veto_reason": null,
+          "monitor_confidence": "high",
+          "monitor_notes": "Session is at turn 4 with only 2 client turns. Both parties have made substantive opening statements expressing independent interests. Party A initiated with concern about predictability and written defaults. Party B responded with independent content: affirmed cooperative intent, raised concern about over-formalization, reframed toward 'defaults rather than hard rules', and identified child comfort as shared anchor. Party B's response shows genuine engagement with Party A's framing but includes clear independent positioning (the over-formalization concern and the defaults/flexibility distinction). This is normal early-stage mediation dialogue where one party opens and the other responds with their own perspective. Insufficient turn history exists to detect multi-turn patterns. No information asymmetry has been tested yet. No compliance pattern is evident - Party B has expressed independent values and concerns, not mere acceptance. No deflection requests have occurred. No discordant signals have been suppressed. Session appears to be proceeding healthily through initial interest articulation phase.",
+          "flags_raised": [],
+          "party_state_signals": []
+        },
+        "perception_agent_result": {
+          "schema_version": "perception_agent.v0",
+          "turn_index": 5,
+          "timestamp": "2026-03-29T00:04:50Z",
+          "confidence": "moderate",
+          "_null_result": false,
+          "party_a": {
+            "emotional_state": "task-focused with underlying anxiety about unpredictability",
+            "emotional_trajectory": "stable",
+            "engagement_quality": "genuine",
+            "communication_style": "direct",
+            "inferred_interests": [
+              "Predictability and structure in co-parenting arrangements",
+              "Written documentation to prevent future conflict",
+              "Reduction of logistical uncertainty",
+              "Being able to plan around a known schedule"
+            ],
+            "inferred_concerns": [
+              "That informal arrangements will continue to create confusion",
+              "That without written agreements, misunderstandings will escalate",
+              "That they may be carrying more mental load around coordination than Party B",
+              "That flexibility without structure could disadvantage them in planning"
+            ],
+            "unsaid_signals": [
+              "Led with solution ('clear pickup schedule', 'written defaults') rather than underlying problem - may be oriented toward control/certainty as a stress-management strategy",
+              "Framed the issue as already causing confusion but did not specify what confusion or its emotional impact - the stress may be anticipatory rather than from actual breakdowns",
+              "Has not mentioned their own parenting time preferences or what schedule they actually want - focused entirely on the meta-problem of having a schedule"
+            ],
+            "relational_posture": "agenda-setting and solution-oriented"
+          },
+          "party_b": {
+            "emotional_state": "cooperative but mildly guarded about rigidity",
+            "emotional_trajectory": "stable",
+            "engagement_quality": "genuine",
+            "communication_style": "collaborative",
+            "inferred_interests": [
+              "Maintaining flexibility to accommodate changing circumstances",
+              "Preserving a cooperative co-parenting relationship",
+              "Child's comfort and sense of stability",
+              "Having structure without feeling constrained"
+            ],
+            "inferred_concerns": [
+              "That formalization will reduce adaptability when life circumstances change",
+              "That 'hard rules' might create conflict rather than prevent it",
+              "That they may lose agency or spontaneity in parenting arrangements",
+              "That Party A's anxiety about structure could drive overly rigid solutions"
+            ],
+            "unsaid_signals": [
+              "Reframed Party A's 'clear schedule' as 'defaults rather than hard rules' - signaling concern about rigidity without directly opposing structure",
+              "Emphasized 'we've been doing okay' - may feel Party A is overstating the problem or moving too quickly toward formalization",
+              "Has not articulated what their current parenting arrangement actually is or what they specifically want - focused on process concerns (flexibility) rather than content",
+              "Used 'I want us to stay flexible' but did not specify flexible about what - the concern may be more relational (preserving cooperation) than logistical"
+            ],
+            "relational_posture": "accommodating while protecting against over-structuring"
+          },
+          "relational_dynamic": "cooperative on surface with emerging divergence in problem definition - Party A sees the issue as insufficient structure causing confusion; Party B sees the issue as needing defaults without losing flexibility. Both are conflict-avoidant and anchoring on child's needs, but they have different theories of what creates stability.",
+          "dynamic_trajectory": "stable",
+          "perception_signals": [
+            "Neither party has articulated what specific parenting schedule they actually want - both are discussing the meta-level (how structured should it be) without content",
+            "Party A's opening framed 'confusion' as already occurring; Party B's response subtly contested this by saying 'we've been doing okay' - this is a quiet divergence in problem assessment that neither has made explicit",
+            "Both parties are using child comfort as a shared anchor, but they may have different implicit theories: Party A seems to link comfort to predictability; Party B seems to link it to parental cooperation and adaptability",
+            "The 'defaults vs hard rules' distinction Party B introduced is substantively important - it suggests they want written guidance but with interpretive flexibility, while Party A's 'clear schedule' and 'written defaults' language suggests they want less interpretive space"
+          ],
+          "scaffold_divergence": "The scaffold assessment of 'moderately_stressed' for both parties undersells the divergence in their orientations. Party A is showing stress specifically about uncertainty and lack of structure - their stress is about the absence of something they want. Party B is showing concern (not stress in the same way) about over-correction - their guardedness is about the presence of something they don't want. These are different psychological states with different implications for how the mediation should proceed. The scaffold's 'cooperative_and_stable' relational dynamic assessment is accurate at the surface level but misses that the cooperation is masking a substantive disagreement about problem definition that has not yet been surfaced.",
+          "perception_notes": [
+            "Before moving to options, the mediator must surface the actual schedule content both parties want - they are currently debating structure without substance, which will lead to abstract/ungrounded proposals",
+            "The 'defaults vs hard rules' distinction Party B raised is load-bearing for this mediation - the mediator should make this explicit and explore what each party means by these terms before proceeding",
+            "Party A's stress appears anticipatory (fear of future confusion) rather than reactive to current breakdown - validating their need for predictability while exploring whether current arrangements are actually failing will help calibrate the urgency",
+            "Party B's emphasis on 'we've been doing okay' may indicate they feel the pace is too fast or the problem is being overstated - creating space for them to name what IS working before focusing on what needs to change will help them stay engaged"
+          ],
+          "veto_signals": []
+        }
+      }
+    },
+    {
+      "turn_index": 6,
+      "timestamp": "2026-03-29T00:06:00Z",
+      "role": "client",
+      "phase": "agreement_building",
+      "message_summary": "Both parents are conditionally open to the logistics coordination package. Parent A confirms the written-guideline framing satisfies the clarity need. Parent B confirms the default-guide framing preserves the flexibility need.",
+      "state_delta": {
+        "facts_added": [],
+        "facts_revised": [],
+        "facts_structured": [],
+        "positions_added_or_updated": [],
+        "positions_structured": [
+          {
+            "participant_ids": [
+              "spouse_A",
+              "spouse_B"
+            ],
+            "kind": "proposal",
+            "issue_id": "communication_protocol",
+            "statement": "Both parents are conditionally open to a default-guideline logistics coordination package covering pickup windows, activity hand-off, and holiday sequencing.",
+            "status": "tentative",
+            "confidence": null,
+            "proposal_id": "prop-shared-001",
+            "position_id": null
+          }
+        ],
+        "open_questions_added": [],
+        "open_questions_resolved": [],
+        "missing_info_structured": [],
+        "issue_map_updates": [],
+        "issue_updates_structured": [],
+        "packages_structured": [],
+        "option_state_updates": [],
+        "escalation_state_updates": [
+          "Closed the slice in M0. No threshold-relevant concern arose. Package accepted as workable starting basis."
+        ]
+      },
+      "risk_check": {
+        "triggered": false,
+        "signals": [],
+        "severity": 1,
+        "notes": "Agreement-building remained bounded and voluntary. M0 maintained throughout."
+      },
+      "candidate_escalation_category": null,
+      "candidate_escalation_mode": null,
+      "confidence_note": null,
+      "message_text": null,
+      "interaction_observations_delta": [],
+      "reasoning_trace": null
+    }
+  ],
+  "final_state_summary": {
+    "current_phase": "agreement_building",
+    "issues_identified": [],
+    "open_questions_remaining": [],
+    "active_flags": [],
+    "current_escalation_state": "M0",
+    "continuation_recommendation": "Use the next session to continue clarifying positions, interests, and process expectations without overstating agreement."
+  },
+  "trace_notes": null
+}

@@ -1,0 +1,196 @@
+{
+  "schema_version": "facts_snapshot.v0",
+  "case_id": "D-B02",
+  "session_id": "D-B02-S02",
+  "facts": [
+    {
+      "fact_id": "fact-001",
+      "category": "communication_history",
+      "statement": "Issue domain completely unidentified \u2014 do not know if this concerns custody, property division, support, or other matters",
+      "status": "accepted",
+      "source_turns": [
+        1
+      ],
+      "related_issues": [
+        "parenting_schedule"
+      ],
+      "note": null
+    },
+    {
+      "fact_id": "fact-002",
+      "category": "communication_history",
+      "statement": "No information about children, assets, income, or any other material facts",
+      "status": "accepted",
+      "source_turns": [
+        1
+      ],
+      "related_issues": [
+        "parenting_schedule"
+      ],
+      "note": null
+    },
+    {
+      "fact_id": "fact-003",
+      "category": "financial",
+      "statement": "The parties dispute how shared credit-card debt and housing costs should be divided.",
+      "status": "accepted",
+      "source_turns": [
+        2
+      ],
+      "related_issues": [
+        "shared_debt_allocation",
+        "housing_cost_division"
+      ],
+      "note": null
+    },
+    {
+      "fact_id": "fact-004",
+      "category": "communication_history",
+      "statement": "Party B has provided no input \u2014 we lack their perspective on whether debts are disputed, what amounts are claimed, or whether they share Party A's concern about documentation",
+      "status": "accepted",
+      "source_turns": [
+        3
+      ],
+      "related_issues": [
+        "parenting_schedule"
+      ],
+      "note": null
+    },
+    {
+      "fact_id": "fact-005",
+      "category": "communication_history",
+      "statement": "The nature of the 'informal debt agreements' is unspecified \u2014 we don't know whether these are loans between parties, joint debts to third parties, or something else",
+      "status": "accepted",
+      "source_turns": [
+        3
+      ],
+      "related_issues": [
+        "parenting_schedule"
+      ],
+      "note": null
+    },
+    {
+      "fact_id": "fact-006",
+      "category": "communication_history",
+      "statement": "Spouse B acknowledges their recollection of the debt arrangement may not be fully accurate.",
+      "status": "accepted",
+      "source_turns": [
+        4
+      ],
+      "related_issues": [
+        "financial_documentation",
+        "shared_debt_allocation"
+      ],
+      "note": "Accepted as a stated acknowledgment, not as a factual determination."
+    },
+    {
+      "fact_id": "fact-007",
+      "category": "communication_history",
+      "statement": "Informal debt reconciliation domain identified but fundamentally one-sided \u2014 only Party A's interests on record",
+      "status": "accepted",
+      "source_turns": [
+        5
+      ],
+      "related_issues": [
+        "parenting_schedule"
+      ],
+      "note": null
+    },
+    {
+      "fact_id": "fact-008",
+      "category": "communication_history",
+      "statement": "Disputed recollection of housing cost sharing arrangements \u2014 nature and amount unknown",
+      "status": "accepted",
+      "source_turns": [
+        5
+      ],
+      "related_issues": [
+        "parenting_schedule"
+      ],
+      "note": null
+    },
+    {
+      "fact_id": "fact-009",
+      "category": "financial",
+      "statement": "Credit-card statement figures are not yet available. Parties are working from memory only.",
+      "status": "uncertain",
+      "source_turns": [
+        6
+      ],
+      "related_issues": [
+        "shared_debt_allocation",
+        "financial_documentation"
+      ],
+      "note": "The session surfaced these items as unresolved rather than settled."
+    },
+    {
+      "fact_id": "fact-010",
+      "category": "financial",
+      "statement": "Some text messages about housing costs exist but do not constitute a clear written agreement.",
+      "status": "uncertain",
+      "source_turns": [
+        6
+      ],
+      "related_issues": [
+        "housing_cost_division",
+        "financial_documentation"
+      ],
+      "note": "The session surfaced these items as unresolved rather than settled."
+    },
+    {
+      "fact_id": "fact-011",
+      "category": "financial",
+      "statement": "Both parties acknowledge that exact amounts are estimates rather than verified figures.",
+      "status": "accepted",
+      "source_turns": [
+        6
+      ],
+      "related_issues": [
+        "shared_debt_allocation",
+        "housing_cost_division"
+      ],
+      "note": null
+    },
+    {
+      "fact_id": "fact-012",
+      "category": "communication_history",
+      "statement": "CRITICAL: Cannot proceed to option generation with only one party's interests known",
+      "status": "accepted",
+      "source_turns": [
+        7
+      ],
+      "related_issues": [
+        "parenting_schedule"
+      ],
+      "note": null
+    },
+    {
+      "fact_id": "fact-013",
+      "category": "communication_history",
+      "statement": "Documentation exists but is incomplete (text messages, memory-based estimates, no formal credit agreements)",
+      "status": "accepted",
+      "source_turns": [
+        7
+      ],
+      "related_issues": [
+        "parenting_schedule"
+      ],
+      "note": null
+    },
+    {
+      "fact_id": "fact-014",
+      "category": "timeline",
+      "statement": "Both parties accept the documentation-first approach as the bounded next step.",
+      "status": "accepted",
+      "source_turns": [
+        8
+      ],
+      "related_issues": [
+        "financial_documentation",
+        "shared_debt_allocation"
+      ],
+      "note": null
+    }
+  ],
+  "facts_notes": "Uncertain feasibility items remain explicit rather than being promoted to settled conclusions."
+}

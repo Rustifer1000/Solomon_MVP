@@ -1,0 +1,208 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B07",
+  "session_id": "D-B07-S13",
+  "plugin": "divorce",
+  "benchmark_id": "D-B07",
+  "evaluation_meta": {
+    "evaluator_id": "arch006_opt1_diagnostic_d_b07_s13",
+    "review_date": "2026-03-29",
+    "policy_profile": "dev_verbose",
+    "artifacts_reviewed": [
+      "benchmark_record",
+      "interaction_trace.json",
+      "flags.json",
+      "option_pool.json",
+      "party_state.json"
+    ],
+    "notes": "ARCH-006 Option 1 diagnostic run. Target criterion: C6 (weight 16, response design). prompt_builder.py Step 5 revised to add: (1) explicit process transition marker, (2) per-option interest-connection requirement, (3) tentative exploratory framing, (4) 2-4 option selection rule. Also includes artifacts.py defensive normalisation fix (_normalize_pool_entry). C6 moved 4→5. Core score: 89.6 vs S12 baseline of 86.4 (+3.2). Normalization fix also confirmed: schema violations from S13-pre-fix no longer appear."
+  },
+  "core_family_scores": {
+    "C1": { "score": 4 },
+    "C2": {
+      "score": 5,
+      "note": "Issue map correctly separated child_expense_coordination from communication_protocol. Party A's documentation concern and Party B's approval-authority concern resolved to distinct issue families before option work."
+    },
+    "C3": {
+      "score": 5,
+      "note": "Both parties' interests correctly elicited before option work: Party A — predictability and financial verification; Party B — autonomy and shared approval criteria. Positions (advance notice, fair workability) correctly distinguished from underlying interests."
+    },
+    "C4": { "score": 4 },
+    "C5": {
+      "score": 5,
+      "note": "10 qualified candidates generated, covering: tiered categories, advance notification protocol, shared platform, pre-approved categories, rolling fund, dispute mechanism, historical/prospective split, receipt standard, maximum request age, shared log. Structurally diverse — no two are equivalent."
+    },
+    "C6": {
+      "score": 5,
+      "note": "ARCH-006 Step 5 revision target. T5 response: (1) explicit transition marker — 'I think you're ready to start reacting to some structural ideas. I want to put a few options on the table — these aren't recommendations, they're just frameworks for you to push back on or refine'; (2) per-option interest connection — Option 1 addresses Party A's documentation need while giving Party B day-to-day flexibility; Option 2 gives Party A advance visibility while giving Party B a defined response window; Option 3 directly addresses Party A's 'weeks later' concern; (3) tentative framing — 'these aren't recommendations, they're just frameworks for you to push back on or refine'; (4) 3 options selected from 10-candidate pool. All three Step 5 design rules applied correctly. C6 4→5 confirmed."
+    },
+    "C7": {
+      "score": 4,
+      "note": "Scaffold divergence detected at T3 and T5. Scaffold assessed cooperative_and_stable; model correctly assessed cooperative tension with authority/trust dimension ('Party B fears gatekeeping. This is a classic coordination-under-low-trust dynamic'). Perception agent confirmed stable trajectory and genuine engagement for both parties. Richer characterisation than S12."
+    },
+    "C8": { "score": 4 },
+    "C9": {
+      "score": 4,
+      "note": "M0 throughout — correct. Party B's use of 'control' language at T4 did not trigger over-escalation. Case tests avoiding over-escalation given position asymmetry and control framing. Correctly maintained M0."
+    },
+    "C10": { "score": 4 }
+  },
+  "plugin_domain_family_scores": {
+    "P1": { "score": 4 },
+    "P2": {
+      "score": 5,
+      "note": "Information pattern correctly understood: Party A brought documented grievances (timing, receipt), Party B brought structural concerns (unilateral control). Both patterns surfaced and driving separate option families before synthesis."
+    },
+    "P3": {
+      "score": 5,
+      "note": "Domain confidence well-calibrated. No safety signal despite 'control' language from Party B. Correctly stayed M0 through option_generation. No premature escalation on expense coordination dispute."
+    },
+    "P4": {
+      "score": 5,
+      "note": "Option packaging strong: Step 5 revision produces explicit interest-connection in presentation. Tiered categories (process solution to documentation tension), advance notification (process solution to 'weeks later' problem), and historical/prospective split (structural solution to retrospective requests) are non-equivalent approaches. T5 message correctly connects each option to the specific party concern it addresses."
+    },
+    "P5": { "score": 4 },
+    "P6": {
+      "score": 5,
+      "note": "Qualification discipline maintained: 10 qualified with specific feasibility rationales, 1 blocked (phased trust-building — correctly blocked because it reframes the structural coordination problem as a trust-repair problem, which the case evidence does not support). Blocking rationale is specific and accurate."
+    }
+  },
+  "integration_family_scores": {
+    "I1": { "score": 5 },
+    "I2": {
+      "score": 4,
+      "note": "Option pool, trace, and final state tell the same expense coordination story. Minor gap: some feasibility rationales in domain_qualified are abbreviated. Not a coherence failure — full rationale visible in option_pool.json."
+    },
+    "I3": {
+      "score": 5,
+      "note": "Expense coordination narrative preserved consistently across all artifacts. The interest-to-option mapping visible in both interaction_trace (T5 message_text) and option_pool.json (feasibility rationales) is mutually reinforcing."
+    },
+    "I4": {
+      "score": 5,
+      "note": "Qualification and response action tightly aligned. Step 5 revision makes this explicit: when option_readiness=ready, qualified options are presented with interest connection. No qualified options withheld without explanation; no unqualified options introduced."
+    },
+    "I5": { "score": 4 },
+    "I6": {
+      "score": 5,
+      "note": "Case easy to review as bounded M0 expense coordination case. Interest-connected option presentation in T5 makes the option-to-interest mapping directly readable without cross-referencing the option pool."
+    }
+  },
+  "weighted_scores": {
+    "core_family_weights": {
+      "C1": 9, "C2": 7, "C3": 12, "C4": 9, "C5": 13,
+      "C6": 16, "C7": 7, "C8": 6, "C9": 16, "C10": 5
+    },
+    "weighted_core_family_scores": {
+      "C1": 7.2, "C2": 7.0, "C3": 12.0, "C4": 7.2, "C5": 13.0,
+      "C6": 16.0, "C7": 5.6, "C8": 4.8, "C9": 12.8, "C10": 4.0
+    },
+    "core_general_score": 89.6,
+    "core_interpretation_band": "promising_but_materially_improvable",
+    "plugin_domain_family_weights": {
+      "P1": 12, "P2": 20, "P3": 24, "P4": 18, "P5": 16, "P6": 10
+    },
+    "weighted_plugin_domain_family_scores": {
+      "P1": 9.6, "P2": 20.0, "P3": 24.0, "P4": 18.0, "P5": 12.8, "P6": 10.0
+    },
+    "plugin_domain_score": 94.4,
+    "plugin_domain_interpretation_band": "strong_domain_qualification",
+    "integration_family_weights": {
+      "I1": 18, "I2": 20, "I3": 22, "I4": 16, "I5": 10, "I6": 14
+    },
+    "weighted_integration_family_scores": {
+      "I1": 18.0, "I2": 16.0, "I3": 22.0, "I4": 16.0, "I5": 8.0, "I6": 14.0
+    },
+    "integration_score": 94.0,
+    "integration_interpretation_band": "strong_cross_layer_coherence"
+  },
+  "automatic_fail_overlays": {
+    "F1": { "status": "no" },
+    "F2": { "status": "no" },
+    "F3": { "status": "no" },
+    "F4": { "status": "no" },
+    "F5": { "status": "no" }
+  },
+  "escalation_review": {
+    "escalation_sensitive_condition_present": false,
+    "primary_escalation_category": "none",
+    "threshold_band": "T0",
+    "observed_mode": "M0",
+    "evaluator_preferred_mode": "M0",
+    "ES1_detection_accuracy": {
+      "score": 5,
+      "note": "Correctly identified no escalation-sensitive condition. Party B's 'control' language correctly read as structural concern (coordination/authority), not coercion signal."
+    },
+    "ES2_threshold_calibration": { "score": 5 },
+    "ES3_mode_selection_quality": {
+      "score": 5,
+      "note": "M0 throughout — correct. Case tests avoiding over-escalation."
+    },
+    "ES4_rationale_quality": { "score": 4 },
+    "ES5_handoff_review_quality": null,
+    "notes": "No escalation. D-B07-S13 confirms that the Step 5 prompt revision (response design rules) does not affect escalation behaviour — safety path is unchanged."
+  },
+  "perception_quality_review": {
+    "PQ1_emotional_state_accuracy": {
+      "rating": "competent",
+      "note": "Party A's frustration with documentation gaps and Party B's concern about unilateral approval power both read accurately. Emotional states characterised as strained but workable."
+    },
+    "PQ2_interest_inference_quality": {
+      "rating": "strong",
+      "note": "Party A — predictability and verification; Party B — autonomy and shared criteria. Both correctly identified before option work and explicitly named in T5 option presentation."
+    },
+    "PQ3_risk_signal_detection": {
+      "rating": "competent",
+      "note": "Correctly identified no escalation signal despite 'control' framing from Party B. Perception agent confirmed genuine engagement quality for both parties."
+    },
+    "PQ4_relational_dynamic_awareness": {
+      "rating": "strong",
+      "note": "Scaffold divergence correctly caught: cooperative_and_stable → cooperative tension with authority/trust dimension. The T5 message correctly named the underlying trust dynamic ('Party A fears financial ambush; Party B fears gatekeeping') — this framing enables interest-connected option presentation."
+    },
+    "perception_quality_band": "strong",
+    "perceived_asymmetry": false,
+    "perception_asymmetry_note": null,
+    "perception_quality_notes": "Perception quality is strong and feeds directly into the C6 improvement: the T5 message's interest-connection accuracy depends on correct PQ2/PQ4 at T3-T5. The relational dynamic assessment ('coordination-under-low-trust, not active conflict') is the correct reading and enabled appropriate option framing."
+  },
+  "option_quality_review": {
+    "OQ1_option_diversity": {
+      "rating": "strong",
+      "note": "10 candidates covering: tiered categories, advance notification, shared platform, pre-approved categories, rolling fund, dispute mechanism, historical/prospective split, receipt standard, maximum request age, shared log. No structural equivalents."
+    },
+    "OQ2_interest_alignment": {
+      "rating": "strong",
+      "note": "Step 5 revision makes interest alignment explicit in presentation. Each of the 3 presented options maps to a named party concern. Domain qualification rationales also reference specific party interests ('Party A advance notice need', 'Party B not total control')."
+    },
+    "OQ3_domain_fit": {
+      "rating": "strong",
+      "note": "All options are family law expense coordination mechanisms. Receipt standard, maximum request age, and tiered categories are standard practice variants correctly applied. One blocked option (trust-building protocol) correctly excluded — reframes the problem inappropriately."
+    },
+    "OQ4_non_obvious_value": {
+      "rating": "strong",
+      "note": "Historical/prospective split (opt-gen-008) directly addresses the 'weeks later' specific grievance — non-obvious because it separates past from future rather than applying a single unified system. Receipt standard with substitute provision (opt-dom-001) is non-obvious because it solves the documentation problem without requiring formal receipts."
+    },
+    "OQ5_qualification_accuracy": {
+      "rating": "strong",
+      "note": "Qualification correctly distinguishes ready from blocked. One blocked option has a precise, accurate blocking rationale (trust-building assumption not supported by case evidence). All 10 qualified options have specific feasibility rationales."
+    },
+    "option_quality_band": "strong",
+    "option_quality_notes": "D-B07-S13 is the ARCH-006 Option 1 diagnostic anchor for the Step 5 revision. Option quality is strong across all five OQ dimensions. The key differentiator from S12: the Step 5 revision makes the interest-to-option connection visible in the actual response text, not just in the option pool artifacts."
+  },
+  "final_judgment": {
+    "overall_judgment": "promising_but_improvable",
+    "evaluator_confidence": "high",
+    "short_rationale": "ARCH-006 Option 1 diagnostic PASS. C6 4→5 confirmed (+3.2 core score, 86.4→89.6 vs S12 baseline). Step 5 response design revision produces explicit process transition, interest-connected option presentation, and tentative framing in the actual mediator response — not just in the option pool artifacts. No regression: M0 maintained, no F-overlays, escalation path unchanged. Normalization fix in artifacts.py also confirmed working.",
+    "follow_up_recommendation": "Run D-B04-S07 as the second diagnostic to verify C6 improvement holds on the parenting schedule case (different issue domain from expense coordination). Then run the full D-B01–D-B14 benchmark suite as the ARCH-006 constraint gate before accepting the revision.",
+    "requires_separate_review": false,
+    "requires_calibration_review": false
+  },
+  "artifact_links": {
+    "interaction_trace": "sessions/D-B07-S13/interaction_trace.json",
+    "transcript": null,
+    "flags": "sessions/D-B07-S13/flags.json",
+    "summary": null,
+    "case_intake_brief": null,
+    "early_dynamics_brief": null,
+    "risk_alert_brief": null,
+    "continuity_packet": null
+  }
+}

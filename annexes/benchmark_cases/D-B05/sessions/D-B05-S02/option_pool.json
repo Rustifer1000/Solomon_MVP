@@ -1,0 +1,372 @@
+{
+  "schema_version": "option_pool.v0",
+  "case_id": "D-B05",
+  "session_id": "D-B05-S02",
+  "generated_at": "2026-03-29T23:25:23Z",
+  "source": "lm_runtime",
+  "turns": [
+    {
+      "turn_index": 1,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "safety_veto_reason": null,
+      "brainstormer_candidates": [],
+      "domain_expert_candidates": [],
+      "combined_pool_count": 0,
+      "domain_qualified": [],
+      "domain_blocked": [],
+      "presented_to_parties": null
+    },
+    {
+      "turn_index": 3,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "safety_veto_reason": null,
+      "brainstormer_candidates": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Tiered notice requirement by schedule type",
+          "rationale": "Creates predictability while allowing flexibility for different contexts. Major changes (holidays/school breaks) require longer notice than minor adjustments. Addresses Party A's concern about child stability while leaving room for reasonable accommodation of unforeseen circumstances.",
+          "party_interest_alignment": {
+            "party_a": "Provides the clear boundaries and advance notice needed for planning and child preparation. Different tiers allow them to know what to expect based on change type.",
+            "party_b": "Preserves some flexibility for genuine emergencies or opportunities while establishing clear expectations. Not yet articulated but may value not being locked into rigid structure for all scenarios."
+          },
+          "related_issues": [
+            "holiday_scheduling",
+            "school_break_custody",
+            "notice_procedures"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Default schedule with opt-in variation protocol",
+          "rationale": "Establishes baseline predictability (Party A's core concern) while creating a structured pathway for requesting changes. Party requesting change bears burden of advance notice and documentation. Separates routine from exception.",
+          "party_interest_alignment": {
+            "party_a": "Default schedule provides the predictability and routine they've emphasized. Any departure requires following their notice-window concern.",
+            "party_b": "Maintains ability to request adjustments through clear process rather than being completely locked in. Process clarity may feel fairer than ambiguous negotiation."
+          },
+          "related_issues": [
+            "schedule_predictability",
+            "change_request_process",
+            "holiday_scheduling"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Child transition preparation protocol tied to notice periods",
+          "rationale": "Reframes notice requirement as child-centered practice rather than parent conflict. Notice window triggers specific preparation steps (telling child, coordinating belongings, etc.). Makes the 'why' of notice tangible and shared.",
+          "party_interest_alignment": {
+            "party_a": "Directly addresses their stated concern about child not being surprised. Makes their procedural request feel protective rather than controlling.",
+            "party_b": "If they value being seen as child-focused, this frames compliance as parenting practice rather than capitulation. May reduce defensiveness around Party A's request."
+          },
+          "related_issues": [
+            "child_welfare_focus",
+            "transition_procedures",
+            "notice_requirements"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Emergency override with post-hoc review mechanism",
+          "rationale": "Acknowledges that rigid notice requirements may conflict with genuine emergencies or opportunities (sick relative, unexpected work travel, special event). Creates safety valve while maintaining accountability through after-the-fact review.",
+          "party_interest_alignment": {
+            "party_a": "Preserves notice requirement as default while accepting that life happens. Review mechanism prevents emergency category from being abused.",
+            "party_b": "Provides flexibility for genuine unforeseen circumstances without having to fight for each exception. Knows what qualifies as override-worthy."
+          },
+          "related_issues": [
+            "flexibility_vs_structure",
+            "emergency_provisions",
+            "accountability_mechanisms"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Graduated notice windows by calendar proximity",
+          "rationale": "Notice requirement scales with how far in advance the event is. Holiday six months away requires less notice than holiday next week. Balances planning need against over-constraining long-term scheduling.",
+          "party_interest_alignment": {
+            "party_a": "Gets shorter notice windows for near-term changes where child disruption is more acute. Still provides advance planning capability.",
+            "party_b": "Avoids having to commit to distant-future plans too early. Can adjust long-range plans more easily than immediate ones."
+          },
+          "related_issues": [
+            "notice_timing",
+            "holiday_planning",
+            "scheduling_flexibility"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Shared digital calendar with automatic notice triggers",
+          "rationale": "Technological solution to procedural concern. Changes proposed in shared system automatically calculate notice compliance. Removes ambiguity and potential for after-the-fact dispute about whether notice was adequate.",
+          "party_interest_alignment": {
+            "party_a": "Provides clear documentation and removes possibility of last-minute surprise. System enforces the boundary they're seeking.",
+            "party_b": "Clarifies exactly what constitutes adequate notice. No room for miscommunication or good-faith mistakes being read as violations."
+          },
+          "related_issues": [
+            "communication_tools",
+            "notice_enforcement",
+            "documentation_practices"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Annual schedule-setting session with mid-year check-in",
+          "rationale": "Proactive rather than reactive approach. Parents sit down together (or with mediator) to map major events well in advance. Mid-year check-in allows adjustments. Reduces frequency of notice conflicts by front-loading planning.",
+          "party_interest_alignment": {
+            "party_a": "Gets predictability and advance planning for major disruption points. Reduces ongoing anxiety about surprise changes.",
+            "party_b": "Consolidates planning burden into scheduled sessions rather than ongoing negotiation. May prefer defined planning windows to continuous back-and-forth."
+          },
+          "related_issues": [
+            "proactive_planning",
+            "co-parenting_meetings",
+            "annual_schedule_structure"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Notice requirement with automatic approval for Category A changes",
+          "rationale": "Categorizes types of schedule changes. Some categories get automatic approval if notice is met; others require mutual agreement even with notice. Separates procedural compliance from substantive disagreement.",
+          "party_interest_alignment": {
+            "party_a": "Notice requirement is enforced but also provides some changes they can count on once notice is given. Reduces uncertainty beyond just timing.",
+            "party_b": "Clear framework for what they can plan unilaterally versus what requires negotiation. Reduces scope for ongoing conflict over each request."
+          },
+          "related_issues": [
+            "categorized_decision_rights",
+            "notice_plus_approval",
+            "reduced_negotiation_scope"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-009",
+          "label": "First-refusal protocol for unexpected parent schedule changes",
+          "rationale": "When one parent's plans change and their scheduled time is affected, other parent gets first option to take that time before alternative care is arranged. Pairs notice with opportunity rather than just constraint.",
+          "party_interest_alignment": {
+            "party_a": "Gets advance notice of schedule disruptions and control over how disruption is handled. May increase total time with child.",
+            "party_b": "Notice requirement comes with benefit \u2014 if they need to change plans, other parent may welcome the extra time rather than resisting the change."
+          },
+          "related_issues": [
+            "right_of_first_refusal",
+            "schedule_change_protocol",
+            "time_allocation"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-010",
+          "label": "Child age-gated notice requirements with sunset review",
+          "rationale": "Notice windows appropriate for child's current developmental stage, with agreement to revisit as child ages. Younger child may need more advance preparation; older child may benefit from more flexibility. Builds in evolution rather than permanence.",
+          "party_interest_alignment": {
+            "party_a": "Addresses their child-focused framing by tying notice to child's actual needs. Gets predictability now with recognition that needs may change.",
+            "party_b": "Avoids feeling locked into arrangement that may become unnecessarily rigid. Acknowledges that what works for a 5-year-old differs from a teenager."
+          },
+          "related_issues": [
+            "developmental_appropriateness",
+            "built_in_modification_process",
+            "child_age_factors"
+          ],
+          "source": "option_generator"
+        }
+      ],
+      "domain_expert_candidates": [
+        {
+          "candidate_id": "opt-dom-001",
+          "label": "Right of first refusal with notice standard",
+          "rationale": "Standard family law mechanism when schedule changes involve alternative care. If one parent cannot use their scheduled time, other parent gets first option before third-party care is arranged. Addresses both predictability (through notice standard) and flexibility (through substitution mechanism). Commonly used in custody agreements.",
+          "party_interest_alignment": {
+            "party_a": "Provides advance notice and reduces last-minute surprises; gives Party A additional time with child when Party B's plans change",
+            "party_b": "Unknown \u2014 depends on whether Party B values flexibility to arrange alternative care independently or would accept reciprocal first-refusal arrangement"
+          },
+          "related_issues": [
+            "custody_schedule",
+            "communication_protocol"
+          ],
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-002",
+          "label": "Make-up time standard for missed parenting time",
+          "rationale": "When schedule changes result in one parent losing time, this establishes whether and how that time is made up. Can be paired with notice requirements (adequate notice = make-up time required; inadequate notice = no make-up). Addresses fairness dimension of schedule changes.",
+          "party_interest_alignment": {
+            "party_a": "If Party A's concern includes equity (not just predictability), make-up time provision may be important",
+            "party_b": "Unknown \u2014 depends on whether Party B views schedule as strict entitlements or flexible coordination"
+          },
+          "related_issues": [
+            "custody_schedule",
+            "parenting_time_allocation"
+          ],
+          "source": "domain_reasoner"
+        }
+      ],
+      "combined_pool_count": 12,
+      "domain_qualified": [],
+      "domain_blocked": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Tiered notice requirement by schedule type",
+          "blocking_rationale": "Party B has not been heard. Cannot assess whether Party B can comply with tiered notice windows, whether they have legitimate need for shorter notice in certain contexts, or whether they dispute that last-minute changes are occurring. Structural feasibility depends on both parties' practical constraints.",
+          "what_would_unblock": "Party B input on their scheduling constraints, flexibility needs, and reaction to Party A's concern.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Default schedule with opt-in variation protocol",
+          "blocking_rationale": "Party B has not been heard. Cannot assess whether Party B would accept a default schedule baseline, whether they need variation pathways for legitimate reasons, or what their underlying interests are regarding schedule stability vs. flexibility.",
+          "what_would_unblock": "Party B input on their interests in schedule flexibility and their constraints on advance planning.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Child transition preparation protocol tied to notice periods",
+          "blocking_rationale": "Party B has not been heard. Cannot assess whether Party B shares the child-centered framing, whether they have different views on appropriate transition preparation, or whether they can comply with notice triggers given their practical constraints.",
+          "what_would_unblock": "Party B input on their approach to child transitions and their ability to provide advance notice.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Emergency override with post-hoc review mechanism",
+          "blocking_rationale": "Party B has not been heard. Cannot assess what constitutes 'emergency' from both parties' perspectives, whether post-hoc review would be workable for them, or whether Party B's schedule-change pattern includes legitimate emergency/opportunity scenarios.",
+          "what_would_unblock": "Party B input on types of schedule changes they need to make and circumstances that prevent advance notice.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Graduated notice windows by calendar proximity",
+          "blocking_rationale": "Party B has not been heard. Cannot assess whether Party B can comply with graduated windows, whether their planning horizon matches the proposed structure, or whether they have constraints that require different notice calibration.",
+          "what_would_unblock": "Party B input on their planning constraints and typical schedule-change scenarios.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Shared digital calendar with automatic notice triggers",
+          "blocking_rationale": "Party B has not been heard. Cannot assess technological capacity, willingness to use shared digital tools, or whether this approach would address Party B's interests and constraints. Also cannot assess current communication pattern or whether digital coordination would improve or complicate it.",
+          "what_would_unblock": "Party B input on communication preferences and technological comfort; understanding of current coordination mechanisms.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Annual schedule-setting session with mid-year check-in",
+          "blocking_rationale": "Party B has not been heard. Cannot assess whether Party B can plan holidays/breaks annually in advance, whether they have work/life constraints that prevent this, or whether they would participate in joint planning sessions. Also cannot assess whether the relational dynamic supports collaborative planning.",
+          "what_would_unblock": "Party B input on their planning constraints and willingness to engage in joint scheduling sessions; understanding of co-parenting relationship quality.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Notice requirement with automatic approval for Category A changes",
+          "blocking_rationale": "Party B has not been heard. Cannot categorize changes or determine automatic-approval categories without understanding what types of changes Party B typically needs to make and which categories cause conflict between parties.",
+          "what_would_unblock": "Both parties' input on which schedule changes are routine/non-controversial vs. which require mutual agreement; historical pattern of change types.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-009",
+          "label": "First-refusal protocol for unexpected parent schedule changes",
+          "blocking_rationale": "Party B has not been heard. Cannot assess whether Party B's schedule changes involve alternative care arrangements, whether they would accept first-refusal constraints, or whether this addresses the core concern. Also overlaps with opt-dom-001 (domain expert candidate covering same mechanism).",
+          "what_would_unblock": "Party B input on their schedule-change scenarios and approach to alternative care arrangements.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-010",
+          "label": "Child age-gated notice requirements with sunset review",
+          "blocking_rationale": "Party B has not been heard. Also missing child's current age and developmental stage. Cannot calibrate age-appropriate notice windows or assess whether developmental framing resonates with Party B's perspective on the issue.",
+          "what_would_unblock": "Party B input on their perspective; child's age and developmental needs; both parties' views on how notice requirements should evolve as child ages.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-001",
+          "label": "Right of first refusal with notice standard",
+          "blocking_rationale": "Party B has not been heard. Cannot assess whether Party B's schedule changes involve alternative care scenarios where first-refusal would apply, or whether they would accept reciprocal first-refusal constraints.",
+          "what_would_unblock": "Party B input on their schedule-change patterns and approach to alternative care.",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-dom-002",
+          "label": "Make-up time standard for missed parenting time",
+          "blocking_rationale": "Party B has not been heard. Cannot assess whether schedule changes result in lost time for either party, whether Party B views schedule as strict entitlements requiring make-up, or whether equity dimension is relevant to the conflict.",
+          "what_would_unblock": "Party B input on their interests in schedule flexibility vs. protected parenting time; understanding of whether changes are typically one-directional or reciprocal.",
+          "source": "domain_reasoner"
+        }
+      ],
+      "presented_to_parties": null
+    },
+    {
+      "turn_index": 5,
+      "option_readiness": "ready",
+      "safety_veto_applied": false,
+      "safety_veto_reason": null,
+      "brainstormer_candidates": [],
+      "domain_expert_candidates": [],
+      "combined_pool_count": 0,
+      "domain_qualified": [
+        {
+          "feasibility_rationale": "Both parties have identified the predictability-flexibility tension. Party A wants advance notice for child preparation; Party B wants flexibility for life circumstances. Tiered systems are standard in parenting plans for this exact issue type. Structure addresses both concerns: predictability through notice requirements, flexibility through tiered thresholds. Specific tiers (72h/1week/2weeks, emergency definitions, change categories) are party decisions.",
+          "confidence": "high",
+          "conditions": [
+            "Parties to define specific notice windows for each tier",
+            "Parties to define what constitutes 'emergency' or 'routine' change",
+            "Parties to agree on whether tier is determined by timing (proximity to holiday) or magnitude (duration of change)"
+          ],
+          "label": "Tiered notice system for schedule changes",
+          "candidate_id": "art-norm-000",
+          "source": "domain_reasoner"
+        },
+        {
+          "feasibility_rationale": "Party B explicitly mentioned 'preserved makeup time' as a fairness mechanism. Party A's concern is child stability, not zero-sum time protection, so makeup provisions may address Party A's fairness concern while giving Party B the flexibility sought. Standard mechanism in parenting plans. Specific calculation method (immediate makeup vs. end-of-month reconciliation, strict hour-matching vs. approximate balancing) is a party decision.",
+          "confidence": "high",
+          "conditions": [
+            "Parties to define calculation method (strict vs. approximate)",
+            "Parties to define timing window for makeup (immediate, same month, same quarter)",
+            "Parties to agree whether makeup is mandatory or optional depending on circumstances"
+          ],
+          "label": "Makeup time standard with calculation method",
+          "candidate_id": "art-norm-001",
+          "source": "domain_reasoner"
+        },
+        {
+          "feasibility_rationale": "Party B explicitly mentioned 'written confirmation' as a fairness/clarity mechanism. Party A's concern about last-minute changes suggests documentation could provide the predictability sought (changes become 'real' only when confirmed in writing, preventing ambiguity). Standard practice in high-structure parenting plans. Specific format (text vs. app vs. email) and whether verbal agreements can be ratified afterward are party decisions.",
+          "confidence": "high",
+          "conditions": [
+            "Parties to define acceptable documentation formats",
+            "Parties to agree on timing of confirmation (before or after verbal discussion)",
+            "Parties to define what happens if confirmation is not provided (change is void, presumed accepted, or case-by-case)"
+          ],
+          "label": "Written confirmation requirement with format options",
+          "candidate_id": "art-norm-002",
+          "source": "domain_reasoner"
+        },
+        {
+          "feasibility_rationale": "Party A's focus on 'notice window' suggests a structured request process would provide the predictability sought. Party B's flexibility concern suggests they need a way to make requests without feeling they'll be automatically rejected. A request protocol creates a predictable process without predetermining outcomes. Standard mechanism in communication protocols. Specific information requirements, response window duration, and default rule for non-response are party decisions.",
+          "confidence": "moderate",
+          "conditions": [
+            "Parties to define what information must be included in change request",
+            "Parties to define response window duration",
+            "Parties to agree on default rule if no response is received",
+            "Parties to define whether certain types of changes have different protocols (emergency vs. routine)"
+          ],
+          "label": "Change request protocol with response window",
+          "candidate_id": "art-norm-003",
+          "source": "domain_reasoner"
+        },
+        {
+          "feasibility_rationale": "Party A's specific concern about 'the child being surprised by last-minute shifts' suggests the child's experience of changes (not just the parental negotiation) is a priority. A child notification standard addresses this directly. Common in parenting plans where child's psychological experience is explicitly prioritized. Specific approach (both parents together, requesting parent alone, age-appropriate timing) is a party decision and may depend on child's age/temperament.",
+          "confidence": "moderate",
+          "conditions": [
+            "Parties to define who informs the child (requesting parent, both parents, or case-by-case)",
+            "Parties to define timing relative to the change (immediately after agreement, X days before change, depends on child's age)",
+            "Parties to agree on framing language or approach (neutral facts, reasons explained, child's input sought)"
+          ],
+          "label": "Child notification standard",
+          "candidate_id": "art-norm-004",
+          "source": "domain_reasoner"
+        }
+      ],
+      "domain_blocked": [],
+      "presented_to_parties": null
+    }
+  ]
+}

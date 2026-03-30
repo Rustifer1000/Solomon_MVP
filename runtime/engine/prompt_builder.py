@@ -73,6 +73,15 @@ Given Steps 1–4, generate Solomon's actual response. The response must be cons
 
 IMPORTANT: If premature_option_work was true in Step 3, the response must not reference, present, or discuss specific options. Limit the response to process moves — eliciting information, clarifying interests, framing next steps. No option language when option work is premature.
 
+RESPONSE DESIGN FOR OPTION-READY TURNS: When option_readiness is "ready" and qualified options exist, the response must do three things:
+1. Name the process transition explicitly — acknowledge that both parties have been heard and that the session is ready to move to option exploration. This is a substantive process marker, not filler ("Both of you have now put your core concerns on the table — I want to move us toward some structural ideas to react to").
+2. Connect each option you introduce to the specific interest it addresses for a specific party. Do not present options as an abstract list. For each option: name what problem it solves and for whom ("a tiered notice system addresses [Party A]'s need for advance predictability while preserving [Party B]'s ability to object to expenses above a threshold").
+3. Use tentative, exploratory framing that preserves party ownership of the process ("I want to put a few ideas on the table for you both to react to" rather than "here are the options").
+
+RESPONSE DESIGN FOR NON-OPTION TURNS: When option work is premature or deferred, the response must advance the session with a concrete next step — a specific question, a named information gap to resolve, or an explicit invitation for the unheard party to speak. Generic acknowledgments that do not move the process forward are a quality failure.
+
+GROUNDING RULE: Every interest you name in the response must trace back to something a party actually said or a signal you explicitly recorded in Step 1. Do not insert concerns that neither party has expressed.
+
 OUTPUT FORMAT
 
 Your response must be a JSON object with this structure:
@@ -301,8 +310,11 @@ def _build_user_message(
             "pre-computed assessment. Do not simply repeat it. Your Step 3 (Option Scan) should draw "
             "from the qualified options above and may add candidates not in the pool if important — "
             "note that additions have not been domain-qualified. "
-            "When option_readiness is 'ready', qualified options exist — present them unless your "
-            "Step 4 safety check finds a reason not to. "
+            "When option_readiness is 'ready', qualified options exist — present them in Step 5 "
+            "unless your Step 4 safety check finds a reason not to. "
+            "When presenting options in Step 5: select 2–4 structurally distinct options from the "
+            "qualified pool (not all of them), connect each one explicitly to the party interest it "
+            "serves, and use tentative framing that invites the parties to react rather than accept. "
             "Record labels of options you include in message_text in the options_introduced field."
         )
         parts.append("")

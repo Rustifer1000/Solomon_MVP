@@ -1,0 +1,325 @@
+{
+  "schema_version": "option_pool.v0",
+  "case_id": "D-B04",
+  "session_id": "D-B04-S08",
+  "generated_at": "2026-03-29T23:14:42Z",
+  "source": "lm_runtime",
+  "turns": [
+    {
+      "turn_index": 1,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "safety_veto_reason": null,
+      "brainstormer_candidates": [],
+      "domain_expert_candidates": [],
+      "combined_pool_count": 0,
+      "domain_qualified": [],
+      "domain_blocked": [],
+      "presented_to_parties": null
+    },
+    {
+      "turn_index": 3,
+      "option_readiness": "blocked",
+      "safety_veto_applied": true,
+      "safety_veto_reason": null,
+      "brainstormer_candidates": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Graduated overnight schedule with objective reliability milestones",
+          "rationale": "Party A has framed reliability as conditional ('until routines are reliable') but hasn't defined what reliable means. This option makes Party A's concern measurable while giving Party B a clear path to increased time. Addresses Party A's need for control over standards while reducing their gatekeeping power.",
+          "party_interest_alignment": {
+            "party_a": "Maintains influence over the schedule structure and protects child from instability by setting clear standards; preserves authority on child's needs by participating in milestone definition",
+            "party_b": "Creates transparent criteria for schedule expansion rather than leaving Party A as sole judge; provides concrete pathway to more parenting time"
+          },
+          "related_issues": [
+            "has_logistics"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Party B controls logistics, Party A controls homework protocol",
+          "rationale": "Separates the two domains Party A bundled together. Party B gets autonomy over transportation and exchange timing (addressing potential control imbalance), while Party A gets to establish homework routine standards (satisfying need to maintain authority on child's needs).",
+          "party_interest_alignment": {
+            "party_a": "Preserves primary caretaker influence over academic routines; reduces exposure to being seen as controlling since Party B has logistics autonomy",
+            "party_b": "Gains agency over their own household logistics without being micromanaged; reduces dependency on Party A's judgments"
+          },
+          "related_issues": [
+            "has_logistics"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Weekly co-parent check-in with neutral third-party facilitator",
+          "rationale": "Party A's concerns are framed around the other parent's reliability but Party B hasn't been given space to respond. This structure creates a regular forum where both parents report on logistics and child wellbeing, reducing Party A's unilateral gatekeeping while addressing their stated concern about consistency.",
+          "party_interest_alignment": {
+            "party_a": "Provides ongoing oversight mechanism that validates concerns about reliability without requiring direct confrontation; maintains influence through structured review process",
+            "party_b": "Creates space to demonstrate reliability and respond to concerns with neutral witness; reduces power imbalance in communications"
+          },
+          "related_issues": [
+            "has_logistics"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Party B proposes reliability plan, Party A holds veto for 60 days",
+          "rationale": "Inverts the current dynamic where Party A has framed all conditions. Party B designs their own solution to transportation and homework concerns, but Party A retains temporary override authority. Time limit prevents indefinite gatekeeping.",
+          "party_interest_alignment": {
+            "party_a": "Maintains protective control during trial period; reduces fear of loss of primary caretaker status by preserving final say; gets to evaluate rather than impose",
+            "party_b": "Gains agency to demonstrate capability on their own terms; time limit creates certainty that veto power isn't permanent"
+          },
+          "related_issues": [
+            "has_logistics"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Child's teacher or school counselor provides monthly routine feedback",
+          "rationale": "Party A has claimed child becomes 'dysregulated' but this is subjective and unverifiable. Bringing in the school creates an objective source of data about the child's functioning, which addresses Party A's stated concern about school-night impact while removing their monopoly on defining the problem.",
+          "party_interest_alignment": {
+            "party_a": "Validates child-centered framing by involving professional who actually observes child during school; maintains authority as advocate for child's needs",
+            "party_b": "Introduces neutral evidence about child's actual wellbeing; reduces risk that Party A's perceptions alone drive schedule decisions"
+          },
+          "related_issues": [
+            "has_logistics"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Fixed weeknight overnights with floating weekend adjustment",
+          "rationale": "Party A may fear losing influence if Party B gets weeknight time. This option establishes a predictable weeknight structure (addressing Party A's consistency concern) while making weekend time flexible based on weeknight parent's preferences (preserving Party A's scheduling influence).",
+          "party_interest_alignment": {
+            "party_a": "Maintains structural control by having input on weekend arrangements; consistency concern addressed through fixed weeknight pattern",
+            "party_b": "Gains predictable weeknight access without having to continuously negotiate; weekend flexibility may reduce total conflict"
+          },
+          "related_issues": [
+            "has_logistics"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Transportation and exchange handled by neutral third party during trial period",
+          "rationale": "Party A bundled transportation into reliability concern. If transportation is actually causing dysregulation (late pickups, conflict at exchanges), removing both parents from logistics during a trial period isolates whether the real issue is the overnight itself or the exchange stress.",
+          "party_interest_alignment": {
+            "party_a": "Eliminates one variable that might be causing child's dysregulation; reduces direct conflict with Party B during exchanges; maintains authority to evaluate results",
+            "party_b": "Removes potential for Party A to use transportation issues as ongoing justification to limit overnights; demonstrates willingness to address concrete concerns"
+          },
+          "related_issues": [
+            "has_logistics"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Party A and Party B each document child's week with shared digital log",
+          "rationale": "Party A has monopolized the narrative about child's dysregulation and needs. A shared log where both parents document homework completion, emotional state, and routine adherence creates transparency and shared fact base, reducing Party A's unilateral authority to define the problem.",
+          "party_interest_alignment": {
+            "party_a": "Provides ongoing documentation that validates concerns if child actually is struggling; maintains involvement in monitoring child's wellbeing across both households",
+            "party_b": "Creates evidence trail of their own successful parenting during overnights; reduces Party A's ability to make unchallenged claims about dysregulation"
+          },
+          "related_issues": [
+            "has_logistics"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-009",
+          "label": "No-change baseline for 30 days with structured observation protocol",
+          "rationale": "The session is still in early info-gathering. This option delays schedule change but makes the delay productive by having both parents systematically observe and document what's actually happening under current arrangements. Addresses Party A's risk aversion while preventing indefinite delay.",
+          "party_interest_alignment": {
+            "party_a": "Preserves current structure temporarily (addressing fear of loss of primary status); systematic observation validates child-centered concern framing",
+            "party_b": "Time limit prevents indefinite status quo freeze; observation protocol creates shared evidence base rather than Party A's unilateral perceptions"
+          },
+          "related_issues": [
+            "has_logistics"
+          ],
+          "source": "option_generator"
+        },
+        {
+          "candidate_id": "opt-gen-010",
+          "label": "Party B designs homework routine, Party A provides input after 2-week trial",
+          "rationale": "Party A used homework routine as part of reliability concern but hasn't given Party B chance to demonstrate competence. This option sequences the dynamic: Party B demonstrates first, then Party A responds with suggestions. Reduces Party A's front-end control while preserving their voice.",
+          "party_interest_alignment": {
+            "party_a": "Maintains long-term influence over homework standards through input mechanism; gets to evaluate rather than dictate; preserves authority on child's academic needs",
+            "party_b": "Gains autonomy to show they can manage homework successfully; reduces dynamic where Party A sets conditions before Party B has acted"
+          },
+          "related_issues": [
+            "has_logistics"
+          ],
+          "source": "option_generator"
+        }
+      ],
+      "domain_expert_candidates": [],
+      "combined_pool_count": 10,
+      "domain_qualified": [],
+      "domain_blocked": [
+        {
+          "candidate_id": "opt-gen-001",
+          "label": "Graduated overnight schedule with objective reliability milestones",
+          "blocking_rationale": "Cannot assess feasibility without knowing: (a) what Party B's current overnight schedule is (is this an expansion from zero, from one weeknight, from informal arrangement?), (b) whether Party B is actually seeking expanded time or is comfortable with current limits, (c) what specific reliability concerns exist (transportation logistics vs. homework execution vs. child adjustment), and (d) Party B's capacity and constraints for meeting milestones. The structure assumes Party B wants more time and Party A is gate-keeping through undefined standards \u2014 plausible but unverified.",
+          "what_would_unblock": "Party B states their goals for custody time and responds to Party A's reliability concerns; current schedule is clarified",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-002",
+          "label": "Party B controls logistics, Party A controls homework protocol",
+          "blocking_rationale": "Cannot assess whether separation of these domains is feasible without knowing: (a) whether transportation and homework are actually bundled problems or Party A's rhetorical construction, (b) what Party B's capacity is for transportation management, (c) what the homework situation actually is (child's age, homework load, current struggles), and (d) whether Party B contests the need for Party A to control homework protocol. The option assumes a control imbalance that may or may not exist.",
+          "what_would_unblock": "Party B describes their perspective on transportation and homework management; parties provide specifics on what the actual logistics and homework challenges are",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-003",
+          "label": "Weekly co-parent check-in with neutral third-party facilitator",
+          "blocking_rationale": "Cannot assess appropriateness without knowing: (a) whether there is actual communication breakdown between parties (they may communicate fine and this is just Party A's opening framing), (b) whether Party B sees need for structured check-ins or would view this as intrusive oversight, (c) what the current communication pattern is, and (d) whether parties have capacity/resources for ongoing third-party facilitation. This is a significant structural intervention \u2014 feasibility depends on severity of co-parent conflict, which is unknown at turn 3.",
+          "what_would_unblock": "Both parties describe current communication patterns and whether they see communication as a problem area; assessment of conflict level and resource availability for third-party support",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-004",
+          "label": "Party B proposes reliability plan, Party A holds veto for 60 days",
+          "blocking_rationale": "Cannot assess feasibility without knowing: (a) whether Party B actually contests the reliability framing or acknowledges gaps they want to address, (b) what specific reliability concerns need addressing (plan content depends on whether issue is transportation, homework support, consistency, or something else), (c) whether Party A's concerns are about verifiable behaviors or subjective child-readiness assessments, and (d) whether a 60-day veto period is proportional to the actual stakes (depends on current schedule and what change is being proposed).",
+          "what_would_unblock": "Party B responds to reliability characterization and states what they are seeking; parties clarify specific behaviors/outcomes that constitute 'reliable' routines",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-005",
+          "label": "Child's teacher or school counselor provides monthly routine feedback",
+          "blocking_rationale": "Cannot assess appropriateness without knowing: (a) child's age and whether school personnel involvement is developmentally appropriate, (b) whether there are actual observable school impacts (homework completion issues, behavioral changes) or this is Party A's home-based subjective assessment, (c) whether school is willing/able to provide this feedback (significant imposition on school resources), (d) whether Party B agrees child is dysregulated or contests this characterization, and (e) what 'routine feedback' would actually measure. Bringing in school is a significant intervention \u2014 feasibility depends on severity of concern and appropriateness of school involvement.",
+          "what_would_unblock": "Parties clarify what specific child behaviors are of concern, whether these are observable at school, and child's age; assessment of whether school-based data is appropriate intervention level",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-006",
+          "label": "Fixed weeknight overnights with floating weekend adjustment",
+          "blocking_rationale": "Cannot assess feasibility without knowing: (a) current schedule baseline \u2014 how many weeknight overnights does Party B currently have, and what is weekend arrangement, (b) what Party B is actually seeking (more weeknight time, more weekend time, different structure, or no change), (c) whether 'floating weekend adjustment' addresses any articulated concern from either party, and (d) practical constraints (distance between homes, work schedules, child's age and activities). The option assumes Party B wants weeknight time and Party A fears losing weekend influence \u2014 both unverified.",
+          "what_would_unblock": "Current schedule stated; Party B articulates what change (if any) they are seeking and why; parties describe weekend arrangements and any concerns about weekend time allocation",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-007",
+          "label": "Transportation and exchange handled by neutral third party during trial period",
+          "blocking_rationale": "Cannot assess feasibility without knowing: (a) whether transportation is actually a conflict point or logistical challenge (Party A mentioned it as part of reliability concern but no details), (b) whether parties have resources for neutral third-party transportation service (significant cost), (c) what the actual exchange arrangement is (school exchanges, home-to-home, other), (d) geographic distance and logistics, and (e) whether Party B sees transportation as problematic or this is Party A's construction. Third-party transportation is expensive and logistically complex \u2014 feasibility depends on severity of problem and resource availability.",
+          "what_would_unblock": "Parties describe current transportation/exchange arrangements and whether conflict or reliability issues actually occur during exchanges; assessment of resources for third-party service",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-008",
+          "label": "Party A and Party B each document child's week with shared digital log",
+          "blocking_rationale": "Cannot assess feasibility without knowing: (a) whether both parties are seeking shared documentation or Party A wants oversight of Party B's time, (b) what specific information would be logged and why (homework completion, emotional states, transitions, activities), (c) whether parties have demonstrated capacity for neutral collaborative documentation (shared logs can become conflict battlegrounds), (d) what the actual custody schedule is (log structure depends on frequency of transitions), and (e) whether Party B contests Party A's narrative about dysregulation or would view log as verification tool for Party A's concerns vs. Party B's defensive documentation.",
+          "what_would_unblock": "Party B responds to characterization of child's dysregulation and states their perspective; parties clarify what specific information would be useful to track and whether shared documentation serves mutual goals or oversight function",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-009",
+          "label": "No-change baseline for 30 days with structured observation protocol",
+          "blocking_rationale": "Cannot assess feasibility without knowing: (a) whether Party B is seeking immediate change or is comfortable with phased approach, (b) what the current baseline actually is (cannot maintain something undefined), (c) what specific observations would constitute meaningful data (depends on what the actual concerns are), (d) whether 30-day delay is proportional to stakes (depends on how limited current schedule is and what Party B's relationship with child is), and (e) whether Party B would view structured observation as reasonable evidence-gathering or as Party A's continued gate-keeping mechanism.",
+          "what_would_unblock": "Current schedule stated; Party B articulates their goals and timeline urgency; parties agree on what observable data would be relevant to transportation and homework reliability concerns",
+          "source": "domain_reasoner"
+        },
+        {
+          "candidate_id": "opt-gen-010",
+          "label": "Party B designs homework routine, Party A provides input after 2-week trial",
+          "blocking_rationale": "Cannot assess feasibility without knowing: (a) what the homework situation actually is (child's age, homework load, current completion rates, whether homework is actually a problem), (b) whether Party B currently has any custody time during school week (cannot implement homework routine without school-week custody), (c) whether Party B sees homework support as an area where they need to demonstrate competence or contests the framing that their routine is inadequate, (d) what Party A's current role in homework is and whether 2-week trial without Party A input is realistic or creates child stress, and (e) whether homework is the actual concern or a proxy for Party A's discomfort with reduced control.",
+          "what_would_unblock": "Current schedule clarified; child's age and school situation described; parties describe what current homework support looks like and whether homework completion is actually problematic; Party B responds to reliability concern",
+          "source": "domain_reasoner"
+        }
+      ],
+      "presented_to_parties": null
+    },
+    {
+      "turn_index": 5,
+      "option_readiness": "deferred",
+      "safety_veto_applied": false,
+      "safety_veto_reason": null,
+      "brainstormer_candidates": [],
+      "domain_expert_candidates": [],
+      "combined_pool_count": 0,
+      "domain_qualified": [],
+      "domain_blocked": [],
+      "presented_to_parties": null
+    },
+    {
+      "turn_index": 7,
+      "option_readiness": "ready",
+      "safety_veto_applied": false,
+      "safety_veto_reason": null,
+      "brainstormer_candidates": [],
+      "domain_expert_candidates": [],
+      "combined_pool_count": 0,
+      "domain_qualified": [
+        {
+          "feasibility_rationale": "Both parties have explicitly signaled openness to phased trials in T6. The three logistics constraints (commute, exchanges, homework) are concrete, observable, and addressable through behavioral commitment rather than requiring external resources. This structure addresses Party A's need for demonstrated reliability before expanding time while addressing Party B's concern that logistics not become indefinite gatekeeping by making expansion criteria explicit and time-bound. Standard family mediation approach for building trust while addressing legitimate transition concerns.",
+          "confidence": "high",
+          "conditions": [
+            "Parties must agree on specific metrics for each logistics milestone (e.g., 'on-time' defined as within X minutes, homework completion tracked via teacher portal or communication log)",
+            "Phase duration and review points must be calendar-specific to prevent indefinite deferral",
+            "Both parties must have input into success criteria to prevent unilateral standard-setting",
+            "Expansion pathway must be defined in advance (what increases when criteria are met) to address Party B's concern about meaningful time"
+          ],
+          "label": "Phased expansion with explicit logistics milestones",
+          "candidate_id": "art-norm-000",
+          "source": "domain_reasoner"
+        },
+        {
+          "feasibility_rationale": "Addresses both parties' core interests simultaneously rather than sequentially. Party B's recognition concern is met by immediate school-week presence (not zero-based); Party A's reliability concern is met by making expansion contingent on logistics performance or agreed solutions. The 'phased trial' language in T6 from both parties suggests they're already thinking in staged terms. This structure prevents the 'indefinite delay' concern Party B raised while maintaining Party A's need for demonstrated stability before major schedule changes.",
+          "confidence": "moderate",
+          "conditions": [
+            "Baseline school-week time must be meaningful enough to address Party B's equal-parent concern (not token involvement)",
+            "Logistics solutions may be behavioral (Party B demonstrates reliability) OR systemic (parties agree on transportation-sharing, homework communication protocol) \u2014 structure must allow both pathways",
+            "Timeline for logistics resolution must be explicit",
+            "Clear definition of what 'additional time' looks like when contingencies are met"
+          ],
+          "label": "Parallel track: immediate baseline school-week time + expansion contingent on logistics resolution",
+          "candidate_id": "art-norm-001",
+          "source": "domain_reasoner"
+        },
+        {
+          "feasibility_rationale": "Party B's position in T4 was 'logistics should be solved' rather than used as barriers. This structure takes that seriously by making logistics problem-solving the immediate focus. Addresses Party A's concerns by ensuring systems are in place before disruption. Risk: could be perceived by Party B as delaying tactic if not time-bound and if current schedule remains restrictive during protocol development. Feasible if framed as active problem-solving with clear timeline rather than indefinite prerequisites.",
+          "confidence": "moderate",
+          "conditions": [
+            "Protocol development must be time-bound (not open-ended)",
+            "Parties must have equal input into protocol design to prevent Party A from setting unilaterally high standards",
+            "Trial period for protocols should occur within reasonable timeframe",
+            "Schedule expansion discussion must be guaranteed to occur after protocol establishment, not conditional on Party A's assessment of adequacy"
+          ],
+          "label": "Logistics-first approach: solve transportation/homework/exchange protocols before schedule expansion",
+          "candidate_id": "art-norm-002",
+          "source": "domain_reasoner"
+        },
+        {
+          "feasibility_rationale": "The 'until X is reliable' language from Party A (noted in risk signals) creates potential for indefinite gatekeeping if Party A unilaterally defines 'reliable'. The 'logistics should be solved' language from Party B may underestimate legitimate complexity. Third-party input provides objective baseline and prevents both over-restrictive and over-simplistic standards. Common in custody mediation when parties are in good faith but have genuinely different assessment frameworks.",
+          "confidence": "moderate",
+          "conditions": [
+            "Both parties must agree on the third-party source (teacher, coordinator, child development consultant)",
+            "Scope of third-party input must be defined (advisory vs. binding, specific questions vs. general assessment)",
+            "Third-party input addresses standards/norms, not case-specific assessments of either parent's adequacy",
+            "Input is time-bound and feeds into parties' negotiation rather than replacing it"
+          ],
+          "label": "Joint evaluation criteria with third-party input",
+          "candidate_id": "art-norm-003",
+          "source": "domain_reasoner"
+        },
+        {
+          "feasibility_rationale": "T6 indicates both parties are considering trial structures. This option makes the trial iterative rather than pass/fail, addressing Party A's concern about disruption (adjustments are built in) and Party B's concern about indefinite delay (trial has defined endpoint and continuation pathway). The 'check-in' structure provides Party A with ongoing monitoring without requiring proof of failure before adjustment. Standard approach when parties have legitimate concerns but also willingness to test.",
+          "confidence": "high",
+          "conditions": [
+            "Trial duration must be long enough to generate meaningful data but short enough to prevent indefinite limbo (typically 4-8 weeks for initial custody trials)",
+            "Check-in structure must be defined: who initiates, what triggers adjustment, how do parties communicate concerns",
+            "Adjustment protocol must distinguish between minor tweaks (parties handle directly) and structural concerns (return to mediation or coordinator)",
+            "End-of-trial decision process must be clear: what happens if parties disagree on continuation"
+          ],
+          "label": "Trial period with structured check-ins and adjustment protocol",
+          "candidate_id": "art-norm-004",
+          "source": "domain_reasoner"
+        }
+      ],
+      "domain_blocked": [],
+      "presented_to_parties": null
+    }
+  ]
+}

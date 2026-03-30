@@ -1,0 +1,524 @@
+{
+  "schema_version": "party_state.v0",
+  "case_id": "D-B04",
+  "session_id": "D-B04-S08",
+  "source": "lm_runtime",
+  "turns_contributing": [
+    1,
+    3,
+    5,
+    7
+  ],
+  "last_updated_turn": 7,
+  "generated_at": "2026-03-29T23:14:42Z",
+  "party_a": {
+    "party_id": "party_a",
+    "current_emotional_state": "cautiously_open_but_still_protective \u2014 Party A has moved from hard position ('should stay limited') to conditional willingness ('could be discussed if...'), which is genuine progress, but the conditionality structure still centers A as evaluator of whether conditions are met",
+    "emotional_arc": [
+      {
+        "turn_index": 1,
+        "assessment": "neutral_baseline",
+        "confidence": "low"
+      },
+      {
+        "turn_index": 3,
+        "assessment": "protective_concern \u2014 Party A is framing their position through child welfare language ('needs consistency,' 'becomes dysregulated'), which signals genuine parental anxiety but also strategic positioning",
+        "confidence": "moderate"
+      },
+      {
+        "turn_index": 5,
+        "assessment": "defensively_protective \u2014 Party A's 'consistency' framing remains anchored to protective concern, but has not yet moved to articulating what they actually want their own relationship with shared parenting to look like. Still operating from evaluation/gate-keeping position.",
+        "confidence": "high"
+      },
+      {
+        "turn_index": 7,
+        "assessment": "cautiously_open_but_still_protective \u2014 Party A has moved from hard position ('should stay limited') to conditional willingness ('could be discussed if...'), which is genuine progress, but the conditionality structure still centers A as evaluator of whether conditions are met",
+        "confidence": "high"
+      }
+    ],
+    "accumulated_interests": [
+      {
+        "interest": "Child's emotional stability and school performance",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "confidence": "moderate"
+      },
+      {
+        "interest": "Predictable routines that Party A can rely on",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "confidence": "moderate"
+      },
+      {
+        "interest": "Control or veto over arrangements Party A perceives as risky",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "confidence": "moderate"
+      },
+      {
+        "interest": "Validation that their concerns about reliability are legitimate",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "confidence": "moderate"
+      },
+      {
+        "interest": "Child's emotional regulation and school success (stated)",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "Predictability in weekly routines that Party A can rely on",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "Validation that concerns about logistics/reliability are legitimate",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "Maintenance of evaluative authority over what constitutes 'reliable' parenting arrangements (unstated structural interest)",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "Child's successful navigation of school week without stress-induced dysregulation",
+        "first_seen_turn": 7,
+        "last_seen_turn": 7,
+        "confidence": "high"
+      },
+      {
+        "interest": "Advance confidence that any schedule change won't create chaos A has to manage",
+        "first_seen_turn": 7,
+        "last_seen_turn": 7,
+        "confidence": "high"
+      },
+      {
+        "interest": "Recognition that A's protective concerns are legitimate and not dismissed as gatekeeping",
+        "first_seen_turn": 7,
+        "last_seen_turn": 7,
+        "confidence": "high"
+      },
+      {
+        "interest": "Practical assurance that logistics failures won't fall on A to solve in real-time",
+        "first_seen_turn": 7,
+        "last_seen_turn": 7,
+        "confidence": "high"
+      },
+      {
+        "interest": "Positive co-parenting relationship where both parents are accountable",
+        "first_seen_turn": 7,
+        "last_seen_turn": 7,
+        "confidence": "high"
+      }
+    ],
+    "risk_signal_history": [
+      {
+        "signal": "Child welfare framing may be encoding positional bargaining rather than pure interest expression",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "Use of 'should stay limited' presumes current restrictive baseline without stating it \u2014 potential frame control",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "Party A has not articulated positive vision for co-parenting \u2014 only protective conditions",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "'Until X is reliable' framing maintains indefinite veto power",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "Child welfare framing may be masking Party A's own control interests",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "Party A has acknowledged logistics constraints but has not stated what they actually want the end-state schedule to look like \u2014 only what conditions must be met before change",
+        "first_seen_turn": 7,
+        "last_seen_turn": 7,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "The 'if reliability conditions are explicit' language could become indefinite threshold-setting if success criteria aren't mutually defined",
+        "first_seen_turn": 7,
+        "last_seen_turn": 7,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "A has not yet articulated their own positive vision for sharing school-week parenting",
+        "first_seen_turn": 7,
+        "last_seen_turn": 7,
+        "resolved": false,
+        "resolution_note": null
+      }
+    ],
+    "relational_posture_progression": [
+      {
+        "turn_index": 1,
+        "posture": "unobserved"
+      },
+      {
+        "turn_index": 3,
+        "posture": "engaged_assertive \u2014 Party A has taken clear ownership of the opening content space and set the terms of what the problem is"
+      },
+      {
+        "turn_index": 5,
+        "posture": "engaged_assertive_with_evaluative_frame \u2014 Party A has stated concerns clearly but structured the problem space to position themselves as assessor of adequacy"
+      },
+      {
+        "turn_index": 7,
+        "posture": "conditionally_cooperative \u2014 genuine movement from T2 position but cooperation is structured around A's assessment framework"
+      }
+    ],
+    "scaffold_divergence_log": [
+      {
+        "turn_index": 1,
+        "field": "relational_dynamic",
+        "scaffold_value": "cooperative_and_stable",
+        "model_value": "pre_engagement"
+      },
+      {
+        "turn_index": 3,
+        "field": "relational_dynamic",
+        "scaffold_value": "cautious_but_workable",
+        "model_value": "asymmetric_framing \u2014 Party A has set the terms of the custody discussion ('weekday overnights should stay limited') without Party B's perspective being heard. This creates a baseline-presumption dynamic where Party B may feel positioned as the party seeking change rather than both parties being equally positioned to define the problem."
+      },
+      {
+        "turn_index": 5,
+        "field": "relational_dynamic",
+        "scaffold_value": "cautious_but_workable",
+        "model_value": "parallel_assertive_with_unintegrated_frames \u2014 Both parties have now spoken clearly, both are engaged, but they are operating in parallel frame structures that haven't been integrated: Party A is speaking child-welfare-and-logistics language, Party B is speaking parenting-equality-and-respect language. These frames aren't contradictory but they're not in dialogue yet. The 'until reliable' vs 'solve the logistics' tension reflects this frame gap. Neither party has moved from position defense to interest articulation about what they actually want."
+      },
+      {
+        "turn_index": 7,
+        "field": "relational_dynamic",
+        "scaffold_value": "cautious_but_workable",
+        "model_value": "apparent_convergence_masking_structural_tension \u2014 Both parties used 'phased trial' language in T6, which appears to be progress, but the perception agent is correct that this may be premature convergence. The fundamental tension (A as gatekeeper evaluating B's adequacy vs B seeking recognition as equal co-parent) hasn't been resolved \u2014 it's been deferred into trial structure. The logistics issues carry different meanings: for A they're evidence-of-concern, for B they're problems-to-solve. This interpretive gap is still live."
+      }
+    ],
+    "perception_notes_log": [
+      {
+        "turn_index": 1,
+        "notes": [
+          "Turn 1: No party utterances have occurred yet",
+          "Cannot assess emotional state, interests, or relational posture without party input",
+          "Baseline assumption is neutral/stable absent contradicting signals",
+          "Perception work begins meaningfully at turn 2 after first party speaks"
+        ]
+      },
+      {
+        "turn_index": 3,
+        "notes": [
+          "Party A's child-welfare framing is not inherently problematic but needs balancing \u2014 the mediator must not adopt the embedded position ('overnights should stay limited') while acknowledging the underlying concern (child's adjustment and routine)",
+          "Critical that Party B is invited to speak to BOTH: (a) what they want from this mediation overall, and (b) their perspective on the specific reliability/routine concerns Party A raised",
+          "Watch for whether Party B responds reactively (defending against Party A's characterization) or independently (articulating their own interests and concerns)"
+        ]
+      },
+      {
+        "turn_index": 5,
+        "notes": [
+          "Both parties are now on record with clear concerns \u2014 perception confidence upgraded from moderate to high",
+          "Perception agent note is highly accurate: neither party has articulated positive vision, both are speaking in negative/protective terms",
+          "The evaluative-authority dynamic (Party A assesses reliability) vs recognition-equality dynamic (Party B rejects secondary status) is the core relational tension beneath the schedule dispute",
+          "Both parties are using proxy framings (child needs, logistics problems) without naming their own direct interests in the parenting relationship"
+        ]
+      },
+      {
+        "turn_index": 7,
+        "notes": [
+          "Both parties are maintaining process engagement and have moved from opening positions, which is real progress",
+          "However, neither party has articulated END-STATE vision \u2014 only conditional acceptance of trial structure",
+          "The perception agent's warning about premature convergence is supported: 'phased trial' may be a false consensus that preserves the underlying power dynamic B objects to",
+          "Critical gap: WHO decides whether trial succeeds? What are success criteria? This is where the gatekeeping dynamic will resurface if not addressed now"
+        ]
+      }
+    ],
+    "last_updated_turn": 7
+  },
+  "party_b": {
+    "party_id": "party_b",
+    "current_emotional_state": "restrainedly_hopeful \u2014 Party B has maintained flexibility across multiple turns and accepted trial structure language, but has not yet articulated what they actually want from school-week time beyond 'not secondary parent status'",
+    "emotional_arc": [
+      {
+        "turn_index": 1,
+        "assessment": "neutral_baseline",
+        "confidence": "low"
+      },
+      {
+        "turn_index": 3,
+        "assessment": "unknown \u2014 Party B has not yet spoken; emotional state cannot be inferred from silence at turn 3",
+        "confidence": "moderate"
+      },
+      {
+        "turn_index": 5,
+        "assessment": "frustrated_but_controlled \u2014 'I do not want to be treated like' signals accumulated frustration with secondary-parent positioning, but Party B is maintaining process engagement and framing their concern clearly",
+        "confidence": "high"
+      },
+      {
+        "turn_index": 7,
+        "assessment": "restrainedly_hopeful \u2014 Party B has maintained flexibility across multiple turns and accepted trial structure language, but has not yet articulated what they actually want from school-week time beyond 'not secondary parent status'",
+        "confidence": "high"
+      }
+    ],
+    "accumulated_interests": [
+      {
+        "interest": "Unknown \u2014 Party B may be seeking expanded time, defending current arrangement, or have entirely different priorities",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "confidence": "moderate"
+      },
+      {
+        "interest": "Recognition as equal co-parent with legitimate parenting role during school week (stated)",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "Rejection of weekend-only/secondary parent status",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "Problem-solving orientation toward logistics rather than using them as gatekeeping tools",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "Likely: meaningful relationship time with child during school week, not just 'access' (unstated but implied)",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "confidence": "high"
+      },
+      {
+        "interest": "Active parenting relationship during school week, not just weekend recreation time",
+        "first_seen_turn": 7,
+        "last_seen_turn": 7,
+        "confidence": "high"
+      },
+      {
+        "interest": "Recognition as competent co-parent capable of managing school-week responsibilities",
+        "first_seen_turn": 7,
+        "last_seen_turn": 7,
+        "confidence": "high"
+      },
+      {
+        "interest": "Schedule structure that doesn't require repeatedly proving adequacy to earn time",
+        "first_seen_turn": 7,
+        "last_seen_turn": 7,
+        "confidence": "high"
+      },
+      {
+        "interest": "Child relationship that includes ordinary weekday rhythms, not just special occasions",
+        "first_seen_turn": 7,
+        "last_seen_turn": 7,
+        "confidence": "high"
+      },
+      {
+        "interest": "Fair process where logistics problems are solved collaboratively rather than used as veto",
+        "first_seen_turn": 7,
+        "last_seen_turn": 7,
+        "confidence": "high"
+      }
+    ],
+    "risk_signal_history": [
+      {
+        "signal": "Silence after Party A's substantive frame-setting could indicate: (a) passive agreement, (b) strategic withdrawal, (c) power imbalance preventing voice, or (d) simple turn-taking protocol. Cannot distinguish without Party B speaking.",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "Party B also has not articulated what they actually want their parenting schedule to look like \u2014 only what they DON'T want",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "'Logistics should be solved' may underestimate complexity or Party A's legitimate concerns",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "Risk of dismissing Party A's child-focused concerns as pure gatekeeping",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "Party B has been accommodating and flexible but has not stated specific schedule they want \u2014 risk of accepting inadequate compromise to avoid conflict",
+        "first_seen_turn": 7,
+        "last_seen_turn": 7,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "B's focus on 'not being blocked' is defensive framing \u2014 has not articulated positive schedule vision",
+        "first_seen_turn": 7,
+        "last_seen_turn": 7,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "Acceptance of 'phased trial' structure may be premature if it embeds the same evaluation dynamic B objects to",
+        "first_seen_turn": 7,
+        "last_seen_turn": 7,
+        "resolved": false,
+        "resolution_note": null
+      }
+    ],
+    "relational_posture_progression": [
+      {
+        "turn_index": 1,
+        "posture": "unobserved"
+      },
+      {
+        "turn_index": 3,
+        "posture": "unobserved \u2014 has not yet entered the conversation"
+      },
+      {
+        "turn_index": 5,
+        "posture": "engaged_assertive_with_recognition_frame \u2014 Party B has matched Party A's assertiveness but is framing through relational respect/equality rather than child welfare"
+      },
+      {
+        "turn_index": 7,
+        "posture": "cooperatively_deferential \u2014 Party B is meeting process asks but has not pushed for their own affirmative needs to be centered"
+      }
+    ],
+    "scaffold_divergence_log": [
+      {
+        "turn_index": 1,
+        "field": "relational_dynamic",
+        "scaffold_value": "cooperative_and_stable",
+        "model_value": "pre_engagement"
+      },
+      {
+        "turn_index": 3,
+        "field": "relational_dynamic",
+        "scaffold_value": "cautious_but_workable",
+        "model_value": "asymmetric_framing \u2014 Party A has set the terms of the custody discussion ('weekday overnights should stay limited') without Party B's perspective being heard. This creates a baseline-presumption dynamic where Party B may feel positioned as the party seeking change rather than both parties being equally positioned to define the problem."
+      },
+      {
+        "turn_index": 5,
+        "field": "relational_dynamic",
+        "scaffold_value": "cautious_but_workable",
+        "model_value": "parallel_assertive_with_unintegrated_frames \u2014 Both parties have now spoken clearly, both are engaged, but they are operating in parallel frame structures that haven't been integrated: Party A is speaking child-welfare-and-logistics language, Party B is speaking parenting-equality-and-respect language. These frames aren't contradictory but they're not in dialogue yet. The 'until reliable' vs 'solve the logistics' tension reflects this frame gap. Neither party has moved from position defense to interest articulation about what they actually want."
+      },
+      {
+        "turn_index": 7,
+        "field": "relational_dynamic",
+        "scaffold_value": "cautious_but_workable",
+        "model_value": "apparent_convergence_masking_structural_tension \u2014 Both parties used 'phased trial' language in T6, which appears to be progress, but the perception agent is correct that this may be premature convergence. The fundamental tension (A as gatekeeper evaluating B's adequacy vs B seeking recognition as equal co-parent) hasn't been resolved \u2014 it's been deferred into trial structure. The logistics issues carry different meanings: for A they're evidence-of-concern, for B they're problems-to-solve. This interpretive gap is still live."
+      }
+    ],
+    "perception_notes_log": [
+      {
+        "turn_index": 1,
+        "notes": [
+          "Turn 1: No party utterances have occurred yet",
+          "Cannot assess emotional state, interests, or relational posture without party input",
+          "Baseline assumption is neutral/stable absent contradicting signals",
+          "Perception work begins meaningfully at turn 2 after first party speaks"
+        ]
+      },
+      {
+        "turn_index": 3,
+        "notes": [
+          "Party A's child-welfare framing is not inherently problematic but needs balancing \u2014 the mediator must not adopt the embedded position ('overnights should stay limited') while acknowledging the underlying concern (child's adjustment and routine)",
+          "Critical that Party B is invited to speak to BOTH: (a) what they want from this mediation overall, and (b) their perspective on the specific reliability/routine concerns Party A raised",
+          "Watch for whether Party B responds reactively (defending against Party A's characterization) or independently (articulating their own interests and concerns)"
+        ]
+      },
+      {
+        "turn_index": 5,
+        "notes": [
+          "Both parties are now on record with clear concerns \u2014 perception confidence upgraded from moderate to high",
+          "Perception agent note is highly accurate: neither party has articulated positive vision, both are speaking in negative/protective terms",
+          "The evaluative-authority dynamic (Party A assesses reliability) vs recognition-equality dynamic (Party B rejects secondary status) is the core relational tension beneath the schedule dispute",
+          "Both parties are using proxy framings (child needs, logistics problems) without naming their own direct interests in the parenting relationship"
+        ]
+      },
+      {
+        "turn_index": 7,
+        "notes": [
+          "Both parties are maintaining process engagement and have moved from opening positions, which is real progress",
+          "However, neither party has articulated END-STATE vision \u2014 only conditional acceptance of trial structure",
+          "The perception agent's warning about premature convergence is supported: 'phased trial' may be a false consensus that preserves the underlying power dynamic B objects to",
+          "Critical gap: WHO decides whether trial succeeds? What are success criteria? This is where the gatekeeping dynamic will resurface if not addressed now"
+        ]
+      }
+    ],
+    "last_updated_turn": 7
+  },
+  "cross_party": {
+    "current_relational_dynamic": "apparent_convergence_masking_structural_tension \u2014 Both parties used 'phased trial' language in T6, which appears to be progress, but the perception agent is correct that this may be premature convergence. The fundamental tension (A as gatekeeper evaluating B's adequacy vs B seeking recognition as equal co-parent) hasn't been resolved \u2014 it's been deferred into trial structure. The logistics issues carry different meanings: for A they're evidence-of-concern, for B they're problems-to-solve. This interpretive gap is still live.",
+    "relational_dynamic_arc": [
+      {
+        "turn_index": 1,
+        "assessment": "pre_engagement",
+        "confidence": "low"
+      },
+      {
+        "turn_index": 3,
+        "assessment": "asymmetric_framing \u2014 Party A has set the terms of the custody discussion ('weekday overnights should stay limited') without Party B's perspective being heard. This creates a baseline-presumption dynamic where Party B may feel positioned as the party seeking change rather than both parties being equally positioned to define the problem.",
+        "confidence": "moderate"
+      },
+      {
+        "turn_index": 5,
+        "assessment": "parallel_assertive_with_unintegrated_frames \u2014 Both parties have now spoken clearly, both are engaged, but they are operating in parallel frame structures that haven't been integrated: Party A is speaking child-welfare-and-logistics language, Party B is speaking parenting-equality-and-respect language. These frames aren't contradictory but they're not in dialogue yet. The 'until reliable' vs 'solve the logistics' tension reflects this frame gap. Neither party has moved from position defense to interest articulation about what they actually want.",
+        "confidence": "high"
+      },
+      {
+        "turn_index": 7,
+        "assessment": "apparent_convergence_masking_structural_tension \u2014 Both parties used 'phased trial' language in T6, which appears to be progress, but the perception agent is correct that this may be premature convergence. The fundamental tension (A as gatekeeper evaluating B's adequacy vs B seeking recognition as equal co-parent) hasn't been resolved \u2014 it's been deferred into trial structure. The logistics issues carry different meanings: for A they're evidence-of-concern, for B they're problems-to-solve. This interpretive gap is still live.",
+        "confidence": "high"
+      }
+    ],
+    "perception_confidence_arc": [
+      {
+        "turn_index": 1,
+        "confidence": "low"
+      },
+      {
+        "turn_index": 3,
+        "confidence": "moderate"
+      },
+      {
+        "turn_index": 5,
+        "confidence": "high"
+      },
+      {
+        "turn_index": 7,
+        "confidence": "high"
+      }
+    ]
+  }
+}
