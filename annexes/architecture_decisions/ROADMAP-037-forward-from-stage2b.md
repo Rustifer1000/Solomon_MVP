@@ -257,4 +257,5 @@ Design rule: the domain reasoner gets access to party_state.json. If the party s
 | STAGE5-DESIGN-042 | **Complete** 2026-03-28 — safety_monitor agent design, 8 implementation items, adversarial validation plan |
 | Stage 5 implementation | **Complete** 2026-03-29 — all 8 items, RT01-S02/RT02-S03/RT03-S02 PASS, commit a4b8cdd |
 | STAGE6-DESIGN-043 | **Complete** 2026-03-29 — perception agent design, OQ evaluation extension, benchmark validation plan |
-| Stage 6 implementation | Pending — 11 items defined in STAGE6-DESIGN-043 §8 |
+| Stage 6 implementation | **Complete** 2026-03-29 — all 11 items, 8 benchmark sessions PASS, D-B04 C7 3→4 (focus competition gap resolved) |
+| **ARCH-006 Option 1 — Step 5 response design revision** | **Complete** 2026-03-30 — prompt_builder.py Step 5 three-rule addition (transition marker, per-option interest-connection, tentative framing) + INSTRUCTION block update; artifacts.py _normalize_pool_entry + _normalize_confidence fixes; diagnostic D-B07-S13 Core 89.6 (+3.2 vs S12), D-B04-S07 Core 87.4/Plugin 87.6/Integration 98.0 (+5.0/+7.6/+18.0 vs S06); constraint gate 17/17 PASS; C6 4→5 confirmed on expense coordination and parenting schedule domains |

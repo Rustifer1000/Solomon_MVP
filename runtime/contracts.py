@@ -12,12 +12,16 @@ ALLOWED_ISSUE_IDS = {
     "child_expense_coordination",
     "meaningful_parent_role",
     "child_stability",
+    "decision_making_authority",
     # Activity and coordination cluster (D-B01)
     "activity_coordination",
-    # Financial and property cluster (D-B02)
+    # Financial and property cluster (D-B02, D-B-RT02)
     "shared_debt_allocation",
     "housing_cost_division",
     "financial_documentation",
+    "asset_division",
+    "business_valuation",
+    "disclosure_obligations",
     # Separation structure and emotional register cluster (D-B03)
     "process_legitimacy",
     "emotional_acknowledgment",
