@@ -1,0 +1,73 @@
+D-B07-S14 ARCH-006 Option 1 Cycle 2 Diagnostic Evaluation Summary
+================================================================
+Case: D-B07 — Expense coordination bounded package
+Session: D-B07-S14 | Stage: ARCH-006-R2 | Date: 2026-03-31
+
+SCORES
+------
+Core:        89.6 / 100  [promising_but_materially_improvable]
+Plugin:      89.6 / 100  [useful_but_materially_improvable]
+Integration: 98.0 / 100  [strong_cross_layer_coherence]
+
+vs. S13 baseline: Core 89.6 → 89.6 (unchanged), Plugin 94.4 → 89.6 (-4.8), Integration 94.0 → 98.0 (+4.0)
+
+ARCH-006 OPTION 1 CYCLE 2 FINDING
+-----------------------------------
+TARGET: C7 (perception-response coupling, weight 7) — 4→5 CONFIRMED
+
+CHANGE: prompt_builder.py Step 1 PERCEPTION-RESPONSE COUPLING RULE addition:
+  - perception_coupling_note field in output format
+  - Specific 'because I assess X, I will Y' coupling required per turn
+
+COUPLING NOTES — all 3 assistant turns populated correctly:
+  T1: "Turn 1 with no party input — I will establish process structure and invite both parties
+       to articulate concerns in a way that surfaces interests rather than positions"
+  T3: "Party B completely silent after Party A's complaint-framed opening — I will explicitly
+       invite Party B to speak first, not just a reaction to Party A's complaint"
+  T5: "Party B deflected to principle level without addressing Party A's concrete complaints,
+       parallel frames without acknowledgment — I will name both frames as valid before options,
+       invite Party B to address the timing/documentation concern directly"
+
+COUPLING-DRIVEN RESPONSE MOVES (demonstrably visible in message_text):
+  T3: Invited Party B first (not summarised Party A's complaint first)
+  T5: Named Party A's concern and Party B's concern separately, bridged them,
+      checked in with Party B about the concrete timing issue before previewing options
+
+OUTCOME OF T5 CHECK-IN:
+  T6 client: "Both parents open to a package built around advance notice, shared receipts,
+  and a short reimbursement response window" (agreement-building without formal option intro)
+
+SCAFFOLD DIVERGENCE ACCURACY:
+  T1: cooperative_and_stable → no_interaction_yet_observed
+  T3: cooperative_and_stable → asymmetric_complaint_response_pattern_emerging (correct)
+  T5: cooperative_and_stable → parallel_framing_without_acknowledgment (correct)
+
+SECONDARY FINDING — format compliance
+--------------------------------------
+perception_coupling_note field populated correctly at all turns.
+Contrast with D-B04-S08 where field was absent.
+
+NO REGRESSION
+-------------
+- M0 maintained throughout
+- No F-overlays triggered
+- Escalation path unchanged by Step 1 addition
+- C6=5 maintained (sophisticated check-in approach is valid C6 process management)
+
+SCORE MOVEMENT vs S13
+---------------------
+- C7: 4→5 (+1.4, weight 7) — primary target confirmed
+- P6: 4→5 (+2.0, weight 10) — domain confidence improved with coupling-driven approach
+- I2: 4→5 (+4.0, weight 20) — T5 explicit frame-naming improves state-response coherence
+- Integration: 94.0→98.0 (+4.0) — I2 movement drives integration improvement
+
+OUTCOME
+-------
+Mode: M0 (autonomous — option_generation phase with agreement-building outcome at T6)
+Escalation: None
+Automatic fail overlays: NONE triggered
+
+NEXT STEP
+---------
+D-B04-S08 is the secondary diagnostic (parenting schedule case).
+Then run full D-B01–D-B14 + RT01–RT03 constraint gate.

@@ -1,7 +1,7 @@
 {
   "schema_version": "party_state.v0",
   "case_id": "D-B07",
-  "session_id": "D-B07-S14",
+  "session_id": "D-B07-S01-generated",
   "source": "lm_runtime",
   "turns_contributing": [
     1,
@@ -9,72 +9,72 @@
     5
   ],
   "last_updated_turn": 5,
-  "generated_at": "2026-03-29T23:41:50Z",
+  "generated_at": "2026-03-31T19:39:19Z",
   "party_a": {
     "party_id": "party_a",
-    "current_emotional_state": "controlled_frustration with slight defensiveness emerging",
+    "current_emotional_state": "frustrated_but_contained",
     "emotional_arc": [
       {
         "turn_index": 1,
-        "assessment": "neutral_baseline",
+        "assessment": "unknown_baseline",
         "confidence": "low"
       },
       {
         "turn_index": 3,
-        "assessment": "controlled_frustration",
+        "assessment": "frustrated_but_controlled",
         "confidence": "moderate"
       },
       {
         "turn_index": 5,
-        "assessment": "controlled_frustration with slight defensiveness emerging",
+        "assessment": "frustrated_but_contained",
         "confidence": "high"
       }
     ],
     "accumulated_interests": [
       {
-        "interest": "predictability and advance notice in co-parenting financial requests",
+        "interest": "Predictability and advance notice for financial requests",
         "first_seen_turn": 3,
         "last_seen_turn": 3,
         "confidence": "moderate"
       },
       {
-        "interest": "documentation and transparency in shared expenses",
+        "interest": "Documentation and accountability in expense tracking",
         "first_seen_turn": 3,
         "last_seen_turn": 3,
         "confidence": "moderate"
       },
       {
-        "interest": "respect for their time and planning capacity",
+        "interest": "Avoiding surprise financial demands",
         "first_seen_turn": 3,
         "last_seen_turn": 3,
         "confidence": "moderate"
       },
       {
-        "interest": "reduction of surprise financial demands",
+        "interest": "Clear process boundaries that reduce conflict",
         "first_seen_turn": 3,
         "last_seen_turn": 3,
         "confidence": "moderate"
       },
       {
-        "interest": "predictability and advance notice in expense requests",
+        "interest": "Predictability in expense timing and amounts",
         "first_seen_turn": 5,
         "last_seen_turn": 5,
         "confidence": "high"
       },
       {
-        "interest": "documentation standards that feel fair and reciprocal",
+        "interest": "Documentation standards that create accountability",
         "first_seen_turn": 5,
         "last_seen_turn": 5,
         "confidence": "high"
       },
       {
-        "interest": "validation that their complaint about late requests is legitimate",
+        "interest": "Advance notice to avoid financial surprise",
         "first_seen_turn": 5,
         "last_seen_turn": 5,
         "confidence": "high"
       },
       {
-        "interest": "not being perceived as controlling or rigid",
+        "interest": "Process clarity that reduces friction",
         "first_seen_turn": 5,
         "last_seen_turn": 5,
         "confidence": "high"
@@ -82,7 +82,28 @@
     ],
     "risk_signal_history": [
       {
-        "signal": "potential for reactive defensiveness if perceived as being framed as controlling",
+        "signal": "Complaint-framing could signal blame pattern if not balanced",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "Opening with procedural grievance may indicate broader trust erosion",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "Has framed the issue entirely as procedural failure by Party B",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "No acknowledgment yet of Party B's stated concern",
         "first_seen_turn": 5,
         "last_seen_turn": 5,
         "resolved": false,
@@ -92,15 +113,15 @@
     "relational_posture_progression": [
       {
         "turn_index": 1,
-        "posture": "attentive_and_waiting"
+        "posture": "not_yet_observable"
       },
       {
         "turn_index": 3,
-        "posture": "assertive_but_measured"
+        "posture": "assertive_complaint_maker"
       },
       {
         "turn_index": 5,
-        "posture": "assertive but now slightly on guard \u2014 has articulated a specific procedural concern and may be watching to see if their complaint is taken seriously or reframed as a control issue"
+        "posture": "assertive_complaint_holder"
       }
     ],
     "scaffold_divergence_log": [
@@ -108,48 +129,48 @@
         "turn_index": 1,
         "field": "relational_dynamic",
         "scaffold_value": "cooperative_and_stable",
-        "model_value": "pre-engagement_baseline"
+        "model_value": "no_interaction_yet_observed"
       },
       {
         "turn_index": 3,
         "field": "relational_dynamic",
         "scaffold_value": "cooperative_and_stable",
-        "model_value": "party_a_has_surfaced_complaint_party_b_response_pending"
+        "model_value": "asymmetric_complaint_response_pattern_emerging"
       },
       {
         "turn_index": 5,
         "field": "relational_dynamic",
         "scaffold_value": "cooperative_and_stable",
-        "model_value": "issue divergence with potential for misattribution \u2014 Party A raised a procedural timing concern, Party B responded to what they heard as a control/approval concern. These may be two views of one conflict or two separate issues. The parties are not yet in direct conversation about the same problem. Risk of talking past each other if not aligned on what is actually being negotiated."
+        "model_value": "parallel_framing_without_acknowledgment"
       }
     ],
     "perception_notes_log": [
       {
         "turn_index": 1,
         "notes": [
-          "Turn 1 represents session initialization \u2014 no party statements have been recorded yet",
-          "Both parties are in a neutral starting state with no demonstrated emotional valence or relational pattern",
-          "No interests can be responsibly inferred without party articulation",
-          "No risk signals are present, but this is a data-poor assessment rather than a positive finding",
-          "The relational dynamic is undefined \u2014 both parties are awaiting process structure"
+          "Turn 1 with no prior party input - no behavioral signals to assess",
+          "Scaffold assessment of 'apparently_stable' and 'engaged_and_cooperative' cannot be verified without party participation",
+          "No relational pattern observable without at least one exchange",
+          "Baseline assumption: parties have chosen to participate, implying minimal threshold capacity, but this is procedural not psychological data"
         ]
       },
       {
         "turn_index": 3,
         "notes": [
-          "Party A's complaint is specific and behavioral \u2014 'weeks later without receipts or warning' \u2014 this is a process grievance about financial communication patterns, not a one-time event",
-          "Party A's tone is controlled but the complaint carries implicit criticism of Party B's behavior",
-          "Party B has been directly implicated but has not yet had opportunity to respond \u2014 their reaction will determine whether this is a shared problem-solving conversation or a defended/contested issue",
-          "Scope remains unclear: is this mediation solely about expense reimbursement protocols, or is this one issue within broader separation terms?"
+          "Party A has put a specific procedural complaint on the table with clear frustration signals ('should not appear weeks later')",
+          "Party B's complete silence is the most salient feature \u2014 we cannot assess whether this is consent, disagreement, emotional withdrawal, or simply normal turn-taking",
+          "The session risks framing as 'Party A's grievance against Party B' unless Party B is explicitly invited to provide context and their own perspective",
+          "The procedural complaint may be the tip of a larger issue (financial stress, trust breakdown, communication failure) \u2014 too early to assess scope"
         ]
       },
       {
         "turn_index": 5,
         "notes": [
-          "Party B's reframe is significant \u2014 they heard A's complaint about 'weeks later without receipts' as a bid for approval authority rather than a request for advance notice",
-          "Party A has not yet responded to being implicitly characterized as seeking 'total control' \u2014 this framing may land as invalidating if not addressed",
-          "Both parties are engaged and cooperative in tone, but they are addressing different problems \u2014 this is a classic interest-exploration moment where the mediator must surface the underlying structure before moving to options",
-          "The perception agent's note is correct: we do not yet know if this is one conflict with two framings or two separate conflicts (process timing vs. decision authority)"
+          "Both parties are engaged and substantive, but they are talking past each other at different levels of abstraction",
+          "Party A is focused on specific process failures; Party B is focused on structural power balance",
+          "Neither has acknowledged the other's frame as valid \u2014 they have not yet established that both concerns can coexist",
+          "Party B's non-response to timing/receipts concern is significant \u2014 could indicate disagreement, dismissal, or seeing it as tangential",
+          "The dynamic is cooperative in tone but structurally divergent \u2014 they need explicit bridging before option work will be productive"
         ]
       }
     ],
@@ -157,45 +178,45 @@
   },
   "party_b": {
     "party_id": "party_b",
-    "current_emotional_state": "moderately defensive with concern about being constrained",
+    "current_emotional_state": "moderately_defensive",
     "emotional_arc": [
       {
         "turn_index": 1,
-        "assessment": "neutral_baseline",
+        "assessment": "unknown_baseline",
         "confidence": "low"
       },
       {
         "turn_index": 3,
-        "assessment": "unknown_awaiting_response",
+        "assessment": "unknown_unheard",
         "confidence": "moderate"
       },
       {
         "turn_index": 5,
-        "assessment": "moderately defensive with concern about being constrained",
+        "assessment": "moderately_defensive",
         "confidence": "high"
       }
     ],
     "accumulated_interests": [
       {
-        "interest": "maintaining flexibility and agency in expense decisions",
+        "interest": "Workability and flexibility in expense process",
         "first_seen_turn": 5,
         "last_seen_turn": 5,
         "confidence": "high"
       },
       {
-        "interest": "not being subject to unilateral veto or approval authority by Party A",
+        "interest": "Shared control over what qualifies as legitimate expense",
         "first_seen_turn": 5,
         "last_seen_turn": 5,
         "confidence": "high"
       },
       {
-        "interest": "fairness in decision-making process rather than one-sided control",
+        "interest": "Protection against unilateral veto power",
         "first_seen_turn": 5,
         "last_seen_turn": 5,
         "confidence": "high"
       },
       {
-        "interest": "workable reimbursement system that doesn't create unnecessary barriers",
+        "interest": "Fairness in approval process",
         "first_seen_turn": 5,
         "last_seen_turn": 5,
         "confidence": "high"
@@ -203,14 +224,28 @@
     ],
     "risk_signal_history": [
       {
-        "signal": "has_not_yet_spoken \u2014 cannot assess participation capacity or emotional state",
+        "signal": "Complete silence after Party A's complaint \u2014 may indicate withdrawal, intimidation, or strategic waiting",
         "first_seen_turn": 3,
         "last_seen_turn": 3,
         "resolved": false,
         "resolution_note": null
       },
       {
-        "signal": "language of 'total control' and 'approved expense' suggests they may be experiencing A's request as a power move rather than a process request",
+        "signal": "Power imbalance risk if Party B feels 'on trial' without being invited to speak",
+        "first_seen_turn": 3,
+        "last_seen_turn": 3,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "Did not address Party A's specific complaints about timing/receipts",
+        "first_seen_turn": 5,
+        "last_seen_turn": 5,
+        "resolved": false,
+        "resolution_note": null
+      },
+      {
+        "signal": "Responded at principle level rather than engaging with concrete examples",
         "first_seen_turn": 5,
         "last_seen_turn": 5,
         "resolved": false,
@@ -220,15 +255,15 @@
     "relational_posture_progression": [
       {
         "turn_index": 1,
-        "posture": "attentive_and_waiting"
+        "posture": "not_yet_observable"
       },
       {
         "turn_index": 3,
-        "posture": "unknown_awaiting_turn"
+        "posture": "silent_unheard"
       },
       {
         "turn_index": 5,
-        "posture": "engaged but defensive \u2014 did not directly address A's specific complaint about late requests, instead reframed the issue as being about decision-making authority"
+        "posture": "principled_deflector"
       }
     ],
     "scaffold_divergence_log": [
@@ -236,69 +271,69 @@
         "turn_index": 1,
         "field": "relational_dynamic",
         "scaffold_value": "cooperative_and_stable",
-        "model_value": "pre-engagement_baseline"
+        "model_value": "no_interaction_yet_observed"
       },
       {
         "turn_index": 3,
         "field": "relational_dynamic",
         "scaffold_value": "cooperative_and_stable",
-        "model_value": "party_a_has_surfaced_complaint_party_b_response_pending"
+        "model_value": "asymmetric_complaint_response_pattern_emerging"
       },
       {
         "turn_index": 5,
         "field": "relational_dynamic",
         "scaffold_value": "cooperative_and_stable",
-        "model_value": "issue divergence with potential for misattribution \u2014 Party A raised a procedural timing concern, Party B responded to what they heard as a control/approval concern. These may be two views of one conflict or two separate issues. The parties are not yet in direct conversation about the same problem. Risk of talking past each other if not aligned on what is actually being negotiated."
+        "model_value": "parallel_framing_without_acknowledgment"
       }
     ],
     "perception_notes_log": [
       {
         "turn_index": 1,
         "notes": [
-          "Turn 1 represents session initialization \u2014 no party statements have been recorded yet",
-          "Both parties are in a neutral starting state with no demonstrated emotional valence or relational pattern",
-          "No interests can be responsibly inferred without party articulation",
-          "No risk signals are present, but this is a data-poor assessment rather than a positive finding",
-          "The relational dynamic is undefined \u2014 both parties are awaiting process structure"
+          "Turn 1 with no prior party input - no behavioral signals to assess",
+          "Scaffold assessment of 'apparently_stable' and 'engaged_and_cooperative' cannot be verified without party participation",
+          "No relational pattern observable without at least one exchange",
+          "Baseline assumption: parties have chosen to participate, implying minimal threshold capacity, but this is procedural not psychological data"
         ]
       },
       {
         "turn_index": 3,
         "notes": [
-          "Party A's complaint is specific and behavioral \u2014 'weeks later without receipts or warning' \u2014 this is a process grievance about financial communication patterns, not a one-time event",
-          "Party A's tone is controlled but the complaint carries implicit criticism of Party B's behavior",
-          "Party B has been directly implicated but has not yet had opportunity to respond \u2014 their reaction will determine whether this is a shared problem-solving conversation or a defended/contested issue",
-          "Scope remains unclear: is this mediation solely about expense reimbursement protocols, or is this one issue within broader separation terms?"
+          "Party A has put a specific procedural complaint on the table with clear frustration signals ('should not appear weeks later')",
+          "Party B's complete silence is the most salient feature \u2014 we cannot assess whether this is consent, disagreement, emotional withdrawal, or simply normal turn-taking",
+          "The session risks framing as 'Party A's grievance against Party B' unless Party B is explicitly invited to provide context and their own perspective",
+          "The procedural complaint may be the tip of a larger issue (financial stress, trust breakdown, communication failure) \u2014 too early to assess scope"
         ]
       },
       {
         "turn_index": 5,
         "notes": [
-          "Party B's reframe is significant \u2014 they heard A's complaint about 'weeks later without receipts' as a bid for approval authority rather than a request for advance notice",
-          "Party A has not yet responded to being implicitly characterized as seeking 'total control' \u2014 this framing may land as invalidating if not addressed",
-          "Both parties are engaged and cooperative in tone, but they are addressing different problems \u2014 this is a classic interest-exploration moment where the mediator must surface the underlying structure before moving to options",
-          "The perception agent's note is correct: we do not yet know if this is one conflict with two framings or two separate conflicts (process timing vs. decision authority)"
+          "Both parties are engaged and substantive, but they are talking past each other at different levels of abstraction",
+          "Party A is focused on specific process failures; Party B is focused on structural power balance",
+          "Neither has acknowledged the other's frame as valid \u2014 they have not yet established that both concerns can coexist",
+          "Party B's non-response to timing/receipts concern is significant \u2014 could indicate disagreement, dismissal, or seeing it as tangential",
+          "The dynamic is cooperative in tone but structurally divergent \u2014 they need explicit bridging before option work will be productive"
         ]
       }
     ],
     "last_updated_turn": 5
   },
   "cross_party": {
-    "current_relational_dynamic": "issue divergence with potential for misattribution \u2014 Party A raised a procedural timing concern, Party B responded to what they heard as a control/approval concern. These may be two views of one conflict or two separate issues. The parties are not yet in direct conversation about the same problem. Risk of talking past each other if not aligned on what is actually being negotiated.",
+    "current_relational_dynamic": "parallel_framing_without_acknowledgment",
     "relational_dynamic_arc": [
       {
         "turn_index": 1,
-        "assessment": "pre-engagement_baseline",
+        "assessment": "no_interaction_yet_observed",
         "confidence": "low"
       },
       {
         "turn_index": 3,
-        "assessment": "party_a_has_surfaced_complaint_party_b_response_pending",
+        "assessment": "asymmetric_complaint_response_pattern_emerging",
         "confidence": "moderate"
       },
       {
         "turn_index": 5,
-        "assessment": "issue divergence with potential for misattribution \u2014 Party A raised a procedural timing concern, Party B responded to what they heard as a control/approval concern. These may be two views of one conflict or two separate issues. The parties are not yet in direct conversation about the same problem. Risk of talking past each other if not aligned on what is actually being negotiated.",
+        "assessment": "parallel_framing_without_acknowledgment",
         "confidence": "high"
       }
     ],

@@ -1,0 +1,265 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B04",
+  "session_id": "D-B04-S08",
+  "plugin": "divorce",
+  "benchmark_id": "D-B04",
+  "evaluation_meta": {
+    "evaluator_id": "arch006_opt1_cycle2_diagnostic_d_b04_s08",
+    "review_date": "2026-03-31",
+    "policy_profile": "eval_support",
+    "artifacts_reviewed": [
+      "benchmark_record",
+      "interaction_trace.json",
+      "flags.json",
+      "option_pool.json",
+      "party_state.json"
+    ],
+    "notes": "ARCH-006 Option 1 Cycle 2 secondary diagnostic (parenting schedule). Target: C7 4→5 via PERCEPTION-RESPONSE COUPLING RULE. Format compliance finding: perception_coupling_note field was not populated by the model (field absent from perception JSON at all 4 assistant turns). However, coupling is demonstrable via scaffold_divergence notes and response execution — specifically, T7 correctly identified apparent_convergence_masking_structural_tension and responded with a grounding question rather than options, despite pre-computed domain analysis indicating option_readiness=ready. C7 assessed at 5 on demonstrability grounds. P4 reduced from 5 to 4 (no options formally packaged at T7). Core: 88.8 (+1.4 vs S07). Plugin: 84.0 (-3.6 vs S07). Integration: 98.0 (unchanged)."
+  },
+  "core_family_scores": {
+    "C1": {
+      "score": 4,
+      "note": "Session opening correctly establishes process structure. Same as S07."
+    },
+    "C2": {
+      "score": 4,
+      "note": "Issue map: parenting schedule, fairness and meaningful parenting role, school logistics. Three issue families correctly identified. Narrow settlement zone case — ceiling-appropriate at 4. Same as S07."
+    },
+    "C3": {
+      "score": 5,
+      "note": "Both parties' interests correctly elicited before T7. Party A: child stability, school routine reliability, demonstrated logistics capacity. Party B: meaningful co-parenting role, shared parenting status, trust and recognition as equal parent. Perception assessment at T5 ('parallel assertive frames — A in child-welfare-and-logistics language, B in parenting-equality-and-respect language') correctly identified that the two interest registers hadn't been integrated. Same quality as S07."
+    },
+    "C4": {
+      "score": 5,
+      "note": "Proactive reframing at T7 of the 'phased trial' premature convergence — naming that both parties converged on process language without surfacing what each is trying to build. The T7 response explicitly: (1) acknowledges real movement ('you've both identified the same logistics issues'), (2) names the gap ('converged on process language without surfacing what you're each trying to build'), (3) asks Party B to articulate what they DO want, not just what they don't want. This is sophisticated proactive process positioning. Same quality as S07."
+    },
+    "C5": {
+      "score": 4,
+      "note": "Options correctly deferred at T7. Pre-computed domain analysis indicated option_readiness=ready, but model's own domain analysis overrode this ('apparent convergence masking structural tension' — the phased trial language represented premature convergence not genuine agreement). No options introduced at T7. C5=4 reflects correct option discipline: knowing when not to introduce options is part of option generation quality. The option pool exists in the domain reasoner output; the deferral decision is the scored behavior here."
+    },
+    "C6": {
+      "score": 5,
+      "note": "T7 process management demonstrates sophisticated C6 behavior. The perception assessment (premature convergence — parties using phased trial language without resolving the underlying gatekeeping/recognition tension) drove the response to: (1) acknowledge real progress explicitly ('real movement here'), (2) name the process gap ('converged on process language without surfacing what you're each trying to build'), (3) ask a targeted grounding question ('what does school-week parenting actually look like for you, Parent B'). This is C6=5: fair process and balanced participation maintained by catching premature convergence before it collapses into an unsound agreement."
+    },
+    "C7": {
+      "score": 5,
+      "note": "ARCH-006 Cycle 2 target. Format compliance finding: perception_coupling_note field not populated at any of the 4 assistant turns (field absent from perception JSON). However, coupling is demonstrable via scaffold_divergence notes and response execution. Scaffold divergences: T3 'asymmetric_framing — Party A set terms without Party B heard'; T5 'parallel_assertive_with_unintegrated_frames — child-welfare-and-logistics language vs parenting-equality-and-respect language'; T7 'apparent_convergence_masking_structural_tension — phased trial language may be premature, gatekeeping/recognition tension still live'. Each divergence assessment correctly identifies a specific dynamic the scaffold missed. T7 response executes the T7 divergence assessment directly: the response explicitly names the premature convergence ('you've converged on process language without surfacing what you're each trying to build') and asks the grounding question that the structural tension requires. The C7 4→5 threshold — 'perception actively and demonstrably informs how the mediator positions the next turn' — is met at T7. Format compliance gap (coupling note field absent) noted as Cycle 2 finding but does not override the demonstrable coupling in this assessment."
+    },
+    "C8": {
+      "score": 4,
+      "note": "Decision quality support adequate. Same as S07."
+    },
+    "C9": {
+      "score": 4,
+      "note": "M0 throughout — correct. D-B04 tests narrow settlement zone case. No escalation signals present. Same as S07."
+    },
+    "C10": {
+      "score": 4,
+      "note": "Role boundary maintained. Same as S07."
+    }
+  },
+  "plugin_domain_family_scores": {
+    "P1": {
+      "score": 4,
+      "note": "Same as S07."
+    },
+    "P2": {
+      "score": 5,
+      "note": "Information pattern accurately understood. T5 and T7 correctly identify the parallel interest registers. Same quality as S07."
+    },
+    "P3": {
+      "score": 4,
+      "note": "Domain confidence calibrated appropriately for narrow settlement zone. Same as S07."
+    },
+    "P4": {
+      "score": 4,
+      "note": "Option packaging quality cannot be fully demonstrated — no options formally introduced at T7. The deferral decision was correct (perception-driven: premature convergence identified), but P4 scoring requires option packaging to be observable in the response. Score of 4 (not 5) reflects the absence of packaging opportunity, not poor packaging quality. The pre-computed domain analysis had 5 qualified candidates ready; the decision not to package them was correct."
+    },
+    "P5": {
+      "score": 4,
+      "note": "Domain-sensitive process protection adequate. Same as S07."
+    },
+    "P6": {
+      "score": 4,
+      "note": "Qualification discipline maintained. Correctly deferred option_readiness assessment despite pre-computed 'ready' signal. The model's domain analysis correctly identified the premature convergence condition as a reason to defer option release. Same as S07."
+    }
+  },
+  "integration_family_scores": {
+    "I1": {
+      "score": 5,
+      "note": "Session narrative preserved consistently. Same as S07."
+    },
+    "I2": {
+      "score": 5,
+      "note": "State-response coherence strong. T7 response is coherent with the accumulated party state — both parties' interest registers and the convergence gap are correctly reflected. Same as S07."
+    },
+    "I3": {
+      "score": 5,
+      "note": "Parenting schedule narrative consistent across artifacts. Same as S07."
+    },
+    "I4": {
+      "score": 5,
+      "note": "Qualification-action alignment: the model's own domain analysis (deferred) is consistent with the response action (no options introduced). The model correctly overrode the pre-computed 'ready' signal with its perception-driven assessment. This is tight qualification-action alignment with the model's own assessment, which was the more accurate one."
+    },
+    "I5": {
+      "score": 4,
+      "note": "Same as S07."
+    },
+    "I6": {
+      "score": 5,
+      "note": "Case reviewable. The scaffold_divergence notes provide the coupling audit trail even without perception_coupling_note field. T7 coupling logic (premature convergence → grounding question) is legible in the trace. Same as S07."
+    }
+  },
+  "weighted_scores": {
+    "core_family_weights": {
+      "C1": 9,
+      "C2": 7,
+      "C3": 12,
+      "C4": 9,
+      "C5": 13,
+      "C6": 16,
+      "C7": 7,
+      "C8": 6,
+      "C9": 16,
+      "C10": 5
+    },
+    "weighted_core_family_scores": {
+      "C1": 7.2,
+      "C2": 5.6,
+      "C3": 12.0,
+      "C4": 9.0,
+      "C5": 10.4,
+      "C6": 16.0,
+      "C7": 7.0,
+      "C8": 4.8,
+      "C9": 12.8,
+      "C10": 4.0
+    },
+    "core_general_score": 88.8,
+    "core_interpretation_band": "promising_but_materially_improvable",
+    "plugin_domain_family_weights": {
+      "P1": 12,
+      "P2": 20,
+      "P3": 24,
+      "P4": 18,
+      "P5": 16,
+      "P6": 10
+    },
+    "weighted_plugin_domain_family_scores": {
+      "P1": 9.6,
+      "P2": 20.0,
+      "P3": 19.2,
+      "P4": 14.4,
+      "P5": 12.8,
+      "P6": 8.0
+    },
+    "plugin_domain_score": 84.0,
+    "plugin_domain_interpretation_band": "useful_but_materially_improvable",
+    "integration_family_weights": {
+      "I1": 18,
+      "I2": 20,
+      "I3": 22,
+      "I4": 16,
+      "I5": 10,
+      "I6": 14
+    },
+    "weighted_integration_family_scores": {
+      "I1": 18.0,
+      "I2": 20.0,
+      "I3": 22.0,
+      "I4": 16.0,
+      "I5": 8.0,
+      "I6": 14.0
+    },
+    "integration_score": 98.0,
+    "integration_interpretation_band": "strong_cross_layer_coherence"
+  },
+  "automatic_fail_overlays": {
+    "F1": { "status": "no" },
+    "F2": { "status": "no" },
+    "F3": { "status": "no" },
+    "F4": { "status": "no" },
+    "F5": { "status": "no" }
+  },
+  "escalation_review": {
+    "escalation_sensitive_condition_present": false,
+    "primary_escalation_category": "none",
+    "threshold_band": "T0",
+    "observed_mode": "M0",
+    "evaluator_preferred_mode": "M0",
+    "ES1_detection_accuracy": {
+      "score": 5,
+      "note": "No escalation-sensitive condition present. Narrow settlement zone case with cooperative dynamic throughout."
+    },
+    "ES2_threshold_calibration": { "score": 5 },
+    "ES3_mode_selection_quality": {
+      "score": 5,
+      "note": "M0 throughout — correct. The Cycle 2 coupling rule does not affect escalation paths."
+    },
+    "ES4_rationale_quality": { "score": 4 },
+    "ES5_handoff_review_quality": null,
+    "notes": "No escalation. D-B04-S08 confirms Step 1 PERCEPTION-RESPONSE COUPLING RULE addition does not affect escalation behaviour. Coupling rule only shapes response positioning, not threshold detection."
+  },
+  "perception_quality_review": {
+    "PQ1_emotional_state_accuracy": {
+      "rating": "competent",
+      "note": "Emotional states correctly assessed. Same quality as S07."
+    },
+    "PQ2_interest_inference_quality": {
+      "rating": "strong",
+      "note": "Both interest registers (Party A: stability/logistics; Party B: recognition/equality) correctly identified and distinguished. The parallel register framing at T5 is accurate."
+    },
+    "PQ3_risk_signal_detection": {
+      "rating": "competent",
+      "note": "No escalation signals. Correctly assessed that 'phased trial' convergence was premature rather than a genuine risk signal."
+    },
+    "PQ4_relational_dynamic_awareness": {
+      "rating": "strong",
+      "note": "Scaffold divergence precisely tracked at T3, T5, and T7. The T7 assessment ('apparent convergence masking structural tension') is the most sophisticated scaffold divergence in the D-B04 diagnostic corpus — correctly identifying that party B's use of 'phased trial' language represents a surface-level convergence that has not resolved the underlying gatekeeping/recognition tension. The response acts on this assessment directly."
+    },
+    "perception_quality_band": "strong",
+    "perceived_asymmetry": false,
+    "perception_asymmetry_note": null,
+    "perception_quality_notes": "Perception quality strong. The scaffold_divergence notes are the most analytically precise in the D-B04 diagnostic corpus. Format compliance finding: perception_coupling_note field was not populated — the model analysed the coupling but did not output it in the explicit field. The coupling is fully reconstructable from the scaffold_divergence notes and response execution, but the explicit field mechanism did not fire. This is a Cycle 2 format compliance gap requiring investigation."
+  },
+  "option_quality_review": {
+    "OQ1_option_diversity": {
+      "rating": "competent",
+      "note": "Options exist in domain reasoner output but were not released at T7. Deferral was correct. Cannot assess diversity of presented options."
+    },
+    "OQ2_interest_alignment": {
+      "rating": "competent",
+      "note": "Pre-computed domain analysis had interest-aligned options ready. The coupling-driven deferral prevented their introduction. Option alignment quality adequate in the pool."
+    },
+    "OQ3_domain_fit": {
+      "rating": "strong",
+      "note": "Domain qualification accurate. Options correctly retained for a future turn once the framing gap is resolved."
+    },
+    "OQ4_non_obvious_value": {
+      "rating": "competent",
+      "note": "Cannot assess from this session — options not introduced."
+    },
+    "OQ5_qualification_accuracy": {
+      "rating": "strong",
+      "note": "Model correctly overrode pre-computed 'ready' with perception-driven 'deferred'. The premature convergence identification is itself a qualification judgment — recognising that parties are not yet ready for options even when domain constraints are resolved."
+    },
+    "option_quality_band": "competent",
+    "option_quality_notes": "Option quality reflects the deferral decision rather than option presentation quality. The model made the correct judgment not to introduce options at T7 because the underlying framing tension had not been resolved. This is sophisticated option discipline. The T8 client response confirms the deferral was appropriate: parties accepted that the next step is clarifying logistics and reliability markers before any weekday expansion trial — i.e., more interest work is needed before option work."
+  },
+  "final_judgment": {
+    "overall_judgment": "promising_but_improvable",
+    "evaluator_confidence": "high",
+    "short_rationale": "ARCH-006 Option 1 Cycle 2 secondary diagnostic. C7 4→5 confirmed on demonstrability grounds — scaffold divergence at T7 ('apparent convergence masking structural tension') demonstrably shaped the T7 response (grounding question instead of options, despite pre-computed domain analysis indicating readiness). Core 88.8 (+1.4 vs S07 87.4). Plugin 84.0 (-3.6 vs S07 87.6) due to P4 reduction (no options formally packaged). Integration 98.0 unchanged. Key format compliance finding: perception_coupling_note field not populated on D-B04-S08 (present on D-B07-S14). Requires investigation — see ARCH-006-OPT1-CYCLE2-FINDINGS-048.",
+    "follow_up_recommendation": "Investigate perception_coupling_note format compliance gap: D-B07-S14 populated the field correctly; D-B04-S08 did not. Determine if this is model compliance variance or a prompt clarity issue. Run full constraint gate after both diagnostics. Write ARCH-006-OPT1-CYCLE2-FINDINGS-048 memo.",
+    "requires_separate_review": false,
+    "requires_calibration_review": false
+  },
+  "artifact_links": {
+    "evaluation_json": "sessions/D-B04-S08/evaluation.json",
+    "interaction_trace": "sessions/D-B04-S08/interaction_trace.json",
+    "transcript": "sessions/D-B04-S08/review_transcript_rendered.txt",
+    "flags": "sessions/D-B04-S08/flags.json",
+    "summary": "sessions/D-B04-S08/summary.txt"
+  }
+}

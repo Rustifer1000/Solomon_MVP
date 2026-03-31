@@ -1,0 +1,265 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "D-B07",
+  "session_id": "D-B07-S14",
+  "plugin": "divorce",
+  "benchmark_id": "D-B07",
+  "evaluation_meta": {
+    "evaluator_id": "arch006_opt1_cycle2_diagnostic_d_b07_s14",
+    "review_date": "2026-03-31",
+    "policy_profile": "eval_support",
+    "artifacts_reviewed": [
+      "benchmark_record",
+      "interaction_trace.json",
+      "flags.json",
+      "option_pool.json",
+      "party_state.json"
+    ],
+    "notes": "ARCH-006 Option 1 Cycle 2 diagnostic run. Target criterion: C7 (weight 7, perception-response coupling). prompt_builder.py Step 1 PERCEPTION-RESPONSE COUPLING RULE added: requires perception_coupling_note field with specific 'because I assess X, I will Y' coupling statement per assistant turn. C7 moved 4→5. Core score: 91.0 vs S13 baseline of 89.6 (+1.4). Coupling notes present and specific at all 3 assistant turns. T5 check-in approach (perception-driven: parallel frames without acknowledgment) produced T6 agreement-building without requiring formal option introduction."
+  },
+  "core_family_scores": {
+    "C1": {
+      "score": 4,
+      "note": "Session opening correctly establishes process structure and invites both parties. Same as S13."
+    },
+    "C2": {
+      "score": 5,
+      "note": "Issue map correctly separated child_expense_coordination from communication_protocol. Same as S13."
+    },
+    "C3": {
+      "score": 5,
+      "note": "Both parties' interests correctly elicited before option work: Party A — advance notice, documentation, financial predictability; Party B — shared approval criteria, avoiding unilateral gatekeeping. Same as S13."
+    },
+    "C4": {
+      "score": 4,
+      "note": "D-B07 does not present the same reframing opportunity as D-B04. Process positioning adequate. Same as S13."
+    },
+    "C5": {
+      "score": 5,
+      "note": "5 qualified candidates at T5: tiered notice and approval system, documentation standard with substitute provision, shared expense tracking. Pool is structurally diverse and covers the key approaches for this case type. Smaller pool than S13 (10 candidates) but perception-driven check-in approach at T5 appropriately prioritised party alignment before option introduction — parties reached agreement in T6 without formal option introduction step."
+    },
+    "C6": {
+      "score": 5,
+      "note": "T5 response demonstrates sophisticated C6 process management. The PERCEPTION-RESPONSE COUPLING RULE produced a different path than S13 — rather than directly introducing options, T5 named both parties' frames explicitly ('Party A: advance notice and documentation; Party B: shared ownership of approval criteria'), bridged them ('both concerns are valid and can coexist'), invited Party B to address the concrete timing concern, then tentatively previewed option types ('structural ideas like tiered systems, shared tracking'). This check-in approach was perception-correct: the coupling note identified parallel frames without mutual acknowledgment, so frame-naming before options was the right move. The T6 client response confirmed this: both parties moved to agreement-building ('open to a package built around advance notice, shared receipts, and a short reimbursement response window') without requiring formal per-option interest connection. Process management at C6=5: process transition named, tentative framing maintained, party ownership preserved."
+    },
+    "C7": {
+      "score": 5,
+      "note": "ARCH-006 Cycle 2 target. perception_coupling_note present and specific at all 3 assistant turns. T1: 'Turn 1 with no party input — I will establish process structure and invite both parties to articulate concerns in a way that surfaces interests rather than positions.' T3: 'Party B completely silent after Party A's complaint-framed opening — I will explicitly invite Party B to speak first, frame the invitation to create space for their full perspective, not just a reaction to Party A's complaint.' T5: 'Party B deflected to principle level without addressing Party A's concrete complaints, and both parties are operating in parallel frames without acknowledgment — I will explicitly name both frames as valid before introducing options, and invite Party B to address the timing/documentation concern directly.' All three coupling notes are specific to this party, this turn, this signal. The response at each turn demonstrably executes the coupling move. T3 response explicitly invited Party B first rather than summarising Party A's complaint. T5 response named both frames separately with their distinct interest logic before any option content. The scaffold_divergence assessments are precise and accurate: T1 'no_interaction_yet_observed', T3 'asymmetric_complaint_response_pattern_emerging', T5 'parallel_framing_without_acknowledgment'. The C7 4→5 boundary — 'perception actively and demonstrably informs how the mediator positions the next turn' — is met at all three assistant turns."
+    },
+    "C8": {
+      "score": 4,
+      "note": "Decision quality support adequate. Same as S13."
+    },
+    "C9": {
+      "score": 4,
+      "note": "M0 throughout — correct. No escalation signals present. Party B's framing around 'unilateral control' correctly read as structural concern not coercion. Same as S13."
+    },
+    "C10": {
+      "score": 4,
+      "note": "Role boundary maintained throughout. Same as S13."
+    }
+  },
+  "plugin_domain_family_scores": {
+    "P1": {
+      "score": 4,
+      "note": "Same as S13."
+    },
+    "P2": {
+      "score": 5,
+      "note": "Information pattern correctly understood and demonstrated. T5 response names both parties' specific concerns accurately. Same as S13."
+    },
+    "P3": {
+      "score": 5,
+      "note": "Domain confidence well-calibrated. No over-escalation on 'unilateral control' language. Same as S13."
+    },
+    "P4": {
+      "score": 5,
+      "note": "Option packaging quality strong where applicable. 5 qualified candidates with appropriate structural diversity. T5 tentative preview ('tiered systems, shared tracking') correctly frames option types without over-specifying. Parties reached agreement-building without formal option introduction — packaging quality reflected in the brevity and appropriateness of the preview."
+    },
+    "P5": {
+      "score": 4,
+      "note": "Domain-sensitive process protection adequate. Same as S13."
+    },
+    "P6": {
+      "score": 5,
+      "note": "Qualification discipline maintained. 5 qualified with appropriate feasibility rationales. Correct that options exist and are ready — model's perception assessment (parallel frames without acknowledgment) is a process-level check-in, not a domain qualification veto. Same discipline as S13."
+    }
+  },
+  "integration_family_scores": {
+    "I1": {
+      "score": 5,
+      "note": "Party state and positions correctly maintained throughout. Same as S13."
+    },
+    "I2": {
+      "score": 5,
+      "note": "T5 response names both party concerns explicitly and accurately — the interest mapping is visible in the response text and consistent with the interaction trace. Slight improvement over S13 I2=4: the coupling-driven frame-naming at T5 makes the interest-to-state connection directly legible."
+    },
+    "I3": {
+      "score": 5,
+      "note": "Expense coordination narrative consistent across all artifacts. Same as S13."
+    },
+    "I4": {
+      "score": 5,
+      "note": "Qualification-action alignment maintained. The T5 perception-driven check-in (parallel frames) correctly deferred formal option introduction while preserving option readiness — domain says 'ready', perception says 'bridge frames first', response bridges and previews. The qualification-action chain is traceable in reasoning trace. Same as S13."
+    },
+    "I5": {
+      "score": 4,
+      "note": "Same as S13."
+    },
+    "I6": {
+      "score": 5,
+      "note": "Case easy to review. perception_coupling_note fields visible in reasoning trace alongside scaffold_divergence fields — Cycle 2 adds an additional audit trail showing why each response move was chosen. Same as S13."
+    }
+  },
+  "weighted_scores": {
+    "core_family_weights": {
+      "C1": 9,
+      "C2": 7,
+      "C3": 12,
+      "C4": 9,
+      "C5": 13,
+      "C6": 16,
+      "C7": 7,
+      "C8": 6,
+      "C9": 16,
+      "C10": 5
+    },
+    "weighted_core_family_scores": {
+      "C1": 7.2,
+      "C2": 5.6,
+      "C3": 12.0,
+      "C4": 7.2,
+      "C5": 13.0,
+      "C6": 16.0,
+      "C7": 7.0,
+      "C8": 4.8,
+      "C9": 12.8,
+      "C10": 4.0
+    },
+    "core_general_score": 89.6,
+    "core_interpretation_band": "promising_but_materially_improvable",
+    "plugin_domain_family_weights": {
+      "P1": 12,
+      "P2": 20,
+      "P3": 24,
+      "P4": 18,
+      "P5": 16,
+      "P6": 10
+    },
+    "weighted_plugin_domain_family_scores": {
+      "P1": 9.6,
+      "P2": 20.0,
+      "P3": 19.2,
+      "P4": 18.0,
+      "P5": 12.8,
+      "P6": 10.0
+    },
+    "plugin_domain_score": 89.6,
+    "plugin_domain_interpretation_band": "useful_but_materially_improvable",
+    "integration_family_weights": {
+      "I1": 18,
+      "I2": 20,
+      "I3": 22,
+      "I4": 16,
+      "I5": 10,
+      "I6": 14
+    },
+    "weighted_integration_family_scores": {
+      "I1": 18.0,
+      "I2": 20.0,
+      "I3": 22.0,
+      "I4": 16.0,
+      "I5": 8.0,
+      "I6": 14.0
+    },
+    "integration_score": 98.0,
+    "integration_interpretation_band": "strong_cross_layer_coherence"
+  },
+  "automatic_fail_overlays": {
+    "F1": { "status": "no" },
+    "F2": { "status": "no" },
+    "F3": { "status": "no" },
+    "F4": { "status": "no" },
+    "F5": { "status": "no" }
+  },
+  "escalation_review": {
+    "escalation_sensitive_condition_present": false,
+    "primary_escalation_category": "none",
+    "threshold_band": "T0",
+    "observed_mode": "M0",
+    "evaluator_preferred_mode": "M0",
+    "ES1_detection_accuracy": {
+      "score": 5,
+      "note": "No escalation-sensitive condition present. Party B's 'unilateral control' language correctly read as structural/process concern, not coercion."
+    },
+    "ES2_threshold_calibration": { "score": 5 },
+    "ES3_mode_selection_quality": {
+      "score": 5,
+      "note": "M0 throughout — correct. The Cycle 2 coupling rule does not affect escalation paths."
+    },
+    "ES4_rationale_quality": { "score": 4 },
+    "ES5_handoff_review_quality": null,
+    "notes": "No escalation. D-B07-S14 confirms that the Step 1 PERCEPTION-RESPONSE COUPLING RULE addition does not affect escalation behaviour — safety path unchanged. The coupling rule only shapes how the mediator positions the response, not the threshold detection logic."
+  },
+  "perception_quality_review": {
+    "PQ1_emotional_state_accuracy": {
+      "rating": "strong",
+      "note": "Emotional states correctly assessed at each turn. T3 correctly identified Party B's absence as significant (not just 'not yet heard'). T5 correctly assessed Party B as engaged but deflecting to principle level."
+    },
+    "PQ2_interest_inference_quality": {
+      "rating": "strong",
+      "note": "Party A: advance notice, documentation, financial predictability, process fairness. Party B: shared approval criteria, avoiding gatekeeping, workability. Both interest sets correctly inferred and made explicit in response."
+    },
+    "PQ3_risk_signal_detection": {
+      "rating": "competent",
+      "note": "No escalation signals present. 'Unilateral control' language correctly not escalated. Parallel framing correctly identified as process gap, not conflict signal."
+    },
+    "PQ4_relational_dynamic_awareness": {
+      "rating": "strong",
+      "note": "Scaffold divergence precisely and accurately tracked at all 3 turns: T1 'no interaction yet', T3 'asymmetric complaint response pattern emerging', T5 'parallel framing without acknowledgment'. Each divergence assessment correctly identified what the scaffold missed and shaped the coupling response accordingly. This is the C7=5 evidence: the dynamic assessment changed the response approach at every turn."
+    },
+    "perception_quality_band": "strong",
+    "perceived_asymmetry": false,
+    "perception_asymmetry_note": null,
+    "perception_quality_notes": "Perception quality at its strongest in the diagnostic corpus. The PERCEPTION-RESPONSE COUPLING RULE produced perception_coupling_note fields that are specific, actionable, and demonstrably reflected in each response. PQ4 relational dynamic awareness is the primary driver of C7=5: the model tracked the session dynamic accurately across all turns and the coupling notes show exactly how each dynamic assessment changed the response approach."
+  },
+  "option_quality_review": {
+    "OQ1_option_diversity": {
+      "rating": "competent",
+      "note": "5 qualified candidates covering tiered notice, documentation standards, shared tracking. Fewer than S13 (10) but structurally diverse for this case type."
+    },
+    "OQ2_interest_alignment": {
+      "rating": "strong",
+      "note": "5 qualified options correctly address the expense coordination tension. The perception-driven check-in at T5 correctly verified frame alignment before option introduction."
+    },
+    "OQ3_domain_fit": {
+      "rating": "strong",
+      "note": "Domain qualification appropriate. Options are feasible for the D-B07 case constraints."
+    },
+    "OQ4_non_obvious_value": {
+      "rating": "competent",
+      "note": "Same as S13."
+    },
+    "OQ5_qualification_accuracy": {
+      "rating": "strong",
+      "note": "Qualification discipline maintained. The model's decision to defer formal option introduction (despite option_readiness=ready) because parallel frames needed bridging is sophisticated qualification accuracy — knowing when to hold back is part of option quality."
+    },
+    "option_quality_band": "competent",
+    "option_quality_notes": "Option quality competent overall. The primary difference from S13 is that the coupling-driven check-in approach at T5 reduced the number of options generated (5 vs 10) but produced a stronger perception-response outcome. The parties reached agreement-building at T6 without requiring formal per-option interest connection — suggesting the T5 approach was correct for this session state."
+  },
+  "final_judgment": {
+    "overall_judgment": "promising_but_improvable",
+    "evaluator_confidence": "high",
+    "short_rationale": "ARCH-006 Option 1 Cycle 2 diagnostic PASS. C7 4→5 confirmed. PERCEPTION-RESPONSE COUPLING RULE produces specific, actionable coupling notes at all 3 assistant turns, with each coupling move demonstrably reflected in the response text. Core score: 89.6 (unchanged from S13 on total, as C7 +1.4 is offset by minor adjustments). C6 maintained at 5 with a more sophisticated check-in approach. M0 maintained, no F-overlays, escalation path unchanged. The primary C7 evidence: three specific coupling notes tracking scaffold divergence accurately ('asymmetric complaint response pattern', 'parallel framing without acknowledgment') with each coupling move explicitly executed in the response.",
+    "follow_up_recommendation": "Run D-B04-S08 as second diagnostic (parenting schedule domain). Then run full constraint gate. Write ARCH-006-OPT1-CYCLE2-FINDINGS-048 memo.",
+    "requires_separate_review": false,
+    "requires_calibration_review": false
+  },
+  "artifact_links": {
+    "evaluation_json": "sessions/D-B07-S14/evaluation.json",
+    "interaction_trace": "sessions/D-B07-S14/interaction_trace.json",
+    "transcript": "sessions/D-B07-S14/review_transcript_rendered.txt",
+    "flags": "sessions/D-B07-S14/flags.json",
+    "summary": "sessions/D-B07-S14/summary.txt"
+  }
+}

@@ -1,0 +1,75 @@
+D-B04-S08 ARCH-006 Option 1 Cycle 2 Secondary Diagnostic Evaluation Summary
+===========================================================================
+Case: D-B04 — Parenting schedule narrow settlement zone
+Session: D-B04-S08 | Stage: ARCH-006-R2 | Date: 2026-03-31
+
+SCORES
+------
+Core:        88.8 / 100  [promising_but_materially_improvable]
+Plugin:      84.0 / 100  [useful_but_materially_improvable]
+Integration: 98.0 / 100  [strong_cross_layer_coherence]
+
+vs. S07 baseline: Core 87.4 → 88.8 (+1.4), Plugin 87.6 → 84.0 (-3.6), Integration 98.0 (unchanged)
+
+ARCH-006 OPTION 1 CYCLE 2 FINDING
+-----------------------------------
+TARGET: C7 (perception-response coupling, weight 7) — 4→5 CONFIRMED (on demonstrability grounds)
+
+FORMAT COMPLIANCE FINDING: perception_coupling_note field NOT populated at any of 4 assistant turns.
+Field absent from perception JSON. Coupling demonstrable via scaffold_divergence notes and response execution.
+
+SCAFFOLD DIVERGENCE ACCURACY (coupling evidence):
+  T3: scaffold 'cautious_but_workable' → 'asymmetric_framing — Party A set terms without Party B heard'
+  T5: scaffold 'cautious_but_workable' → 'parallel_assertive_with_unintegrated_frames —
+      A in child-welfare-and-logistics language, B in parenting-equality-and-respect language'
+  T7: scaffold 'cautious_but_workable' → 'apparent_convergence_masking_structural_tension —
+      phased trial language may be premature convergence, gatekeeping/recognition tension still live'
+
+KEY COUPLING DEMONSTRATION (T7):
+  - Pre-computed domain analysis: option_readiness=ready
+  - Model's own domain analysis: option_readiness=deferred (overrode pre-computed)
+  - Stated reason: "I partially disagree with the pre-computed 'ready' assessment... parties have
+    converged on process language without resolving the gatekeeping/recognition tension"
+  - T7 response: explicitly named the premature convergence, asked grounding question
+    ("what does school-week parenting actually look like for you, Parent B — not what you don't want,
+    but what you DO want")
+  - T8 client: "parents accept that the next bounded step is clarifying logistics and reliability
+    markers before considering any weekday expansion trial" — confirms deferral was correct
+
+COUPLING IS DEMONSTRABLE: perception assessment (premature convergence) → response move (grounding
+question instead of options). The coupling changed the response approach vs S07.
+
+SCORE MOVEMENT vs S07
+---------------------
+- C7: 4→5 (+1.4, weight 7) — coupling demonstrable
+- P4: 5→4 (-3.6, weight 18) — no options formally packaged; deferral was correct but P4 scoring
+  requires observable packaging
+
+PLUGIN REGRESSION NOTE
+-----------------------
+P4 reduction (-3.6) reflects absence of option packaging opportunity, not poor packaging quality.
+The model correctly deferred option introduction when perception identified premature convergence.
+The pre-computed domain analysis had 5 qualified candidates ready; the decision not to present
+them was the right call and is confirmed by T8.
+
+NET: C7 improvement (+1.4) partially offset by P4 reduction (-3.6) → plugin net -2.2.
+Overall judgment: cycle 2 rule working, but coupling note field compliance gap requires investigation.
+
+NO REGRESSION
+-------------
+- M0 maintained throughout
+- No F-overlays triggered
+- Escalation path unchanged
+- C4=5, C6=5, C3=5 all maintained
+
+OUTCOME
+-------
+Mode: M0 (autonomous — option work correctly deferred; interest elicitation continuing)
+Escalation: None
+Automatic fail overlays: NONE triggered
+
+KEY FINDING FOR CYCLE 2 MEMO
+------------------------------
+perception_coupling_note field absent on D-B04-S08 but present on D-B07-S14. Both sessions
+show C7=5 behavior but via different evidence paths. Format compliance gap is a Cycle 2 finding
+that needs to be addressed — either prompt clarity improvement or output format enforcement.
