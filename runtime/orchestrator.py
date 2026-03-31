@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import sys
 from datetime import datetime
 
 from runtime.artifacts import write_artifacts
@@ -86,7 +87,11 @@ def _run_lm_generated_session(case_bundle: dict, state: dict, generated_at: str)
                     plugin_assessment=plugin_assessment,
                 )
                 min_phase = ref_turn.get("phase", "info_gathering")
-            except Exception:
+            except Exception as e:
+                print(
+                    f"[orchestrator] T{plan_entry.turn_index} min_phase fallback: {e}",
+                    file=sys.stderr,
+                )
                 min_phase = "info_gathering"
             raw_turn = generate_lm_assistant_turn(
                 turn_index=plan_entry.turn_index,

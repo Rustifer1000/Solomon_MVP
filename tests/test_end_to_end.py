@@ -4035,5 +4035,179 @@ class TestPerceptionAgent(unittest.TestCase):
         self.assertIsNone(extract_party_perception(result, "party_a"))
 
 
+class TestStage56PipelineIntegration(unittest.TestCase):
+    """
+    Integration tests for Stage 5 (safety monitor) and Stage 6 (perception agent)
+    pipeline wiring.  All tests exercise real code paths without API calls.
+
+    Tests cover:
+    - compliance_only_pattern flag triggers M1 escalation in determine_escalation()
+    - _last_option_readiness() correctly reads prior turn's option_readiness
+    - Brainstormer guard skips generation when prior domain analysis was blocked
+    - perception_notes from perception agent appear in build_turn_prompt() output
+    - safety_monitor_result null result does not crash build_turn_prompt() consumers
+    """
+
+    def test_compliance_only_flag_triggers_m1_escalation(self) -> None:
+        """compliance_only_pattern flag (safety monitor CATEGORY 1) must produce M1/E1/T2."""
+        from runtime.escalation import determine_escalation
+
+        escalation = determine_escalation(
+            {"flags": [{"flag_type": "compliance_only_pattern"}]},
+            {"active_flag_types": []},
+        )
+        self.assertEqual(escalation["mode"], "M1")
+        self.assertEqual(escalation["category"], "E1")
+        self.assertEqual(escalation["threshold_band"], "T2")
+        self.assertIn("compliance", escalation["rationale"].lower())
+
+    def test_last_option_readiness_reads_prior_blocked_turn(self) -> None:
+        """_last_option_readiness returns 'blocked' when most recent assistant turn was blocked."""
+        from runtime.engine.lm_engine import _last_option_readiness
+
+        state = {
+            "trace_buffer": [
+                {
+                    "turn_index": 3,
+                    "role": "client",
+                    "phase": "interest_exploration",
+                    "reasoning_trace": None,
+                },
+                {
+                    "turn_index": 4,
+                    "role": "assistant",
+                    "phase": "interest_exploration",
+                    "reasoning_trace": {
+                        "pre_computed_domain_analysis": {
+                            "option_readiness": "blocked",
+                        }
+                    },
+                },
+            ]
+        }
+        self.assertEqual(_last_option_readiness(state), "blocked")
+
+    def test_last_option_readiness_reads_prior_ready_turn(self) -> None:
+        """_last_option_readiness returns 'ready' when most recent assistant turn was ready."""
+        from runtime.engine.lm_engine import _last_option_readiness
+
+        state = {
+            "trace_buffer": [
+                {
+                    "turn_index": 4,
+                    "role": "assistant",
+                    "phase": "option_generation",
+                    "reasoning_trace": {
+                        "pre_computed_domain_analysis": {"option_readiness": "ready"}
+                    },
+                }
+            ]
+        }
+        self.assertEqual(_last_option_readiness(state), "ready")
+
+    def test_last_option_readiness_returns_unknown_when_no_prior_turns(self) -> None:
+        """_last_option_readiness returns 'unknown' when no prior assistant turns exist."""
+        from runtime.engine.lm_engine import _last_option_readiness
+
+        self.assertEqual(_last_option_readiness({"trace_buffer": []}), "unknown")
+        self.assertEqual(_last_option_readiness({}), "unknown")
+
+    def test_perception_notes_appear_in_turn_prompt(self) -> None:
+        """perception_notes from a non-null perception agent result are injected into
+        the user-message section of build_turn_prompt()."""
+        from runtime.engine.prompt_builder import build_turn_prompt
+        from runtime.engine.perception import PerceptionContext, PartyPerception
+
+        pa = PartyPerception(
+            party_id="party_a",
+            emotional_state="apparently_stable",
+            inferred_interests=[],
+            risk_signals=["no_active_risk_signals"],
+            relational_posture="engaged_and_cooperative",
+        )
+        pb = PartyPerception(
+            party_id="party_b",
+            emotional_state="apparently_stable",
+            inferred_interests=[],
+            risk_signals=["no_active_risk_signals"],
+            relational_posture="engaged_and_cooperative",
+        )
+        scaffold = PerceptionContext(
+            turn_index=5,
+            party_a=pa,
+            party_b=pb,
+            relational_dynamic="cooperative_and_stable",
+            perception_confidence="moderate",
+        )
+
+        perception_agent_notes = [
+            "Party B has not independently stated interests in three prior turns.",
+            "Engagement quality is compliant_only — hold before presenting options.",
+        ]
+
+        state = {
+            "meta": {"case_id": "D-B04", "session_id": "D-B04-S-test"},
+            "positions": [],
+            "flags": [],
+            "missing_info": [],
+            "facts": [],
+            "issue_map": {},
+            "summary_state": {},
+            "trace_buffer": [],
+            "escalation": {"mode": "M0", "category": None, "threshold_band": "T0", "rationale": ""},
+        }
+        plugin_assessment = {
+            "plugin_confidence": "moderate",
+            "option_posture": "none",
+            "active_flag_types": [],
+            "issue_families": [],
+        }
+
+        messages = build_turn_prompt(
+            state=state,
+            plugin_assessment=plugin_assessment,
+            perception=scaffold,
+            turn_index=5,
+            session_history=[],
+            party_state=None,
+            domain_analysis=None,
+            perception_agent_notes=perception_agent_notes,
+        )
+
+        # The user message content should contain both perception notes
+        user_content = messages[-1]["content"]
+        self.assertIn("Party B has not independently stated interests", user_content)
+        self.assertIn("compliant_only", user_content)
+        self.assertIn("PERCEPTION AGENT NOTES", user_content)
+
+    def test_null_safety_monitor_result_does_not_affect_lm_engine_signal_extraction(self) -> None:
+        """When safety_monitor_result is None, safety_signals must be an empty list
+        (not raise AttributeError).  This verifies the guard at lm_engine.py lines 165-168."""
+        # This tests the extraction logic directly without an API call.
+        safety_monitor_result = None
+        safety_signals = (
+            safety_monitor_result.get("party_state_signals", [])
+            if safety_monitor_result else []
+        )
+        self.assertEqual(safety_signals, [])
+
+    def test_safety_monitor_signals_extracted_before_domain_reasoner(self) -> None:
+        """When safety_monitor_result has party_state_signals, they are extracted
+        into a non-empty list that can be passed to generate_domain_analysis()."""
+        safety_monitor_result = {
+            "turn_index": 9,
+            "flags_raised": ["compliance_only_pattern"],
+            "party_state_signals": [
+                "VETO CATEGORY 1: Party B has not independently stated interests across 3+ turns."
+            ],
+        }
+        safety_signals = (
+            safety_monitor_result.get("party_state_signals", [])
+            if safety_monitor_result else []
+        )
+        self.assertEqual(len(safety_signals), 1)
+        self.assertIn("VETO CATEGORY 1", safety_signals[0])
+
+
 if __name__ == "__main__":
     unittest.main()

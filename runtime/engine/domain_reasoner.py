@@ -374,6 +374,12 @@ def _build_domain_context(
                 parts.append(f"Party B underlying concerns: {'; '.join(pb['inferred_concerns'][:3])}")
             if pb.get("unsaid_signals"):
                 parts.append(f"Party B unsaid signals: {'; '.join(pb['unsaid_signals'][:3])}")
+            # Perception agent's synthesized notes — what matters most this turn.
+            # Complements the raw party signals above; provides the agent's
+            # overall synthesis judgment rather than per-party field extracts.
+            perception_notes = perception_agent_result.get("perception_notes") or []
+            if perception_notes:
+                parts.append(f"Perception agent key observations: {'; '.join(perception_notes[:3])}")
             parts.append("")
 
     # Brainstormer option pool (Stage 4 only)

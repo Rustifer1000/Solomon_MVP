@@ -72,6 +72,19 @@ def determine_escalation(state: dict, plugin_assessment: dict | None = None) -> 
             "rationale": "Human review is required because the session is pressing against mediation role boundaries.",
         }
 
+    if "compliance_only_pattern" in active_flag_types:
+        return {
+            "category": "E1",
+            "threshold_band": "T2",
+            "mode": "M1",
+            "rationale": (
+                "Elevated caution is warranted because the safety monitor detected a sustained "
+                "compliance-only pattern: one party has not independently articulated their own "
+                "interests across multiple turns. Continued autonomous handling requires care to "
+                "ensure genuine consent."
+            ),
+        }
+
     caution_reasons: list[str] = []
     if "insufficient_information" in active_flag_types or logistics_missing:
         caution_reasons.append("material logistics information remains unresolved")

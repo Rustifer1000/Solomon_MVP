@@ -138,12 +138,13 @@ def generate_lm_assistant_turn(
     # Produces a brainstormed candidate pool that the domain reasoner
     # then qualifies alongside its own domain-expert additions (Option B).
     #
-    # Guard: skip on T1 (no party input yet) and when party_state is absent
-    # (not enough information to brainstorm from).  Do NOT gate on prior-turn
-    # option_readiness — a block at T1/T3 (missing party input) must not
-    # cascade to T5 where both parties have spoken and options are ready.
-    # The domain reasoner handles qualification; the brainstormer generates freely.
-    if prior_party_state is not None:
+    # Guard: skip when party_state is absent (T1, no party input yet) OR
+    # when the prior turn's domain analysis applied a safety veto (blocked).
+    # A block at T1/T3 due to missing party input must NOT cascade to T5
+    # where both parties have spoken and options are ready — _last_option_readiness
+    # only returns "blocked" when the domain reasoner applied an explicit veto,
+    # not when it returned "deferred" due to informational gaps.
+    if prior_party_state is not None and _last_option_readiness(state) != "blocked":
         brainstormer_pool = generate_option_pool(
             turn_index=turn_index,
             timestamp=timestamp,

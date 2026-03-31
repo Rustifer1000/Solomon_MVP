@@ -93,7 +93,7 @@ def _render_safety_monitor_summary(state: dict) -> str:
     monitor_turns = [
         t for t in state["trace_buffer"]
         if t.get("role") == "assistant"
-        and t.get("reasoning_trace", {}).get("safety_monitor_result") is not None
+        and (t.get("reasoning_trace") or {}).get("safety_monitor_result") is not None
     ]
     if not monitor_turns:
         return ""
@@ -125,8 +125,8 @@ def _render_perception_agent_summary(state: dict) -> str:
     perception_turns = [
         t for t in state["trace_buffer"]
         if t.get("role") == "assistant"
-        and t.get("reasoning_trace", {}).get("perception_agent_result") is not None
-        and not t.get("reasoning_trace", {}).get("perception_agent_result", {}).get("_null_result")
+        and (t.get("reasoning_trace") or {}).get("perception_agent_result") is not None
+        and not (t.get("reasoning_trace") or {}).get("perception_agent_result", {}).get("_null_result")
     ]
     if not perception_turns:
         return ""

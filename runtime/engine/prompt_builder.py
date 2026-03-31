@@ -300,7 +300,7 @@ def _build_user_message(
                 parts.append(f"Qualified candidates ({len(candidates)}):")
                 for c in candidates:
                     parts.append(
-                        f"  [{c.get('confidence','?')}] {c.get('option_label','?')}: "
+                        f"  [{c.get('confidence','?')}] {c.get('label','?')}: "
                         f"{c.get('feasibility_rationale','')[:120]}"
                     )
                 parts.append("")
