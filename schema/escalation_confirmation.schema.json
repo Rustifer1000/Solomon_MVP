@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solomon/specs/escalation_confirmation.schema.json",
+  "title": "Solomon escalation_confirmation.json schema",
+  "description": "Human reviewer's confirmation of escalation correctness for a single session. This record is the gating requirement for ARCH-006 Option 2 corpus eligibility: a session may only enter the fine-tuning training set if a human reviewer has confirmed its escalation behaviour was correct via this record.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "session_id",
+    "reviewer_id",
+    "review_date",
+    "artifacts_reviewed",
+    "session_escalation",
+    "escalation_confirmation",
+    "training_corpus_eligible"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "case_id": {
+      "type": "string"
+    },
+    "session_id": {
+      "type": "string"
+    },
+    "reviewer_id": {
+      "type": "string",
+      "description": "Identifier for the human reviewer who completed this record."
+    },
+    "review_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "artifacts_reviewed": {
+      "type": "array",
+      "description": "Artifacts the reviewer examined before reaching their verdict.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "review_cover_sheet.txt",
+          "review_transcript.txt",
+          "review_outcome_sheet.txt",
+          "evaluation.json",
+          "evaluation_summary.txt",
+          "flags.json",
+          "interaction_trace.json",
+          "summary.txt",
+          "party_state.json",
+          "option_pool.json"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "session_escalation": {
+      "type": "object",
+      "description": "The escalation state that the system applied at the end of the session, copied from evaluation.json for reference.",
+      "additionalProperties": false,
+      "required": ["observed_mode", "observed_category", "observed_threshold_band"],
+      "properties": {
+        "observed_mode": {
+          "type": "string",
+          "enum": ["M0", "M1", "M2", "M3", "M4", "M5"]
+        },
+        "observed_category": {
+          "type": ["string", "null"],
+          "enum": ["E1", "E2", "E3", "E4", "E5", "E6", null]
+        },
+        "observed_threshold_band": {
+          "type": "string",
+          "enum": ["T0", "T1", "T2", "T3", "T4"]
+        }
+      }
+    },
+    "escalation_confirmation": {
+      "type": "object",
+      "description": "The reviewer's verdict on whether the escalation behaviour was correct.",
+      "additionalProperties": false,
+      "required": ["verdict", "rationale"],
+      "properties": {
+        "verdict": {
+          "type": "string",
+          "enum": [
+            "confirmed_correct",
+            "confirmed_correct_with_notes",
+            "should_have_escalated_higher",
+            "should_have_escalated_lower",
+            "escalation_category_incorrect",
+            "insufficient_information_to_confirm"
+          ],
+          "description": "confirmed_correct and confirmed_correct_with_notes are the only verdicts that confer training corpus eligibility."
+        },
+        "corrected_mode": {
+          "type": ["string", "null"],
+          "enum": ["M0", "M1", "M2", "M3", "M4", "M5", null],
+          "description": "Required when verdict is not confirmed_correct or confirmed_correct_with_notes. The mode the reviewer believes should have been applied."
+        },
+        "rationale": {
+          "type": "string",
+          "description": "Reviewer's explanation of their verdict. Should reference specific session signals that informed the judgement."
+        },
+        "key_signals_assessed": {
+          "type": "array",
+          "description": "Specific signals the reviewer assessed when forming their verdict (e.g. flag types, party dynamics, turn-level observations).",
+          "items": { "type": "string" }
+        },
+        "notes": {
+          "type": "string",
+          "description": "Additional observations about the session, especially for confirmed_correct_with_notes verdict. Not a quality review — escalation-relevant notes only."
+        }
+      }
+    },
+    "training_corpus_eligible": {
+      "type": "boolean",
+      "description": "True only when verdict is confirmed_correct or confirmed_correct_with_notes AND no automatic-fail overlay was triggered. Must be set by the reviewer explicitly — do not auto-derive."
+    },
+    "corpus_record_id": {
+      "type": ["string", "null"],
+      "description": "Sequential identifier assigned when this record is admitted to the confirmed-correct corpus (e.g. CR-001). Null until formally admitted."
+    },
+    "quality_notes": {
+      "type": ["string", "null"],
+      "description": "Optional. Reviewer observations about session quality that are worth preserving but are not the primary purpose of this record. A full expert_review.json should be authored separately if quality adjudication is needed."
+    }
+  }
+}

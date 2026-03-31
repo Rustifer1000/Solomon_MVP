@@ -64,6 +64,100 @@ def build_calibration_review_seed(evaluation: dict, expert_review: dict | None =
     }
 
 
+_CONFIRMED_VERDICTS = {"confirmed_correct", "confirmed_correct_with_notes"}
+
+
+def build_escalation_confirmation_seed(
+    evaluation: dict,
+    session_dir: Path,
+) -> dict:
+    """
+    Build a pre-filled escalation_confirmation.json seed from a session's
+    evaluation.json.  The reviewer fills in escalation_confirmation.verdict
+    and rationale; all other fields are pre-populated.
+    """
+    escalation = evaluation.get("escalation_review", {})
+    return {
+        "schema_version": "escalation_confirmation.v0",
+        "case_id": evaluation.get("case_id", ""),
+        "session_id": evaluation.get("session_id", ""),
+        "reviewer_id": "",
+        "review_date": "",
+        "artifacts_reviewed": [
+            "review_cover_sheet.txt",
+            "review_transcript.txt",
+            "review_outcome_sheet.txt",
+            "evaluation.json",
+        ],
+        "session_escalation": {
+            "observed_mode": escalation.get("observed_mode", ""),
+            "observed_category": escalation.get("primary_escalation_category"),
+            "observed_threshold_band": escalation.get("threshold_band", ""),
+        },
+        "escalation_confirmation": {
+            "verdict": "",
+            "corrected_mode": None,
+            "rationale": "",
+            "key_signals_assessed": [],
+            "notes": None,
+        },
+        "training_corpus_eligible": False,
+        "corpus_record_id": None,
+        "quality_notes": None,
+    }
+
+
+def build_review_corpus_status(sessions_root: Path) -> dict:
+    """
+    Scan sessions_root recursively for escalation_confirmation.json files and
+    return a summary of the confirmed-correct corpus.
+
+    Returns a dict with counts and a list of corpus-eligible session IDs.
+    """
+    total_reviewed = 0
+    confirmed_correct = 0
+    corpus_eligible: list[dict] = []
+    pending_correction: list[str] = []
+    insufficient: list[str] = []
+
+    for conf_path in sorted(sessions_root.rglob("escalation_confirmation.json")):
+        total_reviewed += 1
+        try:
+            record = _load_json(conf_path)
+        except Exception:
+            continue
+
+        verdict = record.get("escalation_confirmation", {}).get("verdict", "")
+        eligible = bool(record.get("training_corpus_eligible"))
+
+        if verdict in _CONFIRMED_VERDICTS:
+            confirmed_correct += 1
+        elif verdict == "insufficient_information_to_confirm":
+            insufficient.append(record.get("session_id", str(conf_path)))
+        elif verdict:
+            pending_correction.append(record.get("session_id", str(conf_path)))
+
+        if eligible:
+            corpus_eligible.append({
+                "case_id": record.get("case_id", ""),
+                "session_id": record.get("session_id", ""),
+                "verdict": verdict,
+                "corpus_record_id": record.get("corpus_record_id"),
+            })
+
+    return {
+        "schema_version": "review_corpus_status.v0",
+        "total_reviewed": total_reviewed,
+        "confirmed_correct": confirmed_correct,
+        "corpus_eligible_count": len(corpus_eligible),
+        "pending_correction_count": len(pending_correction),
+        "insufficient_information_count": len(insufficient),
+        "corpus_eligible_sessions": corpus_eligible,
+        "pending_correction_sessions": pending_correction,
+        "insufficient_information_sessions": insufficient,
+    }
+
+
 def compare_benchmark_runs(left_dir: Path, right_dir: Path) -> dict:
     left_meta = _load_json(left_dir / "run_meta.json")
     right_meta = _load_json(right_dir / "run_meta.json")
