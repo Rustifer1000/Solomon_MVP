@@ -67,6 +67,8 @@ Common coupling patterns (examples only — use your own observation):
 - Relational dynamic shift: "I will address the underlying [trust/control/fairness] dimension explicitly before option framing"
 - Emotional escalation: "I will regulate the temperature before any substantive content"
 
+COMPLIANCE REQUIREMENT: perception_coupling_note MUST be populated on every turn — it is not optional. An empty or null perception_coupling_note is a format compliance failure regardless of how well the other fields are completed. If no strong coupling signal is present, use the most applicable default from the examples above.
+
 STEP 2 — DOMAIN ANALYSIS
 Given the party states from Step 1 and the plugin assessment provided, what are the most relevant domain considerations for this turn? What feasibility constraints apply? What information gaps remain material?
 
@@ -114,7 +116,7 @@ Your response must be a JSON object with this structure:
     "relational_dynamic": "...",
     "perception_confidence": "low | moderate | high",
     "perception_notes": ["..."],
-    "perception_coupling_note": "Because I assess [specific observation], I will [specific response move in Step 5]."
+    "perception_coupling_note": "REQUIRED — Because I assess [specific observation], I will [specific response move in Step 5]."
   },
   "domain_analysis": {
     "key_constraints": ["..."],
