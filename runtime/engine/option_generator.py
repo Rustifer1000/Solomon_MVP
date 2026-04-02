@@ -36,15 +36,10 @@ candidates regardless, which is correct brainstormer behaviour.
 from __future__ import annotations
 
 import json
-import os
 import sys
-from pathlib import Path
 from typing import Any
 
-import anthropic
-from dotenv import dotenv_values
-
-from .api_utils import cached_create
+from .api_utils import cached_create, make_client, get_model
 
 
 # ---------------------------------------------------------------------------
@@ -430,31 +425,10 @@ def _parse_response(raw: str) -> list[dict[str, Any]]:
     return valid
 
 
-# ---------------------------------------------------------------------------
-# Client helpers
-# ---------------------------------------------------------------------------
-
-def _load_api_key() -> str:
-    key = os.environ.get("ANTHROPIC_API_KEY", "")
-    if key:
-        return key
-    env_path = Path(__file__).resolve().parents[2] / ".env"
-    if env_path.exists():
-        key = dotenv_values(env_path).get("ANTHROPIC_API_KEY", "")
-    if not key:
-        raise RuntimeError("ANTHROPIC_API_KEY not found.")
-    return key
-
-
-def _make_client() -> anthropic.Anthropic:
-    return anthropic.Anthropic(api_key=_load_api_key())
+def _make_client():
+    return make_client()
 
 
 def _get_model() -> str:
-    # Option generator uses the same model as the domain reasoner by default.
-    # Can be independently overridden via SOLOMON_OPTION_MODEL env var.
-    return (
-        os.environ.get("SOLOMON_OPTION_MODEL")
-        or os.environ.get("SOLOMON_DOMAIN_MODEL")
-        or os.environ.get("SOLOMON_LM_MODEL", "claude-sonnet-4-5")
-    )
+    # Option generator: overridable via SOLOMON_OPTION_MODEL, then SOLOMON_DOMAIN_MODEL.
+    return get_model("SOLOMON_OPTION_MODEL", "SOLOMON_DOMAIN_MODEL")

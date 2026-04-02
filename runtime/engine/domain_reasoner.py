@@ -33,14 +33,9 @@ These are passed as explicit context in the domain reasoner prompt.
 from __future__ import annotations
 
 import json
-import os
-from pathlib import Path
 from typing import Any
 
-import anthropic
-from dotenv import dotenv_values
-
-from .api_utils import cached_create
+from .api_utils import cached_create, make_client, get_model
 
 
 # ---------------------------------------------------------------------------
@@ -671,28 +666,10 @@ def _fallback(turn_index: int, timestamp: str, state: dict, reason: str = "") ->
     }
 
 
-# ---------------------------------------------------------------------------
-# Client helpers (shared with lm_engine.py)
-# ---------------------------------------------------------------------------
-
-def _load_api_key() -> str:
-    key = os.environ.get("ANTHROPIC_API_KEY", "")
-    if key:
-        return key
-    env_path = Path(__file__).resolve().parents[2] / ".env"
-    if env_path.exists():
-        from dotenv import dotenv_values
-        key = dotenv_values(env_path).get("ANTHROPIC_API_KEY", "")
-    if not key:
-        raise RuntimeError("ANTHROPIC_API_KEY not found.")
-    return key
-
-
-def _make_client() -> anthropic.Anthropic:
-    return anthropic.Anthropic(api_key=_load_api_key())
+def _make_client():
+    return make_client()
 
 
 def _get_model() -> str:
-    # Domain reasoner uses the same model as lm_engine by default.
-    # Can be independently overridden via SOLOMON_DOMAIN_MODEL env var.
-    return os.environ.get("SOLOMON_DOMAIN_MODEL") or os.environ.get("SOLOMON_LM_MODEL", "claude-sonnet-4-5")
+    # Domain reasoner: overridable via SOLOMON_DOMAIN_MODEL, falls back to SOLOMON_LM_MODEL.
+    return get_model("SOLOMON_DOMAIN_MODEL")

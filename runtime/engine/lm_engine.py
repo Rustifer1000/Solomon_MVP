@@ -30,12 +30,7 @@ additive — it does not replace any existing turn field.
 from __future__ import annotations
 
 import json
-import os
-from pathlib import Path
 from typing import Any
-
-import anthropic
-from dotenv import dotenv_values
 
 from .perception import PerceptionContext, build_perception_context
 from .perception_agent import (
@@ -46,38 +41,16 @@ from .perception_agent import (
 from .prompt_builder import SYSTEM_PROMPT, _CANONICAL_PHASES, _PHASE_ORDER, build_turn_prompt
 from .domain_reasoner import generate_domain_analysis
 from .option_generator import generate_option_pool
-from .api_utils import cached_create
+from .api_utils import cached_create, make_client, get_model
 from runtime.artifacts import build_party_state
 
 
-# ---------------------------------------------------------------------------
-# Client initialisation
-# ---------------------------------------------------------------------------
-
-def _load_api_key() -> str:
-    """Load API key from environment or .env file."""
-    key = os.environ.get("ANTHROPIC_API_KEY", "")
-    if key:
-        return key
-    # Try .env in project root (two levels up from this file)
-    env_path = Path(__file__).resolve().parents[2] / ".env"
-    if env_path.exists():
-        vals = dotenv_values(env_path)
-        key = vals.get("ANTHROPIC_API_KEY", "")
-    if not key:
-        raise RuntimeError(
-            "ANTHROPIC_API_KEY not found in environment or .env file. "
-            "Set it before using lm_runtime mode."
-        )
-    return key
-
-
-def _make_client() -> anthropic.Anthropic:
-    return anthropic.Anthropic(api_key=_load_api_key())
+def _make_client():
+    return make_client()
 
 
 def _get_model() -> str:
-    return os.environ.get("SOLOMON_LM_MODEL", "claude-sonnet-4-5")
+    return get_model()
 
 
 # ---------------------------------------------------------------------------

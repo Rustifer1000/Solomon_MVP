@@ -48,12 +48,10 @@ CATEGORY 3 fires when any discordant_signal has:
 from __future__ import annotations
 
 import json
-import os
 import sys
-from pathlib import Path
 from typing import Any
 
-from .api_utils import cached_create
+from .api_utils import cached_create, make_client, get_model
 
 
 # ---------------------------------------------------------------------------
@@ -287,7 +285,6 @@ def generate_safety_monitor_result(
         return _null_result(turn_index, timestamp, state, reason="insufficient_history")
 
     try:
-        import anthropic
         client = _make_client()
         model = _get_model()
 
@@ -579,32 +576,10 @@ def build_safety_monitor_flag_templates(
     return templates
 
 
-# ---------------------------------------------------------------------------
-# Client helpers
-# ---------------------------------------------------------------------------
-
-def _load_api_key() -> str:
-    key = os.environ.get("ANTHROPIC_API_KEY", "")
-    if key:
-        return key
-    env_path = Path(__file__).resolve().parents[2] / ".env"
-    if env_path.exists():
-        from dotenv import dotenv_values
-        key = dotenv_values(env_path).get("ANTHROPIC_API_KEY", "")
-    if not key:
-        raise RuntimeError("ANTHROPIC_API_KEY not found.")
-    return key
-
-
 def _make_client():
-    import anthropic
-    return anthropic.Anthropic(api_key=_load_api_key())
+    return make_client()
 
 
 def _get_model() -> str:
-    # Safety monitor can be independently overridden via SOLOMON_SAFETY_MODEL.
-    # Falls back to SOLOMON_LM_MODEL or default.
-    return (
-        os.environ.get("SOLOMON_SAFETY_MODEL")
-        or os.environ.get("SOLOMON_LM_MODEL", "claude-sonnet-4-5")
-    )
+    # Safety monitor: overridable via SOLOMON_SAFETY_MODEL.
+    return get_model("SOLOMON_SAFETY_MODEL")
