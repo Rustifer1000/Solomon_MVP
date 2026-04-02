@@ -28,6 +28,8 @@ import json
 import sys
 from pathlib import Path
 
+from runtime.evaluator_artifact_validation import validate_escalation_confirmation
+
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
@@ -63,11 +65,18 @@ def _scan_sessions(root: Path) -> list[dict]:
         confirmation_path = session_dir / "escalation_confirmation.json"
         has_confirmation = confirmation_path.exists()
         confirmation: dict | None = None
+        confirmation_error: str | None = None
         if has_confirmation:
             try:
                 confirmation = _load_json(confirmation_path)
-            except Exception:
+                schema_errors = validate_escalation_confirmation(confirmation)
+                if schema_errors:
+                    confirmation_error = f"schema validation failed: {'; '.join(schema_errors[:3])}"
+                    has_confirmation = False
+                    confirmation = None
+            except Exception as exc:
                 has_confirmation = False
+                confirmation_error = str(exc)
 
         entries.append({
             "session_dir": session_dir,
@@ -79,8 +88,9 @@ def _scan_sessions(root: Path) -> list[dict]:
             ),
             "has_confirmation": has_confirmation,
             "confirmation": confirmation,
+            "confirmation_error": confirmation_error,
             "has_expert_review": (session_dir / "expert_review.json").exists(),
-            "error": None,
+            "error": None,  # only set for evaluation load failures (above)
         })
     return entries
 

@@ -199,6 +199,11 @@ def validate_reference_evaluation_summary_text(
     return errors
 
 
+def validate_escalation_confirmation(confirmation: dict) -> list[str]:
+    """Validate an escalation_confirmation record against the schema."""
+    return _schema_errors(confirmation, "escalation_confirmation.schema.json")
+
+
 def validate_reference_expert_review_example(
     expert_review: dict,
     evaluation: dict,

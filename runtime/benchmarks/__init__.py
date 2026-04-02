@@ -18,6 +18,9 @@ from runtime.benchmarks.d_b14 import D_B14_SIMULATION
 from runtime.benchmarks.d_b_rt01 import D_B_RT01_SIMULATION
 from runtime.benchmarks.d_b_rt02 import D_B_RT02_SIMULATION
 from runtime.benchmarks.d_b_rt03 import D_B_RT03_SIMULATION
+from runtime.benchmarks.d_b_rt04 import D_B_RT04_SIMULATION
+from runtime.benchmarks.d_b_rt05 import D_B_RT05_SIMULATION
+from runtime.benchmarks.d_b_rt06 import D_B_RT06_SIMULATION
 from runtime.benchmarks.scaffold import build_benchmark_registry
 
 
@@ -39,6 +42,9 @@ _REGISTRY = build_benchmark_registry(
     D_B_RT01_SIMULATION,
     D_B_RT02_SIMULATION,
     D_B_RT03_SIMULATION,
+    D_B_RT04_SIMULATION,
+    D_B_RT05_SIMULATION,
+    D_B_RT06_SIMULATION,
 )
 
 
