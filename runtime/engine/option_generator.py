@@ -44,6 +44,8 @@ from typing import Any
 import anthropic
 from dotenv import dotenv_values
 
+from .api_utils import cached_create
+
 
 # ---------------------------------------------------------------------------
 # System prompt
@@ -315,7 +317,8 @@ def generate_option_pool(
             perception_agent_result=perception_agent_result,
         )
 
-        response = client.messages.create(
+        response = cached_create(
+            client,
             model=model,
             max_tokens=2048,
             system=_OPTION_GENERATOR_SYSTEM_PROMPT,

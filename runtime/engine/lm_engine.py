@@ -46,6 +46,7 @@ from .perception_agent import (
 from .prompt_builder import SYSTEM_PROMPT, _CANONICAL_PHASES, _PHASE_ORDER, build_turn_prompt
 from .domain_reasoner import generate_domain_analysis
 from .option_generator import generate_option_pool
+from .api_utils import cached_create
 from runtime.artifacts import build_party_state
 
 
@@ -197,7 +198,8 @@ def generate_lm_assistant_turn(
     client = _make_client()
     model = _get_model()
 
-    response = client.messages.create(
+    response = cached_create(
+        client,
         model=model,
         max_tokens=4096,
         system=SYSTEM_PROMPT,

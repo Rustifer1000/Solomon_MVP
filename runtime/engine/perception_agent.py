@@ -48,6 +48,7 @@ from pathlib import Path
 from typing import Any
 
 from .perception import PerceptionContext
+from .api_utils import cached_create
 
 
 # ---------------------------------------------------------------------------
@@ -346,7 +347,8 @@ def generate_perception_agent_result(
             turn_index=turn_index,
         )
 
-        response = client.messages.create(
+        response = cached_create(
+            client,
             model=model,
             max_tokens=2500,
             system=_PERCEPTION_AGENT_SYSTEM_PROMPT,

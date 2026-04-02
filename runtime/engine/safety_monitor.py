@@ -53,6 +53,8 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from .api_utils import cached_create
+
 
 # ---------------------------------------------------------------------------
 # System prompt
@@ -295,7 +297,8 @@ def generate_safety_monitor_result(
             turn_index=turn_index,
         )
 
-        response = client.messages.create(
+        response = cached_create(
+            client,
             model=model,
             max_tokens=2000,
             system=_SAFETY_MONITOR_SYSTEM_PROMPT,
